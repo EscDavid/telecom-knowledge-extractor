@@ -1,0 +1,60 @@
+==============================================================================
+WALK DIRIGIDO — OLT PON PORTS (getPonPorts) — ZTE C300/C320
+Set de OIDs a capturar para cerrar el gap de oper status por PON port.
+==============================================================================
+
+# META
+doc_type: walk_request          # NO es fuente community; el ingest la ignora.
+target: getPonPorts()
+vendor: ZTE
+families: ZXA10 C300, ZXA10 C320
+motivo: el walk actual no capturó ifTable (ifOperStatus). La rama pon-port del
+        catálogo (.1082.500.21, zxAnGponOP) NO está poblada por este firmware, y las
+        tablas per-port .1012.3.11/12/13 son CONFIG (max-onu, timeouts), no oper vivo.
+
+# HALLAZGOS DEL ANÁLISIS DEL WALK ACTUAL (para no capturar de más):
+#  - oper de PON port  = ifOperStatus (IF-MIB estándar). AUSENTE en el walk → capturar.
+#  - onuNum por puerto = YA DERIVABLE: contar ONUs por puerto en la tabla ONU
+#      .1012.3.50.11.2.1  →  28 puertos, 1..81 ONUs/puerto, total 1008. NO requiere walk.
+#  - PON port en el índice = ONU-ID space (ifName gpon_s/p/x, ej. 285278721 = gpon_1/2/1);
+#      ifOperStatus se indexa por ese mismo ifIndex.
+
+==============================================================================
+# OIDS A CAMINAR
+==============================================================================
+# (1) ifTable estándar — da oper/admin de cada interfaz; los PON ports aparecen
+#     como gpon_s/p/x con su ifIndex (mismo del ifName ya capturado).
+ifTable          1.3.6.1.2.1.2.2
+  ifDescr        1.3.6.1.2.1.2.2.1.2
+  ifType         1.3.6.1.2.1.2.2.1.3     # gpon = 250 / otros
+  ifAdminStatus  1.3.6.1.2.1.2.2.1.7     # 1=up 2=down (config)
+  ifOperStatus   1.3.6.1.2.1.2.2.1.8     # 1=up 2=down (real)   <<< DATO CLAVE
+
+# (2) Tabla pon-port ZTE documentada — capturar para CONFIRMAR si este firmware la
+#     expone (hoy da 0 líneas). Si respondiera, traería oper/onu-count nativos.
+zxAnGponOP       1.3.6.1.4.1.3902.1082.500.21.2.1
+
+==============================================================================
+# CÓMO CAPTURAR
+==============================================================================
+# ifTable → al archivo de interfaces (mismo espacio que el ifName); la correlación
+# posterior mapea ifOperStatus.<ifIndex> a pon_port.oper (igual que se hizo con ONT).
+snmpbulkwalk -v2c -c "<COMMUNITY>" -On -Cr10 -t 30 -r 3 <IP_OLT> \
+  1.3.6.1.2.1.2.2 >> docs/walks/ZTE_C300_ifnames.txt
+
+# tabla pon-port documentada → al walk enterprise (confirma presencia/ausencia)
+snmpbulkwalk -v2c -c "<COMMUNITY>" -On -Cr10 -t 30 -r 3 <IP_OLT> \
+  1.3.6.1.4.1.3902.1082.500.21.2.1 >> docs/walks/ZTE_C300.txt
+
+# (repetir ambos para el C320 con IP del C320 → ZTE_C320_ifnames.txt / ZTE_C320.txt)
+
+==============================================================================
+# TRAS EL WALK (pipeline, igual que ONT)
+==============================================================================
+# 1. ifOperStatus queda en el walk de interfaces.
+# 2. Correlación: mapear ifOperStatus.<ifIndex> → pon_port.oper (1=up,2=down).
+# 3. onuNum: derivar contando ONUs/puerto de la tabla ONU (ya en el walk) — se puede
+#    materializar como columna 'onu_count' verified_walk del pon_port sin OID nuevo.
+# 4. Emitir una fuente community (como snmp-olt-zte_status_serial_columns.txt) que
+#    fije pon_port.oper (ifOperStatus) y pon_port.onu_count (derivado) a verified_walk.
+==============================================================================

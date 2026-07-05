@@ -1,0 +1,94 @@
+ZTE ZXA10 C300/C320 — GPON Command Reference (CLI)
+Vendor: ZTE   Family: ZXA10 C320   Technology: gpon
+Referencia de sintaxis CLI real (curada). Parametros obligatorios en {},
+opcionales en []. Cada bloque incluye Function y, si aplica, Prerequisite.
+
+===============================================================================
+ONU — consulta
+===============================================================================
+Function: Muestra el estado operativo de una ONU GPON (online/offline).
+show gpon onu state {gpon-onu-index}
+zxan(config-if-gpon)#
+
+Function: Muestra informacion detallada de una ONU (serial, tipo, distancia).
+show gpon onu detail-info {gpon-onu-index}
+zxan(config-if-gpon)#
+
+Function: Lista las ONU registradas bajo un puerto PON del OLT.
+show gpon onu baseinfo {gpon-olt-index}
+zxan(config-if-gpon)#
+
+Function: Muestra las ONU descubiertas pero no configuradas (autofind).
+show gpon onu uncfg
+zxan(config)#
+
+Function: Muestra la potencia optica Rx/Tx de una ONU.
+show pon power onu-rx {gpon-onu-index}
+zxan(config-if-gpon)#
+
+===============================================================================
+ONU — aprovisionamiento
+===============================================================================
+Function: Registra (crea) una ONU en un puerto PON por su tipo y numero de serie.
+create onu {onu-id} type {onu-type} sn {onu-sn}
+Prerequisite: interface gpon-olt {gpon-olt-index}
+zxan(config-if-gpon)#
+
+Function: Elimina una ONU registrada de un puerto PON.
+delete onu {onu-id}
+Prerequisite: interface gpon-olt {gpon-olt-index}
+zxan(config-if-gpon)#
+
+Function: Modifica el perfil de linea/servicio de una ONU.
+modify onu {onu-id} profile {line-profile}
+Prerequisite: interface gpon-olt {gpon-olt-index}
+zxan(config-if-gpon)#
+
+Function: Reinicia una ONU de forma remota.
+reset gpon onu {gpon-onu-index}
+zxan(config-if-gpon)#
+
+Function: Habilita administrativamente una ONU.
+enable onu {onu-id}
+Prerequisite: interface gpon-olt {gpon-olt-index}
+zxan(config-if-gpon)#
+
+Function: Deshabilita (apaga) administrativamente una ONU.
+disable onu {onu-id}
+Prerequisite: interface gpon-olt {gpon-olt-index}
+zxan(config-if-gpon)#
+
+===============================================================================
+Service-port / VLAN / GEM
+===============================================================================
+Function: Crea un service-port que mapea una VLAN de usuario a una ONU.
+create service-port {sp-index} vport {vport-id} user-vlan {vlan-id}
+Prerequisite: interface gpon-onu {gpon-onu-index}
+zxan(config-if-gpon)#
+
+Function: Crea un GEM port sobre un t-cont de la ONU.
+create gemport {gem-id} tcont {tcont-id}
+Prerequisite: interface gpon-onu {gpon-onu-index}
+zxan(config-if-gpon)#
+
+Function: Muestra la configuracion de una VLAN.
+show vlan {vlan-id}
+zxan(config)#
+
+===============================================================================
+Hardware / plataforma
+===============================================================================
+Function: Muestra el estado de una tarjeta en un slot del chasis.
+show card {shelf-slot}
+zxan(config)#
+
+Function: Diagnostico de conectividad IP desde el OLT.
+ping {ip-address}
+zxan#
+
+Function: Guarda la configuracion en memoria no volatil.
+save
+
+Function: Reinicia el OLT o una tarjeta.
+reboot [slot]
+zxan(config)#

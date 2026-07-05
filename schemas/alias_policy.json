@@ -1,0 +1,80 @@
+{
+  "spec_name": "ALIAS_POLICY",
+  "version": "1.0.0",
+  "purpose": "Define cómo el Normalizer resuelve nombres alternativos para una misma entidad",
+
+  "rules": [
+    {
+      "rule": 1,
+      "name": "Fuente de canonical_name",
+      "description": "El canonical_name viene de la fuente de mayor peso. Si el nombre MIB es más corto y no contiene espacios, gana sobre CLI.",
+      "logic": "IF len(mib_name) < len(cli_name) AND mib_name no contiene espacios THEN canonical = mib_name ELSE canonical = cli_name",
+      "example": {
+        "cli_name": "GPON ONU",
+        "mib_name": "ONU",
+        "result": "canonical = ONU, alias = GPON ONU"
+      }
+    },
+    {
+      "rule": 2,
+      "name": "Registro de aliases",
+      "description": "Todo nombre alternativo se registra, nunca se descarta. La búsqueda por alias en el backend encuentra la entidad desde cualquier nombre."
+    },
+    {
+      "rule": 3,
+      "name": "Desambiguación entre firmwares",
+      "description": "Cuando el mismo alias refiere a entidades distintas en firmwares distintos, se crean entidades separadas con firmware_scope.",
+      "example": {
+        "firmware_2.0": "Service Port = entidad A",
+        "firmware_2.1": "Service Port = entidad B",
+        "result": "Dos entidades separadas, alias marcado con firmware_scope"
+      },
+      "default_scope": "all"
+    },
+    {
+      "rule": 4,
+      "name": "Conflicto entre fuentes de igual peso",
+      "description": "No existe actualmente — los pesos son distintos por diseño. Si ocurre en el futuro: gana el nombre más corto sin espacios, si igual longitud gana el procesado primero, registra conflicto con resolution=auto."
+    },
+    {
+      "rule": 5,
+      "name": "Alias entre vendors",
+      "description": "Entidades de vendors distintos no se unifican. Se registra cross_vendor_equivalent.",
+      "example": {
+        "zte": "entity.zte.gpon.device.onu (ONU)",
+        "huawei": "entity.huawei.gpon.device.ont (ONT)",
+        "result": "Entidades separadas con cross_vendor_equivalent entre ambas"
+      }
+    },
+    {
+      "rule": 6,
+      "name": "Alias ambiguo",
+      "description": "Cuando un nombre podría corresponder a más de una entidad del mismo vendor, no se asigna. Se marca como ambiguous con lista de candidatos.",
+      "example": {
+        "alias": "Port",
+        "candidates": ["entity.zte.gpon.port.pon_port", "entity.zte.gpon.port.uplink_port", "entity.zte.gpon.logical.service_port"],
+        "result": "status=ambiguous, queda en cola de revisión manual"
+      }
+    }
+  ],
+
+  "normalizer_flow": [
+    "Nombre encontrado en documento",
+    "¿Existe ya como canonical_name? → Sí: registrar como alias",
+    "¿Existe ya como alias de otra entidad? → Sí: ¿mismo firmware_scope? → Sí: misma entidad / No: crear entidad separada",
+    "¿Es ambiguo (múltiples candidatos)? → Sí: status=ambiguous, cola manual",
+    "¿Es de vendor distinto? → Sí: cross_vendor_equivalent, no unificar",
+    "No: crear nueva entidad con canonical_name por Regla 1"
+  ],
+
+  "db_mapping": {
+    "table": "tkc_aliases",
+    "status_values": ["assigned", "ambiguous", "cross_vendor"],
+    "key_fields": {
+      "entity_ref": "NULL si ambiguous",
+      "firmware_scope": "'all' o versión específica",
+      "candidates": "JSON si ambiguous",
+      "cross_vendor_entity": "entity id del otro vendor si cross_vendor"
+    }
+  }
+}

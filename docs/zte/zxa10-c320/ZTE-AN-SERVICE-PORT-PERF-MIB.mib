@@ -1,0 +1,647 @@
+ZTE-AN-SERVICE-PORT-PERF-MIB DEFINITIONS ::= BEGIN
+
+    IMPORTS
+        MODULE-IDENTITY, OBJECT-TYPE,
+        Integer32, Gauge32, Counter64       FROM SNMPv2-SMI
+        RowStatus, DateAndTime              FROM SNMPv2-TC
+        ifIndex                             FROM IF-MIB
+        zxAnSubIfIndex                      FROM ZTE-AN-IF-MIB
+        zxAnServiceProvision                FROM ZTE-AN-SMI
+        HCPerfTimeElapsed                   FROM HC-PerfHist-TC-MIB;
+
+    zxAnServicePortPerfMib MODULE-IDENTITY
+        LAST-UPDATED    "201512171430Z"
+        ORGANIZATION    "ZTE Corporation"
+        CONTACT-INFO    "Di Cuixia
+                        Mail: di.cuixia@zte.com.cn
+                        Tel : +86-21-68897260"
+        DESCRIPTION
+            "The MIB module for the management of the service port performance."
+         ::= {zxAnServiceProvision 21}
+
+--------------------------------------------------------------------------------
+-- Following management objects are defined.
+-- 1. Service Port Performance Objects
+-- 1.2 Service Port Statistics
+-- 1.3 Service Port Current Minutes Performance
+-- 1.4 Service Port Cuurent 1 Day Performance
+-- 1.5 Service Port Historical Minutes Performance
+-- 1.6 Service Port Historical 1 Day Performance
+-- 1.7 Service Port Performance Configuration
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+-- 1. Service Port Performance Objects
+--------------------------------------------------------------------------------
+    
+    zxAnServicePortPerfObjects
+                              OBJECT IDENTIFIER ::= { zxAnServicePortPerfMib 2 }
+
+--------------------------------------------------------------------------------
+-- 1.2 Service Port Statistics
+--------------------------------------------------------------------------------
+
+    zxAnSrvPortCurrStatsTable    OBJECT-TYPE
+        SYNTAX      SEQUENCE OF ZxAnSrvPortCurrStatsEntry
+        MAX-ACCESS  not-accessible
+        STATUS      current
+        DESCRIPTION
+            "Current statistics data table of service port."
+        ::= { zxAnServicePortPerfObjects 2 }
+
+    zxAnSrvPortCurrStatsEntry    OBJECT-TYPE
+        SYNTAX      ZxAnSrvPortCurrStatsEntry
+        MAX-ACCESS  not-accessible
+        STATUS      current
+        DESCRIPTION
+            "A zxAnSrvPortCurrStatsTable entry."
+        INDEX   { ifIndex, zxAnSubIfIndex }
+        ::= { zxAnSrvPortCurrStatsTable 1 }
+
+    ZxAnSrvPortCurrStatsEntry ::= SEQUENCE {
+        zxAnSrvPortCurrStatsVportId         Integer32,
+        zxAnSrvPortCurrStatsInOctets        Counter64,
+        zxAnSrvPortCurrStatsOutOctets       Counter64,
+        zxAnSrvPortCurrStatsInOctetRate     Gauge32,
+        zxAnSrvPortCurrStatsOutOctetRate    Gauge32,
+        zxAnSrvPortCurrStatsInPkts          Counter64,
+        zxAnSrvPortCurrStatsOutPkts         Counter64,
+        zxAnSrvPortCurrStatsReset           INTEGER,
+        zxAnSrvPortCurrStatsRowStatus       RowStatus
+        }
+
+    zxAnSrvPortCurrStatsVportId  OBJECT-TYPE
+        SYNTAX      Integer32(1..128)
+        MAX-ACCESS  read-only
+        STATUS      current
+        DESCRIPTION
+            "VPort ID from 1 to 128."
+        ::={  zxAnSrvPortCurrStatsEntry 1 }
+
+    zxAnSrvPortCurrStatsInOctets    OBJECT-TYPE
+        SYNTAX      Counter64
+        MAX-ACCESS  read-only
+        STATUS      current
+        DESCRIPTION
+            "The total number of octets received on the service port."
+        ::= { zxAnSrvPortCurrStatsEntry 2 }
+
+    zxAnSrvPortCurrStatsOutOctets    OBJECT-TYPE
+        SYNTAX      Counter64
+        MAX-ACCESS  read-only
+        STATUS      current
+        DESCRIPTION
+            "The total number of octets transmitted from the service port."
+        ::= { zxAnSrvPortCurrStatsEntry 3 }
+
+    zxAnSrvPortCurrStatsInOctetRate    OBJECT-TYPE
+        SYNTAX      Gauge32
+        UNITS       "kbps"
+        MAX-ACCESS  read-only
+        STATUS      current
+        DESCRIPTION
+            "Received octet rate of the service port."
+        ::= { zxAnSrvPortCurrStatsEntry 4 }
+
+    zxAnSrvPortCurrStatsOutOctetRate    OBJECT-TYPE
+        SYNTAX      Gauge32
+        UNITS       "kbps"
+        MAX-ACCESS  read-only
+        STATUS      current
+        DESCRIPTION
+            "Transmitted octet rate of the service port."
+        ::= { zxAnSrvPortCurrStatsEntry 5 }
+
+    zxAnSrvPortCurrStatsInPkts OBJECT-TYPE
+        SYNTAX      Counter64
+        MAX-ACCESS  read-only
+        STATUS      current
+        DESCRIPTION
+            "Received packets of the service port."
+        ::= { zxAnSrvPortCurrStatsEntry 6 }
+
+    zxAnSrvPortCurrStatsOutPkts    OBJECT-TYPE
+        SYNTAX      Counter64
+        MAX-ACCESS  read-only
+        STATUS      current
+        DESCRIPTION
+            "Transmitted packets of the service port."
+        ::= { zxAnSrvPortCurrStatsEntry 7 }
+
+    zxAnSrvPortCurrStatsReset OBJECT-TYPE
+        SYNTAX      INTEGER {
+            reset(1)
+        }
+        MAX-ACCESS  read-create
+        STATUS      current
+        DESCRIPTION
+            "Value 1 means to clear all the current performance value.
+             When get this variable, always return 1."
+        ::= { zxAnSrvPortCurrStatsEntry 49 }
+
+    zxAnSrvPortCurrStatsRowStatus   OBJECT-TYPE
+        SYNTAX         RowStatus
+        MAX-ACCESS     read-create
+        STATUS         current
+        DESCRIPTION
+            "The status of this conceptual row.
+
+             The supported actions of this conceptual row only include:
+             'createAndGo' and 'destroy'.
+
+             To create a row in this table, a manager must set this object to
+             createAndGo(4), and must comply with the multi-variables binding
+             rule described in zxAnSrvPortCurrStatsEntry.
+
+             To delete a row in this table, a manager must set this object to
+             destroy(6).
+
+             To get this object, the agent always returns active(1)."
+        ::= { zxAnSrvPortCurrStatsEntry 50 }
+
+--------------------------------------------------------------------------------
+-- 1.3 Service Port Current Minutes Performance
+--------------------------------------------------------------------------------
+    
+    zxAnSrvPortCurrMinPerfTable  OBJECT-TYPE
+        SYNTAX      SEQUENCE OF ZxAnSrvPortCurrMinPerfEntry
+        MAX-ACCESS  not-accessible
+        STATUS      current
+        DESCRIPTION
+            "The current minutes interval performance data table of the
+             service port."
+        ::= { zxAnServicePortPerfObjects 10 }
+
+    zxAnSrvPortCurrMinPerfEntry  OBJECT-TYPE
+        SYNTAX      ZxAnSrvPortCurrMinPerfEntry
+        MAX-ACCESS  not-accessible
+        STATUS      current
+        DESCRIPTION
+            "The current minutes interval performance data entry of the
+             service port."
+        INDEX   { ifIndex, zxAnSubIfIndex }
+        ::= { zxAnSrvPortCurrMinPerfTable 1 }
+
+    ZxAnSrvPortCurrMinPerfEntry ::= SEQUENCE {
+        zxAnSrvPortCMinTimeElapsed        HCPerfTimeElapsed,
+        zxAnSrvPortCMinInOctets           Counter64,
+        zxAnSrvPortCMinOutOctets          Counter64,
+        zxAnSrvPortCMinInOctetRate        Gauge32,
+        zxAnSrvPortCMinOutOctetRate       Gauge32,
+        zxAnSrvPortCMinInPkts             Counter64,
+        zxAnSrvPortCMinOutPkts            Counter64,
+        zxAnSrvPortCMinReset              INTEGER
+    }
+
+    zxAnSrvPortCMinTimeElapsed  OBJECT-TYPE
+        SYNTAX      HCPerfTimeElapsed
+        UNITS       "Seconds"
+        MAX-ACCESS  read-only
+        STATUS      current
+        DESCRIPTION
+            "Total elapsed seconds in this interval."
+        ::= { zxAnSrvPortCurrMinPerfEntry 1 }
+    
+    zxAnSrvPortCMinInOctets  OBJECT-TYPE
+        SYNTAX      Counter64
+        MAX-ACCESS  read-only
+        STATUS      current
+        DESCRIPTION
+            "Received octets."
+        ::= { zxAnSrvPortCurrMinPerfEntry 2 }
+
+    zxAnSrvPortCMinOutOctets  OBJECT-TYPE
+        SYNTAX      Counter64
+        MAX-ACCESS  read-only
+        STATUS      current
+        DESCRIPTION
+            "Transmitted octets."
+        ::= { zxAnSrvPortCurrMinPerfEntry 3 }
+    
+    zxAnSrvPortCMinInOctetRate  OBJECT-TYPE
+        SYNTAX      Gauge32
+        UNITS       "kbps"
+        MAX-ACCESS  read-only
+        STATUS      current
+        DESCRIPTION
+            "Received octet rate."
+        ::= { zxAnSrvPortCurrMinPerfEntry 4 }
+    
+    zxAnSrvPortCMinOutOctetRate  OBJECT-TYPE
+        SYNTAX      Gauge32
+        UNITS       "kbps"
+        MAX-ACCESS  read-only
+        STATUS      current
+        DESCRIPTION
+            "Transmitted octet rate."
+        ::= { zxAnSrvPortCurrMinPerfEntry 5 }
+    
+    zxAnSrvPortCMinInPkts  OBJECT-TYPE
+        SYNTAX      Counter64
+        MAX-ACCESS  read-only
+        STATUS      current
+        DESCRIPTION
+            "Received packets."
+        ::= { zxAnSrvPortCurrMinPerfEntry 6 }
+
+    zxAnSrvPortCMinOutPkts  OBJECT-TYPE
+        SYNTAX      Counter64
+        MAX-ACCESS  read-only
+        STATUS      current
+        DESCRIPTION
+            "Transmitted packets."
+        ::= { zxAnSrvPortCurrMinPerfEntry 7 }
+        
+    zxAnSrvPortCMinReset  OBJECT-TYPE
+        SYNTAX      INTEGER {
+            perfReset(1)
+        }
+        MAX-ACCESS  read-write
+        STATUS      current
+        DESCRIPTION
+            "Clear all the current minutes performance variables.
+             When get this variable, always return 1."
+        ::= { zxAnSrvPortCurrMinPerfEntry 100 }
+        
+--------------------------------------------------------------------------------
+-- 1.4 Service Port Cuurent 1 Day Performance
+--------------------------------------------------------------------------------
+
+    zxAnSrvPortCurr1DayPerfTable  OBJECT-TYPE
+        SYNTAX      SEQUENCE OF ZxAnSrvPortCurr1DayPerfEntry
+        MAX-ACCESS  not-accessible
+        STATUS      current
+        DESCRIPTION
+            "The current 1 day interval performance data table of the service
+             port."
+        ::= { zxAnServicePortPerfObjects 11 }
+
+    zxAnSrvPortCurr1DayPerfEntry  OBJECT-TYPE
+        SYNTAX      ZxAnSrvPortCurr1DayPerfEntry
+        MAX-ACCESS  not-accessible
+        STATUS      current
+        DESCRIPTION
+            "The current 1 day interval performance data entry of service port."
+        INDEX   { ifIndex, zxAnSubIfIndex }
+        ::= { zxAnSrvPortCurr1DayPerfTable 1 }
+
+    ZxAnSrvPortCurr1DayPerfEntry ::= SEQUENCE {
+        zxAnSrvPortC1DTimeElapsed            HCPerfTimeElapsed,
+        zxAnSrvPortC1DInOctets               Counter64,
+        zxAnSrvPortC1DOutOctets              Counter64,
+        zxAnSrvPortC1DInOctetRate            Gauge32,
+        zxAnSrvPortC1DOutOctetRate           Gauge32,
+        zxAnSrvPortC1DInPkts                 Counter64,
+        zxAnSrvPortC1DOutPkts                Counter64,
+        zxAnSrvPortC1DReset                  INTEGER
+    }
+  
+    zxAnSrvPortC1DTimeElapsed  OBJECT-TYPE
+        SYNTAX      HCPerfTimeElapsed
+        UNITS       "Seconds"
+        MAX-ACCESS  read-only
+        STATUS      current
+        DESCRIPTION
+            "Total elapsed seconds in this interval."
+        ::= { zxAnSrvPortCurr1DayPerfEntry 1 }
+    
+    zxAnSrvPortC1DInOctets  OBJECT-TYPE
+        SYNTAX      Counter64
+        MAX-ACCESS  read-only
+        STATUS      current
+        DESCRIPTION
+            "Received octets."
+        ::= { zxAnSrvPortCurr1DayPerfEntry 2 }
+
+    zxAnSrvPortC1DOutOctets  OBJECT-TYPE
+        SYNTAX      Counter64
+        MAX-ACCESS  read-only
+        STATUS      current
+        DESCRIPTION
+            "Transmitted octets."
+        ::= { zxAnSrvPortCurr1DayPerfEntry 3 }
+
+    zxAnSrvPortC1DInOctetRate  OBJECT-TYPE
+        SYNTAX      Gauge32
+        UNITS       "kbps"
+        MAX-ACCESS  read-only
+        STATUS      current
+        DESCRIPTION
+            "Received octet rate."
+        ::= { zxAnSrvPortCurr1DayPerfEntry 4 }
+    
+    zxAnSrvPortC1DOutOctetRate  OBJECT-TYPE
+        SYNTAX      Gauge32
+        UNITS       "kbps"
+        MAX-ACCESS  read-only
+        STATUS      current
+        DESCRIPTION
+            "Transmitted octet rate."
+        ::= { zxAnSrvPortCurr1DayPerfEntry 5 }
+
+    zxAnSrvPortC1DInPkts  OBJECT-TYPE
+        SYNTAX      Counter64
+        MAX-ACCESS  read-only
+        STATUS      current
+        DESCRIPTION
+            "Received packets."
+        ::= { zxAnSrvPortCurr1DayPerfEntry 6 }
+
+    zxAnSrvPortC1DOutPkts  OBJECT-TYPE
+        SYNTAX      Counter64
+        MAX-ACCESS  read-only
+        STATUS      current
+        DESCRIPTION
+            "Transmitted packets."
+        ::= { zxAnSrvPortCurr1DayPerfEntry 7 }
+        
+    zxAnSrvPortC1DReset  OBJECT-TYPE
+        SYNTAX      INTEGER {
+            perfReset(1)
+        }
+        MAX-ACCESS  read-write
+        STATUS      current
+        DESCRIPTION
+            "Clear all the current minutes performance variables.
+             When get this variable, always return 1."
+        ::= { zxAnSrvPortCurr1DayPerfEntry 100 }
+
+--------------------------------------------------------------------------------
+-- 1.5 Service Port Historical Minutes Performance
+--------------------------------------------------------------------------------
+    
+    zxAnSrvPortHisMinPerfTable  OBJECT-TYPE
+        SYNTAX      SEQUENCE OF ZxAnSrvPortHisMinPerfEntry
+        MAX-ACCESS  not-accessible
+        STATUS      current
+        DESCRIPTION
+            "The historical minutes interval performance data table of the
+             service port."
+        ::= { zxAnServicePortPerfObjects 12 }
+
+    zxAnSrvPortHisMinPerfEntry  OBJECT-TYPE
+        SYNTAX      ZxAnSrvPortHisMinPerfEntry
+        MAX-ACCESS  not-accessible
+        STATUS      current
+        DESCRIPTION
+            "The historical minutes interval performance data entry of the
+             service port."
+        INDEX   {        
+            ifIndex,
+            zxAnSubIfIndex,
+            zxAnSrvPortHMinIntervalNo
+        }
+        ::= { zxAnSrvPortHisMinPerfTable 1 }
+
+    ZxAnSrvPortHisMinPerfEntry ::= SEQUENCE {
+        zxAnSrvPortHMinIntervalNo             Integer32,
+        zxAnSrvPortHMinValidInterval          INTEGER,
+        zxAnSrvPortHMinDateTime               DateAndTime,
+        zxAnSrvPortHMinInOctets               Counter64,
+        zxAnSrvPortHMinOutOctets              Counter64,
+        zxAnSrvPortHMinInOctetRate            Gauge32,
+        zxAnSrvPortHMinOutOctetRate           Gauge32,
+        zxAnSrvPortHMinInPkts                 Counter64,
+        zxAnSrvPortHMinOutPkts                Counter64
+    }
+  
+    zxAnSrvPortHMinIntervalNo  OBJECT-TYPE
+        SYNTAX      Integer32
+        MAX-ACCESS  not-accessible
+        STATUS      current
+        DESCRIPTION
+            "Performance data interval number."
+        ::= { zxAnSrvPortHisMinPerfEntry 1 }
+
+    zxAnSrvPortHMinValidInterval  OBJECT-TYPE
+        SYNTAX      INTEGER {
+            valid(1),
+            invalid(2)
+        }
+        MAX-ACCESS  read-only
+        STATUS      current
+        DESCRIPTION
+            "The validity of the data for this interval."
+        ::= { zxAnSrvPortHisMinPerfEntry 2 }
+
+    zxAnSrvPortHMinDateTime    OBJECT-TYPE
+        SYNTAX      DateAndTime
+        MAX-ACCESS  read-only
+        STATUS      current
+        DESCRIPTION
+            "The 15 minutes interval performance data generation time."
+        ::= { zxAnSrvPortHisMinPerfEntry 3 }
+    
+    zxAnSrvPortHMinInOctets  OBJECT-TYPE
+        SYNTAX      Counter64
+        MAX-ACCESS  read-only
+        STATUS      current
+        DESCRIPTION
+            "Received octets."
+        ::= { zxAnSrvPortHisMinPerfEntry 4 }
+
+    zxAnSrvPortHMinOutOctets  OBJECT-TYPE
+        SYNTAX      Counter64
+        MAX-ACCESS  read-only
+        STATUS      current
+        DESCRIPTION
+            "Transmitted octets."
+        ::= { zxAnSrvPortHisMinPerfEntry 5 }
+    
+    zxAnSrvPortHMinInOctetRate  OBJECT-TYPE
+        SYNTAX      Gauge32
+        UNITS       "kbps"
+        MAX-ACCESS  read-only
+        STATUS      current
+        DESCRIPTION
+            "Received octet rate."
+        ::= { zxAnSrvPortHisMinPerfEntry 6 }
+    
+    zxAnSrvPortHMinOutOctetRate  OBJECT-TYPE
+        SYNTAX      Gauge32
+        UNITS       "kbps"
+        MAX-ACCESS  read-only
+        STATUS      current
+        DESCRIPTION
+            "Transmitted octet rate."
+        ::= { zxAnSrvPortHisMinPerfEntry 7 }
+
+    zxAnSrvPortHMinInPkts  OBJECT-TYPE
+        SYNTAX      Counter64
+        MAX-ACCESS  read-only
+        STATUS      current
+        DESCRIPTION
+            "Received packets."
+        ::= { zxAnSrvPortHisMinPerfEntry 8 }
+
+    zxAnSrvPortHMinOutPkts  OBJECT-TYPE
+        SYNTAX      Counter64
+        MAX-ACCESS  read-only
+        STATUS      current
+        DESCRIPTION
+            "Transmitted packets."
+        ::= { zxAnSrvPortHisMinPerfEntry 9 }
+        
+--------------------------------------------------------------------------------
+-- 1.6 Service Port Historical 1 Day Performance
+--------------------------------------------------------------------------------
+    
+    zxAnSrvPortHis1DayPerfTable  OBJECT-TYPE
+        SYNTAX      SEQUENCE OF ZxAnSrvPortHis1DayPerfEntry
+        MAX-ACCESS  not-accessible
+        STATUS      current
+        DESCRIPTION
+            "The historical 1 day interval performance data table of the 
+             service port."
+        ::= { zxAnServicePortPerfObjects 13 }
+
+    zxAnSrvPortHis1DayPerfEntry    OBJECT-TYPE
+        SYNTAX      ZxAnSrvPortHis1DayPerfEntry
+        MAX-ACCESS  not-accessible
+        STATUS      current
+        DESCRIPTION
+            "The historical 1 day interval performance data entry of the 
+             service port."
+        INDEX   {
+            ifIndex,
+            zxAnSubIfIndex,
+            zxAnSrvPortH1DIntervalNo
+        }
+        ::= { zxAnSrvPortHis1DayPerfTable 1 }
+
+    ZxAnSrvPortHis1DayPerfEntry ::= SEQUENCE {
+        zxAnSrvPortH1DIntervalNo                Integer32,
+        zxAnSrvPortH1DValidInterval             INTEGER,
+        zxAnSrvPortH1DDateTime                  DateAndTime,
+        zxAnSrvPortH1DInOctets                  Counter64,
+        zxAnSrvPortH1DOutOctets                 Counter64,
+        zxAnSrvPortH1DInOctetRate               Gauge32,
+        zxAnSrvPortH1DOutOctetRate              Gauge32,
+        zxAnSrvPortH1DInPkts                    Counter64,
+        zxAnSrvPortH1DOutPkts                   Counter64
+    }
+
+    zxAnSrvPortH1DIntervalNo  OBJECT-TYPE
+        SYNTAX      Integer32(1..7)
+        MAX-ACCESS  not-accessible
+        STATUS      current
+        DESCRIPTION
+            "Performance data interval number 1 is the the most recent previous
+             interval; interval 7 is 1 week ago.
+             Intervals 2..7 are optional."
+        ::= { zxAnSrvPortHis1DayPerfEntry 1 }
+
+    zxAnSrvPortH1DValidInterval  OBJECT-TYPE
+        SYNTAX      INTEGER {
+            valid(1),
+            invalid(2)
+        }
+        MAX-ACCESS  read-only
+        STATUS      current
+        DESCRIPTION
+            "The validity of the data for this interval."
+        ::= { zxAnSrvPortHis1DayPerfEntry 2 }
+
+    zxAnSrvPortH1DDateTime  OBJECT-TYPE
+        SYNTAX      DateAndTime
+        MAX-ACCESS  read-only
+        STATUS      current
+        DESCRIPTION
+            "The 1 day interval performance data generation time."
+        ::= { zxAnSrvPortHis1DayPerfEntry 3 }
+
+    zxAnSrvPortH1DInOctets  OBJECT-TYPE
+        SYNTAX      Counter64
+        MAX-ACCESS  read-only
+        STATUS      current
+        DESCRIPTION
+            "Received octets."
+        ::= { zxAnSrvPortHis1DayPerfEntry 4 }
+
+    zxAnSrvPortH1DOutOctets  OBJECT-TYPE
+        SYNTAX      Counter64
+        MAX-ACCESS  read-only
+        STATUS      current
+        DESCRIPTION
+            "Transmitted octets."
+        ::= { zxAnSrvPortHis1DayPerfEntry 5 }
+    
+    zxAnSrvPortH1DInOctetRate  OBJECT-TYPE
+        SYNTAX      Gauge32
+        UNITS       "kbps"
+        MAX-ACCESS  read-only
+        STATUS      current
+        DESCRIPTION
+            "Received octet rate."
+        ::= { zxAnSrvPortHis1DayPerfEntry 6 }
+    
+    zxAnSrvPortH1DOutOctetRate  OBJECT-TYPE
+        SYNTAX      Gauge32
+        UNITS       "kbps"
+        MAX-ACCESS  read-only
+        STATUS      current
+        DESCRIPTION
+            "Transmitted octet rate."
+        ::= { zxAnSrvPortHis1DayPerfEntry 7 }
+
+    zxAnSrvPortH1DInPkts  OBJECT-TYPE
+        SYNTAX      Counter64
+        MAX-ACCESS  read-only
+        STATUS      current
+        DESCRIPTION
+            "Received packets."
+        ::= { zxAnSrvPortHis1DayPerfEntry 8 }
+
+    zxAnSrvPortH1DOutPkts  OBJECT-TYPE
+        SYNTAX      Counter64
+        MAX-ACCESS  read-only
+        STATUS      current
+        DESCRIPTION
+            "Transmitted packets."
+        ::= { zxAnSrvPortHis1DayPerfEntry 9 }
+
+--------------------------------------------------------------------------------
+-- 1.7 Service Port Performance Configuration
+--------------------------------------------------------------------------------
+    
+    zxAnSrvPortPerfConfTable  OBJECT-TYPE
+        SYNTAX      SEQUENCE OF ZxAnSrvPortPerfConfEntry
+        MAX-ACCESS  not-accessible
+        STATUS      current
+        DESCRIPTION
+            "Enable/disable the service port performance."
+        ::= { zxAnServicePortPerfObjects 50 }
+        
+    zxAnSrvPortPerfConfEntry OBJECT-TYPE
+        SYNTAX      ZxAnSrvPortPerfConfEntry
+        MAX-ACCESS  not-accessible
+        STATUS      current
+        DESCRIPTION
+            "A zxAnSrvPortPerfConfTable entry."
+        INDEX   { ifIndex, zxAnSubIfIndex }
+        ::= { zxAnSrvPortPerfConfTable 1 }   
+        
+    ZxAnSrvPortPerfConfEntry  ::= SEQUENCE {
+        zxAnSrvPortPerfConfRowStatus      RowStatus
+    }
+        
+    zxAnSrvPortPerfConfRowStatus   OBJECT-TYPE
+        SYNTAX         RowStatus
+        MAX-ACCESS     read-create
+        STATUS         current
+        DESCRIPTION
+            "The status of this conceptual row.
+            
+            The supported actions of this conceptual row only include:
+            'createAndGo' and 'destroy'.
+
+            To create a row in this table, a manager must set this object to 
+            createAndGo(4), and must comply with the multi-variables binding 
+            rule described in zxAnSrvPortPerfConfEntry.
+    
+            To delete a row in this table, a manager must set this object to 
+            destroy(6). 
+             
+            To get this object, the agent always returns active(1)."
+        ::= { zxAnSrvPortPerfConfEntry 100 }
+END

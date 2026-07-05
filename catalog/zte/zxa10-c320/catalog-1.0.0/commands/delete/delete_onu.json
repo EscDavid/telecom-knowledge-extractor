@@ -1,0 +1,46 @@
+{
+  "id": "command.zte.gpon.onu.delete",
+  "canonical_name": "delete onu",
+  "vendor": "ZTE",
+  "family": "ZXA10 C320",
+  "firmware": [
+    "2.0",
+    "2.1"
+  ],
+  "technology": "gpon",
+  "category": "delete",
+  "cli_mode": "interface_config",
+  "entity_ref": "entity.zte.gpon.device.onu",
+  "description": "Modifica el perfil de linea/servicio de una ONU.",
+  "syntax": "delete onu {onu-id}",
+  "parameters": [
+    {
+      "name": "onu-id",
+      "type": "string",
+      "pattern": null,
+      "range": null,
+      "required": true,
+      "description": null,
+      "example": null
+    }
+  ],
+  "output_fields": [],
+  "prerequisites": [
+    "interface gpon-olt {gpon-olt-index}"
+  ],
+  "related_commands": [],
+  "sources": [
+    {
+      "doc_type": "command_reference",
+      "pages": null,
+      "confidence": 0.4
+    }
+  ],
+  "confidence": {
+    "extraction": 0.95,
+    "correlation": 0.0,
+    "overall": 0.95
+  },
+  "status": "verified",
+  "conflicts": []
+}

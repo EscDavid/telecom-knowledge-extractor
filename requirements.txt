@@ -1,0 +1,8 @@
+# Fase 1 — generación de catálogos JSON (sin BD)
+pdfplumber==0.10.3        # extracción de texto de PDFs (opcional: solo si hay PDFs)
+pyyaml==6.0.1             # lectura de config/pipeline.yaml
+python-dotenv==1.0.0      # variables de entorno (fase futura)
+
+# Fase DB — Loader a MySQL (isp_catalog)
+PyMySQL==1.1.0            # conexión MySQL (driver Python puro)
+bcrypt==4.1.2            # factor 1: validación de password contra db_auth.users ($2b$)

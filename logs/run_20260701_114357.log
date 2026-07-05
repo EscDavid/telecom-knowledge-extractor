@@ -1,0 +1,83 @@
+2026-07-01 11:43:57,829 INFO tkc.main: === TKC pipeline iniciado (ZTE ZXA10 C320) ===
+2026-07-01 11:43:57,835 INFO tkc.classifier: Classifier: 19 archivo(s) encontrado(s) en docs
+2026-07-01 11:43:57,835 WARNING tkc.util: Tipo de archivo no soportado para lectura de texto: .gitkeep
+2026-07-01 11:43:57,838 INFO tkc.classifier:   .gitkeep → vendor=None family=None doc_type=None conf=0.00 status=unclassified
+2026-07-01 11:43:57,839 INFO tkc.classifier:   ZTE-AN-CHASSIS-MIB.mib → vendor=ZTE family=ZXA10 C320 doc_type=mib_file conf=1.00 status=classified
+2026-07-01 11:43:57,842 INFO tkc.classifier:   ZTE-AN-ENVMON-MIB.mib → vendor=ZTE family=ZXA10 C320 doc_type=mib_file conf=1.00 status=classified
+2026-07-01 11:43:57,845 INFO tkc.classifier:   ZTE-AN-GPON-ONUPRF-MIB.mib → vendor=ZTE family=ZXA10 C320 doc_type=mib_file conf=1.00 status=classified
+2026-07-01 11:43:57,846 INFO tkc.classifier:   ZTE-AN-INTERFACE-BASE-MIB.mib → vendor=ZTE family=ZXA10 C320 doc_type=mib_file conf=1.00 status=classified
+2026-07-01 11:43:57,847 INFO tkc.classifier:   ZTE-AN-OPTICAL-MODULE-MIB.mib → vendor=ZTE family=ZXA10 C320 doc_type=mib_file conf=1.00 status=classified
+2026-07-01 11:43:57,848 INFO tkc.classifier:   ZTE-AN-OPTICAL-MODULE-PERF-MIB.mib → vendor=ZTE family=ZXA10 C320 doc_type=mib_file conf=1.00 status=classified
+2026-07-01 11:43:57,850 INFO tkc.classifier:   ZTE-AN-PON-BASE-MIB.mib → vendor=ZTE family=ZXA10 C320 doc_type=mib_file conf=1.00 status=classified
+2026-07-01 11:43:57,858 INFO tkc.classifier:   ZTE-AN-PON-PERF-MIB.mib → vendor=ZTE family=ZXA10 C320 doc_type=mib_file conf=1.00 status=classified
+2026-07-01 11:43:57,859 INFO tkc.classifier:   ZTE-AN-SERVICE-PORT-MIB.mib → vendor=ZTE family=ZXA10 C320 doc_type=mib_file conf=1.00 status=classified
+2026-07-01 11:43:57,860 INFO tkc.classifier:   ZTE-AN-SERVICE-PORT-PERF-MIB.mib → vendor=ZTE family=ZXA10 C320 doc_type=mib_file conf=1.00 status=classified
+2026-07-01 11:43:57,860 INFO tkc.classifier:   ZTE-AN-SMI.mib → vendor=ZTE family=ZXA10 C320 doc_type=mib_file conf=1.00 status=classified
+2026-07-01 11:43:57,862 INFO tkc.classifier:   ZTE-AN-SOFTWARE-MIB.mib → vendor=ZTE family=ZXA10 C320 doc_type=mib_file conf=1.00 status=classified
+2026-07-01 11:43:57,863 INFO tkc.classifier:   ZTE-AN-TC-MIB.mib → vendor=ZTE family=ZXA10 C320 doc_type=mib_file conf=1.00 status=classified
+2026-07-01 11:43:57,864 INFO tkc.classifier:   ZTE-AN-VLAN-MIB.mib → vendor=ZTE family=ZXA10 C320 doc_type=mib_file conf=1.00 status=classified
+2026-07-01 11:43:57,866 INFO tkc.classifier:   ZXR10-ALARM-MIB.mib → vendor=ZTE family=ZXA10 C320 doc_type=mib_file conf=1.00 status=classified
+2026-07-01 11:43:57,867 INFO tkc.classifier:   ZXR10-OPTICAL-ALARM-MIB.mib → vendor=ZTE family=ZXA10 C320 doc_type=mib_file conf=1.00 status=classified
+2026-07-01 11:44:00,378 INFO tkc.classifier:   command_reference.pdf → vendor=ZTE family=ZXA10 C320 doc_type=command_reference conf=1.00 status=classified
+2026-07-01 11:44:10,553 INFO tkc.classifier:   hardware_description.pdf → vendor=ZTE family=ZXA10 C320 doc_type=hardware_description conf=1.00 status=classified
+2026-07-01 11:44:11,875 INFO tkc.extractor: Extractor: 2274 símbolos OID en la tabla global (resolución cruzada)
+2026-07-01 11:44:11,876 WARNING tkc.extractor: Saltando documento unclassified: .gitkeep
+2026-07-01 11:44:11,959 INFO tkc.extractor.mib: MibExtractor: 86 OBJECT-TYPE extraídos
+2026-07-01 11:44:12,034 INFO tkc.extractor.mib: MibExtractor: 18 NOTIFICATION-TYPE → alarma(s)
+2026-07-01 11:44:12,192 INFO tkc.extractor.mib: MibExtractor: 157 OBJECT-TYPE extraídos
+2026-07-01 11:44:12,345 INFO tkc.extractor.mib: MibExtractor: 45 NOTIFICATION-TYPE → alarma(s)
+2026-07-01 11:44:12,537 INFO tkc.extractor.mib: MibExtractor: 202 OBJECT-TYPE extraídos
+2026-07-01 11:44:12,712 INFO tkc.extractor.mib: MibExtractor: 0 NOTIFICATION-TYPE → alarma(s)
+2026-07-01 11:44:12,752 INFO tkc.extractor.mib: MibExtractor: 46 OBJECT-TYPE extraídos
+2026-07-01 11:44:12,789 INFO tkc.extractor.mib: MibExtractor: 8 NOTIFICATION-TYPE → alarma(s)
+2026-07-01 11:44:12,874 INFO tkc.extractor.mib: MibExtractor: 75 OBJECT-TYPE extraídos
+2026-07-01 11:44:12,958 INFO tkc.extractor.mib: MibExtractor: 34 NOTIFICATION-TYPE → alarma(s)
+2026-07-01 11:44:13,030 INFO tkc.extractor.mib: MibExtractor: 90 OBJECT-TYPE extraídos
+2026-07-01 11:44:13,100 INFO tkc.extractor.mib: MibExtractor: 0 NOTIFICATION-TYPE → alarma(s)
+2026-07-01 11:44:13,168 INFO tkc.extractor.mib: MibExtractor: 72 OBJECT-TYPE extraídos
+2026-07-01 11:44:13,232 INFO tkc.extractor.mib: MibExtractor: 4 NOTIFICATION-TYPE → alarma(s)
+2026-07-01 11:44:13,844 INFO tkc.extractor.mib: MibExtractor: 720 OBJECT-TYPE extraídos
+2026-07-01 11:44:14,418 INFO tkc.extractor.mib: MibExtractor: 0 NOTIFICATION-TYPE → alarma(s)
+2026-07-01 11:44:14,464 INFO tkc.extractor.mib: MibExtractor: 31 OBJECT-TYPE extraídos
+2026-07-01 11:44:14,509 INFO tkc.extractor.mib: MibExtractor: 0 NOTIFICATION-TYPE → alarma(s)
+2026-07-01 11:44:14,549 INFO tkc.extractor.mib: MibExtractor: 56 OBJECT-TYPE extraídos
+2026-07-01 11:44:14,585 INFO tkc.extractor.mib: MibExtractor: 0 NOTIFICATION-TYPE → alarma(s)
+2026-07-01 11:44:14,603 INFO tkc.extractor.mib: MibExtractor: 0 OBJECT-TYPE extraídos
+2026-07-01 11:44:14,623 INFO tkc.extractor.mib: MibExtractor: 0 NOTIFICATION-TYPE → alarma(s)
+2026-07-01 11:44:14,758 INFO tkc.extractor.mib: MibExtractor: 148 OBJECT-TYPE extraídos
+2026-07-01 11:44:14,876 INFO tkc.extractor.mib: MibExtractor: 3 NOTIFICATION-TYPE → alarma(s)
+2026-07-01 11:44:14,888 INFO tkc.extractor.mib: MibExtractor: 0 OBJECT-TYPE extraídos
+2026-07-01 11:44:14,899 INFO tkc.extractor.mib: MibExtractor: 0 NOTIFICATION-TYPE → alarma(s)
+2026-07-01 11:44:14,977 INFO tkc.extractor.mib: MibExtractor: 87 OBJECT-TYPE extraídos
+2026-07-01 11:44:15,053 INFO tkc.extractor.mib: MibExtractor: 0 NOTIFICATION-TYPE → alarma(s)
+2026-07-01 11:44:15,181 INFO tkc.extractor.mib: MibExtractor: 201 OBJECT-TYPE extraídos
+2026-07-01 11:44:15,295 INFO tkc.extractor.mib: MibExtractor: 4 NOTIFICATION-TYPE → alarma(s)
+2026-07-01 11:44:15,310 INFO tkc.extractor.mib: MibExtractor: 21 OBJECT-TYPE extraídos
+2026-07-01 11:44:15,324 INFO tkc.extractor.mib: MibExtractor: 1 NOTIFICATION-TYPE → alarma(s)
+2026-07-01 11:44:15,327 INFO tkc.extractor.cmd: CommandExtractor: 4 comando(s)
+2026-07-01 11:44:15,631 INFO tkc.extractor.entity: EntityExtractor(hardware_description): 5 entidad(es)
+2026-07-01 11:44:15,631 INFO tkc.extractor: Extractor: 5 entidades, 4 comandos, 1992 OIDs, 117 alarmas (brutos)
+2026-07-01 11:44:15,632 INFO tkc.normalizer:   entidad sintetizada por referencia: entity.zte.gpon.logical.gem_port
+2026-07-01 11:44:15,632 INFO tkc.normalizer:   entidad sintetizada por referencia: entity.zte.gpon.device.olt
+2026-07-01 11:44:15,633 INFO tkc.normalizer:   entidad sintetizada por referencia: entity.zte.gpon.hardware.optical_module
+2026-07-01 11:44:15,633 INFO tkc.normalizer:   entidad sintetizada por referencia: entity.zte.gpon.logical.service_port
+2026-07-01 11:44:15,633 INFO tkc.normalizer:   entidad sintetizada por referencia: entity.zte.gpon.port.uplink_port
+2026-07-01 11:44:15,633 INFO tkc.normalizer:   entidad sintetizada por referencia: entity.zte.gpon.hardware.fan
+2026-07-01 11:44:15,633 INFO tkc.normalizer:   entidad sintetizada por referencia: entity.zte.gpon.hardware.power_supply
+2026-07-01 11:44:15,633 INFO tkc.normalizer:   entidad sintetizada por referencia: entity.zte.gpon.hardware.sensor
+2026-07-01 11:44:15,662 INFO tkc.normalizer: Normalizer: 13 entidades, 13 aliases, 0 ambiguos
+2026-07-01 11:44:27,228 INFO tkc.correlator: Correlator: 7 relaciones derivadas
+2026-07-01 11:44:27,245 INFO tkc.validator: Validator: 9 conflictos/huérfanos registrados
+2026-07-01 11:44:27,805 INFO tkc.writer: Catálogo escrito en catalog/zte/zxa10-c320/catalog-1.0.0
+2026-07-01 11:44:27,806 INFO tkc.main: Catálogo generado en catalog/zte/zxa10-c320/catalog-1.0.0
+2026-07-01 11:44:27,806 INFO tkc.main:   entities  : 13
+2026-07-01 11:44:27,806 INFO tkc.main:   commands  : 4
+2026-07-01 11:44:27,806 INFO tkc.main:   oids      : 1992
+2026-07-01 11:44:27,806 INFO tkc.main:   relations : 7
+2026-07-01 11:44:27,806 INFO tkc.main:   alarms    : 117
+2026-07-01 11:44:27,806 INFO tkc.main:   conflicts : 0
+2026-07-01 11:44:27,806 INFO tkc.main:   orphans   : 9
+2026-07-01 11:44:27,806 INFO tkc.main: === Fase 2: validando con walk ZTE_C300.txt ===
+2026-07-01 11:44:27,826 INFO tkc.walk_validator: WalkValidator: 1196 OIDs parseados de ZTE_C300.txt
+2026-07-01 11:44:28,143 INFO tkc.walk_validator: WalkValidator: catálogo C300 enriquecido en catalog/zte/zxa10-c300/catalog-1.0.0
+2026-07-01 11:44:28,147 INFO tkc.main: Catálogo enriquecido generado en catalog/zte/zxa10-c300/catalog-1.0.0

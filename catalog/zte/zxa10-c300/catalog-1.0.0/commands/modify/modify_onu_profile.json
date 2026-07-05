@@ -1,0 +1,55 @@
+{
+  "id": "command.zte.gpon.onu.modify",
+  "canonical_name": "modify onu profile",
+  "vendor": "ZTE",
+  "family": "ZXA10 C300",
+  "firmware": [
+    "2.0",
+    "2.1"
+  ],
+  "technology": "gpon",
+  "category": "modify",
+  "cli_mode": "interface_config",
+  "entity_ref": "entity.zte.gpon.device.onu",
+  "description": "Reinicia una ONU de forma remota.",
+  "syntax": "modify onu {onu-id} profile {line-profile}",
+  "parameters": [
+    {
+      "name": "onu-id",
+      "type": "string",
+      "pattern": null,
+      "range": null,
+      "required": true,
+      "description": null,
+      "example": null
+    },
+    {
+      "name": "line-profile",
+      "type": "string",
+      "pattern": null,
+      "range": null,
+      "required": true,
+      "description": null,
+      "example": null
+    }
+  ],
+  "output_fields": [],
+  "prerequisites": [
+    "interface gpon-olt {gpon-olt-index}"
+  ],
+  "related_commands": [],
+  "sources": [
+    {
+      "doc_type": "command_reference",
+      "pages": null,
+      "confidence": 0.4
+    }
+  ],
+  "confidence": {
+    "extraction": 0.95,
+    "correlation": 0.0,
+    "overall": 0.95
+  },
+  "status": "verified",
+  "conflicts": []
+}

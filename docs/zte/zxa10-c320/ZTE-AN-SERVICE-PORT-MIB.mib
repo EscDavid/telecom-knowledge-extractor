@@ -1,0 +1,863 @@
+ZTE-AN-SERVICE-PORT-MIB DEFINITIONS ::= BEGIN
+
+    IMPORTS
+        MODULE-IDENTITY             FROM SNMPv2-SMI
+        OBJECT-TYPE                 FROM SNMPv2-SMI
+        Integer32                   FROM SNMPv2-SMI
+        MODULE-COMPLIANCE           FROM SNMPv2-CONF
+        OBJECT-GROUP                FROM SNMPv2-CONF
+        RowStatus                   FROM SNMPv2-TC
+        DisplayString               FROM SNMPv2-TC
+        TruthValue                  FROM SNMPv2-TC
+        ifIndex                     FROM IF-MIB
+        zxAnSubIfIndex              FROM ZTE-AN-IF-MIB
+        ZxAnSubIfIndex              FROM ZTE-AN-TC-MIB
+        zxAnServiceProvision        FROM ZTE-AN-SMI;
+
+    zxAnServicePort MODULE-IDENTITY
+        LAST-UPDATED    "201107260000Z"
+        ORGANIZATION    "ZTE Corporation"
+        CONTACT-INFO    "Wang Yuke     ZTE Corporation
+                        Mail: wang.yuke@zte.com.cn
+                        Tel : +86-21-68897487"
+        DESCRIPTION
+            "This MIB defines managed objects of zte service port."
+        REVISION        "201107260000Z"
+        DESCRIPTION
+            "Add multi-variables usage rules for variables of service port
+             configuration."
+        REVISION        "201105260000Z"
+        DESCRIPTION
+            "Initial version of this MIB module."
+         ::= {zxAnServiceProvision 5}
+
+    zxAnServicePortGlobalObjects   OBJECT IDENTIFIER ::= { zxAnServicePort 1 }
+    zxAnServicePortObjects         OBJECT IDENTIFIER ::= { zxAnServicePort 2 }
+
+
+--------------------------------------------------------------------------------
+-- Following objects are defined.
+-- 1. Service Port Global Objects
+-- 2. Service Port Table
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+-- 1. Service Port Global Objects
+--------------------------------------------------------------------------------
+
+    zxAnServicePortCapabilities OBJECT-TYPE
+        SYNTAX      BITS {
+            supportDoubleTlsVlanTag(0),
+            supportTlsCVidInTlsMode(1),
+            notSupportQueueId(2),
+            supportCosList(3),
+            supportExpand(4),
+            supportTlsCos(5)
+        }
+        MAX-ACCESS  read-only
+        STATUS      current
+        DESCRIPTION
+            "The service port capabilities.
+             The bit value 1 means the function represented by this bit is
+             supported by this equipment.
+             bit 0: value 1 means supporting doubleTlsVlan(13) and 
+                    zxAnSrvPortTlsCVid in zxAnSrvPortConfTable.
+             bit 1: value 1 means supporting zxAnSrvPortTlsCVid, otherwise 
+                    supporting zxAnSrvPortTlsSVid, zxAnSrvPortStagCos in tls(5) 
+                    mode.
+                    Note: The parameter zxAnSrvPortTlsCVid is supported by the 
+                    device when value of supportDoubleTlsVlanTag(0) is 1.
+             bit 2: value 1 means not supporting zxAnSrvPortQueueId in 
+                    zxAnSrvPortConfTable.
+             bit 3: value 1 means supporting zxAnSrvPortCosList and
+                    zxAnSrvPortCarThresh in zxAnSrvPortConfTable.
+             bit 4: value 1 means supporting zxAnSrvPortUserVidExpandMode,
+                    zxAnSrvPortCvidExpandMode, zxAnSrvPortSvidExpandMode and
+                    zxAnSrvPortExpandNumber in zxAnSrvPortConfTable.
+             bit 5: value 1 means supporting zxAnSrvPortCtagCos in tls(5) mode
+                    and supporting zxAnSrvPortCtagCos, zxAnSrvPortStagCos in
+                    doubleTlsVlan(13) mode.
+             NOTE: No recommended to display it in NMS."
+        ::=  { zxAnServicePortGlobalObjects  100 }
+
+--------------------------------------------------------------------------------
+-- 2. Service Port Table
+--------------------------------------------------------------------------------
+
+    zxAnSrvPortConfTable OBJECT-TYPE
+        SYNTAX      SEQUENCE OF ZxAnSrvPortConfEntry
+        MAX-ACCESS  not-accessible
+        STATUS      current
+        DESCRIPTION
+            "This table includes interface service port configuration.
+            It uses  in user's traffic scene, a service port indicates
+            an user's service,for example VOIP/CATV/POTS/DATA service.
+            We can create a service port as the same time finished some
+            functions which are QinQ and translate etc."
+        ::= { zxAnServicePortObjects 2 }
+
+    zxAnSrvPortConfEntry OBJECT-TYPE
+        SYNTAX      ZxAnSrvPortConfEntry
+        MAX-ACCESS  not-accessible
+        STATUS      current
+        DESCRIPTION
+            "An entry in zxAnSrvPortConfTable.
+            When a manager wants to create a service port,it must comply
+            with the multi-variables usage rule that all the mib variables
+            related to same function must be in one snmp set operation, the
+            variables have two type: mandatory and optional.
+
+            Mandatory variables must be in the one snmp set operation.
+            Optional variables may be in the one snmp set operation with the
+            mandatory variables, but must not be used alone.
+
+            To create a service port,  there are several cases base on the
+            variable zxAnSrvPortServiceMode, and the mandatory and optional
+            variables for each case are different.
+
+            Case 1: to create a service port when zxAnSrvPortServiceMode is
+            untag(1):
+            - mandatoty:
+            zxAnSrvPortServiceMode,
+            zxAnSrvPortBrgIfId,
+            zxAnSrvPortCVid,
+            zxAnSrvPortRowStatus
+            - optional :
+            zxAnSrvPortDesc,
+            zxAnSrvPortAdminStatus,
+            zxAnSrvPortSVid,
+            zxAnSrvPortCtagCos,
+            zxAnSrvPortStagCos,
+            zxAnSrvPortIngressTrafficPrf,
+            zxAnSrvPortEgressTrafficPrf,
+
+            Case 2: To create a service port when zxAnSrvPortServiceMode is
+            untagAndEtype(2):
+            - mandatoty:
+            zxAnSrvPortServiceMode,
+            zxAnSrvPortBrgIfId,
+            zxAnSrvPortUserEthType,
+            zxAnSrvPortUserDefinedEthType,
+            zxAnSrvPortCVid,
+            zxAnSrvPortRowStatus
+            - optional :
+            zxAnSrvPortDesc,
+            zxAnSrvPortAdminStatus,
+            zxAnSrvPortSVid,
+            zxAnSrvPortCtagCos,
+            zxAnSrvPortStagCos,
+            zxAnSrvPortIngressTrafficPrf,
+            zxAnSrvPortEgressTrafficPrf,
+
+            Case 3: To create a service port when zxAnSrvPortServiceMode is
+            cos(3):
+            - mandatoty:
+            zxAnSrvPortServiceMode,
+            zxAnSrvPortBrgIfId,
+            zxAnSrvPortUserCos,
+            zxAnSrvPortCVid,
+            zxAnSrvPortRowStatus
+            - optional :
+            zxAnSrvPortDesc,
+            zxAnSrvPortAdminStatus,
+            zxAnSrvPortSVid,
+            zxAnSrvPortCtagCos,
+            zxAnSrvPortStagCos,
+            zxAnSrvPortIngressTrafficPrf,
+            zxAnSrvPortEgressTrafficPrf,
+
+            Case 4: To create a service port when zxAnSrvPortServiceMode is
+            tag(4):
+            normal config:
+            - mandatoty:
+            zxAnSrvPortServiceMode,
+            zxAnSrvPortBrgIfId,
+            zxAnSrvPortUserVid,
+            zxAnSrvPortCVid,
+            zxAnSrvPortRowStatus
+            - optional :
+            zxAnSrvPortDesc,
+            zxAnSrvPortAdminStatus,
+            zxAnSrvPortSVid,
+            zxAnSrvPortCtagCos,
+            zxAnSrvPortStagCos,
+            zxAnSrvPortIngressTrafficPrf,
+            zxAnSrvPortEgressTrafficPrf,
+
+            Case 5: To create a service port when zxAnSrvPortServiceMode is
+            tls(5):
+            
+            When value of supportTlsCVidInTlsMode(1) is 1:
+            - mandatoty:
+            zxAnSrvPortServiceMode,
+            zxAnSrvPortBrgIfId,
+            zxAnSrvPortTlsCVid,
+            zxAnSrvPortRowStatus
+            - optional :
+            zxAnSrvPortDesc,
+            zxAnSrvPortAdminStatus
+            
+            When value of supportTlsCVidInTlsMode(1) is 0:
+            - mandatoty:
+            zxAnSrvPortServiceMode,
+            zxAnSrvPortBrgIfId,
+            zxAnSrvPortTlsSVid,
+            zxAnSrvPortRowStatus
+            - optional :
+            zxAnSrvPortDesc,
+            zxAnSrvPortAdminStatus,
+            zxAnSrvPortStagCos
+
+            When value of supportTlsCos(5) is 1:
+            - mandatoty:
+            zxAnSrvPortServiceMode,
+            zxAnSrvPortBrgIfId,
+            zxAnSrvPortTlsCVid,
+            zxAnSrvPortRowStatus
+            - optional:
+            zxAnSrvPortDesc,
+            zxAnSrvPortAdminStatus,
+            zxAnSrvPortCtagCos
+
+            Case 6: To create a service port when zxAnSrvPortServiceMode is
+            tagAndEtype(6):
+            - mandatoty:
+            zxAnSrvPortServiceMode,
+            zxAnSrvPortBrgIfId,
+            zxAnSrvPortUserVid,
+            zxAnSrvPortUserEthType,
+            zxAnSrvPortUserDefinedEthType,
+            zxAnSrvPortCVid,
+            zxAnSrvPortRowStatus
+            - optional :
+            zxAnSrvPortDesc,
+            zxAnSrvPortAdminStatus,
+            zxAnSrvPortSVid,
+            zxAnSrvPortCtagCos,
+            zxAnSrvPortStagCos,
+            zxAnSrvPortIngressTrafficPrf,
+            zxAnSrvPortEgressTrafficPrf,
+
+            Case 7: To create a service port when zxAnSrvPortServiceMode is
+            tagAndCos(7):
+            - mandatoty:
+            zxAnSrvPortServiceMode,
+            zxAnSrvPortBrgIfId,
+            zxAnSrvPortUserVid,
+            zxAnSrvPortUserCos,
+            zxAnSrvPortCVid,
+            zxAnSrvPortRowStatus
+            - optional :
+            zxAnSrvPortDesc,
+            zxAnSrvPortAdminStatus,
+            zxAnSrvPortSVid,
+            zxAnSrvPortCtagCos,
+            zxAnSrvPortStagCos,
+            zxAnSrvPortIngressTrafficPrf,
+            zxAnSrvPortEgressTrafficPrf,
+
+            Case 8: To create a service port when zxAnSrvPortServiceMode is
+            vlanRange(8):
+            - mandatoty:
+            zxAnSrvPortServiceMode,
+            zxAnSrvPortBrgIfId,
+            zxAnSrvPortStartUserVid,
+            zxAnSrvPortEndUserVid,
+            zxAnSrvPortSVid,
+            zxAnSrvPortRowStatus
+            - optional :
+            zxAnSrvPortDesc,
+            zxAnSrvPortAdminStatus,
+            zxAnSrvPortStagCos,
+            zxAnSrvPortIngressTrafficPrf,
+            zxAnSrvPortEgressTrafficPrf,
+
+            Case 9: To create a service port when zxAnSrvPortServiceMode is
+            vlanRangeAndEtype(9):
+            - mandatoty:
+            zxAnSrvPortServiceMode,
+            zxAnSrvPortBrgIfId,
+            zxAnSrvPortStartUserVid,
+            zxAnSrvPortEndUserVid,
+            zxAnSrvPortUserEthType,
+            zxAnSrvPortUserDefinedEthType,
+            zxAnSrvPortSVid,
+            zxAnSrvPortRowStatus
+            - optional :
+            zxAnSrvPortDesc,
+            zxAnSrvPortAdminStatus,
+            zxAnSrvPortStagCos,
+            zxAnSrvPortIngressTrafficPrf,
+            zxAnSrvPortEgressTrafficPrf,
+
+            Case 10: To create a service port when zxAnSrvPortServiceMode is
+            vlanRangeAndCos(10):
+            - mandatoty:
+            zxAnSrvPortServiceMode,
+            zxAnSrvPortBrgIfId,
+            zxAnSrvPortStartUserVid,
+            zxAnSrvPortEndUserVid,
+            zxAnSrvPortUserCos,
+            zxAnSrvPortSVid,
+            zxAnSrvPortRowStatus
+            - optional :
+            zxAnSrvPortDesc,
+            zxAnSrvPortAdminStatus,
+            zxAnSrvPortStagCos,
+            zxAnSrvPortIngressTrafficPrf,
+            zxAnSrvPortEgressTrafficPrf,
+
+            Case 11: To create a service port when zxAnSrvPortServiceMode is
+            batchBindVlan(11):
+            - mandatoty:
+            zxAnSrvPortServiceMode,
+            zxAnSrvPortBrgIfId,
+            zxAnSrvPortStartUserVid,
+            zxAnSrvPortEndUserVid,
+            zxAnSrvPortRowStatus
+            - optional :
+            zxAnSrvPortDesc,
+            zxAnSrvPortAdminStatus,
+            zxAnSrvPortIngressTrafficPrf,
+            zxAnSrvPortEgressTrafficPrf,
+
+            Case 12: To create a service port when zxAnSrvPortServiceMode is
+            doubleVlan(12):
+            - mandatoty:
+            zxAnSrvPortServiceMode,
+            zxAnSrvPortBrgIfId,
+            zxAnSrvPortUserVid,
+            zxAnSrvPortUserSVid,
+            zxAnSrvPortCVid,
+            zxAnSrvPortRowStatus
+            - optional :
+            zxAnSrvPortSVid,
+            zxAnSrvPortDesc,
+            zxAnSrvPortAdminStatus,
+            zxAnSrvPortStagCos,
+            zxAnSrvPortIngressTrafficPrf,
+            zxAnSrvPortEgressTrafficPrf,
+
+            Case 13: To create a service port when zxAnSrvPortServiceMode is
+            doubleTlsVlan(13):
+            When value of supportTlsCos(1) is 0:
+            - mandatoty:
+            zxAnSrvPortServiceMode,
+            zxAnSrvPortBrgIfId,
+            zxAnSrvPortTlsSVid,
+            zxAnSrvPortTlsCVid,
+            zxAnSrvPortRowStatus
+            - optional:
+            zxAnSrvPortDesc,
+            zxAnSrvPortAdminStatus,
+
+            When value of supportTlsCos(1) is 1:
+            - mandatoty:
+            zxAnSrvPortServiceMode,
+            zxAnSrvPortBrgIfId,
+            zxAnSrvPortTlsSVid,
+            zxAnSrvPortTlsCVid,
+            zxAnSrvPortRowStatus
+            - optional:
+            zxAnSrvPortDesc,
+            zxAnSrvPortAdminStatus,
+            zxAnSrvPortCtagCos,
+            zxAnSrvPortStagCos,
+
+            After an entry is created , only variable zxAnSrvPortDesc and
+            zxAnSrvPortAdminStatus can be modified. If a manager tries to
+            modify any other variables in this entry,
+            agent will return error with snmp error code inconsistentValue.
+            "
+        INDEX       {ifIndex,zxAnSubIfIndex}
+        ::= { zxAnSrvPortConfTable 1 }
+
+    ZxAnSrvPortConfEntry ::= SEQUENCE {
+        zxAnSrvPortDesc                          DisplayString,
+        zxAnSrvPortAdminStatus                   INTEGER,
+        zxAnSrvPortServiceMode                   INTEGER,
+        zxAnSrvPortBrgIfId                       Integer32,
+        zxAnSrvPortUserVid                       Integer32,
+        zxAnSrvPortUserSVid                      Integer32,
+        zxAnSrvPortUserCos                       Integer32,
+        zxAnSrvPortUserStagCos                   Integer32,
+        zxAnSrvPortStartUserVid                  Integer32,
+        zxAnSrvPortEndUserVid                    Integer32,
+        zxAnSrvPortUserEthType                   INTEGER,
+        zxAnSrvPortUserDefinedEthType            DisplayString,
+        zxAnSrvPortCVid                          Integer32,
+        zxAnSrvPortSVid                          Integer32,
+        zxAnSrvPortCtagCos                       Integer32,
+        zxAnSrvPortStagCos                       Integer32,
+        zxAnSrvPortTlsSVid                       Integer32,
+        zxAnSrvPortIngressTrafficPrf             DisplayString,
+        zxAnSrvPortEgressTrafficPrf              DisplayString,
+        zxAnSrvPortQueueId                       Integer32,
+        zxAnSrvPortTlsCVid                       Integer32,
+        zxAnSrvPortCosList                       OCTET STRING,
+        zxAnSrvPortCarThresh                     INTEGER,
+        zxAnSrvPortUserVidExpandMode             INTEGER,
+        zxAnSrvPortCvidExpandMode                INTEGER,
+        zxAnSrvPortSvidExpandMode                INTEGER,
+        zxAnSrvPortExpandNumber                  INTEGER,
+        zxAnSrvPortRowStatus                     RowStatus
+    }
+
+    zxAnSrvPortDesc OBJECT-TYPE
+        SYNTAX      DisplayString (SIZE (0..64))
+        MAX-ACCESS  read-create
+        STATUS      current
+        DESCRIPTION
+            "A service port description string."
+        DEFVAL      {""}
+        ::= {  zxAnSrvPortConfEntry 1 }
+
+    zxAnSrvPortAdminStatus  OBJECT-TYPE
+        SYNTAX      INTEGER
+        {
+            enabled(1),
+            disabled(2)
+        }
+        MAX-ACCESS  read-create
+        STATUS      current
+        DESCRIPTION
+            "The administrative state of the service port."
+        ::={  zxAnSrvPortConfEntry 2 }
+
+    zxAnSrvPortServiceMode  OBJECT-TYPE
+        SYNTAX      INTEGER
+        {
+            untag(1),
+            untagAndEtype(2),
+            cos(3),
+            tag(4),
+            tls(5),
+            tagAndEtype(6),
+            tagAndCos(7),
+            vlanRange(8),
+            vlanRangeAndEtype(9),
+            vlanRangeAndCos(10),
+            batchBindVlan(11),
+            doubleVlan(12),
+            doubleTlsVlan(13)
+        }
+        MAX-ACCESS  read-create
+        STATUS    current
+        DESCRIPTION
+            "A traffic type for a service port. To distinguish specific
+            service traffic flow type, the packet information from
+            the user-side port is used, and this information is classfied
+            to differnet cases that is represented by the value of variable
+            zxAnSrvPortServiceMode.
+            After distinguishing the service traffic flow type based on the
+            packet information, a service port can be created, and additionally
+            the packet can be modified if you want.
+            For example:
+            - translate user-vlan to new cvlan
+            - add a svlan
+            - modify the svlan when user-side packet is double tagged
+            - translate the cos of svlan
+
+            The following is the explanation of each value of variable
+            zxAnSrvPortServiceMode.
+            - untag(1)
+            create a service port when user packet is untag.
+            - untagAndEtype(2)
+            create a service port when user packet is untag and has a
+            specific Ethernet type.
+            - cos(3)
+            create a service port when user packet is priority tag.
+            - tag(4)
+            create a service port when user packet is single VLAN tag.
+            - tls(5)
+            create a service port for a TLS service.
+            - tagAndEtype(6)
+            create a service port when user packet is single VLAN tag and
+            has a specific Ethernet type.
+            - tagAndCos(7)
+            create a service port when user packet is single VLAN tag and
+            has a specific cos.
+            - vlanRange(8)
+            create a service port for a QinQ service. The user packet will
+            add a svlan when the vlan tag is in the vlan range.
+            - vlanRangeAndEtype(9)
+            create a service port for a QinQ service. The user packet will
+            add a svlan when the vlan tag is in the vlan range and has a
+            specific ethernet type.
+            - vlanRangeAndCos(10)
+            create a service port for a QinQ service. The user packet will
+            add a svlan when the vlan tag is in the vlan range and has a
+            specific cos.
+            - batchBindVlan(11)
+            create a service port for a transparent service.
+            - doubleVlan(12)
+            create a service port when user packet is double VLAN tag.
+            - doubleTlsVlan(13)
+            create a service port for a double tag TLS service.
+            "
+        DEFVAL      { untag }
+        ::={  zxAnSrvPortConfEntry 4 }
+
+    zxAnSrvPortBrgIfId  OBJECT-TYPE
+        SYNTAX    Integer32(1..128)
+        MAX-ACCESS  read-create
+        STATUS    current
+        DESCRIPTION
+            "Vport index from 1 to 128."
+        DEFVAL      { 1 }
+        ::={  zxAnSrvPortConfEntry 5 }
+
+    zxAnSrvPortUserVid  OBJECT-TYPE
+        SYNTAX      Integer32(0..4094)
+        MAX-ACCESS  read-create
+        STATUS      current
+        DESCRIPTION
+            "User inner VLAN.
+             '0' indicates untag."
+        DEFVAL      { 0 }
+        ::={  zxAnSrvPortConfEntry 8 }
+
+    zxAnSrvPortUserSVid  OBJECT-TYPE
+        SYNTAX      Integer32(0..4094)
+        MAX-ACCESS  read-create
+        STATUS      current
+        DESCRIPTION
+            "User inner SVLAN.
+             '0' indicates not configured."
+        DEFVAL      { 0 }
+        ::={  zxAnSrvPortConfEntry 9 }
+
+    zxAnSrvPortUserCos  OBJECT-TYPE
+        SYNTAX      Integer32(0..7|255)
+        MAX-ACCESS  read-create
+        STATUS      current
+        DESCRIPTION
+            "User priority, from 0 to 7.
+             '0xFF' indicates not configured."
+        DEFVAL      { 255 }
+        ::={  zxAnSrvPortConfEntry 10 }
+
+    zxAnSrvPortUserStagCos  OBJECT-TYPE
+        SYNTAX      Integer32(0..7|255)
+        MAX-ACCESS  read-create
+        STATUS      current
+        DESCRIPTION
+            "User SVLAN priority,from 0 to 7.
+             '0xFF' indicates not configured."
+        DEFVAL      { 255 }
+        ::={  zxAnSrvPortConfEntry 11 }
+
+    zxAnSrvPortStartUserVid  OBJECT-TYPE
+        SYNTAX      Integer32(0..4094)
+        MAX-ACCESS  read-create
+        STATUS      current
+        DESCRIPTION
+            "User inner start VLAN.
+             '0' indicates untag."
+        DEFVAL      { 0 }
+        ::={  zxAnSrvPortConfEntry 12 }
+
+    zxAnSrvPortEndUserVid  OBJECT-TYPE
+        SYNTAX    Integer32(0..4094)
+        MAX-ACCESS  read-create
+        STATUS    current
+        DESCRIPTION
+            "User inner end vlan.
+             '0' indicates untag."
+        DEFVAL      { 0 }
+        ::={  zxAnSrvPortConfEntry 13 }
+
+    zxAnSrvPortUserEthType  OBJECT-TYPE
+        SYNTAX      INTEGER
+        {
+            noConfig(1),
+            pppoe(2),
+            ipoe(3),
+            userDefined(4)
+        }
+        MAX-ACCESS  read-create
+        STATUS      current
+        DESCRIPTION
+            "User Ethernet type.
+            noConfig(1)   - User ethernet type is not configured.
+            pppoe(2)      - User ethernet type is PPPoE.
+            ipoe(3)       - User ethernet type is IPoE.
+            userDefined(4)- User ethernet type is configured in
+                             zxAnSrvPortUserDefinedEthType."
+        DEFVAL      { noConfig }
+        ::={  zxAnSrvPortConfEntry 14 }
+
+    zxAnSrvPortUserDefinedEthType  OBJECT-TYPE
+        SYNTAX      DisplayString(SIZE (0..32))
+        MAX-ACCESS  read-create
+        STATUS      current
+        DESCRIPTION
+            "Specify the user side of ethernet packet type that is defined by
+             user.
+             When zxAnSrvPortUserEthType is userDefined(4), this object is
+             effective.
+
+             Different ethernet packet type is seperated with ','.
+             For example: 0x8101,0x8102,0x8848."
+        ::={  zxAnSrvPortConfEntry 15 }
+
+    zxAnSrvPortCVid  OBJECT-TYPE
+        SYNTAX      Integer32(0..4094)
+        MAX-ACCESS  read-create
+        STATUS      current
+        DESCRIPTION
+            "The network side CVLAN.
+             '0' indicates not configured."
+        DEFVAL      { 0 }
+        ::={  zxAnSrvPortConfEntry 18 }
+
+    zxAnSrvPortSVid  OBJECT-TYPE
+        SYNTAX      Integer32(0..4094)
+        MAX-ACCESS  read-create
+        STATUS      current
+        DESCRIPTION
+            "The network side SVLAN.
+             '0' indicates not configured."
+        DEFVAL      { 0 }
+        ::={  zxAnSrvPortConfEntry 19 }
+
+    zxAnSrvPortCtagCos  OBJECT-TYPE
+        SYNTAX      Integer32(0..7|255)
+        MAX-ACCESS  read-create
+        STATUS      current
+        DESCRIPTION
+            "This object indicates network side CVLAN CoS.
+             '0xFF' indicates not configured."
+        DEFVAL      { 255 }
+        ::={  zxAnSrvPortConfEntry 20 }
+
+    zxAnSrvPortStagCos  OBJECT-TYPE
+        SYNTAX      Integer32(0..7 | 255)
+        MAX-ACCESS  read-create
+        STATUS      current
+        DESCRIPTION
+            "This object indicates network side SVLAN CoS.
+             '0xFF' indicates not configured."
+        DEFVAL      { 255 }
+        ::={  zxAnSrvPortConfEntry 21 }
+
+    zxAnSrvPortTlsSVid  OBJECT-TYPE
+        SYNTAX      Integer32(0..4094)
+        MAX-ACCESS  read-create
+        STATUS      current
+        DESCRIPTION
+            "TLS SVLAN.
+             When zxAnServicePortServiceMode is tls(5) or doubleTlsVlan(13),
+             value 0 indicates untag.
+             When zxAnServicePortServiceMode is not tls(5) or doubleTlsVlan(13),
+             value 0 indicates not configured."
+        DEFVAL      { 0 }
+        ::= { zxAnSrvPortConfEntry 22 }
+
+    zxAnSrvPortIngressTrafficPrf OBJECT-TYPE
+        SYNTAX      DisplayString (SIZE (0..32))
+        MAX-ACCESS  read-create
+        STATUS      current
+        DESCRIPTION
+            "Ingress traffic profile.
+             The zero length means not configured."
+        ::= {  zxAnSrvPortConfEntry 27 }
+
+    zxAnSrvPortEgressTrafficPrf OBJECT-TYPE
+        SYNTAX      DisplayString (SIZE (0..32))
+        MAX-ACCESS  read-create
+        STATUS      current
+        DESCRIPTION
+            "Egress traffic profile.
+             The zero length means not configured."
+        ::= {  zxAnSrvPortConfEntry 28 }
+
+    zxAnSrvPortQueueId  OBJECT-TYPE
+        SYNTAX      Integer32(0..7 | 255)
+        MAX-ACCESS  read-create
+        STATUS      current
+        DESCRIPTION
+            "Service port queue ID.
+             Value 0xFF means not configured."
+        DEFVAL      { 255 }
+        ::= { zxAnSrvPortConfEntry 29 }
+
+    zxAnSrvPortTlsCVid  OBJECT-TYPE
+        SYNTAX      Integer32(0..4094)
+        MAX-ACCESS  read-create
+        STATUS      current
+        DESCRIPTION
+            "TLS CVLAN.
+             When zxAnServicePortServiceMode is not doubleTlsVlan(13), value 0
+             indicates not configured."
+        DEFVAL      { 0 }
+        ::= { zxAnSrvPortConfEntry 33 }
+
+    zxAnSrvPortCosList OBJECT-TYPE
+        SYNTAX      OCTET STRING(SIZE(1))
+        MAX-ACCESS  read-create
+        STATUS      current
+        DESCRIPTION
+            "CoS list.
+
+             |  bit 0   |  bit 1   |    ...   bit 7   |
+             +----------+----------+----...-----------+
+             |  CoS 0   |  CoS 1   |    ...   CoS 7   |
+             +----------+----------+----...-----------+
+
+             If one bit is set to '1', the corresponding CoS is configured to
+             CoS list.
+             It is valid when zxAnSrvPortUserCos, zxAnSrvPortUserStagCos,
+             zxAnSrvPortCtagCos and zxAnSrvPortStagCos is set to '0xFF'(not
+             configured)."
+        ::= {  zxAnSrvPortConfEntry 34 }
+
+    zxAnSrvPortCarThresh OBJECT-TYPE
+        SYNTAX        INTEGER {
+            percent10(1),
+            percent25(2),
+            percent50(3),
+            percent75(4),
+            percent100(5)
+        }
+        MAX-ACCESS  read-create
+        STATUS      current
+        DESCRIPTION
+            "CAR (Commit Access Rate) threshold.
+             The flow can take x% of the tokens from the token bucket at most.
+             When the number of the tokens taken from the token bucket exceeds
+             x%, the flow is forbidden to take any tokens.
+             For example, percent100 means the flow can take
+             tokens once the token bucket is not empty."
+        DEFVAL  { percent100 }
+        ::= {  zxAnSrvPortConfEntry 35 }
+
+    zxAnSrvPortUserVidExpandMode OBJECT-TYPE
+        SYNTAX        INTEGER {
+            increment(1),
+            decrement(2),
+            notConfigured(255)
+        }
+        MAX-ACCESS  read-create
+        STATUS      current
+        DESCRIPTION
+            "User inner VLAN expanding mode."
+        DEFVAL  { notConfigured }
+        ::= {  zxAnSrvPortConfEntry 41 }
+
+    zxAnSrvPortCvidExpandMode OBJECT-TYPE
+        SYNTAX        INTEGER {
+            increment(1),
+            decrement(2),
+            notConfigured(255)
+        }
+        MAX-ACCESS  read-create
+        STATUS      current
+        DESCRIPTION
+            "The network side CVLAN expanding mode."
+        DEFVAL  { notConfigured }
+        ::= {  zxAnSrvPortConfEntry 42 }
+
+    zxAnSrvPortSvidExpandMode OBJECT-TYPE
+        SYNTAX        INTEGER {
+            increment(1),
+            decrement(2),
+            notConfigured(255)
+        }
+        MAX-ACCESS  read-create
+        STATUS      current
+        DESCRIPTION
+            "The network side SVLAN expanding mode."
+        DEFVAL  { notConfigured }
+        ::= {  zxAnSrvPortConfEntry 43 }
+
+    zxAnSrvPortExpandNumber OBJECT-TYPE
+        SYNTAX      Integer32(0..4094)
+        MAX-ACCESS  read-create
+        STATUS      current
+        DESCRIPTION
+            "The number of the expanding rules of the service port.
+             '0' indicates not expanding."
+        DEFVAL  { 0 }
+        ::= {  zxAnSrvPortConfEntry 44 }
+
+    zxAnSrvPortRowStatus OBJECT-TYPE
+        SYNTAX      RowStatus
+        MAX-ACCESS  read-create
+        STATUS      current
+        DESCRIPTION
+            "The status of this conceptual row.
+            The state of this conceptual row only support
+            'not exist' and  'active'.
+            The action of this conceptual row only support
+            'createAndGo' and 'destroy'.
+
+            To create a row in this table, a manager must
+            set this object to createAndGo(4), and must comply
+            with the multi-variables usage rules in zxAnSrvPortConfEntry
+            description.
+
+            To delete a row in this table, a manager must
+            set this object to destroy(6).
+
+            To query this object, always return 1. "
+        ::= { zxAnSrvPortConfEntry 50 }
+
+    zxAnServicePortConformance   OBJECT IDENTIFIER  ::= { zxAnServicePort 4 }
+    zxAnServicePortCompliances  OBJECT IDENTIFIER ::={zxAnServicePortConformance 1}
+    zxAnServicePortGroups  OBJECT IDENTIFIER ::= {zxAnServicePortConformance 2 }
+
+    zxAnServicePortBasicCompliances MODULE-COMPLIANCE
+        STATUS      current
+        DESCRIPTION
+            "The compliance statement for device support service-port services."
+        MODULE -- This Module
+            MANDATORY-GROUPS { zxAnServicePortBasicGroup}
+        ::= { zxAnServicePortCompliances 1 }
+
+    zxAnServicePortBasicGroup OBJECT-GROUP
+        OBJECTS {
+            zxAnSrvPortDesc,
+            zxAnSrvPortAdminStatus,
+            zxAnSrvPortServiceMode,
+            zxAnSrvPortBrgIfId,
+            zxAnSrvPortUserVid,
+            zxAnSrvPortUserSVid,
+            zxAnSrvPortUserCos,
+            zxAnSrvPortUserStagCos,
+            zxAnSrvPortStartUserVid,
+            zxAnSrvPortEndUserVid,
+            zxAnSrvPortUserEthType,
+            zxAnSrvPortUserDefinedEthType,
+            zxAnSrvPortCVid,
+            zxAnSrvPortSVid,
+            zxAnSrvPortCtagCos,
+            zxAnSrvPortStagCos,
+            zxAnSrvPortTlsSVid,
+            zxAnSrvPortIngressTrafficPrf,
+            zxAnSrvPortEgressTrafficPrf,
+            zxAnSrvPortQueueId,
+            zxAnSrvPortTlsCVid,
+            zxAnSrvPortCosList,
+            zxAnSrvPortCarThresh,
+            zxAnSrvPortUserVidExpandMode,
+            zxAnSrvPortCvidExpandMode,
+            zxAnSrvPortSvidExpandMode,
+            zxAnSrvPortExpandNumber,
+            zxAnSrvPortRowStatus
+        }
+        STATUS      current
+        DESCRIPTION
+            "A collection of objects providing basic service-port
+             configuration of management targets."
+        ::= { zxAnServicePortGroups 1 }
+
+    zxAnServicePortDescriptGroup OBJECT-GROUP
+        OBJECTS {
+             zxAnSrvPortDesc
+        }
+        STATUS      current
+        DESCRIPTION
+            "A collection of objects descript the exist service-port."
+        ::= { zxAnServicePortGroups 2 }
+END

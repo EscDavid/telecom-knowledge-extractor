@@ -1,0 +1,118 @@
+==============================================================================
+CORRECCIÓN / RECONCILIACIÓN CON WALK REAL — snmp-olt-zte vs walk C300/C320
+Ajusta el ingest community anterior contra la evidencia del snmpwalk propio.
+==============================================================================
+
+# META
+doc_type: community
+supersedes_partial: snmp-olt-zte_reference_extract.txt
+vendor: ZTE
+families: ZXA10 C300, ZXA10 C320
+walk_sources: docs/walks/ZTE_C300.txt, docs/walks/ZTE_C320.txt
+extraction_date: 2026-07-04
+motivo: el walk real NO contiene la rama .1082 (espacio ONU-ID). Toda la data de
+        ONU de ESTE hardware/firmware vive en el espacio TYPE .1012.3.50.11/12.
+        Se reconcilia estado y escala contra esa evidencia.
+
+==============================================================================
+# SECCIÓN A — ESCALA ÓPTICA: RESUELTA   [status: verified_walk]
+==============================================================================
+optical_scale:
+  formula: dBm = raw * 0.002 - 30.0
+  decimals: 2
+  resolves_conflict: SÍ. La hipótesis ÷100 queda DESCARTADA.
+  evidence:
+    onu: gpon_1/2/2:10 (suffixTYPE=268567040, onu=10)
+    tx_raw: 16017  -> raw*0.002-30 = +2.03 dBm   (÷100 = +160.17, imposible)
+    rx_raw: 5043   -> raw*0.002-30 = -19.91 dBm   (÷100 = +50.43, imposible)
+  nota: solo la fórmula lineal produce valores ópticos físicos; los crudos SNMP
+        son positivos, por lo que ÷100 es inválido para estos OIDs.
+
+==============================================================================
+# SECCIÓN B — OIDS ÓPTICOS/IDENTIDAD REALES (espacio TYPE)   [status: verified_walk]
+==============================================================================
+# Presentes y confirmados en el walk. Índice = fórmula TYPE (SECCIÓN 1 del extract
+# anterior), validada: 268501248 = slot1/pon1, 268567040 = slot2/pon2.
+# La tabla óptica .12.1.1 usa índice <suffixTYPE>.<onuID>.1 (octeto .1 extra).
+# La tabla de info .11.2.1 usa índice <suffixTYPE>.<onuID>.
+
+[oid]
+attribute: onu_rx_power
+oid_prefix: .1.3.6.1.4.1.3902.1012.3.50.12.1.1.10
+base_space: TYPE
+index: composite  bit_calculation: true
+full_oid_template: .1.3.6.1.4.1.3902.1012.3.50.12.1.1.10.<suffixTYPE>.<onuID>.1
+syntax: INTEGER
+unit: dBm
+scale: raw*0.002-30
+status: verified_walk
+note: ESTE es el RX real de este hardware (rango observado -30..-20 dBm).
+      Reemplaza al RX .1082.500.20.2.2.2.1.10 de la referencia (ausente en walk).
+mib_name: UNRESOLVED
+
+[oid]
+attribute: onu_tx_power
+oid_prefix: .1.3.6.1.4.1.3902.1012.3.50.12.1.1.14
+base_space: TYPE
+index: composite  bit_calculation: true
+full_oid_template: .1.3.6.1.4.1.3902.1012.3.50.12.1.1.14.<suffixTYPE>.<onuID>.1
+syntax: INTEGER
+unit: dBm
+scale: raw*0.002-30
+status: verified_walk
+note: confirma la referencia (mismo OID .12.1.1.14). Rango ~+2 dBm (TX de ONU).
+mib_name: UNRESOLVED
+
+[oid]
+attribute: onu_type
+oid_prefix: .1.3.6.1.4.1.3902.1012.3.50.11.2.1.17
+base_space: TYPE
+index: composite  bit_calculation: true
+full_oid_template: .1.3.6.1.4.1.3902.1012.3.50.11.2.1.17.<suffixTYPE>.<onuID>
+syntax: DisplayString (ej. "MONUV411")
+status: verified_walk
+note: confirma la referencia (mismo OID .11.2.1.17).
+mib_name: UNRESOLVED
+
+[oid]
+attribute: onu_vendor_id
+oid_prefix: .1.3.6.1.4.1.3902.1012.3.50.11.2.1.1
+base_space: TYPE
+index: composite  bit_calculation: true
+full_oid_template: .1.3.6.1.4.1.3902.1012.3.50.11.2.1.1.<suffixTYPE>.<onuID>
+syntax: DisplayString (prefijo de vendor: "ZTEG","CDTC","HWTC")
+status: verified_walk
+note: prefijo de 4 chars del serial GPON. El serial COMPLETO no está en .1082 en
+      este walk; ubicar columna de serial completo por correlación MIB en .11.2.1.
+mib_name: UNRESOLVED
+
+# PENDIENTE (presente en la tabla .11.2.1 pero sin mapear): onu_status /
+# admin-oper state. Columnas candidatas .11.2.1.{4,5,6,7,8} (integers). Requiere
+# correlación MIB para nombrar. El status .1082.500.10.2.3.8.1.4 de la referencia
+# NO está en el walk.
+
+==============================================================================
+# SECCIÓN C — DEGRADAR LEAVES DEL ESPACIO ONU-ID (.1082) A community-unconfirmed
+==============================================================================
+# Estos OIDs vienen SOLO de la implementación community; el walk de este hardware
+# NO los expone. Bajar de verified_walk a verified_community con nota de variante.
+downgrade_status:
+  new_status: verified_community
+  note: "ausente en walk C300/C320 (44-52MB); rama .1082 no poblada por este
+         firmware. Posible variante de firmware/plataforma. Usar los equivalentes
+         del espacio TYPE (SECCIÓN B) como camino verified_walk."
+  affected_oids:
+    - .1.3.6.1.4.1.3902.1082.500.10.2.3.3.1.2    # name
+    - .1.3.6.1.4.1.3902.1082.500.10.2.3.3.1.18   # serial
+    - .1.3.6.1.4.1.3902.1082.500.10.2.3.3.1.3    # description
+    - .1.3.6.1.4.1.3902.1082.500.10.2.3.8.1.4    # status
+    - .1.3.6.1.4.1.3902.1082.500.20.2.2.2.1.10   # rx_power (usar .1012 col 10)
+    - .1.3.6.1.4.1.3902.1082.500.10.2.3.8.1.5    # last_online
+    - .1.3.6.1.4.1.3902.1082.500.10.2.3.8.1.6    # last_offline
+    - .1.3.6.1.4.1.3902.1082.500.10.2.3.8.1.7    # offline_reason
+    - .1.3.6.1.4.1.3902.1082.500.10.2.3.10.1.2   # optical_distance
+
+# Los enums (status 1-7, offline_reason 1-13) del extract anterior siguen válidos
+# como semántica documentada; su OID de status queda community hasta ubicar la
+# columna de estado real en el espacio TYPE.
+==============================================================================

@@ -1,0 +1,240 @@
+==============================================================================
+FUENTE DE VALIDACIÓN COMMUNITY — snmp-olt-zte (Cepat-Kilat-Teknologi)
+Extracto de los datos AUSENTES en el catálogo TKC (C300/C320), para ingesta.
+==============================================================================
+
+# META
+doc_type: community
+vendor: ZTE
+families: ZXA10 C300, ZXA10 C320
+firmware_verified: 2.1.0 (ambos modelos; mismo árbol MIB y mismo encoding)
+source_repo: https://github.com/Cepat-Kilat-Teknologi/snmp-olt-zte
+source_files: config/oid_generator.go, internal/utils/extractor.go, internal/usecase/onu.go
+extraction_date: 2026-07-04
+provenance: implementación en producción validada contra hardware real C300/C320
+scope: SOLO lo que el catálogo TKC no tiene (leaves operativos de ONU + índice
+       compuesto + conversión óptica + enums de estado). NO re-lista lo ya extraído.
+
+# NOTA DE CORRELACIÓN (importante para el pipeline)
+Estos leaves cuelgan del sub-árbol .500.10.2.3.* (gestión/estado ONU) y
+.500.20.2.2.* (potencia RX viva) del espacio 1082, que NO fueron capturados por
+el walk actual (posible scope o pruning). El nombre MIB (mib_name) queda
+"UNRESOLVED": el paso de correlación MIB del pipeline debe resolverlo; el OID
+numérico es la clave estable.
+
+==============================================================================
+# SECCIÓN 1 — ÍNDICE COMPUESTO (bit_calculation)   [status: verified_walk]
+==============================================================================
+# El dato de mayor valor. El bitcalc_validation del propio manifest TKC ya
+# probó que el bit-map de catálogo (shelf 31-28 / slot 27-24) es INCORRECTO
+# (40/40 disagree). La fórmula de abajo REPRODUCE el walk real y debe REEMPLAZAR
+# ese bit-map como decoder de índice.
+#
+# Hay DOS espacios de índice, uno por base OID:
+
+index_space: ONU-ID
+  applies_to_base: .1.3.6.1.4.1.3902.1082
+  formula: suffix = 285278208 + slot*256 + pon        # 0x11010000 + slot*0x100 + pon
+  onu_id: se anexa como octeto OID final (2 niveles): <prefix>.<suffix>.<onuID>
+  shelf: fijo = 1 (codificado en el prefijo 0x11)
+  ranges: slot 1..30, pon 1..16, onu 1..N
+
+index_space: TYPE
+  applies_to_base: .1.3.6.1.4.1.3902.1012
+  formula: suffix = 268435456 + slot*65536 + pon*256  # 0x10000000 + slot*0x10000 + pon*0x100
+  onu_id: se anexa como octeto OID final: <prefix>.<suffix>.<onuID>
+  shelf: fijo = 1 (codificado en el prefijo 0x10)
+
+# EVIDENCIA DE VALIDACIÓN (cruza con docs/walks/ZTE_C300_ifnames.txt):
+#   ifIndex 285278721 = ifName "gpon_1/2/1"  → slot=2, pon=1
+#   check: 285278208 + 2*256 + 1 = 285278721  ✓  (coincide con el walk)
+#   ifIndex 285278722 = "gpon_1/2/2"          → 285278208 + 2*256 + 2 = 285278722 ✓
+# Ejemplos de sufijo (pon=1): slot1=285278465 | slot2=285278721 | slot3=285278977
+# TYPE (pon=1):               slot1=268501248 | slot2=268566784 | slot3=268632320
+
+==============================================================================
+# SECCIÓN 2 — OIDS OPERATIVOS DE ONU (leaves ausentes)   [status: verified_community]
+==============================================================================
+# Formato por entrada. oid_prefix = rama SIN el sufijo de índice.
+# full_oid_template muestra el ensamblado real que hace la referencia.
+
+[oid]
+attribute: onu_name
+entity_ref: entity.zte.gpon.device.onu
+oid_prefix: .1.3.6.1.4.1.3902.1082.500.10.2.3.3.1.2
+base_space: ONU-ID
+index: composite  bit_calculation: true  (ver SECCIÓN 1, espacio ONU-ID)
+full_oid_template: .1.3.6.1.4.1.3902.1082.500.10.2.3.3.1.2.<suffix>.<onuID>
+syntax: DisplayString
+access: read-only
+mib_name: UNRESOLVED
+
+[oid]
+attribute: onu_serial_number
+entity_ref: entity.zte.gpon.device.onu
+oid_prefix: .1.3.6.1.4.1.3902.1082.500.10.2.3.3.1.18
+base_space: ONU-ID
+index: composite  bit_calculation: true
+full_oid_template: .1.3.6.1.4.1.3902.1082.500.10.2.3.3.1.18.<suffix>.<onuID>
+syntax: DisplayString (serial GPON, ej. "CDTC505A956D")
+access: read-only
+mib_name: UNRESOLVED
+
+[oid]
+attribute: onu_description
+entity_ref: entity.zte.gpon.device.onu
+oid_prefix: .1.3.6.1.4.1.3902.1082.500.10.2.3.3.1.3
+base_space: ONU-ID
+index: composite  bit_calculation: true
+full_oid_template: .1.3.6.1.4.1.3902.1082.500.10.2.3.3.1.3.<suffix>.<onuID>
+syntax: DisplayString
+access: read-write
+mib_name: UNRESOLVED
+
+[oid]
+attribute: onu_status
+entity_ref: entity.zte.gpon.device.onu
+oid_prefix: .1.3.6.1.4.1.3902.1082.500.10.2.3.8.1.4
+base_space: ONU-ID
+index: composite  bit_calculation: true
+full_oid_template: .1.3.6.1.4.1.3902.1082.500.10.2.3.8.1.4.<suffix>.<onuID>
+syntax: INTEGER
+enumeration: ver SECCIÓN 4 (status_enum)
+access: read-only
+mib_name: UNRESOLVED
+
+[oid]
+attribute: onu_rx_power
+entity_ref: entity.zte.gpon.device.onu
+oid_prefix: .1.3.6.1.4.1.3902.1082.500.20.2.2.2.1.10
+base_space: ONU-ID
+index: composite  bit_calculation: true
+full_oid_template: .1.3.6.1.4.1.3902.1082.500.20.2.2.2.1.10.<suffix>.<onuID>.1
+index_quirk: RX lleva un octeto EXTRA ".1" al final (SNMPOIDSuffix); único caso
+syntax: INTEGER
+unit: dBm
+scale: raw*0.002 - 30    # ver SECCIÓN 3
+access: read-only
+mib_name: UNRESOLVED
+
+[oid]
+attribute: onu_last_online_time
+oid_prefix: .1.3.6.1.4.1.3902.1082.500.10.2.3.8.1.5
+base_space: ONU-ID
+index: composite  bit_calculation: true
+full_oid_template: .1.3.6.1.4.1.3902.1082.500.10.2.3.8.1.5.<suffix>.<onuID>
+access: read-only
+mib_name: UNRESOLVED
+
+[oid]
+attribute: onu_last_offline_time
+oid_prefix: .1.3.6.1.4.1.3902.1082.500.10.2.3.8.1.6
+base_space: ONU-ID
+index: composite  bit_calculation: true
+full_oid_template: .1.3.6.1.4.1.3902.1082.500.10.2.3.8.1.6.<suffix>.<onuID>
+access: read-only
+mib_name: UNRESOLVED
+
+[oid]
+attribute: onu_last_offline_reason
+oid_prefix: .1.3.6.1.4.1.3902.1082.500.10.2.3.8.1.7
+base_space: ONU-ID
+index: composite  bit_calculation: true
+full_oid_template: .1.3.6.1.4.1.3902.1082.500.10.2.3.8.1.7.<suffix>.<onuID>
+syntax: INTEGER
+enumeration: ver SECCIÓN 4 (offline_reason_enum)
+access: read-only
+mib_name: UNRESOLVED
+
+[oid]
+attribute: onu_gpon_optical_distance
+oid_prefix: .1.3.6.1.4.1.3902.1082.500.10.2.3.10.1.2
+base_space: ONU-ID
+index: composite  bit_calculation: true
+full_oid_template: .1.3.6.1.4.1.3902.1082.500.10.2.3.10.1.2.<suffix>.<onuID>
+unit: m (metros, distancia óptica lógica)
+access: read-only
+mib_name: UNRESOLVED
+
+[oid]
+attribute: onu_type
+entity_ref: entity.zte.gpon.device.onu
+oid_prefix: .1.3.6.1.4.1.3902.1012.3.50.11.2.1.17
+base_space: TYPE
+index: composite  bit_calculation: true  (ver SECCIÓN 1, espacio TYPE)
+full_oid_template: .1.3.6.1.4.1.3902.1012.3.50.11.2.1.17.<suffixTYPE>.<onuID>
+syntax: DisplayString (ej. "HG8010H", "F660")
+access: read-only
+mib_name: UNRESOLVED
+
+[oid]
+attribute: onu_tx_power
+oid_prefix: .1.3.6.1.4.1.3902.1012.3.50.12.1.1.14
+base_space: TYPE
+index: composite  bit_calculation: true
+full_oid_template: .1.3.6.1.4.1.3902.1012.3.50.12.1.1.14.<suffixTYPE>.<onuID>
+syntax: INTEGER
+unit: dBm
+scale: UNRESOLVED (posible raw*0.002-30 como RX; pinchar contra walk)
+access: read-only
+mib_name: UNRESOLVED
+
+[oid]
+attribute: onu_ip_address
+oid_prefix: .1.3.6.1.4.1.3902.1012.3.50.16.1.1.10
+base_space: TYPE
+index: composite  bit_calculation: true
+full_oid_template: .1.3.6.1.4.1.3902.1012.3.50.16.1.1.10.<suffixTYPE>.<onuID>
+syntax: IpAddress
+access: read-only
+mib_name: UNRESOLVED
+
+==============================================================================
+# SECCIÓN 3 — CONVERSIÓN / ESCALA ÓPTICA   [status: verified_community]
+==============================================================================
+optical_rx_power:
+  applies_to: onu_rx_power (.1082.500.20.2.2.2.1.10)
+  formula: dBm = raw * 0.002 - 30.0
+  decimals: 2
+  source_func: ConvertAndMultiply (internal/utils/extractor.go)
+  # NOTA: entra en CONFLICTO con la hipótesis ÷100 vista en SmartOLT y con
+  # scale=null del catálogo TKC. Marcar como conflicto a resolver por walk.
+
+==============================================================================
+# SECCIÓN 4 — ENUMERACIONES   [status: verified_community]
+==============================================================================
+status_enum:            # OID onu_status (.1082.500.10.2.3.8.1.4)
+  1: Logging
+  2: LOS                # Loss of Signal
+  3: Synchronization
+  4: Online
+  5: DyingGasp          # fallo de energía
+  6: AuthFailed
+  7: Offline
+  default: Unknown
+
+offline_reason_enum:    # OID onu_last_offline_reason (.1082.500.10.2.3.8.1.7)
+  1: Unknown
+  2: LOS
+  3: LOSi
+  4: LOFi               # Loss of Frame
+  5: sfi
+  6: loai
+  7: loami
+  8: AuthFail
+  9: PowerOff
+  10: deactiveSucc
+  11: deactiveFail
+  12: Reboot
+  13: Shutdown
+  default: Unknown
+
+==============================================================================
+# SECCIÓN 5 — PARÁMETROS SNMP OPERACIONALES (contexto, no OIDs)
+==============================================================================
+snmp_max_repetitions: 20   # NUNCA 0 — 0 cuelga GetBulk en ZTE C300
+snmp_timeout_s: 5
+snmp_retries: 2
+enumeration_method: BulkWalk sobre <prefix>.<suffix>; el último octeto del OID
+                    devuelto ES el onuID.
+==============================================================================

@@ -1,0 +1,2604 @@
+{
+  "entity_ref": "entity.zte.gpon.logical.vlan",
+  "vendor": "ZTE",
+  "family": "ZXA10 C320",
+  "firmware": [
+    "2.0",
+    "2.1"
+  ],
+  "oids": [
+    {
+      "id": "oid.zte.gpon.vlan.global_ctag_tpid",
+      "oid": "1.3.6.1.4.1.3902.1082.40.50.1.2",
+      "name": "zxAnVlanGlobalCtagTpid",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "DisplayString",
+      "unit": null,
+      "scale": null,
+      "access": "read-write",
+      "enumeration": null,
+      "description": "This object indicates global inner VLAN TPID, it only can be \n             configured with value '0x8100'.\n             For C600 series, this object indicates up to four global inner\n             VLAN TPIDs, separated by commas, e.g., '0x8100', '0x8100,0x9100'.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.vlan.global_tpid",
+      "oid": "1.3.6.1.4.1.3902.1082.40.50.1.3",
+      "name": "zxAnVlanGlobalTpid",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "DisplayString",
+      "unit": null,
+      "scale": null,
+      "access": "read-write",
+      "enumeration": null,
+      "description": "This object indicates up to four global outer VLAN TPIDs, \n             separated by commas, e.g., '0x8100', '0x8100,0x9100'.\n             The default value is '0x8100,0x88a8' for C600 series.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.vlan.table",
+      "oid": "1.3.6.1.4.1.3902.1082.40.50.2.1.2",
+      "name": "zxAnVlanTable",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "SEQUENCE OF ZxAnVlanEntry",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": "A table containing VLAN information for VLANs\n            configured into the bridge by (local or network)\n            management,  specifying the set of\n            ports to which frames received on a VLAN for this FDB\n            and containing a specific Group destination address are\n            allowed to be forwarded.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.vlan.entry",
+      "oid": "1.3.6.1.4.1.3902.1082.40.50.2.1.2.1",
+      "name": "zxAnVlanEntry",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "ZxAnVlanEntry",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": "Filtering information configured into the bridge by\n            management, specifying the set of\n            ports to which frames received on a VLAN and containing\n            a specific Group destination address, are allowed to be\n            forwarded. It is forbidden to destroy zxAnVlanEntry \n            whose zxAnVid exists in zxAnVlanVoipConfTable.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.vlan.name",
+      "oid": "1.3.6.1.4.1.3902.1082.40.50.2.1.2.1.2",
+      "name": "zxAnVlanName",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "DisplayString",
+      "unit": null,
+      "scale": null,
+      "access": "read-create",
+      "enumeration": null,
+      "description": "DURABLE: { 'Default' }\n            An administratively assigned string, which may be used\n            to identify the VLAN.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.vlan.desc",
+      "oid": "1.3.6.1.4.1.3902.1082.40.50.2.1.2.1.3",
+      "name": "zxAnVlanDesc",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "DisplayString",
+      "unit": null,
+      "scale": null,
+      "access": "read-create",
+      "enumeration": null,
+      "description": "The description of VLAN.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.vlan.row_status",
+      "oid": "1.3.6.1.4.1.3902.1082.40.50.2.1.2.1.50",
+      "name": "zxAnVlanRowStatus",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "Row",
+      "unit": null,
+      "scale": null,
+      "access": "read-create",
+      "enumeration": null,
+      "description": "The status of this conceptual row.\n            The state of this conceptual row only support \n            'not exist' and  'active'.\n            The action of this conceptual row only support\n            'createAndGo' and 'destroy'.\n            \n            To create a row in this table, a manager must\n            set this object to createAndGo(4).\n    \n            To delete a row in this table, a manager must\n            set this object to destroy(6). \n             \n            To query this object, always return 1.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.vlan.if_conf_table",
+      "oid": "1.3.6.1.4.1.3902.1082.40.50.2.1.4",
+      "name": "zxAnVlanIfConfTable",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "SEQUENCE OF ZxAnVlanIfConfEntry",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": "A table containing VLAN Port information for VLANs\n            configured into the bridge by (local or network)\n            management,  specifying the set of\n            ports to which frames received on a VLAN for this FDB\n            and containing a specific Group destination address are\n            allowed to be forwarded.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.vlan.if_conf_entry",
+      "oid": "1.3.6.1.4.1.3902.1082.40.50.2.1.4.1",
+      "name": "zxAnVlanIfConfEntry",
+      "mib_table": null,
+      "index": {
+        "type": "composite",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "ZxAnVlanIfConfEntry",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": "Filtering information configured into the bridge by\n            management, specifying the set of\n            ports to which frames received on a VLAN and containing\n            a specific Group destination address, are allowed to be\n            forwarded.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.vlan.if_conf_mode",
+      "oid": "1.3.6.1.4.1.3902.1082.40.50.2.1.4.1.1",
+      "name": "zxAnVlanIfConfMode",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-write",
+      "enumeration": {
+        "1": "access",
+        "2": "trunk",
+        "3": "hybrid"
+      },
+      "description": "The access mode of the port.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.vlan.if_conf_tls_enable",
+      "oid": "1.3.6.1.4.1.3902.1082.40.50.2.1.4.1.2",
+      "name": "zxAnVlanIfConfTlsEnable",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-write",
+      "enumeration": {
+        "1": "enable",
+        "2": "disable"
+      },
+      "description": "The Transparent LAN Service enable or disable.\n             When port in access mode, TLS always disable.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.vlan.if_conf_tls_s_vid",
+      "oid": "1.3.6.1.4.1.3902.1082.40.50.2.1.4.1.3",
+      "name": "zxAnVlanIfConfTlsSVid",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-write",
+      "enumeration": null,
+      "description": "The TLS vlan id of the port.\n            Only TLS enable, TLS Vlan id can be configured.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.vlan.if_conf_default_vid",
+      "oid": "1.3.6.1.4.1.3902.1082.40.50.2.1.4.1.4",
+      "name": "zxAnVlanIfConfDefaultVid",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-write",
+      "enumeration": null,
+      "description": "The default VLAN of the port.\n             '0' indicates not configured.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.vlan.if_conf_default_c_vid",
+      "oid": "1.3.6.1.4.1.3902.1082.40.50.2.1.4.1.5",
+      "name": "zxAnVlanIfConfDefaultCVid",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-write",
+      "enumeration": null,
+      "description": "The default CVLAN of the port.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.vlan.if_conf_tpid",
+      "oid": "1.3.6.1.4.1.3902.1082.40.50.2.1.4.1.8",
+      "name": "zxAnVlanIfConfTpid",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-write",
+      "enumeration": null,
+      "description": "The outer VLAN TPID of this port.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.vlan.if_ingress_filter_enable",
+      "oid": "1.3.6.1.4.1.3902.1082.40.50.2.1.4.1.9",
+      "name": "zxAnVlanIfIngressFilterEnable",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-write",
+      "enumeration": null,
+      "description": "When this is enable(1) the port will reject incoming frames for \n            VLAN only if the port belongs to that vlan. When this is \n            disable(2), the port will accept all incoming frames,regardless \n            of the the port's vlan membership.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.vlan.if_acceptable_frame_types",
+      "oid": "1.3.6.1.4.1.3902.1082.40.50.2.1.4.1.10",
+      "name": "zxAnVlanIfAcceptableFrameTypes",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-write",
+      "enumeration": {
+        "1": "admitAll",
+        "2": "admitOnlyVlanTagged",
+        "3": "admitOnlyVlanUntagged",
+        "4": "admitOnlyVlanSingleTagged",
+        "5": "admitOnlyVlanMaxDoubleTagged",
+        "6": "admitOnlyVlanMaxSingleTagged",
+        "7": "admitOnlyVlanDoubleTagged"
+      },
+      "description": "When this is admitOnlyVlanTagged(2) the device will\n            discard untagged frames or Priority-Tagged frames\n            received on this port.  When admitAll(1), untagged\n            frames or Priority-Tagged frames received on this port\n            will be accepted and assigned to the DefaultVid for this port.\n            \n            When admitOnlyVlanUntagged(3), only untagged frames\n            or Priority-Tagged frames received on this port will be\n            accepted for this port.\n            \n            When admitOnlyVlanSingleTagged(4), only single tagged frames\n            received on this port will be accepted for this port.\n            \n            When admitOnlyVlanMaxDoubleTagged(5), the device will\n            accept untagged frames or Priority-tagged frames or single tagged\n            frames or double tagged frames received on this port.\n            \n            When admitOnlyVlanMaxSingleTagged(6), the device will\n            accept untagged frames or Priority-tagged frames or single tagged\n            frames received on this port.\n            \n            When admitOnlyVlanDoubleTagged(7), only double tagged frames\n            received on this port will be accepted for this port.\n        \n            This control does not affect VLAN independent BPDU\n            frames, such as GVRP and STP.  It does affect VLAN\n            dependent BPDU frames, such as GMRP.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.vlan.if_conf_tpid_enable",
+      "oid": "1.3.6.1.4.1.3902.1082.40.50.2.1.4.1.11",
+      "name": "zxAnVlanIfConfTpidEnable",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-write",
+      "enumeration": {
+        "1": "enabled",
+        "2": "disabled"
+      },
+      "description": "Enable or disable zxAnVlanIfConfTpid.\n             \n             enabled(1)  -- Apply the out VLAN TPID with zxAnVlanIfConfTpid.\n             disabled(2) -- Apply the out VLAN TPID with zxAnVlanConfTpid in the \n                            zxAnVlanConfTpidTable.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.vlan.if_conf_vlan_table",
+      "oid": "1.3.6.1.4.1.3902.1082.40.50.2.1.9",
+      "name": "zxAnVlanIfConfVlanTable",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "SEQUENCE OF ZxAnVlanIfConfVlanEntry",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": "VLAN configuration table.\n             This table is only used for getting VLAN information (network-side \n             SVLAN of service port function) when operating on EPON/GPON ports.\n             This table is used for setting and getting VLAN information when \n             operating on uplink ports.\n             This table is used for setting and getting VLAN information when \n             operating on DSL ports.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.vlan.if_conf_vlan_entry",
+      "oid": "1.3.6.1.4.1.3902.1082.40.50.2.1.9.1",
+      "name": "zxAnVlanIfConfVlanEntry",
+      "mib_table": null,
+      "index": {
+        "type": "composite",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "ZxAnVlanIfConfVlanEntry",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": "VLAN configuration entry.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.vlan.if_conf_vlan_tag_vlan_list",
+      "oid": "1.3.6.1.4.1.3902.1082.40.50.2.1.9.1.1",
+      "name": "zxAnVlanIfConfVlanTagVlanList",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "OCTET STRING",
+      "unit": null,
+      "scale": null,
+      "access": "read-write",
+      "enumeration": null,
+      "description": "Tagged VLAN list in the port.\n             A bit value of 1 indicates the associated VLAN is in the port.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.vlan.if_conf_vlan_untag_vlan_list",
+      "oid": "1.3.6.1.4.1.3902.1082.40.50.2.1.9.1.2",
+      "name": "zxAnVlanIfConfVlanUntagVlanList",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "OCTET STRING",
+      "unit": null,
+      "scale": null,
+      "access": "read-write",
+      "enumeration": null,
+      "description": "Untagged VLAN list in the port.\n             A bit value of 1 indicates the associated VLAN is in the port.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.vlan.ext_port_list_i_i_table",
+      "oid": "1.3.6.1.4.1.3902.1082.40.50.2.1.10",
+      "name": "zxAnVlanExtPortListIITable",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "SEQUENCE OF ZxAnVlanExtPortListIIEntry",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": "Port list based on VLAN table.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.vlan.ext_port_list_i_i_entry",
+      "oid": "1.3.6.1.4.1.3902.1082.40.50.2.1.10.1",
+      "name": "zxAnVlanExtPortListIIEntry",
+      "mib_table": null,
+      "index": {
+        "type": "composite",
+        "bit_calculation": true,
+        "components": [
+          {
+            "name": "zxanvid",
+            "bits": ""
+          },
+          {
+            "name": "port",
+            "bits": "23-20"
+          },
+          {
+            "name": "shelf",
+            "bits": "31-28"
+          },
+          {
+            "name": "slot",
+            "bits": "27-24"
+          },
+          {
+            "name": "port",
+            "bits": "23-20"
+          },
+          {
+            "name": "port",
+            "bits": "23-20"
+          }
+        ]
+      },
+      "syntax": "ZxAnVlanExtPortListIIEntry",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": "Port list based on VLAN entry.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.vlan.ext_port_list_i_i_rack",
+      "oid": "1.3.6.1.4.1.3902.1082.40.50.2.1.10.1.1",
+      "name": "zxAnVlanExtPortListIIRack",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": "Rack index for port list on the VLAN.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.vlan.ext_port_list_i_i_slot",
+      "oid": "1.3.6.1.4.1.3902.1082.40.50.2.1.10.1.3",
+      "name": "zxAnVlanExtPortListIISlot",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": "Slot index for port list on the VLAN.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.vlan.ext_port_list_i_i_port",
+      "oid": "1.3.6.1.4.1.3902.1082.40.50.2.1.10.1.4",
+      "name": "zxAnVlanExtPortListIIPort",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": "Port index for port list on the VLAN.\n             Value 0 means non-PON port, other values means EPON/GPON port.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.vlan.ext_port_list_i_i_segment",
+      "oid": "1.3.6.1.4.1.3902.1082.40.50.2.1.10.1.5",
+      "name": "zxAnVlanExtPortListIISegment",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": "The segment of ONU that contains the port list.\n             The segment will range from 1 to 16 when the port is EPON/GPON \n             port. \n             The segment will be always 1 when the port is non-PON port.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.vlan.if_ext_trans_table",
+      "oid": "1.3.6.1.4.1.3902.1082.40.50.2.3.5",
+      "name": "zxAnVlanIfExtTransTable",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "SEQUENCE OF ZxAnVlanIfExtTransEntry",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": "VLAN translation extension table. \n             This table is an extension of the table zxAnVlanIfTransTable.\n             This table includes VLAN translation information for single tagged \n             packets, and double tagged packets.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.vlan.if_ext_trans_entry",
+      "oid": "1.3.6.1.4.1.3902.1082.40.50.2.3.5.1",
+      "name": "zxAnVlanIfExtTransEntry",
+      "mib_table": null,
+      "index": {
+        "type": "composite",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "ZxAnVlanIfExtTransEntry",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": "VLAN Translation extension entry.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.vlan.if_ext_trans_ingress_vid",
+      "oid": "1.3.6.1.4.1.3902.1082.40.50.2.3.5.1.1",
+      "name": "zxAnVlanIfExtTransIngressVid",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "VlanId",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": "Ingress VID for VLAN translation.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.vlan.if_ext_trans_ingress_c_vid",
+      "oid": "1.3.6.1.4.1.3902.1082.40.50.2.3.5.1.2",
+      "name": "zxAnVlanIfExtTransIngressCVid",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": "Ingress C-VID for VLAN translation.\n             '0' means the packet to be translated is single tagged packet.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.vlan.if_ext_trans_vid",
+      "oid": "1.3.6.1.4.1.3902.1082.40.50.2.3.5.1.3",
+      "name": "zxAnVlanIfExtTransVid",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "VlanId",
+      "unit": null,
+      "scale": null,
+      "access": "read-create",
+      "enumeration": null,
+      "description": "VID after VLAN translation.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.vlan.if_ext_trans_c_vid",
+      "oid": "1.3.6.1.4.1.3902.1082.40.50.2.3.5.1.4",
+      "name": "zxAnVlanIfExtTransCVid",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-create",
+      "enumeration": null,
+      "description": "C-VID after VLAN translation.\n             '0' means the packet after VLAN translation is single tagged \n             packet.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.vlan.if_ext_trans_cos",
+      "oid": "1.3.6.1.4.1.3902.1082.40.50.2.3.5.1.5",
+      "name": "zxAnVlanIfExtTransCos",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-create",
+      "enumeration": null,
+      "description": "VLAN CoS after VLAN translation.\n             Value '0xFF' indicates not configured.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.vlan.if_ext_trans_ctag_cos",
+      "oid": "1.3.6.1.4.1.3902.1082.40.50.2.3.5.1.6",
+      "name": "zxAnVlanIfExtTransCtagCos",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-create",
+      "enumeration": null,
+      "description": "CVLAN CoS after VLAN translation.\n             Value '0xFF' indicates not configured.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.vlan.if_ext_trans_row_status",
+      "oid": "1.3.6.1.4.1.3902.1082.40.50.2.3.5.1.50",
+      "name": "zxAnVlanIfExtTransRowStatus",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "Row",
+      "unit": null,
+      "scale": null,
+      "access": "read-create",
+      "enumeration": null,
+      "description": "The status of this conceptual row.\n            \n             The supported actions of this conceptual row only include:\n             'createAndGo' and 'destroy'.\n\n             To create a row in this table, a manager must set this object to \n             createAndGo(4), and must comply with the multi-variables binding \n             rule described in zxAnExampleFunc1Xxx1Entry.\n    \n             To delete a row in this table, a manager must set this object to \n             destroy(6). \n             \n             To get this object, the agent always returns active(1).",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.vlan.based_fwd_table",
+      "oid": "1.3.6.1.4.1.3902.1082.40.50.2.6.3",
+      "name": "zxAnVlanBasedFwdTable",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "SEQUENCE OF ZxAnVlanBasedFwdEntry",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": "This table includes VLAN based forward rule configuration.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.vlan.based_fwd_entry",
+      "oid": "1.3.6.1.4.1.3902.1082.40.50.2.6.3.1",
+      "name": "zxAnVlanBasedFwdEntry",
+      "mib_table": null,
+      "index": {
+        "type": "composite",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "ZxAnVlanBasedFwdEntry",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": "An entry in zxAnVlanBasedFwdTable.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.vlan.based_fwd_s_vid",
+      "oid": "1.3.6.1.4.1.3902.1082.40.50.2.6.3.1.1",
+      "name": "zxAnVlanBasedFwdSVid",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "VlanId",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": "SVlan ,it shouled be included in the zxAnBasedFwdVlanTable",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.vlan.based_fwd_c_vid",
+      "oid": "1.3.6.1.4.1.3902.1082.40.50.2.6.3.1.2",
+      "name": "zxAnVlanBasedFwdCVid",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": "cvlan",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.vlan.based_fwd_if_index",
+      "oid": "1.3.6.1.4.1.3902.1082.40.50.2.6.3.1.3",
+      "name": "zxAnVlanBasedFwdIfIndex",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-create",
+      "enumeration": null,
+      "description": "An index for port.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.vlan.based_fwd_sub_if_index",
+      "oid": "1.3.6.1.4.1.3902.1082.40.50.2.6.3.1.4",
+      "name": "zxAnVlanBasedFwdSubIfIndex",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "ZxAnSubIfIndex",
+      "unit": null,
+      "scale": null,
+      "access": "read-create",
+      "enumeration": null,
+      "description": "An index for port.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.vlan.based_fwd_other_if_index",
+      "oid": "1.3.6.1.4.1.3902.1082.40.50.2.6.3.1.5",
+      "name": "zxAnVlanBasedFwdOtherIfIndex",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-create",
+      "enumeration": null,
+      "description": "An index of the other port.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.vlan.based_fwd_other_sub_if_index",
+      "oid": "1.3.6.1.4.1.3902.1082.40.50.2.6.3.1.6",
+      "name": "zxAnVlanBasedFwdOtherSubIfIndex",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "ZxAnSubIfIndex",
+      "unit": null,
+      "scale": null,
+      "access": "read-create",
+      "enumeration": null,
+      "description": "An index of the other port.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.vlan.based_fwd_row_status",
+      "oid": "1.3.6.1.4.1.3902.1082.40.50.2.6.3.1.50",
+      "name": "zxAnVlanBasedFwdRowStatus",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "Row",
+      "unit": null,
+      "scale": null,
+      "access": "read-create",
+      "enumeration": null,
+      "description": "The status of this conceptual row.\n            The state of this conceptual row only support \n            'not exist' and  'active'.\n            The action of this conceptual row only support\n            'createAndGo' and 'destroy'.\n            \n            To create a row in this table, a manager must\n            set this object to createAndGo(4), and must comply \n            with the multi-variables usage rules in zxAnVlanBasedFwdEntry\n            description.\n    \n            To delete a row in this table, a manager must\n            set this object to destroy(6). \n             \n            To query this object, always return 1.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.vlan.based_fwd_conf_table",
+      "oid": "1.3.6.1.4.1.3902.1082.40.50.2.6.4",
+      "name": "zxAnVlanBasedFwdConfTable",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "SEQUENCE OF ZxAnVlanBasedFwdConfEntry",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": "This table includes VLAN based forward configuration information.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.vlan.based_fwd_conf_entry",
+      "oid": "1.3.6.1.4.1.3902.1082.40.50.2.6.4.1",
+      "name": "zxAnVlanBasedFwdConfEntry",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "ZxAnVlanBasedFwdConfEntry",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": "An entry in zxAnVlanBasedFwdConfTable.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.vlan.based_fwd_conf_mode",
+      "oid": "1.3.6.1.4.1.3902.1082.40.50.2.6.4.1.1",
+      "name": "zxAnVlanBasedFwdConfMode",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-write",
+      "enumeration": {
+        "1": "vlan1To1",
+        "2": "vlanAndMac"
+      },
+      "description": "VLAN based forwarding mode.\n             vlan1To1(1) - Forwarding the packets with the S-VID configured in\n                           the zxAnVlanBasedFwdTable. When user-side interface\n                           in the zxAnVlanBasedFwdTable is deleted, the packet\n                           with the S-VID will be discarded.\n             vlanAndMac(2) - Forwarding the packets with VLAN ID and MAC\n                             address.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.vlan.tpid_conf_table",
+      "oid": "1.3.6.1.4.1.3902.1082.40.50.2.9.2",
+      "name": "zxAnVlanTpidConfTable",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "SEQUENCE OF ZxAnVlanTpidConfEntry",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": "A table containing VLAN TPID information.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.vlan.tpid_conf_entry",
+      "oid": "1.3.6.1.4.1.3902.1082.40.50.2.9.2.1",
+      "name": "zxAnVlanTpidConfEntry",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "ZxAnVlanTpidConfEntry",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": "Entry for zxAnVlanTpidConfTable.\n            \n            The multi-variables binding rule should be complied with when a \n            manager creates a VLAN TPID. According to this rule, all the \n            related mib variables must be included in one SNMP set operation.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.vlan.tpid_conf_tpid",
+      "oid": "1.3.6.1.4.1.3902.1082.40.50.2.9.2.1.1",
+      "name": "zxAnVlanTpidConfTpid",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-create",
+      "enumeration": null,
+      "description": "This object indicates the outer VLAN TPID of this VLAN.\n             Value define uses hex.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.vlan.tpid_conf_row_status",
+      "oid": "1.3.6.1.4.1.3902.1082.40.50.2.9.2.1.50",
+      "name": "zxAnVlanTpidConfRowStatus",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "Row",
+      "unit": null,
+      "scale": null,
+      "access": "read-create",
+      "enumeration": null,
+      "description": "The status of this conceptual row.\n            \n             The supported actions of this conceptual row only include:\n             'createAndGo' and 'destroy'.\n\n             To create a row in this table, a manager must set this object to \n             createAndGo(4), and must comply with the multi-variables binding \n             rule described in zxAnVlanTpidConfEntry.\n    \n             To delete a row in this table, a manager must set this object to \n             destroy(6). \n             \n             To get this object, the agent always returns 1.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.vlan.forwarding_ctrl_table",
+      "oid": "1.3.6.1.4.1.3902.1082.40.50.2.10.2",
+      "name": "zxAnVlanForwardingCtrlTable",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "SEQUENCE OF ZxAnVlanForwardingCtrlEntry",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": "A table containing VLAN forwarding control information.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.vlan.forwarding_ctrl_entry",
+      "oid": "1.3.6.1.4.1.3902.1082.40.50.2.10.2.1",
+      "name": "zxAnVlanForwardingCtrlEntry",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "ZxAnVlanForwardingCtrlEntry",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": "Entry for zxAnVlanForwardingCtrlTable.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.vlan.mcast_forwarding_ctrl",
+      "oid": "1.3.6.1.4.1.3902.1082.40.50.2.10.2.1.1",
+      "name": "zxAnVlanMcastForwardingCtrl",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-write",
+      "enumeration": {
+        "1": "floodUnknown",
+        "2": "dropUnknown",
+        "3": "floodAll"
+      },
+      "description": "The multicast packet forwarding control.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.vlan.protocol_filter_conf_table",
+      "oid": "1.3.6.1.4.1.3902.1082.40.50.2.11.2",
+      "name": "zxAnVlanProtocolFilterConfTable",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "SEQUENCE OF ZxAnVlanProtocolFilterConfEntry",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": "A table containing VLAN protocol filter information.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.vlan.protocol_filter_conf_entry",
+      "oid": "1.3.6.1.4.1.3902.1082.40.50.2.11.2.1",
+      "name": "zxAnVlanProtocolFilterConfEntry",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "ZxAnVlanProtocolFilterConfEntry",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": "Entry for zxAnVlanProtocolFilterConfTable.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.vlan.proto_filter_conf_eth_type",
+      "oid": "1.3.6.1.4.1.3902.1082.40.50.2.11.2.1.1",
+      "name": "zxAnVlanProtoFilterConfEthType",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-create",
+      "enumeration": {
+        "1": "pppoe",
+        "2": "ipoe"
+      },
+      "description": "EtherType.\n            pppoe(1) - EtherType is PPPoE.\n            ipoe(2)  - EtherType is IPoE.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.vlan.proto_filter_conf_row_status",
+      "oid": "1.3.6.1.4.1.3902.1082.40.50.2.11.2.1.50",
+      "name": "zxAnVlanProtoFilterConfRowStatus",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "Row",
+      "unit": null,
+      "scale": null,
+      "access": "read-create",
+      "enumeration": null,
+      "description": "The status of this conceptual row.\n\n             The supported actions of this conceptual row only include:\n             'createAndGo' and 'destroy'.\n\n             To create a row in this table, a manager must set this object to\n             createAndGo(4), and must comply with the multi-variables binding\n             rule described in zxAnVlanProtocolFilterConfEntry.\n\n             To delete a row in this table, a manager must set this object to\n             destroy(6).\n\n             To get this object, the agent always returns 1.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.vlan.tpid_filter_conf_table",
+      "oid": "1.3.6.1.4.1.3902.1082.40.50.2.12.2",
+      "name": "zxAnVlanTpidFilterConfTable",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "SEQUENCE OF ZxAnVlanTpidFilterConfEntry",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": "A table containing TPIDs to filter the packets.\n             Packets will be discarded when the TPID is mismatched.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.vlan.tpid_filter_conf_entry",
+      "oid": "1.3.6.1.4.1.3902.1082.40.50.2.12.2.1",
+      "name": "zxAnVlanTpidFilterConfEntry",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "ZxAnVlanTpidFilterConfEntry",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": "A zxAnVlanTpidFilterConfTable entry.\n             \n             When the S-tag TPID filtering is configured in the\n             zxAnVlanIfTpidFilterConfTable, the interface will filter the\n             packets with zxAnVlanIfTpidFilterStagTpid.\n             \n             When the S-tag TPID filtering is not configured in the\n             zxAnVlanIfTpidFilterConfTable, the interface will filter the\n             packets with zxAnVlanTpidFilterConfStagTpid.\n             \n             When the S-tag TPID filtering is not configured in the\n             zxAnVlanIfTpidFilterConfTable and zxAnVlanTpidFilterConfTable, it\n             means the S-tag TPID filtering is disabled.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.vlan.tpid_filter_conf_if_type",
+      "oid": "1.3.6.1.4.1.3902.1082.40.50.2.12.2.1.1",
+      "name": "zxAnVlanTpidFilterConfIfType",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": {
+        "1": "pon",
+        "2": "uplink",
+        "3": "ptp"
+      },
+      "description": "Interface type.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.vlan.tpid_filter_conf_stag_tpid",
+      "oid": "1.3.6.1.4.1.3902.1082.40.50.2.12.2.1.2",
+      "name": "zxAnVlanTpidFilterConfStagTpid",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "DisplayString",
+      "unit": null,
+      "scale": null,
+      "access": "read-create",
+      "enumeration": null,
+      "description": "Outer VLAN TPIDs.\n             This object indicates up to four outer VLAN TPIDs of the interface, \n             separated by commas, e.g., '0x8100', '0x8100,0x9100'.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.vlan.tpid_filter_conf_row_status",
+      "oid": "1.3.6.1.4.1.3902.1082.40.50.2.12.2.1.50",
+      "name": "zxAnVlanTpidFilterConfRowStatus",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "Row",
+      "unit": null,
+      "scale": null,
+      "access": "read-create",
+      "enumeration": null,
+      "description": "The status of this conceptual row.\n \n             The supported actions of this conceptual row only include:\n             'createAndGo' and 'destroy'.\n \n             To create a row in this table, a manager must set this object to\n             createAndGo(4), and must comply with the multi-variables binding\n             rule described in zxAnVlanTpidFilterConfEntry.\n \n             To delete a row in this table, a manager must set this object to\n             destroy(6).\n \n             To get this object, the agent always returns 1.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.vlan.if_tpid_filter_conf_table",
+      "oid": "1.3.6.1.4.1.3902.1082.40.50.2.12.3",
+      "name": "zxAnVlanIfTpidFilterConfTable",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "SEQUENCE OF ZxAnVlanIfTpidFilterConfEntry",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": "A table containing TPIDs of the interface to filter the packets.\n             Packets will be discarded when the TPID is mismatched.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.vlan.if_tpid_filter_conf_entry",
+      "oid": "1.3.6.1.4.1.3902.1082.40.50.2.12.3.1",
+      "name": "zxAnVlanIfTpidFilterConfEntry",
+      "mib_table": null,
+      "index": {
+        "type": "composite",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "ZxAnVlanIfTpidFilterConfEntry",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": "A zxAnVlanIfTpidFilterConfTable entry.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.vlan.if_tpid_filter_stag_tpid",
+      "oid": "1.3.6.1.4.1.3902.1082.40.50.2.12.3.1.1",
+      "name": "zxAnVlanIfTpidFilterStagTpid",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "DisplayString",
+      "unit": null,
+      "scale": null,
+      "access": "read-create",
+      "enumeration": null,
+      "description": "Outer VLAN TPIDs.\n             This object indicates up to four outer VLAN TPIDs of the interface,\n             separated by commas, e.g., '0x8100', '0x8100,0x9100'.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.vlan.if_tpid_filter_row_status",
+      "oid": "1.3.6.1.4.1.3902.1082.40.50.2.12.3.1.50",
+      "name": "zxAnVlanIfTpidFilterRowStatus",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "Row",
+      "unit": null,
+      "scale": null,
+      "access": "read-create",
+      "enumeration": null,
+      "description": "The status of this conceptual row.\n\n             The supported actions of this conceptual row only include:\n             'createAndGo' and 'destroy'.\n\n             To create a row in this table, a manager must set this object to\n             createAndGo(4), and must comply with the multi-variables binding\n             rule described in zxAnVlanIfTpidFilterConfEntry.\n\n             To delete a row in this table, a manager must set this object to\n             destroy(6).\n\n             To get this object, the agent always returns 1.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.vlan.copy_cos_to_inner_table",
+      "oid": "1.3.6.1.4.1.3902.1082.40.50.2.13.2",
+      "name": "zxAnVlanCopyCosToInnerTable",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "SEQUENCE OF ZxAnVlanCopyCosToInnerEntry",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": "A table containing modifying inner CoS information.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.vlan.copy_cos_to_inner_entry",
+      "oid": "1.3.6.1.4.1.3902.1082.40.50.2.13.2.1",
+      "name": "zxAnVlanCopyCosToInnerEntry",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "ZxAnVlanCopyCosToInnerEntry",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": "Entry for zxAnVlanCopyCosToInnerTable.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.vlan.copy_cos_to_inner_direction",
+      "oid": "1.3.6.1.4.1.3902.1082.40.50.2.13.2.1.1",
+      "name": "zxAnVlanCopyCosToInnerDirection",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-create",
+      "enumeration": {
+        "1": "ingress"
+      },
+      "description": "Direction.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.vlan.copy_cos_to_inner_mode",
+      "oid": "1.3.6.1.4.1.3902.1082.40.50.2.13.2.1.2",
+      "name": "zxAnVlanCopyCosToInnerMode",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-create",
+      "enumeration": {
+        "1": "networkSide"
+      },
+      "description": "networkSide(1) - The rule is used in network side.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.vlan.copy_cos_to_inner_row_status",
+      "oid": "1.3.6.1.4.1.3902.1082.40.50.2.13.2.1.50",
+      "name": "zxAnVlanCopyCosToInnerRowStatus",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "Row",
+      "unit": null,
+      "scale": null,
+      "access": "read-create",
+      "enumeration": null,
+      "description": "The status of this conceptual row.\n\n             The supported actions of this conceptual row only include:\n             'createAndGo' and 'destroy'.\n\n             To create a row in this table, a manager must set this object to\n             createAndGo(4), and must comply with the multi-variables binding\n             rule described in zxAnVlanCopyCosToInnerEntry.\n\n             To delete a row in this table, a manager must set this object to\n             destroy(6).\n\n             To get this object, the agent always returns 1.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.vlan.copy_cos_to_outer_table",
+      "oid": "1.3.6.1.4.1.3902.1082.40.50.2.13.3",
+      "name": "zxAnVlanCopyCosToOuterTable",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "SEQUENCE OF ZxAnVlanCopyCosToOuterEntry",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": "A table containing modifying outer CoS information.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.vlan.copy_cos_to_outer_entry",
+      "oid": "1.3.6.1.4.1.3902.1082.40.50.2.13.3.1",
+      "name": "zxAnVlanCopyCosToOuterEntry",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "ZxAnVlanCopyCosToOuterEntry",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": "Entry for zxAnVlanCopyCosToOuterTable.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.vlan.copy_cos_to_outer_direction",
+      "oid": "1.3.6.1.4.1.3902.1082.40.50.2.13.3.1.1",
+      "name": "zxAnVlanCopyCosToOuterDirection",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-create",
+      "enumeration": {
+        "1": "ingress"
+      },
+      "description": "Direction.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.vlan.copy_cos_to_outer_mode",
+      "oid": "1.3.6.1.4.1.3902.1082.40.50.2.13.3.1.2",
+      "name": "zxAnVlanCopyCosToOuterMode",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-create",
+      "enumeration": {
+        "1": "networkSide"
+      },
+      "description": "networkSide(1) - The rule is used in network side.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.vlan.copy_cos_to_outer_row_status",
+      "oid": "1.3.6.1.4.1.3902.1082.40.50.2.13.3.1.50",
+      "name": "zxAnVlanCopyCosToOuterRowStatus",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "Row",
+      "unit": null,
+      "scale": null,
+      "access": "read-create",
+      "enumeration": null,
+      "description": "The status of this conceptual row.\n\n             The supported actions of this conceptual row only include:\n             'createAndGo' and 'destroy'.\n\n             To create a row in this table, a manager must set this object to\n             createAndGo(4), and must comply with the multi-variables binding\n             rule described in zxAnVlanCopyCosToInnerEntry.\n\n             To delete a row in this table, a manager must set this object to\n             destroy(6).\n\n             To get this object, the agent always returns 1.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    }
+  ]
+}

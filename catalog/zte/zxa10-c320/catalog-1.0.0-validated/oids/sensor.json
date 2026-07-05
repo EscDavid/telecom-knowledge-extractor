@@ -1,0 +1,1144 @@
+{
+  "entity_ref": "entity.zte.gpon.hardware.sensor",
+  "vendor": "ZTE",
+  "family": "ZXA10 C320",
+  "firmware": [
+    "2.0",
+    "2.1"
+  ],
+  "oids": [
+    {
+      "id": "oid.zte.gpon.sensor.env_param_table",
+      "oid": "1.3.6.1.4.1.3902.1082.10.10.2.1.5",
+      "name": "zxAnEnvParamTable",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "SEQUENCE OF ZxAnEnvParamEntry",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": "This table includes environment temperature information.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.sensor.env_param_entry",
+      "oid": "1.3.6.1.4.1.3902.1082.10.10.2.1.5.1",
+      "name": "zxAnEnvParamEntry",
+      "mib_table": null,
+      "index": {
+        "type": "composite",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "ZxAnEnvParamEntry",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": "The entry of zxAnEnvParamTable.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.sensor.env_rack",
+      "oid": "1.3.6.1.4.1.3902.1082.10.10.2.1.5.1.1",
+      "name": "zxAnEnvRack",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": "The index of rack.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.sensor.env_temp_high_alm_threshold",
+      "oid": "1.3.6.1.4.1.3902.1082.10.10.2.1.5.1.4",
+      "name": "zxAnEnvTempHighAlmThreshold",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": "Centigrade",
+      "scale": null,
+      "access": "read-write",
+      "enumeration": null,
+      "description": "The temperature high alarm threshold of the environment.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.sensor.env_temp_low_alm_threshold",
+      "oid": "1.3.6.1.4.1.3902.1082.10.10.2.1.5.1.6",
+      "name": "zxAnEnvTempLowAlmThreshold",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": "Centigrade",
+      "scale": null,
+      "access": "read-write",
+      "enumeration": null,
+      "description": "The temperature low alarm threshold of the environment.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.sensor.env_slot",
+      "oid": "1.3.6.1.4.1.3902.1082.10.10.2.1.6.1.1",
+      "name": "zxAnEnvSlot",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": "The index of slot, the range is [0,20] of 19-inch\n                         shelf and [0,22] of 21-inch shelf.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.sensor.env_overheat_protect_table",
+      "oid": "1.3.6.1.4.1.3902.1082.10.10.2.1.13",
+      "name": "zxAnEnvOverheatProtectTable",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "SEQUENCE OF ZxAnEnvOverheatProtectEntry",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": "Environment overheat protection table.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.sensor.env_overheat_protect_entry",
+      "oid": "1.3.6.1.4.1.3902.1082.10.10.2.1.13.1",
+      "name": "zxAnEnvOverheatProtectEntry",
+      "mib_table": null,
+      "index": {
+        "type": "composite",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "ZxAnEnvOverheatProtectEntry",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": "Environment overheat protection entry.\n\n            To modify zxAnEnvOverheatProtectEnable from disabled to enabled,   \n            zxAnEnvOverheatProtectEnable is mandatory,\n            zxAnEnvOverheatProtectDelay is optional.\n\n            To  modify zxAnEnvOverheatProtectEnable from enabled to disabled, \n            only zxAnEnvOverheatProtectEnable is mandatory.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.sensor.env_overheat_protect_enable",
+      "oid": "1.3.6.1.4.1.3902.1082.10.10.2.1.13.1.1",
+      "name": "zxAnEnvOverheatProtectEnable",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-write",
+      "enumeration": {
+        "1": "enabled",
+        "2": "disabled"
+      },
+      "description": "Enables or disables the environment overheat protection function.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.sensor.env_overheat_protect_delay",
+      "oid": "1.3.6.1.4.1.3902.1082.10.10.2.1.13.1.2",
+      "name": "zxAnEnvOverheatProtectDelay",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": "minutes",
+      "scale": null,
+      "access": "read-write",
+      "enumeration": null,
+      "description": "The delaying time between two steps.\n            For example, when temperature is higher than the threshold, takes an \n            action as the step 1, and delays the value of \n            zxAnEnvOverheatProtectDelay, if the temperature is still higher than\n            the threshold, takes an action as step 2.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.sensor.env_overheat_protect_first_step",
+      "oid": "1.3.6.1.4.1.3902.1082.10.10.2.1.13.1.3",
+      "name": "zxAnEnvOverheatProtectFirstStep",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "ZxAnEnvShutdownServiceType",
+      "unit": null,
+      "scale": null,
+      "access": "read-write",
+      "enumeration": null,
+      "description": "The first step when the environment temperature exceeds \n            zxAnEnvTempHighAlmThreshold.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.sensor.env_overheat_protect_second_step",
+      "oid": "1.3.6.1.4.1.3902.1082.10.10.2.1.13.1.4",
+      "name": "zxAnEnvOverheatProtectSecondStep",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "ZxAnEnvShutdownServiceType",
+      "unit": null,
+      "scale": null,
+      "access": "read-write",
+      "enumeration": null,
+      "description": "The second step when the environment temperature still exceeds \n            zxAnEnvTempHighAlmThreshold after first step has been done.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.sensor.env_mon_interface_table",
+      "oid": "1.3.6.1.4.1.3902.1082.10.10.2.2.5",
+      "name": "zxAnEnvMonInterfaceTable",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "SEQUENCE OF ZxAnEnvMonInterfaceEntry",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": "This table includes the environment interface information.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.sensor.env_mon_interface_entry",
+      "oid": "1.3.6.1.4.1.3902.1082.10.10.2.2.5.1",
+      "name": "zxAnEnvMonInterfaceEntry",
+      "mib_table": null,
+      "index": {
+        "type": "composite",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "ZxAnEnvMonInterfaceEntry",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": "The entry of zxAnEnvMonInterfaceTable.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.sensor.env_mon_interface_usage",
+      "oid": "1.3.6.1.4.1.3902.1082.10.10.2.2.5.1.1",
+      "name": "zxAnEnvMonInterfaceUsage",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-write",
+      "enumeration": {
+        "1": "epm",
+        "2": "fanTray",
+        "3": "noUse",
+        "4": "noSupport",
+        "5": "etmWithTestSubcard",
+        "6": "etmWithoutTestSubcard"
+      },
+      "description": "The equipment type connected to the environment monitor interface.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.sensor.env_epm_connect_port",
+      "oid": "1.3.6.1.4.1.3902.1082.10.10.2.2.5.1.2",
+      "name": "zxAnEnvEpmConnectPort",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-write",
+      "enumeration": {
+        "1": "port0",
+        "2": "port1",
+        "255": "notconfigured"
+      },
+      "description": "The port no which epm connect",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.sensor.env_backplane_interface_usage",
+      "oid": "1.3.6.1.4.1.3902.1082.10.10.2.2.5.1.3",
+      "name": "zxAnEnvBackplaneInterfaceUsage",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-write",
+      "enumeration": {
+        "1": "fan",
+        "3": "noUse",
+        "255": "noSupport"
+      },
+      "description": "The equipment type connected to the Backplane Interface.\n            fan(1): the fan connect to the Backplane Interface;\n            noUse(3): not used;\n            noSupport(255):not support.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.sensor.env_energy_saving_level",
+      "oid": "1.3.6.1.4.1.3902.1082.10.10.2.3.1.8",
+      "name": "zxAnEnvEnergySavingLevel",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-write",
+      "enumeration": {
+        "1": "level1",
+        "2": "level2",
+        "3": "level3"
+      },
+      "description": "level1(1): Level 1 means that the energy saving module action will \n                        be taken automatically while the following conditions \n                        are detected:\n                        1. There is no card plugged in the slot or the card \n                        plugged in the slot has been power off.\n                        2. The actual card type is not same as the configured \n                        card type.\n             level2(2): Level 2 means that the energy saving module action will \n                        be taken automatically while the following conditions\n                        are detected:\n                        1. There is no card plugged in the slot or the card \n                        plugged in the slot has been power off.\n                        2. The actual card type is not same as the configured \n                        card type.\n                        3. There is no ONU which is configured on the card or \n                        on the port.\n             level3(3): Level 3 means that the energy saving module action will \n                        be taken automatically while the following conditions\n                        are detected:\n                        1. There is no card plugged in the slot or the card \n                        plugged in the slot has been power off.\n                        2. The actual card type is not same as the configured \n                        card type.\n                        3. There is no ONU which is configured on the card or \n                        on the port.\n                        4. If all the uplink ports down, all the cards except\n                        the uplink card will be power off.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.sensor.env_energy_saving_table",
+      "oid": "1.3.6.1.4.1.3902.1082.10.10.2.3.12",
+      "name": "zxAnEnvEnergySavingTable",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "SEQUENCE OF ZxAnEnvEnergySavingEntry",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": "The energy saving status table of the NE.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.sensor.env_energy_saving_entry",
+      "oid": "1.3.6.1.4.1.3902.1082.10.10.2.3.12.1",
+      "name": "zxAnEnvEnergySavingEntry",
+      "mib_table": null,
+      "index": {
+        "type": "composite",
+        "bit_calculation": true,
+        "components": [
+          {
+            "name": "zxanenvenergysavingrack",
+            "bits": ""
+          },
+          {
+            "name": "shelf",
+            "bits": "31-28"
+          },
+          {
+            "name": "slot",
+            "bits": "27-24"
+          },
+          {
+            "name": "port",
+            "bits": "23-20"
+          }
+        ]
+      },
+      "syntax": "ZxAnEnvEnergySavingEntry",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": "An entry in zxAnEnvEnergySavingTable.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.sensor.env_energy_saving_rack",
+      "oid": "1.3.6.1.4.1.3902.1082.10.10.2.3.12.1.1",
+      "name": "zxAnEnvEnergySavingRack",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": "The rack number.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.sensor.env_energy_saving_slot",
+      "oid": "1.3.6.1.4.1.3902.1082.10.10.2.3.12.1.3",
+      "name": "zxAnEnvEnergySavingSlot",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": "The slot number.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.sensor.env_energy_saving_port",
+      "oid": "1.3.6.1.4.1.3902.1082.10.10.2.3.12.1.4",
+      "name": "zxAnEnvEnergySavingPort",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": "The port number. \n             If the card is power off, this object will be set to 255.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.sensor.env_device_table",
+      "oid": "1.3.6.1.4.1.3902.1082.10.10.2.5.2",
+      "name": "zxAnEnvDeviceTable",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "SEQUENCE OF ZxAnEnvDeviceEntry",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": "The table of environment device.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.sensor.env_device_entry",
+      "oid": "1.3.6.1.4.1.3902.1082.10.10.2.5.2.1",
+      "name": "zxAnEnvDeviceEntry",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "ZxAnEnvDeviceEntry",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": "The entry of the zxAnEnvDeviceTable.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.sensor.env_device_id",
+      "oid": "1.3.6.1.4.1.3902.1082.10.10.2.5.2.1.1",
+      "name": "zxAnEnvDeviceId",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": "The ID of this environment device.\n            Value 1-50 is default value which can not be modified or deleted.\n            If add a new device, the ID will be starting from 51.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.sensor.env_device_name",
+      "oid": "1.3.6.1.4.1.3902.1082.10.10.2.5.2.1.2",
+      "name": "zxAnEnvDeviceName",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "DisplayString",
+      "unit": null,
+      "scale": null,
+      "access": "read-create",
+      "enumeration": null,
+      "description": "The name of the environment device.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.sensor.env_device_row_status",
+      "oid": "1.3.6.1.4.1.3902.1082.10.10.2.5.2.1.50",
+      "name": "zxAnEnvDeviceRowStatus",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "Row",
+      "unit": null,
+      "scale": null,
+      "access": "read-create",
+      "enumeration": null,
+      "description": "The status of this conceptual row.\n            \n            The supported actions of this conceptual row only include:\n            'createAndGo' and 'destroy'.\n\n            To create a row in this table, a manager must set this object to\n            createAndGo(4).\n    \n            To delete a row in this table, a manager must set this object to\n            destroy(6).\n             \n            To get this object, the agent always returns active(1).",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.sensor.env_dev_mon_switch_table",
+      "oid": "1.3.6.1.4.1.3902.1082.10.10.2.5.3",
+      "name": "zxAnEnvDevMonSwitchTable",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "SEQUENCE OF ZxAnEnvDevMonSwitchEntry",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": "The table of the switch which monitors environment device.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.sensor.env_dev_mon_switch_entry",
+      "oid": "1.3.6.1.4.1.3902.1082.10.10.2.5.3.1",
+      "name": "zxAnEnvDevMonSwitchEntry",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "ZxAnEnvDevMonSwitchEntry",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": "The entry of the zxAnEnvDevMonSwitchTable.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.sensor.env_dev_mon_switch_id",
+      "oid": "1.3.6.1.4.1.3902.1082.10.10.2.5.3.1.1",
+      "name": "zxAnEnvDevMonSwitchId",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": "The ID of the switch.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.sensor.env_dev_mon_switch_device_id",
+      "oid": "1.3.6.1.4.1.3902.1082.10.10.2.5.3.1.2",
+      "name": "zxAnEnvDevMonSwitchDeviceId",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-write",
+      "enumeration": null,
+      "description": "The ID of the device which monitored by the switch. \n             Value 0 means this switch does not monitor any device.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.sensor.env_dev_mon_switch_trap_enable",
+      "oid": "1.3.6.1.4.1.3902.1082.10.10.2.5.3.1.3",
+      "name": "zxAnEnvDevMonSwitchTrapEnable",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-write",
+      "enumeration": {
+        "1": "enabled",
+        "2": "disabled"
+      },
+      "description": "Enables or disables the environment device abnormal trap.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.sensor.env_dev_mon_switch_normal_status",
+      "oid": "1.3.6.1.4.1.3902.1082.10.10.2.5.3.1.4",
+      "name": "zxAnEnvDevMonSwitchNormalStatus",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-write",
+      "enumeration": {
+        "1": "lowLevel",
+        "2": "highLevel"
+      },
+      "description": "The normal status of the environment device.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    }
+  ]
+}

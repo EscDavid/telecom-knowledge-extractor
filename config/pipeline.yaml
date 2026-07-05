@@ -1,0 +1,58 @@
+# =============================================================================
+# Telecom Knowledge Compiler (TKC) — configuración del pipeline
+# Fase actual: generación de catálogos JSON en catalog/ (sin BD)
+# =============================================================================
+
+paths:
+  docs: docs/
+  schemas: schemas/
+  catalog: catalog/
+  walks: docs/walks/        # Fase 2 — snmpwalks reales (VENDOR_MODELO.txt)
+  validation: docs/validation/  # Fase 2 — fuentes de validación/correlación (community, etc.)
+  logs: logs/
+  reports: reports/
+  research: research/
+
+# Fase 2 — validación empírica por walk. Cruza un snmpwalk real contra el catálogo
+# teórico, confirma OIDs (→ verified) y especializa un catálogo por modelo podando
+# lo que el walk demuestra que no es útil.
+walk_validator:
+  seed_from_family: "ZXA10 C320"    # backbone teórico usado como semilla
+  prune_unconfirmed_readonly: true  # poda OIDs read-only sin respaldo empírico
+  halt_on_blocking: true            # detener el procesado ante hallazgos críticos
+  single_shelf: true                # equipos de un solo shelf (rack=1); acepta shelf/rack
+                                    # con nota de revalidación futura en multi-shelf
+  # Las decisiones del operador van en docs/walks/resolutions.json:
+  #   { "ZXA10 C300": { "bitcalc_validation": "accept" } }
+  # accept = aplicar la corrección propuesta; reject = mantener y marcar no validado.
+
+pipeline:
+  vendor: ZTE
+  family: ZXA10 C320
+  technology: gpon
+  firmware: ["2.0", "2.1"]
+  current_firmware: "2.1"
+  catalog_version: "1.0.0"
+
+classifier:
+  # Umbral mínimo de confianza agregada para clasificar un documento.
+  min_confidence: 0.5
+  # Vendors registrados (espejo de los seeds de tkc_vendors en el schema SQL).
+  # Si un documento detecta un vendor fuera de esta lista → unclassified.
+  known_vendors: ["ZTE", "Huawei", "VSOL"]
+  # Nº de páginas iniciales que se inspeccionan para la capa header_text.
+  header_pages: 3
+
+# Fase DB — Loader del catálogo a MySQL (isp_catalog, base aparte).
+# El password NUNCA va aquí: se lee de la variable de entorno password_env
+# (o se pide oculto por prompt en `load`). Ver docs/db_loader_design.md.
+database:
+  host: 157.137.210.239        # instancia prod (misma que db_auth/isp_management)
+  port: 3306
+  name: isp_catalog
+  user: tkc_loader             # grants acotados: INSERT tkc_*+active_sessions, SELECT db_auth.users
+  password_env: TKC_DB_PASSWORD
+# DB de auth (solo lectura, para el factor 1):
+auth_database:
+  name: db_auth
+  superadmin_role_id: "ed392bf3-272d-11f1-a6e3-42010a400002"   # rol "Super Admin" (pineado por id)

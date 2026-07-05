@@ -1,0 +1,105 @@
+{
+  "spec_name": "CONFIDENCE_MODEL",
+  "version": "1.0.0",
+  "purpose": "Define cómo se calcula, actualiza e interpreta el valor de confianza de cada artefacto",
+
+  "principle": "Confianza mide qué tan fiable es la PROCEDENCIA de un dato: la autoridad del formato donde aparece (un MIB ASN.1 legible por máquina es determinista; un PDF de catálogo es narrativo) por la calidad de la extracción, más un bonus si fuentes independientes lo corroboran. No mide si el dato es semánticamente correcto.",
+
+  "doc_type_weights": {
+    "command_reference": 0.40,
+    "mib_file": 0.30,
+    "initial_configuration": 0.20,
+    "product_catalog": 0.07,
+    "mib_specification": 0.03,
+    "sum": 1.00,
+    "_note": "doc_type_weights queda como referencia histórica de la importancia relativa; el cálculo de extraction ahora usa format_authority (ver abajo)."
+  },
+
+  "format_authority": {
+    "_description": "Qué tan autoritativo es el FORMATO para afirmar que el artefacto existe. Un MIB es una especificación formal legible por máquina (determinista); un catálogo es prosa.",
+    "mib_file": 1.00,
+    "command_reference": 0.95,
+    "alarm_reference": 0.85,
+    "initial_configuration": 0.85,
+    "mib_specification": 0.80,
+    "hardware_description": 0.70,
+    "product_catalog": 0.55
+  },
+
+  "authoritative_threshold": 0.80,
+  "_authoritative_threshold_note": "Una fuente con format_authority >= este umbral se considera autoritativa: no recibe el penalti single_source aunque sea la única, porque su formato ya garantiza la procedencia.",
+
+  "corroboration_bonus_per_extra_source": 0.10,
+  "_corroboration_note": "Cada doc_type distinto adicional que confirma el artefacto suma este bonus a extraction (tope 1.0). Refleja el principio histórico de 'cuántas fuentes lo confirman' sin diluir a la fuente única autoritativa.",
+
+  "extraction_quality_factors": {
+    "direct_with_page": 1.00,
+    "direct_without_page": 0.85,
+    "inferred_by_context": 0.60,
+    "inferred_by_correlation": 0.40,
+    "deduced_without_evidence": 0.20
+  },
+
+  "formula": "extraction = max(format_authority[doc] * extraction_quality[doc]) + corroboration_bonus * (n_doc_types_distintos - 1), tope 1.0",
+
+  "three_dimensions": {
+    "extraction": {
+      "description": "Autoridad del formato x calidad de extracción de la mejor fuente, + bonus por corroboración",
+      "weight_in_overall": 1.00
+    },
+    "correlation": {
+      "description": "Consistencia entre documentos al cruzar información; actúa como BONUS aditivo, no como requisito",
+      "weight_in_overall": 0.40
+    },
+    "overall": {
+      "formula": "min(1.0, extraction + correlation * 0.4)",
+      "note": "extraction es la base (la procedencia ya basta para confiar); la correlación solo SUMA cuando hay corroboración cruzada. Antes la correlación era un 40% obligatorio que hundía a cualquier fuente única, incluso un MIB determinista."
+    }
+  },
+
+  "penalties": [
+    { "condition": "Conflicto sin resolver entre fuentes", "penalty": -0.20 },
+    { "condition": "Alias ambiguo sin resolver", "penalty": -0.10 },
+    { "condition": "Único documento fuente NO autoritativo (format_authority < authoritative_threshold)", "penalty": -0.15, "note": "No aplica si la única fuente es de formato autoritativo (ej. un MIB): su procedencia ya es determinista." },
+    { "condition": "Extracción solo por inferencia", "penalty": -0.25 },
+    { "condition": "Versión de firmware no confirmada", "penalty": -0.05 }
+  ],
+
+  "status_thresholds": {
+    "verified": ">= 0.90",
+    "documented": ">= 0.70",
+    "observed": ">= 0.50",
+    "inferred": ">= 0.30",
+    "manual_review": "< 0.30",
+    "exception": "conflicto activo sin resolver → conflicted independiente del overall"
+  },
+
+  "conflict_resolution_effect": {
+    "source_a_wins": { "penalty": -0.05, "note": "conflicto resuelto automáticamente" },
+    "source_b_wins": { "penalty": -0.05 },
+    "manual": { "penalty": 0, "note": "resolución humana es autoritativa" },
+    "unresolved": { "penalty": -0.20 }
+  },
+
+  "propagation": {
+    "relations": {
+      "rule": "relation.confidence.overall <= min(source_entity.overall, target_entity.overall)",
+      "description": "La confianza de una relación no puede ser mayor que la confianza mínima de las entidades que conecta"
+    },
+    "alarms": {
+      "rule": "alarm.confidence.overall <= min(entity_ref.overall, min(oid_refs[].overall))",
+      "description": "Una alarma hereda restricciones de su entidad y sus OID refs"
+    }
+  },
+
+  "recalculation_triggers": [
+    { "phase": "Post-extracción", "action": "Cada artefacto calcula extraction confidence" },
+    { "phase": "Post-correlación", "action": "Cada artefacto calcula correlation + propagación" },
+    { "phase": "Post-validación", "action": "Se aplican penalizaciones, se actualizan status, se recalcula overall" }
+  ],
+
+  "db_mapping": {
+    "columns": ["confidence_extraction", "confidence_correlation", "confidence_overall"],
+    "tables": ["tkc_entities", "tkc_commands", "tkc_oids", "tkc_relations", "tkc_alarms"]
+  }
+}

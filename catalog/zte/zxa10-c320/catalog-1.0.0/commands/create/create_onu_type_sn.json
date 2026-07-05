@@ -1,0 +1,64 @@
+{
+  "id": "command.zte.gpon.onu.create",
+  "canonical_name": "create onu type sn",
+  "vendor": "ZTE",
+  "family": "ZXA10 C320",
+  "firmware": [
+    "2.0",
+    "2.1"
+  ],
+  "technology": "gpon",
+  "category": "create",
+  "cli_mode": "interface_config",
+  "entity_ref": "entity.zte.gpon.device.onu",
+  "description": "Elimina una ONU registrada de un puerto PON.",
+  "syntax": "create onu {onu-id} type {onu-type} sn {onu-sn}",
+  "parameters": [
+    {
+      "name": "onu-id",
+      "type": "string",
+      "pattern": null,
+      "range": null,
+      "required": true,
+      "description": null,
+      "example": null
+    },
+    {
+      "name": "onu-type",
+      "type": "string",
+      "pattern": null,
+      "range": null,
+      "required": true,
+      "description": null,
+      "example": null
+    },
+    {
+      "name": "onu-sn",
+      "type": "string",
+      "pattern": null,
+      "range": null,
+      "required": true,
+      "description": null,
+      "example": null
+    }
+  ],
+  "output_fields": [],
+  "prerequisites": [
+    "interface gpon-olt {gpon-olt-index}"
+  ],
+  "related_commands": [],
+  "sources": [
+    {
+      "doc_type": "command_reference",
+      "pages": null,
+      "confidence": 0.4
+    }
+  ],
+  "confidence": {
+    "extraction": 0.95,
+    "correlation": 0.0,
+    "overall": 0.95
+  },
+  "status": "verified",
+  "conflicts": []
+}

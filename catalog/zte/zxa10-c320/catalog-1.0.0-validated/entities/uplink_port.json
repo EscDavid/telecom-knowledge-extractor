@@ -1,0 +1,43 @@
+{
+  "id": "entity.zte.gpon.port.uplink_port",
+  "canonical_name": "Uplink Port",
+  "vendor": "ZTE",
+  "family": "ZXA10 C320",
+  "firmware": [
+    "2.0",
+    "2.1"
+  ],
+  "technology": "gpon",
+  "type": "port",
+  "description": "Puerto de enlace ascendente (uplink) del OLT (GE/10GE).",
+  "is_critical": false,
+  "aliases": [],
+  "attributes": [],
+  "sources": [
+    {
+      "doc_type": "mib_file",
+      "pages": null,
+      "confidence": 0.3
+    }
+  ],
+  "confidence": {
+    "extraction": 0.85,
+    "correlation": 0.0,
+    "overall": 0.85
+  },
+  "status": "verified_walk",
+  "lifecycle": {
+    "introduced_in": "2.0",
+    "deprecated_in": null,
+    "removed_in": null,
+    "status": "introduced",
+    "replacement": null
+  },
+  "relations": [],
+  "conflicts": [],
+  "empirical": {
+    "via": "ifTable (ifType=6)",
+    "ports": 8,
+    "source": "ZTE_C320_ifnames.txt"
+  }
+}

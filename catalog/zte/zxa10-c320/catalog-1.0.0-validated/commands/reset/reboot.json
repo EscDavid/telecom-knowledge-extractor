@@ -1,0 +1,44 @@
+{
+  "id": "command.zte.gpon.global.reset",
+  "canonical_name": "reboot",
+  "vendor": "ZTE",
+  "family": "ZXA10 C320",
+  "firmware": [
+    "2.0",
+    "2.1"
+  ],
+  "technology": "gpon",
+  "category": "reset",
+  "cli_mode": "global_config",
+  "entity_ref": null,
+  "description": null,
+  "syntax": "reboot [slot]",
+  "parameters": [
+    {
+      "name": "slot",
+      "type": "flag",
+      "pattern": null,
+      "range": null,
+      "required": false,
+      "description": null,
+      "example": null
+    }
+  ],
+  "output_fields": [],
+  "prerequisites": [],
+  "related_commands": [],
+  "sources": [
+    {
+      "doc_type": "command_reference",
+      "pages": null,
+      "confidence": 0.4
+    }
+  ],
+  "confidence": {
+    "extraction": 0.95,
+    "correlation": 0.0,
+    "overall": 0.95
+  },
+  "status": "verified",
+  "conflicts": []
+}

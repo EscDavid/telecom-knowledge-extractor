@@ -1,0 +1,25 @@
+2026-06-27 13:01:17,125 INFO tkc.main: === TKC pipeline iniciado (ZTE ZXA10 C320) ===
+2026-06-27 13:01:17,126 INFO tkc.classifier: Classifier: 4 archivo(s) encontrado(s) en docs
+2026-06-27 13:01:17,126 WARNING tkc.util: Tipo de archivo no soportado para lectura de texto: .gitkeep
+2026-06-27 13:01:17,127 INFO tkc.classifier:   .gitkeep → vendor=None family=None doc_type=None conf=0.00 status=unclassified
+2026-06-27 13:01:17,897 INFO tkc.classifier:   command_reference.pdf → vendor=ZTE family=ZXA10 C320 doc_type=command_reference conf=1.00 status=classified
+2026-06-27 13:01:21,141 INFO tkc.classifier:   hardware_description.pdf → vendor=ZTE family=ZXA10 C320 doc_type=hardware_description conf=1.00 status=classified
+2026-06-27 13:01:21,458 INFO tkc.classifier:   mib_specification.pdf → vendor=ZTE family=ZXA10 C320 doc_type=mib_specification conf=1.00 status=classified
+2026-06-27 13:01:21,458 WARNING tkc.extractor: Saltando documento unclassified: .gitkeep
+2026-06-27 13:01:21,459 INFO tkc.extractor.cmd: CommandExtractor: 4 comando(s)
+2026-06-27 13:01:21,559 INFO tkc.extractor.entity: EntityExtractor(hardware_description): 5 entidad(es)
+2026-06-27 13:01:21,559 INFO tkc.extractor.entity: EntityExtractor(mib_specification): 0 entidad(es)
+2026-06-27 13:01:21,560 INFO tkc.extractor.mib: MibExtractor: 0 OBJECT-TYPE extraídos
+2026-06-27 13:01:21,561 INFO tkc.extractor: Extractor: 5 entidades, 4 comandos, 0 OIDs, 0 alarmas (brutos)
+2026-06-27 13:01:21,561 INFO tkc.normalizer: Normalizer: 5 entidades, 5 aliases, 0 ambiguos
+2026-06-27 13:01:21,561 INFO tkc.correlator: Correlator: 3 relaciones derivadas
+2026-06-27 13:01:21,562 INFO tkc.validator: Validator: 1 conflictos/huérfanos registrados
+2026-06-27 13:01:21,564 INFO tkc.writer: Catálogo escrito en catalog/zte/zxa10-c320/catalog-1.0.0
+2026-06-27 13:01:21,564 INFO tkc.main: Catálogo generado en catalog/zte/zxa10-c320/catalog-1.0.0
+2026-06-27 13:01:21,564 INFO tkc.main:   entities  : 5
+2026-06-27 13:01:21,564 INFO tkc.main:   commands  : 4
+2026-06-27 13:01:21,564 INFO tkc.main:   oids      : 0
+2026-06-27 13:01:21,564 INFO tkc.main:   relations : 3
+2026-06-27 13:01:21,564 INFO tkc.main:   alarms    : 0
+2026-06-27 13:01:21,564 INFO tkc.main:   conflicts : 0
+2026-06-27 13:01:21,564 INFO tkc.main:   orphans   : 1

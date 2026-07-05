@@ -1,0 +1,137 @@
+{
+  "spec_name": "SCHEMA_SPEC_COMMANDS",
+  "version": "1.0.0",
+  "purpose": "Define el JSON intermedio que el Compiler produce para comandos CLI",
+
+  "file_structure": {
+    "location": "knowledge-dist/{vendor}/{family}/catalog-{version}/commands/{category}/",
+    "naming": "{category}-{entity_name}.json",
+    "example": "knowledge-dist/zte/zxa10-c320/catalog-1.0.0/commands/show/show-onu.json"
+  },
+
+  "id_construction": {
+    "pattern": "command.{vendor}.{technology}.{entity}.{category}",
+    "examples": [
+      "command.zte.gpon.onu.show",
+      "command.zte.gpon.onu.show_detail",
+      "command.zte.gpon.onu.create",
+      "command.zte.gpon.onu.delete",
+      "command.zte.gpon.vlan.create",
+      "command.zte.gpon.global.save",
+      "command.zte.gpon.global.enable"
+    ]
+  },
+
+  "valid_categories": {
+    "show": "lectura de estado",
+    "create": "creación de entidad",
+    "delete": "eliminación",
+    "modify": "modificación de atributos",
+    "enable": "activación",
+    "disable": "desactivación",
+    "reset": "reinicio",
+    "diagnose": "diagnóstico y test"
+  },
+
+  "valid_cli_modes": {
+    "user_exec": "modo básico >",
+    "privileged_exec": "modo #",
+    "global_config": "modo (config)#",
+    "interface_config": "modo (config-if)#",
+    "pon_config": "modo (config-pon)#"
+  },
+
+  "schema": {
+    "id": { "type": "string", "required": true },
+    "canonical_name": { "type": "string", "required": true, "example": "show onu" },
+    "vendor": { "type": "string", "required": true },
+    "family": { "type": "string", "required": true },
+    "firmware": { "type": "array<string>", "required": true },
+    "technology": { "type": "string", "required": true },
+    "category": { "type": "enum", "required": true },
+    "cli_mode": { "type": "enum", "required": true },
+    "entity_ref": { "type": "string|null", "required": false, "description": "NULL para comandos globales como save, enable, reload" },
+    "description": { "type": "string", "required": false },
+    "syntax": { "type": "string", "required": true, "example": "show onu {interface} {onu-id} [detail]" },
+    "parameters": {
+      "type": "array",
+      "required": true,
+      "item_schema": {
+        "name": "string",
+        "type": "string — integer|string|flag|enum",
+        "pattern": "string|null — regex si aplica",
+        "range": "string|null — 1-128",
+        "required": "boolean",
+        "description": "string",
+        "example": "string|null"
+      }
+    },
+    "output_fields": {
+      "type": "array",
+      "required": false,
+      "description": "Campos del output que mapean a OIDs SNMP",
+      "item_schema": {
+        "name": "string",
+        "type": "string — float|string|enum|integer",
+        "unit": "string|null",
+        "oid_ref": "string|null — oid id",
+        "oid_status": "enum — mapped|not_mapped|inferred"
+      }
+    },
+    "prerequisites": {
+      "type": "array<string>",
+      "required": false,
+      "description": "Entity IDs que deben existir antes de ejecutar. El Loader migra estos a tkc_relations con relation_type=depends_on"
+    },
+    "related_commands": {
+      "type": "array<string>",
+      "required": false,
+      "description": "Command IDs relacionados. Solo navegación, queda en raw_json"
+    },
+    "sources": {
+      "type": "array",
+      "required": true,
+      "item_schema": {
+        "doc_type": "string",
+        "pages": "array<int>|null",
+        "confidence": "decimal"
+      }
+    },
+    "confidence": {
+      "type": "object",
+      "required": true,
+      "schema": {
+        "extraction": "decimal 0-1",
+        "correlation": "decimal 0-1",
+        "overall": "decimal 0-1"
+      }
+    },
+    "status": { "type": "enum", "required": true },
+    "conflicts": { "type": "array", "required": true }
+  },
+
+  "loader_behavior": {
+    "prerequisites_migration": {
+      "description": "El Loader lee prerequisites[] y crea registros en tkc_relations",
+      "mapping": {
+        "source_entity": "command.entity_ref",
+        "relation_type": "depends_on",
+        "target_entity": "each prerequisite",
+        "prerequisite": true,
+        "creation_order": "array index"
+      }
+    },
+    "related_commands": "Queda en raw_json, no se migra a tabla separada",
+    "output_fields_oid_ref": "Loader valida que oid_ref existe en tkc_oids antes de insertar"
+  },
+
+  "db_mapping": {
+    "primary_table": "tkc_commands",
+    "related_tables": [
+      "tkc_command_params — parameters[] se descompone",
+      "tkc_command_output_fields — output_fields[] se descompone",
+      "tkc_command_firmware — firmware[] se descompone",
+      "tkc_relations — prerequisites[] se migran como depends_on"
+    ]
+  }
+}

@@ -1,0 +1,101 @@
+{
+  "spec_name": "COMPLETENESS_SPEC",
+  "version": "1.0.0",
+  "purpose": "Define cuándo un fabricante o modelo se considera completo en el catálogo",
+
+  "levels": {
+    "level_1_document_complete": {
+      "description": "Todos los documentos disponibles fueron procesados",
+      "conditions": [
+        "Todos los documentos en tkc_documents tienen status = classified",
+        "Ningún documento en status = unclassified o partial",
+        "Todos los doc_types críticos están presentes"
+      ],
+      "critical_doc_types": {
+        "obligatorio": ["mib_file", "command_reference", "initial_configuration"],
+        "recomendado": ["product_catalog"],
+        "opcional": ["mib_specification", "alarm_reference", "hardware_description"]
+      }
+    },
+
+    "level_2_artifact_complete": {
+      "description": "Todos los artefactos conocidos están en el catálogo",
+      "thresholds_by_domain": {
+        "entities": {
+          "verified_min": "90%",
+          "documented_max": "8%",
+          "observed_max": "2%",
+          "inferred_max": "0% en producción"
+        },
+        "commands": {
+          "verified_min": "85%",
+          "documented_max": "10%"
+        },
+        "oids": {
+          "verified_min": "80%",
+          "documented_max": "15%",
+          "observed_max": "5%"
+        },
+        "relations": {
+          "verified_min": "85%",
+          "documented_max": "10%",
+          "inferred_max": "5%"
+        },
+        "alarms": {
+          "verified_min": "75%",
+          "documented_max": "20%",
+          "observed_max": "5%"
+        }
+      },
+      "expected_count_sources": {
+        "entities": "max(mib_count, cmd_count, init_count)",
+        "commands": "Command Reference index o conteo de secciones",
+        "oids": "mib_file OBJECT-TYPE count (exacto)",
+        "relations": "Initial Config flujos + Command Ref parámetros",
+        "alarms": "product_catalog tabla + mib_file TRAP-TYPE/NOTIFICATION-TYPE"
+      }
+    },
+
+    "level_3_production_ready": {
+      "description": "El catálogo puede usarse en producción sin riesgos",
+      "requires": ["level_1", "level_2"],
+      "additional_conditions": [
+        "confidence_overall promedio >= 0.85",
+        "confidence_overall mínimo >= 0.50",
+        "Conflictos abiertos críticos = 0",
+        "Conflictos abiertos totales <= 5%",
+        "Alias ambiguos = 0",
+        "Orphans pendientes = 0",
+        "Al menos un firmware con lifecycle_status = stable en todas las entidades críticas",
+        "Queries Q-ENT-01 a Q-ALM-05 ejecutadas y validadas"
+      ]
+    }
+  },
+
+  "critical_entities_zte_c320": [
+    "entity.zte.gpon.device.onu",
+    "entity.zte.gpon.device.olt",
+    "entity.zte.gpon.port.pon_port",
+    "entity.zte.gpon.logical.gem_port",
+    "entity.zte.gpon.logical.service_port",
+    "entity.zte.gpon.profile.line_profile",
+    "entity.zte.gpon.profile.service_profile"
+  ],
+
+  "scoring": {
+    "formula_per_domain": "score = (verified * 1.0 + documented * 0.6 + observed * 0.2) / expected",
+    "global_weights": {
+      "entities": 0.30,
+      "commands": 0.25,
+      "oids": 0.25,
+      "relations": 0.10,
+      "alarms": 0.10
+    },
+    "global_formula": "score_global = Σ (domain_score * domain_weight)"
+  },
+
+  "db_mapping": {
+    "table": "tkc_completeness_reports",
+    "generated": "Cada run del Compiler genera un reporte"
+  }
+}

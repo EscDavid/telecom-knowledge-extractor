@@ -1,0 +1,77 @@
+{
+  "spec_name": "DELTA_PROCESSING",
+  "version": "1.0.0",
+  "purpose": "Define cómo el Compiler detecta y procesa únicamente los cambios entre runs",
+
+  "truth_source": {
+    "mechanism": "SHA-256 hash del archivo registrado en tkc_documents",
+    "comparison": "hash anterior vs hash actual"
+  },
+
+  "document_states": {
+    "unchanged": "hash igual → saltar completamente",
+    "modified": "hash distinto → reprocesar documento",
+    "new": "no existe en tkc_documents → procesar completo",
+    "deleted": "ausente en filesystem → marcar artefactos huérfanos"
+  },
+
+  "flow": [
+    "Scan directorio de documentos",
+    "Comparar hash actual vs tkc_documents.hash",
+    "Clasificar documentos en unchanged/modified/new/deleted",
+    "Construir Affected Graph",
+    "Reprocesar solo artefactos afectados",
+    "Recalcular confidence de artefactos afectados",
+    "Actualizar changelog",
+    "Bump de versión de catálogo"
+  ],
+
+  "affected_graph": {
+    "description": "Un cambio en un documento puede afectar artefactos que lo referencian en cascada",
+    "example": {
+      "trigger": "command_reference modificado",
+      "affected": [
+        "commands que vienen de ese doc → reprocesar",
+        "oids referenciados por esos commands → recalcular confidence",
+        "entities referenciadas por esos commands → recalcular confidence",
+        "relations que conectan esas entities → recalcular confidence",
+        "alarms que referencian esas entities u oids → recalcular confidence"
+      ]
+    }
+  },
+
+  "change_impact_classification": [
+    { "type": "Nuevo documento", "impact": "local", "action": "Procesar solo ese doc" },
+    { "type": "Documento modificado", "impact": "cascada", "action": "Affected Graph completo" },
+    { "type": "Documento eliminado", "impact": "cascada + huérfanos", "action": "Affected Graph + marcar huérfanos" },
+    { "type": "Cambio de firmware en doc", "impact": "global", "action": "Reprocesar todos los artefactos del firmware" }
+  ],
+
+  "orphan_detection": {
+    "trigger": "Documento eliminado o entidad ausente en nueva versión del doc",
+    "flow": [
+      "Buscar artefactos cuya única fuente era el documento eliminado",
+      "¿Tiene otras fuentes? → Sí: recalcular confidence / No: status=orphan",
+      "Artefacto orphan queda en tkc_results con result_type='orphan'",
+      "No se elimina automáticamente — cola de revisión manual"
+    ]
+  },
+
+  "entity_removal_between_firmwares": {
+    "detection": "Comparar set de artefactos extraídos: run anterior - run actual = eliminados",
+    "action": "lifecycle_status → removed, lifecycle.removed_in → firmware actual"
+  },
+
+  "version_bump_rules": {
+    "PATCH": "Solo confidence_updated y conflictos resueltos",
+    "MINOR": "artifacts_added o artifacts_modified",
+    "MAJOR": "artifacts_removed o breaking schema change",
+    "conflict": "Si hay razones para MAJOR y MINOR, gana MAJOR"
+  },
+
+  "db_mapping": {
+    "runs": "tkc_delta_runs — resumen de cada ejecución",
+    "affected_artifacts": "tkc_results con result_type='delta' — detalle por artefacto",
+    "orphans": "tkc_results con result_type='orphan'"
+  }
+}

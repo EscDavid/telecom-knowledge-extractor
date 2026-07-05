@@ -1,0 +1,55 @@
+{
+  "id": "command.zte.gpon.global.create",
+  "canonical_name": "create gemport tcont",
+  "vendor": "ZTE",
+  "family": "ZXA10 C320",
+  "firmware": [
+    "2.0",
+    "2.1"
+  ],
+  "technology": "gpon",
+  "category": "create",
+  "cli_mode": "interface_config",
+  "entity_ref": null,
+  "description": "Muestra la configuracion de una VLAN.",
+  "syntax": "create gemport {gem-id} tcont {tcont-id}",
+  "parameters": [
+    {
+      "name": "gem-id",
+      "type": "string",
+      "pattern": null,
+      "range": null,
+      "required": true,
+      "description": null,
+      "example": null
+    },
+    {
+      "name": "tcont-id",
+      "type": "string",
+      "pattern": null,
+      "range": null,
+      "required": true,
+      "description": null,
+      "example": null
+    }
+  ],
+  "output_fields": [],
+  "prerequisites": [
+    "interface gpon-onu {gpon-onu-index}"
+  ],
+  "related_commands": [],
+  "sources": [
+    {
+      "doc_type": "command_reference",
+      "pages": null,
+      "confidence": 0.4
+    }
+  ],
+  "confidence": {
+    "extraction": 0.95,
+    "correlation": 0.0,
+    "overall": 0.95
+  },
+  "status": "verified",
+  "conflicts": []
+}

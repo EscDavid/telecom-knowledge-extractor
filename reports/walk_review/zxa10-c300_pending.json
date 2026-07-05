@@ -1,0 +1,114 @@
+{
+  "status": "PENDING_REVIEW",
+  "family": "ZXA10 C300",
+  "walks": {
+    "ZTE_C300.txt": "enterprise",
+    "ZTE_C300_entities.txt": "entity_table",
+    "ZTE_C300_ifnames.txt": "if_table"
+  },
+  "generated_at": "2026-07-02T14:57:47",
+  "blocking_findings": [
+    {
+      "trigger": "bitcalc_validation",
+      "catalog_map": {
+        "shelf": "31-28",
+        "slot": "27-24"
+      },
+      "compared": 40,
+      "agree": 0,
+      "disagree": 40,
+      "verdict": "mismatch",
+      "mismatch_samples": [
+        {
+          "ifIndex": 285278721,
+          "ifName": "gpon_1/2/1",
+          "decoded": {
+            "shelf": 1,
+            "slot": 1
+          },
+          "real_rack_slot_port": [
+            1,
+            2,
+            1
+          ]
+        },
+        {
+          "ifIndex": 285278722,
+          "ifName": "gpon_1/2/2",
+          "decoded": {
+            "shelf": 1,
+            "slot": 1
+          },
+          "real_rack_slot_port": [
+            1,
+            2,
+            2
+          ]
+        },
+        {
+          "ifIndex": 285278723,
+          "ifName": "gpon_1/2/3",
+          "decoded": {
+            "shelf": 1,
+            "slot": 1
+          },
+          "real_rack_slot_port": [
+            1,
+            2,
+            3
+          ]
+        },
+        {
+          "ifIndex": 285278724,
+          "ifName": "gpon_1/2/4",
+          "decoded": {
+            "shelf": 1,
+            "slot": 1
+          },
+          "real_rack_slot_port": [
+            1,
+            2,
+            4
+          ]
+        },
+        {
+          "ifIndex": 285278725,
+          "ifName": "gpon_1/2/5",
+          "decoded": {
+            "shelf": 1,
+            "slot": 1
+          },
+          "real_rack_slot_port": [
+            1,
+            2,
+            5
+          ]
+        }
+      ],
+      "catalog_action": "bit_calculation del catálogo NO coincide con el ifName real (el índice compuesto usa otro layout de bits) → revisar mapa de bits",
+      "severity": "high",
+      "derived_layout": {
+        "shelf": {
+          "bits": null,
+          "status": "constant",
+          "observed_value": 1
+        },
+        "slot": {
+          "bits": "12-8",
+          "status": "derived"
+        },
+        "port": {
+          "bits": "4-0",
+          "status": "derived"
+        }
+      },
+      "proposed_fix": {
+        "slot": "12-8",
+        "port": "4-0"
+      },
+      "blocking": true,
+      "resolution": "pending"
+    }
+  ],
+  "how_to_resolve": "El catálogo NO se escribió. Revisa cada hallazgo y edita docs/walks/resolutions.json con {\"ZXA10 C300\": {\"<trigger>\": \"accept\"|\"reject\"}} y vuelve a ejecutar `python main.py`. accept = aplicar proposed_fix; reject = mantener y marcar no validado."
+}

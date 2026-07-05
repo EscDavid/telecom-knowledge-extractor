@@ -1,0 +1,44 @@
+{
+  "id": "command.zte.gpon.global.diagnose",
+  "canonical_name": "ping",
+  "vendor": "ZTE",
+  "family": "ZXA10 C320",
+  "firmware": [
+    "2.0",
+    "2.1"
+  ],
+  "technology": "gpon",
+  "category": "diagnose",
+  "cli_mode": "global_config",
+  "entity_ref": null,
+  "description": "Guarda la configuracion en memoria no volatil.",
+  "syntax": "ping {ip-address}",
+  "parameters": [
+    {
+      "name": "ip-address",
+      "type": "string",
+      "pattern": null,
+      "range": null,
+      "required": true,
+      "description": null,
+      "example": null
+    }
+  ],
+  "output_fields": [],
+  "prerequisites": [],
+  "related_commands": [],
+  "sources": [
+    {
+      "doc_type": "command_reference",
+      "pages": null,
+      "confidence": 0.4
+    }
+  ],
+  "confidence": {
+    "extraction": 0.95,
+    "correlation": 0.0,
+    "overall": 0.95
+  },
+  "status": "verified",
+  "conflicts": []
+}

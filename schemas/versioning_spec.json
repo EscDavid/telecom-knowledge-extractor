@@ -1,0 +1,93 @@
+{
+  "spec_name": "VERSIONING_SPEC",
+  "version": "1.0.0",
+  "purpose": "Define cómo el Compiler maneja múltiples versiones de firmware, catálogos y documentos",
+
+  "versioning_levels": {
+    "firmware_version": {
+      "description": "Versión del SO del equipo",
+      "examples": ["2.0", "2.1"],
+      "scope": "Qué entidades/comandos/OIDs existen en cada firmware"
+    },
+    "catalog_version": {
+      "description": "Versión del output compilado",
+      "examples": ["1.0.0", "1.1.0", "2.0.0"],
+      "scope": "Snapshot inmutable del conocimiento en un momento dado"
+    },
+    "document_version": {
+      "description": "Hash del archivo fuente procesado",
+      "scope": "Detección de cambios entre runs del Compiler"
+    }
+  },
+
+  "directory_structure": {
+    "pattern": "knowledge-dist/{vendor}/{family}/catalog-{version}/",
+    "example": {
+      "path": "knowledge-dist/zte/zxa10-c320/catalog-1.1.0/",
+      "contents": ["manifest.json", "entities/", "commands/", "oids/", "relations/", "alarms/"]
+    },
+    "latest_symlink": "knowledge-dist/zte/zxa10-c320/latest → catalog-1.1.0"
+  },
+
+  "semver_rules": {
+    "pattern": "{MAJOR}.{MINOR}.{PATCH}",
+    "MAJOR": "Cambio incompatible: entidad eliminada, id renombrado",
+    "MINOR": "Nuevo contenido sin romper existente: nueva entidad, nuevo firmware",
+    "PATCH": "Corrección sin cambio estructural: confidence recalculada, conflicto resuelto"
+  },
+
+  "firmware_handling": {
+    "principle": "Nunca fusionar firmwares. Cada artefacto declara en qué firmwares existe.",
+    "when_artifact_changes_between_firmwares": {
+      "approach": "Se registra como variant en tkc_results con result_type='variant'",
+      "example": {
+        "artifact": "oid.zte.gpon.onu.rx_power",
+        "firmware_2.0": { "oid": "1.3.6.1.4.1.3902.1082.500.10.2.1.3" },
+        "firmware_2.1": { "oid": "1.3.6.1.4.1.3902.1082.500.10.2.1.5" }
+      }
+    }
+  },
+
+  "lifecycle": {
+    "statuses": ["introduced", "stable", "modified", "deprecated", "removed"],
+    "fields": {
+      "introduced_in": "firmware donde aparece por primera vez",
+      "deprecated_in": "firmware donde se marca para eliminación",
+      "removed_in": "firmware donde deja de existir",
+      "replacement": "entity/command/oid id que lo reemplaza"
+    }
+  },
+
+  "immutability": {
+    "rule": "Un catálogo publicado nunca se edita. Siempre se recompila.",
+    "flow": "Documento cambia → Compiler recompila → Nuevo catalog-{version}"
+  },
+
+  "changelog": {
+    "auto_generated": true,
+    "stored_in": "tkc_catalog_versions.changelog JSON",
+    "structure": {
+      "catalog_version": "string",
+      "previous_version": "string",
+      "changes": {
+        "entities": { "added": [], "removed": [], "modified": [] },
+        "commands": { "added": [], "removed": [], "modified": [] },
+        "oids": { "added": [], "removed": [], "modified": [] },
+        "firmwares_added": [],
+        "firmwares_removed": []
+      }
+    }
+  },
+
+  "compatibility": {
+    "PATCH": "Compatible, Loader actualiza automáticamente",
+    "MINOR": "Compatible, Loader agrega sin tocar existente",
+    "MAJOR": "Requiere revisión manual antes de actualizar"
+  },
+
+  "db_coexistence": {
+    "mechanism": "catalog_version_id FK en todas las tablas de artefactos",
+    "query_pattern": "WHERE catalog_version_id = (SELECT id FROM tkc_catalog_versions WHERE is_latest = TRUE)",
+    "multiple_versions": "La BD puede tener múltiples versiones simultáneamente"
+  }
+}

@@ -1,0 +1,22 @@
+ZTE Corporation
+ZXA10 C320 Optical Access Convergence Equipment
+Command Reference Manual
+
+OID enterprise prefix: 1.3.6.1.4.1.3902
+
+show onu {interface} {onu-id} [detail]
+Function: Displays the status and optical information of a GPON ONU.
+Prerequisite: PON Port, Line Profile
+RxPower: -25.3 dBm
+TxPower: 2.1 dBm
+Status: online
+
+create onu {interface} {onu-id} profile {line-profile}
+Function: Creates a GPON ONU on the specified PON port.
+Prerequisite: PON Port, Line Profile
+
+show gpon-onu-state {interface}
+Function: Displays the registration state of all ONUs on a PON port.
+
+save
+Function: Saves the running configuration to flash.

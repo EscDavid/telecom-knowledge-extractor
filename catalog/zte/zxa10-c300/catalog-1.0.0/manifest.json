@@ -1,0 +1,210 @@
+{
+  "project": "Telecom Knowledge Compiler (TKC) — Fase 2",
+  "vendor": "ZTE",
+  "family": "ZXA10 C300",
+  "phase": "walk_validation",
+  "seed_family": "ZXA10 C320",
+  "walks": {
+    "ZTE_C300.txt": "enterprise",
+    "ZTE_C300_entities.txt": "entity_table",
+    "ZTE_C300_ifnames.txt": "if_table"
+  },
+  "generated_at": "2026-07-05T12:28:06",
+  "counts": {
+    "oids_kept": 945,
+    "oids_pruned": 1066,
+    "entities_confirmed": 5
+  },
+  "status_distribution": {
+    "oids": {
+      "documented": 816,
+      "verified": 110,
+      "verified_community": 10,
+      "verified_walk": 9
+    },
+    "entities": {
+      "verified": 5,
+      "documented": 6,
+      "verified_walk": 2
+    }
+  },
+  "triggers": {
+    "oid_not_increasing": 9,
+    "ascii_index": 15,
+    "documented_only": 1882,
+    "scale_detected": 2,
+    "observed_only": 30,
+    "entity_confirmed": 5,
+    "bitcalc_validation": 1,
+    "pon_operational": 1,
+    "ascii_branch_absent": 1,
+    "pon_onu_count_derived": 1,
+    "community_ingest": 3
+  },
+  "bitcalc_validation": {
+    "trigger": "bitcalc_validation",
+    "catalog_map": {
+      "shelf": "31-28",
+      "slot": "27-24"
+    },
+    "compared": 40,
+    "agree": 0,
+    "disagree": 40,
+    "verdict": "mismatch",
+    "mismatch_samples": [
+      {
+        "ifIndex": 285278721,
+        "ifName": "gpon_1/2/1",
+        "decoded": {
+          "shelf": 1,
+          "slot": 1
+        },
+        "real_rack_slot_port": [
+          1,
+          2,
+          1
+        ]
+      },
+      {
+        "ifIndex": 285278722,
+        "ifName": "gpon_1/2/2",
+        "decoded": {
+          "shelf": 1,
+          "slot": 1
+        },
+        "real_rack_slot_port": [
+          1,
+          2,
+          2
+        ]
+      },
+      {
+        "ifIndex": 285278723,
+        "ifName": "gpon_1/2/3",
+        "decoded": {
+          "shelf": 1,
+          "slot": 1
+        },
+        "real_rack_slot_port": [
+          1,
+          2,
+          3
+        ]
+      },
+      {
+        "ifIndex": 285278724,
+        "ifName": "gpon_1/2/4",
+        "decoded": {
+          "shelf": 1,
+          "slot": 1
+        },
+        "real_rack_slot_port": [
+          1,
+          2,
+          4
+        ]
+      },
+      {
+        "ifIndex": 285278725,
+        "ifName": "gpon_1/2/5",
+        "decoded": {
+          "shelf": 1,
+          "slot": 1
+        },
+        "real_rack_slot_port": [
+          1,
+          2,
+          5
+        ]
+      }
+    ],
+    "catalog_action": "bit_calculation del catálogo NO coincide con el ifName real (el índice compuesto usa otro layout de bits) → revisar mapa de bits",
+    "severity": "high",
+    "derived_layout": {
+      "shelf": {
+        "bits": null,
+        "status": "constant",
+        "observed_value": 1
+      },
+      "slot": {
+        "bits": "12-8",
+        "status": "derived"
+      },
+      "port": {
+        "bits": "4-0",
+        "status": "derived"
+      }
+    },
+    "proposed_fix": {
+      "slot": "12-8",
+      "port": "4-0"
+    },
+    "blocking": true,
+    "resolution": "accept"
+  },
+  "pending_validations": [
+    {
+      "trigger": "ascii_branch_absent",
+      "oids": [
+        "1.3.6.1.4.1.3902.1082.20.30.2.3.2.6.1",
+        "1.3.6.1.4.1.3902.1082.20.30.2.5.3.1",
+        "1.3.6.1.4.1.3902.1082.20.30.2.5.4.1",
+        "1.3.6.1.4.1.3902.1082.20.30.2.2.4.1",
+        "1.3.6.1.4.1.3902.1082.20.30.2.2.5.1",
+        "1.3.6.1.4.1.3902.1082.20.30.2.3.2.5.1",
+        "1.3.6.1.4.1.3902.1082.20.30.2.5.2.1",
+        "1.3.6.1.4.1.3902.1082.20.30.2.5.5.1",
+        "1.3.6.1.4.1.3902.1082.20.30.2.5.6.1"
+      ],
+      "pending_validation": {
+        "candidate_source": "1.3.6.1.4.1.3902.1015.2.1.2.4",
+        "evidence_samples": [
+          "gtghg.fw",
+          "gtghg.mvr",
+          "gtghg.bt",
+          "gtxk.fw",
+          "gtxk.mvr"
+        ],
+        "action": "mapear la tabla de software del catálogo (1082.20.30) a la rama real del equipo (1015.2.1.2.4) y validar los índices ASCII allí"
+      }
+    }
+  ],
+  "community": {
+    "sources": [
+      "snmp-olt-zte_reference_extract.txt",
+      "snmp-olt-zte_status_serial_columns.txt",
+      "snmp-olt-zte_walk_reconciliation.txt"
+    ],
+    "onu_leaves_added": 16,
+    "index_decoder": {
+      "ONU-ID": "suffix = 285278208 + slot*256 + pon",
+      "TYPE": "suffix = 268435456 + slot*65536 + pon*256"
+    },
+    "snmp_params": {
+      "snmp_max_repetitions": "20",
+      "snmp_timeout_s": "5",
+      "snmp_retries": "2",
+      "enumeration_method": "BulkWalk sobre <prefix>.<suffix>; el último octeto del OID devuelto ES el onuID."
+    },
+    "optical": {
+      "applies_to": "onu_rx_power (.1082.500.20.2.2.2.1.10)",
+      "formula": "dBm = raw * 0.002 - 30.0",
+      "decimals": "2",
+      "source_func": "ConvertAndMultiply (internal/utils/extractor.go)"
+    }
+  },
+  "observed_firmware_strings": [
+    "0q5yGowhv;Kg",
+    "Apls2;x8yEwi",
+    "default",
+    "gtghg.bt",
+    "gtghg.fw",
+    "gtghg.mvr",
+    "gtxk.mvr",
+    "hutq.mvr",
+    "hutqb.bt",
+    "hutqb.fw",
+    "hutqb.mvr",
+    "scxm1.mvr"
+  ]
+}

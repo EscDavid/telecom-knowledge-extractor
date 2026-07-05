@@ -1,0 +1,71 @@
+{
+  "id": "entity.zte.gpon.port.pon_port",
+  "canonical_name": "PON Port",
+  "vendor": "ZTE",
+  "family": "ZXA10 C320",
+  "firmware": [
+    "2.0",
+    "2.1"
+  ],
+  "technology": "gpon",
+  "type": "port",
+  "description": "Puerto PON GPON del OLT (interfaz gpon slot/pon).",
+  "is_critical": true,
+  "aliases": [
+    {
+      "name": "PON Port",
+      "source": "hardware_description",
+      "firmware_scope": "all"
+    }
+  ],
+  "attributes": [],
+  "sources": [
+    {
+      "doc_type": "hardware_description",
+      "pages": null,
+      "confidence": 0.0
+    },
+    {
+      "doc_type": "mib_file",
+      "pages": null,
+      "confidence": 0.3
+    }
+  ],
+  "confidence": {
+    "extraction": 0.95,
+    "correlation": 0.75,
+    "overall": 1.0
+  },
+  "status": "verified_walk",
+  "lifecycle": {
+    "introduced_in": "2.0",
+    "deprecated_in": null,
+    "removed_in": null,
+    "status": "introduced",
+    "replacement": null
+  },
+  "relations": [
+    {
+      "type": "belongs_to",
+      "target": "entity.zte.gpon.hardware.card"
+    }
+  ],
+  "conflicts": [],
+  "empirical": {
+    "oper_via": "ifTable (ifType=250)",
+    "pon_ports": 16,
+    "oper_up": 1,
+    "oper_down": 15,
+    "source": "ZTE_C320_ifnames.txt",
+    "onu_count": {
+      "derived": true,
+      "status": "verified_walk",
+      "source": "conteo por puerto en la tabla ONU .1012.3.50.11.2.1",
+      "total_onus": 1572,
+      "ports_with_onus": 32,
+      "min_per_port": 8,
+      "max_per_port": 105,
+      "rule": "count distinct onuID per port suffix (TYPE space)"
+    }
+  }
+}

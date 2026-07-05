@@ -1,0 +1,335 @@
+{
+  "entity_ref": "entity.zte.gpon.logical.gem_port",
+  "vendor": "ZTE",
+  "family": "ZXA10 C320",
+  "firmware": [
+    "2.0",
+    "2.1"
+  ],
+  "oids": [
+    {
+      "id": "oid.zte.gpon.gem_port.o_p_gem_port_table",
+      "oid": "1.3.6.1.4.1.3902.1082.500.21.2.1.3",
+      "name": "zxAnGponOPGemPortTable",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "SEQUENCE OF ZxAnGponOPGemPortEntry",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": "The ONU profile GEM port table.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.gem_port.o_p_gem_port_entry",
+      "oid": "1.3.6.1.4.1.3902.1082.500.21.2.1.3.1",
+      "name": "zxAnGponOPGemPortEntry",
+      "mib_table": null,
+      "index": {
+        "type": "composite",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "ZxAnGponOPGemPortEntry",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": "The ONU profile GEM port entry.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.gem_port.o_p_gem_port_index",
+      "oid": "1.3.6.1.4.1.3902.1082.500.21.2.1.3.1.1",
+      "name": "zxAnGponOPGemPortIndex",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "ZxAnGponOnuGemPortIndex",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": "An arbitrary (unique) integer for identifying an entry\n             in the table, from 1 to upper limit supported GEM port count of\n             ONU type.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.gem_port.o_p_gem_port_name",
+      "oid": "1.3.6.1.4.1.3902.1082.500.21.2.1.3.1.2",
+      "name": "zxAnGponOPGemPortName",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "DisplayString",
+      "unit": null,
+      "scale": null,
+      "access": "read-create",
+      "enumeration": null,
+      "description": "Name of the GEM port.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.gem_port.o_p_gem_port_encrypt",
+      "oid": "1.3.6.1.4.1.3902.1082.500.21.2.1.3.1.5",
+      "name": "zxAnGponOPGemPortEncrypt",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-create",
+      "enumeration": {
+        "1": "downstreamEncrypt",
+        "2": "noEncrypt",
+        "3": "bothDirectEncrypt"
+      },
+      "description": "The encrypt state of this GEM port.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.gem_port.o_p_gem_port_row_status",
+      "oid": "1.3.6.1.4.1.3902.1082.500.21.2.1.3.1.50",
+      "name": "zxAnGponOPGemPortRowStatus",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "Row",
+      "unit": null,
+      "scale": null,
+      "access": "read-create",
+      "enumeration": null,
+      "description": "The status of this conceptual row.\n        \n             To create a row in this table, a manager must\n             set this object to createAndGo(4).\n            \n             In particular, a newly created row cannot be created\n             until the corresponding 'zxAnGponOPGemPortTcontIndex'\n             has been set.\n             \n             To delete a row in this table, a manager must\n             set this object to destroy(6).\n             \n             To query this object, always return 1.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.gem_port.o_p_mapping_gem_port",
+      "oid": "1.3.6.1.4.1.3902.1082.500.21.2.1.4.1.2",
+      "name": "zxAnGponOPMappingGemPort",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-create",
+      "enumeration": null,
+      "description": "GEM port index of service.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.gem_port.o_p_gem_port_curr_perf_table",
+      "oid": "1.3.6.1.4.1.3902.1082.500.21.2.1.9",
+      "name": "zxAnGponOPGemPortCurrPerfTable",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "SEQUENCE OF ZxAnGponOPGemPortCurrPerfEntry",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": "The ONU profile GPON GEM port current performance table.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.gem_port.o_p_gem_port_curr_perf_entry",
+      "oid": "1.3.6.1.4.1.3902.1082.500.21.2.1.9.1",
+      "name": "zxAnGponOPGemPortCurrPerfEntry",
+      "mib_table": null,
+      "index": {
+        "type": "composite",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "ZxAnGponOPGemPortCurrPerfEntry",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": "The ONU profile GPON GEM port current performance entry.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.gem_port.o_p_gem_port_curr_row_status",
+      "oid": "1.3.6.1.4.1.3902.1082.500.21.2.1.9.1.50",
+      "name": "zxAnGponOPGemPortCurrRowStatus",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "Row",
+      "unit": null,
+      "scale": null,
+      "access": "read-create",
+      "enumeration": null,
+      "description": "The status of this conceptual row. \n              \n             The supported actions of this conceptual row only include:\n             'createAndGo' and 'destroy'.\n\n             To create a row in this table, a manager must\n             set this object to createAndGo(4).\n            \n             To delete a row in this table, a manager must\n             set this object to destroy(6).\n             \n             To query this object, always return 1.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    }
+  ]
+}

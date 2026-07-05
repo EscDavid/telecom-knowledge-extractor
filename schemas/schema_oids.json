@@ -1,0 +1,101 @@
+{
+  "spec_name": "SCHEMA_SPEC_OIDS",
+  "version": "1.0.0",
+  "purpose": "Define el JSON intermedio que el Compiler produce para OIDs SNMP",
+
+  "file_structure": {
+    "location": "knowledge-dist/{vendor}/{family}/catalog-{version}/oids/",
+    "naming": "{entity_name}.json — agrupa todos los OIDs de una entidad",
+    "example": "knowledge-dist/zte/zxa10-c320/catalog-1.0.0/oids/onu.json"
+  },
+
+  "id_construction": {
+    "pattern": "oid.{vendor}.{technology}.{entity}.{metric}",
+    "examples": [
+      "oid.zte.gpon.onu.rx_power",
+      "oid.zte.gpon.onu.tx_power",
+      "oid.zte.gpon.onu.status",
+      "oid.zte.gpon.pon_port.load",
+      "oid.zte.gpon.card.temperature",
+      "oid.zte.gpon.service_port.bandwidth"
+    ]
+  },
+
+  "schema": {
+    "entity_ref": { "type": "string", "required": true, "description": "Entity id que agrupa estos OIDs" },
+    "vendor": { "type": "string", "required": true },
+    "family": { "type": "string", "required": true },
+    "firmware": { "type": "array<string>", "required": true },
+    "oids": {
+      "type": "array",
+      "required": true,
+      "item_schema": {
+        "id": { "type": "string", "required": true },
+        "oid": { "type": "string", "required": true, "example": "1.3.6.1.4.1.3902.1082.500.10.2.1.3" },
+        "name": { "type": "string", "required": true, "example": "zxAnGponOntOpticalRxPower" },
+        "mib_table": { "type": "string|null", "required": false },
+        "index": {
+          "type": "object",
+          "required": true,
+          "schema": {
+            "type": "enum — simple|composite",
+            "bit_calculation": "boolean",
+            "components": {
+              "type": "array|null",
+              "description": "Solo si composite",
+              "item_schema": {
+                "name": "string — shelf|slot|port|onu_id",
+                "bits": "string — rango de bits"
+              }
+            }
+          }
+        },
+        "syntax": { "type": "string", "required": true, "values": ["INTEGER", "OCTET STRING", "Counter32", "Counter64", "Gauge32"] },
+        "unit": { "type": "string|null", "required": false },
+        "scale": { "type": "decimal|null", "required": false, "description": "Multiplicador para convertir valor SNMP a valor real. Ej: 0.01 para centidBm a dBm" },
+        "access": { "type": "enum", "required": true, "values": ["read-only", "read-write", "not-accessible"] },
+        "enumeration": {
+          "type": "object|null",
+          "required": false,
+          "description": "Mapeo de valores enteros a strings si el OID es enum",
+          "example": { "1": "online", "2": "offline", "3": "los" }
+        },
+        "description": { "type": "string", "required": false },
+        "command_ref": { "type": "string|null", "required": false, "description": "Command id que expone este valor vía CLI" },
+        "status": {
+          "type": "enum",
+          "required": true,
+          "values": ["verified", "documented", "observed", "inferred", "deprecated", "conflicted", "orphan"],
+          "transition_rules": {
+            "observed_to_inferred": "OID existe en mib_file + Correlator encuentra command con output_field coincidente por nombre",
+            "inferred_to_verified": "Al menos command_reference o initial_configuration confirman el OID"
+          }
+        },
+        "sources": { "type": "array", "required": true },
+        "confidence": { "type": "object", "required": true, "schema": { "extraction": "decimal", "correlation": "decimal", "overall": "decimal" } },
+        "conflicts": { "type": "array", "required": true }
+      }
+    }
+  },
+
+  "zte_specific": {
+    "bit_calculation": {
+      "description": "ZTE usa índices compuestos de 32 bits. El backend debe calcular el índice antes del SNMP GET.",
+      "formula": "index = (shelf << 28) | (slot << 24) | (port << 20) | onu_id",
+      "applies_to": "Todos los OIDs de tablas zxAnGponOnt*"
+    }
+  },
+
+  "db_mapping": {
+    "primary_table": "tkc_oids",
+    "related_tables": [
+      "tkc_oid_firmware — firmware[] se descompone",
+      "tkc_alarm_oid_refs — OIDs referenciados por alarmas"
+    ],
+    "notes": [
+      "command_ref sin FK para evitar ciclo commands↔oids — Loader valida existencia",
+      "index_def se guarda como JSON en tkc_oids.index_def",
+      "enumeration se guarda como JSON en tkc_oids.enumeration"
+    ]
+  }
+}

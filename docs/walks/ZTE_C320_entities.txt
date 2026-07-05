@@ -1,0 +1,1 @@
+snmpbulkwalk: Failure in sendto (Network is unreachable)

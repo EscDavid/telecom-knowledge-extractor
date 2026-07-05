@@ -1,0 +1,60 @@
+{
+  "spec_name": "RESEARCH_FORMAT",
+  "version": "1.0.0",
+  "purpose": "Define la estructura obligatoria para notas de investigación generadas durante el análisis manual",
+
+  "directory_structure": {
+    "research/notes/": "Observaciones durante lectura de documentos",
+    "research/findings/": "Hallazgos confirmados listos para validar",
+    "research/hypotheses/": "Ideas sin confirmar que necesitan verificación",
+    "research/questions/": "Dudas abiertas que bloquean extracción",
+    "research/decisions/": "Decisiones de diseño tomadas manualmente"
+  },
+
+  "file_naming": "snake_case.txt — un tema por archivo",
+
+  "formats": {
+    "notes": {
+      "required_fields": ["TITLE", "DATE", "AUTHOR", "DOCUMENT", "TAGS", "STATUS"],
+      "optional_fields": ["PAGES", "SECTION", "FIRMWARE", "OBSERVATION", "EVIDENCE"],
+      "valid_statuses": ["pending_validation", "validated", "discarded"]
+    },
+    "findings": {
+      "required_fields": ["TITLE", "DATE", "AUTHOR", "CONFIRMED_BY", "FINDING", "TAGS", "STATUS"],
+      "optional_fields": ["FORMULA", "IMPACT", "CATALOG_ACTION"],
+      "valid_statuses": ["confirmed", "applied", "superseded"],
+      "notes": "Requiere confirmación por al menos dos fuentes"
+    },
+    "hypotheses": {
+      "required_fields": ["TITLE", "DATE", "AUTHOR", "DOCUMENT", "HYPOTHESIS", "TAGS", "STATUS"],
+      "optional_fields": ["EVIDENCE_FOR", "EVIDENCE_AGAINST", "VERIFICATION_NEEDED", "PRIORITY"],
+      "valid_statuses": ["unconfirmed", "confirmed", "rejected"]
+    },
+    "questions": {
+      "required_fields": ["TITLE", "DATE", "AUTHOR", "CONTEXT", "QUESTION", "BLOCKING", "PRIORITY", "STATUS"],
+      "optional_fields": ["RESOLUTION_OPTIONS", "RESOLVED"],
+      "valid_statuses": ["open", "in_progress", "resolved"]
+    },
+    "decisions": {
+      "required_fields": ["TITLE", "DATE", "AUTHOR", "CONTEXT", "DECISION", "RATIONALE", "TAGS", "STATUS"],
+      "optional_fields": ["ALTERNATIVES_REJECTED", "IMPACT"],
+      "valid_statuses": ["proposed", "final", "superseded"]
+    }
+  },
+
+  "lifecycle": {
+    "notes_to_findings": "pending_validation → confirmada por segunda fuente → confirmed finding",
+    "hypotheses_to_findings": "unconfirmed → verificación confirma → confirmed finding",
+    "hypotheses_rejected": "unconfirmed → verificación niega → rejected"
+  },
+
+  "pipeline_interaction": {
+    "reads": "research/findings/ con STATUS: confirmed",
+    "uses_for": [
+      "Validar decisiones del Normalizer contra decisiones documentadas",
+      "Aplicar CATALOG_ACTION automáticamente si está definida",
+      "Registrar decisions/ como justificación de alias en tkc_aliases"
+    ],
+    "never_reads": ["notes/", "hypotheses/", "questions/"]
+  }
+}

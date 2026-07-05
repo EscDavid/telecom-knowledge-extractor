@@ -1,0 +1,196 @@
+{
+  "spec_name": "QUERY_SPEC",
+  "version": "1.0.0",
+  "purpose": "Define todas las consultas que el backend ISP necesita resolver contra las tablas tkc_*",
+
+  "principle": "El backend nunca conoce la estructura interna del catálogo. Solo llama al Knowledge Reader con una consulta nombrada y recibe el resultado.",
+
+  "queries": {
+    "entities": [
+      {
+        "id": "Q-ENT-01",
+        "name": "Buscar entidad por nombre o alias",
+        "use_case": "El backend recibe un nombre desde la UI y necesita la entidad canónica",
+        "sql": "SELECT e.* FROM tkc_entities e LEFT JOIN tkc_aliases a ON a.entity_ref = e.id WHERE (e.canonical_name = :name OR a.alias = :name) AND e.vendor_id = :vendor AND e.catalog_version_id = :version"
+      },
+      {
+        "id": "Q-ENT-02",
+        "name": "Buscar entidad por id canónico",
+        "use_case": "Navegación directa cuando el id ya es conocido",
+        "sql": "SELECT * FROM tkc_entities WHERE id = :entity_id AND catalog_version_id = :version"
+      },
+      {
+        "id": "Q-ENT-03",
+        "name": "Listar entidades por tipo",
+        "use_case": "Poblar selectores en UI de provisión",
+        "sql": "SELECT * FROM tkc_entities WHERE entity_type = :type AND vendor_id = :vendor AND catalog_version_id = :version ORDER BY canonical_name"
+      },
+      {
+        "id": "Q-ENT-04",
+        "name": "Listar entidades por firmware",
+        "use_case": "Validar qué entidades existen antes de operar sobre un equipo con firmware específico",
+        "sql": "SELECT e.* FROM tkc_entities e JOIN tkc_entity_firmware ef ON ef.entity_id = e.id JOIN tkc_firmwares f ON f.id = ef.firmware_id WHERE f.version = :firmware AND e.vendor_id = :vendor AND e.catalog_version_id = :version"
+      },
+      {
+        "id": "Q-ENT-05",
+        "name": "Entidades con confidence menor a umbral",
+        "use_case": "Panel de calidad del catálogo",
+        "sql": "SELECT * FROM tkc_entities WHERE confidence_overall < :threshold AND vendor_id = :vendor AND catalog_version_id = :version ORDER BY confidence_overall ASC"
+      }
+    ],
+
+    "commands": [
+      {
+        "id": "Q-CMD-01",
+        "name": "Todos los comandos de una entidad",
+        "use_case": "Saber qué comandos CLI puede ejecutar sobre una entidad",
+        "sql": "SELECT c.*, GROUP_CONCAT(cp.name) as params FROM tkc_commands c LEFT JOIN tkc_command_params cp ON cp.command_id = c.id WHERE c.entity_ref = :entity_id AND c.catalog_version_id = :version GROUP BY c.id"
+      },
+      {
+        "id": "Q-CMD-02",
+        "name": "Comandos por categoría",
+        "use_case": "Construir menú de acciones disponibles por entidad",
+        "sql": "SELECT * FROM tkc_commands WHERE entity_ref = :entity_id AND category = :category AND catalog_version_id = :version"
+      },
+      {
+        "id": "Q-CMD-03",
+        "name": "Comando con todos sus parámetros",
+        "use_case": "Construir y validar el comando CLI antes de enviarlo al equipo",
+        "sql": "SELECT c.*, JSON_ARRAYAGG(JSON_OBJECT('name', cp.name, 'type', cp.param_type, 'required', cp.required, 'example', cp.example)) as parameters FROM tkc_commands c JOIN tkc_command_params cp ON cp.command_id = c.id WHERE c.id = :command_id GROUP BY c.id"
+      },
+      {
+        "id": "Q-CMD-04",
+        "name": "Comando por firmware",
+        "use_case": "Evitar enviar comandos que no existen en el firmware del equipo conectado",
+        "sql": "SELECT c.* FROM tkc_commands c JOIN tkc_command_firmware cf ON cf.command_id = c.id JOIN tkc_firmwares f ON f.id = cf.firmware_id WHERE f.version = :firmware AND c.entity_ref = :entity_id AND c.lifecycle_status != 'removed' AND c.catalog_version_id = (SELECT id FROM tkc_catalog_versions WHERE vendor_id = :vendor AND is_latest = TRUE)",
+        "variant_query": "SELECT r.payload FROM tkc_results r WHERE r.result_type = 'variant' AND r.artifact_type = 'command' AND r.artifact_id = :command_id AND JSON_EXTRACT(r.payload, '$.firmware') = :firmware"
+      },
+      {
+        "id": "Q-CMD-05",
+        "name": "Comandos cuyo output mapea a un OID",
+        "use_case": "Dado un OID de alarma, encontrar el comando CLI para diagnóstico",
+        "sql": "SELECT c.*, cof.oid_ref FROM tkc_commands c JOIN tkc_command_output_fields cof ON cof.command_id = c.id WHERE cof.oid_ref = :oid_id AND c.catalog_version_id = :version"
+      }
+    ],
+
+    "oids": [
+      {
+        "id": "Q-OID-01",
+        "name": "Todos los OIDs de una entidad",
+        "use_case": "Construir lista de OIDs para monitoreo SNMP",
+        "sql": "SELECT * FROM tkc_oids WHERE entity_ref = :entity_id AND catalog_version_id = :version ORDER BY name"
+      },
+      {
+        "id": "Q-OID-02",
+        "name": "OID por métrica",
+        "use_case": "Obtener OID string, scale y bit_calculation antes de SNMP GET",
+        "sql": "SELECT * FROM tkc_oids WHERE entity_ref = :entity_id AND id = :oid_id AND catalog_version_id = :version"
+      },
+      {
+        "id": "Q-OID-03",
+        "name": "OIDs con bit_calculation activo",
+        "use_case": "El motor SNMP necesita saber qué OIDs requieren cálculo de índice",
+        "sql": "SELECT * FROM tkc_oids WHERE entity_ref = :entity_id AND bit_calculation = true AND catalog_version_id = :version"
+      },
+      {
+        "id": "Q-OID-04",
+        "name": "OIDs por status",
+        "use_case": "Motor SNMP solo usa verified en producción, observed en diagnóstico",
+        "sql": "SELECT o.* FROM tkc_oids o JOIN tkc_catalog_versions cv ON cv.id = o.catalog_version_id WHERE o.status = :status AND cv.vendor_id = :vendor AND cv.is_latest = TRUE"
+      },
+      {
+        "id": "Q-OID-05",
+        "name": "OID con escala y unidad",
+        "use_case": "Normalizar valor SNMP antes de almacenar o mostrar",
+        "sql": "SELECT oid_string, scale, unit, index_type, bit_calculation, index_def FROM tkc_oids WHERE id = :oid_id"
+      }
+    ],
+
+    "relations": [
+      {
+        "id": "Q-REL-01",
+        "name": "Prerequisitos de una entidad",
+        "use_case": "Obtener orden exacto de creación de dependencias antes de provisionar",
+        "sql": "SELECT e.*, r.creation_order FROM tkc_relations r JOIN tkc_entities e ON e.id = r.target_entity WHERE r.source_entity = :entity_id AND r.prerequisite = true AND r.catalog_version_id = :version ORDER BY r.creation_order ASC"
+      },
+      {
+        "id": "Q-REL-02",
+        "name": "Todas las relaciones de una entidad",
+        "use_case": "Construir árbol de dependencias en la UI",
+        "sql": "SELECT r.*, e_target.canonical_name as target_name FROM tkc_relations r JOIN tkc_entities e_target ON e_target.id = r.target_entity WHERE r.source_entity = :entity_id AND r.catalog_version_id = :version"
+      },
+      {
+        "id": "Q-REL-03",
+        "name": "Entidades que dependen de una entidad dada",
+        "use_case": "Antes de eliminar, saber qué se afecta",
+        "sql": "SELECT r.*, e_source.canonical_name as source_name FROM tkc_relations r JOIN tkc_entities e_source ON e_source.id = r.source_entity WHERE r.target_entity = :entity_id AND r.catalog_version_id = :version"
+      },
+      {
+        "id": "Q-REL-04",
+        "name": "Equivalentes cross-vendor",
+        "use_case": "Encontrar equivalente Huawei de una entidad ZTE",
+        "sql": "SELECT a.cross_vendor_entity, a.cross_vendor_confidence FROM tkc_aliases a WHERE a.entity_ref = :entity_id AND a.status = 'cross_vendor'"
+      }
+    ],
+
+    "alarms": [
+      {
+        "id": "Q-ALM-01",
+        "name": "Alarmas de una entidad",
+        "use_case": "Obtener alarmas posibles cuando llega un trap SNMP",
+        "sql": "SELECT * FROM tkc_alarms WHERE entity_ref = :entity_id AND catalog_version_id = :version ORDER BY severity DESC"
+      },
+      {
+        "id": "Q-ALM-02",
+        "name": "Alarma por código",
+        "use_case": "Traducir código de trap a información completa con remediación",
+        "sql": "SELECT * FROM tkc_alarms WHERE code = :alarm_code AND entity_ref = :entity_id AND catalog_version_id = :version"
+      },
+      {
+        "id": "Q-ALM-03",
+        "name": "Alarmas con threshold",
+        "use_case": "Configurar motor de alarmas con umbrales del catálogo",
+        "sql": "SELECT * FROM tkc_alarms WHERE entity_ref = :entity_id AND threshold_metric IS NOT NULL AND catalog_version_id = :version"
+      },
+      {
+        "id": "Q-ALM-04",
+        "name": "Alarmas por severidad",
+        "use_case": "Filtrar alarmas críticas para notificaciones inmediatas",
+        "sql": "SELECT * FROM tkc_alarms WHERE entity_ref = :entity_id AND severity = :severity AND catalog_version_id = :version"
+      },
+      {
+        "id": "Q-ALM-05",
+        "name": "OIDs relacionados a una alarma",
+        "use_case": "Saber qué OIDs consultar para diagnóstico",
+        "sql": "SELECT o.* FROM tkc_oids o JOIN tkc_alarm_oid_refs aor ON aor.oid_id = o.id WHERE aor.alarm_id = :alarm_id"
+      }
+    ],
+
+    "metadata": [
+      {
+        "id": "Q-META-01",
+        "name": "Versión activa del catálogo",
+        "use_case": "Knowledge Reader lo llama al inicializar",
+        "sql": "SELECT * FROM tkc_catalog_versions WHERE vendor_id = :vendor AND family_id = :family AND is_latest = true"
+      },
+      {
+        "id": "Q-META-02",
+        "name": "Cobertura del catálogo",
+        "use_case": "Panel de calidad",
+        "sql": "SELECT COUNT(*) as total_entities, SUM(CASE WHEN status = 'verified' THEN 1 ELSE 0 END) as verified, AVG(confidence_overall) as avg_confidence, MIN(confidence_overall) as min_confidence FROM tkc_entities WHERE vendor_id = :vendor AND catalog_version_id = :version"
+      },
+      {
+        "id": "Q-META-03",
+        "name": "Conflictos abiertos",
+        "use_case": "Dashboard de calidad del Compiler",
+        "sql": "SELECT * FROM tkc_results WHERE result_type = 'conflict' AND resolved = FALSE AND vendor_id = :vendor AND catalog_version_id = :version"
+      },
+      {
+        "id": "Q-META-04",
+        "name": "Huérfanos pendientes",
+        "use_case": "Cola de revisión manual post delta processing",
+        "sql": "SELECT artifact_type, artifact_id, payload, created_at FROM tkc_results WHERE result_type = 'orphan' AND resolved = FALSE AND catalog_version_id = (SELECT id FROM tkc_catalog_versions WHERE vendor_id = :vendor AND is_latest = TRUE) ORDER BY created_at DESC"
+      }
+    ]
+  }
+}

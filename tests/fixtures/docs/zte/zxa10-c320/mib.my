@@ -1,0 +1,40 @@
+ZXAN-GPON-ONT-MIB DEFINITIONS ::= BEGIN
+
+IMPORTS
+    OBJECT-TYPE, MODULE-IDENTITY, Integer32 FROM SNMPv2-SMI;
+
+zxAn MODULE-IDENTITY
+    LAST-UPDATED "202401010000Z"
+    ::= { enterprises 3902 }
+
+zxAnGpon          OBJECT IDENTIFIER ::= { zxAn 1082 }
+zxAnGponOnt       OBJECT IDENTIFIER ::= { zxAnGpon 500 }
+zxAnGponOntOptical OBJECT IDENTIFIER ::= { zxAnGponOnt 10 }
+
+zxAnGponOntOpticalRxPower OBJECT-TYPE
+    SYNTAX      INTEGER (-40000..0)
+    UNITS       "0.001 dBm"
+    MAX-ACCESS  read-only
+    STATUS      current
+    DESCRIPTION "Received optical power of the ONU."
+    INDEX { zxAnGponOntShelf, zxAnGponOntSlot, zxAnGponOntPort, zxAnGponOntId }
+    ::= { zxAnGponOntOptical 3 }
+
+zxAnGponOntOpticalTxPower OBJECT-TYPE
+    SYNTAX      INTEGER (-40000..0)
+    UNITS       "0.001 dBm"
+    MAX-ACCESS  read-only
+    STATUS      current
+    DESCRIPTION "Transmitted optical power of the ONU."
+    INDEX { zxAnGponOntShelf, zxAnGponOntSlot, zxAnGponOntPort, zxAnGponOntId }
+    ::= { zxAnGponOntOptical 5 }
+
+zxAnGponOntStatus OBJECT-TYPE
+    SYNTAX      INTEGER { online(1), offline(2), los(3) }
+    MAX-ACCESS  read-only
+    STATUS      current
+    DESCRIPTION "Operational status of the ONU."
+    INDEX { zxAnGponOntShelf, zxAnGponOntSlot, zxAnGponOntPort, zxAnGponOntId }
+    ::= { zxAnGponOnt 20 }
+
+END

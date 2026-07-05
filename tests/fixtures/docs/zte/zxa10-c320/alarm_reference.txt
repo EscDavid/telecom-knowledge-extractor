@@ -1,0 +1,14 @@
+ZTE Corporation
+ZXA10 C320 Alarm Management Reference
+OID enterprise prefix: 1.3.6.1.4.1.3902
+
+Code   Name             Severity   Description
+33001  ONU_LOS          critical   Loss of optical signal on the ONU.
+Description: The OLT detects loss of signal from the ONU.
+Probable Causes: Fiber cut; ONU powered off; dirty connector
+Remediation: Check fiber continuity; verify ONU power; clean connector
+
+33024  ONU_DYING_GASP   major      ONU reported a dying gasp power loss.
+Description: The ONU lost power and sent a dying gasp.
+Probable Causes: Power outage at customer premises
+Remediation: Verify customer power supply

@@ -1,0 +1,46 @@
+{
+  "id": "command.zte.gpon.global.show",
+  "canonical_name": "show pon power onu-rx",
+  "vendor": "ZTE",
+  "family": "ZXA10 C300",
+  "firmware": [
+    "2.0",
+    "2.1"
+  ],
+  "technology": "gpon",
+  "category": "show",
+  "cli_mode": "interface_config",
+  "entity_ref": null,
+  "description": "Registra (crea) una ONU en un puerto PON por su tipo y numero de serie.",
+  "syntax": "show pon power onu-rx {gpon-onu-index}",
+  "parameters": [
+    {
+      "name": "gpon-onu-index",
+      "type": "string",
+      "pattern": null,
+      "range": null,
+      "required": true,
+      "description": null,
+      "example": null
+    }
+  ],
+  "output_fields": [],
+  "prerequisites": [
+    "interface gpon-olt {gpon-olt-index}"
+  ],
+  "related_commands": [],
+  "sources": [
+    {
+      "doc_type": "command_reference",
+      "pages": null,
+      "confidence": 0.4
+    }
+  ],
+  "confidence": {
+    "extraction": 0.95,
+    "correlation": 0.0,
+    "overall": 0.95
+  },
+  "status": "verified",
+  "conflicts": []
+}

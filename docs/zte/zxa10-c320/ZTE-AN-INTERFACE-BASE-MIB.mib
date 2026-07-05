@@ -1,0 +1,829 @@
+ZTE-AN-INTERFACE-BASE-MIB    DEFINITIONS ::= BEGIN
+    IMPORTS
+        RowStatus, DisplayString,DateAndTime            FROM SNMPv2-TC
+        MODULE-IDENTITY, OBJECT-TYPE,
+        Integer32,NOTIFICATION-TYPE,Counter64           FROM SNMPv2-SMI
+        ifIndex, ifAdminStatus,ifOperStatus,ifType      FROM IF-MIB
+        zxAnInterface                                   FROM ZTE-AN-SMI
+        zxAnSubIfIndex                                  FROM ZTE-AN-IF-MIB;
+
+    zxAnInterfaceBaseMib    MODULE-IDENTITY
+        LAST-UPDATED    "201109132000Z"
+        ORGANIZATION    "ZTE Corporation"
+        CONTACT-INFO    "Zhang WeiPing      ZTE Corporation
+                        Mail: zhang.weiping@zte.com.cn
+                        Tel : +86-021-68896470"
+        DESCRIPTION     "This MIB defines zte Access Node managed objects."
+
+        REVISION        "201109132000Z"
+        DESCRIPTION
+            "Modify this mib according to standard."
+
+        REVISION        "201108291100Z"
+        DESCRIPTION
+            "Delete the tabel: zxAnEtherPortMirroringTable."
+
+        REVISION        "201107211500Z"
+        DESCRIPTION
+            "Delete the tabel: zxAnEthIfCurrStatsTable."
+
+        REVISION "201105311500Z"
+        DESCRIPTION
+            "Initial version of this MIB module."
+        ::=  {  zxAnInterface  20  }
+
+--------------------------------------------------------------------------------
+-- Following objects are defined.
+-- 1.Interface Configuration Object
+--  1.1 Interface Global Configuration Object
+--  1.2 Interface Configuration Table
+--  1.3 Ethernet Interface Configuration Table
+--  1.4 ATM PVC Configuration Table
+--  1.5 Out Of Band Interface Configuration Table
+--  1.6 Inner Port Status Table
+
+-- Following notification objects are defined.
+-- 21.Interface Notifications Definations
+
+-- Following conformance information is defined.
+-- 31. Interface Conformance
+--------------------------------------------------------------------------------
+
+    zxAnInterfaceObjects        OBJECT IDENTIFIER ::= { zxAnInterfaceBaseMib 2 }
+    zxAnInterfaceNotifications  OBJECT IDENTIFIER ::= { zxAnInterfaceBaseMib 3 }
+    zxAnInterfaceConformance    OBJECT IDENTIFIER ::= { zxAnInterfaceBaseMib 4 }
+
+    zxAnIfBaseObjects           OBJECT IDENTIFIER ::= { zxAnInterfaceObjects 2 }
+
+--------------------------------------------------------------------------------
+-- 1. Interface Configuration Object
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+--  1.1 Interface Global Configuration Object
+--------------------------------------------------------------------------------
+
+    zxAnIfBaseGlobalObjects        OBJECT IDENTIFIER ::= { zxAnIfBaseObjects 1 }
+
+    zxAnIfGlobalMaxFrameLength OBJECT-TYPE
+        SYNTAX      Integer32(64..9600)
+        UNITS       "bytes"
+        MAX-ACCESS  read-write
+        STATUS      current
+        DESCRIPTION
+            "Global system maximum frame size, specifies the maximum frame size
+             on all interfaces(PON ports and uplink interfaces). The invalid
+             frame whose size is larger than the object will be discarded."
+        DEFVAL { 1600 }
+        ::= { zxAnIfBaseGlobalObjects 1 }
+        
+    zxAnEtherIfHoldoffTime OBJECT-TYPE
+        SYNTAX      Integer32(0..10000)
+        UNITS       "Milliseconds"
+        MAX-ACCESS  read-write
+        STATUS      current
+        DESCRIPTION
+            "Global system ethernet interface hold-off time.
+             Hold-off time: The time between the declaration of a signal 
+             fail (SF) or signal degrade (SD) condition and the initialization 
+             of the protection switching algorithm."
+        DEFVAL { 0 }
+        ::= { zxAnIfBaseGlobalObjects 2 }        
+
+--------------------------------------------------------------------------------
+--  1.2 Interface Configuration Table
+--------------------------------------------------------------------------------
+
+    zxAnIfConfTable   OBJECT-TYPE
+        SYNTAX      SEQUENCE OF ZxAnIfConfEntry
+        MAX-ACCESS  not-accessible
+        STATUS      current
+        DESCRIPTION
+            "This table includes the interface configuration infomation."
+        ::= { zxAnIfBaseObjects 2 }
+
+    zxAnIfConfEntry   OBJECT-TYPE
+        SYNTAX      ZxAnIfConfEntry
+        MAX-ACCESS  not-accessible
+        STATUS      current
+        DESCRIPTION
+            "An entry in zxAnIfConfTable."
+        INDEX {
+            ifIndex,
+            zxAnSubIfIndex
+        }
+        ::= { zxAnIfConfTable 1 }
+
+    ZxAnIfConfEntry  ::= SEQUENCE {
+        zxAnIfConfAdminStatus               INTEGER,
+        zxAnIfConfLockStatus                INTEGER,
+        zxAnIfConfLastLinkDownTime          DateAndTime,
+        zxAnIfConfLastLinkUpTime            DateAndTime
+        }
+
+    zxAnIfConfAdminStatus OBJECT-TYPE
+        SYNTAX          INTEGER {
+            enabled(1),
+            disabled(2)
+        }
+        MAX-ACCESS      read-write
+        STATUS          current
+        DESCRIPTION
+            "Enable/disable the interface."
+        ::= { zxAnIfConfEntry 1 }
+
+    zxAnIfConfLockStatus OBJECT-TYPE
+        SYNTAX          INTEGER {
+            unlocked(1),
+            locked(2)
+        }
+        MAX-ACCESS      read-write
+        STATUS          current
+        DESCRIPTION
+            "Lock/unlock the interface.
+             unlocked -- release the locked status.
+             locked   -- disable the service and alarm of this interface."
+        DEFVAL  { unlocked }
+        ::= { zxAnIfConfEntry 2 }
+
+    zxAnIfConfLastLinkDownTime OBJECT-TYPE
+        SYNTAX          DateAndTime
+        MAX-ACCESS      read-only
+        STATUS          current
+        DESCRIPTION
+            "The time that the link of interface is down."
+        ::= { zxAnIfConfEntry 3 }
+
+    zxAnIfConfLastLinkUpTime OBJECT-TYPE
+        SYNTAX          DateAndTime
+        MAX-ACCESS      read-only
+        STATUS          current
+        DESCRIPTION
+            "The time that the link of interface is up."
+        ::= { zxAnIfConfEntry 4 }
+
+--------------------------------------------------------------------------------
+--  1.3 Ethernet Interface Configuration Table
+--------------------------------------------------------------------------------
+    zxAnEtherIfTable   OBJECT-TYPE
+        SYNTAX      SEQUENCE  OF  ZxAnEtherIfEntry
+        MAX-ACCESS  not-accessible
+        STATUS      current
+        DESCRIPTION
+            "This table includes the ethernet-like interface configuration."
+        ::= { zxAnIfBaseObjects 3 }
+
+    zxAnEtherIfEntry   OBJECT-TYPE
+        SYNTAX      ZxAnEtherIfEntry
+        MAX-ACCESS  not-accessible
+        STATUS      current
+        DESCRIPTION "An entry in zxAnEtherIfTable."
+        INDEX       { ifIndex  }
+        ::= { zxAnEtherIfTable 1 }
+
+    ZxAnEtherIfEntry  ::=  SEQUENCE {
+        zxAnEtherIfConfDuplexSpeed      INTEGER,
+        zxAnEtherIfActualDuplex         INTEGER,
+        zxAnEtherIfActualSpeed          INTEGER,
+        zxAnEtherIfConfConnectorType    INTEGER,
+        zxAnEtherIfActualConnectorType  INTEGER,
+        zxAnEtherIfConfFlowCtrlEnable   INTEGER,
+        zxAnEtherIfConf10GEPhyType      INTEGER,
+        zxAnEtherIfConf10GERefClk       INTEGER
+        }
+
+    zxAnEtherIfConfDuplexSpeed OBJECT-TYPE
+        SYNTAX          INTEGER {
+             autoNegotiate(1),
+             half10(2), -- 10M-half
+             full10(3), -- 10M-full
+             half100(4),-- 100M-half
+             full100(5),-- 100M-full
+             full1000(6),-- 1000M-full
+             full10000(7),-- 10000M-full
+             illegal(99)
+        }
+        MAX-ACCESS      read-write
+        STATUS          current
+        DESCRIPTION
+            "DURABLE: { auto_negotiate:all }
+            The desired speed and duplex for this interface. If the selected
+            control is not possible on the interface, a value of illegal(99)
+            is returned.  If the port type does NOT support the default
+            of auto_negotiate(1), then the application initializes the
+            port to a valid value (e.g., 1000full(6)).  Note that not all
+            controls are possible for all interfaces.  For example, only
+            full-1000(6) is available for Gigabit Ethernet interfaces."
+        ::= { zxAnEtherIfEntry 2 }
+
+    zxAnEtherIfActualDuplex OBJECT-TYPE
+        SYNTAX          INTEGER {
+             autoNegotiate(1),
+             half(2),
+             full(3)
+        }
+        MAX-ACCESS      read-only
+        STATUS          current
+        DESCRIPTION
+            "The actual duplex for this interface. "
+        ::= { zxAnEtherIfEntry 3 }
+
+    zxAnEtherIfActualSpeed OBJECT-TYPE
+        SYNTAX          INTEGER {
+             speed10(1),
+             speed100(2),
+             speed1000(3),
+             speed10000(4),
+             autoSpeed(5)
+        }
+        MAX-ACCESS      read-only
+        STATUS          current
+        DESCRIPTION
+            "The actual speed for this interface. "
+        ::= { zxAnEtherIfEntry 4 }
+
+    zxAnEtherIfConfConnectorType OBJECT-TYPE
+        SYNTAX          INTEGER {
+             notConfigured(1),
+             auto(2),
+             fiber(3),
+             copper(4)
+        }
+        MAX-ACCESS      read-write
+        STATUS          current
+        DESCRIPTION
+            "The connector tpye of this interface,such as fibre or copper or
+             auto.
+             If no connector should be regard,it is notConfigured."
+        ::= { zxAnEtherIfEntry 5 }
+
+    zxAnEtherIfActualConnectorType OBJECT-TYPE
+        SYNTAX          INTEGER {
+             notConfigured(1),
+             auto(2),
+             fiber(3),
+             copper(4)
+        }
+        MAX-ACCESS      read-only
+        STATUS          current
+        DESCRIPTION
+            "The actual connector for this interface. "
+        ::= { zxAnEtherIfEntry 6 }
+
+    zxAnEtherIfConfFlowCtrlEnable OBJECT-TYPE
+        SYNTAX          INTEGER {
+             enable(1),
+             disable(2)
+        }
+        MAX-ACCESS      read-write
+        STATUS          current
+        DESCRIPTION
+            "Enable/disable the ehternet flow control."
+        ::= { zxAnEtherIfEntry 7 }
+
+
+    zxAnEtherIfConf10GEPhyType OBJECT-TYPE
+        SYNTAX          INTEGER {
+             notConfigured(1),
+             lan10GE(2),   -- 10GE_LAN
+             wan10GE(3)  -- 10GE_WAN
+        }
+        MAX-ACCESS      read-write
+        STATUS          current
+        DESCRIPTION
+            "The physical tpye of this interface,it is used by 10GE interface
+         only now. "
+        ::= { zxAnEtherIfEntry 8 }
+
+
+    zxAnEtherIfConf10GERefClk OBJECT-TYPE
+        SYNTAX          INTEGER {
+             notConfigured(1),
+             localClock(2),
+             lineClock(3)
+        }
+        MAX-ACCESS      read-write
+        STATUS          current
+        DESCRIPTION
+            "The reference clock used by this interface.
+             It is used by 10GE port."
+        ::= { zxAnEtherIfEntry 9 }
+
+--------------------------------------------------------------------------------
+--  1.4 ATM PVC Configuration Table
+--------------------------------------------------------------------------------
+
+    zxAnAtmPvcIfTable   OBJECT-TYPE
+        SYNTAX      SEQUENCE OF ZxAnAtmPvcIfEntry
+        MAX-ACCESS  not-accessible
+        STATUS      current
+        DESCRIPTION
+            "This table includes the ATM PVC infomation."
+        ::= { zxAnIfBaseObjects 4 }
+
+    zxAnAtmPvcIfEntry   OBJECT-TYPE
+        SYNTAX      ZxAnAtmPvcIfEntry
+        MAX-ACCESS  not-accessible
+        STATUS      current
+        DESCRIPTION
+            "An entry in zxAnAtmPvcIfTable."
+        INDEX {
+            ifIndex,
+            zxAnSubIfIndex
+        }
+        ::= { zxAnAtmPvcIfTable 1 }
+
+    ZxAnAtmPvcIfEntry  ::= SEQUENCE {
+        zxAnAtmPvcIfVpi                Integer32,
+        zxAnAtmPvcIfVci                Integer32,
+        zxAnAtmPvcIfEncapsType         INTEGER,
+        zxAnAtmPvcIfActualEncapsType   INTEGER,
+        zxAnAtmPvcIfAdminStatus        INTEGER,
+        zxAnAtmPvcIfRowStatus          RowStatus
+        }
+
+    zxAnAtmPvcIfVpi OBJECT-TYPE
+        SYNTAX      Integer32(0..255)
+        MAX-ACCESS  read-create
+        STATUS      current
+        DESCRIPTION
+            "VPI."
+        ::= { zxAnAtmPvcIfEntry 1 }
+
+    zxAnAtmPvcIfVci OBJECT-TYPE
+        SYNTAX      Integer32(0..65535)
+        MAX-ACCESS  read-create
+        STATUS      current
+        DESCRIPTION
+            "VCI."
+        ::= { zxAnAtmPvcIfEntry 2 }
+
+    zxAnAtmPvcIfEncapsType OBJECT-TYPE
+        SYNTAX      INTEGER {
+            eoaLlc(1),
+            eoaVcmux(2),
+            pppoaLlc(3),
+            pppoaVcmux(4),
+            ipoaLlc(5),
+            ipoaVcmux(6),
+            aoe(7),
+            modemMgmt(8)
+        }
+        MAX-ACCESS  read-create
+        STATUS      current
+        DESCRIPTION
+            "Encapsulation type of this ATM PVC."
+        ::= { zxAnAtmPvcIfEntry 3 }
+
+    zxAnAtmPvcIfActualEncapsType OBJECT-TYPE
+        SYNTAX      INTEGER {
+            eoaLlc(1),
+            eoaVcmux(2),
+            pppoaLlc(3),
+            pppoaVcmux(4),
+            ipoaLlc(5),
+            ipoaVcmux(6),
+            aoe(7),
+            modemMgmt(8),
+            unknown(9)
+        }
+        MAX-ACCESS  read-only
+        STATUS      current
+        DESCRIPTION
+            "Actual Encapsulation type of this ATM PVC."
+        ::= { zxAnAtmPvcIfEntry 4 }
+
+    zxAnAtmPvcIfAdminStatus OBJECT-TYPE
+        SYNTAX      INTEGER {
+            enabled(1),
+            disabled(2)
+        }
+        MAX-ACCESS  read-create
+        STATUS      current
+        DESCRIPTION
+            "Enable/disable PVC."
+        DEFVAL  { enabled }
+        ::= { zxAnAtmPvcIfEntry 5 }
+
+    zxAnAtmPvcIfRowStatus OBJECT-TYPE
+        SYNTAX      RowStatus
+        MAX-ACCESS  read-create
+        STATUS      current
+        DESCRIPTION
+            "The status of this conceptual row.
+
+            The supported actions of this conceptual row only include:
+            'createAndGo' and 'destroy'.
+
+            To create a row in this table, a manager must set this object to
+            createAndGo(4), and must comply with the multi-variables binding
+            rule described in zxAnAtmPvcIfEntry.
+
+            To delete a row in this table, a manager must set this object to
+            destroy(6).
+
+            To get this object, the agent always returns active(1)."
+        ::= { zxAnAtmPvcIfEntry 50 }
+
+--------------------------------------------------------------------------------
+--  1.5 Out Of Band Interface Configuration Table
+--------------------------------------------------------------------------------
+    zxAnOutOfBandIfTable   OBJECT-TYPE
+        SYNTAX      SEQUENCE  OF  ZxAnOutOfBandIfEntry
+        MAX-ACCESS  not-accessible
+        STATUS      current
+        DESCRIPTION "This table includes the Mng port  infomation."
+        ::=  { zxAnIfBaseObjects  5 }
+
+    zxAnOutOfBandIfEntry   OBJECT-TYPE
+        SYNTAX      ZxAnOutOfBandIfEntry
+        MAX-ACCESS  not-accessible
+        STATUS      current
+        DESCRIPTION "An entry in zxAnOutOfBandIfTable."
+        INDEX       { ifIndex}
+        ::=  { zxAnOutOfBandIfTable 1 }
+
+    ZxAnOutOfBandIfEntry  ::=  SEQUENCE {
+        zxAnOutOfBandIfAdminStatus          INTEGER,
+        zxAnOutOfBandIfLinkStatus           INTEGER,
+        zxAnOutOfBandIfDuplexSpeed          INTEGER,
+        zxAnOutOfBandIfActualDuplex         INTEGER,
+        zxAnOutOfBandIfActualSpeed          INTEGER,
+        zxAnOutOfBandIfTagMode              INTEGER,
+        zxAnOutOfBandIfVid                  Integer32,
+        zxAnOutOfBandIfCos                  Integer32,
+        zxAnOutOfBandIfConfNegotiation      INTEGER,
+        zxAnOutOfBandIfConfDuplex           INTEGER,
+        zxAnOutOfBandIfConfSpeed            INTEGER
+        }
+
+    zxAnOutOfBandIfAdminStatus OBJECT-TYPE
+        SYNTAX  INTEGER {
+                up(1),       -- ready to pass packets
+                down(2),
+                testing(3)   -- in some test mode
+            }
+        MAX-ACCESS  read-write
+        STATUS      current
+        DESCRIPTION
+            "The desired state of the interface.  The testing(3) state
+            indicates that no operational packets can be passed.  When a
+            managed system initializes, all interfaces start with
+            ifAdminStatus in the down(2) state.  As a result of either
+            explicit management action or per configuration information
+            retained by the managed system, ifAdminStatus is then
+            changed to either the up(1) or testing(3) states (or remains
+            in the down(2) state)."
+        ::= { zxAnOutOfBandIfEntry 2 }
+
+    zxAnOutOfBandIfLinkStatus OBJECT-TYPE
+        SYNTAX  INTEGER {
+                up(1),        -- ready to pass packets
+                down(2),
+                testing(3),   -- in some test mode
+                unknown(4),   -- status can not be determined
+                              -- for some reason.
+                dormant(5),
+                notPresent(6),    -- some component is missing
+                lowerLayerDown(7) -- down due to state of
+                                  -- lower-layer interface(s)
+            }
+        MAX-ACCESS  read-only
+        STATUS      current
+        DESCRIPTION
+            "The current operational state of the interface.  The
+            testing(3) state indicates that no operational packets can
+            be passed.  If ifAdminStatus is down(2) then ifOperStatus
+            should be down(2).  If ifAdminStatus is changed to up(1)
+            then ifOperStatus should change to up(1) if the interface is
+            ready to transmit and receive network traffic; it should
+            change to dormant(5) if the interface is waiting for
+            external actions (such as a serial line waiting for an
+            incoming connection); it should remain in the down(2) state
+            if and only if there is a fault that prevents it from going
+            to the up(1) state; it should remain in the notPresent(6)
+            state if the interface has missing (typically, hardware)
+            components."
+        ::= { zxAnOutOfBandIfEntry 3 }
+
+    zxAnOutOfBandIfDuplexSpeed OBJECT-TYPE
+        SYNTAX          INTEGER
+        {
+             autoNegotiate(1),
+             half10(2), -- 10M-half
+             full10(3), -- 10M-full
+             half100(4),-- 100M-half
+             full100(5),-- 100M-full
+             full1000(6),-- 1000M-full
+             full10000(7),-- 10000M-full
+             illegal(99)
+        }
+        MAX-ACCESS      read-write
+        STATUS          current
+        DESCRIPTION
+            "DURABLE: { auto_negotiate:all }
+            The desired speed and duplex for this interface. If the selected
+            control is not possible on the interface, a value of illegal(99)
+            is returned.  If the port type does NOT support the default
+            of auto_negotiate(1), then the application initializes the
+            port to a valid value (e.g., 1000full(6)).  Note that not all
+            controls are possible for all interfaces.  For example, only
+            full-1000(6) is available for Gigabit Ethernet interfaces."
+        ::= { zxAnOutOfBandIfEntry 4 }
+
+
+    zxAnOutOfBandIfActualDuplex OBJECT-TYPE
+        SYNTAX          INTEGER
+        {
+             autoNegotiate(1),
+             half(2),
+             full(3)
+        }
+        MAX-ACCESS      read-only
+        STATUS          current
+        DESCRIPTION
+            "The actual duplex for this interface. "
+        ::= { zxAnOutOfBandIfEntry 5 }
+
+
+    zxAnOutOfBandIfActualSpeed OBJECT-TYPE
+        SYNTAX          INTEGER
+        {
+             speed10(1),
+             speed100(2),
+             speed1000(3),
+             speed10000(4),
+             autoSpeed(5)
+        }
+        MAX-ACCESS      read-only
+        STATUS          current
+        DESCRIPTION
+            "The actual speed for this interface. "
+        ::= { zxAnOutOfBandIfEntry 6 }
+
+    zxAnOutOfBandIfTagMode OBJECT-TYPE
+        SYNTAX          INTEGER
+        {
+             untagged(1),
+             tagged(2)
+        }
+        MAX-ACCESS      read-write
+        STATUS          current
+        DESCRIPTION
+            "The tag mode for this interface.
+            untagged(1):zxAnSysOutbandPortVlanId and zxAnSysOutbandPortCos
+            are invalid.
+            tagged(2): zxAnSysOutbandPortVlanId is required.
+            zxAnSysOutbandPortCos is optional.
+            If VLAN ID and CoS are configured, the packet which has the same
+            VLAN ID and CoS can be received.
+            If only VLAN ID is configured,the packet which has the same VLAN ID
+            can be received."
+        ::= { zxAnOutOfBandIfEntry 7 }
+
+
+    zxAnOutOfBandIfVid OBJECT-TYPE
+        SYNTAX          Integer32 (0..4094)
+        MAX-ACCESS      read-write
+        STATUS          current
+        DESCRIPTION
+            "VLAN ID for this interface. Value 0 means unconfigured."
+        ::= { zxAnOutOfBandIfEntry 8 }
+
+    zxAnOutOfBandIfCos OBJECT-TYPE
+        SYNTAX          Integer32 (0..7 | 255)
+        MAX-ACCESS      read-write
+        STATUS          current
+        DESCRIPTION
+            "CoS value for this interface. Value 255 means unconfigured."
+        ::= { zxAnOutOfBandIfEntry 9 }
+    
+    zxAnOutOfBandIfConfNegotiation  OBJECT-TYPE
+        SYNTAX          INTEGER
+        {
+             auto(1),
+             force(2),              
+             illegal(99)
+        }
+        MAX-ACCESS      read-write
+        STATUS          current
+        DESCRIPTION
+            "This object is defined for C600 series NE.
+             The desired negotiation for this interface. 
+             If the selected control is not possible on the interface, a value 
+             of illegal(99) is returned. 
+             If this value is auto, zxAnOutOfBandIfConfDuplex and 
+             zxAnOutOfBandIfConfSpeed can not be set.
+             Only if this value is force, zxAnOutOfBandIfConfDuplex and 
+             zxAnOutOfBandIfConfSpeed can be set."
+        ::= { zxAnOutOfBandIfEntry 21 }
+
+    zxAnOutOfBandIfConfDuplex OBJECT-TYPE
+        SYNTAX          INTEGER
+        {
+             full(1),
+             illegal(99)
+        }
+        MAX-ACCESS      read-write
+        STATUS          current
+        DESCRIPTION
+            "This object is defined for C600 series NE.
+             The desired duplex for this interface. 
+             If the selected control is not possible on the interface, a value 
+             of illegal(99) is returned. 
+             If zxAnOutOfBandIfConfNegotiation value is auto, this object can 
+             not be set."
+        ::= { zxAnOutOfBandIfEntry 22 }
+        
+    zxAnOutOfBandIfConfSpeed OBJECT-TYPE
+        SYNTAX          INTEGER
+        {
+             speed10(1), 
+             speed100(2),
+             illegal(99)
+        }
+        MAX-ACCESS      read-write
+        STATUS          current
+        DESCRIPTION
+            "This object is defined for C600 series NE.
+             The desired speed for this interface. 
+             speed10 : 10M,
+             speed100 : 100M,
+             If the selected control is not possible on the interface, a value 
+             of illegal(99) is returned. 
+             If zxAnOutOfBandIfConfNegotiation value is auto, this object
+             can not be set. "
+        ::= { zxAnOutOfBandIfEntry 23 }
+        
+--------------------------------------------------------------------------------
+--  1.6 Inner Port Status Table
+--------------------------------------------------------------------------------
+    zxAnInnerPortStatusTable OBJECT-TYPE
+        SYNTAX  SEQUENCE OF ZxAnInnerPortStatusEntry
+        MAX-ACCESS  not-accessible
+        STATUS  current
+        DESCRIPTION
+            "This table includes the inner port status of the line card."
+        ::= { zxAnIfBaseObjects 6 }
+         
+    zxAnInnerPortStatusEntry OBJECT-TYPE
+        SYNTAX  ZxAnInnerPortStatusEntry
+        MAX-ACCESS  not-accessible
+        STATUS  current
+        DESCRIPTION
+            "An entry in zxAnInnerPortStatusTable."
+        INDEX  {
+            zxAnInnerPortRack,
+            zxAnInnerPortShelf,
+            zxAnInnerPortSlot
+        }
+        ::= { zxAnInnerPortStatusTable 1 }
+     
+    ZxAnInnerPortStatusEntry  ::=  SEQUENCE  {
+        zxAnInnerPortRack               Integer32,
+        zxAnInnerPortShelf              Integer32,
+        zxAnInnerPortSlot               Integer32,
+        zxAnLeftConnectInnerPortStatus  INTEGER,
+        zxAnRightConnectInnerPortStatus INTEGER
+        }
+      
+    zxAnInnerPortRack  OBJECT-TYPE 
+        SYNTAX          Integer32
+        MAX-ACCESS      not-accessible
+        STATUS          current
+        DESCRIPTION     "This object indicates the rack number."
+        ::=  { zxAnInnerPortStatusEntry  1 }
+
+    zxAnInnerPortShelf  OBJECT-TYPE 
+        SYNTAX          Integer32
+        MAX-ACCESS      not-accessible
+        STATUS          current
+        DESCRIPTION     "This object indicates the shelf number."
+        ::=  { zxAnInnerPortStatusEntry  2 }
+
+    zxAnInnerPortSlot  OBJECT-TYPE 
+        SYNTAX          Integer32
+        MAX-ACCESS      not-accessible
+        STATUS          current
+        DESCRIPTION     "This object indicates the slot number."
+        ::=  { zxAnInnerPortStatusEntry  3 }
+
+    zxAnLeftConnectInnerPortStatus  OBJECT-TYPE
+        SYNTAX  INTEGER  {
+            innerPortUp(1),
+            innerPortDown(2),
+            fpgaPortDown(3),
+            higigPortDown(4),
+            dmaL2MacAbnormal(5),
+            dmaCounterAbnormal(6),
+            dmaPacketAbnormal(7),
+            gppConnPortDown(8),
+            gppFpgaConnPortDown(9),
+            pcieAccessAbnormal(10),
+            macBcdrPllAbnormal(11),
+            otherErrors(254),
+            invalid(255)
+        }
+        MAX-ACCESS  accessible-for-notify
+        STATUS      current
+        DESCRIPTION
+            "This object indicates the inner port status connected with the 
+            left control card."
+        ::= { zxAnInnerPortStatusEntry  4 }     
+            
+    zxAnRightConnectInnerPortStatus  OBJECT-TYPE
+        SYNTAX  INTEGER  {
+            innerPortUp(1),
+            innerPortDown(2),
+            fpgaPortDown(3),
+            higigPortDown(4),
+            dmaL2MacAbnormal(5),
+            dmaCounterAbnormal(6),
+            dmaPacketAbnormal(7),
+            gppConnPortDown(8),
+            gppFpgaConnPortDown(9),
+            pcieAccessAbnormal(10),
+            macBcdrPllAbnormal(11),
+            otherErrors(254),
+            invalid(255)
+        }
+        MAX-ACCESS  accessible-for-notify
+        STATUS      current
+        DESCRIPTION
+            "This object indicates the inner port status connected with the 
+            right control card."
+        ::= { zxAnInnerPortStatusEntry  5 }
+
+--------------------------------------------------------------------------------
+-- 21.Interface Notifications Definations
+--------------------------------------------------------------------------------
+    zxAnIfUplinkUp NOTIFICATION-TYPE
+        OBJECTS { ifAdminStatus,ifOperStatus,ifType }
+        STATUS  current
+        DESCRIPTION
+            "The operational status of uplink interface changes to up."
+        ::= { zxAnInterfaceNotifications 1 }
+
+
+    zxAnIfUplinkDown NOTIFICATION-TYPE
+        OBJECTS { ifAdminStatus,ifOperStatus,ifType }
+        STATUS  current
+        DESCRIPTION
+            "The operational status of uplink interface changes to down."
+        ::= { zxAnInterfaceNotifications 2 }
+
+    zxAnIfAccesslinkUp NOTIFICATION-TYPE
+        OBJECTS { ifAdminStatus,ifOperStatus,ifType }
+        STATUS  current
+        DESCRIPTION
+            "The operational status of access link interface changes to up."
+        ::= { zxAnInterfaceNotifications 3 }
+
+
+    zxAnIfAccesslinkDown NOTIFICATION-TYPE
+        OBJECTS { ifAdminStatus,ifOperStatus,ifType }
+        STATUS  current
+        DESCRIPTION
+            "The operational status of access link interface changes to down."
+        ::= { zxAnInterfaceNotifications 4 }
+
+    zxAnInnerPortDownAlm  NOTIFICATION-TYPE
+        OBJECTS {
+            zxAnLeftConnectInnerPortStatus, 
+            zxAnRightConnectInnerPortStatus
+        }
+        STATUS  current
+        DESCRIPTION
+            "When the inner port of the card is down, the card will be reset 
+            by NE twice. If the fault still exists, a zxAnInnerPortDownAlm 
+            trap will be sent."
+        ::= { zxAnInterfaceNotifications 5 }  
+    
+    zxAnInnerPortDownClr NOTIFICATION-TYPE
+        OBJECTS  {
+            zxAnLeftConnectInnerPortStatus, 
+            zxAnRightConnectInnerPortStatus
+        }
+        STATUS  current
+        DESCRIPTION
+            "A zxAnInnerPortDownClr trap is sent when the 
+            zxAnInnerPortDownAlm is cleared."
+        ::= { zxAnInterfaceNotifications 6 }
+        
+    zxAnUplinkPortAbnormalAlm  NOTIFICATION-TYPE
+        OBJECTS { ifAdminStatus,ifOperStatus,ifType }
+        STATUS  current
+        DESCRIPTION
+            "A zxAnUplinkPortAbnormalAlm is sent when the 
+             agent has detected that the ifOperStatus is down. "
+       ::= { zxAnInterfaceNotifications 7 }
+    
+    zxAnUplinkPortAbnormalClr NOTIFICATION-TYPE
+        OBJECTS { ifAdminStatus,ifOperStatus,ifType }
+        STATUS  current
+        DESCRIPTION
+            "A zxAnUplinkPortAbnormalClr is sent when the 
+             agent has detected that the ifOperStatus is up. "
+        ::= { zxAnInterfaceNotifications 8 }
+        
+END

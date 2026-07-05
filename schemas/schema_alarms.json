@@ -1,0 +1,102 @@
+{
+  "spec_name": "SCHEMA_SPEC_ALARMS",
+  "version": "1.0.0",
+  "purpose": "Define el JSON intermedio para alarmas por vendor",
+
+  "file_structure": {
+    "location": "knowledge-dist/{vendor}/{family}/catalog-{version}/alarms/",
+    "naming": "{entity_name}.json",
+    "example": "knowledge-dist/zte/zxa10-c320/catalog-1.0.0/alarms/onu.json"
+  },
+
+  "id_construction": {
+    "pattern": "alarm.{vendor}.{technology}.{entity}.{alarm_name_snake}",
+    "examples": [
+      "alarm.zte.gpon.onu.los",
+      "alarm.zte.gpon.onu.auth_fail",
+      "alarm.zte.gpon.pon_port.los",
+      "alarm.zte.gpon.card.temperature_high",
+      "alarm.zte.gpon.olt.board_fail"
+    ]
+  },
+
+  "valid_severities": {
+    "warning": "degradación leve, sin impacto inmediato",
+    "major": "impacto parcial, requiere atención pronta",
+    "critical": "pérdida de servicio, atención inmediata"
+  },
+
+  "valid_alarm_types": {
+    "optical": "señal óptica, potencia, fibra",
+    "hardware": "board, card, chassis",
+    "power": "alimentación del equipo",
+    "security": "autenticación, acceso no autorizado",
+    "traffic": "ancho de banda, DBA, overload",
+    "protocol": "PLOAM, OMCI, registros GPON",
+    "environmental": "temperatura, humedad"
+  },
+
+  "schema": {
+    "entity_ref": { "type": "string", "required": true },
+    "vendor": { "type": "string", "required": true },
+    "family": { "type": "string", "required": true },
+    "firmware": { "type": "array<string>", "required": true },
+    "alarms": {
+      "type": "array",
+      "required": true,
+      "item_schema": {
+        "id": { "type": "string", "required": true },
+        "code": { "type": "string", "required": true, "example": "33001" },
+        "name": { "type": "string", "required": true, "example": "ONU_LOS" },
+        "canonical_name": { "type": "string", "required": true, "example": "Loss of Signal" },
+        "entity_ref": { "type": "string", "required": true },
+        "severity": { "type": "enum", "required": true },
+        "type": { "type": "enum", "required": true },
+        "description": { "type": "string", "required": false },
+        "probable_causes": { "type": "array<string>", "required": false },
+        "remediation": { "type": "array<string>", "required": false },
+        "oid_trap": { "type": "string|null", "required": false, "description": "OID del trap SNMP" },
+        "oid_refs": { "type": "array<string>", "required": false, "description": "OID ids para diagnóstico" },
+        "auto_clear": { "type": "boolean", "required": true },
+        "clear_condition": { "type": "string|null", "required": false },
+        "threshold": {
+          "type": "object|null",
+          "required": false,
+          "description": "Solo si la alarma se dispara por valor SNMP medible",
+          "schema": {
+            "metric": "string",
+            "operator": "enum — gt|lt|eq|gte|lte",
+            "value": "decimal",
+            "unit": "string"
+          }
+        },
+        "escalation": {
+          "type": "object",
+          "required": true,
+          "schema": {
+            "warning_after_minutes": "integer|null",
+            "major_after_minutes": "integer|null",
+            "critical_after_minutes": "integer|null"
+          }
+        },
+        "sources": { "type": "array", "required": true },
+        "confidence": { "type": "object", "required": true },
+        "status": { "type": "enum", "required": true },
+        "conflicts": { "type": "array", "required": true }
+      }
+    }
+  },
+
+  "confidence_propagation": {
+    "rule": "Una alarma hereda restricciones de su entidad y sus oid_refs",
+    "formula": "alarm.confidence.overall <= min(entity_ref.confidence.overall, min(oid_refs[].confidence.overall))"
+  },
+
+  "db_mapping": {
+    "primary_table": "tkc_alarms",
+    "related_tables": [
+      "tkc_alarm_oid_refs — oid_refs[] se descompone",
+      "tkc_alarm_firmware — firmware[] se descompone"
+    ]
+  }
+}

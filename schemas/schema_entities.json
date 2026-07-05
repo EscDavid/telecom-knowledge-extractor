@@ -1,0 +1,135 @@
+{
+  "spec_name": "SCHEMA_SPEC_ENTITIES",
+  "version": "1.0.0",
+  "purpose": "Define el JSON intermedio que el Compiler produce para entidades antes de que el Loader escriba en BD",
+
+  "file_structure": {
+    "location": "knowledge-dist/{vendor}/{family}/catalog-{version}/entities/",
+    "naming": "{canonical_name_snake}.json",
+    "example": "knowledge-dist/zte/zxa10-c320/catalog-1.0.0/entities/onu.json"
+  },
+
+  "id_construction": {
+    "pattern": "entity.{vendor}.{technology}.{type}.{canonical_name_snake}",
+    "examples": [
+      "entity.zte.gpon.device.onu",
+      "entity.zte.gpon.port.pon_port",
+      "entity.zte.gpon.logical.gem_port",
+      "entity.zte.gpon.logical.service_port",
+      "entity.zte.gpon.logical.vlan",
+      "entity.zte.gpon.hardware.card",
+      "entity.zte.gpon.profile.line_profile",
+      "entity.zte.gpon.protocol.dba"
+    ]
+  },
+
+  "valid_types": {
+    "device": "ONU, OLT",
+    "port": "PON port, uplink port",
+    "logical": "GEM port, service port, VLAN",
+    "hardware": "card, shelf, chassis",
+    "profile": "line profile, service profile",
+    "protocol": "DBA, IGMP"
+  },
+
+  "schema": {
+    "id": { "type": "string", "required": true, "description": "ID canónico construido por regla" },
+    "canonical_name": { "type": "string", "required": true, "description": "Nombre oficial de la entidad" },
+    "vendor": { "type": "string", "required": true },
+    "family": { "type": "string", "required": true },
+    "firmware": { "type": "array<string>", "required": true, "description": "Firmwares donde existe" },
+    "technology": { "type": "string", "required": true, "values": ["gpon", "epon", "xgspon"] },
+    "type": { "type": "string", "required": true, "values": ["device", "port", "logical", "hardware", "profile", "protocol"] },
+    "description": { "type": "string", "required": false },
+    "is_critical": { "type": "boolean", "required": true, "description": "Bloquea Production Ready si no verified" },
+    "aliases": {
+      "type": "array",
+      "required": true,
+      "item_schema": {
+        "name": "string",
+        "source": "string — doc_type",
+        "firmware_scope": "string — 'all' o versión específica"
+      }
+    },
+    "attributes": {
+      "type": "array",
+      "required": false,
+      "item_schema": {
+        "name": "string",
+        "type": "string — integer|string|enum|boolean",
+        "range": "string|null",
+        "required": "boolean",
+        "source": "string — doc_type"
+      }
+    },
+    "sources": {
+      "type": "array",
+      "required": true,
+      "description": "Trazabilidad de documentos fuente — queda en raw_json, no en tabla separada",
+      "item_schema": {
+        "doc_type": "string",
+        "pages": "array<int>|null",
+        "confidence": "decimal"
+      }
+    },
+    "confidence": {
+      "type": "object",
+      "required": true,
+      "schema": {
+        "extraction": "decimal 0-1",
+        "correlation": "decimal 0-1",
+        "overall": "decimal 0-1"
+      }
+    },
+    "status": {
+      "type": "enum",
+      "required": true,
+      "values": ["verified", "documented", "observed", "inferred", "deprecated", "conflicted", "orphan"]
+    },
+    "lifecycle": {
+      "type": "object",
+      "required": true,
+      "schema": {
+        "introduced_in": "string — firmware version",
+        "deprecated_in": "string|null",
+        "removed_in": "string|null",
+        "status": "enum — introduced|stable|modified|deprecated|removed",
+        "replacement": "string|null — entity id de reemplazo"
+      }
+    },
+    "relations": {
+      "type": "array",
+      "required": true,
+      "description": "Referencia rápida — la fuente de verdad es relations.json",
+      "item_schema": {
+        "type": "string — belongs_to|uses|has|depends_on|maps_to|triggers",
+        "target": "string — entity id"
+      }
+    },
+    "conflicts": {
+      "type": "array",
+      "required": true,
+      "description": "Vacío si no hay contradicciones",
+      "item_schema": {
+        "field": "string",
+        "source_a": { "doc_type": "string", "value": "string" },
+        "source_b": { "doc_type": "string", "value": "string" },
+        "resolution": "enum — unresolved|source_a_wins|source_b_wins|manual"
+      }
+    }
+  },
+
+  "db_mapping": {
+    "primary_table": "tkc_entities",
+    "related_tables": [
+      "tkc_entity_firmware — firmware[] se descompone en registros",
+      "tkc_entity_attributes — attributes[] se descompone en registros",
+      "tkc_aliases — aliases[] se descompone en registros",
+      "tkc_results — conflicts[] se insertan con result_type='conflict'"
+    ],
+    "notes": [
+      "sources[] no tiene tabla propia — queda en raw_json",
+      "relations[] es referencia rápida — la fuente son las tablas tkc_relations"
+    ]
+  }
+}

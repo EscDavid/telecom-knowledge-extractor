@@ -1,0 +1,3317 @@
+ZTE-AN-GPON-ONUPRF-MIB DEFINITIONS ::= BEGIN 
+    IMPORTS
+    
+        MODULE-IDENTITY, OBJECT-TYPE, Integer32  FROM SNMPv2-SMI
+        Unsigned32                               FROM SNMPv2-SMI
+        RowStatus, DisplayString                 FROM SNMPv2-TC
+        NOTIFICATION-GROUP, MODULE-COMPLIANCE,
+        OBJECT-GROUP                             FROM SNMPv2-CONF        
+        zxAnPon                                  FROM ZTE-AN-SMI        
+        ZxAnGponOnuTcontIndex                    FROM ZTE-AN-PON-TC-MIB
+        ZxAnGponOnuGemPortIndex                  FROM ZTE-AN-PON-TC-MIB
+        ZxAnGponOnuVportIndex                    FROM ZTE-AN-PON-TC-MIB
+        zxAnPonRmOnuIfIndex                      FROM ZTE-AN-PON-REMOTE-ONU-MIB
+        InetAddress,InetAddressType              FROM INET-ADDRESS-MIB
+        InetAddressPrefixLength                  FROM INET-ADDRESS-MIB;
+
+    zxAnGponOnuPrfMib MODULE-IDENTITY 
+        LAST-UPDATED    "201706170000Z"
+        ORGANIZATION    "ZTE Corporation"
+        CONTACT-INFO    "Mail: shan.jun@zte.com.cn
+                         Tel : +86-21-68897250"
+        DESCRIPTION     "The MIB module for the management of GPON ONU profile."
+        
+        --  Revision history
+        REVISION        "201706170000Z"
+        DESCRIPTION
+            "Initial version of this MIB module."
+        ::= { zxAnPon 21 }
+
+-------------------------------------------------------------------------------
+-- Following management objects are defined.
+-- zxAnGponOnuPrfObjects
+    -- zxAnGponOnuLinePrfObjects
+        -- zxAnGponOPTcontTable
+        -- zxAnGponOPGemPortTable
+        -- zxAnGponOPMappingTable 
+        -- zxAnGponOPOnuConfTable           
+        -- zxAnGponOPBpConfTable
+        -- zxAnGponOPBpMapConfTable
+        -- zxAnGponOPTcontQueueSchedTable   
+    -- zxAnGponOnuServicePrfObjects
+        -- zxAnGponOPVlanPortTable
+        -- zxAnGponOPVlanPortCmdTable
+        -- zxAnGponOPVlanTransTable
+        -- zxAnGponOPMVlanTable
+        -- zxAnGponOPIgmpConfTable
+        -- zxAnGponOPTrafficSchedTable
+        -- zxAnGponOPExtVlanTable
+        -- zxAnGponOPExtVlanRuleConfTable
+        -- zxAnGponOPBrgConfTable
+        -- zxAnGponOPWanIpConfTable
+        -- zxAnGponOPVoipConfTable
+        -- zxAnGponOPVoipIpConfTable
+        -- zxAnGponOPUniDhcpIpRetrieveTable
+        -- zxAnGponOPIpStaticRouteTable
+        -- zxAnGponOPVeipTable
+        -- zxAnGponOPTr069AcsTable
+-- Following conformance information is defined.
+-- zxAnGponOnuPrfConformance
+
+-------------------------------------------------------------------------------    
+    zxAnGponOnuPrfObjects        OBJECT IDENTIFIER ::= {zxAnGponOnuPrfMib 2}
+    
+    zxAnGponOnuLinePrfObjects    OBJECT IDENTIFIER ::= {zxAnGponOnuPrfObjects 1}    
+    zxAnGponOnuServicePrfObjects OBJECT IDENTIFIER ::= {zxAnGponOnuPrfObjects 2}
+    
+    zxAnGponOnuPrfConformance    OBJECT IDENTIFIER ::= {zxAnGponOnuPrfMib 4}
+--------------------------------------------------------------------------------
+-- zxAnGponOPTcontTable
+--------------------------------------------------------------------------------
+    zxAnGponOPTcontTable OBJECT-TYPE
+        SYNTAX      SEQUENCE OF ZxAnGponOPTcontEntry
+        MAX-ACCESS  not-accessible
+        STATUS      current
+        DESCRIPTION
+            "The ONU profile T-CONT table."
+        ::= { zxAnGponOnuLinePrfObjects 2 }
+
+    zxAnGponOPTcontEntry OBJECT-TYPE
+        SYNTAX      ZxAnGponOPTcontEntry
+        MAX-ACCESS  not-accessible
+        STATUS      current
+        DESCRIPTION
+            "The ONU profile T-CONT entry."
+        INDEX   { zxAnGponOPName, zxAnGponOPTcontIndex }
+        ::= { zxAnGponOPTcontTable 1 }
+
+    ZxAnGponOPTcontEntry ::=
+        SEQUENCE {
+            zxAnGponOPName                   DisplayString,
+            zxAnGponOPTcontIndex             ZxAnGponOnuTcontIndex,
+            zxAnGponOPTcontName              DisplayString,
+            zxAnGponOPTcontBwPrfName         DisplayString,
+            zxAnGponOPTcontDbaGapMode        INTEGER,
+            zxAnGponOPTcontRowStatus         RowStatus
+        }
+
+    zxAnGponOPName       OBJECT-TYPE
+        SYNTAX      DisplayString(SIZE (1..64))
+        MAX-ACCESS  not-accessible
+        STATUS      current 
+        DESCRIPTION 
+            "Name of ONU profile."
+        ::= { zxAnGponOPTcontEntry 1 }
+        
+    zxAnGponOPTcontIndex       OBJECT-TYPE
+        SYNTAX      ZxAnGponOnuTcontIndex
+        MAX-ACCESS  not-accessible
+        STATUS      current
+        DESCRIPTION
+            "An arbitrary (unique) integer for identifying an entry
+             in the table, from 1 to upper limit supported T-CONT count of
+             ONU type."
+        ::= { zxAnGponOPTcontEntry 2}
+
+    zxAnGponOPTcontName       OBJECT-TYPE
+        SYNTAX      DisplayString(SIZE (0..64))
+        MAX-ACCESS  read-create
+        STATUS      current 
+        DESCRIPTION 
+            "Name of the T-CONT."
+        ::= { zxAnGponOPTcontEntry 3 }
+        
+    zxAnGponOPTcontBwPrfName       OBJECT-TYPE
+        SYNTAX      DisplayString(SIZE(0..64))
+        MAX-ACCESS  read-create
+        STATUS      current 
+        DESCRIPTION 
+            "The name of profile used by T-CONT bandwidth configuration."
+        ::= { zxAnGponOPTcontEntry 4 }
+              
+    zxAnGponOPTcontDbaGapMode        OBJECT-TYPE
+        SYNTAX     INTEGER {
+            mode0(1),
+            mode1(2),
+            mode2(3),
+            mode3(4),
+            default(11)
+        }
+        MAX-ACCESS  read-create
+        STATUS      current
+        DESCRIPTION
+            "The DBA gap mode. 
+             For GPON ONU, the explanations of these modes are as follows:
+               mode0 is one frame, 
+               mode1 is two frames, 
+               mode2 is four frames, 
+               mode3 is eight frames.
+               default is the system default policy.
+             For example, 'two frames' indicates that T-CONT will perform DBA 
+             in a gap of two data frames. "
+        ::= { zxAnGponOPTcontEntry 5 }
+        
+    zxAnGponOPTcontRowStatus       OBJECT-TYPE
+        SYNTAX      RowStatus
+        MAX-ACCESS  read-create
+        STATUS      current 
+        DESCRIPTION 
+            "The status of this conceptual row.
+        
+             To create a row in this table, a manager must
+             set this object to createAndGo(4).
+
+             To delete a row in this table, a manager must
+             set this object to destroy(6).
+             
+             To query this object, always return 1. "
+        ::= { zxAnGponOPTcontEntry 50 }
+       
+--------------------------------------------------------------------------------
+-- zxAnGponOPGemPortTable
+--------------------------------------------------------------------------------
+    zxAnGponOPGemPortTable OBJECT-TYPE
+        SYNTAX      SEQUENCE OF ZxAnGponOPGemPortEntry
+        MAX-ACCESS  not-accessible
+        STATUS      current
+        DESCRIPTION
+            "The ONU profile GEM port table."
+        ::= { zxAnGponOnuLinePrfObjects 3 }
+
+    zxAnGponOPGemPortEntry OBJECT-TYPE
+        SYNTAX      ZxAnGponOPGemPortEntry
+        MAX-ACCESS  not-accessible
+        STATUS      current
+        DESCRIPTION
+            "The ONU profile GEM port entry."
+        INDEX   { zxAnGponOPName, zxAnGponOPGemPortIndex }
+        ::= { zxAnGponOPGemPortTable 1 }
+
+    ZxAnGponOPGemPortEntry ::=
+        SEQUENCE {
+            zxAnGponOPGemPortIndex                   ZxAnGponOnuGemPortIndex,
+            zxAnGponOPGemPortName                    DisplayString,
+            zxAnGponOPGemPortTcontIndex              ZxAnGponOnuTcontIndex,
+            zxAnGponOPGemPortQueueOfTcont            Integer32,
+            zxAnGponOPGemPortEncrypt                 INTEGER,
+            zxAnGponOPGemPortRowStatus               RowStatus
+        }
+
+    zxAnGponOPGemPortIndex OBJECT-TYPE
+        SYNTAX      ZxAnGponOnuGemPortIndex
+        MAX-ACCESS  not-accessible
+        STATUS      current
+        DESCRIPTION
+            "An arbitrary (unique) integer for identifying an entry
+             in the table, from 1 to upper limit supported GEM port count of
+             ONU type."
+        ::= { zxAnGponOPGemPortEntry 1}
+
+    zxAnGponOPGemPortName       OBJECT-TYPE
+        SYNTAX      DisplayString(SIZE (0..64))
+        MAX-ACCESS  read-create
+        STATUS      current 
+        DESCRIPTION 
+            "Name of the GEM port."
+        ::= { zxAnGponOPGemPortEntry 2 }
+
+    zxAnGponOPGemPortTcontIndex OBJECT-TYPE
+        SYNTAX      ZxAnGponOnuTcontIndex
+        MAX-ACCESS  read-create
+        STATUS      current
+        DESCRIPTION
+            "It is equal to the 'zxAnGponOPTcontIndex' 
+             of 'zxAnGponOPTcontTable'."
+        ::= { zxAnGponOPGemPortEntry 3}
+
+    zxAnGponOPGemPortQueueOfTcont OBJECT-TYPE
+        SYNTAX      Integer32(0..7)
+        MAX-ACCESS  read-create
+        STATUS      current
+        DESCRIPTION
+            "The queue (index from 0 to 7) of T-CONT for this GEM port.
+             Queue 7 is the highest priority queue."
+        DEFVAL { 0 }
+        ::= { zxAnGponOPGemPortEntry 4}
+        
+     zxAnGponOPGemPortEncrypt OBJECT-TYPE
+        SYNTAX      INTEGER {
+            downstreamEncrypt(1),
+            noEncrypt(2),
+            bothDirectEncrypt(3)
+        }
+        MAX-ACCESS  read-create
+        STATUS      current
+        DESCRIPTION
+            "The encrypt state of this GEM port."
+        DEFVAL { noEncrypt }
+        ::= { zxAnGponOPGemPortEntry 5}
+                
+    zxAnGponOPGemPortRowStatus       OBJECT-TYPE
+        SYNTAX      RowStatus
+        MAX-ACCESS  read-create
+        STATUS      current 
+        DESCRIPTION 
+            "The status of this conceptual row.
+        
+             To create a row in this table, a manager must
+             set this object to createAndGo(4).
+            
+             In particular, a newly created row cannot be created
+             until the corresponding 'zxAnGponOPGemPortTcontIndex'
+             has been set.
+             
+             To delete a row in this table, a manager must
+             set this object to destroy(6).
+             
+             To query this object, always return 1. "
+        ::= { zxAnGponOPGemPortEntry 50 }        
+
+-------------------------------------------------------------------------------
+-- zxAnGponOPMappingTable
+-------------------------------------------------------------------------------
+    zxAnGponOPMappingTable    OBJECT-TYPE
+        SYNTAX      SEQUENCE OF ZxAnGponOPMappingEntry
+        MAX-ACCESS  not-accessible
+        STATUS      current
+        DESCRIPTION
+            "The ONU profile mapping table."
+        REFERENCE
+            "G.988"
+        ::= { zxAnGponOnuLinePrfObjects 4 }
+
+    zxAnGponOPMappingEntry OBJECT-TYPE
+        SYNTAX      ZxAnGponOPMappingEntry
+        MAX-ACCESS  not-accessible
+        STATUS      current
+        DESCRIPTION
+            "The ONU profile mapping entry."
+        INDEX   { zxAnGponOPName, zxAnGponOPMappingName }
+        ::= { zxAnGponOPMappingTable 1 }
+
+    ZxAnGponOPMappingEntry ::=
+        SEQUENCE {
+            zxAnGponOPMappingName                       DisplayString,
+            zxAnGponOPMappingGemPort                    Integer32,
+            zxAnGponOPMappingIfId                       Integer32,
+            zxAnGponOPMappingType                       INTEGER,
+            zxAnGponOPMappingCos                        Integer32,
+            zxAnGponOPMappingVid                        OCTET STRING,
+            zxAnGponOPMappingRowStatus                  RowStatus
+        }
+
+    zxAnGponOPMappingName OBJECT-TYPE
+        SYNTAX      DisplayString(SIZE(1..32))
+        MAX-ACCESS  not-accessible
+        STATUS      current
+        DESCRIPTION
+            "Name of service."
+        REFERENCE
+            "G.988"
+        ::= { zxAnGponOPMappingEntry 1 }
+
+    zxAnGponOPMappingGemPort OBJECT-TYPE
+        SYNTAX      Integer32(1..255)
+        MAX-ACCESS  read-create
+        STATUS      current
+        DESCRIPTION
+            "GEM port index of service."
+        REFERENCE
+            "G.988"
+        ::= { zxAnGponOPMappingEntry 2 }
+
+    zxAnGponOPMappingIfId OBJECT-TYPE
+        SYNTAX      Integer32
+        MAX-ACCESS  read-create
+        STATUS      current
+        DESCRIPTION
+            "4bytes value contains:type (MSB 2bytes)/ifId (LSB 2bytes).
+             type   means
+             0      bridge
+             1      ethuni
+             2      iphost
+             3      wifiuni
+             4      veip
+             5      wan
+
+             If type is 'bridge', then the 2-byte ifId has no meaning, just keep
+             it zero;
+             If type is 'ethuni', then the 2-byte ifId contains:
+             slot (MSB 1byte)/port (LSB 1byte);
+             If type is 'iphost', then the 2-byte ifId means the ID of iphost,
+             range from 1 to 255;
+             If type is 'wifiuni', then the 2-byte ifId contains:
+             slot (MSB 1byte)/port (LSB 1byte);
+             If type is 'veip', then the 2-byte ifId means the ID of VEIP,
+             range from 1 to 255;
+             If type is 'wan', then the 2-byte ifId means the ID of WAN,
+             range from 1 to 255.
+             "
+        REFERENCE
+            "G.988"
+        ::= { zxAnGponOPMappingEntry 3 }
+
+    zxAnGponOPMappingType OBJECT-TYPE
+        SYNTAX      INTEGER{
+            cos(1),
+            vlan(2),
+            cosAndVlan(3),
+            transparent(4),
+            untag(5)
+        }
+        MAX-ACCESS  read-create
+        STATUS      current
+        DESCRIPTION
+            "Map type of service.
+             - cos: mapping to GEM port by CoS value
+             - vlan: mapping to GEM port by VLAN value
+             - cosAndVlan: mapping to GEM port by both cos and VLAN value
+             - transparent: mapping to GEM port transparently
+             - untag: mapping to GEMP port for untag frames"
+        REFERENCE
+            "G.988"
+        ::= { zxAnGponOPMappingEntry 4 }
+
+    zxAnGponOPMappingCos OBJECT-TYPE
+        SYNTAX      Integer32(0..255)
+        MAX-ACCESS  read-create
+        STATUS      current
+        DESCRIPTION
+            "A bitfield defines the frames with the priority related with this
+             service. MSB stands for priority 7, LSB stands for priority 0.
+             A bit value of 0 specifies that frames with the associated priority
+             are to be discarded."
+        REFERENCE
+            "G.988"
+        DEFVAL { 0 }
+        ::= { zxAnGponOPMappingEntry 5 }
+
+    zxAnGponOPMappingVid OBJECT-TYPE
+        SYNTAX      OCTET STRING(SIZE(24))
+        MAX-ACCESS  read-create
+        STATUS      current
+        DESCRIPTION
+            "Each 2 bytes stand for the VLAN ID related with this service.
+             The first N*2 bytes are valid, until VLAN ID=0."
+        REFERENCE
+            "G.988"
+        ::= { zxAnGponOPMappingEntry 6 }
+
+    zxAnGponOPMappingRowStatus OBJECT-TYPE
+        SYNTAX      RowStatus
+        MAX-ACCESS  read-create
+        STATUS      current
+        DESCRIPTION
+            "The status of this conceptual row.
+             The state of this conceptual row only support
+             'not exist' and  'active'.
+             The action of this conceptual row only support
+             'createAndGo' and 'destroy'.
+
+             To create a row in this table, a manager must
+             set this object to createAndGo(4), and must comply
+             with the multi-variables usage rules in 'zxAnGponOPMappingEntry'
+             description.
+
+             To delete a row in this table, a manager must
+             set this object to destroy(6).
+
+             To query this object, always return 1. "
+        REFERENCE
+            "G.988"
+        ::= { zxAnGponOPMappingEntry 50 }
+        
+-------------------------------------------------------------------------------
+-- zxAnGponOPOnuConfTable
+-------------------------------------------------------------------------------
+    zxAnGponOPOnuConfTable    OBJECT-TYPE
+        SYNTAX      SEQUENCE OF ZxAnGponOPOnuConfEntry
+        MAX-ACCESS  not-accessible
+        STATUS      current
+        DESCRIPTION
+            "The ONU profile ONU configuration table."
+        ::= { zxAnGponOnuLinePrfObjects 5 }
+
+    zxAnGponOPOnuConfEntry OBJECT-TYPE
+        SYNTAX      ZxAnGponOPOnuConfEntry
+        MAX-ACCESS  not-accessible
+        STATUS      current
+        DESCRIPTION
+            "The ONU profile ONU configuration entry."
+        INDEX   { zxAnGponOPName }
+        ::= { zxAnGponOPOnuConfTable 1 }
+
+    ZxAnGponOPOnuConfEntry ::=
+        SEQUENCE {
+            zxAnGponOPOnuConfVportMode           INTEGER,  
+            zxAnGponOPOnuConfUsFecEnable         INTEGER
+        }
+    
+    zxAnGponOPOnuConfVportMode OBJECT-TYPE
+        SYNTAX      INTEGER{
+            gemport(1),
+            manual(3)
+        }
+        MAX-ACCESS  read-write
+        STATUS      current
+        DESCRIPTION
+             "The VPort mode.
+              gemport(1): a related VPort will be created automatically when a 
+                          GEM port is created.
+              manual(3): VPort will be created manually."
+        ::= { zxAnGponOPOnuConfEntry 1 } 
+
+    zxAnGponOPOnuConfUsFecEnable OBJECT-TYPE
+        SYNTAX      INTEGER{
+            enabled(1),
+            disabled(2),
+            auto(3),
+            default(4)                    
+        }
+        MAX-ACCESS  read-write
+        STATUS      current
+        DESCRIPTION
+            "Enables or disables the ONU upstream FEC function.
+             enabled(1): enable the ONU upstream FEC function.
+             disabled(2): disable the ONU upstream FEC function.
+             auto(3): system will enable or disable the ONU upstream FEC 
+                      function automatically according to the system automation 
+                      rule.
+             default(4): system will enable or disable the ONU upstream FEC 
+                      function according to the system default rule."        
+        DEFVAL { default }
+        ::= { zxAnGponOPOnuConfEntry 2 }
+        
+--------------------------------------------------------------------------------
+-- zxAnGponOPBpConfTable
+--------------------------------------------------------------------------------
+    zxAnGponOPBpConfTable OBJECT-TYPE
+        SYNTAX      SEQUENCE OF ZxAnGponOPBpConfEntry
+        MAX-ACCESS  not-accessible
+        STATUS      current
+        DESCRIPTION
+            "The ONU profile VPort table." 
+        ::= { zxAnGponOnuLinePrfObjects 6 }
+
+    zxAnGponOPBpConfEntry OBJECT-TYPE
+        SYNTAX      ZxAnGponOPBpConfEntry
+        MAX-ACCESS  not-accessible
+        STATUS      current
+        DESCRIPTION
+            "The ONU profile VPort entry."
+        INDEX   { zxAnGponOPName, zxAnGponOPBpVportId }
+        ::= { zxAnGponOPBpConfTable 1 }
+
+    ZxAnGponOPBpConfEntry ::=
+        SEQUENCE {
+            zxAnGponOPBpVportId               ZxAnGponOnuVportIndex,
+            zxAnGponOPBpName                  DisplayString,
+            zxAnGponOPBpMapType               INTEGER,
+            zxAnGponOPBpRowStatus             RowStatus
+        }
+        
+    zxAnGponOPBpVportId OBJECT-TYPE
+        SYNTAX      ZxAnGponOnuVportIndex
+        MAX-ACCESS  not-accessible
+        STATUS      current
+        DESCRIPTION
+            "VPort ID."
+        ::= { zxAnGponOPBpConfEntry 1}  
+          
+    zxAnGponOPBpName OBJECT-TYPE
+        SYNTAX      DisplayString(SIZE(0..64))
+        MAX-ACCESS  read-create
+        STATUS      current
+        DESCRIPTION
+            "Name of the VPort."
+        ::= { zxAnGponOPBpConfEntry 2}
+        
+    zxAnGponOPBpMapType OBJECT-TYPE
+        SYNTAX      INTEGER{
+            cos(1),
+            vlan(2),
+            cosPlusVlan(3),
+            oneToOne(4)
+        }
+        MAX-ACCESS  read-create
+        STATUS      current
+        DESCRIPTION
+            "Map type of GEM port and VPort.
+             cos(1): mapping by CoS value.
+             vlan(2): mapping by VLAN value.
+             cosPlusVlan(3): mapping by CoS and VLAN value.
+             oneToOne(4): mapping is 1:1 between GEM port and VPort."            
+        ::= { zxAnGponOPBpConfEntry 3}
+   
+    zxAnGponOPBpRowStatus OBJECT-TYPE
+        SYNTAX      RowStatus
+        MAX-ACCESS  read-create
+        STATUS      current
+        DESCRIPTION
+            "The status of this conceptual row.
+
+             The supported actions of this conceptual row only include:
+
+             To create a row in this table, a manager must
+             set this object to createAndGo(4).
+
+             To delete a row in this table, a manager must
+             set this object to destroy(6).
+            
+             To query this object, always return 1. "
+        ::= { zxAnGponOPBpConfEntry 50}
+
+--------------------------------------------------------------------------------
+-- zxAnGponOPBpMapConfTable
+--------------------------------------------------------------------------------
+    zxAnGponOPBpMapConfTable OBJECT-TYPE
+        SYNTAX      SEQUENCE OF ZxAnGponOPBpMapConfEntry
+        MAX-ACCESS  not-accessible
+        STATUS      current
+        DESCRIPTION
+            "The ONU profile VPort mapping table." 
+        ::= { zxAnGponOnuLinePrfObjects 7 }
+
+    zxAnGponOPBpMapConfEntry OBJECT-TYPE
+        SYNTAX      ZxAnGponOPBpMapConfEntry
+        MAX-ACCESS  not-accessible
+        STATUS      current
+        DESCRIPTION
+            "The ONU profile VPort mapping entry."
+        INDEX   { zxAnGponOPName, zxAnGponOPBpVportId, zxAnGponOPGemPortIndex,
+                  zxAnGponOPBpMapConfCos, zxAnGponOPBpMapConfVid}
+        ::= { zxAnGponOPBpMapConfTable 1 }
+
+    ZxAnGponOPBpMapConfEntry ::=
+        SEQUENCE {
+            zxAnGponOPBpMapConfCos         Integer32,
+            zxAnGponOPBpMapConfVid         Integer32,
+            zxAnGponOPBpMapConfRowStatus   RowStatus
+        }
+
+    zxAnGponOPBpMapConfCos OBJECT-TYPE
+        SYNTAX      Integer32(0..7)
+        MAX-ACCESS  not-accessible
+        STATUS      current
+        DESCRIPTION
+            "A CoS value (0..7) referenced by a GEM port mapped to a VPort."
+        ::= { zxAnGponOPBpMapConfEntry 1}
+        
+    zxAnGponOPBpMapConfVid OBJECT-TYPE
+        SYNTAX      Integer32(0..4094|65535)
+        MAX-ACCESS  not-accessible
+        STATUS      current
+        DESCRIPTION
+            "A VLAN ID referenced by a GEM port mapped to a VPort. 
+             The value 65535 indicates the untagged frames.
+             When VPort mapping type is oneToOne(4) or cos(1), this value is 0."
+        ::= { zxAnGponOPBpMapConfEntry 2}
+        
+    zxAnGponOPBpMapConfRowStatus OBJECT-TYPE
+        SYNTAX      RowStatus
+        MAX-ACCESS  read-create
+        STATUS      current
+        DESCRIPTION
+            "The status of this conceptual row.
+            
+             The supported actions of this conceptual row only include:
+
+             To create a row in this table, a manager must
+             set this object to createAndGo(4).
+
+             To delete a row in this table, a manager must
+             set this object to destroy(6).
+             
+             To query this object, always return 1. "
+        ::= { zxAnGponOPBpMapConfEntry 50}
+
+-------------------------------------------------------------------------------
+-- zxAnGponOPTcontQueueSchedTable
+-------------------------------------------------------------------------------
+    zxAnGponOPTcontQueueSchedTable    OBJECT-TYPE
+        SYNTAX      SEQUENCE OF ZxAnGponOPTcontQueueSchedEntry
+        MAX-ACCESS  not-accessible
+        STATUS      current
+        DESCRIPTION
+            "The ONU profile T-CONT queue schedule table."            
+        ::= { zxAnGponOnuLinePrfObjects 8 }
+
+    zxAnGponOPTcontQueueSchedEntry OBJECT-TYPE
+        SYNTAX      ZxAnGponOPTcontQueueSchedEntry
+        MAX-ACCESS  not-accessible
+        STATUS      current
+        DESCRIPTION
+            "The ONU profile T-CONT queue schedule entry."
+        INDEX   { zxAnGponOPName, zxAnGponOPTcontIndex }
+        ::= { zxAnGponOPTcontQueueSchedTable 1 }
+
+    ZxAnGponOPTcontQueueSchedEntry ::=
+        SEQUENCE {
+            zxAnGponOPTcontQueueSchedPrfName       DisplayString
+        }
+          
+    zxAnGponOPTcontQueueSchedPrfName OBJECT-TYPE
+        SYNTAX      DisplayString(SIZE(0..64))
+        MAX-ACCESS  read-write
+        STATUS      current
+        DESCRIPTION
+            "The T-CONT queue schedule profile name, this profile is 
+             defined in zxAnGponRmTrafficSchedPrfTable. The empty string
+             indicates that no profile is bound to this T-CONT."
+        ::= { zxAnGponOPTcontQueueSchedEntry 1 }
+
+--------------------------------------------------------------------------------
+-- zxAnGponOPGemPortCurrPerfTable
+--------------------------------------------------------------------------------
+    zxAnGponOPGemPortCurrPerfTable OBJECT-TYPE
+        SYNTAX      SEQUENCE OF ZxAnGponOPGemPortCurrPerfEntry
+        MAX-ACCESS  not-accessible
+        STATUS      current
+        DESCRIPTION
+            "The ONU profile GPON GEM port current performance table." 
+        ::= { zxAnGponOnuLinePrfObjects 9 }
+
+    zxAnGponOPGemPortCurrPerfEntry OBJECT-TYPE
+        SYNTAX      ZxAnGponOPGemPortCurrPerfEntry
+        MAX-ACCESS  not-accessible
+        STATUS      current
+        DESCRIPTION
+            "The ONU profile GPON GEM port current performance entry."
+        INDEX   { zxAnGponOPName, zxAnGponOPGemPortIndex }
+        ::= { zxAnGponOPGemPortCurrPerfTable 1 }
+
+    ZxAnGponOPGemPortCurrPerfEntry ::=
+        SEQUENCE {
+            zxAnGponOPGemPortCurrRowStatus        RowStatus
+        }
+         
+   zxAnGponOPGemPortCurrRowStatus  OBJECT-TYPE 
+        SYNTAX      RowStatus
+        MAX-ACCESS  read-create
+        STATUS      current
+        DESCRIPTION     
+            "The status of this conceptual row. 
+              
+             The supported actions of this conceptual row only include:
+             'createAndGo' and 'destroy'.
+
+             To create a row in this table, a manager must
+             set this object to createAndGo(4).
+            
+             To delete a row in this table, a manager must
+             set this object to destroy(6).
+             
+             To query this object, always return 1."
+        ::= { zxAnGponOPGemPortCurrPerfEntry 50 }
+                                
+-------------------------------------------------------------------------------
+-- zxAnGponOPVlanPortTable
+-------------------------------------------------------------------------------
+    zxAnGponOPVlanPortTable OBJECT-TYPE
+        SYNTAX      SEQUENCE OF ZxAnGponOPVlanPortEntry
+        MAX-ACCESS  not-accessible
+        STATUS      current
+        DESCRIPTION
+            "The ONU profile port VLAN table.
+             A table containing VLAN port information for VLANs
+             configured into the bridge by (local or network)
+             management,  specifying the set of
+             ports to which frames received on a VLAN for this FDB
+             and containing a specific Group destination address are
+             allowed to be forwarded.
+
+             When a manager wants to create a VLAN port,it must comply
+             with the multi-variables usage rule that all the mib variables
+             related to same fuction must be in one snmp set operation, the
+             variables have two type: mandatory and optional.
+
+             Mandatory variables must be in the one snmp set operation.
+             Optional variables may be in the one snmp set operation with the
+             mandatory variables, but must not be used alone.
+
+             To modify a service port,  there are several cases base on the
+             variable zxAnGponOPVlanPortMode, and the mandatory and optional
+             variables for each case are different.
+
+             Case 1: to modify a VLAN port when zxAnGponOPVlanPortMode is
+             access(1):
+             - mandatoty:
+             zxAnGponOPVlanPortMode,
+             - optional :
+             zxAnGponOPVlanPortDefaultVid,
+             zxAnGponOPVlanPortDefaultCos,
+
+             Case 2: to modify a service port when zxAnGponOPVlanPortMode is
+             trunk(2):
+             - mandatoty:
+             zxAnGponOPVlanPortMode,
+             - optional :
+
+             Case 3: to modify a service port when zxAnGponOPVlanPortMode is
+             hybrid(3):
+             - mandatoty:
+             zxAnGponOPVlanPortMode,
+             - optional :
+             zxAnGponOPVlanPortDefaultVid,
+             zxAnGponOPVlanPortDefaultCos,
+
+             Case 4: to modify a service port when zxAnGponOPVlanPortMode is
+             transparent(4):
+             - mandatoty:
+             zxAnGponOPVlanPortMode,
+             - optional :
+
+             Case 5: to modify a service port when zxAnGponOPVlanPortMode is
+             none(5):
+             - mandatoty:
+             zxAnGponOPVlanPortMode,
+             - optional :
+             "
+        ::= { zxAnGponOnuServicePrfObjects 2 }
+
+    zxAnGponOPVlanPortEntry OBJECT-TYPE
+        SYNTAX      ZxAnGponOPVlanPortEntry
+        MAX-ACCESS  not-accessible
+        STATUS      current
+        DESCRIPTION
+            "The ONU profile port VLAN entry.
+             Supporting Ethernet UNI, WiFi UNI, VEIP, GEM port, 
+             multicast GEM port, WAN and xDSL UNI."
+        INDEX   { zxAnGponOPName, zxAnPonRmOnuIfIndex }
+        ::= { zxAnGponOPVlanPortTable 1 }
+
+    ZxAnGponOPVlanPortEntry ::= SEQUENCE {
+        zxAnGponOPVlanPortMode                INTEGER,
+        zxAnGponOPVlanPortDefaultVid          Integer32,
+        zxAnGponOPVlanPortDefaultCos          Integer32,
+        zxAnGponOPVlanPortVlanList            DisplayString
+        }
+
+    zxAnGponOPVlanPortMode OBJECT-TYPE
+        SYNTAX   INTEGER {
+            access(1),
+            trunk(2),
+            hybrid(3),
+            transparent(4),
+            none(5)
+        }
+        MAX-ACCESS  read-write
+        STATUS      current
+        DESCRIPTION
+            "The access mode of the port. There are five types:
+             - access: access mode of port access
+             - trunk: trunk mode of port access
+             - hybrid: hybrid mode of port access
+             - transparent: transparent mode of port access
+             - none: delete all the VLAN configuration of the port,
+                  restore to ONU's internal policy."
+        DEFVAL  { none }
+        ::= { zxAnGponOPVlanPortEntry 3 }
+
+    zxAnGponOPVlanPortDefaultVid OBJECT-TYPE
+        SYNTAX      Integer32(1..4094)
+        MAX-ACCESS  read-write
+        STATUS      current
+        DESCRIPTION
+            "The PVID of the port."
+        DEFVAL  { 1 }
+        ::= { zxAnGponOPVlanPortEntry 4 }
+
+    zxAnGponOPVlanPortDefaultCos OBJECT-TYPE
+        SYNTAX      Integer32(0..7)
+        MAX-ACCESS  read-write
+        STATUS      current
+        DESCRIPTION
+            "The default priority of the port."
+        DEFVAL  { 0 }
+        ::= { zxAnGponOPVlanPortEntry 5 }
+
+    zxAnGponOPVlanPortVlanList OBJECT-TYPE
+        SYNTAX      DisplayString
+        MAX-ACCESS  read-only
+        STATUS      current
+        DESCRIPTION
+            "The VLAN sequence of the port."
+        ::= { zxAnGponOPVlanPortEntry 6 }
+
+-------------------------------------------------------------------------------
+-- zxAnGponOPVlanPortCmdTable
+-------------------------------------------------------------------------------
+    zxAnGponOPVlanPortCmdTable OBJECT-TYPE
+        SYNTAX SEQUENCE OF ZxAnGponOPVlanPortCmdEntry
+        MAX-ACCESS      not-accessible
+        STATUS          current
+        DESCRIPTION
+            "The port VLAN operation command table.
+             This table is used for ONU profile."
+        ::= { zxAnGponOnuServicePrfObjects 3 }
+
+    zxAnGponOPVlanPortCmdEntry  OBJECT-TYPE
+        SYNTAX     ZxAnGponOPVlanPortCmdEntry
+        MAX-ACCESS not-accessible
+        STATUS     current
+        DESCRIPTION
+            "The port VLAN operation command entry.
+             Supporting Ethernet UNI, WiFi UNI, VEIP, GEM port, 
+             multicast GEM port, WAN and xDSL UNI."
+        INDEX  { zxAnGponOPName, zxAnPonRmOnuIfIndex }
+        ::= { zxAnGponOPVlanPortCmdTable 1 }
+
+    ZxAnGponOPVlanPortCmdEntry  ::= SEQUENCE {
+        zxAnGponOPVlanPortCmd          INTEGER,
+        zxAnGponOPVlanPortVid          Integer32
+        }
+
+    zxAnGponOPVlanPortCmd OBJECT-TYPE
+        SYNTAX INTEGER {
+            addVlan(1),
+            delVlan(2),
+            addAllVlan(3),
+            delAllVlan(4)
+        }
+        MAX-ACCESS read-write
+        STATUS current
+        DESCRIPTION
+            "The command to operate VLAN list of 'zxAnGponOPVlanPortTable'.
+
+             The multi-variables binding rule should be complied with
+             when a manager configures port VLAN cmd. According to this rule,
+             all the related mib variables must be included in one SNMP
+             set operation.
+
+             There are two types of variables: mandatory and optional.
+             All of the mandatory variables must be included in one SNMP
+             set operation. Optional variables may be included in one
+             SNMP set operation with the mandatory variables, but must
+             not be used alone.
+
+             To configure VLAN, the mandatory and optional variables
+             are as follows:
+             mandatoty: zxAnGponOPVlanPortCmd, zxAnGponOPVlanPortVid
+             optional : none
+
+             There are two groups of operation command, the first group includes
+             addVlan and delVlan, the second group includes addAllVlan and 
+             delAllVlan. For an ONU interface, two groups of operation command 
+             can't be use at the same time. When zxAnGponOPVlanPortCmd is 
+             addAllVlan or delAllVlan and then zxAnGponOPVlanPortVid is 
+             invalid."
+            ::= { zxAnGponOPVlanPortCmdEntry 1 }
+
+    zxAnGponOPVlanPortVid OBJECT-TYPE
+        SYNTAX Integer32(1..4094)
+        MAX-ACCESS read-write
+        STATUS current
+        DESCRIPTION
+            "The port VLAN ID.
+             This variable must comply with the multi-variables binding
+             rule described in 'zxAnGponOPVlanPortCmd'."
+         ::= { zxAnGponOPVlanPortCmdEntry 2 }
+
+-------------------------------------------------------------------------------
+-- zxAnGponOPVlanTransTable
+-------------------------------------------------------------------------------
+    zxAnGponOPVlanTransTable OBJECT-TYPE
+        SYNTAX      SEQUENCE OF ZxAnGponOPVlanTransEntry
+        MAX-ACCESS  not-accessible
+        STATUS      current
+        DESCRIPTION
+            "The ONU profile port VLAN translation table."
+        ::= { zxAnGponOnuServicePrfObjects 4 }
+
+    zxAnGponOPVlanTransEntry OBJECT-TYPE
+        SYNTAX      ZxAnGponOPVlanTransEntry
+        MAX-ACCESS  not-accessible
+        STATUS      current
+        DESCRIPTION
+            "The ONU profile port VLAN translation entry.
+             Supporting Ethernet UNI, WiFi UNI, VEIP, GEM port, 
+             multicast GEM port, WAN and xDSL UNI."
+        INDEX   { zxAnGponOPName, zxAnPonRmOnuIfIndex,
+            zxAnGponOPVlanTransUserVid, zxAnGponOPVlanTransUserCos}
+        ::= { zxAnGponOPVlanTransTable 1 }
+
+    ZxAnGponOPVlanTransEntry ::= SEQUENCE {
+            zxAnGponOPVlanTransUserVid         Integer32,
+            zxAnGponOPVlanTransUserCos         Integer32,
+            zxAnGponOPVlanTransCVid            Integer32,
+            zxAnGponOPVlanTransCtagCos         Integer32,
+            zxAnGponOPVlanTransSVid            Integer32,
+            zxAnGponOPVlanTransStagCos         Integer32,
+            zxAnGponOPVlanTransRowStatus       RowStatus
+        }
+
+    zxAnGponOPVlanTransUserVid OBJECT-TYPE
+        SYNTAX      Integer32(1..4094)
+        MAX-ACCESS  not-accessible
+        STATUS      current
+        DESCRIPTION
+            "User VLAN ID for translation."
+        ::= { zxAnGponOPVlanTransEntry 1 }
+
+    zxAnGponOPVlanTransUserCos OBJECT-TYPE
+        SYNTAX      Integer32(0..8)
+        MAX-ACCESS  not-accessible
+        STATUS      current
+        DESCRIPTION
+            "User priority for translation, the range of priority is from 0
+             to 8, and '8' indicates no configuration."
+        DEFVAL {8}
+        ::= { zxAnGponOPVlanTransEntry 2 }
+
+    zxAnGponOPVlanTransCVid OBJECT-TYPE
+        SYNTAX      Integer32 (0..4094)
+        MAX-ACCESS  read-create
+        STATUS      current
+        DESCRIPTION
+            "Inner VLAN for VLAN translate, '0' indicates no translation.
+             The multi-variables binding rule should be complied with
+             when a manager configures port VLAN translate. According to this
+             rule, all the related mib variables must be included in one SNMP
+             set operation.
+
+             There are two types of variables: mandatory and optional.
+             All of the mandatory variables must be included in one SNMP
+             set operation. Optional variables may be included in one
+             SNMP set operation with the mandatory variables, but must
+             not be used alone.
+
+             To configure VLAN translation, the mandatory and optional variables
+             are as follows:
+             mandatoty: zxAnGponOPVlanTransSVid
+             optional : zxAnGponOPVlanTransCVid, zxAnGponOPVlanTransCtagCos,
+                       zxAnGponOPVlanTransStagCos"
+        DEFVAL {0}
+        ::= { zxAnGponOPVlanTransEntry 3 }
+
+    zxAnGponOPVlanTransCtagCos OBJECT-TYPE
+        SYNTAX      Integer32 (0..8)
+        MAX-ACCESS  read-create
+        STATUS      current
+        DESCRIPTION
+            "Inner VLAN priority for VLAN translate, '8' indicates no
+             translation.
+             This variable must comply with the multi-variables binding
+             rule described in 'zxAnGponOPVlanTransCVid'."
+        DEFVAL {8}
+        ::= { zxAnGponOPVlanTransEntry 4 }
+
+    zxAnGponOPVlanTransSVid OBJECT-TYPE
+        SYNTAX      Integer32 (0..4094)
+        MAX-ACCESS  read-create
+        STATUS      current
+        DESCRIPTION
+            "Outer VLAN for VLAN translate, '0' indicates no SVLAN.
+             This variable must comply with the multi-variables binding
+             rule described in 'zxAnGponOPVlanTransCVid'."
+        DEFVAL {0}
+        ::= { zxAnGponOPVlanTransEntry 5 }
+
+    zxAnGponOPVlanTransStagCos OBJECT-TYPE
+        SYNTAX      Integer32 (0..8)
+        MAX-ACCESS  read-create
+        STATUS      current
+        DESCRIPTION
+            "Outer VLAN priority for VLAN translate, '8' indicates copy priority
+             from inner VLAN priority.
+             This variable must comply with the multi-variables binding
+             rule described in 'zxAnGponOPVlanTransCVid'."
+        DEFVAL {8}
+        ::= { zxAnGponOPVlanTransEntry 6 }
+
+    zxAnGponOPVlanTransRowStatus OBJECT-TYPE
+        SYNTAX      RowStatus
+        MAX-ACCESS  read-create
+        STATUS      current
+        DESCRIPTION
+            "The status of this conceptual row.
+
+             To create a row in this table, a manager must
+             set this object to createAndGo(4).
+
+             In particular, a newly created row cannot be created
+             until the corresponding at least one of
+             'zxAnGponOPVlanTransCVid
+              zxAnGponOPVlanTransCtagCos
+              zxAnGponOPVlanTransSVid
+              zxAnGponOPVlanTransStagCos'
+             have been set.
+
+             To delete a row in this table, a manager must
+             set this object to destroy(6).
+             To query this object, always return 1. "
+        ::= { zxAnGponOPVlanTransEntry 50 }        
+   
+-------------------------------------------------------------------------------
+-- zxAnGponOPMVlanTable
+-------------------------------------------------------------------------------
+    zxAnGponOPMVlanTable    OBJECT-TYPE
+        SYNTAX      SEQUENCE OF ZxAnGponOPMVlanEntry
+        MAX-ACCESS  not-accessible
+        STATUS      current
+        DESCRIPTION
+            "The ONU profile multicast VLAN table."
+        ::= { zxAnGponOnuServicePrfObjects 5 }
+
+    zxAnGponOPMVlanEntry OBJECT-TYPE
+        SYNTAX      ZxAnGponOPMVlanEntry
+        MAX-ACCESS  not-accessible
+        STATUS      current
+        DESCRIPTION
+            "The ONU profile multicast VLAN entry."
+        INDEX   { zxAnGponOPName, zxAnGponOPMVid }
+        ::= { zxAnGponOPMVlanTable 1 }
+
+    ZxAnGponOPMVlanEntry ::=
+        SEQUENCE {
+            zxAnGponOPMVid                       Integer32,
+            zxAnGponOPMVlanRowStatus             RowStatus
+        }
+
+    zxAnGponOPMVid OBJECT-TYPE
+        SYNTAX      Integer32(1..4094)
+        MAX-ACCESS  not-accessible
+        STATUS      current
+        DESCRIPTION
+            "This attribute represents the VLAN ID (1~4094)."
+        ::= { zxAnGponOPMVlanEntry 1 }
+
+    zxAnGponOPMVlanRowStatus OBJECT-TYPE
+        SYNTAX      RowStatus
+        MAX-ACCESS  read-create
+        STATUS      current
+        DESCRIPTION
+            "The status of this conceptual row.
+             The state of this conceptual row only support
+             'not exist' and  'active'.
+             The action of this conceptual row only support
+             'createAndGo' and 'destroy'.
+
+             To create a row in this table, a manager must
+             set this object to createAndGo(4).
+
+             To delete a row in this table, a manager must
+             set this object to destroy(6).
+
+             To query this object, always return 1. "
+        ::= { zxAnGponOPMVlanEntry 50 }
+
+-------------------------------------------------------------------------------
+-- zxAnGponOPIgmpConfTable
+-------------------------------------------------------------------------------
+    zxAnGponOPIgmpConfTable    OBJECT-TYPE
+        SYNTAX      SEQUENCE OF ZxAnGponOPIgmpConfEntry
+        MAX-ACCESS  not-accessible
+        STATUS      current
+        DESCRIPTION
+            "The ONU profile IGMP configuration table."
+        REFERENCE
+            "G.988 9.3.28 Multicast subscriber config info"
+        ::= { zxAnGponOnuServicePrfObjects 6 }
+
+    zxAnGponOPIgmpConfEntry OBJECT-TYPE
+        SYNTAX      ZxAnGponOPIgmpConfEntry
+        MAX-ACCESS  not-accessible
+        STATUS      current
+        DESCRIPTION
+            "The ONU profile IGMP configuration entry.
+             Supporting Ethernet UNI and VEIP."
+        INDEX   { zxAnGponOPName, zxAnPonRmOnuIfIndex }
+        ::= { zxAnGponOPIgmpConfTable 1 }
+
+    ZxAnGponOPIgmpConfEntry ::=
+        SEQUENCE {
+            zxAnGponOPIgmpUsedPrfName         DisplayString,
+            zxAnGponOPIgmpMaxGroups           Integer32,
+            zxAnGponOPIgmpMaxBw               Unsigned32,
+            zxAnGponOPIgmpBwEnforce           INTEGER,
+            zxAnGponOPIgmpConfRowStatus       RowStatus
+        }
+
+    zxAnGponOPIgmpUsedPrfName OBJECT-TYPE
+        SYNTAX      DisplayString(SIZE(0..64))
+        MAX-ACCESS  read-create
+        STATUS      current
+        DESCRIPTION
+            "This attribute points to an instance of the multicast operations
+             profile."
+        ::= { zxAnGponOPIgmpConfEntry 1 }
+
+    zxAnGponOPIgmpMaxGroups OBJECT-TYPE
+        SYNTAX      Integer32(0..1000)
+        MAX-ACCESS  read-create
+        STATUS      current
+        DESCRIPTION
+            "This attribute specifies the maximum number of dynamic multicast
+             groups that may be replicated to the client port at any one time.
+             The default value 0 specifies that no administrative limit is to
+             be imposed."            
+        DEFVAL { 0 }
+        ::= { zxAnGponOPIgmpConfEntry 2 }
+
+    zxAnGponOPIgmpMaxBw OBJECT-TYPE
+        SYNTAX      Unsigned32(0..4294967295)
+        UNITS       "kbps"
+        MAX-ACCESS  read-create
+        STATUS      current
+        DESCRIPTION
+            "This attribute specifies the maximum imputed dynamic bandwidth,
+             in kbps, that may be delivered to the client port at
+             any one time.
+             The default value 0 specifies that no administrative limit is to
+             be imposed. "
+        DEFVAL { 0 }
+        ::= { zxAnGponOPIgmpConfEntry 3 }
+
+    zxAnGponOPIgmpBwEnforce OBJECT-TYPE
+        SYNTAX      INTEGER{
+                    enabled(1),
+                    disabled(2)
+                    }
+        MAX-ACCESS  read-create
+        STATUS      current
+        DESCRIPTION
+            "enabled: attempts to exceed the max multicast bandwidth
+             be counted and denied.
+             disabled: such attempts be counted but honored. "
+        DEFVAL { disabled }
+        ::= { zxAnGponOPIgmpConfEntry 4 }
+
+    zxAnGponOPIgmpConfRowStatus OBJECT-TYPE
+        SYNTAX      RowStatus
+        MAX-ACCESS  read-create
+        STATUS      current
+        DESCRIPTION
+            "The status of this conceptual row.
+             The state of this conceptual row only support
+             'not exist' and  'active'.
+             The action of this conceptual row only support
+             'createAndGo' and 'destroy'.
+
+             To create a row in this table, a manager must
+             set this object to createAndGo(4).
+
+             To delete a row in this table, a manager must
+             set this object to destroy(6).
+
+             To query this object, always return 1. "
+        REFERENCE
+            "G.988 9.3.28 Multicast subscriber config info"
+        ::= { zxAnGponOPIgmpConfEntry 50 }
+        
+-------------------------------------------------------------------------------
+-- zxAnGponOPTrafficSchedTable
+-------------------------------------------------------------------------------
+    zxAnGponOPTrafficSchedTable    OBJECT-TYPE
+        SYNTAX      SEQUENCE OF ZxAnGponOPTrafficSchedEntry
+        MAX-ACCESS  not-accessible
+        STATUS      current
+        DESCRIPTION
+            "The ONU profile traffic scheduler configuration table."
+        REFERENCE   "ZTE specific ME, Traffic scheduler-UNI &
+                     Traffic scheduler-UNI profile."
+        ::= { zxAnGponOnuServicePrfObjects 7 }
+
+    zxAnGponOPTrafficSchedEntry OBJECT-TYPE
+        SYNTAX      ZxAnGponOPTrafficSchedEntry
+        MAX-ACCESS  not-accessible
+        STATUS      current
+        DESCRIPTION
+            "The ONU profile traffic scheduler configuration entry.
+             Supporting Ethernet UNI."
+        INDEX   { zxAnGponOPName, zxAnPonRmOnuIfIndex }
+        ::= { zxAnGponOPTrafficSchedTable 1 }
+
+    ZxAnGponOPTrafficSchedEntry ::=
+        SEQUENCE {
+            zxAnGponOPTrafficSchedPrfName    DisplayString
+        }
+
+    zxAnGponOPTrafficSchedPrfName OBJECT-TYPE
+        SYNTAX      DisplayString(SIZE(0..64))
+        MAX-ACCESS  read-write
+        STATUS      current
+        DESCRIPTION
+            "The ONU UNI traffic scheduler profile name.
+             The empty string indicates no profile is bounded."
+        ::= { zxAnGponOPTrafficSchedEntry 1 }
+
+---------------------------------------------------------------------------
+-- zxAnGponOPExtVlanTable
+---------------------------------------------------------------------------
+    zxAnGponOPExtVlanTable     OBJECT-TYPE
+        SYNTAX      SEQUENCE OF ZxAnGponOPExtVlanEntry
+        MAX-ACCESS  not-accessible
+        STATUS      current
+        DESCRIPTION
+            "The ONU profile extended VLAN configuration table."
+        REFERENCE
+            "G.988 9.3.13 Extended VLAN tagging operation configuration data"
+        ::= { zxAnGponOnuServicePrfObjects 8 }
+
+    zxAnGponOPExtVlanEntry OBJECT-TYPE
+        SYNTAX      ZxAnGponOPExtVlanEntry
+        MAX-ACCESS  not-accessible
+        STATUS      current
+        DESCRIPTION
+            "The ONU profile extended VLAN configuration entry."
+        INDEX   { zxAnGponOPName, zxAnPonRmOnuIfIndex }
+        ::= { zxAnGponOPExtVlanTable 1 }
+
+    ZxAnGponOPExtVlanEntry ::=
+        SEQUENCE {
+            zxAnGponOPExtVlanInputTpid       Integer32,
+            zxAnGponOPExtVlanOutputTpid      Integer32,
+            zxAnGponOPExtVlanDsMode          INTEGER,
+            zxAnGponOPExtVlanDscp2CosPrf     DisplayString,
+            zxAnGponOPExtVlanRowStatus       RowStatus
+        }
+
+    zxAnGponOPExtVlanInputTpid     OBJECT-TYPE
+        SYNTAX      Integer32(0..65535)
+        MAX-ACCESS  read-create
+        STATUS      current
+        DESCRIPTION
+            "This attribute gives the special TPID value for operations
+             on the input (filtering) side of the table. Typical values
+             include 0x8a88 and 0x9100. Default value is 0x8100."
+        REFERENCE
+            "G.988 9.3.13 Extended VLAN tagging operation configuration data"
+        DEFVAL {'8100'h}
+        ::= { zxAnGponOPExtVlanEntry 1 }
+
+    zxAnGponOPExtVlanOutputTpid     OBJECT-TYPE
+        SYNTAX      Integer32(0..65535)
+        MAX-ACCESS  read-create
+        STATUS      current
+        DESCRIPTION
+            "This attribute gives the special TPID value for operations
+             on the output (tagging) side of the table. Typical values
+             include 0x8a88 and 0x9100. Default value is 0x8100."
+        REFERENCE
+            "G.988 9.3.13 Extended VLAN tagging operation configuration data"
+        DEFVAL {'8100'h}
+        ::= { zxAnGponOPExtVlanEntry 2 }
+
+    zxAnGponOPExtVlanDsMode   OBJECT-TYPE
+        SYNTAX      INTEGER{
+            inverseUpstream(1),
+            noOperation(2),
+            inverseVlanAndPriOthersForward(3),
+            inverseVlanOthersForward(4),
+            inversePriOthersForward(5),
+            inverseVlanAndPriOthersDiscard(6),
+            inverseVlanOthersDiscard(7),
+            inversePriOthersDiscard(8),
+            discard(9)
+        }
+        MAX-ACCESS  read-create
+        STATUS      current
+        DESCRIPTION
+            "Regardless of its association, the extended VLAN tagging
+             operation configuration data ME pertains to upstream traffic.
+             This attribute specifies the mode for downstream mapping.
+             1 The operation performed in the downstream direction is the
+                inverse of that performed in the upstream direction.
+                For one-to-one VLAN mappings, the inverse is trivially defined.
+                Many-to-one mappings are possible, however, and these are
+                treated as follows. If the many-to-one mapping results from
+                multiple operation rules producing the same ANI-side tag
+                configuration, then the first rule in the list defines the
+                inverse operation. If the many-to-one mapping results from
+                don't care fields in the filter being replaced with provisioned
+                fields in the ANI-side tags, then the inverse is defined to
+                set the corresponding fields on the ANI side with their
+                lowest value.
+             2 No operation is performed in the downstream direction.
+             3 Filter on VID and p-bit value. On a match, perform the inverse 
+                operation on both the VID and p-bit value. If no match is found,
+                forward the frame unmodified.
+             4 Filter on VID only. On a match, perform the inverse VID operation
+                only; pass the p bits through. If no match is found, forward the
+                frame unmodified.
+             5 Filter on p-bit only. On a match, perform the inverse p-bit
+                operation only; pass the VID through. If no match is found,
+                forward the frame unmodified.
+             6 Filter on VID and p-bit value. On a match, perform the inverse
+                operation on both the VID and p-bit value. If no match is found,
+                discard the frame.
+             7 Filter on VID. On a match, perform the inverse operation on the
+                VID only; pass the p bits through. If no match is found, discard
+                the frame.
+             8 Filter on p-bit only. On a match, perform the inverse p-bit
+                operation only; pass the VID through. If no match is found,
+                discard the frame.
+             9 Regardless of the filter rules, discard all downstream traffic."
+        REFERENCE
+            "G.988 9.3.13 Extended VLAN tagging operation configuration data"
+        DEFVAL { inverseUpstream }
+        ::= { zxAnGponOPExtVlanEntry 3 }
+
+    zxAnGponOPExtVlanDscp2CosPrf OBJECT-TYPE
+        SYNTAX      DisplayString(SIZE(0..64))
+        MAX-ACCESS  read-create
+        STATUS      current
+        DESCRIPTION
+            "This attribute refers to 'zxAnGponRmDscp2CosPrfName', specifies
+             mapping from DSCP to P-bits. The attribute can be considered a
+             bit string sequence of 64 3-bit groups. The 64 sequence entries
+             represent the possible values of the 6-bit DSCP field. Each
+             3-bit group specifies the P-bit value to which the associated
+             DSCP value should be mapped."
+        REFERENCE
+            "G.988 9.3.13 Extended VLAN tagging operation configuration data"
+        ::= { zxAnGponOPExtVlanEntry 4 }
+
+    zxAnGponOPExtVlanRowStatus OBJECT-TYPE
+        SYNTAX      RowStatus
+        MAX-ACCESS  read-create
+        STATUS      current
+        DESCRIPTION
+            "The status of this conceptual row.
+             The state of this conceptual row only support
+             'not exist' and  'active'.
+             The action of this conceptual row only support
+             'createAndGo' and 'destroy'.
+
+             To create a row in this table, a manager must
+             set this object to createAndGo(4).
+
+             To delete a row in this table, a manager must
+             set this object to destroy(6).
+
+             To query this object, always return 1. "
+        ::= { zxAnGponOPExtVlanEntry 50 }
+
+-------------------------------------------------------------------------------
+-- zxAnGponOPExtVlanRuleConfTable
+-------------------------------------------------------------------------------
+    zxAnGponOPExtVlanRuleConfTable     OBJECT-TYPE
+        SYNTAX      SEQUENCE OF ZxAnGponOPExtVlanRuleConfEntry
+        MAX-ACCESS  not-accessible
+        STATUS      current
+        DESCRIPTION
+            "The ONU profile extended VLAN rule configuration table."
+        REFERENCE
+            "G.988 9.3.13 Extended VLAN tagging operation configuration data"
+        ::= { zxAnGponOnuServicePrfObjects 9 }
+
+   zxAnGponOPExtVlanRuleConfEntry OBJECT-TYPE
+        SYNTAX      ZxAnGponOPExtVlanRuleConfEntry
+        MAX-ACCESS  not-accessible
+        STATUS      current
+        DESCRIPTION
+            "The ONU profile extended VLAN rule configuration entry."
+        INDEX   { zxAnGponOPName, zxAnPonRmOnuIfIndex,
+                 zxAnGponOPExtVlanConfFiltRule }
+        ::= { zxAnGponOPExtVlanRuleConfTable 1 }
+
+   ZxAnGponOPExtVlanRuleConfEntry ::=
+        SEQUENCE {
+            zxAnGponOPExtVlanConfFiltRule      DisplayString,
+            zxAnGponOPExtVlanConfTreatRule     DisplayString,
+            zxAnGponOPExtVlanConfRowStatus     RowStatus
+        }
+
+    zxAnGponOPExtVlanConfFiltRule OBJECT-TYPE
+        SYNTAX      DisplayString(SIZE(1..64))
+        MAX-ACCESS  not-accessible
+        STATUS      current
+        DESCRIPTION
+            "This attribute refers to 'zxAnGponRmFiltRuleName'
+             provides a unique profile of filter for this extended VLAN table."
+        REFERENCE
+            "G.988 9.3.13 Extended VLAN tagging operation configuration data"
+        ::= { zxAnGponOPExtVlanRuleConfEntry 1 }
+
+    zxAnGponOPExtVlanConfTreatRule OBJECT-TYPE
+        SYNTAX      DisplayString(SIZE(1..64))
+        MAX-ACCESS  read-create
+        STATUS      current
+        DESCRIPTION
+            "This attribute refers to 'zxAnGponRmTrtRuleName'
+             provides a unique profile of treatment for this extended VLAN
+             table."
+        REFERENCE
+            "G.988 9.3.13 Extended VLAN tagging operation configuration data"
+        ::= { zxAnGponOPExtVlanRuleConfEntry 2 }
+
+    zxAnGponOPExtVlanConfRowStatus OBJECT-TYPE
+        SYNTAX      RowStatus
+        MAX-ACCESS  read-create
+        STATUS      current
+        DESCRIPTION
+            "The status of this conceptual row.
+             The state of this conceptual row only support
+             'not exist' and  'active'.
+             The action of this conceptual row only support
+             'createAndGo' and 'destroy'.
+
+             To create a row in this table, a manager must
+             set this object to createAndGo(4).
+
+             To delete a row in this table, a manager must
+             set this object to destroy(6).
+
+             To query this object, always return 1. "
+        REFERENCE
+            "G.988 9.3.13 Extended VLAN tagging operation configuration data"
+        ::= { zxAnGponOPExtVlanRuleConfEntry 50 }
+                
+-------------------------------------------------------------------------------
+--  zxAnGponOPBrgConfTable
+-------------------------------------------------------------------------------
+    zxAnGponOPBrgConfTable    OBJECT-TYPE
+        SYNTAX      SEQUENCE OF ZxAnGponOPBrgConfEntry
+        MAX-ACCESS  not-accessible
+        STATUS      current
+        DESCRIPTION
+            "The ONU profile bridge configuration table."
+        REFERENCE
+            "G.988 section 9.3.1 MAC Bridge service profile"
+        ::= { zxAnGponOnuServicePrfObjects 10 }
+
+    zxAnGponOPBrgConfEntry OBJECT-TYPE
+        SYNTAX      ZxAnGponOPBrgConfEntry
+        MAX-ACCESS  not-accessible
+        STATUS      current
+        DESCRIPTION
+            "The ONU profile bridge configuration entry."
+        INDEX   { zxAnGponOPName, zxAnGponOPBrgIndex }
+        ::= { zxAnGponOPBrgConfTable 1 }
+
+    ZxAnGponOPBrgConfEntry ::=
+        SEQUENCE {
+            zxAnGponOPBrgIndex                 Integer32,
+            zxAnGponOPBrgStpEnable             INTEGER,
+            zxAnGponOPBrgLearningEnable        INTEGER,
+            zxAnGponOPBrgLocalBridgeEnable     INTEGER,
+            zxAnGponOPBrgPri                   Integer32,
+            zxAnGponOPBrgMaxAge                Integer32,
+            zxAnGponOPBrgHelloTime             Integer32,
+            zxAnGponOPBrgForwardDelay          Integer32,
+            zxAnGponOPBrgUnknownMacDiscard     INTEGER,
+            zxAnGponOPBrgMacLearningDepth      Integer32,
+            zxAnGponOPBrgAgingTime             Integer32
+        }
+
+    zxAnGponOPBrgIndex OBJECT-TYPE
+        SYNTAX      Integer32
+        MAX-ACCESS  not-accessible
+        STATUS      current
+        DESCRIPTION
+            "This attribute indicates the index of MAC bridge in ONU, from 1 to
+             65535. The first byte specifies the slot ID associated with this 
+             MAC bridge, the second byte specifies the bridge group ID 
+             associated with this MAC bridge."
+        ::= { zxAnGponOPBrgConfEntry 1 }
+
+    zxAnGponOPBrgStpEnable OBJECT-TYPE
+        SYNTAX      INTEGER{
+            enabled(1),
+            disabled(2)
+        }
+        MAX-ACCESS  read-write
+        STATUS      current
+        DESCRIPTION
+            "This attribute indicates whether or not a spanning tree
+             algorithm is enabled."
+        REFERENCE
+            "G.988 section 9.3.1 MAC Bridge service profile"
+        ::= { zxAnGponOPBrgConfEntry 2 }
+
+    zxAnGponOPBrgLearningEnable OBJECT-TYPE
+        SYNTAX      INTEGER{
+            enabled(1),
+            disabled(2)
+        }
+        MAX-ACCESS  read-write
+        STATUS      current
+        DESCRIPTION
+            "This attribute indicates whether or not the learning
+             function of the bridge is enabled."
+        REFERENCE
+            "G.988 section 9.3.1 MAC Bridge service profile"
+        ::= { zxAnGponOPBrgConfEntry 3 }
+
+    zxAnGponOPBrgLocalBridgeEnable OBJECT-TYPE
+        SYNTAX      INTEGER{
+            enabled(1),
+            disabled(2)
+        }
+        MAX-ACCESS  read-write
+        STATUS      current
+        DESCRIPTION
+            "This attribute indicates whether or not the bridging between UNI
+             ports is enabled."
+        REFERENCE
+            "G.988 section 9.3.1 MAC Bridge service profile"
+        ::= { zxAnGponOPBrgConfEntry 4 }
+
+    zxAnGponOPBrgPri OBJECT-TYPE
+        SYNTAX      Integer32(0..65535)
+        MAX-ACCESS  read-write
+        STATUS      current
+        DESCRIPTION
+            "This attribute specifies the bridge priority in the range 0..65535.
+             The value of this attribute is copied to the bridge priority
+             attribute of the associated MAC bridge configuration data managed
+             entity."
+        REFERENCE
+            "G.988 section 9.3.1 MAC Bridge service profile"
+        ::= { zxAnGponOPBrgConfEntry 5 }
+
+    zxAnGponOPBrgMaxAge OBJECT-TYPE
+        SYNTAX      Integer32(6..40)
+        UNITS       "Seconds"
+        MAX-ACCESS  read-write
+        STATUS      current
+        DESCRIPTION
+            "This attribute indicates the maximum age for an entry in the
+             spanning tree listing. It indicates the maximum
+             age in seconds for received protocol information before
+             it is discarded."
+        REFERENCE
+            "G.988 section 9.3.1 MAC Bridge service profile"
+        ::= { zxAnGponOPBrgConfEntry 6 }
+
+    zxAnGponOPBrgHelloTime OBJECT-TYPE
+        SYNTAX      Integer32(1..10)
+        UNITS       "Seconds"
+        MAX-ACCESS  read-write
+        STATUS      current
+        DESCRIPTION
+            "This attribute provides the time interval between hello packets.
+             It is the time interval, in seconds, that a bridge advertises its
+             presence while as a root or attempting to become a root."
+        REFERENCE
+            "G.988 section 9.3.1 MAC Bridge service profile"
+        ::= { zxAnGponOPBrgConfEntry 7 }
+
+    zxAnGponOPBrgForwardDelay OBJECT-TYPE
+        SYNTAX      Integer32(4..30)
+        UNITS       "Seconds"
+        MAX-ACCESS  read-write
+        STATUS      current
+        DESCRIPTION
+            "This attribute gives the time that the
+             bridge on the Ethernet card in the ONU retains a packet before
+             forwarding it. (It indicates the value in seconds that
+             the bridge uses for Forward Delay when the bridge acts as the
+             root.) "
+        REFERENCE
+            "G.988 section 9.3.1 MAC Bridge service profile"
+        ::= { zxAnGponOPBrgConfEntry 8 }
+
+    zxAnGponOPBrgUnknownMacDiscard OBJECT-TYPE
+        SYNTAX      INTEGER{
+            enabled(1),
+            disabled(2)
+        }
+        MAX-ACCESS  read-write
+        STATUS      current
+        DESCRIPTION
+            "This attribute indicates the treatment of MAC frames with
+             unknown destination addresses.
+             enabled: frames with unknown destination addresses will be
+                     discarded.
+             disabled: frames with unknown destination addresses will be
+                     forwarded to all allowed ports."
+        REFERENCE
+            "G.988 section 9.3.1 MAC Bridge service profile"
+        ::= { zxAnGponOPBrgConfEntry 9 }
+
+    zxAnGponOPBrgMacLearningDepth OBJECT-TYPE
+        SYNTAX      Integer32(0..255)
+        MAX-ACCESS  read-write
+        STATUS      current
+        DESCRIPTION
+            "This attribute specifies the maximum number of UNI MAC addresses
+             to be learned by the bridge.
+             The default value 0 specifies that there is no
+             administratively-imposed limit."
+        REFERENCE
+            "G.988 section 9.3.1 MAC Bridge service profile"
+        ::= { zxAnGponOPBrgConfEntry 10 }
+
+    zxAnGponOPBrgAgingTime OBJECT-TYPE
+        SYNTAX      Integer32(10..1000000)
+        UNITS       "Seconds"
+        MAX-ACCESS  read-write
+        STATUS      current
+        DESCRIPTION
+            "This attribute specifies the age of dynamic filtering entries in
+             the bridge database, after which unrefreshed entries are discarded.
+             In accordance with [IEEE 802.1D] clause 7.9.2 and [IEEE 802.1Q]
+             clause 8.8.3, the range is 10..1 000 000 seconds, with a resolution
+             of 1 second and a default of 300 seconds."
+        REFERENCE
+            "G.988 section 9.3.1 MAC Bridge service profile"
+        ::= { zxAnGponOPBrgConfEntry 11 }
+        
+-------------------------------------------------------------------------------
+--  zxAnGponOPWanIpConfTable
+-------------------------------------------------------------------------------
+    zxAnGponOPWanIpConfTable    OBJECT-TYPE
+        SYNTAX      SEQUENCE OF ZxAnGponOPWanIpConfEntry
+        MAX-ACCESS  not-accessible
+        STATUS      current
+        DESCRIPTION
+            "The ONU profile WAN IP configuration table."
+        REFERENCE
+            "G.988 section 9.4.1 IP host config data 
+             and 9.4.5 IPv6 host config data."
+        ::= { zxAnGponOnuServicePrfObjects 11 }
+
+    zxAnGponOPWanIpConfEntry OBJECT-TYPE
+        SYNTAX      ZxAnGponOPWanIpConfEntry
+        MAX-ACCESS  not-accessible
+        STATUS      current
+        DESCRIPTION
+            "The ONU profile WAN IP configuration entry."             
+        INDEX   { zxAnGponOPName, zxAnGponOPWanIpIndex }
+        ::= { zxAnGponOPWanIpConfTable 1 }
+
+    ZxAnGponOPWanIpConfEntry ::=
+        SEQUENCE {
+            zxAnGponOPWanIpIndex            Integer32,
+            zxAnGponOPWanIpMode             INTEGER,
+            zxAnGponOPWanVlanPrf            DisplayString,
+            zxAnGponOPWanHostId             Integer32,
+            zxAnGponOPWanOnuIdentifier      DisplayString,
+            zxAnGponOPWanPppoeAuthMode      INTEGER,
+            zxAnGponOPWanPppoeUsername      DisplayString,
+            zxAnGponOPWanPppoePassword      DisplayString,
+            zxAnGponOPWanRspPing            INTEGER,
+            zxAnGponOPWanRspTraceRoute      INTEGER,
+            zxAnGponOPWanRsEnable           INTEGER,            
+            zxAnGponOPWanOnLinkPrefix       OCTET STRING, 
+            zxAnGponOPWanPppoeServiceName   DisplayString,
+            zxAnGponOPWanIpConfRowStatus    RowStatus
+        }
+
+    zxAnGponOPWanIpIndex OBJECT-TYPE
+        SYNTAX      Integer32(1..255)
+        MAX-ACCESS  not-accessible
+        STATUS      current
+        DESCRIPTION
+            "The ID of WAN IP."
+        ::= { zxAnGponOPWanIpConfEntry 1}
+
+    zxAnGponOPWanIpMode OBJECT-TYPE
+        SYNTAX      INTEGER{
+             dhcp(2),
+             pppoe(3)
+        }
+        MAX-ACCESS  read-create
+        STATUS      current
+        DESCRIPTION
+            "IP address configuration mode."
+        DEFVAL { dhcp }
+        ::= { zxAnGponOPWanIpConfEntry 2 }
+
+    zxAnGponOPWanVlanPrf OBJECT-TYPE
+        SYNTAX      DisplayString(SIZE(1..64))
+        MAX-ACCESS  read-create
+        STATUS      current
+        DESCRIPTION
+            "The name of table 'zxAnGponOPVlanPrfTable'."
+        ::= { zxAnGponOPWanIpConfEntry 3 }
+
+    zxAnGponOPWanHostId  OBJECT-TYPE
+        SYNTAX      Integer32(0..33023)
+        MAX-ACCESS  read-create
+        STATUS      current
+        DESCRIPTION
+            "The ONU IP host ID. The value 0 indicates this attribute
+             is not configured.
+             The following IP host ID format is defined:             
+             MSB : Most Significant Byte
+             LSB : Least Significant Byte        
+             |      MSB     |    Byte 2    |       Byte 1      |    LSB     |
+             |--------------|-----------------------------------------------|
+             |              |              |IP-type | reserved | host ID    |
+             |     (8bits)  |  (8bits)     | (1bit) | (7bits)  | (8bits)    |
+             |--------------------------------------------------------------|             
+             IP-type: the IP type of host ID(1 bit)
+             0 represents IPv4
+             1 represents IPv6"              
+        REFERENCE
+            "G.988 section 9.4.1 IP host config data 
+             and 9.4.5 IPv6 host config data."
+        DEFVAL { 0 }     
+        ::= { zxAnGponOPWanIpConfEntry 4 }
+
+    zxAnGponOPWanOnuIdentifier OBJECT-TYPE
+        SYNTAX      DisplayString(SIZE(0..25))
+        MAX-ACCESS  read-create
+        STATUS      current
+        DESCRIPTION
+            "A unique ONU identifier string. This string, if set is provided as
+             part of the DHCP request to allow an alternative to MAC Address in
+             retrieving the DHCP parameters of the specified ONU.
+             This attribute is related to 'zxAnGponOPWanIpMode'.
+             and it is valid only when 'zxAnGponOPWanIpMode' is DHCP.
+             Its default value is null bytes."
+        REFERENCE
+            "G.988 section 9.4.1 IP host config data"
+        ::= { zxAnGponOPWanIpConfEntry 5 }
+
+    zxAnGponOPWanPppoeAuthMode OBJECT-TYPE
+        SYNTAX      INTEGER{
+            auto(1),
+            chap(2),
+            pap(3)
+        }
+        MAX-ACCESS  read-create
+        STATUS      current
+        DESCRIPTION
+            "This attribute is related to 'zxAnGponOPWanIpMode', and
+             it is valid only when 'zxAnGponOPWanIpMode' is PPPoE."
+        DEFVAL { auto }
+        ::= { zxAnGponOPWanIpConfEntry 6 }
+
+    zxAnGponOPWanPppoeUsername OBJECT-TYPE
+        SYNTAX      DisplayString(SIZE(0..128))
+        MAX-ACCESS  read-create
+        STATUS      current
+        DESCRIPTION
+            "This attribute is related to 'zxAnGponOPWanIpMode', and it is
+             valid only when 'zxAnGponOPWanIpMode' is PPPoE."
+        ::= { zxAnGponOPWanIpConfEntry 7 }
+
+    zxAnGponOPWanPppoePassword OBJECT-TYPE
+        SYNTAX      DisplayString(SIZE(0..25))
+        MAX-ACCESS  read-create
+        STATUS      current
+        DESCRIPTION
+            "This attribute is related to 'zxAnGponOPWanIpMode', and it is
+             valid only when 'zxAnGponOPWanIpMode' is PPPoE."
+        ::= { zxAnGponOPWanIpConfEntry 8 }
+
+    zxAnGponOPWanRspPing OBJECT-TYPE
+        SYNTAX      INTEGER{
+            enabled(1),
+            disabled(2)
+        }
+        MAX-ACCESS  read-create
+        STATUS      current
+        DESCRIPTION
+            "This attribute indicates whether respond to pings enabled."
+        DEFVAL { enabled }
+        ::= { zxAnGponOPWanIpConfEntry 9 }
+
+    zxAnGponOPWanRspTraceRoute OBJECT-TYPE
+        SYNTAX      INTEGER{
+            enabled(1),
+            disabled(2)
+        }
+        MAX-ACCESS  read-create
+        STATUS      current
+        DESCRIPTION
+            "This attribute indicates whether respond to trace route enabled.
+             This attribute is only valid for IPv4 and this value is
+             disabled(2) for IPv6."
+        DEFVAL { disabled }
+        ::= { zxAnGponOPWanIpConfEntry 10 }
+
+    zxAnGponOPWanRsEnable OBJECT-TYPE
+        SYNTAX      INTEGER{
+            enabled(1),
+            disabled(2)
+        }
+        MAX-ACCESS  read-create
+        STATUS      current
+        DESCRIPTION            
+            "This attribute indicates whether respond to router 
+             solicitation (RS) messages enabled. 
+             This attribute is only valid for IPv6 and this value is
+             disabled(2) for IPv4."
+        REFERENCE
+             "G.988 section 9.4.5 IPv6 host config data."
+        DEFVAL { disabled }
+        ::= { zxAnGponOPWanIpConfEntry 11 }
+        
+    zxAnGponOPWanOnLinkPrefix OBJECT-TYPE
+        SYNTAX      OCTET STRING (SIZE (17))
+        MAX-ACCESS  read-create
+        STATUS      current
+        DESCRIPTION
+            "It is the manually provisioned on-link prefix used for destination 
+             IPv6 addresses of IPv6 host services. The attribute is structured 
+             as follows: 
+             Prefix length, number of leading bits in the prefix that are valid 
+             (1 byte). 
+             Prefix (16 bytes).
+             This attribute is only valid for IPv6 and this value is 0x0 
+             for IPv4."
+        REFERENCE
+            "G.988 section 9.4.5 IPv6 host config data"
+        DEFVAL { '00'H  }            
+        ::= { zxAnGponOPWanIpConfEntry 12 }    
+
+    zxAnGponOPWanPppoeServiceName OBJECT-TYPE
+        SYNTAX      DisplayString(SIZE(0..60))
+        MAX-ACCESS  read-create
+        STATUS      current
+        DESCRIPTION
+            "The PPPoE service name."
+        ::= { zxAnGponOPWanIpConfEntry 13 }
+                
+    zxAnGponOPWanIpConfRowStatus OBJECT-TYPE
+        SYNTAX      RowStatus
+        MAX-ACCESS  read-create
+        STATUS      current
+        DESCRIPTION
+            "The status of this conceptual row.
+
+             To create a row in this table, a manager must
+             set this object to createAndGo(4).
+
+             To delete a row in this table, a manager must
+             set this object to destroy(6).
+
+             To query this object, always return 1. "
+        ::= { zxAnGponOPWanIpConfEntry 50 }
+                
+--------------------------------------------------------------------------------
+-- zxAnGponOPVoipConfTable
+------------------------------------------------------------------------------
+    zxAnGponOPVoipConfTable    OBJECT-TYPE
+        SYNTAX      SEQUENCE OF ZxAnGponOPVoipConfEntry
+        MAX-ACCESS  not-accessible
+        STATUS      current
+        DESCRIPTION
+            "The ONU profile VoIP configuration table."
+        REFERENCE
+            "G.988 section 9.9.18 VoIP config data"
+        ::= { zxAnGponOnuServicePrfObjects  12 }
+
+    zxAnGponOPVoipConfEntry OBJECT-TYPE
+        SYNTAX      ZxAnGponOPVoipConfEntry
+        MAX-ACCESS  not-accessible
+        STATUS      current
+        DESCRIPTION
+            "The ONU profile VoIP configuration entry."
+        INDEX   { zxAnGponOPName }
+        ::= { zxAnGponOPVoipConfTable 1 }
+
+    ZxAnGponOPVoipConfEntry ::=
+        SEQUENCE {
+            zxAnGponOPVoipSignalProtoUsed                    INTEGER,
+            zxAnGponOPVoipConfMethodUsed                     INTEGER,
+            zxAnGponOPVoipDomainName                         DisplayString,
+            zxAnGponOPVoipH248EquipName                      DisplayString,
+            zxAnGponOPVoipH248RegMode                        INTEGER,
+            zxAnGponOPVoipMgcRegMode                         INTEGER,
+            zxAnGponOPVoipLineName                           DisplayString,
+            zxAnGponOPVoipIpAllocMode                        INTEGER,
+            zxAnGponOPVoipSvrAddr                            DisplayString,
+            zxAnGponOPVoipSvrValidation                      INTEGER,
+            zxAnGponOPVoipSvrUsername                        DisplayString,
+            zxAnGponOPVoipSvrPassword                        DisplayString,
+            zxAnGponOPVoipSvrRealm                           DisplayString,
+            zxAnGponOPVoipSvrRetrieveFile                    INTEGER
+        }
+
+    zxAnGponOPVoipSignalProtoUsed OBJECT-TYPE
+        SYNTAX      INTEGER{
+            none(1),
+            sip(2),
+            h248(3),
+            mgcp(4),
+            nonOmci(5)
+        }
+        MAX-ACCESS  read-write
+        STATUS      current
+        DESCRIPTION
+            "This attribute indicates the type of VoIP signaling protocol used
+             for ONU. Only one type of protocol is allowed. Valid values are:
+             0x01 = None
+             0x02 = SIP
+             0x03 = H.248
+             0x04 = MGCP
+             0x05 = Selected by Non-OMCI."
+        REFERENCE
+            "G.988 section 9.9.18 VoIP config data"
+        DEFVAL { none }
+        ::= { zxAnGponOPVoipConfEntry 1 }
+
+    zxAnGponOPVoipConfMethodUsed OBJECT-TYPE
+        SYNTAX      INTEGER{
+            default(1),
+            omci(2),
+            configFile(3),
+            tr069(4),
+            ietf(5)
+        }
+        MAX-ACCESS  read-write
+        STATUS      current
+        DESCRIPTION
+            "This attribute indicates the ONU configuration method.
+             0x01 the ONU default - do not configure.
+             0x02 indicate use of OMCI for VoIP service configuration of
+                  the ONU.
+             0x03 indicate use of configuration file retrieval for VoIP service
+                  configuration of the ONU.
+             0x04 indicate use of TR-69 for VoIP service configuration of
+                  the ONU.
+             0x05 indicate use of IETF sipping config framework for VoIP
+                  service configuration of the ONU."
+        REFERENCE
+            "G.988 section 9.9.18 VoIP config data"
+        DEFVAL { default }
+        ::= { zxAnGponOPVoipConfEntry 2 }
+
+    zxAnGponOPVoipDomainName  OBJECT-TYPE
+        SYNTAX      DisplayString (SIZE (0..128))
+        MAX-ACCESS  read-write
+        STATUS      current
+        DESCRIPTION
+            "This attribute indicates the ONU domain name that is used to locate 
+             ONU by SS when the mode of MG registered to SS is using domain 
+             name."
+        REFERENCE
+            "ZTE specific ME, MGC TID config data"
+        ::= { zxAnGponOPVoipConfEntry 3 }
+
+    zxAnGponOPVoipH248EquipName  OBJECT-TYPE
+        SYNTAX      DisplayString (SIZE (0..25))
+        MAX-ACCESS  read-write
+        STATUS      current
+        DESCRIPTION
+            "This attribute indicates the ONU equipment name that is used to 
+             locate ONU by SS when the mode of MG registered to SS is using 
+             equipment name."
+        REFERENCE
+            "ZTE specific ME, MGC TID config data"
+        ::= { zxAnGponOPVoipConfEntry 4 }
+
+    zxAnGponOPVoipH248RegMode OBJECT-TYPE
+        SYNTAX      INTEGER{
+            ipv4(1),
+            domainName(2),
+            equipmentName(3)
+        }
+        MAX-ACCESS  read-write
+        STATUS      current
+        DESCRIPTION
+            "This attribute indicates the MID flag."
+        REFERENCE
+            "ZTE specific ME, MGC TID config data"
+        DEFVAL {ipv4}
+        ::= { zxAnGponOPVoipConfEntry 5 }
+
+    zxAnGponOPVoipMgcRegMode OBJECT-TYPE
+        SYNTAX      INTEGER{
+            wildcard(1),
+            individual(2)
+        }
+        MAX-ACCESS  read-write
+        STATUS      current
+        DESCRIPTION
+            "This attribute indicates the register mode."
+        REFERENCE
+            "ZTE specific ME, MGC TID config data"
+        DEFVAL {wildcard}
+        ::= { zxAnGponOPVoipConfEntry 6 }
+
+    zxAnGponOPVoipLineName  OBJECT-TYPE
+        SYNTAX      DisplayString (SIZE (0..25))
+        MAX-ACCESS  read-write
+        STATUS      current
+        DESCRIPTION
+            "This attribute indicates the line name sequence number.
+             The default value is the empty string."
+        REFERENCE
+            "ZTE specific ME, MGC TID config data"
+        ::= { zxAnGponOPVoipConfEntry 7 }
+
+    zxAnGponOPVoipIpAllocMode OBJECT-TYPE
+        SYNTAX      INTEGER{
+            singleIp(1),
+            dualIp(2),
+            multiIp(3)
+        }
+        MAX-ACCESS  read-write
+        STATUS      current
+        DESCRIPTION
+            "This attribute indicates the VoIP allocate mode."
+        DEFVAL { singleIp }
+        ::= { zxAnGponOPVoipConfEntry 8 }
+
+    zxAnGponOPVoipSvrAddr OBJECT-TYPE
+        SYNTAX      DisplayString(SIZE (0..128))
+        MAX-ACCESS  read-write
+        STATUS      current
+        DESCRIPTION
+            "This attribute indicates the address of the server to contact
+             using the method indicated in the VoIP configuration method used
+             attribute. This attribute is only relevant for non-OMCI
+             configuration methods. If this attribute is set to a null pointer,
+             no address is defined by this attribute. However, the address may
+             be defined by other methods, such as deriving it from the ONU
+             identifier attribute of the IP host configuration data ME and using 
+             a well-known URI schema."
+        REFERENCE
+            "G.988 section 9.9.18 VoIP config data"
+        ::= { zxAnGponOPVoipConfEntry 9 }
+
+    zxAnGponOPVoipSvrValidation OBJECT-TYPE
+        SYNTAX      INTEGER{
+            disabled(1),
+            md5(2),
+            basic(3)
+        }
+        MAX-ACCESS  read-write
+        STATUS      current
+        DESCRIPTION
+            "This attribute indicates the user validation scheme."
+        DEFVAL { disabled }
+        ::= { zxAnGponOPVoipConfEntry 10 }
+
+    zxAnGponOPVoipSvrUsername  OBJECT-TYPE
+        SYNTAX      DisplayString (SIZE (0..50))
+        MAX-ACCESS  read-write
+        STATUS      current
+        DESCRIPTION
+            "This attribute indicates the user name for validation."
+        ::= { zxAnGponOPVoipConfEntry 11 }
+
+    zxAnGponOPVoipSvrPassword  OBJECT-TYPE
+        SYNTAX      DisplayString (SIZE (0..25))
+        MAX-ACCESS  read-write
+        STATUS      current
+        DESCRIPTION
+            "This attribute indicates the password for validation."
+        ::= { zxAnGponOPVoipConfEntry 12 }
+
+    zxAnGponOPVoipSvrRealm  OBJECT-TYPE
+        SYNTAX      DisplayString (SIZE (0..25))
+        MAX-ACCESS  read-write
+        STATUS      current
+        DESCRIPTION
+            "This attribute indicates a string to be displayed to users so they 
+             know which user name and password to use.  This string should 
+             contain at least the name of the host performing the authentication 
+             and might additionally indicate the collection of users who might 
+             have access. An example might be 'registered_users@gotham. news
+             .com'. The realm is a 'quoted-string' as specified in section 2.2 
+             of the HTTP/1.1 specification."
+        ::= { zxAnGponOPVoipConfEntry 13 }
+
+    zxAnGponOPVoipSvrRetrieveFile  OBJECT-TYPE
+        SYNTAX      INTEGER{
+            enabled(1),
+            disabled(2)
+        }
+        MAX-ACCESS  read-write
+        STATUS      current
+        DESCRIPTION
+            "This attribute indicates an action. It will be set independently
+             to notify ONU to retrieve file again."
+        ::= { zxAnGponOPVoipConfEntry 14 }
+
+------------------------------------------------------------------------------
+-- zxAnGponOPVoipIpConfTable
+------------------------------------------------------------------------------
+    zxAnGponOPVoipIpConfTable    OBJECT-TYPE
+        SYNTAX      SEQUENCE OF ZxAnGponOPVoipIpConfEntry
+        MAX-ACCESS  not-accessible
+        STATUS      current
+        DESCRIPTION
+            "The ONU profile VoIP IP configuration table."
+        ::= { zxAnGponOnuServicePrfObjects 13 }
+
+    zxAnGponOPVoipIpConfEntry OBJECT-TYPE
+        SYNTAX      ZxAnGponOPVoipIpConfEntry
+        MAX-ACCESS  not-accessible
+        STATUS      current
+        DESCRIPTION
+            "The ONU profile VoIP IP configuration entry."
+        INDEX   { zxAnGponOPName, zxAnGponOPVoipIpSlotId, 
+                  zxAnGponOPVoipIpMediaIndex }
+        ::= { zxAnGponOPVoipIpConfTable 1 }
+
+    ZxAnGponOPVoipIpConfEntry ::=
+        SEQUENCE {
+            zxAnGponOPVoipIpSlotId                    Integer32,
+            zxAnGponOPVoipIpMediaIndex                INTEGER,
+            zxAnGponOPVoipIpMode                      INTEGER,
+            zxAnGponOPVoipIpPrf                       DisplayString,
+            zxAnGponOPVoipIpVlanPrf                   DisplayString,
+            zxAnGponOPVoipIpHostId                    Integer32,
+            zxAnGponOPVoipIpOnuIdentifier             DisplayString,
+            zxAnGponOPVoipIpAddrType                  InetAddressType,
+            zxAnGponOPVoipIpAddr                      InetAddress,
+            zxAnGponOPVoipIpAddrPfxLen                InetAddressPrefixLength,
+            zxAnGponOPVoipIpPppoeMode                 INTEGER,
+            zxAnGponOPVoipIpPppoeUsername             DisplayString,
+            zxAnGponOPVoipIpPppoePassword             DisplayString,
+            zxAnGponOPVoipIpRspPing                   INTEGER,
+            zxAnGponOPVoipIpRspTraceRoute             INTEGER,
+            zxAnGponOPVoipIpRsEnable                  INTEGER,            
+            zxAnGponOPVoipIpOnLinkPrefix              OCTET STRING, 
+            zxAnGponOPVoipIpPppoeServiceName          DisplayString,
+            zxAnGponOPVoipIpConfRowStatus             RowStatus
+        }
+
+    zxAnGponOPVoipIpSlotId OBJECT-TYPE
+        SYNTAX      Integer32(0..16)
+        MAX-ACCESS  not-accessible
+        STATUS      current
+        DESCRIPTION
+            "This attribute indicates the index of slot in ONU.
+             If slot ID is zero, it means the ONU is box-type,
+             which can not plug card."
+        ::= { zxAnGponOPVoipIpConfEntry 1}
+
+    zxAnGponOPVoipIpMediaIndex OBJECT-TYPE
+        SYNTAX      INTEGER{
+            signalAndMedia(1),
+            media(2)
+        }
+        MAX-ACCESS  not-accessible
+        STATUS      current
+        DESCRIPTION
+            "This attribute indicates the whether the separation of media
+             and signaling. If 'media' is configured,The media will use a
+             separation IP address, otherwise media and signaling will share
+             the same IP address."
+        ::= { zxAnGponOPVoipIpConfEntry 2}
+
+    zxAnGponOPVoipIpMode OBJECT-TYPE
+        SYNTAX      INTEGER{
+            static(1),
+            dhcp(2),
+            pppoe(3)
+        }
+        MAX-ACCESS  read-create
+        STATUS      current
+        DESCRIPTION
+            "This attribute indicates the IP address configuration mode."
+        DEFVAL { static }
+        ::= { zxAnGponOPVoipIpConfEntry 3 }
+
+    zxAnGponOPVoipIpPrf OBJECT-TYPE
+        SYNTAX      DisplayString(SIZE(0..64))
+        MAX-ACCESS  read-create
+        STATUS      current
+        DESCRIPTION
+            "This attribute indicates the VoIP IP profile Name, it refers to 
+             'zxAnGponRmIpPrfName'. If no profile name is indicated, this 
+             attribute is set to a empty string."
+        ::= { zxAnGponOPVoipIpConfEntry 4 }
+
+    zxAnGponOPVoipIpVlanPrf OBJECT-TYPE
+        SYNTAX      DisplayString(SIZE(1..64))
+        MAX-ACCESS  read-create
+        STATUS      current
+        DESCRIPTION
+            "This attribute indicates the VoIP IP VLAN profile Name, it refers 
+             to 'zxAnGponRmVlanPrfName'."
+        ::= { zxAnGponOPVoipIpConfEntry 5 }
+
+    zxAnGponOPVoipIpHostId  OBJECT-TYPE
+        SYNTAX      Integer32(0..33023)
+        MAX-ACCESS  read-create
+        STATUS      current
+        DESCRIPTION
+            "This attribute indicates the ONU VoIP host ID. 
+             The value 0 indicates this attribute is not configured.
+             The following VoIP host ID format is defined:             
+             MSB : Most Significant Byte
+             LSB : Least Significant Byte        
+             |      MSB     |    Byte 2    |       Byte 1      |    LSB     |
+             |--------------|-----------------------------------------------|
+             |              |              |IP-type | reserved | host ID    |
+             |     (8bits)  |  (8bits)     | (1bit) | (7bits)  | (8bits)    |
+             |--------------------------------------------------------------|             
+             IP-type: the IP type of host ID(1 bit)
+             0 represents IPv4
+             1 represents IPv6" 
+        REFERENCE
+            "G.988 section 9.4.1 IP host config data 
+             and 9.4.5 IPv6 host config data."
+        DEFVAL { 0 }                
+        ::= { zxAnGponOPVoipIpConfEntry 6 }
+
+    zxAnGponOPVoipIpOnuIdentifier OBJECT-TYPE
+        SYNTAX      DisplayString(SIZE(0..25))
+        MAX-ACCESS  read-create
+        STATUS      current
+        DESCRIPTION
+            "This attribute indicates the ONU identifier string. 
+             This attribute is relation to 'zxAnGponOPVoipIpMode'. 
+             This attribute is valid only when 'zxAnGponOPVoipIpMode' is DHCP. 
+             A unique ONU identifier string. If set to a non-null value,
+             this string is used instead of the MAC address in retrieving
+             DHCP parameters. If the string is shorter than 25 characters,
+             it must be null terminated. Its default value is null bytes."
+        REFERENCE
+            "G.988 section 9.4.1 IP host config data"
+        ::= { zxAnGponOPVoipIpConfEntry 7 }
+
+    zxAnGponOPVoipIpAddrType     OBJECT-TYPE
+        SYNTAX      InetAddressType
+        MAX-ACCESS  read-create
+        STATUS      current
+        DESCRIPTION
+            "This attribute indicates the type of IP address denoted
+             in zxAnGponOPVoipIpAddr object."
+        DEFVAL { ipv4 }
+        ::= { zxAnGponOPVoipIpConfEntry 8 }
+
+    zxAnGponOPVoipIpAddr     OBJECT-TYPE
+        SYNTAX      InetAddress
+        MAX-ACCESS  read-create
+        STATUS      current
+        DESCRIPTION
+            "This attribute indicates the VoIP IP address.
+             This attribute is relation to 'zxAnGponOPVoipIpMode'.
+             This attribute is valid only when 'zxAnGponOPVoipIpMode'
+             is static."
+        ::= { zxAnGponOPVoipIpConfEntry 9 }
+
+    zxAnGponOPVoipIpAddrPfxLen     OBJECT-TYPE
+        SYNTAX      InetAddressPrefixLength
+        MAX-ACCESS  read-create
+        STATUS      current
+        DESCRIPTION
+            "This attribute indicates the VoIP IP address prefix length.
+             This attribute is only valid for IPv4 and this value is 0
+             for IPv6."
+        ::= { zxAnGponOPVoipIpConfEntry 10 }
+
+    zxAnGponOPVoipIpPppoeMode OBJECT-TYPE
+        SYNTAX      INTEGER{
+            auto(1),
+            chap(2),
+            pap(3)
+        }
+        MAX-ACCESS  read-create
+        STATUS      current
+        DESCRIPTION
+            "This attribute indicates the VoIP IP PPPoE mode.
+             This attribute is relation to 'zxAnGponOPVoipIpMode'.
+             This attribute is valid only when 'zxAnGponOPVoipIpMode' is PPPoE."
+        DEFVAL { auto }
+        ::= { zxAnGponOPVoipIpConfEntry 11 }
+
+    zxAnGponOPVoipIpPppoeUsername OBJECT-TYPE
+        SYNTAX      DisplayString(SIZE(0..128))
+        MAX-ACCESS  read-create
+        STATUS      current
+        DESCRIPTION
+            "This attribute indicates the VoIP IP PPPoE user name.
+             This attribute is relation to 'zxAnGponOPVoipIpMode'.
+             This attribute is valid only when 'zxAnGponOPVoipIpMode' is PPPoE."
+        ::= { zxAnGponOPVoipIpConfEntry 12 }
+
+    zxAnGponOPVoipIpPppoePassword OBJECT-TYPE
+        SYNTAX      DisplayString(SIZE(0..25))
+        MAX-ACCESS  read-create
+        STATUS      current
+        DESCRIPTION
+            "This attribute indicates the VoIP IP PPPoE password.
+             This attribute is relation to 'zxAnGponOPVoipIpMode'.
+             This attribute is valid only when 'zxAnGponOPVoipIpMode' is PPPoE."
+        ::= { zxAnGponOPVoipIpConfEntry 13 }
+
+    zxAnGponOPVoipIpRspPing OBJECT-TYPE
+        SYNTAX      INTEGER{
+            enabled(1),
+            disabled(2)
+        }
+        MAX-ACCESS  read-create
+        STATUS      current
+        DESCRIPTION
+            "This attribute indicates whether respond to pings enabled."
+        DEFVAL { enabled }
+        ::= { zxAnGponOPVoipIpConfEntry 14 }
+
+    zxAnGponOPVoipIpRspTraceRoute OBJECT-TYPE
+        SYNTAX      INTEGER{
+            enabled(1),
+            disabled(2)
+        }
+        MAX-ACCESS  read-create
+        STATUS      current
+        DESCRIPTION
+            "This attribute indicates whether respond to trace route enabled.
+             This attribute is only valid for IPv4 and this value is
+             disabled(2) for IPv6."
+        DEFVAL { disabled }
+        ::= { zxAnGponOPVoipIpConfEntry 15 }
+        
+    zxAnGponOPVoipIpRsEnable OBJECT-TYPE
+        SYNTAX      INTEGER{
+            enabled(1),
+            disabled(2)
+        }
+        MAX-ACCESS  read-create
+        STATUS      current
+        DESCRIPTION            
+            "This attribute indicates enabling or disabling response to router 
+             solicitation (RS) messages function. This attribute is only valid
+             for IPv6 and this value is disabled(2) for IPv4."
+        REFERENCE
+             "G.988 section 9.4.5 IPv6 host config data."
+        DEFVAL { disabled }
+        ::= { zxAnGponOPVoipIpConfEntry 16 }
+        
+    zxAnGponOPVoipIpOnLinkPrefix OBJECT-TYPE
+        SYNTAX      OCTET STRING (SIZE (17))
+        MAX-ACCESS  read-create
+        STATUS      current
+        DESCRIPTION
+            "This attribute indicates the manually provisioned on-link prefix 
+             used for destination IPv6 addresses of IPv6 host services. 
+             The attribute is structured as follows: 
+             Prefix length, number of leading bits in the prefix that are valid 
+             (1 byte)+ prefix (16 bytes).
+             This attribute is only valid for IPv6 and this value is 0x0 
+             for IPv4."
+        REFERENCE
+            "G.988 section 9.4.5 IPv6 host config data"
+        DEFVAL { '00'H  }            
+        ::= { zxAnGponOPVoipIpConfEntry 17 } 
+
+    zxAnGponOPVoipIpPppoeServiceName OBJECT-TYPE
+        SYNTAX      DisplayString(SIZE(0..60))
+        MAX-ACCESS  read-create
+        STATUS      current
+        DESCRIPTION
+            "This attribute indicates the PPPoE service name."
+        ::= { zxAnGponOPVoipIpConfEntry 18 }
+
+    zxAnGponOPVoipIpConfRowStatus OBJECT-TYPE
+        SYNTAX      RowStatus
+        MAX-ACCESS  read-create
+        STATUS      current
+        DESCRIPTION
+           "The status of this conceptual row.
+
+           The supported actions of this conceptual row only include:
+
+           To create a row in this table, a manager must
+           set this object to createAndGo(4).
+
+           To delete a row in this table, a manager must
+           set this object to destroy(6).
+
+           To query this object, always return 1. "
+        ::= { zxAnGponOPVoipIpConfEntry 50 }
+
+-------------------------------------------------------------------------------
+-- zxAnGponOPUniDhcpIpRetrieveTable
+-------------------------------------------------------------------------------   
+    zxAnGponOPUniDhcpIpRetrieveTable    OBJECT-TYPE
+        SYNTAX      SEQUENCE OF ZxAnGponOPUniDhcpIpRetrieveEntry
+        MAX-ACCESS  not-accessible
+        STATUS      current
+        DESCRIPTION
+            "The ONU profile Ethernet UNI's DHCP controlling configuration
+             table."
+        REFERENCE   "ZTE specific ME, 
+                     Extended Physical path termination point Ethernet UNI"
+        ::= { zxAnGponOnuServicePrfObjects 14 }
+
+    zxAnGponOPUniDhcpIpRetrieveEntry OBJECT-TYPE
+        SYNTAX      ZxAnGponOPUniDhcpIpRetrieveEntry
+        MAX-ACCESS  not-accessible
+        STATUS      current
+        DESCRIPTION
+            "The ONU profile Ethernet UNI's DHCP controlling configuration
+             entry."
+        INDEX   { zxAnGponOPName, zxAnPonRmOnuIfIndex }
+        ::= { zxAnGponOPUniDhcpIpRetrieveTable 1 }
+
+    ZxAnGponOPUniDhcpIpRetrieveEntry ::=
+        SEQUENCE {
+            zxAnGponOPUniDhcpIpRetrieveMode             INTEGER
+        }
+
+    zxAnGponOPUniDhcpIpRetrieveMode OBJECT-TYPE
+        SYNTAX      INTEGER{
+            noSpecify(1),
+            fromOnu(2),
+            fromNetwork(3),
+            forbidden(4)
+        }
+        MAX-ACCESS  read-write
+        STATUS      current
+        DESCRIPTION
+            "This attribute indicates the Ethernet UNI how to obtain its
+             IP address (from ONU or network), when ONU enables the DHCP server
+             function."
+        REFERENCE
+            "ZTE specific ME, 
+             Extended Physical path termination point Ethernet UNI"
+        DEFVAL  { noSpecify }
+        ::= { zxAnGponOPUniDhcpIpRetrieveEntry 1 }
+
+------------------------------------------------------------------------------
+-- zxAnGponOPIpStaticRouteTable
+------------------------------------------------------------------------------
+    zxAnGponOPIpStaticRouteTable    OBJECT-TYPE
+        SYNTAX      SEQUENCE OF ZxAnGponOPIpStaticRouteEntry
+        MAX-ACCESS  not-accessible
+        STATUS      current
+        DESCRIPTION
+            "This table contains information of ONU IP static routes
+             configuration. This managed entity stores IP static routes."
+        REFERENCE   "G.984.4 section 9.4.5 IP static routes"
+        ::= { zxAnGponOnuServicePrfObjects 15 }
+
+    zxAnGponOPIpStaticRouteEntry OBJECT-TYPE
+        SYNTAX      ZxAnGponOPIpStaticRouteEntry
+        MAX-ACCESS  not-accessible
+        STATUS      current
+        DESCRIPTION
+            "It is entry in the zxAnGponOPIpStaticRouteTable. The index
+            'zxAnGponOPName' represents the normal ONU index."
+        INDEX   { zxAnGponOPName, zxAnGponOPIpRouteDestType,
+                  zxAnGponOPIpRouteDest, zxAnGponOPIpRoutePfxLen }
+        ::= { zxAnGponOPIpStaticRouteTable 1 }
+
+    ZxAnGponOPIpStaticRouteEntry ::=
+        SEQUENCE {
+            zxAnGponOPIpRouteDestType        InetAddressType,
+            zxAnGponOPIpRouteDest            InetAddress,
+            zxAnGponOPIpRoutePfxLen          InetAddressPrefixLength,
+            zxAnGponOPIpRouteNextHopType     InetAddressType,
+            zxAnGponOPIpRouteNextHop         InetAddress,
+            zxAnGponOPIpRouteOutPort         Integer32,
+            zxAnGponOPIpRouteRowStatus       RowStatus
+        }
+
+   zxAnGponOPIpRouteDestType OBJECT-TYPE
+       SYNTAX     InetAddressType
+       MAX-ACCESS not-accessible
+       STATUS     current
+       DESCRIPTION
+           "The type of the 'zxAnGponOPIpRouteDest' address, as defined
+            in the InetAddress MIB.
+            Only those address types that may appear in an actual
+            routing table are allowed as values of this object."
+       REFERENCE
+           "RFC 4001"
+       ::= { zxAnGponOPIpStaticRouteEntry 1 }
+
+    zxAnGponOPIpRouteDest OBJECT-TYPE
+        SYNTAX      InetAddress
+        MAX-ACCESS  not-accessible
+        STATUS      current
+        DESCRIPTION
+            "The destination IP address of this route.
+             The type of this address is determined by the value of
+             the 'zxAnGponOPIpRouteDestType' object.
+             The values for the index objects 'zxAnGponOPIpRouteDest' and
+             'zxAnGponOPIpRoutePfxLen' must be consistent.  When the value
+             of 'zxAnGponOPIpRouteDest' (excluding the zone index, if one
+             is present) is x, then the bitwise logical-AND of x with the
+             value of the mask formed from the corresponding index object
+             'zxAnGponOPIpRoutePfxLen' must be equal to x. If not, then the
+             index pair is not consistent and an inconsistentName error must
+             be returned on SET or CREATE requests.
+             This field may be set to the default route address  0.0.0.0 ."
+        REFERENCE
+            "G.984.4 section 9.4.5 IP static routes"
+        ::= { zxAnGponOPIpStaticRouteEntry 2 }
+
+    zxAnGponOPIpRoutePfxLen OBJECT-TYPE
+        SYNTAX      InetAddressPrefixLength
+        MAX-ACCESS  not-accessible
+        STATUS      current
+        DESCRIPTION
+            "Indicates the number of leading one bits that form the
+             mask to be logical-ANDed with the destination address
+             before being compared to the value in the
+             zxAnGponOPIpRouteDest field.
+             The values for the index objects 'zxAnGponOPIpRouteDest' and
+             'zxAnGponOPIpRoutePfxLen' must be consistent.  When the value
+             of 'zxAnGponOPIpRouteDest' (excluding the zone index, if one
+             is present) is x, then the bitwise logical-AND of x with the
+             value of the mask formed from the corresponding index object
+             'zxAnGponOPIpRoutePfxLen' must be equal to x.  If not, then
+             the index pair is not consistent and an inconsistentName error
+             must be returned on SET or CREATE requests."
+        REFERENCE
+            "G.984.4 section 9.4.5 IP static routes"
+        ::= { zxAnGponOPIpStaticRouteEntry 3 }
+
+   zxAnGponOPIpRouteNextHopType OBJECT-TYPE
+       SYNTAX     InetAddressType
+       MAX-ACCESS read-create
+       STATUS     current
+       DESCRIPTION
+           "The type of the 'zxAnGponOPIpRouteNextHopType' address, as
+            defined in the InetAddress MIB.
+            Value should be set to unknown(0) for non-remote  routes.
+            Only those address types that may appear in an actual
+            routing table are allowed as values of this object."
+       REFERENCE
+           "RFC 4001"
+       ::= { zxAnGponOPIpStaticRouteEntry 4 }
+
+    zxAnGponOPIpRouteNextHop OBJECT-TYPE
+        SYNTAX      InetAddress
+        MAX-ACCESS  read-create
+        STATUS      current
+        DESCRIPTION
+            "On remote routes, the address of the next system route.
+             For non-remote routes, a zero length string.
+             The type of this address is determined by the value of the
+             'zxAnGponOPIpRouteNextHopType' object.
+             This field is not used when the next hop is reached through an
+             unnumbered link.
+             For IPv4, the value is '255.255.255.255' when not used."
+        REFERENCE
+            "G.984.4 section 9.4.5 IP static routes"
+        ::= { zxAnGponOPIpStaticRouteEntry 5 }
+
+    zxAnGponOPIpRouteOutPort OBJECT-TYPE
+        SYNTAX      Integer32(1..255)
+        MAX-ACCESS  read-create
+        STATUS      current
+        DESCRIPTION
+            "The number of the IP port through which the next hop should be
+             reached. This field is used when the next hop is reached through
+             an unnumbered link and when a static route is set to support a
+             fully meshed network. The value 0xFF indicates not used."
+        REFERENCE
+            "G.984.4 section 9.4.5 IP static routes"
+        ::= { zxAnGponOPIpStaticRouteEntry 6 }
+
+    zxAnGponOPIpRouteRowStatus  OBJECT-TYPE
+        SYNTAX      RowStatus
+        MAX-ACCESS  read-create
+        STATUS      current
+        DESCRIPTION
+            "The status of this conceptual row.
+             To create a row in this table, a manager must set this object to
+             createAndGo(4). In particular, a newly created row cannot be
+             created until the corresponding attributes from
+             'zxAnGponOPIpRouteNextHopType' to 'zxAnGponOPIpRouteOutPort'
+             have been set. To delete a row in this table, a manager must
+             set this object to destroy(6)."
+        ::= { zxAnGponOPIpStaticRouteEntry 50 }
+
+------------------------------------------------------------------------------
+-- zxAnGponOPVeipTable
+------------------------------------------------------------------------------
+    zxAnGponOPVeipTable   OBJECT-TYPE
+        SYNTAX      SEQUENCE OF ZxAnGponOPVeipEntry
+        MAX-ACCESS  not-accessible
+        STATUS      current
+        DESCRIPTION
+            "zxAnGponOPVeipTable table.
+             This managed entity represents the data plane hand-off point in
+             an ONU to a separate (non-OMCI) management domain.
+             The virtual Ethernet interface point is managed by OMCI,
+             and is potentially known to the non-OMCI management domain.
+             One or more Ethernet traffic flows are present at this boundary."
+        REFERENCE
+            "G.988 session 9.5.5 virtual Ethernet interface point"
+        ::= { zxAnGponOnuServicePrfObjects 16 }
+
+    zxAnGponOPVeipEntry   OBJECT-TYPE
+        SYNTAX      ZxAnGponOPVeipEntry
+        MAX-ACCESS  not-accessible
+        STATUS      current
+        DESCRIPTION
+            "GPON VEIP configuration entry. The index
+            'zxAnGponOPName' represents the normal ONU index or the virtual
+             ONU index for profile."
+        INDEX   { zxAnGponOPName, zxAnGponOPVeipIndex }
+        ::= { zxAnGponOPVeipTable 1 }
+
+    ZxAnGponOPVeipEntry ::= SEQUENCE {
+        zxAnGponOPVeipIndex                           Integer32,
+        zxAnGponOPVeipAdminState                      INTEGER,
+        zxAnGponOPVeipInterdomainName                 DisplayString,
+        zxAnGponOPVeipIsPortAssigned                  INTEGER,
+        zxAnGponOPVeipProtoType                       INTEGER,
+        zxAnGponOPVeipAssignedPort                    Integer32,
+        zxAnGponOPVeipHostId                          Integer32
+        }
+
+    zxAnGponOPVeipIndex  OBJECT-TYPE
+        SYNTAX      Integer32(1..255)
+        MAX-ACCESS  not-accessible
+        STATUS      current
+        DESCRIPTION
+            "This attribute uniquely identifies each instance
+             of this managed entity.
+             To facilitate easy discovery,
+             the ONU should assign IDs in the sequence 1, 2, ....
+             The values 0 and 0xFFFF are reserved and not used now."
+        REFERENCE
+            "G.988 session 9.5.5 virtual Ethernet interface point"
+        ::= { zxAnGponOPVeipEntry 1 }
+
+    zxAnGponOPVeipAdminState    OBJECT-TYPE
+        SYNTAX      INTEGER {
+            unlocked(1),
+            locked(2)
+        }
+        MAX-ACCESS  read-write
+        STATUS      current
+        DESCRIPTION
+            "This attribute locks and unlocks the functions performed by
+             this managed entity."
+        REFERENCE
+            "G.988 session 9.5.5 virtual Ethernet interface point"
+        DEFVAL  { unlocked }
+        ::= {zxAnGponOPVeipEntry 2 }
+
+    zxAnGponOPVeipInterdomainName    OBJECT-TYPE
+        SYNTAX      DisplayString  ( SIZE ( 0 .. 25  ) )
+        MAX-ACCESS  read-write
+        STATUS      current
+        DESCRIPTION
+            "This attribute is a character string that provides an optional way
+             to identify the virtual Ethernet interface point
+             to a non-OMCI management domain.
+             The interface may also be identified by its managed entity ID,
+             IANA assigned port and possibly other ways.
+             If the vendor offers no information in this attribute,
+             it should be set to a sequence of null bytes."
+        REFERENCE
+            "G.988 session 9.5.5 virtual Ethernet interface point"
+        ::= { zxAnGponOPVeipEntry 3 }
+
+    zxAnGponOPVeipIsPortAssigned OBJECT-TYPE
+        SYNTAX      INTEGER{
+            enabled(1),
+            disabled(2)
+        }
+        MAX-ACCESS  read-write
+        STATUS      current
+        DESCRIPTION
+            "This attribute points to an instance of the TCP/UDP config data
+             managed entity, which provides for OMCI management of
+             the non-OMCI management domain's IP connectivity.
+             This attribute specifies whether to assign tcp or udp port
+             for IP connectivity."
+        REFERENCE
+            "G.988 session 9.5.5 virtual Ethernet interface point"
+        DEFVAL     { enabled }
+        ::= { zxAnGponOPVeipEntry 4 }
+
+    zxAnGponOPVeipProtoType OBJECT-TYPE
+        SYNTAX      INTEGER {
+            tcp(1),
+            udp(2)
+        }
+        MAX-ACCESS  read-write
+        STATUS      current
+        DESCRIPTION
+            "This attribute points to an instance of the TCP/UDP config data
+             managed entity, which provides for OMCI management of
+             the non-OMCI management domain's IP connectivity.
+             This attribute specifies the protocol used in IP connectivity."
+        REFERENCE
+            "G.988 session 9.5.5 virtual Ethernet interface point"
+        DEFVAL  { udp }
+        ::= {zxAnGponOPVeipEntry 5 }
+
+    zxAnGponOPVeipAssignedPort  OBJECT-TYPE
+        SYNTAX      Integer32(0..65535)
+        MAX-ACCESS  read-write
+        STATUS      current
+        DESCRIPTION
+            "This attribute points to an instance of the TCP/UDP config data
+             managed entity, which provides for OMCI management of
+             the non-OMCI management domain's IP connectivity.
+             This attribute specifies the assigned tcp or udp port
+             for IP connectivity when zxAnGponOPVeipIsTcpOrUdpPortAssigned is
+             true."
+        REFERENCE
+            "G.988 session 9.5.5 virtual Ethernet interface point"
+        ::= { zxAnGponOPVeipEntry 6 }
+
+    zxAnGponOPVeipHostId  OBJECT-TYPE
+        SYNTAX      Integer32(1..255)
+        MAX-ACCESS  read-write
+        STATUS      current
+        DESCRIPTION
+            "This attribute points to an instance of the TCP/UDP config data
+             managed entity, which provides for OMCI management of
+             the non-OMCI management domain's IP connectivity
+             when zxAnGponOPVeipIsTcpOrUdpPortAssigned is true.
+             This attribute specifies the host ID for IP connectivity."
+        REFERENCE
+            "G.988 session 9.5.5 virtual Ethernet interface point"
+        ::= { zxAnGponOPVeipEntry 7 }
+
+------------------------------------------------------------------------------
+-- zxAnGponOPTr069AcsTable
+------------------------------------------------------------------------------
+    zxAnGponOPTr069AcsTable   OBJECT-TYPE
+        SYNTAX      SEQUENCE OF ZxAnGponOPTr069AcsEntry
+        MAX-ACCESS  not-accessible
+        STATUS      current
+        DESCRIPTION
+            "zxAnGponOPTr069AcsTable table.
+             If functions within the ONU are managed by [BBF TR-69],
+             this ME allows OMCI configuration of the ACS URL
+             and related authentication information for an ACS connection
+             initiated by the ONU.
+             TR-69 supports other means to discover its ACS,
+             so not all TR-69-compatible ONUs necessarily support this ME.
+             Further, even if the ONU does support this ME,
+             some operators may choose not to use it."
+        REFERENCE
+            "G.988 session 9.12.16 TR-069 management server"
+        ::= { zxAnGponOnuServicePrfObjects 17 }
+
+    zxAnGponOPTr069AcsEntry   OBJECT-TYPE
+        SYNTAX      ZxAnGponOPTr069AcsEntry
+        MAX-ACCESS  not-accessible
+        STATUS      current
+        DESCRIPTION
+            "GPON Tr069 management server configuration entry. The index
+            'zxAnGponOPName' represents the normal ONU index or the virtual
+             ONU index for profile."
+        INDEX   { zxAnGponOPName, zxAnGponOPVeipIndex }
+        ::= { zxAnGponOPTr069AcsTable 1 }
+
+    ZxAnGponOPTr069AcsEntry ::= SEQUENCE {
+        zxAnGponOPTr069AcsAdminState               INTEGER,
+        zxAnGponOPTr069AcsUri                      DisplayString,
+        zxAnGponOPTr069AcsValidation               INTEGER,
+        zxAnGponOPTr069AcsUsername                 DisplayString,
+        zxAnGponOPTr069AcsPassword                 DisplayString,
+        zxAnGponOPTr069AcsRealm                    DisplayString,
+        zxAnGponOPTr069AssociatedTag               Integer32
+        }
+
+    zxAnGponOPTr069AcsAdminState    OBJECT-TYPE
+        SYNTAX      INTEGER {
+            unlocked(1),
+            locked(2)
+        }
+        MAX-ACCESS  read-write
+        STATUS      current
+        DESCRIPTION
+            "This attribute locks and unlocks the functions performed
+             by this managed entity. When the administrative state is locked,
+             the functions of this ME are disabled.
+             TR-69 connectivity to an ACS may be possible through means
+             that do not depend on this ME.
+             The default value of this attribute is locked."
+        REFERENCE
+            "G.988 session 9.12.16 TR-069 management server"
+        DEFVAL  { locked }
+        ::= {zxAnGponOPTr069AcsEntry 1 }
+
+    zxAnGponOPTr069AcsUri OBJECT-TYPE
+        SYNTAX       DisplayString  ( SIZE ( 0 .. 128  ) )
+        MAX-ACCESS   read-write
+        STATUS       current
+        DESCRIPTION
+            "This attribute points to the large string ME that contains
+             the network address.
+             It may contain a fully qualified domain name,
+             URI or IP address. The URI may also contain a port identifier,
+             eg x.y.z.com:5060.
+             A null pointer indicates that no network address is defined."
+        REFERENCE
+            "G.988 session 9.12.3 Network address"
+        ::= { zxAnGponOPTr069AcsEntry 2 }
+
+    zxAnGponOPTr069AcsValidation    OBJECT-TYPE
+        SYNTAX      INTEGER {
+            disabled(1),
+            md5(2),
+            basic(3)
+        }
+        MAX-ACCESS  read-write
+        STATUS      current
+        DESCRIPTION
+            "This attribute specifies the validation scheme used when the ONU
+             validates a challenge. Validation schemes are defined as follows:
+             1  Validation disabled.
+             2  Validate using MD5 digest authentication as defined in
+                [IETF RFC 2069].
+             3  Validate using basic authentication as defined in
+                [IETF RFC 2617]."
+        REFERENCE
+            "G.988 section 9.12.4 Authentication security method"
+        DEFVAL  { disabled }
+        ::= {zxAnGponOPTr069AcsEntry 3 }
+
+    zxAnGponOPTr069AcsUsername    OBJECT-TYPE
+        SYNTAX      DisplayString  ( SIZE ( 0 .. 5  ) )
+        MAX-ACCESS  read-write
+        STATUS      current
+        DESCRIPTION
+            "This string attribute is the user name. If the string is shorter
+             than 25 bytes, it must be null terminated."
+        REFERENCE
+            "G.988 section 9.12.4 Authentication security method"
+        ::= {zxAnGponOPTr069AcsEntry 4 }
+
+    zxAnGponOPTr069AcsPassword    OBJECT-TYPE
+        SYNTAX      DisplayString  ( SIZE ( 0 .. 25  ) )
+        MAX-ACCESS  read-write
+        STATUS      current
+        DESCRIPTION
+            "This string attribute is the password. If the string is shorter
+             than 25 bytes, it must be null terminated."
+        REFERENCE
+            "G.988 section 9.12.4 Authentication security method"
+        ::= {zxAnGponOPTr069AcsEntry 5 }
+
+    zxAnGponOPTr069AcsRealm    OBJECT-TYPE
+        SYNTAX      DisplayString  ( SIZE ( 0 .. 25  ) )
+        MAX-ACCESS  read-write
+        STATUS      current
+        DESCRIPTION
+            "This string attribute specifies the realm used in md5 digest
+             authentication. If the string is shorter than 25 bytes,
+             it must be null terminated."
+        REFERENCE
+            "G.988 section 9.12.4 Authentication security method"
+        ::= {zxAnGponOPTr069AcsEntry 6 }
+
+    zxAnGponOPTr069AssociatedTag    OBJECT-TYPE
+        SYNTAX      Integer32(0..65535)
+        MAX-ACCESS  read-write
+        STATUS      current
+        DESCRIPTION
+            "This attribute is a TCI value for TR-69 management traffic
+             passing through the virtual ethernet interface point.
+             A TCI, comprising user priority, CFI and VID,
+             is represented by 2 bytes.
+             the first 3 bits represent priority.
+             the last 12 bits represent VID.
+             eg: priority(3 bits)| reserved(1 bits) |VID(12bits).
+             The value 0xFFFF specifies that TR-69 management traffic
+             passes through the virtual ethernet interface point
+             with neither a VLAN nor a priority tag."
+        REFERENCE
+            "G.988 session 9.12.16 TR-069 management server"
+        ::= {zxAnGponOPTr069AcsEntry 7 }
+        
+-------------------------------------------------------------------------------
+-- zxAnGponOPEthUniTable
+-------------------------------------------------------------------------------
+    zxAnGponOPEthUniTable    OBJECT-TYPE
+        SYNTAX      SEQUENCE OF ZxAnGponOPEthUniEntry
+        MAX-ACCESS  not-accessible
+        STATUS      current
+        DESCRIPTION
+            "The ONU profile Ethernet UNI configuration table."
+        REFERENCE
+            "G.988 section 9.5.1 Physical path termination point
+             Ethernet UNI"
+        ::= { zxAnGponOnuServicePrfObjects 18 }
+
+    zxAnGponOPEthUniEntry OBJECT-TYPE
+        SYNTAX      ZxAnGponOPEthUniEntry
+        MAX-ACCESS  not-accessible
+        STATUS      current
+        DESCRIPTION
+            "The ONU profile Ethernet UNI configuration entry."            
+        INDEX   { zxAnGponOPName, zxAnPonRmOnuUniIndex }
+        ::= { zxAnGponOPEthUniTable 1 }
+
+    ZxAnGponOPEthUniEntry ::=
+        SEQUENCE {
+            zxAnGponOPEthUniExpectedType            Integer32,
+            zxAnGponOPEthUniIfSpeedConf             INTEGER,
+            zxAnGponOPEthUniLoopbackConf            INTEGER,
+            zxAnGponOPEthUniAdminState              INTEGER,
+            zxAnGponOPEthUniMaxFrameSize            Integer32,
+            zxAnGponOPEthUniDteOrDceInd             INTEGER,
+            zxAnGponOPEthUniPauseTime               Integer32,
+            zxAnGponOPEthUniBridgeOrIpInd           INTEGER,
+            zxAnGponOPEthUniArcEnable               INTEGER,
+            zxAnGponOPEthUniArcInterval             Integer32,
+            zxAnGponOPEthUniPppoeFilter             INTEGER,
+            zxAnGponOPEthUniPowerFeed               INTEGER,
+            zxAnGponOPEthUniLoopDetect              INTEGER
+        }
+
+    zxAnGponOPEthUniExpectedType OBJECT-TYPE
+        SYNTAX      Integer32(0..255)
+        MAX-ACCESS  read-write
+        STATUS      current
+        DESCRIPTION
+            "The following coding is used for this attribute:
+             0x00 = by autosensing, 0x01 to 0xFE (1 to 254) = one of the values
+             from table 3 that is compatible with the type of the LIM. Upon
+             autonomous instantiation, the value 0x00 is used."
+        REFERENCE
+            "G.988 section 9.5.1 Physical path termination point Ethernet
+             UNI"
+        ::= { zxAnGponOPEthUniEntry 1 }
+
+    zxAnGponOPEthUniIfSpeedConf OBJECT-TYPE
+        SYNTAX      INTEGER{
+            auto(1),
+            half10(2),
+            full10(3),
+            half100(4),
+            full100(5),
+            full1000(6),
+            full10000(7)
+        }
+        MAX-ACCESS  read-write
+        STATUS      current
+        DESCRIPTION
+            "For 10/100 Base-Tx Ethernet interfaces, this attribute is used to
+             set the configuration options:
+             auto(1): Auto-sensing;
+             half10(2): 10BaseT (half duplex);
+             full10(3): 10BaseT (full duplex);
+             half100(4): 100BaseT (half duplex);
+             full100(5): 100BaseT (full duplex);
+             full1000(6): Gigabit Ethernet (full duplex);
+             full10000(7): 10G Ethernet (full duplex);"
+        REFERENCE
+            "G.988 section 9.5.1 Physical path termination point
+             Ethernet UNI"
+        ::= { zxAnGponOPEthUniEntry 2 }
+
+    zxAnGponOPEthUniLoopbackConf OBJECT-TYPE
+        SYNTAX      INTEGER{
+            noLoop(1),
+            loop3(4)
+        }
+        MAX-ACCESS  read-write
+        STATUS      current
+        DESCRIPTION
+            "This attribute is used to set the Ethernet loopback configuration:
+             No loopback (value 0x01), loop3 (value 0x04, Loopback of downstream
+             traffic after PHY transceiver)."
+        REFERENCE
+            "G.988 section 9.5.1 Physical path termination point
+             Ethernet UNI"
+        ::= { zxAnGponOPEthUniEntry 3 }
+
+    zxAnGponOPEthUniAdminState OBJECT-TYPE
+        SYNTAX      INTEGER{
+            unlocked(1),
+            locked(2)
+        }
+        MAX-ACCESS  read-write
+        STATUS      current
+        DESCRIPTION
+            "This attribute is used to activate (unlock: value 0x01) and
+             deactivate(lock: value 0x02) the functions performed by instances
+             of this managed entity."
+        REFERENCE
+            "G.988 section 9.5.1 Physical path termination point
+             Ethernet UNI"
+        ::= { zxAnGponOPEthUniEntry 4 }
+        
+    zxAnGponOPEthUniMaxFrameSize OBJECT-TYPE
+        SYNTAX      Integer32(64..12288)
+        UNITS       "bytes"
+        MAX-ACCESS  read-write
+        STATUS      current
+        DESCRIPTION
+            "This attribute denotes the maximum allowed frame size to be
+             transmitted across this interface."
+        REFERENCE
+            "G.988 section 9.5.1 Physical path termination point
+             Ethernet UNI"
+        ::= { zxAnGponOPEthUniEntry 5 }
+
+    zxAnGponOPEthUniDteOrDceInd OBJECT-TYPE
+        SYNTAX      INTEGER{
+            dce(1),
+            dte(2),
+            auto(3)
+        }
+        MAX-ACCESS  read-write
+        STATUS      current
+        DESCRIPTION
+            "This attribute specifies the Ethernet interface wiring:
+             1 DCE or MDI-X (default).
+             2 DTE or MDI.
+             3 Automatic selection"
+        REFERENCE
+            "G.988 section 9.5.1 Physical path termination point
+             Ethernet UNI"
+        DEFVAL { dce }
+        ::= { zxAnGponOPEthUniEntry 6 }
+
+    zxAnGponOPEthUniPauseTime OBJECT-TYPE
+        SYNTAX      Integer32(0..65535)
+        MAX-ACCESS  read-write
+        STATUS      current
+        DESCRIPTION
+            "This attribute allows the ONU line card to request that the
+             customer terminal temporarily suspend sending data. Units are in
+             pause quanta(1 pause_quantum equals 512 bits times of the
+             particular implementation)."
+        REFERENCE
+            "G.988 section 9.5.1 Physical path termination point
+             Ethernet UNI"
+        ::= { zxAnGponOPEthUniEntry 7 }
+
+    zxAnGponOPEthUniBridgeOrIpInd OBJECT-TYPE
+        SYNTAX      INTEGER{
+            bridged(1),
+            ipRouter(2),
+            either(3)
+        }
+        MAX-ACCESS  read-write
+        STATUS      current
+        DESCRIPTION
+            "This attribute specifies whether the Ethernet interface is bridged
+             or derived from an IP router function.
+             1 Bridged
+             2 IP router
+             3 Depends on the parent circuit pack.
+
+             3 means that the circuit pack's bridged or IP ind attribute is
+             either 1 or 2."
+        REFERENCE
+            "G.988 section 9.5.1 Physical path termination point
+             Ethernet UNI"
+        ::= { zxAnGponOPEthUniEntry 8 }
+
+    zxAnGponOPEthUniArcEnable OBJECT-TYPE
+        SYNTAX      INTEGER{
+            enabled(1),
+            disabled(2)
+        }
+        MAX-ACCESS  read-write
+        STATUS      current
+        DESCRIPTION
+            "This attribute allows the activation of alarm reporting control
+             (ARC) for this PPTP or cardholder. The attribute works in concert
+             with the ARC interval attribute.
+             enabled: enables ARC.
+             disabled: disables ARC."
+        REFERENCE
+            "G.988 section 9.5.1 Physical path termination point
+             Ethernet UNI"
+        ::= { zxAnGponOPEthUniEntry 9 }
+
+    zxAnGponOPEthUniArcInterval OBJECT-TYPE
+        SYNTAX      Integer32(0..255)
+        UNITS       "Minutes"
+        MAX-ACCESS  read-write
+        STATUS      current
+        DESCRIPTION
+            "This attribute defines the interval to be used with the ARC
+             function for this PPTP or cardholder. The values 0 through 254
+             give the duration in minutes for the NALM-QI timer of M.3100.
+             The special value 255 means that the timer never expires.
+             The default value is zero."
+        REFERENCE
+            "G.988 section 9.5.1 Physical path termination point
+             Ethernet UNI"
+        ::= { zxAnGponOPEthUniEntry 10 }
+
+    zxAnGponOPEthUniPppoeFilter OBJECT-TYPE
+        SYNTAX      INTEGER{
+            enabled(1),
+            disabled(2)
+        }
+        MAX-ACCESS  read-write
+        STATUS      current
+        DESCRIPTION
+            "This attribute may be used to control filtering of PPPoE packets
+             on this Ethernet port. The value 2 is used to disable filtering.
+             The value 1 is used to enable filtering. When filtering is
+             enabled, all packets other than PPPoE packets will be discarded."
+        REFERENCE
+            "G.988 section 9.5.1 Physical path termination point
+             Ethernet UNI"
+        ::= { zxAnGponOPEthUniEntry 11 }
+
+    zxAnGponOPEthUniPowerFeed OBJECT-TYPE
+        SYNTAX      INTEGER{
+            enabled(1),
+            disabled(2)
+        }
+        MAX-ACCESS  read-write
+        STATUS      current
+        DESCRIPTION
+            "This attribute controls whether power is provided to an external
+             equipment over the Ethernet PPTP. Value 1 enables power over
+             Ethernet port. The default value 2 disables power feed."
+        REFERENCE
+            "G.988 section 9.5.1 Physical path termination point
+             Ethernet UNI"
+        ::= { zxAnGponOPEthUniEntry 12 }
+
+    zxAnGponOPEthUniLoopDetect OBJECT-TYPE
+        SYNTAX      INTEGER{
+            enabled(1),
+            disabled(2)
+        }
+        MAX-ACCESS  read-write
+        STATUS      current
+        DESCRIPTION
+            "This attribute enable or disable the loopback detection."
+        REFERENCE
+            "G.988 section 9.5.1 Physical path termination point
+             Ethernet UNI"
+        ::= { zxAnGponOPEthUniEntry 13 }
+
+--------------------------------------------------------------------------------
+-- zxAnGponOnuPrfConformance
+--------------------------------------------------------------------------------
+    zxAnGponOnuPrfCompliances OBJECT IDENTIFIER 
+                                     ::= {zxAnGponOnuPrfConformance 1}
+    zxAnGponOnuPrfGroups      OBJECT IDENTIFIER 
+                                     ::= {zxAnGponOnuPrfConformance 2}
+
+    zxAnGponOnuPrfCompliance MODULE-COMPLIANCE
+        STATUS current
+        DESCRIPTION
+            "The compliance statement for entities which implements the
+             ZTE-AN-GPON-ONUPRF-MIB."
+        MODULE
+        MANDATORY-GROUPS{
+            zxAnGponOnuPrfLineGroup,
+            zxAnGponOnuPrfServiceGroup
+        }
+        ::= { zxAnGponOnuPrfCompliances 1 }
+      
+    zxAnGponOnuPrfLineGroup OBJECT-GROUP
+        OBJECTS  {
+            zxAnGponOPTcontName,
+            zxAnGponOPTcontBwPrfName,
+            zxAnGponOPTcontDbaGapMode,
+            zxAnGponOPTcontRowStatus,
+            zxAnGponOPGemPortName,
+            zxAnGponOPGemPortTcontIndex,
+            zxAnGponOPGemPortQueueOfTcont,
+            zxAnGponOPGemPortEncrypt,
+            zxAnGponOPGemPortRowStatus,            
+            zxAnGponOPMappingGemPort,
+            zxAnGponOPMappingIfId,
+            zxAnGponOPMappingType,
+            zxAnGponOPMappingCos,
+            zxAnGponOPMappingVid,
+            zxAnGponOPMappingRowStatus,
+            zxAnGponOPOnuConfVportMode,
+            zxAnGponOPBpName,
+            zxAnGponOPBpMapType,
+            zxAnGponOPBpRowStatus,
+            zxAnGponOPBpMapConfRowStatus,
+            zxAnGponOPTcontQueueSchedPrfName            
+            }
+        STATUS          current
+        DESCRIPTION
+            "A collection of objects for ONU line profile group configuration."
+        ::= { zxAnGponOnuPrfGroups 1 }    
+    
+    zxAnGponOnuPrfServiceGroup OBJECT-GROUP
+        OBJECTS {
+            zxAnGponOPVlanPortMode,
+            zxAnGponOPVlanPortDefaultVid,
+            zxAnGponOPVlanPortDefaultCos,
+            zxAnGponOPVlanPortCmd,
+            zxAnGponOPVlanPortVid,
+            zxAnGponOPVlanTransCVid,
+            zxAnGponOPVlanTransCtagCos,
+            zxAnGponOPVlanTransSVid,
+            zxAnGponOPVlanTransStagCos,
+            zxAnGponOPVlanTransRowStatus,
+            zxAnGponOPMVlanRowStatus,
+            zxAnGponOPIgmpUsedPrfName,
+            zxAnGponOPIgmpMaxGroups,
+            zxAnGponOPIgmpMaxBw,
+            zxAnGponOPIgmpBwEnforce,
+            zxAnGponOPIgmpConfRowStatus,
+            zxAnGponOPTrafficSchedPrfName,
+            zxAnGponOPExtVlanInputTpid,
+            zxAnGponOPExtVlanDsMode,
+            zxAnGponOPExtVlanDscp2CosPrf,
+            zxAnGponOPExtVlanRowStatus,
+            zxAnGponOPExtVlanConfTreatRule,
+            zxAnGponOPExtVlanConfRowStatus,
+            zxAnGponOPBrgStpEnable,
+            zxAnGponOPBrgLearningEnable,
+            zxAnGponOPBrgLocalBridgeEnable,
+            zxAnGponOPBrgPri,
+            zxAnGponOPBrgMaxAge,
+            zxAnGponOPBrgHelloTime,
+            zxAnGponOPBrgForwardDelay,
+            zxAnGponOPBrgUnknownMacDiscard,
+            zxAnGponOPBrgMacLearningDepth,
+            zxAnGponOPBrgAgingTime,
+            zxAnGponOPWanIpMode,
+            zxAnGponOPWanVlanPrf,
+            zxAnGponOPWanHostId,
+            zxAnGponOPWanOnuIdentifier,
+            zxAnGponOPWanPppoeAuthMode,
+            zxAnGponOPWanPppoeUsername,
+            zxAnGponOPWanPppoePassword,
+            zxAnGponOPWanRspPing,
+            zxAnGponOPWanRspTraceRoute,
+            zxAnGponOPWanRsEnable,
+            zxAnGponOPWanOnLinkPrefix,
+            zxAnGponOPWanPppoeServiceName,
+            zxAnGponOPWanIpConfRowStatus,
+            zxAnGponOPVoipSignalProtoUsed,
+            zxAnGponOPVoipConfMethodUsed,
+            zxAnGponOPVoipDomainName,
+            zxAnGponOPVoipH248EquipName,
+            zxAnGponOPVoipH248RegMode,
+            zxAnGponOPVoipMgcRegMode,
+            zxAnGponOPVoipLineName,
+            zxAnGponOPVoipIpAllocMode,
+            zxAnGponOPVoipSvrAddr,
+            zxAnGponOPVoipSvrValidation,
+            zxAnGponOPVoipSvrUsername,
+            zxAnGponOPVoipSvrPassword,
+            zxAnGponOPVoipSvrRealm,
+            zxAnGponOPVoipSvrRetrieveFile,
+            zxAnGponOPVoipIpMode,
+            zxAnGponOPVoipIpPrf,
+            zxAnGponOPVoipIpVlanPrf,
+            zxAnGponOPVoipIpHostId,
+            zxAnGponOPVoipIpOnuIdentifier,
+            zxAnGponOPVoipIpAddrType,
+            zxAnGponOPVoipIpAddr,
+            zxAnGponOPVoipIpAddrPfxLen,
+            zxAnGponOPVoipIpPppoeMode,
+            zxAnGponOPVoipIpPppoeUsername,
+            zxAnGponOPVoipIpPppoePassword,
+            zxAnGponOPVoipIpRspPing,
+            zxAnGponOPVoipIpRspTraceRoute,
+            zxAnGponOPVoipIpRsEnable,
+            zxAnGponOPVoipIpOnLinkPrefix,
+            zxAnGponOPVoipIpPppoeServiceName,
+            zxAnGponOPVoipIpConfRowStatus,
+            zxAnGponOPUniDhcpIpRetrieveMode,
+            zxAnGponOPIpRouteNextHopType,
+            zxAnGponOPIpRouteNextHop,
+            zxAnGponOPIpRouteOutPort,
+            zxAnGponOPIpRouteRowStatus,
+            zxAnGponOPTr069AcsAdminState,
+            zxAnGponOPTr069AcsUri,
+            zxAnGponOPTr069AcsValidation,
+            zxAnGponOPTr069AcsUsername,
+            zxAnGponOPTr069AcsPassword,
+            zxAnGponOPTr069AcsRealm,
+            zxAnGponOPTr069AssociatedTag,
+            zxAnGponOPVeipAdminState,
+            zxAnGponOPVeipInterdomainName,
+            zxAnGponOPVeipIsPortAssigned,
+            zxAnGponOPVeipProtoType,
+            zxAnGponOPVeipAssignedPort,
+            zxAnGponOPVeipHostId
+            }
+        STATUS         current
+        DESCRIPTION
+            "A collection of objects for ONU service profile group
+             configuration."
+        ::= { zxAnGponOnuPrfGroups 2 }   
+                 
+END
+
+        
+

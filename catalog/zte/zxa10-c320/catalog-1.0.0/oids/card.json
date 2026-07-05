@@ -1,0 +1,6372 @@
+{
+  "entity_ref": "entity.zte.gpon.hardware.card",
+  "vendor": "ZTE",
+  "family": "ZXA10 C320",
+  "firmware": [
+    "2.0",
+    "2.1"
+  ],
+  "oids": [
+    {
+      "id": "oid.zte.gpon.card.chassis_card_reset_times_clear",
+      "oid": "1.3.6.1.4.1.3902.1082.10.1.1.7",
+      "name": "zxAnChassisCardResetTimesClear",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-write",
+      "enumeration": {
+        "1": "clear"
+      },
+      "description": "Clear the resetting times of all cards of the NE.\n             When get this variable, always return 1.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.card.table",
+      "oid": "1.3.6.1.4.1.3902.1082.10.1.2.4",
+      "name": "zxAnCardTable",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "SEQUENCE  OF  ZxAnCardEntry",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": "This table includes the enable or disable plug and play of \n                    the Card.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.card.entry",
+      "oid": "1.3.6.1.4.1.3902.1082.10.1.2.4.1",
+      "name": "zxAnCardEntry",
+      "mib_table": null,
+      "index": {
+        "type": "composite",
+        "bit_calculation": true,
+        "components": [
+          {
+            "name": "zxanrack",
+            "bits": ""
+          },
+          {
+            "name": "shelf",
+            "bits": "31-28"
+          },
+          {
+            "name": "slot",
+            "bits": "27-24"
+          }
+        ]
+      },
+      "syntax": "ZxAnCardEntry",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": "An entry in zxAnCardTable.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.card.conf_main_type",
+      "oid": "1.3.6.1.4.1.3902.1082.10.1.2.4.1.2",
+      "name": "zxAnCardConfMainType",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-create",
+      "enumeration": null,
+      "description": "The main card type to config on the slot. Main card \n                        type indicates the category of hardware, such as \n                        64-ports adsl card,4-ports ethernet card.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.card.actual_main_type",
+      "oid": "1.3.6.1.4.1.3902.1082.10.1.2.4.1.3",
+      "name": "zxAnCardActualMainType",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "The actually main card type on the slot.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.card.actual_type",
+      "oid": "1.3.6.1.4.1.3902.1082.10.1.2.4.1.4",
+      "name": "zxAnCardActualType",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "DisplayString",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "The actually card type on the  slot. Card type \n                        indicates the type of detailed hardware,such as ATUGA\n                        and ATUGB, they'er all 32-ports Adsl card and they all \n                        provide general Adsl service,but they have different \n                        chips.\n                      \n           NOTE: The value of this variable MUST abide by ZTE'S  \n                 discipline for card naming.And It MUST capital letters.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.card.oper_status",
+      "oid": "1.3.6.1.4.1.3902.1082.10.1.2.4.1.5",
+      "name": "zxAnCardOperStatus",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": {
+        "1": "inService",
+        "2": "notInService",
+        "3": "hwOnline",
+        "4": "hwOffline",
+        "5": "configuring",
+        "6": "configFailed",
+        "7": "typeMismatch",
+        "8": "deactived",
+        "9": "faulty",
+        "10": "invalid",
+        "11": "noPower",
+        "12": "unauthorized",
+        "13": "adminDown",
+        "34": "powerSaving"
+      },
+      "description": "This MIB is defined for the card status.\n\n          inService(1)   --  card plugged in,running normally and service is \n                             being provided normally.\n          notInService(2)--  card plugged in,running normally but service is \n                             stopped.\n          hwOnline(3)    --  card plugged in and card communication is ok, but \n                             software isn't running now.\n          hwOffline(4)   --  card is pulled out or card not plugged in, but \n                             added to agent's database only.\n          configuring(5) --  card plugged in, but it is configuring.\n          configFailed(6)--  card plugged in, but configuration failed.\n          typeMismatch(7)--  card plugged in, but it's type is mismatch.\n          deactived(8)   --  card plugged in, but it is deactivated by a \n                             manager.\n          faulty(9)      --  fault occurs when card is running normally\n          invalid(10)    --  invalid card instance, such as adding card failed.\n          noPower(11)    --  power card plugged in, but no power input.\n          unauthorized(12) --  card plugged in, but it's bugsell and the \n                               software of the card doesn't run now.\n                               It is not supported by C600 series NE.\n          adminDown(13)    --  card plugged in, running normally, but the \n                               administrative status of the card is deactived.\n          powerSaving(34)  --  card plugged in, but it's power saving status.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.card.admin_status",
+      "oid": "1.3.6.1.4.1.3902.1082.10.1.2.4.1.6",
+      "name": "zxAnCardAdminStatus",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-create",
+      "enumeration": {
+        "1": "reset",
+        "2": "switch",
+        "3": "stopService",
+        "4": "active",
+        "5": "deactive"
+      },
+      "description": "This MIB is defined for the card admin status on the \n                         card. For example:reset(1),switch(2)\n                         \n                         reset(1)    -- reset the card.\n                         switch(2)   -- switch card between master and slave\n                                        status.\n                         stopService(3) -- stop service normally.\n                         active(4)   -- activate this card and enable the \n                                        service.\n                         deactive(5) -- deactivate this card and disable the \n                                        service forcedly.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.card.port_nums",
+      "oid": "1.3.6.1.4.1.3902.1082.10.1.2.4.1.7",
+      "name": "zxAnCardPortNums",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "The numbers of physical port which contained \n                        in this board.\n                        If the board has no this attribute,it should be 0.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.card.active_port_nums",
+      "oid": "1.3.6.1.4.1.3902.1082.10.1.2.4.1.8",
+      "name": "zxAnCardActivePortNums",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "The numbers of actived physical port which contained \n                        in this board.\n                        If the board has no this attribute,it should be 0.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.card.cpu_load",
+      "oid": "1.3.6.1.4.1.3902.1082.10.1.2.4.1.9",
+      "name": "zxAnCardCpuLoad",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": "percent",
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "The current CPU load of this board.If this board has\n                        more than one CPU,the average value is allowed.\n                        If the board has no this attribute,it should be 0.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.card.cpu_load_threshold",
+      "oid": "1.3.6.1.4.1.3902.1082.10.1.2.4.1.10",
+      "name": "zxAnCardCpuLoadThreshold",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": "percent",
+      "scale": null,
+      "access": "read-create",
+      "enumeration": null,
+      "description": "The CPU load threshold of this board.When \n                        zxAnCardCpuLoad  is  higher than \n                        zxAnCardCpuLoadThreshold,zxAnChassisCardCpuOverloadAlm \n                        trap should be generated by agent.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.card.mem_usage",
+      "oid": "1.3.6.1.4.1.3902.1082.10.1.2.4.1.11",
+      "name": "zxAnCardMemUsage",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": "percent",
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "The current memory usage of this board.\n                        If the board has no this attribute,it should be 0.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.card.mem_usage_threshold",
+      "oid": "1.3.6.1.4.1.3902.1082.10.1.2.4.1.12",
+      "name": "zxAnCardMemUsageThreshold",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": "percent",
+      "scale": null,
+      "access": "read-create",
+      "enumeration": null,
+      "description": "The memory usage threshold of this board. When \n                        zxAnCardMemUsage is higher than \n                        zxAnCardMemUsageThreshold,zxAnChassisCardMemOverloadAlm\n                        trap should be generated by agent.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.card.standby_status",
+      "oid": "1.3.6.1.4.1.3902.1082.10.1.2.4.1.13",
+      "name": "zxAnCardStandbyStatus",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": {
+        "1": "main",
+        "2": "standby",
+        "15": "unknown"
+      },
+      "description": "The card operation status on the card.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.card.inv_sn",
+      "oid": "1.3.6.1.4.1.3902.1082.10.1.2.4.1.14",
+      "name": "zxAnCardInvSn",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "DisplayString",
+      "unit": null,
+      "scale": null,
+      "access": "read-create",
+      "enumeration": null,
+      "description": "The serial number of this card.\n                        it is used by inventroy management.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.card.clei_code",
+      "oid": "1.3.6.1.4.1.3902.1082.10.1.2.4.1.15",
+      "name": "zxAnCardCleiCode",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "DisplayString",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "The CLEI code of this card.\n                        it is used by inventroy management.Please reference \n                        http://www.commonlanguage.com to get knowledge about\n                        CLEI code.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.card.accessories_type",
+      "oid": "1.3.6.1.4.1.3902.1082.10.1.2.4.1.16",
+      "name": "zxAnCardAccessoriesType",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "DisplayString",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "The accessories type of this card, such as splitter \n                        of DSLAM,the value of this variable should be the type \n                        of hardware, eg. PNVTA,PNVNP,PNVNA of ZXDSL9800's \n                        splitter.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.card.accessories_oper_status",
+      "oid": "1.3.6.1.4.1.3902.1082.10.1.2.4.1.17",
+      "name": "zxAnCardAccessoriesOperStatus",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": {
+        "1": "up",
+        "2": "down",
+        "3": "testing",
+        "4": "unknow"
+      },
+      "description": "The operational status of the card accessories.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.card.mem_size",
+      "oid": "1.3.6.1.4.1.3902.1082.10.1.2.4.1.19",
+      "name": "zxAnCardMemSize",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": "MB",
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "The current memory size of this board.\n                    If the board has no this attribute,it should be 0.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.card.available_storage_size",
+      "oid": "1.3.6.1.4.1.3902.1082.10.1.2.4.1.21",
+      "name": "zxAnCardAvailableStorageSize",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "The available storage space size in this card.\n            For Non-C600 series, the units of this object is bytes.\n            For C600 series, the units of this object is kbytes.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.card.total_storage_size",
+      "oid": "1.3.6.1.4.1.3902.1082.10.1.2.4.1.22",
+      "name": "zxAnCardTotalStorageSize",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "The total storage space size in this card.\n            For Non-C600 series, the units of this object is bytes.\n            For C600 series, the units of this object is kbytes.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.card.hardware_version",
+      "oid": "1.3.6.1.4.1.3902.1082.10.1.2.4.1.23",
+      "name": "zxAnCardHardwareVersion",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "DisplayString",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "The hard version in this card.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.card.power_saving_enable",
+      "oid": "1.3.6.1.4.1.3902.1082.10.1.2.4.1.24",
+      "name": "zxAnCardPowerSavingEnable",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-create",
+      "enumeration": {
+        "1": "enabled",
+        "2": "disabled"
+      },
+      "description": "Enable or disable the power saving of the card.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.card.last_startup_time",
+      "oid": "1.3.6.1.4.1.3902.1082.10.1.2.4.1.25",
+      "name": "zxAnCardLastStartupTime",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "DateAndTime",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "The last startup time of the card.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.card.cpld_version",
+      "oid": "1.3.6.1.4.1.3902.1082.10.1.2.4.1.26",
+      "name": "zxAnCardCpldVersion",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "DisplayString",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "The CPLD version in this card.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.card.firmware_version",
+      "oid": "1.3.6.1.4.1.3902.1082.10.1.2.4.1.27",
+      "name": "zxAnCardFirmwareVersion",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "DisplayString",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "The firmware version in this card.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.card.other_firmware_versions",
+      "oid": "1.3.6.1.4.1.3902.1082.10.1.2.4.1.28",
+      "name": "zxAnCardOtherFirmwareVersions",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "DisplayString",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "The other firmware versions in this card.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.card.manufacturing_code",
+      "oid": "1.3.6.1.4.1.3902.1082.10.1.2.4.1.29",
+      "name": "zxAnCardManufacturingCode",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "DisplayString",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "The manufacturing code of the card.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.card.cpu_overload_reason",
+      "oid": "1.3.6.1.4.1.3902.1082.10.1.2.4.1.30",
+      "name": "zxAnCardCpuOverloadReason",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "accessible-for-notify",
+      "enumeration": {
+        "1": "normal",
+        "2": "tooManyNetworkPackets",
+        "3": "performanceCollectionTasksBusy",
+        "255": "otherTasksBusy"
+      },
+      "description": "The CPU overloading reason.\n             normal(1): value 1 means the CPU load is normal.\n             tooManyNetworkPackets(2): value 2 means that the CPU is busy \n                        processing too many network packets.\n             performanceCollectionTasksBusy(3): value 3 means that the CPU is \n                        busy processing the performance collection tasks.\n             otherTasksBusy(255): value 255 means that the CPU is busy \n                        processing other tasks.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.card.mcu_version",
+      "oid": "1.3.6.1.4.1.3902.1082.10.1.2.4.1.31",
+      "name": "zxAnCardMcuVersion",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "DisplayString",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "The MCU version in this card.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.card.bootware_version",
+      "oid": "1.3.6.1.4.1.3902.1082.10.1.2.4.1.32",
+      "name": "zxAnCardBootwareVersion",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "DisplayString",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "The bootware version in this card.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.card.pn",
+      "oid": "1.3.6.1.4.1.3902.1082.10.1.2.4.1.33",
+      "name": "zxAnCardPn",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "DisplayString",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "The part number of the card.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.card.last_reset_reason",
+      "oid": "1.3.6.1.4.1.3902.1082.10.1.2.4.1.34",
+      "name": "zxAnCardLastResetReason",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": {
+        "1": "buttonReset",
+        "2": "powerOff",
+        "3": "cliOperation",
+        "4": "snmpOperation",
+        "5": "mainStandbySwitch",
+        "6": "hardwareCauses",
+        "7": "softwareCauses"
+      },
+      "description": "The card last reset reason.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.card.cpu_info",
+      "oid": "1.3.6.1.4.1.3902.1082.10.1.2.4.1.35",
+      "name": "zxAnCardCpuInfo",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "DisplayString",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "The CPU information of the card.\n                         Empty string means the card has no this attribute.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.card.chipset_type",
+      "oid": "1.3.6.1.4.1.3902.1082.10.1.2.4.1.36",
+      "name": "zxAnCardChipsetType",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": {
+        "1": "switch",
+        "2": "ponMac"
+      },
+      "description": "The chipset type of the card.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.card.chipset_info",
+      "oid": "1.3.6.1.4.1.3902.1082.10.1.2.4.1.37",
+      "name": "zxAnCardChipsetInfo",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "DisplayString",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "The chipset information of the card.\n                         Empty string means the card has no this attribute.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.card.operator_code",
+      "oid": "1.3.6.1.4.1.3902.1082.10.1.2.4.1.38",
+      "name": "zxAnCardOperatorCode",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "DisplayString",
+      "unit": null,
+      "scale": null,
+      "access": "read-create",
+      "enumeration": null,
+      "description": "The operator code of the card.\n                         Empty string means the attribute of the card is \n                         unconfigured.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.card.sub_card_name",
+      "oid": "1.3.6.1.4.1.3902.1082.10.1.2.4.1.39",
+      "name": "zxAnCardSubCardName",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "DisplayString",
+      "unit": null,
+      "scale": null,
+      "access": "read-create",
+      "enumeration": null,
+      "description": "The clock sub card on main board.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.card.reset_times",
+      "oid": "1.3.6.1.4.1.3902.1082.10.1.2.4.1.40",
+      "name": "zxAnCardResetTimes",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "The resetting times of the card.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.card.reset_times_clear",
+      "oid": "1.3.6.1.4.1.3902.1082.10.1.2.4.1.41",
+      "name": "zxAnCardResetTimesClear",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-create",
+      "enumeration": {
+        "1": "clear"
+      },
+      "description": "Clear the resetting times of the card.\n             When get this variable, always return 1.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.card.name",
+      "oid": "1.3.6.1.4.1.3902.1082.10.1.2.4.1.42",
+      "name": "zxAnCardName",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "DisplayString",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "The name of the card.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.card.machine_id",
+      "oid": "1.3.6.1.4.1.3902.1082.10.1.2.4.1.43",
+      "name": "zxAnCardMachineId",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "DisplayString",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "The machine ID of the card.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.card.row_status",
+      "oid": "1.3.6.1.4.1.3902.1082.10.1.2.4.1.50",
+      "name": "zxAnCardRowStatus",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "Row",
+      "unit": null,
+      "scale": null,
+      "access": "read-create",
+      "enumeration": null,
+      "description": "The status of this conceptual row.\n\n                        To create a row in this table, a manager must\n                        set this object to createAndGo(4).\n                       \n                        In particular, a newly created row cannot be created\n                        until the corresponding zxAnExampleFunc2Xxx1Var1\n                        and zxAnExampleFunc2Xxx1Var2 have been set.\n                        \n                        To delete a row in this table, a manager must\n                        sets this object to destroy(6).",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.card.his_min_perf_table",
+      "oid": "1.3.6.1.4.1.3902.1082.10.1.2.51",
+      "name": "zxAnCardHisMinPerfTable",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "SEQUENCE OF ZxAnCardHisMinPerfEntry",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": "The 5 minutes or 15 minutes interval performance data table of \n              card.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.card.his_min_perf_entry",
+      "oid": "1.3.6.1.4.1.3902.1082.10.1.2.51.1",
+      "name": "zxAnCardHisMinPerfEntry",
+      "mib_table": null,
+      "index": {
+        "type": "composite",
+        "bit_calculation": true,
+        "components": [
+          {
+            "name": "zxanrack",
+            "bits": ""
+          },
+          {
+            "name": "shelf",
+            "bits": "31-28"
+          },
+          {
+            "name": "slot",
+            "bits": "27-24"
+          },
+          {
+            "name": "zxancardhisminintervalno",
+            "bits": ""
+          }
+        ]
+      },
+      "syntax": "ZxAnCardHisMinPerfEntry",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": "The 5 minutes or 15 minutes interval performance data entry of \n             card.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.card.his_min_interval_no",
+      "oid": "1.3.6.1.4.1.3902.1082.10.1.2.51.1.1",
+      "name": "zxAnCardHisMinIntervalNo",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": "The performance data interval number. \n              1 means the the most recent previous interval;\n              If the performance collection interval is 5 minutes, intervals \n              2..288 are optional.\n              If the performance collection interval is 15 minutes, intervals \n              2..96 are optional.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.card.his_min_interval_valid_data",
+      "oid": "1.3.6.1.4.1.3902.1082.10.1.2.51.1.2",
+      "name": "zxAnCardHisMinIntervalValidData",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": {
+        "1": "valid",
+        "2": "invalid"
+      },
+      "description": "Performance data validity.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.card.his_min_date_time",
+      "oid": "1.3.6.1.4.1.3902.1082.10.1.2.51.1.3",
+      "name": "zxAnCardHisMinDateTime",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "DateAndTime",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "The 5 minutes or 15 minutes interval performance data generation \n              time.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.card.his_min_cpu_load",
+      "oid": "1.3.6.1.4.1.3902.1082.10.1.2.51.1.4",
+      "name": "zxAnCardHisMinCpuLoad",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": "percent",
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "The average CPU load of this card in the historical 5 minutes or\n              15 minutes. If the card has no this attribute, it should be 0.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.card.his_min_mem_usage",
+      "oid": "1.3.6.1.4.1.3902.1082.10.1.2.51.1.5",
+      "name": "zxAnCardHisMinMemUsage",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": "percent",
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "The average memory usage of this card in the historical 5 minutes \n             or 15 minutes. If the card has no this attribute, it should be 0.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.card.blade_table",
+      "oid": "1.3.6.1.4.1.3902.1082.10.1.2.8",
+      "name": "zxAnCardBladeTable",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "SEQUENCE  OF  ZxAnCardBladeEntry",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": "The card blade table.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.card.blade_entry",
+      "oid": "1.3.6.1.4.1.3902.1082.10.1.2.8.1",
+      "name": "zxAnCardBladeEntry",
+      "mib_table": null,
+      "index": {
+        "type": "composite",
+        "bit_calculation": true,
+        "components": [
+          {
+            "name": "zxanrack",
+            "bits": ""
+          },
+          {
+            "name": "shelf",
+            "bits": "31-28"
+          },
+          {
+            "name": "slot",
+            "bits": "27-24"
+          }
+        ]
+      },
+      "syntax": "ZxAnCardBladeEntry",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": "An entry in zxAnCardBladeTable.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.card.blade_admin_status",
+      "oid": "1.3.6.1.4.1.3902.1082.10.1.2.8.1.1",
+      "name": "zxAnCardBladeAdminStatus",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-write",
+      "enumeration": {
+        "1": "powerOn",
+        "2": "powerOffForce",
+        "3": "powerOffGrace",
+        "4": "resetForce",
+        "5": "resetGrace"
+      },
+      "description": "The administrative status of the card blade.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.card.blade_oper_status",
+      "oid": "1.3.6.1.4.1.3902.1082.10.1.2.8.1.2",
+      "name": "zxAnCardBladeOperStatus",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": {
+        "1": "poweredOn",
+        "2": "poweredOff",
+        "255": "unknown"
+      },
+      "description": "The operational status of the card blade.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.card.blade_ipv4_address",
+      "oid": "1.3.6.1.4.1.3902.1082.10.1.2.8.1.3",
+      "name": "zxAnCardBladeIpv4Address",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "IpAddress",
+      "unit": null,
+      "scale": null,
+      "access": "read-write",
+      "enumeration": null,
+      "description": "The IPv4 address of the card blade.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.card.blade_ipv4_addr_subnet_mask",
+      "oid": "1.3.6.1.4.1.3902.1082.10.1.2.8.1.4",
+      "name": "zxAnCardBladeIpv4AddrSubnetMask",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "IpAddress",
+      "unit": null,
+      "scale": null,
+      "access": "read-write",
+      "enumeration": null,
+      "description": "The IPv4 address subnet mask of the card blade.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.card.blade_ipv4_addr_gateway",
+      "oid": "1.3.6.1.4.1.3902.1082.10.1.2.8.1.5",
+      "name": "zxAnCardBladeIpv4AddrGateway",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "IpAddress",
+      "unit": null,
+      "scale": null,
+      "access": "read-write",
+      "enumeration": null,
+      "description": "The IPv4 gateway of the card blade.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.card.blade_ipv6_address",
+      "oid": "1.3.6.1.4.1.3902.1082.10.1.2.8.1.6",
+      "name": "zxAnCardBladeIpv6Address",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "InetAddress",
+      "unit": null,
+      "scale": null,
+      "access": "read-write",
+      "enumeration": null,
+      "description": "The IPv6 address of the card blade.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.card.blade_ipv6_addr_pfx_len",
+      "oid": "1.3.6.1.4.1.3902.1082.10.1.2.8.1.7",
+      "name": "zxAnCardBladeIpv6AddrPfxLen",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "InetAddressPrefixLength",
+      "unit": null,
+      "scale": null,
+      "access": "read-write",
+      "enumeration": null,
+      "description": "The IPv6 address subnet prefix length of the card blade.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.card.blade_ipv6_addr_gateway",
+      "oid": "1.3.6.1.4.1.3902.1082.10.1.2.8.1.8",
+      "name": "zxAnCardBladeIpv6AddrGateway",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "InetAddress",
+      "unit": null,
+      "scale": null,
+      "access": "read-write",
+      "enumeration": null,
+      "description": "The IPv6 gateway of the card blade.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.card.env_card_shutdown_reason",
+      "oid": "1.3.6.1.4.1.3902.1082.10.10.2.1.1.1",
+      "name": "zxAnEnvCardShutdownReason",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "accessible-for-notify",
+      "enumeration": {
+        "1": "envHighTemperature",
+        "2": "cardHighTemperature",
+        "3": "chipHighTemperature",
+        "4": "emergencyPowerSaving"
+      },
+      "description": "The alarm reason of zxAnEnvCardShutdownAlm.\n            envHighTemperature(1): Environment temperature is too high.\n            cardHighTemperature(2):Card self temperature is too high.\n            chipHighTemperature(3):Card's chip temperature is too high.\n            emergencyPowerSaving(4):Emergency power saving action has been \n            taken caused by AC power failure.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.card.env_param_table",
+      "oid": "1.3.6.1.4.1.3902.1082.10.10.2.1.6",
+      "name": "zxAnCardEnvParamTable",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "SEQUENCE OF ZxAnCardEnvParamEntry",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": "This table includes card temperature information.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.card.env_param_entry",
+      "oid": "1.3.6.1.4.1.3902.1082.10.10.2.1.6.1",
+      "name": "zxAnCardEnvParamEntry",
+      "mib_table": null,
+      "index": {
+        "type": "composite",
+        "bit_calculation": true,
+        "components": [
+          {
+            "name": "zxanenvrack",
+            "bits": ""
+          },
+          {
+            "name": "shelf",
+            "bits": "31-28"
+          },
+          {
+            "name": "slot",
+            "bits": "27-24"
+          }
+        ]
+      },
+      "syntax": "ZxAnCardEnvParamEntry",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": "The entry of zxAnCardEnvParamTable.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.card.temp",
+      "oid": "1.3.6.1.4.1.3902.1082.10.10.2.1.6.1.2",
+      "name": "zxAnCardTemp",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "The current temperature of the card environment.                 \n                \n                 NOTE: \n                 1. In current system, only certain cards support \n                    temperature-reading, such as SCXL, GTGOD cards.\n                 2. If the card is not configured, we cannot get its \n                    temperature.\n                 3. For the configured but not support temperature-reading \n                    cards, we use -1000 as an invalid temperature value to note\n                    its temperature.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.card.power_consumption",
+      "oid": "1.3.6.1.4.1.3902.1082.10.10.2.1.6.1.3",
+      "name": "zxAnCardPowerConsumption",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": "0.001W",
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "Power consumption of the card.\n             Value 0 means not available.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.card.current",
+      "oid": "1.3.6.1.4.1.3902.1082.10.10.2.1.6.1.5",
+      "name": "zxAnCardCurrent",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": "0.001Amp",
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "Current of the card.\n             Value 0 means not available.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.card.critical_temp_alm_threshold",
+      "oid": "1.3.6.1.4.1.3902.1082.10.10.2.1.6.1.6",
+      "name": "zxAnCardCriticalTempAlmThreshold",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": "Centigrade",
+      "scale": null,
+      "access": "accessible-for-notify",
+      "enumeration": null,
+      "description": "The critical temperature alarm threshold of the card.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.card.opt_highest_temp",
+      "oid": "1.3.6.1.4.1.3902.1082.10.10.2.1.6.1.7",
+      "name": "zxAnCardOptHighestTemp",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": "0.001Degrees",
+      "scale": null,
+      "access": "accessible-for-notify",
+      "enumeration": null,
+      "description": "The highest temperature of the optical modules in the card.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.card.opt_critical_temp_alm_thresh",
+      "oid": "1.3.6.1.4.1.3902.1082.10.10.2.1.6.1.8",
+      "name": "zxAnCardOptCriticalTempAlmThresh",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": "Centigrade",
+      "scale": null,
+      "access": "accessible-for-notify",
+      "enumeration": null,
+      "description": "The critical optical temperature alarm threshold.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.card.opt_highest_temp_port_no",
+      "oid": "1.3.6.1.4.1.3902.1082.10.10.2.1.6.1.9",
+      "name": "zxAnCardOptHighestTempPortNo",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "accessible-for-notify",
+      "enumeration": null,
+      "description": "The port No. which the optical module is located at, and the \n             optical module has the highest temperature.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.card.heat_radiation_alm_thresh",
+      "oid": "1.3.6.1.4.1.3902.1082.10.10.2.1.6.1.10",
+      "name": "zxAnCardHeatRadiationAlmThresh",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": "Centigrade",
+      "scale": null,
+      "access": "accessible-for-notify",
+      "enumeration": null,
+      "description": "The heat radiation abnormal alarm threshold of the card.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.card.temp_high_accuracy",
+      "oid": "1.3.6.1.4.1.3902.1082.10.10.2.1.6.1.11",
+      "name": "zxAnCardTempHighAccuracy",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": "0.01Centigrade",
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "The high accuracy value of zxAnCardTemp.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.card.env_his15_min_perf_table",
+      "oid": "1.3.6.1.4.1.3902.1082.10.10.2.1.7",
+      "name": "zxAnCardEnvHis15MinPerfTable",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "SEQUENCE OF ZxAnCardEnvHis15MinPerfEntry",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": "The 15 minutes interval performance data table of card \n             temperature.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.card.env_his15_min_perf_entry",
+      "oid": "1.3.6.1.4.1.3902.1082.10.10.2.1.7.1",
+      "name": "zxAnCardEnvHis15MinPerfEntry",
+      "mib_table": null,
+      "index": {
+        "type": "composite",
+        "bit_calculation": true,
+        "components": [
+          {
+            "name": "zxanenvrack",
+            "bits": ""
+          },
+          {
+            "name": "shelf",
+            "bits": "31-28"
+          },
+          {
+            "name": "slot",
+            "bits": "27-24"
+          },
+          {
+            "name": "zxancardenvhis15minintervalno",
+            "bits": ""
+          }
+        ]
+      },
+      "syntax": "ZxAnCardEnvHis15MinPerfEntry",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": "The 15 minutes interval performance data entry of card \n            temperature.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.card.env_his15_min_interval_no",
+      "oid": "1.3.6.1.4.1.3902.1082.10.10.2.1.7.1.1",
+      "name": "zxAnCardEnvHis15MinIntervalNo",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": "Performance data interval number 1 is the the most recent \n              previous interval; interval 96 is 24 hours ago.  \n              Intervals 2..96 are optional.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.card.env_his15_min_date_time",
+      "oid": "1.3.6.1.4.1.3902.1082.10.10.2.1.7.1.2",
+      "name": "zxAnCardEnvHis15MinDateTime",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "DateAndTime",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "The 15 minutes interval performance data generation time.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.card.env_his15_min_temp",
+      "oid": "1.3.6.1.4.1.3902.1082.10.10.2.1.7.1.3",
+      "name": "zxAnCardEnvHis15MinTemp",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "Counter64",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "The 15 minutes interval average temperature of card.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.card.env_his1_day_perf_table",
+      "oid": "1.3.6.1.4.1.3902.1082.10.10.2.1.8",
+      "name": "zxAnCardEnvHis1DayPerfTable",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "SEQUENCE OF ZxAnCardEnvHis1DayPerfEntry",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": "The 1 day interval performance data table of card temperature.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.card.env_his1_day_perf_entry",
+      "oid": "1.3.6.1.4.1.3902.1082.10.10.2.1.8.1",
+      "name": "zxAnCardEnvHis1DayPerfEntry",
+      "mib_table": null,
+      "index": {
+        "type": "composite",
+        "bit_calculation": true,
+        "components": [
+          {
+            "name": "zxanenvrack",
+            "bits": ""
+          },
+          {
+            "name": "shelf",
+            "bits": "31-28"
+          },
+          {
+            "name": "slot",
+            "bits": "27-24"
+          },
+          {
+            "name": "zxancardenvhis1dayintervalno",
+            "bits": ""
+          }
+        ]
+      },
+      "syntax": "ZxAnCardEnvHis1DayPerfEntry",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": "The 1 day interval performance data entry of card temperature.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.card.env_his1_day_interval_no",
+      "oid": "1.3.6.1.4.1.3902.1082.10.10.2.1.8.1.1",
+      "name": "zxAnCardEnvHis1DayIntervalNo",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": "Performance data interval number 1 is the the most recent \n              previous interval; interval 7 is 1 week ago.  \n              Intervals 2..7 are optional.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.card.env_his1_day_date_time",
+      "oid": "1.3.6.1.4.1.3902.1082.10.10.2.1.8.1.2",
+      "name": "zxAnCardEnvHis1DayDateTime",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "DateAndTime",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "The 1 day interval performance data generation time.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.card.env_his1_day_temp",
+      "oid": "1.3.6.1.4.1.3902.1082.10.10.2.1.8.1.3",
+      "name": "zxAnCardEnvHis1DayTemp",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "Counter64",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "The 1 day interval average temperature of card.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.card.env_alm_profile_conf_table",
+      "oid": "1.3.6.1.4.1.3902.1082.10.10.2.1.9",
+      "name": "zxAnCardEnvAlmProfileConfTable",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "SEQUENCE OF ZxAnCardEnvAlmProfileConfEntry",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": "The performance alarm threshold profile items configuration table\n             of card temperature.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.card.env_alm_profile_conf_entry",
+      "oid": "1.3.6.1.4.1.3902.1082.10.10.2.1.9.1",
+      "name": "zxAnCardEnvAlmProfileConfEntry",
+      "mib_table": null,
+      "index": {
+        "type": "composite",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "ZxAnCardEnvAlmProfileConfEntry",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": "The performance alarm threshold profile items configuration entry \n           of card temperature.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.card.env_alm_profile_name",
+      "oid": "1.3.6.1.4.1.3902.1082.10.10.2.1.9.1.1",
+      "name": "zxAnCardEnvAlmProfileName",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "DisplayString",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": "The performance alarm threshold profile name.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.card.env_perf_variable",
+      "oid": "1.3.6.1.4.1.3902.1082.10.10.2.1.9.1.2",
+      "name": "zxAnCardEnvPerfVariable",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "OBJECT IDENTIFIER",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": "The object identifier of performance variables.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.card.env_rise_alm_thresh",
+      "oid": "1.3.6.1.4.1.3902.1082.10.10.2.1.9.1.3",
+      "name": "zxAnCardEnvRiseAlmThresh",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "HCPerfCurrentCount",
+      "unit": null,
+      "scale": null,
+      "access": "read-create",
+      "enumeration": null,
+      "description": "The threshold for rising alarm.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.card.env_clr_rise_alm_thresh",
+      "oid": "1.3.6.1.4.1.3902.1082.10.10.2.1.9.1.4",
+      "name": "zxAnCardEnvClrRiseAlmThresh",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "HCPerfCurrentCount",
+      "unit": null,
+      "scale": null,
+      "access": "read-create",
+      "enumeration": null,
+      "description": "The threshold for rising alarm restore.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.card.env_rise_warn_thresh",
+      "oid": "1.3.6.1.4.1.3902.1082.10.10.2.1.9.1.5",
+      "name": "zxAnCardEnvRiseWarnThresh",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "HCPerfCurrentCount",
+      "unit": null,
+      "scale": null,
+      "access": "read-create",
+      "enumeration": null,
+      "description": "The threshold for rising warning.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.card.env_clr_rise_warn_thresh",
+      "oid": "1.3.6.1.4.1.3902.1082.10.10.2.1.9.1.6",
+      "name": "zxAnCardEnvClrRiseWarnThresh",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "HCPerfCurrentCount",
+      "unit": null,
+      "scale": null,
+      "access": "read-create",
+      "enumeration": null,
+      "description": "The threshold for rising warning restore.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.card.env_fall_warn_thresh",
+      "oid": "1.3.6.1.4.1.3902.1082.10.10.2.1.9.1.7",
+      "name": "zxAnCardEnvFallWarnThresh",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "HCPerfCurrentCount",
+      "unit": null,
+      "scale": null,
+      "access": "read-create",
+      "enumeration": null,
+      "description": "The threshold for falling warning.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.card.env_clr_fall_warn_thresh",
+      "oid": "1.3.6.1.4.1.3902.1082.10.10.2.1.9.1.8",
+      "name": "zxAnCardEnvClrFallWarnThresh",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "HCPerfCurrentCount",
+      "unit": null,
+      "scale": null,
+      "access": "read-create",
+      "enumeration": null,
+      "description": "The threshold for falling warning restore.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.card.env_fall_alm_thresh",
+      "oid": "1.3.6.1.4.1.3902.1082.10.10.2.1.9.1.9",
+      "name": "zxAnCardEnvFallAlmThresh",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "HCPerfCurrentCount",
+      "unit": null,
+      "scale": null,
+      "access": "read-create",
+      "enumeration": null,
+      "description": "The threshold for falling alarm.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.card.env_clr_fall_alm_thresh",
+      "oid": "1.3.6.1.4.1.3902.1082.10.10.2.1.9.1.10",
+      "name": "zxAnCardEnvClrFallAlmThresh",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "HCPerfCurrentCount",
+      "unit": null,
+      "scale": null,
+      "access": "read-create",
+      "enumeration": null,
+      "description": "The threshold for falling alarm restore.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.card.env_alm_prf_conf_row_status",
+      "oid": "1.3.6.1.4.1.3902.1082.10.10.2.1.9.1.50",
+      "name": "zxAnCardEnvAlmPrfConfRowStatus",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "Row",
+      "unit": null,
+      "scale": null,
+      "access": "read-create",
+      "enumeration": null,
+      "description": "The status of this conceptual row.\n\n             To create a row in this table, a manager must\n             set this object to createAndGo(4).\n             \n             To delete a row in this table, a manager must\n             set this object to destroy(6).",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.card.env_alm_profile_apply_table",
+      "oid": "1.3.6.1.4.1.3902.1082.10.10.2.1.10",
+      "name": "zxAnCardEnvAlmProfileApplyTable",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "SEQUENCE OF ZxAnCardEnvAlmProfileApplyEntry",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": "The performance alarm threshold profile application table of\n              card temperature.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.card.env_alm_profile_apply_entry",
+      "oid": "1.3.6.1.4.1.3902.1082.10.10.2.1.10.1",
+      "name": "zxAnCardEnvAlmProfileApplyEntry",
+      "mib_table": null,
+      "index": {
+        "type": "composite",
+        "bit_calculation": true,
+        "components": [
+          {
+            "name": "zxanenvrack",
+            "bits": ""
+          },
+          {
+            "name": "shelf",
+            "bits": "31-28"
+          },
+          {
+            "name": "slot",
+            "bits": "27-24"
+          }
+        ]
+      },
+      "syntax": "ZxAnCardEnvAlmProfileApplyEntry",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": "The performance alarm threshold profile application entry of\n             card temperature.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.card.env_alm_prf",
+      "oid": "1.3.6.1.4.1.3902.1082.10.10.2.1.10.1.1",
+      "name": "zxAnCardEnvAlmPrf",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "DisplayString",
+      "unit": null,
+      "scale": null,
+      "access": "read-create",
+      "enumeration": null,
+      "description": "The performance alarm threshold profile.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.card.env_alm_prf_apply_row_status",
+      "oid": "1.3.6.1.4.1.3902.1082.10.10.2.1.10.1.50",
+      "name": "zxAnCardEnvAlmPrfApplyRowStatus",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "Row",
+      "unit": null,
+      "scale": null,
+      "access": "read-create",
+      "enumeration": null,
+      "description": "The status of this conceptual row.\n\n             To create a row in this table, a manager must\n             set this object to createAndGo(4).\n            \n             To delete a row in this table, a manager must\n             set this object to destroy(6).",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.card.env_alm_profile_table",
+      "oid": "1.3.6.1.4.1.3902.1082.10.10.2.1.11",
+      "name": "zxAnCardEnvAlmProfileTable",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "SEQUENCE OF ZxAnCardEnvAlmProfileEntry",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": "The performance alarm threshold profile table of card\n             temperature.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.card.env_alm_profile_entry",
+      "oid": "1.3.6.1.4.1.3902.1082.10.10.2.1.11.1",
+      "name": "zxAnCardEnvAlmProfileEntry",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "ZxAnCardEnvAlmProfileEntry",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": "The performance alarm threshold profile entry of\n             card temperature.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.card.env_alm_prf_row_status",
+      "oid": "1.3.6.1.4.1.3902.1082.10.10.2.1.11.1.50",
+      "name": "zxAnCardEnvAlmPrfRowStatus",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "Row",
+      "unit": null,
+      "scale": null,
+      "access": "read-create",
+      "enumeration": null,
+      "description": "The status of this conceptual row.\n\n             To create a row in this table, a manager must\n             set this object to createAndGo(4).\n            \n             To delete a row in this table, a manager must\n             set this object to destroy(6).",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.card.env_card_overheat_protect_table",
+      "oid": "1.3.6.1.4.1.3902.1082.10.10.2.1.14",
+      "name": "zxAnEnvCardOverheatProtectTable",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "SEQUENCE OF ZxAnEnvCardOverheatProtectEntry",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": "Card overheat protection table.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.card.env_card_overheat_protect_entry",
+      "oid": "1.3.6.1.4.1.3902.1082.10.10.2.1.14.1",
+      "name": "zxAnEnvCardOverheatProtectEntry",
+      "mib_table": null,
+      "index": {
+        "type": "composite",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "ZxAnEnvCardOverheatProtectEntry",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": "Card overheat protection entry.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.card.env_card_critical_temp_protect_en",
+      "oid": "1.3.6.1.4.1.3902.1082.10.10.2.1.14.1.1",
+      "name": "zxAnEnvCardCriticalTempProtectEn",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-write",
+      "enumeration": {
+        "1": "enabled",
+        "2": "disabled"
+      },
+      "description": "Enables or disables the card critical temperature protection \n            function. If it is enabled, the card will be stopped when the card \n            temperature is higher than the card critical temperature.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.card.env_his_min_perf_table",
+      "oid": "1.3.6.1.4.1.3902.1082.10.10.2.1.15",
+      "name": "zxAnCardEnvHisMinPerfTable",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "SEQUENCE OF ZxAnCardEnvHisMinPerfEntry",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": "The 5 minutes or 15 minutes interval environmental monitoring\n              performance data table of card.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.card.env_his_min_perf_entry",
+      "oid": "1.3.6.1.4.1.3902.1082.10.10.2.1.15.1",
+      "name": "zxAnCardEnvHisMinPerfEntry",
+      "mib_table": null,
+      "index": {
+        "type": "composite",
+        "bit_calculation": true,
+        "components": [
+          {
+            "name": "zxanenvrack",
+            "bits": ""
+          },
+          {
+            "name": "shelf",
+            "bits": "31-28"
+          },
+          {
+            "name": "slot",
+            "bits": "27-24"
+          },
+          {
+            "name": "zxancardenvhminintervalno",
+            "bits": ""
+          }
+        ]
+      },
+      "syntax": "ZxAnCardEnvHisMinPerfEntry",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": "The 5 minutes or 15 minutes interval environmental monitoring \n             performance data entry of card.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.card.env_h_min_interval_no",
+      "oid": "1.3.6.1.4.1.3902.1082.10.10.2.1.15.1.1",
+      "name": "zxAnCardEnvHMinIntervalNo",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": "The performance data interval number. \n              1 means the the most recent previous interval;\n              If the performance collection interval is 5 minutes, intervals \n              2..288 are optional.\n              If the performance collection interval is 15 minutes, intervals \n              2..96 are optional.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.card.env_h_min_interval_valid_data",
+      "oid": "1.3.6.1.4.1.3902.1082.10.10.2.1.15.1.2",
+      "name": "zxAnCardEnvHMinIntervalValidData",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": {
+        "1": "valid",
+        "2": "invalid"
+      },
+      "description": "Performance data validity.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.card.env_h_min_date_time",
+      "oid": "1.3.6.1.4.1.3902.1082.10.10.2.1.15.1.3",
+      "name": "zxAnCardEnvHMinDateTime",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "DateAndTime",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "The 5 minutes or 15 minutes interval performance data generation \n              time.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.card.env_h_min_temperature",
+      "oid": "1.3.6.1.4.1.3902.1082.10.10.2.1.15.1.4",
+      "name": "zxAnCardEnvHMinTemperature",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": "Centigrade",
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "The average temperature of card in the historical 5 minutes or\n             15 minutes. \n             If the card does not have this attribute, it should be -1000.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.card.env_h_min_power_consumption",
+      "oid": "1.3.6.1.4.1.3902.1082.10.10.2.1.15.1.6",
+      "name": "zxAnCardEnvHMinPowerConsumption",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": "0.001W",
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "The average power consumption of card in the historical 5 minutes \n             or  15 minutes.\n             If the card does not have this attribute, it should be 0.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.card.fan_tray_auto_switch_by_card_up",
+      "oid": "1.3.6.1.4.1.3902.1082.10.10.2.4.10.1.2",
+      "name": "zxAnFanTrayAutoSwitchByCardUp",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-write",
+      "enumeration": {
+        "1": "enable",
+        "2": "disable"
+      },
+      "description": "Enable/disable fan auto switch with card installation. If it is\n            enabled, the fan under the card should be switched to running \n            status when the card is installed. Otherwise, the fan should be \n            shutdown.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.card.sw_card_running_ver_table",
+      "oid": "1.3.6.1.4.1.3902.1082.20.30.2.2.2",
+      "name": "zxAnSwCardRunningVerTable",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "SEQUENCE  OF  ZxAnSwCardRunningVerEntry",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": "This table includes the card version information.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.card.sw_card_running_ver_entry",
+      "oid": "1.3.6.1.4.1.3902.1082.20.30.2.2.2.1",
+      "name": "zxAnSwCardRunningVerEntry",
+      "mib_table": null,
+      "index": {
+        "type": "composite",
+        "bit_calculation": true,
+        "components": [
+          {
+            "name": "zxanswcardrack",
+            "bits": ""
+          },
+          {
+            "name": "shelf",
+            "bits": "31-28"
+          },
+          {
+            "name": "slot",
+            "bits": "27-24"
+          }
+        ]
+      },
+      "syntax": "ZxAnSwCardRunningVerEntry",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": "An entry in zxAnCardTable.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.card.sw_card_rack",
+      "oid": "1.3.6.1.4.1.3902.1082.20.30.2.2.2.1.1",
+      "name": "zxAnSwCardRack",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": "The rack number",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.card.sw_card_shelf",
+      "oid": "1.3.6.1.4.1.3902.1082.20.30.2.2.2.1.2",
+      "name": "zxAnSwCardShelf",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": "The shelf number",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.card.sw_card_slot",
+      "oid": "1.3.6.1.4.1.3902.1082.20.30.2.2.2.1.3",
+      "name": "zxAnSwCardSlot",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": "The slot number",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.card.sw_card_file_name",
+      "oid": "1.3.6.1.4.1.3902.1082.20.30.2.2.2.1.5",
+      "name": "zxAnSwCardFileName",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "DisplayString",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "The version file name of the card.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.card.sw_card_file_type",
+      "oid": "1.3.6.1.4.1.3902.1082.20.30.2.2.2.1.6",
+      "name": "zxAnSwCardFileType",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "DisplayString",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "The version file type of the card.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.card.sw_card_version",
+      "oid": "1.3.6.1.4.1.3902.1082.20.30.2.2.2.1.7",
+      "name": "zxAnSwCardVersion",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "DisplayString",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "The version tag of the card.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.card.sw_card_file_len",
+      "oid": "1.3.6.1.4.1.3902.1082.20.30.2.2.2.1.8",
+      "name": "zxAnSwCardFileLen",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "The version file length of the card.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.card.sw_card_build_time",
+      "oid": "1.3.6.1.4.1.3902.1082.20.30.2.2.2.1.9",
+      "name": "zxAnSwCardBuildTime",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "DateAndTime",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "The time of version build. For example:\n                        yyyy-mm-dd HH:MM:SS.(2001-01-01 02:22:33).",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.card.sw_card_bootware_file_name",
+      "oid": "1.3.6.1.4.1.3902.1082.20.30.2.2.2.1.10",
+      "name": "zxAnSwCardBootwareFileName",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "DisplayString",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "The bootrom file name of the card.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.card.sw_card_bootware_file_type",
+      "oid": "1.3.6.1.4.1.3902.1082.20.30.2.2.2.1.11",
+      "name": "zxAnSwCardBootwareFileType",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "DisplayString",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "The bootrom file type of the card.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.card.sw_card_bootware_version",
+      "oid": "1.3.6.1.4.1.3902.1082.20.30.2.2.2.1.12",
+      "name": "zxAnSwCardBootwareVersion",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "DisplayString",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "The bootrom tag of the card.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.card.sw_card_bootware_file_len",
+      "oid": "1.3.6.1.4.1.3902.1082.20.30.2.2.2.1.13",
+      "name": "zxAnSwCardBootwareFileLen",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "The bootrom file length of the card.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.card.sw_card_bootware_build_time",
+      "oid": "1.3.6.1.4.1.3902.1082.20.30.2.2.2.1.14",
+      "name": "zxAnSwCardBootwareBuildTime",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "DateAndTime",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "The time of version build. For example:\n                        yyyy-mm-dd HH:MM:SS.(2001-01-01 02:22:33).",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.card.sw_card_firmware1_file_name",
+      "oid": "1.3.6.1.4.1.3902.1082.20.30.2.2.2.1.15",
+      "name": "zxAnSwCardFirmware1FileName",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "DisplayString",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "The firmware file name of the card.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.card.sw_card_firmware1_file_type",
+      "oid": "1.3.6.1.4.1.3902.1082.20.30.2.2.2.1.16",
+      "name": "zxAnSwCardFirmware1FileType",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "DisplayString",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "The firmware file type of the card.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.card.sw_card_firmware1_version",
+      "oid": "1.3.6.1.4.1.3902.1082.20.30.2.2.2.1.17",
+      "name": "zxAnSwCardFirmware1Version",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "DisplayString",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "The firmware tag of the card.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.card.sw_card_firmware1_file_len",
+      "oid": "1.3.6.1.4.1.3902.1082.20.30.2.2.2.1.18",
+      "name": "zxAnSwCardFirmware1FileLen",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "The firmware file length of the card.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.card.sw_card_firmware1_build_time",
+      "oid": "1.3.6.1.4.1.3902.1082.20.30.2.2.2.1.19",
+      "name": "zxAnSwCardFirmware1BuildTime",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "DateAndTime",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "The time version build. For example:\n                       yyyy-mm-dd HH:MM:SS.(2001-01-01 02:22:33).",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.card.sw_card_firmware2_file_name",
+      "oid": "1.3.6.1.4.1.3902.1082.20.30.2.2.2.1.20",
+      "name": "zxAnSwCardFirmware2FileName",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "DisplayString",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "The firmware file name of the card.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.card.sw_card_firmware2_file_type",
+      "oid": "1.3.6.1.4.1.3902.1082.20.30.2.2.2.1.21",
+      "name": "zxAnSwCardFirmware2FileType",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "DisplayString",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "The firmware file type of the card.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.card.sw_card_firmware2_version",
+      "oid": "1.3.6.1.4.1.3902.1082.20.30.2.2.2.1.22",
+      "name": "zxAnSwCardFirmware2Version",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "DisplayString",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "The firmware tag of the card.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.card.sw_card_firmware2_file_len",
+      "oid": "1.3.6.1.4.1.3902.1082.20.30.2.2.2.1.23",
+      "name": "zxAnSwCardFirmware2FileLen",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "The firmware file length of the card.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.card.sw_card_firmware2_build_time",
+      "oid": "1.3.6.1.4.1.3902.1082.20.30.2.2.2.1.24",
+      "name": "zxAnSwCardFirmware2BuildTime",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "DateAndTime",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "The time of version build. For example:\n                         yyyy-mm-dd HH:MM:SS.(2001-01-01 02:22:33).",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.card.sw_card_firmware3_file_name",
+      "oid": "1.3.6.1.4.1.3902.1082.20.30.2.2.2.1.25",
+      "name": "zxAnSwCardFirmware3FileName",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "DisplayString",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "The firmware file name of the card.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.card.sw_card_firmware3_file_type",
+      "oid": "1.3.6.1.4.1.3902.1082.20.30.2.2.2.1.26",
+      "name": "zxAnSwCardFirmware3FileType",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "DisplayString",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "The firmware file type of the card.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.card.sw_card_firmware3_version",
+      "oid": "1.3.6.1.4.1.3902.1082.20.30.2.2.2.1.27",
+      "name": "zxAnSwCardFirmware3Version",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "DisplayString",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "The firmware tag of the card.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.card.sw_card_firmware3_file_len",
+      "oid": "1.3.6.1.4.1.3902.1082.20.30.2.2.2.1.28",
+      "name": "zxAnSwCardFirmware3FileLen",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "The firmware file length of the card.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.card.sw_card_firmware3_build_time",
+      "oid": "1.3.6.1.4.1.3902.1082.20.30.2.2.2.1.29",
+      "name": "zxAnSwCardFirmware3BuildTime",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "DateAndTime",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "The time of version build. For example:\n                        yyyy-mm-dd HH:MM:SS.(2001-01-01 02:22:33).",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.card.sw_subcard_running_ver_table",
+      "oid": "1.3.6.1.4.1.3902.1082.20.30.2.2.3",
+      "name": "zxAnSwSubcardRunningVerTable",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "SEQUENCE  OF  ZxAnSwSubcardRunningVerEntry",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": "This table includes the sub card version information.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.card.sw_subcard_running_ver_entry",
+      "oid": "1.3.6.1.4.1.3902.1082.20.30.2.2.3.1",
+      "name": "zxAnSwSubcardRunningVerEntry",
+      "mib_table": null,
+      "index": {
+        "type": "composite",
+        "bit_calculation": true,
+        "components": [
+          {
+            "name": "zxanswcardrack",
+            "bits": ""
+          },
+          {
+            "name": "shelf",
+            "bits": "31-28"
+          },
+          {
+            "name": "slot",
+            "bits": "27-24"
+          },
+          {
+            "name": "slot",
+            "bits": "27-24"
+          }
+        ]
+      },
+      "syntax": "ZxAnSwSubcardRunningVerEntry",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": "An entry in zxAnSwSubcardRunningVerTable.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.card.sw_subcard_slot",
+      "oid": "1.3.6.1.4.1.3902.1082.20.30.2.2.3.1.1",
+      "name": "zxAnSwSubcardSlot",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": "The slot number of the subcard",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.card.sw_subcard_file_name",
+      "oid": "1.3.6.1.4.1.3902.1082.20.30.2.2.3.1.3",
+      "name": "zxAnSwSubcardFileName",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "DisplayString",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "The version file name of the card.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.card.sw_subcard_file_type",
+      "oid": "1.3.6.1.4.1.3902.1082.20.30.2.2.3.1.4",
+      "name": "zxAnSwSubcardFileType",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "DisplayString",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "The version file type of the card.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.card.sw_subcard_version",
+      "oid": "1.3.6.1.4.1.3902.1082.20.30.2.2.3.1.5",
+      "name": "zxAnSwSubcardVersion",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "DisplayString",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "The version tag of the card.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.card.sw_subcard_file_len",
+      "oid": "1.3.6.1.4.1.3902.1082.20.30.2.2.3.1.6",
+      "name": "zxAnSwSubcardFileLen",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "The version file length of the card.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.card.sw_subcard_build_time",
+      "oid": "1.3.6.1.4.1.3902.1082.20.30.2.2.3.1.7",
+      "name": "zxAnSwSubcardBuildTime",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "DateAndTime",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "The time of version build. For example:\n                        yyyy-mm-dd HH:MM:SS.(2001-01-01 02:22:33).",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.card.sw_subcard_bootware_file_name",
+      "oid": "1.3.6.1.4.1.3902.1082.20.30.2.2.3.1.8",
+      "name": "zxAnSwSubcardBootwareFileName",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "DisplayString",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "The bootrom file name of the card.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.card.sw_subcard_bootware_file_type",
+      "oid": "1.3.6.1.4.1.3902.1082.20.30.2.2.3.1.9",
+      "name": "zxAnSwSubcardBootwareFileType",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "DisplayString",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "The bootrom file type of the card.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.card.sw_subcard_bootware_version",
+      "oid": "1.3.6.1.4.1.3902.1082.20.30.2.2.3.1.10",
+      "name": "zxAnSwSubcardBootwareVersion",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "DisplayString",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "The bootrom tag of the card.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.card.sw_subcard_bootware_file_len",
+      "oid": "1.3.6.1.4.1.3902.1082.20.30.2.2.3.1.11",
+      "name": "zxAnSwSubcardBootwareFileLen",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "The bootrom file length of the card.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.card.sw_subcard_bootware_build_time",
+      "oid": "1.3.6.1.4.1.3902.1082.20.30.2.2.3.1.12",
+      "name": "zxAnSwSubcardBootwareBuildTime",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "DateAndTime",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "The time of version build. For example:\n                        yyyy-mm-dd HH:MM:SS.(2001-01-01 02:22:33).",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.card.sw_subcard_firmware_file_name",
+      "oid": "1.3.6.1.4.1.3902.1082.20.30.2.2.3.1.13",
+      "name": "zxAnSwSubcardFirmwareFileName",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "DisplayString",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "The firmware file name of the card.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.card.sw_subcard_firmware_file_type",
+      "oid": "1.3.6.1.4.1.3902.1082.20.30.2.2.3.1.14",
+      "name": "zxAnSwSubcardFirmwareFileType",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "DisplayString",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "The firmware file type of the card.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.card.sw_subcard_firmware_version",
+      "oid": "1.3.6.1.4.1.3902.1082.20.30.2.2.3.1.15",
+      "name": "zxAnSwSubcardFirmwareVersion",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "DisplayString",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "The firmware tag of the card.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.card.sw_subcard_firmware_file_len",
+      "oid": "1.3.6.1.4.1.3902.1082.20.30.2.2.3.1.16",
+      "name": "zxAnSwSubcardFirmwareFileLen",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "The firmware file length of the card.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.card.sw_subcard_firmware_build_time",
+      "oid": "1.3.6.1.4.1.3902.1082.20.30.2.2.3.1.17",
+      "name": "zxAnSwSubcardFirmwareBuildTime",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "DateAndTime",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "The time of version build. For example:\n                        yyyy-mm-dd HH:MM:SS.(2001-01-01 02:22:33).",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.card.sw_manual_update_subcard_list",
+      "oid": "1.3.6.1.4.1.3902.1082.20.30.2.3.2.1.5",
+      "name": "zxAnSwManualUpdateSubcardList",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "DisplayString",
+      "unit": null,
+      "scale": null,
+      "access": "read-write",
+      "enumeration": null,
+      "description": "The subcard number. updating version file from MP to subcard.\n            They can be updated in batch. For example: '1,2,3'\n            This variable must comply with the multi-variables \n            binding rule described in zxAnSwManualUpdateRack.\n            If zxAnSwManualUpdateSlotList is '1,2' and \n            zxAnSwManualUpdateSubcardList is '3,4', the actual operation object\n            like 'slot.subcard' is '1.3', '1.4', '2.3', '2.4'.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.card.sw_subcard_m_update_status_table",
+      "oid": "1.3.6.1.4.1.3902.1082.20.30.2.3.2.6",
+      "name": "zxAnSwSubcardMUpdateStatusTable",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "SEQUENCE  OF  ZxAnSwSubcardMUpdate",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": "This table includes the subcard software updating status \n            information.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.card.sw_subcard_m_update_status_entry",
+      "oid": "1.3.6.1.4.1.3902.1082.20.30.2.3.2.6.1",
+      "name": "zxAnSwSubcardMUpdateStatusEntry",
+      "mib_table": null,
+      "index": {
+        "type": "composite",
+        "bit_calculation": true,
+        "components": [
+          {
+            "name": "zxanswcardrack",
+            "bits": ""
+          },
+          {
+            "name": "shelf",
+            "bits": "31-28"
+          },
+          {
+            "name": "slot",
+            "bits": "27-24"
+          },
+          {
+            "name": "slot",
+            "bits": "27-24"
+          },
+          {
+            "name": "zxanswsubcardmupdatesoftwaretype",
+            "bits": ""
+          }
+        ]
+      },
+      "syntax": "ZxAnSwSubcardMUpdate",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": "An entry in zxAnSwSubcardMUpdateStatusTable.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.card.sw_subcard_m_update_software_type",
+      "oid": "1.3.6.1.4.1.3902.1082.20.30.2.3.2.6.1.1",
+      "name": "zxAnSwSubcardMUpdateSoftwareType",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": {
+        "1": "bootware"
+      },
+      "description": "The software type when updating subcard software.\n            bootware(1): update bootware.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.card.sw_subcard_m_update_status",
+      "oid": "1.3.6.1.4.1.3902.1082.20.30.2.3.2.6.1.2",
+      "name": "zxAnSwSubcardMUpdateStatus",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": {
+        "1": "negotiating",
+        "2": "downloading",
+        "3": "failed",
+        "4": "success",
+        "5": "sameversion"
+      },
+      "description": "The updating status when updating subcard software.\n            negotiating(1): negotiating not starting.\n            downloading(2): updating from MP.\n            failed(3): update failed.\n            success(4): update successfully.\n            sameVersion(5): not need to update.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.card.sw_subcard_m_update_failed_reason",
+      "oid": "1.3.6.1.4.1.3902.1082.20.30.2.3.2.6.1.3",
+      "name": "zxAnSwSubcardMUpdateFailedReason",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": {
+        "1": "noError",
+        "2": "noSupportCardHwVersion",
+        "3": "mismatchCardHwVersion",
+        "4": "mismatchCardConfData",
+        "5": "noSwInNe",
+        "6": "cardUpdateSwFailed"
+      },
+      "description": "The reason when updating subcard software failed.\n            noError(1): no error.\n            noSupportCardHwVersion(2): control card doesn't support the \n            current card hardware version.\n            mismatchCardHwVersion(3): control card's configuration and the\n            current card hardware version are mismatch.\n            mismatchCardConfData(4): control card's configuration and the\n            current card configuration data are mismatch.\n            noSwInNe(5): software for this card doesn't exist in control card.\n            cardUpdateSwFailed(6): the current card software update failed.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.card.sw_card_patch_run_status_table",
+      "oid": "1.3.6.1.4.1.3902.1082.20.30.2.5.3",
+      "name": "zxAnSwCardPatchRunStatusTable",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "SEQUENCE  OF  ZxAnSwCardPatchRun",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": "This table includes the patch running status information of the \n             card.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.card.sw_card_patch_run_status_entry",
+      "oid": "1.3.6.1.4.1.3902.1082.20.30.2.5.3.1",
+      "name": "zxAnSwCardPatchRunStatusEntry",
+      "mib_table": null,
+      "index": {
+        "type": "composite",
+        "bit_calculation": true,
+        "components": [
+          {
+            "name": "zxanswpatchrack",
+            "bits": ""
+          },
+          {
+            "name": "shelf",
+            "bits": "31-28"
+          },
+          {
+            "name": "slot",
+            "bits": "27-24"
+          },
+          {
+            "name": "zxanswcardpatchname",
+            "bits": ""
+          }
+        ]
+      },
+      "syntax": "ZxAnSwCardPatchRun",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": "An entry in zxAnSwCardPatchRunStatusTable.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.card.sw_card_patch_name",
+      "oid": "1.3.6.1.4.1.3902.1082.20.30.2.5.3.1.1",
+      "name": "zxAnSwCardPatchName",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "DisplayString",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": "The patch file name of the card.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.card.sw_card_patch_owner_sw_version",
+      "oid": "1.3.6.1.4.1.3902.1082.20.30.2.5.3.1.2",
+      "name": "zxAnSwCardPatchOwnerSwVersion",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "DisplayString",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "The software version of the patch belonging to.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.card.sw_card_patch_version",
+      "oid": "1.3.6.1.4.1.3902.1082.20.30.2.5.3.1.3",
+      "name": "zxAnSwCardPatchVersion",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "DisplayString",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "The version tag of the patch.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.card.sw_card_patch_size",
+      "oid": "1.3.6.1.4.1.3902.1082.20.30.2.5.3.1.4",
+      "name": "zxAnSwCardPatchSize",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": "byte",
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "The patch file length.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.card.sw_card_patch_build_time",
+      "oid": "1.3.6.1.4.1.3902.1082.20.30.2.5.3.1.5",
+      "name": "zxAnSwCardPatchBuildTime",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "DateAndTime",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "The time of patch build. For example:\n                       yyyy-mm-dd HH:MM:SS.(2001-01-01 02:22:33).",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.card.sw_card_patch_activated_time",
+      "oid": "1.3.6.1.4.1.3902.1082.20.30.2.5.3.1.6",
+      "name": "zxAnSwCardPatchActivatedTime",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "DateAndTime",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "The time of the patch activated. For example:\n                       yyyy-mm-dd HH:MM:SS.(2001-01-01 02:22:33).",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.card.sw_card_patch_description",
+      "oid": "1.3.6.1.4.1.3902.1082.20.30.2.5.3.1.7",
+      "name": "zxAnSwCardPatchDescription",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "DisplayString",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "The patch description.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.card.sw_card_patch_running_status",
+      "oid": "1.3.6.1.4.1.3902.1082.20.30.2.5.3.1.8",
+      "name": "zxAnSwCardPatchRunningStatus",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": {
+        "1": "activatingSucceeded",
+        "2": "activatingFailed",
+        "3": "waitingToBeActivated",
+        "4": "resettingCardNeeded",
+        "5": "mismatched"
+      },
+      "description": "The patch running status.\n             activatingSucceeded(1) : value 1 means the activating operation \n                                      of the patch file is succeeded.\n             activatingFailed(2)    : value 2 means the activating operation \n                                      of the patch file is failed.\n             waitingToBeActivated(3): value 3 means the patch file is waiting \n                                      to be activated.\n             resettingCardNeeded(4) : value 4 means the patch file has been \n                                      successfully activated and the card \n                                      needs to be reset.\n             mismatched(5)          : value 5 means the version of the patch \n                                      file is not matched with the version of\n                                      the card software.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.card.sw_subcard_running_patch_table",
+      "oid": "1.3.6.1.4.1.3902.1082.20.30.2.5.4",
+      "name": "zxAnSwSubcardRunningPatchTable",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "SEQUENCE  OF  ZxAnSwSubcardRunningPatchEntry",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": "This table includes the subcard patch information.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.card.sw_subcard_running_patch_entry",
+      "oid": "1.3.6.1.4.1.3902.1082.20.30.2.5.4.1",
+      "name": "zxAnSwSubcardRunningPatchEntry",
+      "mib_table": null,
+      "index": {
+        "type": "composite",
+        "bit_calculation": true,
+        "components": [
+          {
+            "name": "zxanswpatchrack",
+            "bits": ""
+          },
+          {
+            "name": "shelf",
+            "bits": "31-28"
+          },
+          {
+            "name": "slot",
+            "bits": "27-24"
+          },
+          {
+            "name": "slot",
+            "bits": "27-24"
+          },
+          {
+            "name": "zxanswsubcardpatchname",
+            "bits": ""
+          }
+        ]
+      },
+      "syntax": "ZxAnSwSubcardRunningPatchEntry",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": "An entry in zxAnSwSubcardRunningPatchTable.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.card.sw_patch_subcard_slot",
+      "oid": "1.3.6.1.4.1.3902.1082.20.30.2.5.4.1.1",
+      "name": "zxAnSwPatchSubcardSlot",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": "The slot number of the subcard.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.card.sw_subcard_patch_name",
+      "oid": "1.3.6.1.4.1.3902.1082.20.30.2.5.4.1.2",
+      "name": "zxAnSwSubcardPatchName",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "DisplayString",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": "The file name of the patch",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.card.sw_subcard_patch_owner_sw_version",
+      "oid": "1.3.6.1.4.1.3902.1082.20.30.2.5.4.1.3",
+      "name": "zxAnSwSubcardPatchOwnerSwVersion",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "DisplayString",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "The software version of the patch belonging to.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.card.sw_subcard_patch_version",
+      "oid": "1.3.6.1.4.1.3902.1082.20.30.2.5.4.1.4",
+      "name": "zxAnSwSubcardPatchVersion",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "DisplayString",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "The version tag of the patch.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.card.sw_subcard_patch_size",
+      "oid": "1.3.6.1.4.1.3902.1082.20.30.2.5.4.1.5",
+      "name": "zxAnSwSubcardPatchSize",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": "byte",
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "The patch file length.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.card.sw_subcard_patch_build_time",
+      "oid": "1.3.6.1.4.1.3902.1082.20.30.2.5.4.1.6",
+      "name": "zxAnSwSubcardPatchBuildTime",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "DateAndTime",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "The time of patch build. For example:\n                       yyyy-mm-dd HH:MM:SS.(2001-01-01 02:22:33).",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.card.sw_subcard_patch_activated_time",
+      "oid": "1.3.6.1.4.1.3902.1082.20.30.2.5.4.1.7",
+      "name": "zxAnSwSubcardPatchActivatedTime",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "DateAndTime",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "The time of the patch activated. For example:\n                       yyyy-mm-dd HH:MM:SS.(2001-01-01 02:22:33).",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.card.sw_subcard_patch_description",
+      "oid": "1.3.6.1.4.1.3902.1082.20.30.2.5.4.1.8",
+      "name": "zxAnSwSubcardPatchDescription",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "DisplayString",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "The patch description.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.card.sw_patch_pkg_file_need_reset_card",
+      "oid": "1.3.6.1.4.1.3902.1082.20.30.2.5.6.1.3",
+      "name": "zxAnSwPatchPkgFileNeedResetCard",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": {
+        "1": "yes",
+        "2": "no"
+      },
+      "description": "Whether the card needs to be reset.\n             yes(1) : value 1 means need to reset the card.\n             no(2) :  value 2 means no need to reset the card.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    }
+  ]
+}

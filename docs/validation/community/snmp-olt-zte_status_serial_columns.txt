@@ -1,0 +1,68 @@
+==============================================================================
+MAPEO DE COLUMNAS PENDIENTES — status y serial completo (espacio TYPE)
+Derivado por correlación contra el walk real C300/C320 (tabla .1012.3.50.11.2.1).
+==============================================================================
+
+# META
+doc_type: community
+supersedes_partial: snmp-olt-zte_reference_extract.txt
+vendor: ZTE
+families: ZXA10 C300, ZXA10 C320
+walk_sources: docs/walks/ZTE_C300.txt, docs/walks/ZTE_C320.txt
+extraction_date: 2026-07-04
+motivo: cierra los 2 pendientes de la reconciliación (status ONU y serial completo)
+        ubicando sus columnas reales en la tabla de info de ONU .1012.3.50.11.2.1.
+
+==============================================================================
+# SECCIÓN A — STATUS ONU (columna .8)   [status: verified_walk]
+==============================================================================
+# Derivación: de las columnas INTEGER (.4/.5/.6/.7/.8), SOLO la .8 correlaciona 1:1
+# con la presencia de RX power sobre las 1008 ONUs del walk:
+#   col.8 = 1 -> 908 ONUs CON rx válido  (online)
+#   col.8 = 2 ->  90 ONUs SIN rx         (offline)
+#   col.8 = 65535 -> no disponible
+# (col.4 tiene valores 1/3 pero NO correlaciona con rx → no es el estado operativo).
+
+[oid]
+attribute: onu_status
+entity_ref: entity.zte.gpon.device.onu
+oid_prefix: .1.3.6.1.4.1.3902.1012.3.50.11.2.1.8
+base_space: TYPE
+index: composite  bit_calculation: true
+full_oid_template: .1.3.6.1.4.1.3902.1012.3.50.11.2.1.8.<suffixTYPE>.<onuID>
+syntax: INTEGER
+enumeration: ver onu_status_type_enum
+status: verified_walk
+note: estado operativo real del espacio TYPE (columna .8), derivado por correlacion
+      con RX. Reemplaza el onu_status .1082.500.10.2.3.8.1.4 (variante, ausente en walk).
+mib_name: UNRESOLVED
+
+==============================================================================
+# SECCIÓN B — SERIAL GPON COMPLETO (columna .3)   [status: verified_walk]
+==============================================================================
+# Hex-STRING de 8 bytes: 4 chars ASCII de vendor (= columna .1) + 4 bytes únicos.
+#   ej: 43 44 54 43 1D DB 9E B4  ->  "CDTC" + 1DDB9EB4  =  serial "CDTC1DDB9EB4"
+# El serial completo NO está en .1082 en este walk; esta es la columna real.
+
+[oid]
+attribute: onu_serial_number
+entity_ref: entity.zte.gpon.device.onu
+oid_prefix: .1.3.6.1.4.1.3902.1012.3.50.11.2.1.3
+base_space: TYPE
+index: composite  bit_calculation: true
+full_oid_template: .1.3.6.1.4.1.3902.1012.3.50.11.2.1.3.<suffixTYPE>.<onuID>
+syntax: Hex-STRING (4 bytes ASCII vendor + 4 bytes unicos = serial GPON completo)
+status: verified_walk
+note: serial GPON completo real. Reemplaza el onu_serial_number .1082.500.10.2.3.3.1.18
+      (variante, ausente en walk). Decodificar: ASCII(bytes 0-3) + HEX(bytes 4-7).
+mib_name: UNRESOLVED
+
+==============================================================================
+# SECCIÓN C — ENUM DE STATUS (espacio TYPE, derivado del walk)
+==============================================================================
+onu_status_type_enum:   # OID onu_status .1012.3.50.11.2.1.8
+  1: Online
+  2: Offline
+  65535: Unknown
+  default: Unknown
+==============================================================================

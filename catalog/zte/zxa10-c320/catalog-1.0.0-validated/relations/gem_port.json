@@ -1,0 +1,34 @@
+{
+  "entity_ref": "entity.zte.gpon.logical.gem_port",
+  "vendor": "ZTE",
+  "family": "ZXA10 C320",
+  "firmware": [
+    "2.0",
+    "2.1"
+  ],
+  "relations": [
+    {
+      "id": "rel.zte.gpon.gem_port.belongs_to.onu",
+      "type": "belongs_to",
+      "target": "entity.zte.gpon.device.onu",
+      "cardinality": "many_to_one",
+      "required": true,
+      "description": null,
+      "prerequisite": true,
+      "creation_order": 2,
+      "sources": [
+        {
+          "doc_type": "initial_configuration",
+          "pages": null,
+          "confidence": 0.2
+        }
+      ],
+      "confidence": {
+        "extraction": 0.51,
+        "correlation": 0.0,
+        "overall": 0.26
+      },
+      "status": "inferred"
+    }
+  ]
+}

@@ -1,0 +1,96 @@
+{
+  "project": "Telecom Knowledge Compiler (TKC)",
+  "version": "1.0.0",
+  "generated_at": "2026-06-26",
+  "description": "Framework de extracción de conocimiento desde documentación técnica de fabricantes de telecomunicaciones",
+
+  "first_target": {
+    "vendor": "ZTE",
+    "family": "ZXA10 C320",
+    "documents_available": ["mib.my", "product_catalog.pdf", "initial_configuration.pdf", "command_reference.pdf"]
+  },
+
+  "pipeline_flow": [
+    "Documento → Classifier → identifica vendor/family/firmware/doc_type",
+    "Classifier → Extractor → entidades, comandos, OIDs, relaciones, alarmas",
+    "Extractor → Normalizer → unifica aliases según ALIAS_POLICY",
+    "Normalizer → Correlator → cruza fuentes, calcula CONFIDENCE_MODEL",
+    "Correlator → Validator → detecta conflictos, calcula COMPLETENESS_SPEC",
+    "Validator → knowledge-dist/ → JSONs intermedios por artefacto",
+    "knowledge-dist/ → Loader → tkc_* tablas en MySQL",
+    "tkc_* → Knowledge Reader → Backend ISP"
+  ],
+
+  "specs": {
+    "classifier_spec": {
+      "file": "classifier_spec.json",
+      "purpose": "Identificación automática de documentos fuente"
+    },
+    "schema_entities": {
+      "file": "schema_entities.json",
+      "purpose": "JSON intermedio para entidades"
+    },
+    "schema_commands": {
+      "file": "schema_commands.json",
+      "purpose": "JSON intermedio para comandos CLI"
+    },
+    "schema_oids": {
+      "file": "schema_oids.json",
+      "purpose": "JSON intermedio para OIDs SNMP"
+    },
+    "schema_relations": {
+      "file": "schema_relations.json",
+      "purpose": "JSON intermedio para relaciones entre entidades"
+    },
+    "schema_alarms": {
+      "file": "schema_alarms.json",
+      "purpose": "JSON intermedio para alarmas por vendor"
+    },
+    "alias_policy": {
+      "file": "alias_policy.json",
+      "purpose": "Resolución y desambiguación de nombres alternativos"
+    },
+    "confidence_model": {
+      "file": "confidence_model.json",
+      "purpose": "Cálculo cuantitativo de confianza por artefacto"
+    },
+    "versioning_spec": {
+      "file": "versioning_spec.json",
+      "purpose": "Manejo de firmware, catálogos y ciclo de vida"
+    },
+    "delta_processing": {
+      "file": "delta_processing.json",
+      "purpose": "Procesamiento incremental y detección de cambios"
+    },
+    "query_spec": {
+      "file": "query_spec.json",
+      "purpose": "Consultas que el backend necesita resolver"
+    },
+    "completeness_spec": {
+      "file": "completeness_spec.json",
+      "purpose": "Criterios para considerar un catálogo completo"
+    },
+    "research_format": {
+      "file": "research_format.json",
+      "purpose": "Estructura para notas de investigación manual"
+    }
+  },
+
+  "schema_sql": {
+    "file": "../tkc_schema.sql",
+    "version": "v3",
+    "tables": 22,
+    "engine": "InnoDB",
+    "charset": "utf8mb4",
+    "requires": "MySQL 8.0+"
+  },
+
+  "architecture_decisions": {
+    "output_format": "MySQL — tablas tkc_* en misma BD del proyecto ISP. Futuro: BD dedicada.",
+    "classifier": "Automático — tres capas (filename, header, fingerprint)",
+    "immutability": "Catálogos publicados nunca se editan, siempre se recompilan",
+    "polimorphism": "tkc_results unifica conflicts/orphans/delta/variants con payload JSON",
+    "cyclic_fks": "commands↔oids rompen ciclo intencionalmente — Loader valida",
+    "puente_olts": "olts.tkc_family_id FK a tkc_families con ON DELETE SET NULL"
+  }
+}

@@ -1,0 +1,1323 @@
+ZTE-AN-VLAN-MIB DEFINITIONS ::= BEGIN
+
+IMPORTS
+    MODULE-IDENTITY     FROM SNMPv2-SMI
+    MODULE-COMPLIANCE   FROM SNMPv2-CONF
+    OBJECT-GROUP        FROM SNMPv2-CONF
+    OBJECT-TYPE         FROM SNMPv2-SMI
+    Integer32           FROM SNMPv2-SMI
+    RowStatus           FROM SNMPv2-TC
+    DisplayString       FROM SNMPv2-TC
+    TruthValue          FROM SNMPv2-TC
+    zxAnBridge          FROM ZTE-AN-SMI
+    VlanId              FROM ZTE-AN-TC-MIB
+    ifIndex             FROM IF-MIB
+    zxAnSubIfIndex      FROM ZTE-AN-IF-MIB
+    ZxAnSubIfIndex      FROM ZTE-AN-TC-MIB
+    ZxAnPortList        FROM ZTE-AN-TC-MIB;
+       
+       
+    zxAnVlanMib MODULE-IDENTITY
+        LAST-UPDATED    "1105240000Z"  -- May 24, 2011
+        ORGANIZATION    "ZTE Corporation"
+        CONTACT-INFO    "Wang Yuke     ZTE Corporation
+                        Mail: wang.yuke@zte.com.cn
+                        Tel : +86-21-68897487"
+        DESCRIPTION     "VLAN MIB definition."
+        REVISION        "1105240000Z"  -- May 24, 2011
+        DESCRIPTION     "Initial MIB creation."
+        ::= { zxAnBridge 50 }
+
+-------------------------------------------------------------------------------
+-- Following management objects are defined.
+-- 1. zxAnVlanGlobalObjects
+  -- 1.1 zxAnVlanNum
+  -- 1.2 zxAnVlanGlobalCtagTpid
+  -- 1.3 zxAnVlanGlobalTpid
+  -- 1.100 zxAnVlanCapabilities
+-- 2. zxAnVlanObjects
+  -- 2.1 zxAnVlanBaseObjects
+      -- 2.1.2  zxAnVlanTable
+      -- 2.1.4  zxAnVlanIfConfTable
+      -- 2.1.9  zxAnVlanIfConfVlanTable
+      -- 2.1.10 zxAnVlanExtPortListIITable
+  -- 2.3 zxAnVlanTransObjects
+      -- 2.3.5  zxAnVlanIfExtTransTable 
+  -- 2.6 zxAnVlanBasedForwardingObjects 
+      -- 2.6.3 zxAnVlanBasedFwdTable
+      -- 2.6.4 zxAnVlanBasedFwdConfTable
+  -- 2.9 zxAnVlanTpidObjects
+      -- 2.9.2  zxAnVlanTpidConfTable
+  -- 2.10 zxAnVlanForwardingCtrlObjects
+      -- 2.10.2  zxAnVlanForwardingCtrlTable
+  -- 2.11 zxAnVlanProtocolFilterObjects
+      -- 2.11.2  zxAnVlanProtocolFilterConfTable
+  -- 2.12 zxAnVlanTpidFilterObjects
+      -- 2.12.2  zxAnVlanTpidFilterConfTable
+      -- 2.12.3  zxAnVlanIfTpidFilterConfTable
+  -- 2.13 zxAnVlanModifyCosObjects
+      -- 2.13.2  zxAnVlanCopyCosToInnerTable
+      -- 2.13.3  zxAnVlanCopyCosToOuterTable
+
+-- Following conformance information is defined.
+-- 4. zxAnVlanConformance
+-------------------------------------------------------------------------------
+
+zxAnVlanGlobalObjects            OBJECT IDENTIFIER ::= { zxAnVlanMib 1 }
+zxAnVlanObjects                  OBJECT IDENTIFIER ::= { zxAnVlanMib 2 }
+zxAnVlanBaseObjects              OBJECT IDENTIFIER ::= { zxAnVlanObjects 1 }
+zxAnVlanTransObjects             OBJECT IDENTIFIER ::= { zxAnVlanObjects 3 }
+zxAnVlanBasedForwardingObjects   OBJECT IDENTIFIER ::= { zxAnVlanObjects 6 }
+zxAnVlanTpidObjects              OBJECT IDENTIFIER ::= { zxAnVlanObjects 9 }
+zxAnVlanForwardingCtrlObjects    OBJECT IDENTIFIER ::= { zxAnVlanObjects 10 }
+zxAnVlanProtocolFilterObjects    OBJECT IDENTIFIER ::= { zxAnVlanObjects 11 }
+zxAnVlanTpidFilterObjects        OBJECT IDENTIFIER ::= { zxAnVlanObjects 12 }
+zxAnVlanModifyCosObjects         OBJECT IDENTIFIER ::= { zxAnVlanObjects 13 }
+
+
+
+------------------------------------------------------------------------------
+--  1.1 zxAnVlanNum 
+------------------------------------------------------------------------------
+
+    zxAnVlanNum OBJECT-TYPE
+        SYNTAX      Integer32
+        MAX-ACCESS  read-only
+        STATUS      current
+        DESCRIPTION
+            "The current number of VLANs that are configured in this device."
+        ::= { zxAnVlanGlobalObjects 1}
+   
+--------------------------------------------------------------------------------
+--  1.2 zxAnVlanGlobalCtagTpid
+--------------------------------------------------------------------------------  
+
+    zxAnVlanGlobalCtagTpid     OBJECT-TYPE 
+        SYNTAX           DisplayString 
+        MAX-ACCESS       read-write
+        STATUS           current
+        DESCRIPTION      
+            "This object indicates global inner VLAN TPID, it only can be 
+             configured with value '0x8100'.
+             For C600 series, this object indicates up to four global inner
+             VLAN TPIDs, separated by commas, e.g., '0x8100', '0x8100,0x9100'."
+        DEFVAL  { "0x8100" }
+        ::=  {  zxAnVlanGlobalObjects  2  }
+       
+------------------------------------------------------------------------------
+--  1.3 zxAnVlanGlobalTpid
+------------------------------------------------------------------------------
+
+    zxAnVlanGlobalTpid     OBJECT-TYPE 
+        SYNTAX           DisplayString 
+        MAX-ACCESS       read-write
+        STATUS           current
+        DESCRIPTION      
+            "This object indicates up to four global outer VLAN TPIDs, 
+             separated by commas, e.g., '0x8100', '0x8100,0x9100'.
+             The default value is '0x8100,0x88a8' for C600 series."
+        DEFVAL  { "0x8100" }
+        ::=  {  zxAnVlanGlobalObjects  3  }
+        
+------------------------------------------------------------------------------
+-- 1.100 zxAnVlanCapabilities
+------------------------------------------------------------------------------
+        
+    zxAnVlanCapabilities OBJECT-TYPE
+        SYNTAX      BITS {
+            supportVlanExtPortListTable(0),
+            supportVlanBasedFwdWithSpecPorts(1),
+            supportVlanIfConfVlanTable(2),
+            supportVlanExtPortListIITable(3),
+            supportMvlanTransInNewMibFile(4),
+            notSupportAcceptableFrameTypes(5),
+            supportVlanIfExtTransTable(6),
+            supportDefaultVidNotConfigured(7),
+            supportCosInVlanIfExtTransTable(8)
+        }
+        MAX-ACCESS  read-only
+        STATUS      current
+        DESCRIPTION   
+            "The VLAN capabilities.
+            The bit value 1 means the function represented by this bit is 
+            supported by this equipment.
+            bit 0: value 1 means supporting zxAnVlanExtPortListTable 
+                   and not supporting zxAnVlanPortListTable.
+            bit 1: value 1 means changing zxAnVlanBasedFwdUplinkPort to
+                   zxAnVlanBasedFwdOtherIfIndex, supporting
+                   zxAnVlanBasedFwdOtherSubIfIndex and modifying MAX-ACCESS of
+                   zxAnVlanBasedFwdIfIndex and zxAnVlanBasedFwdSubIfIndex from
+                   read-only to read-create.
+            bit 2: value 1 means supporting zxAnVlanIfConfVlanTable and not 
+                   supporting zxAnVlanIfConfVlanCmdTable, 
+                   zxAnVlanIfConfUntaggedVlanList, zxAnVlanIfConfTaggedVlanList 
+                   in zxAnVlanIfConfTable.
+            bit 3: value 1 means supporting zxAnVlanExtPortListIITable and not 
+                   supporting zxAnVlanExtPortListTable, zxAnVlanPortListTable.
+            bit 4: value 1 means supporting zxAnMcastVlanGlobalTransTable, 
+                   zxAnMcastVlanIfTransTable in ZTE-AN-MULTICAST-BASE-MIB.mib,
+                   and not supporting zxAnMVlanGlobalTransTable, 
+                   zxAnMVlanIfTransTable in this file.
+            bit 5: value 1 means not supporting zxAnVlanIfAcceptableFrameTypes 
+                   in zxAnVlanIfConfTable.
+            bit 6: value 1 means supporting zxAnVlanIfExtTransTable and not 
+                   supporting zxAnVlanIfTransTable.
+            bit 7: value 1 means supporting zxAnVlanIfConfDefaultVid not
+                   configured.
+            bit 8: value 1 means supporting zxAnVlanIfExtTransCos and 
+                   zxAnVlanIfExtTransCtagCos in zxAnVlanIfExtTransTable.
+                   
+            NOTE: No recommended to display it in NMS." 
+        ::=  { zxAnVlanGlobalObjects  100 }
+                                 
+------------------------------------------------------------------------------
+--  2. zxAnVlanObjects
+------------------------------------------------------------------------------
+------------------------------------------------------------------------------
+--  2.1 zxAnVlanBaseObjects
+------------------------------------------------------------------------------
+------------------------------------------------------------------------------
+--  2.1.2. zxAnVlanTable
+------------------------------------------------------------------------------
+
+    zxAnVlanTable OBJECT-TYPE
+        SYNTAX      SEQUENCE OF ZxAnVlanEntry
+        MAX-ACCESS  not-accessible
+        STATUS      current
+        DESCRIPTION
+            "A table containing VLAN information for VLANs
+            configured into the bridge by (local or network)
+            management,  specifying the set of
+            ports to which frames received on a VLAN for this FDB
+            and containing a specific Group destination address are
+            allowed to be forwarded."
+        ::= { zxAnVlanBaseObjects 2 }
+    
+    zxAnVlanEntry OBJECT-TYPE
+        SYNTAX      ZxAnVlanEntry
+        MAX-ACCESS  not-accessible
+        STATUS      current
+        DESCRIPTION
+            "Filtering information configured into the bridge by
+            management, specifying the set of
+            ports to which frames received on a VLAN and containing
+            a specific Group destination address, are allowed to be
+            forwarded. It is forbidden to destroy zxAnVlanEntry 
+            whose zxAnVid exists in zxAnVlanVoipConfTable."
+        INDEX   { zxAnVid }
+        ::= { zxAnVlanTable 1 }
+    
+    ZxAnVlanEntry ::= SEQUENCE {
+        zxAnVid             VlanId,        
+        zxAnVlanName        DisplayString,
+        zxAnVlanDesc        DisplayString,
+        zxAnVlanRowStatus   RowStatus
+        }
+    
+    zxAnVid OBJECT-TYPE
+        SYNTAX      VlanId
+        MAX-ACCESS  not-accessible
+        STATUS      current
+        DESCRIPTION
+            "The VlanId to which
+            this entry's filtering information applies."
+        ::= { zxAnVlanEntry 1 }
+    
+    zxAnVlanName OBJECT-TYPE
+        SYNTAX      DisplayString (SIZE (0..32))
+        MAX-ACCESS  read-create
+        STATUS      current
+        DESCRIPTION
+            "DURABLE: { 'Default' }
+            An administratively assigned string, which may be used
+            to identify the VLAN."
+        REFERENCE
+            "IEEE 802.1Q/D11 Section 12.10.2.1"
+        ::= { zxAnVlanEntry 2 } 
+        
+    zxAnVlanDesc OBJECT-TYPE
+        SYNTAX      DisplayString (SIZE (0..64))
+        MAX-ACCESS  read-create
+        STATUS      current
+        DESCRIPTION
+            "The description of VLAN. "
+        DEFVAL  { "" }
+        ::= { zxAnVlanEntry 3 }
+           
+    zxAnVlanRowStatus OBJECT-TYPE
+        SYNTAX      RowStatus
+        MAX-ACCESS  read-create
+        STATUS      current
+        DESCRIPTION
+            "The status of this conceptual row.
+            The state of this conceptual row only support 
+            'not exist' and  'active'.
+            The action of this conceptual row only support
+            'createAndGo' and 'destroy'.
+            
+            To create a row in this table, a manager must
+            set this object to createAndGo(4).
+    
+            To delete a row in this table, a manager must
+            set this object to destroy(6). 
+             
+            To query this object, always return 1. "
+        ::= { zxAnVlanEntry 50 }
+
+-------------------------------------------------------------------------------
+-- 2.1.4 zxAnVlanIfConfTable
+-------------------------------------------------------------------------------
+
+    zxAnVlanIfConfTable OBJECT-TYPE
+        SYNTAX      SEQUENCE OF ZxAnVlanIfConfEntry
+        MAX-ACCESS  not-accessible
+        STATUS      current
+        DESCRIPTION
+            "A table containing VLAN Port information for VLANs
+            configured into the bridge by (local or network)
+            management,  specifying the set of
+            ports to which frames received on a VLAN for this FDB
+            and containing a specific Group destination address are
+            allowed to be forwarded."
+        ::= { zxAnVlanBaseObjects 4 }
+    
+    zxAnVlanIfConfEntry OBJECT-TYPE
+        SYNTAX      ZxAnVlanIfConfEntry
+        MAX-ACCESS  not-accessible
+        STATUS      current
+        DESCRIPTION
+            "Filtering information configured into the bridge by
+            management, specifying the set of
+            ports to which frames received on a VLAN and containing
+            a specific Group destination address, are allowed to be
+            forwarded.  "
+        INDEX   { ifIndex,zxAnSubIfIndex }
+        ::= { zxAnVlanIfConfTable 1 }
+    
+    ZxAnVlanIfConfEntry ::= SEQUENCE {
+        zxAnVlanIfConfMode                 INTEGER,
+        zxAnVlanIfConfTlsEnable            INTEGER,
+        zxAnVlanIfConfTlsSVid              Integer32,
+        zxAnVlanIfConfDefaultVid           Integer32,
+        zxAnVlanIfConfDefaultCVid          Integer32,
+        zxAnVlanIfConfUntaggedVlanList     DisplayString,
+        zxAnVlanIfConfTaggedVlanList       DisplayString,
+        zxAnVlanIfConfTpid                 Integer32,
+        zxAnVlanIfIngressFilterEnable      INTEGER,
+        zxAnVlanIfAcceptableFrameTypes     INTEGER,
+        zxAnVlanIfConfTpidEnable           INTEGER
+        }  
+        
+    zxAnVlanIfConfMode OBJECT-TYPE
+        SYNTAX   INTEGER {
+            access(1),
+            trunk(2),
+            hybrid(3)             
+        }
+        MAX-ACCESS  read-write
+        STATUS      current
+        DESCRIPTION
+            "The access mode of the port."
+        ::= { zxAnVlanIfConfEntry 1 }  
+        
+   zxAnVlanIfConfTlsEnable OBJECT-TYPE
+        SYNTAX   INTEGER {
+            enable(1),
+            disable(2)            
+        }
+        MAX-ACCESS  read-write
+        STATUS      current
+        DESCRIPTION
+            "The Transparent LAN Service enable or disable.
+             When port in access mode, TLS always disable."
+        DEFVAL  { disable }
+        ::= { zxAnVlanIfConfEntry 2 }
+
+    zxAnVlanIfConfTlsSVid OBJECT-TYPE
+        SYNTAX      Integer32 (0..4094)
+        MAX-ACCESS  read-write
+        STATUS      current
+        DESCRIPTION
+            "The TLS vlan id of the port.
+            Only TLS enable, TLS Vlan id can be configured."
+        DEFVAL  { 0 }    
+        ::= { zxAnVlanIfConfEntry 3 }
+    
+    zxAnVlanIfConfDefaultVid OBJECT-TYPE
+        SYNTAX      Integer32 (0..4094) 
+        MAX-ACCESS  read-write
+        STATUS      current
+        DESCRIPTION
+            "The default VLAN of the port.
+             '0' indicates not configured."
+        ::= { zxAnVlanIfConfEntry 4 }
+        
+    zxAnVlanIfConfDefaultCVid OBJECT-TYPE
+        SYNTAX      Integer32 (0..4094) 
+        MAX-ACCESS  read-write
+        STATUS      current
+        DESCRIPTION
+            "The default CVLAN of the port."
+        DEFVAL  { 0 }     
+        ::= { zxAnVlanIfConfEntry 5 }               
+    
+    zxAnVlanIfConfUntaggedVlanList OBJECT-TYPE
+        SYNTAX      DisplayString
+        MAX-ACCESS  read-only
+        STATUS      current
+        DESCRIPTION
+            "The Untagged vlan sequence to a Port."
+        ::= { zxAnVlanIfConfEntry 6 }
+    
+    zxAnVlanIfConfTaggedVlanList OBJECT-TYPE
+        SYNTAX     DisplayString
+        MAX-ACCESS  read-only
+        STATUS      current
+        DESCRIPTION
+            "The Tagged vlan sequence to a Port."
+        ::= { zxAnVlanIfConfEntry 7 }
+
+    zxAnVlanIfConfTpid  OBJECT-TYPE
+        SYNTAX      Integer32
+        MAX-ACCESS  read-write
+        STATUS      current
+        DESCRIPTION
+            "The outer VLAN TPID of this port."
+        DEFVAL     { 33024 }
+        ::={ zxAnVlanIfConfEntry 8 }
+        
+    zxAnVlanIfIngressFilterEnable OBJECT-TYPE
+        SYNTAX    INTEGER { 
+            enable  ( 1 ), 
+            disable ( 2 ) 
+        } 
+        MAX-ACCESS       read-write
+        STATUS           current
+        DESCRIPTION      
+            "When this is enable(1) the port will reject incoming frames for 
+            VLAN only if the port belongs to that vlan. When this is 
+            disable(2), the port will accept all incoming frames,regardless 
+            of the the port's vlan membership."
+        DEFVAL { enable }
+        ::=  { zxAnVlanIfConfEntry 9 }
+        
+    zxAnVlanIfAcceptableFrameTypes OBJECT-TYPE
+        SYNTAX      INTEGER {
+            admitAll(1),
+            admitOnlyVlanTagged(2),
+            admitOnlyVlanUntagged(3),
+            admitOnlyVlanSingleTagged(4),
+            admitOnlyVlanMaxDoubleTagged(5),
+            admitOnlyVlanMaxSingleTagged(6),
+            admitOnlyVlanDoubleTagged(7)
+        }
+        MAX-ACCESS  read-write
+        STATUS      current
+        DESCRIPTION
+            "When this is admitOnlyVlanTagged(2) the device will
+            discard untagged frames or Priority-Tagged frames
+            received on this port.  When admitAll(1), untagged
+            frames or Priority-Tagged frames received on this port
+            will be accepted and assigned to the DefaultVid for this port.
+            
+            When admitOnlyVlanUntagged(3), only untagged frames
+            or Priority-Tagged frames received on this port will be
+            accepted for this port.
+            
+            When admitOnlyVlanSingleTagged(4), only single tagged frames
+            received on this port will be accepted for this port.
+            
+            When admitOnlyVlanMaxDoubleTagged(5), the device will
+            accept untagged frames or Priority-tagged frames or single tagged
+            frames or double tagged frames received on this port.
+            
+            When admitOnlyVlanMaxSingleTagged(6), the device will
+            accept untagged frames or Priority-tagged frames or single tagged
+            frames received on this port.
+            
+            When admitOnlyVlanDoubleTagged(7), only double tagged frames
+            received on this port will be accepted for this port.
+        
+            This control does not affect VLAN independent BPDU
+            frames, such as GVRP and STP.  It does affect VLAN
+            dependent BPDU frames, such as GMRP."
+        REFERENCE
+            "IEEE 802.1Q/D11 Section 12.10.1.3"
+        DEFVAL      { admitAll }
+        ::= { zxAnVlanIfConfEntry 10 }
+        
+    zxAnVlanIfConfTpidEnable  OBJECT-TYPE
+        SYNTAX      INTEGER 
+        {
+            enabled(1),
+            disabled(2)
+        }
+        MAX-ACCESS  read-write
+        STATUS      current
+        DESCRIPTION
+            "Enable or disable zxAnVlanIfConfTpid.
+             
+             enabled(1)  -- Apply the out VLAN TPID with zxAnVlanIfConfTpid.
+             disabled(2) -- Apply the out VLAN TPID with zxAnVlanConfTpid in the 
+                            zxAnVlanConfTpidTable."
+        DEFVAL  { enabled }
+        ::= { zxAnVlanIfConfEntry 11 }
+
+-------------------------------------------------------------------------------
+-- 2.1.9  zxAnVlanIfConfVlanTable
+-------------------------------------------------------------------------------
+    zxAnVlanIfConfVlanTable OBJECT-TYPE
+        SYNTAX      SEQUENCE OF ZxAnVlanIfConfVlanEntry 
+        MAX-ACCESS  not-accessible
+        STATUS      current
+        DESCRIPTION
+            "VLAN configuration table.
+             This table is only used for getting VLAN information (network-side 
+             SVLAN of service port function) when operating on EPON/GPON ports.
+             This table is used for setting and getting VLAN information when 
+             operating on uplink ports.
+             This table is used for setting and getting VLAN information when 
+             operating on DSL ports."
+        ::= { zxAnVlanBaseObjects 9 }
+
+    zxAnVlanIfConfVlanEntry  OBJECT-TYPE
+        SYNTAX      ZxAnVlanIfConfVlanEntry 
+        MAX-ACCESS  not-accessible
+        STATUS      current
+        DESCRIPTION
+            "VLAN configuration entry."
+        INDEX  { ifIndex, zxAnSubIfIndex }
+        ::= { zxAnVlanIfConfVlanTable 1 }
+
+    ZxAnVlanIfConfVlanEntry  ::= SEQUENCE {
+        zxAnVlanIfConfVlanTagVlanList       OCTET STRING,
+        zxAnVlanIfConfVlanUntagVlanList     OCTET STRING
+        }
+       
+    zxAnVlanIfConfVlanTagVlanList OBJECT-TYPE
+        SYNTAX      OCTET STRING (SIZE(512))
+        MAX-ACCESS  read-write
+        STATUS      current
+        DESCRIPTION
+            "Tagged VLAN list in the port.
+             A bit value of 1 indicates the associated VLAN is in the port."
+        ::= { zxAnVlanIfConfVlanEntry 1 }
+        
+    zxAnVlanIfConfVlanUntagVlanList OBJECT-TYPE
+        SYNTAX      OCTET STRING (SIZE(512))
+        MAX-ACCESS  read-write
+        STATUS      current
+        DESCRIPTION
+            "Untagged VLAN list in the port.
+             A bit value of 1 indicates the associated VLAN is in the port."
+        ::= { zxAnVlanIfConfVlanEntry 2 }
+        
+-------------------------------------------------------------------------------
+-- 2.1.10 zxAnVlanExtPortListIITable
+-------------------------------------------------------------------------------
+    zxAnVlanExtPortListIITable OBJECT-TYPE
+        SYNTAX      SEQUENCE OF ZxAnVlanExtPortListIIEntry
+        MAX-ACCESS  not-accessible 
+        STATUS      current
+        DESCRIPTION
+            "Port list based on VLAN table."
+        ::= { zxAnVlanBaseObjects 10 }
+    
+    zxAnVlanExtPortListIIEntry OBJECT-TYPE
+        SYNTAX      ZxAnVlanExtPortListIIEntry
+        MAX-ACCESS  not-accessible
+        STATUS      current
+        DESCRIPTION
+            "Port list based on VLAN entry."
+        INDEX   { zxAnVid, 
+                  zxAnVlanExtPortListIIRack, 
+                  zxAnVlanExtPortListIIShelf,
+                  zxAnVlanExtPortListIISlot, 
+                  zxAnVlanExtPortListIIPort,
+                  zxAnVlanExtPortListIISegment }
+        ::= { zxAnVlanExtPortListIITable 1 }
+    
+    ZxAnVlanExtPortListIIEntry ::= SEQUENCE {
+        zxAnVlanExtPortListIIRack         Integer32,
+        zxAnVlanExtPortListIIShelf        Integer32,
+        zxAnVlanExtPortListIISlot         Integer32,
+        zxAnVlanExtPortListIIPort         Integer32,
+        zxAnVlanExtPortListIISegment      Integer32,
+        zxAnVlanExtPortUntagPortListII    ZxAnPortList,
+        zxAnVlanExtPortTagPortListII      ZxAnPortList
+        }
+        
+    zxAnVlanExtPortListIIRack OBJECT-TYPE
+        SYNTAX      Integer32 
+        MAX-ACCESS  not-accessible
+        STATUS      current
+        DESCRIPTION
+            "Rack index for port list on the VLAN."
+        ::= { zxAnVlanExtPortListIIEntry 1 }
+        
+    zxAnVlanExtPortListIIShelf OBJECT-TYPE
+        SYNTAX      Integer32 
+        MAX-ACCESS  not-accessible
+        STATUS      current
+        DESCRIPTION
+            "Shelf index for port list on the VLAN."
+        ::= { zxAnVlanExtPortListIIEntry 2 }
+        
+    zxAnVlanExtPortListIISlot OBJECT-TYPE
+        SYNTAX      Integer32 
+        MAX-ACCESS  not-accessible
+        STATUS      current
+        DESCRIPTION
+            "Slot index for port list on the VLAN."
+        ::= { zxAnVlanExtPortListIIEntry 3 }
+        
+    zxAnVlanExtPortListIIPort OBJECT-TYPE
+        SYNTAX      Integer32 
+        MAX-ACCESS  not-accessible
+        STATUS      current
+        DESCRIPTION
+            "Port index for port list on the VLAN.
+             Value 0 means non-PON port, other values means EPON/GPON port."
+        ::= { zxAnVlanExtPortListIIEntry 4 }
+    
+    zxAnVlanExtPortListIISegment OBJECT-TYPE
+        SYNTAX      Integer32(1..16)
+        MAX-ACCESS  not-accessible
+        STATUS      current
+        DESCRIPTION
+            "The segment of ONU that contains the port list.
+             The segment will range from 1 to 16 when the port is EPON/GPON 
+             port. 
+             The segment will be always 1 when the port is non-PON port."
+        ::= { zxAnVlanExtPortListIIEntry 5 }
+    
+    zxAnVlanExtPortUntagPortListII OBJECT-TYPE
+        SYNTAX      ZxAnPortList
+        MAX-ACCESS  read-only
+        STATUS      current
+        DESCRIPTION
+            "Untagged ports of the VLAN."
+        ::= { zxAnVlanExtPortListIIEntry 6 }
+    
+    zxAnVlanExtPortTagPortListII OBJECT-TYPE
+        SYNTAX      ZxAnPortList
+        MAX-ACCESS  read-only
+        STATUS      current
+        DESCRIPTION
+            "Tagged ports of the VLAN."
+        ::= { zxAnVlanExtPortListIIEntry 7 }
+        
+-------------------------------------------------------------------------------
+--  2.3 zxAnVlanTransObjects
+-------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
+-- 2.3.5  zxAnVlanIfExtTransTable
+-------------------------------------------------------------------------------
+    zxAnVlanIfExtTransTable OBJECT-TYPE
+        SYNTAX      SEQUENCE OF ZxAnVlanIfExtTransEntry
+        MAX-ACCESS  not-accessible
+        STATUS      current
+        DESCRIPTION
+            "VLAN translation extension table. 
+             This table is an extension of the table zxAnVlanIfTransTable.
+             This table includes VLAN translation information for single tagged 
+             packets, and double tagged packets."
+        ::= { zxAnVlanTransObjects 5 }
+    
+    zxAnVlanIfExtTransEntry OBJECT-TYPE
+        SYNTAX      ZxAnVlanIfExtTransEntry
+        MAX-ACCESS  not-accessible
+        STATUS      current
+        DESCRIPTION
+            "VLAN Translation extension entry."
+        INDEX   {
+            ifIndex, 
+            zxAnSubIfIndex,
+            zxAnVlanIfExtTransIngressVid,
+            zxAnVlanIfExtTransIngressCVid
+        }
+        ::= { zxAnVlanIfExtTransTable 1 }
+    
+    ZxAnVlanIfExtTransEntry ::= SEQUENCE {
+        zxAnVlanIfExtTransIngressVid   VlanId,
+        zxAnVlanIfExtTransIngressCVid  Integer32,
+        zxAnVlanIfExtTransVid          VlanId,
+        zxAnVlanIfExtTransCVid         Integer32,
+        zxAnVlanIfExtTransCos          Integer32,
+        zxAnVlanIfExtTransCtagCos      Integer32,
+        zxAnVlanIfExtTransRowStatus    RowStatus
+        }
+
+    zxAnVlanIfExtTransIngressVid OBJECT-TYPE
+        SYNTAX      VlanId 
+        MAX-ACCESS  not-accessible
+        STATUS      current
+        DESCRIPTION
+            "Ingress VID for VLAN translation."
+        ::= { zxAnVlanIfExtTransEntry 1 }
+    
+    zxAnVlanIfExtTransIngressCVid OBJECT-TYPE
+        SYNTAX      Integer32 (0..4094) 
+        MAX-ACCESS  not-accessible
+        STATUS      current
+        DESCRIPTION
+            "Ingress C-VID for VLAN translation.
+             '0' means the packet to be translated is single tagged packet."
+        ::= { zxAnVlanIfExtTransEntry 2 }
+            
+    zxAnVlanIfExtTransVid OBJECT-TYPE
+        SYNTAX      VlanId 
+        MAX-ACCESS  read-create
+        STATUS      current
+        DESCRIPTION
+            "VID after VLAN translation."
+        ::= { zxAnVlanIfExtTransEntry 3 }
+        
+    zxAnVlanIfExtTransCVid OBJECT-TYPE
+        SYNTAX      Integer32 (0..4094) 
+        MAX-ACCESS  read-create
+        STATUS      current
+        DESCRIPTION
+            "C-VID after VLAN translation.
+             '0' means the packet after VLAN translation is single tagged 
+             packet."
+        ::= { zxAnVlanIfExtTransEntry 4 }
+
+    zxAnVlanIfExtTransCos OBJECT-TYPE
+        SYNTAX      Integer32 (0..7|255) 
+        MAX-ACCESS  read-create
+        STATUS      current
+        DESCRIPTION
+            "VLAN CoS after VLAN translation.
+             Value '0xFF' indicates not configured."
+        DEFVAL  { 255 }
+        ::= { zxAnVlanIfExtTransEntry 5 }
+
+    zxAnVlanIfExtTransCtagCos OBJECT-TYPE
+        SYNTAX      Integer32 (0..7|255) 
+        MAX-ACCESS  read-create
+        STATUS      current
+        DESCRIPTION
+            "CVLAN CoS after VLAN translation.
+             Value '0xFF' indicates not configured."
+        DEFVAL  { 255 }
+        ::= { zxAnVlanIfExtTransEntry 6 }
+                   
+    zxAnVlanIfExtTransRowStatus OBJECT-TYPE
+        SYNTAX      RowStatus
+        MAX-ACCESS  read-create
+        STATUS      current
+        DESCRIPTION
+            "The status of this conceptual row.
+            
+             The supported actions of this conceptual row only include:
+             'createAndGo' and 'destroy'.
+
+             To create a row in this table, a manager must set this object to 
+             createAndGo(4), and must comply with the multi-variables binding 
+             rule described in zxAnExampleFunc1Xxx1Entry.
+    
+             To delete a row in this table, a manager must set this object to 
+             destroy(6). 
+             
+             To get this object, the agent always returns active(1)."
+        ::= { zxAnVlanIfExtTransEntry 50 }
+
+-------------------------------------------------------------------------------
+--  2.6 zxAnVlanBasedForwardingObjects
+-------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
+--  2.6.3 zxAnVlanBasedFwdTable
+-------------------------------------------------------------------------------
+
+    zxAnVlanBasedFwdTable OBJECT-TYPE
+        SYNTAX      SEQUENCE OF ZxAnVlanBasedFwdEntry
+        MAX-ACCESS  not-accessible
+        STATUS      current
+        DESCRIPTION
+            "This table includes VLAN based forward rule configuration." 
+        ::= { zxAnVlanBasedForwardingObjects 3 }
+    
+  
+    zxAnVlanBasedFwdEntry OBJECT-TYPE
+        SYNTAX      ZxAnVlanBasedFwdEntry
+        MAX-ACCESS  not-accessible
+        STATUS      current
+        DESCRIPTION
+            "An entry in zxAnVlanBasedFwdTable.
+            "
+        INDEX   { zxAnVlanBasedFwdSVid, zxAnVlanBasedFwdCVid }
+        ::= { zxAnVlanBasedFwdTable 1 }
+    
+    ZxAnVlanBasedFwdEntry ::= SEQUENCE {
+        zxAnVlanBasedFwdSVid             VlanId,
+        zxAnVlanBasedFwdCVid             Integer32,
+        zxAnVlanBasedFwdIfIndex          Integer32,
+        zxAnVlanBasedFwdSubIfIndex       ZxAnSubIfIndex,
+        zxAnVlanBasedFwdOtherIfIndex     Integer32,
+        zxAnVlanBasedFwdOtherSubIfIndex  ZxAnSubIfIndex,
+        zxAnVlanBasedFwdRowStatus        RowStatus
+    }
+        
+    zxAnVlanBasedFwdSVid OBJECT-TYPE
+        SYNTAX      VlanId 
+        MAX-ACCESS  not-accessible
+        STATUS      current
+        DESCRIPTION
+            "SVlan ,it shouled be included in the zxAnBasedFwdVlanTable"
+        ::= { zxAnVlanBasedFwdEntry 1 }
+        
+    zxAnVlanBasedFwdCVid OBJECT-TYPE
+        SYNTAX      Integer32 (0..4094)
+        MAX-ACCESS  not-accessible
+        STATUS      current
+        DESCRIPTION
+            "cvlan"
+        ::= { zxAnVlanBasedFwdEntry 2 }   
+        
+    zxAnVlanBasedFwdIfIndex OBJECT-TYPE
+        SYNTAX      Integer32 
+        MAX-ACCESS  read-create
+        STATUS      current
+        DESCRIPTION
+            "An index for port."
+        ::= { zxAnVlanBasedFwdEntry 3 }    
+        
+    zxAnVlanBasedFwdSubIfIndex OBJECT-TYPE
+        SYNTAX      ZxAnSubIfIndex 
+        MAX-ACCESS  read-create
+        STATUS      current
+        DESCRIPTION
+            "An index for port."
+        ::= { zxAnVlanBasedFwdEntry 4 }                
+        
+    zxAnVlanBasedFwdOtherIfIndex OBJECT-TYPE
+        SYNTAX      Integer32 
+        MAX-ACCESS  read-create
+        STATUS      current
+        DESCRIPTION
+            "An index of the other port."
+        ::= { zxAnVlanBasedFwdEntry 5 }
+
+    zxAnVlanBasedFwdOtherSubIfIndex OBJECT-TYPE
+        SYNTAX      ZxAnSubIfIndex 
+        MAX-ACCESS  read-create
+        STATUS      current
+        DESCRIPTION
+            "An index of the other port."
+        ::= { zxAnVlanBasedFwdEntry 6 }
+
+    zxAnVlanBasedFwdRowStatus OBJECT-TYPE
+        SYNTAX      RowStatus
+        MAX-ACCESS  read-create
+        STATUS      current
+        DESCRIPTION
+            "The status of this conceptual row.
+            The state of this conceptual row only support 
+            'not exist' and  'active'.
+            The action of this conceptual row only support
+            'createAndGo' and 'destroy'.
+            
+            To create a row in this table, a manager must
+            set this object to createAndGo(4), and must comply 
+            with the multi-variables usage rules in zxAnVlanBasedFwdEntry
+            description.
+    
+            To delete a row in this table, a manager must
+            set this object to destroy(6). 
+             
+            To query this object, always return 1. "
+        ::= { zxAnVlanBasedFwdEntry 50 } 
+
+-------------------------------------------------------------------------------
+-- 2.6.4 zxAnVlanBasedFwdConfTable
+-------------------------------------------------------------------------------
+
+    zxAnVlanBasedFwdConfTable OBJECT-TYPE
+        SYNTAX      SEQUENCE OF ZxAnVlanBasedFwdConfEntry
+        MAX-ACCESS  not-accessible
+        STATUS      current
+        DESCRIPTION
+            "This table includes VLAN based forward configuration information."
+        ::= { zxAnVlanBasedForwardingObjects 4 }
+
+    zxAnVlanBasedFwdConfEntry OBJECT-TYPE
+        SYNTAX      ZxAnVlanBasedFwdConfEntry
+        MAX-ACCESS  not-accessible
+        STATUS      current
+        DESCRIPTION
+            "An entry in zxAnVlanBasedFwdConfTable."
+        INDEX   { zxAnVid }
+        ::= { zxAnVlanBasedFwdConfTable 1 }
+
+    ZxAnVlanBasedFwdConfEntry ::= SEQUENCE {
+           zxAnVlanBasedFwdConfMode           INTEGER
+    }
+
+    zxAnVlanBasedFwdConfMode OBJECT-TYPE
+        SYNTAX      INTEGER {
+            vlan1To1(1),
+            vlanAndMac(2)
+        }
+        MAX-ACCESS  read-write
+        STATUS      current
+        DESCRIPTION
+            "VLAN based forwarding mode.
+             vlan1To1(1) - Forwarding the packets with the S-VID configured in
+                           the zxAnVlanBasedFwdTable. When user-side interface
+                           in the zxAnVlanBasedFwdTable is deleted, the packet
+                           with the S-VID will be discarded.
+             vlanAndMac(2) - Forwarding the packets with VLAN ID and MAC
+                             address."
+        DEFVAL  { vlanAndMac }
+        ::= { zxAnVlanBasedFwdConfEntry 1 }
+
+-------------------------------------------------------------------------------
+-- 2.9 zxAnVlanTpidObjects
+-------------------------------------------------------------------------------
+        
+-------------------------------------------------------------------------------
+-- 2.9.2  zxAnVlanTpidConfTable
+-------------------------------------------------------------------------------
+
+    zxAnVlanTpidConfTable OBJECT-TYPE
+        SYNTAX      SEQUENCE OF ZxAnVlanTpidConfEntry
+        MAX-ACCESS  not-accessible
+        STATUS      current
+        DESCRIPTION
+            "A table containing VLAN TPID information."
+        ::= { zxAnVlanTpidObjects 2 }
+
+    zxAnVlanTpidConfEntry OBJECT-TYPE
+        SYNTAX      ZxAnVlanTpidConfEntry
+        MAX-ACCESS  not-accessible
+        STATUS      current
+        DESCRIPTION
+            "Entry for zxAnVlanTpidConfTable.
+            
+            The multi-variables binding rule should be complied with when a 
+            manager creates a VLAN TPID. According to this rule, all the 
+            related mib variables must be included in one SNMP set operation.
+            "
+        INDEX   { zxAnVid }
+        ::= { zxAnVlanTpidConfTable 1 }
+
+    ZxAnVlanTpidConfEntry ::= SEQUENCE {
+            zxAnVlanTpidConfTpid       Integer32,
+            zxAnVlanTpidConfRowStatus  RowStatus
+        }
+    
+    zxAnVlanTpidConfTpid  OBJECT-TYPE
+        SYNTAX      Integer32
+        MAX-ACCESS  read-create
+        STATUS      current
+        DESCRIPTION
+            "This object indicates the outer VLAN TPID of this VLAN.
+             Value define uses hex."
+        DEFVAL  { 33024 }
+        ::= { zxAnVlanTpidConfEntry 1 }
+
+    zxAnVlanTpidConfRowStatus OBJECT-TYPE
+        SYNTAX      RowStatus
+        MAX-ACCESS  read-create
+        STATUS      current
+        DESCRIPTION
+            "The status of this conceptual row.
+            
+             The supported actions of this conceptual row only include:
+             'createAndGo' and 'destroy'.
+
+             To create a row in this table, a manager must set this object to 
+             createAndGo(4), and must comply with the multi-variables binding 
+             rule described in zxAnVlanTpidConfEntry.
+    
+             To delete a row in this table, a manager must set this object to 
+             destroy(6). 
+             
+             To get this object, the agent always returns 1. "
+        ::= { zxAnVlanTpidConfEntry 50 }
+
+-------------------------------------------------------------------------------
+-- 2.10 zxAnVlanForwardingCtrlObjects
+-------------------------------------------------------------------------------
+        
+-------------------------------------------------------------------------------
+-- 2.10.2  zxAnVlanForwardingCtrlTable
+-------------------------------------------------------------------------------
+
+
+    zxAnVlanForwardingCtrlTable OBJECT-TYPE
+        SYNTAX      SEQUENCE OF ZxAnVlanForwardingCtrlEntry
+        MAX-ACCESS  not-accessible
+        STATUS      current
+        DESCRIPTION
+            "A table containing VLAN forwarding control information."
+        ::= { zxAnVlanForwardingCtrlObjects 2 }
+
+    zxAnVlanForwardingCtrlEntry OBJECT-TYPE
+        SYNTAX      ZxAnVlanForwardingCtrlEntry
+        MAX-ACCESS  not-accessible
+        STATUS      current
+        DESCRIPTION
+            "Entry for zxAnVlanForwardingCtrlTable."
+        INDEX   { zxAnVid }
+        ::= { zxAnVlanForwardingCtrlTable 1 }
+
+    ZxAnVlanForwardingCtrlEntry ::= SEQUENCE {
+            zxAnVlanMcastForwardingCtrl        INTEGER
+        }
+    
+    zxAnVlanMcastForwardingCtrl OBJECT-TYPE
+        SYNTAX        INTEGER {
+            floodUnknown(1),
+            dropUnknown(2),
+            floodAll(3)
+        }
+        MAX-ACCESS  read-write
+        STATUS      current
+        DESCRIPTION
+            "The multicast packet forwarding control."
+        DEFVAL  { floodUnknown }
+        ::= { zxAnVlanForwardingCtrlEntry 1 }
+
+-------------------------------------------------------------------------------
+-- 2.11 zxAnVlanProtocolFilterObjects
+-------------------------------------------------------------------------------
+    zxAnVlanProtocolFilterConfTable OBJECT-TYPE
+        SYNTAX      SEQUENCE OF ZxAnVlanProtocolFilterConfEntry
+        MAX-ACCESS  not-accessible
+        STATUS      current
+        DESCRIPTION
+            "A table containing VLAN protocol filter information."
+        ::= { zxAnVlanProtocolFilterObjects 2 }
+
+    zxAnVlanProtocolFilterConfEntry OBJECT-TYPE
+        SYNTAX      ZxAnVlanProtocolFilterConfEntry
+        MAX-ACCESS  not-accessible
+        STATUS      current
+        DESCRIPTION
+            "Entry for zxAnVlanProtocolFilterConfTable."
+        INDEX   { zxAnVid }
+        ::= { zxAnVlanProtocolFilterConfTable 1 }
+
+    ZxAnVlanProtocolFilterConfEntry ::= SEQUENCE {
+        zxAnVlanProtoFilterConfEthType      INTEGER,
+        zxAnVlanProtoFilterConfRowStatus    RowStatus
+        }
+
+    zxAnVlanProtoFilterConfEthType OBJECT-TYPE
+        SYNTAX      INTEGER {
+            pppoe(1),
+            ipoe(2)
+        }
+        MAX-ACCESS  read-create
+        STATUS      current
+        DESCRIPTION
+            "EtherType.
+            pppoe(1) - EtherType is PPPoE.
+            ipoe(2)  - EtherType is IPoE."
+        DEFVAL  { pppoe }
+        ::={  zxAnVlanProtocolFilterConfEntry 1 }
+
+    zxAnVlanProtoFilterConfRowStatus  OBJECT-TYPE
+        SYNTAX      RowStatus
+        MAX-ACCESS  read-create
+        STATUS      current
+        DESCRIPTION
+            "The status of this conceptual row.
+
+             The supported actions of this conceptual row only include:
+             'createAndGo' and 'destroy'.
+
+             To create a row in this table, a manager must set this object to
+             createAndGo(4), and must comply with the multi-variables binding
+             rule described in zxAnVlanProtocolFilterConfEntry.
+
+             To delete a row in this table, a manager must set this object to
+             destroy(6).
+
+             To get this object, the agent always returns 1."
+        ::={ zxAnVlanProtocolFilterConfEntry 50 }
+
+-------------------------------------------------------------------------------
+-- 2.12 zxAnVlanTpidFilterObjects
+-------------------------------------------------------------------------------
+
+-------------------------------------------------------------------------------
+-- 2.12.2  zxAnVlanTpidFilterConfTable
+-------------------------------------------------------------------------------
+    
+    zxAnVlanTpidFilterConfTable OBJECT-TYPE
+        SYNTAX      SEQUENCE OF ZxAnVlanTpidFilterConfEntry
+        MAX-ACCESS  not-accessible
+        STATUS      current
+        DESCRIPTION
+            "A table containing TPIDs to filter the packets.
+             Packets will be discarded when the TPID is mismatched."
+        ::= { zxAnVlanTpidFilterObjects 2 }
+    
+    zxAnVlanTpidFilterConfEntry OBJECT-TYPE
+        SYNTAX      ZxAnVlanTpidFilterConfEntry
+        MAX-ACCESS  not-accessible
+        STATUS      current
+        DESCRIPTION
+            "A zxAnVlanTpidFilterConfTable entry.
+             
+             When the S-tag TPID filtering is configured in the
+             zxAnVlanIfTpidFilterConfTable, the interface will filter the
+             packets with zxAnVlanIfTpidFilterStagTpid.
+             
+             When the S-tag TPID filtering is not configured in the
+             zxAnVlanIfTpidFilterConfTable, the interface will filter the
+             packets with zxAnVlanTpidFilterConfStagTpid.
+             
+             When the S-tag TPID filtering is not configured in the
+             zxAnVlanIfTpidFilterConfTable and zxAnVlanTpidFilterConfTable, it
+             means the S-tag TPID filtering is disabled."
+        INDEX   { zxAnVlanTpidFilterConfIfType }
+        ::= { zxAnVlanTpidFilterConfTable 1 }
+    
+    ZxAnVlanTpidFilterConfEntry ::= SEQUENCE {
+        zxAnVlanTpidFilterConfIfType          INTEGER,
+        zxAnVlanTpidFilterConfStagTpid        DisplayString,
+        zxAnVlanTpidFilterConfRowStatus       RowStatus
+    }  
+  
+    zxAnVlanTpidFilterConfIfType  OBJECT-TYPE
+        SYNTAX         INTEGER {
+            pon(1),
+            uplink(2),
+            ptp(3)
+        }
+        MAX-ACCESS     not-accessible
+        STATUS         current
+        DESCRIPTION
+            "Interface type."
+        ::= { zxAnVlanTpidFilterConfEntry 1 }
+          
+    zxAnVlanTpidFilterConfStagTpid  OBJECT-TYPE
+        SYNTAX      DisplayString 
+        MAX-ACCESS  read-create
+        STATUS      current
+        DESCRIPTION      
+            "Outer VLAN TPIDs.
+             This object indicates up to four outer VLAN TPIDs of the interface, 
+             separated by commas, e.g., '0x8100', '0x8100,0x9100'."
+        ::= { zxAnVlanTpidFilterConfEntry 2 }  
+
+    zxAnVlanTpidFilterConfRowStatus  OBJECT-TYPE
+        SYNTAX      RowStatus
+        MAX-ACCESS  read-create
+        STATUS      current
+        DESCRIPTION
+            "The status of this conceptual row.
+ 
+             The supported actions of this conceptual row only include:
+             'createAndGo' and 'destroy'.
+ 
+             To create a row in this table, a manager must set this object to
+             createAndGo(4), and must comply with the multi-variables binding
+             rule described in zxAnVlanTpidFilterConfEntry.
+ 
+             To delete a row in this table, a manager must set this object to
+             destroy(6).
+ 
+             To get this object, the agent always returns 1."
+        ::={ zxAnVlanTpidFilterConfEntry 50 }
+
+-------------------------------------------------------------------------------
+-- 2.12.3  zxAnVlanIfTpidFilterConfTable
+-------------------------------------------------------------------------------
+
+    zxAnVlanIfTpidFilterConfTable OBJECT-TYPE
+        SYNTAX      SEQUENCE OF ZxAnVlanIfTpidFilterConfEntry
+        MAX-ACCESS  not-accessible
+        STATUS      current
+        DESCRIPTION
+            "A table containing TPIDs of the interface to filter the packets.
+             Packets will be discarded when the TPID is mismatched."
+        ::= { zxAnVlanTpidFilterObjects 3 }
+
+    zxAnVlanIfTpidFilterConfEntry OBJECT-TYPE
+        SYNTAX      ZxAnVlanIfTpidFilterConfEntry
+        MAX-ACCESS  not-accessible
+        STATUS      current
+        DESCRIPTION
+            "A zxAnVlanIfTpidFilterConfTable entry."
+        INDEX   { ifIndex, zxAnSubIfIndex }
+        ::= { zxAnVlanIfTpidFilterConfTable 1 }
+
+    ZxAnVlanIfTpidFilterConfEntry ::= SEQUENCE {
+        zxAnVlanIfTpidFilterStagTpid        DisplayString,
+        zxAnVlanIfTpidFilterRowStatus       RowStatus
+    }
+
+    zxAnVlanIfTpidFilterStagTpid  OBJECT-TYPE
+        SYNTAX      DisplayString
+        MAX-ACCESS  read-create
+        STATUS      current
+        DESCRIPTION
+            "Outer VLAN TPIDs.
+             This object indicates up to four outer VLAN TPIDs of the interface,
+             separated by commas, e.g., '0x8100', '0x8100,0x9100'."
+        ::= { zxAnVlanIfTpidFilterConfEntry 1 }
+
+    zxAnVlanIfTpidFilterRowStatus  OBJECT-TYPE
+        SYNTAX      RowStatus
+        MAX-ACCESS  read-create
+        STATUS      current
+        DESCRIPTION
+            "The status of this conceptual row.
+
+             The supported actions of this conceptual row only include:
+             'createAndGo' and 'destroy'.
+
+             To create a row in this table, a manager must set this object to
+             createAndGo(4), and must comply with the multi-variables binding
+             rule described in zxAnVlanIfTpidFilterConfEntry.
+
+             To delete a row in this table, a manager must set this object to
+             destroy(6).
+
+             To get this object, the agent always returns 1."
+        ::={ zxAnVlanIfTpidFilterConfEntry 50 }
+
+-------------------------------------------------------------------------------
+-- 2.13 zxAnVlanModifyCosObjects
+-------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
+-- 2.13.2 zxAnVlanCopyCosToInnerTable
+-------------------------------------------------------------------------------
+    zxAnVlanCopyCosToInnerTable OBJECT-TYPE
+        SYNTAX      SEQUENCE OF ZxAnVlanCopyCosToInnerEntry
+        MAX-ACCESS  not-accessible
+        STATUS      current
+        DESCRIPTION
+            "A table containing modifying inner CoS information."
+        ::= { zxAnVlanModifyCosObjects 2 }
+
+    zxAnVlanCopyCosToInnerEntry OBJECT-TYPE
+        SYNTAX      ZxAnVlanCopyCosToInnerEntry
+        MAX-ACCESS  not-accessible
+        STATUS      current
+        DESCRIPTION
+            "Entry for zxAnVlanCopyCosToInnerTable."
+        INDEX   { zxAnVid }
+        ::= { zxAnVlanCopyCosToInnerTable 1 }
+
+    ZxAnVlanCopyCosToInnerEntry ::= SEQUENCE {
+        zxAnVlanCopyCosToInnerDirection    INTEGER,
+        zxAnVlanCopyCosToInnerMode         INTEGER,
+        zxAnVlanCopyCosToInnerRowStatus    RowStatus
+        }
+
+    zxAnVlanCopyCosToInnerDirection OBJECT-TYPE
+        SYNTAX      INTEGER {
+            ingress(1)
+        }
+        MAX-ACCESS  read-create
+        STATUS      current
+        DESCRIPTION
+            "Direction."
+        DEFVAL  { ingress }
+        ::={  zxAnVlanCopyCosToInnerEntry 1 }
+
+    zxAnVlanCopyCosToInnerMode OBJECT-TYPE
+        SYNTAX      INTEGER {
+            networkSide(1)
+        }
+        MAX-ACCESS  read-create
+        STATUS      current
+        DESCRIPTION
+            "networkSide(1) - The rule is used in network side."
+        DEFVAL  { networkSide }
+        ::={  zxAnVlanCopyCosToInnerEntry 2 }
+
+    zxAnVlanCopyCosToInnerRowStatus  OBJECT-TYPE
+        SYNTAX      RowStatus
+        MAX-ACCESS  read-create
+        STATUS      current
+        DESCRIPTION
+            "The status of this conceptual row.
+
+             The supported actions of this conceptual row only include:
+             'createAndGo' and 'destroy'.
+
+             To create a row in this table, a manager must set this object to
+             createAndGo(4), and must comply with the multi-variables binding
+             rule described in zxAnVlanCopyCosToInnerEntry.
+
+             To delete a row in this table, a manager must set this object to
+             destroy(6).
+
+             To get this object, the agent always returns 1."
+        ::={ zxAnVlanCopyCosToInnerEntry 50 }
+
+-------------------------------------------------------------------------------
+-- 2.13.3 zxAnVlanCopyCosToOuterTable
+-------------------------------------------------------------------------------
+    zxAnVlanCopyCosToOuterTable OBJECT-TYPE
+        SYNTAX      SEQUENCE OF ZxAnVlanCopyCosToOuterEntry
+        MAX-ACCESS  not-accessible
+        STATUS      current
+        DESCRIPTION
+            "A table containing modifying outer CoS information."
+        ::= { zxAnVlanModifyCosObjects 3 }
+
+    zxAnVlanCopyCosToOuterEntry OBJECT-TYPE
+        SYNTAX      ZxAnVlanCopyCosToOuterEntry
+        MAX-ACCESS  not-accessible
+        STATUS      current
+        DESCRIPTION
+            "Entry for zxAnVlanCopyCosToOuterTable."
+        INDEX   { zxAnVid }
+        ::= { zxAnVlanCopyCosToOuterTable 1 }
+
+    ZxAnVlanCopyCosToOuterEntry ::= SEQUENCE {
+        zxAnVlanCopyCosToOuterDirection    INTEGER,
+        zxAnVlanCopyCosToOuterMode         INTEGER,
+        zxAnVlanCopyCosToOuterRowStatus    RowStatus
+        }
+
+    zxAnVlanCopyCosToOuterDirection OBJECT-TYPE
+        SYNTAX      INTEGER {
+            ingress(1)
+        }
+        MAX-ACCESS  read-create
+        STATUS      current
+        DESCRIPTION
+            "Direction."
+        DEFVAL  { ingress }
+        ::={  zxAnVlanCopyCosToOuterEntry 1 }
+
+    zxAnVlanCopyCosToOuterMode OBJECT-TYPE
+        SYNTAX      INTEGER {
+            networkSide(1)
+        }
+        MAX-ACCESS  read-create
+        STATUS      current
+        DESCRIPTION
+            "networkSide(1) - The rule is used in network side."
+        DEFVAL  { networkSide }
+        ::={  zxAnVlanCopyCosToOuterEntry 2 }
+
+    zxAnVlanCopyCosToOuterRowStatus  OBJECT-TYPE
+        SYNTAX      RowStatus
+        MAX-ACCESS  read-create
+        STATUS      current
+        DESCRIPTION
+            "The status of this conceptual row.
+
+             The supported actions of this conceptual row only include:
+             'createAndGo' and 'destroy'.
+
+             To create a row in this table, a manager must set this object to
+             createAndGo(4), and must comply with the multi-variables binding
+             rule described in zxAnVlanCopyCosToInnerEntry.
+
+             To delete a row in this table, a manager must set this object to
+             destroy(6).
+
+             To get this object, the agent always returns 1."
+        ::={ zxAnVlanCopyCosToOuterEntry 50 }        
+END

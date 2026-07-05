@@ -1,0 +1,1166 @@
+ZTE-AN-OPTICAL-MODULE-PERF-MIB DEFINITIONS ::= BEGIN
+
+    IMPORTS
+        MODULE-IDENTITY,
+        Gauge32, Integer32                      FROM SNMPv2-SMI
+        TruthValue, DateAndTime                 FROM SNMPv2-TC
+        ifIndex                                 FROM IF-MIB
+        OBJECT-GROUP, MODULE-COMPLIANCE         FROM SNMPv2-CONF
+        HCPerfTimeElapsed                       FROM HC-PerfHist-TC-MIB
+        zxAnInterface                           FROM ZTE-AN-SMI;
+
+    zxAnOpticalModulePerfMib MODULE-IDENTITY
+        LAST-UPDATED  "201706211000Z"
+        ORGANIZATION  "ZTE Corporation"
+        CONTACT-INFO  "Guo Hejun ZTE Corporation
+                       Mail: guo.hejun@zte.com.cn
+                       Tel: +86-021-68895679"
+        DESCRIPTION   "The MIB module for the management of the optical module 
+                       performance."
+      
+        REVISION      "201706211000Z"
+        DESCRIPTION
+            "Support optical module minutes performance table."
+      
+        REVISION      "201509021000Z"
+        DESCRIPTION
+            "Support optical module performance table."
+        REVISION      "201509021000Z"
+        DESCRIPTION
+            "Initial version of this MIB module."
+        ::= { zxAnInterface 45 }
+
+--------------------------------------------------------------------------------
+-- Following management objects are defined.
+-- 1. Optical Module Performance Objects
+
+-- 1.2 Optical Module Current 15 Minutes Performance Table
+-- 1.3 Optical Module Current 1 Day Performance Table
+-- 1.4 Optical Module History 15 Minutes Performance Table
+-- 1.5 Optical Module History 1 Day Performance Table
+-- 1.6 Optical Module Current Minutes Performance Table
+-- 1.7 Optical Module History Minutes Performance Table
+
+-- 1.8 Optical Module Channel Current 15 Minutes Performance Table
+-- 1.9 Optical Module Channel Current 1 Day Performance Table
+-- 1.10 Optical Module Channel History 15 Minutes Performance Table
+-- 1.11 Optical Module Channel History 1 Day Performance Table
+
+-- 1.12 Optical Module Channel Current Minutes Performance Table
+-- 1.13 Optical Module Channel History Minutes Performance Table
+
+-- Following conformance information is defined.
+-- 2. zxAnOpticalPerfConformances
+--------------------------------------------------------------------------------
+
+    zxAnOpticalModulePerfObjects      OBJECT IDENTIFIER 
+                                        ::= { zxAnOpticalModulePerfMib 2 }
+    zxAnOpticalPerfConformances       OBJECT IDENTIFIER 
+                                        ::= { zxAnOpticalModulePerfMib 4 }
+
+--------------------------------------------------------------------------------
+-- 1. Optical Module Performance Objects
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+-- 1.2 Optical Module Current 15 Minutes Performance Table
+--------------------------------------------------------------------------------
+    zxAnOpticalCurr15MinPerfTable  OBJECT-TYPE
+        SYNTAX      SEQUENCE OF ZxAnOpticalCurr15MinPerfEntry
+        MAX-ACCESS  not-accessible
+        STATUS      current
+        DESCRIPTION
+            "The 15-minute interval performance data table of the optical 
+             module."
+        ::= { zxAnOpticalModulePerfObjects 3 }
+
+    zxAnOpticalCurr15MinPerfEntry  OBJECT-TYPE
+        SYNTAX      ZxAnOpticalCurr15MinPerfEntry
+        MAX-ACCESS  not-accessible
+        STATUS      current
+        DESCRIPTION
+            "An entry of zxAnOpticalCurr15MinPerfTable."
+        INDEX  { ifIndex }
+        ::= { zxAnOpticalCurr15MinPerfTable 1 }
+
+    ZxAnOpticalCurr15MinPerfEntry ::= SEQUENCE {
+        zxAnOpticalC15MTimeElapsed   HCPerfTimeElapsed,
+        zxAnOpticalC15MTxPower       Integer32,
+        zxAnOpticalC15MRxPower       Integer32,
+        zxAnOpticalC15MBiasCurrent   Integer32,
+        zxAnOpticalC15MSupplyVoltage Integer32,
+        zxAnOpticalC15MTemperature   Integer32
+        }
+        
+    zxAnOpticalC15MTimeElapsed  OBJECT-TYPE 
+        SYNTAX      HCPerfTimeElapsed
+        UNITS       "Seconds"
+        MAX-ACCESS  read-only
+        STATUS      current
+        DESCRIPTION     
+            "The number of seconds that have elapsed since the beginning of the 
+             current 15-minute interval."
+        ::= { zxAnOpticalCurr15MinPerfEntry 1 }
+    
+    zxAnOpticalC15MTxPower  OBJECT-TYPE 
+        SYNTAX      Integer32
+        UNITS       "0.001dBm"
+        MAX-ACCESS  read-only
+        STATUS      current
+        DESCRIPTION     
+            "The optical module transmitted power value in current 15-minute 
+             interval." 
+        ::= { zxAnOpticalCurr15MinPerfEntry 2 }
+  
+    zxAnOpticalC15MRxPower  OBJECT-TYPE 
+        SYNTAX      Integer32
+        UNITS       "0.001dBm"
+        MAX-ACCESS  read-only
+        STATUS      current
+        DESCRIPTION 
+            "The optical module received power value in current 15-minute 
+             interval." 
+        ::= { zxAnOpticalCurr15MinPerfEntry 3 }
+
+    zxAnOpticalC15MBiasCurrent  OBJECT-TYPE 
+        SYNTAX      Integer32
+        UNITS       "0.001mA"
+        MAX-ACCESS  read-only
+        STATUS      current
+        DESCRIPTION 
+            "The optical module bias current value in current 15-minute 
+             interval." 
+        ::= { zxAnOpticalCurr15MinPerfEntry 4 }
+
+    zxAnOpticalC15MSupplyVoltage  OBJECT-TYPE 
+        SYNTAX      Integer32
+        UNITS       "0.001Volts"
+        MAX-ACCESS  read-only
+        STATUS      current
+        DESCRIPTION
+            "The optical module supply voltage value in current 15-minute 
+             interval." 
+        ::= { zxAnOpticalCurr15MinPerfEntry 5 }
+
+    zxAnOpticalC15MTemperature  OBJECT-TYPE 
+        SYNTAX      Integer32
+        UNITS       "0.001Centigrade"
+        MAX-ACCESS  read-only
+        STATUS      current
+        DESCRIPTION 
+            "The optical mudule temperature value in current 15-minute 
+             interval." 
+        ::= { zxAnOpticalCurr15MinPerfEntry 6 }
+
+--------------------------------------------------------------------------------
+-- 1.3 Optical Module Current 1 Day Performance Table
+--------------------------------------------------------------------------------
+    zxAnOpticalCurr1DayPerfTable  OBJECT-TYPE
+        SYNTAX      SEQUENCE OF ZxAnOpticalCurr1DayPerfEntry
+        MAX-ACCESS  not-accessible
+        STATUS      current
+        DESCRIPTION
+            "The 1-day interval performance data table of the optical mudule."
+        ::= { zxAnOpticalModulePerfObjects 4 }
+
+    zxAnOpticalCurr1DayPerfEntry  OBJECT-TYPE
+        SYNTAX      ZxAnOpticalCurr1DayPerfEntry
+        MAX-ACCESS  not-accessible
+        STATUS      current
+        DESCRIPTION
+            "An entry of zxAnOptModuleCurr1DayPerfTable."
+        INDEX  { ifIndex }
+        ::= { zxAnOpticalCurr1DayPerfTable 1 }
+
+    ZxAnOpticalCurr1DayPerfEntry ::= SEQUENCE {
+        zxAnOpticalC1DTimeElapsed    HCPerfTimeElapsed,
+        zxAnOpticalC1DTxPower        Integer32,
+        zxAnOpticalC1DRxPower        Integer32,
+        zxAnOpticalC1DBiasCurrent    Integer32,
+        zxAnOpticalC1DSupplyVoltage  Integer32,
+        zxAnOpticalC1DTemperature    Integer32
+        }
+
+    zxAnOpticalC1DTimeElapsed  OBJECT-TYPE 
+        SYNTAX      HCPerfTimeElapsed
+        UNITS       "Seconds"
+        MAX-ACCESS  read-only
+        STATUS      current
+        DESCRIPTION
+            "The number of seconds that have elapsed since the beginning of the 
+             current 1-day interval."
+        ::= { zxAnOpticalCurr1DayPerfEntry 1 }
+    
+    zxAnOpticalC1DTxPower  OBJECT-TYPE 
+        SYNTAX      Integer32
+        UNITS       "0.001dBm"
+        MAX-ACCESS  read-only
+        STATUS      current
+        DESCRIPTION
+            "The optical module transmitted power value in current 1-day 
+             interval." 
+        ::= { zxAnOpticalCurr1DayPerfEntry 2 }
+  
+    zxAnOpticalC1DRxPower  OBJECT-TYPE 
+        SYNTAX      Integer32
+        UNITS       "0.001dBm"
+        MAX-ACCESS  read-only
+        STATUS      current
+        DESCRIPTION 
+            "The optical module received power value in current 1-day 
+             interval."
+        ::= { zxAnOpticalCurr1DayPerfEntry 3 }
+
+    zxAnOpticalC1DBiasCurrent  OBJECT-TYPE 
+        SYNTAX      Integer32
+        UNITS       "0.001mA"
+        MAX-ACCESS  read-only
+        STATUS      current
+        DESCRIPTION     
+            "The optical module bias current value in current 1-day interval." 
+        ::= { zxAnOpticalCurr1DayPerfEntry 4 }
+        
+    zxAnOpticalC1DSupplyVoltage  OBJECT-TYPE 
+        SYNTAX      Integer32
+        UNITS       "0.001Volts"
+        MAX-ACCESS  read-only
+        STATUS      current
+        DESCRIPTION 
+            "The optical module supply voltage value in current 1-day 
+             interval." 
+        ::= { zxAnOpticalCurr1DayPerfEntry 5 }
+        
+    zxAnOpticalC1DTemperature  OBJECT-TYPE 
+        SYNTAX      Integer32
+        UNITS       "0.001Centigrade"
+        MAX-ACCESS  read-only
+        STATUS      current
+        DESCRIPTION
+            "The optical module temperature value in current 1-day interval." 
+        ::= { zxAnOpticalCurr1DayPerfEntry 6 }
+
+--------------------------------------------------------------------------------
+-- 1.4 Optical Module History 15 Minutes Performance Table
+--------------------------------------------------------------------------------
+     zxAnOpticalHis15MinPerfTable  OBJECT-TYPE
+        SYNTAX      SEQUENCE OF ZxAnOpticalHis15MinPerfEntry
+        MAX-ACCESS  not-accessible
+        STATUS      current
+        DESCRIPTION 
+             "The 15-minute interval historical performance data table of the 
+              optical module."
+        ::= { zxAnOpticalModulePerfObjects 5 }
+
+    zxAnOpticalHis15MinPerfEntry  OBJECT-TYPE
+        SYNTAX      ZxAnOpticalHis15MinPerfEntry
+        MAX-ACCESS  not-accessible
+        STATUS      current
+        DESCRIPTION 
+            "An entry of zxAnOpticalHis15MinPerfTable."
+        INDEX   { ifIndex, zxAnOpticalH15MIntervalNo }
+        ::= { zxAnOpticalHis15MinPerfTable 1 }
+
+    ZxAnOpticalHis15MinPerfEntry ::= SEQUENCE {
+        zxAnOpticalH15MIntervalNo           Integer32,
+        zxAnOpticalH15MIntervalValidData    TruthValue,
+        zxAnOpticalH15MDateTime             DateAndTime,
+        zxAnOpticalH15MTxPower              Integer32,
+        zxAnOpticalH15MRxPower              Integer32,
+        zxAnOpticalH15MBiasCurrent          Integer32,
+        zxAnOpticalH15MSupplyVoltage        Integer32,
+        zxAnOpticalH15MTemperature          Integer32
+        }
+
+   zxAnOpticalH15MIntervalNo  OBJECT-TYPE 
+        SYNTAX      Integer32(1..96)
+        MAX-ACCESS  not-accessible
+        STATUS      current
+        DESCRIPTION 
+             "The performance data interval number."
+        ::= { zxAnOpticalHis15MinPerfEntry 1 }
+
+    zxAnOpticalH15MIntervalValidData  OBJECT-TYPE 
+        SYNTAX      TruthValue
+        MAX-ACCESS  read-only
+        STATUS      current
+        DESCRIPTION 
+             "Performance data valid flag. 
+              true(1) means valid. 
+              false(2) means invalid and the performace data is useless."
+        ::= { zxAnOpticalHis15MinPerfEntry 2 }
+
+    zxAnOpticalH15MDateTime  OBJECT-TYPE   
+        SYNTAX      DateAndTime
+        MAX-ACCESS  read-only
+        STATUS      current
+        DESCRIPTION 
+             "The 15-minute interval performance data generation time."
+        ::= { zxAnOpticalHis15MinPerfEntry 3 } 
+
+    zxAnOpticalH15MTxPower  OBJECT-TYPE 
+        SYNTAX      Integer32
+        UNITS       "0.001dBm"
+        MAX-ACCESS  read-only
+        STATUS      current
+        DESCRIPTION 
+             "The optical module transmitted power value in historical 
+              15-minute interval." 
+        ::= { zxAnOpticalHis15MinPerfEntry 4 }
+
+    zxAnOpticalH15MRxPower  OBJECT-TYPE 
+        SYNTAX      Integer32
+        UNITS       "0.001dBm"
+        MAX-ACCESS  read-only
+        STATUS      current
+        DESCRIPTION 
+             "The optical module received power value in historical 15-minute 
+              interval." 
+        ::= { zxAnOpticalHis15MinPerfEntry 5 }
+
+    zxAnOpticalH15MBiasCurrent  OBJECT-TYPE 
+        SYNTAX      Integer32
+        UNITS       "0.001mA"
+        MAX-ACCESS  read-only
+        STATUS      current
+        DESCRIPTION 
+             "The optical module bias current value in historical 15-minute 
+              interval."
+        ::= { zxAnOpticalHis15MinPerfEntry 6 }
+  
+    zxAnOpticalH15MSupplyVoltage  OBJECT-TYPE 
+        SYNTAX      Integer32
+        UNITS       "0.001Volts"
+        MAX-ACCESS  read-only
+        STATUS      current
+        DESCRIPTION 
+             "The optical module supply voltage value in historical 15-minute 
+              interval." 
+        ::= { zxAnOpticalHis15MinPerfEntry 7 } 
+
+    zxAnOpticalH15MTemperature  OBJECT-TYPE 
+        SYNTAX      Integer32
+        UNITS       "0.001Centigrade"
+        MAX-ACCESS  read-only
+        STATUS      current
+        DESCRIPTION 
+             "The optical module temperature value in historical 15-minute 
+              interval." 
+        ::= { zxAnOpticalHis15MinPerfEntry 8 } 
+
+--------------------------------------------------------------------------------
+-- 1.5 Optical Module History 1 Day Performance Table
+--------------------------------------------------------------------------------
+    zxAnOpticalHis1DayPerfTable  OBJECT-TYPE
+        SYNTAX      SEQUENCE OF ZxAnOpticalHis1DayPerfEntry
+        MAX-ACCESS  not-accessible
+        STATUS      current
+        DESCRIPTION 
+             "The 1-day interval historical performance data table of the optical 
+              module."
+        ::= { zxAnOpticalModulePerfObjects 6 }
+
+    zxAnOpticalHis1DayPerfEntry  OBJECT-TYPE
+        SYNTAX      ZxAnOpticalHis1DayPerfEntry
+        MAX-ACCESS  not-accessible
+        STATUS      current
+        DESCRIPTION 
+            "An entry of zxAnOpticalHis1DayPerfTable."
+        INDEX   { ifIndex, zxAnOpticalH1DIntervalNo }
+        ::= { zxAnOpticalHis1DayPerfTable 1 }
+
+    ZxAnOpticalHis1DayPerfEntry ::= SEQUENCE {
+        zxAnOpticalH1DIntervalNo           Integer32,
+        zxAnOpticalH1DIntervalValidData    TruthValue,
+        zxAnOpticalH1DDateTime             DateAndTime,
+        zxAnOpticalH1DTxPower              Integer32,
+        zxAnOpticalH1DRxPower              Integer32,
+        zxAnOpticalH1DBiasCurrent          Integer32,
+        zxAnOpticalH1DSupplyVoltage        Integer32,
+        zxAnOpticalH1DTemperature          Integer32
+        }
+
+    zxAnOpticalH1DIntervalNo  OBJECT-TYPE 
+        SYNTAX      Integer32(1..7)
+        MAX-ACCESS  not-accessible
+        STATUS      current
+        DESCRIPTION 
+             "The performance data interval number."
+        ::= { zxAnOpticalHis1DayPerfEntry 1 }
+        
+    zxAnOpticalH1DIntervalValidData  OBJECT-TYPE 
+        SYNTAX      TruthValue
+        MAX-ACCESS  read-only
+        STATUS      current
+        DESCRIPTION 
+             "Performance data valid flag. 
+              true(1) means valid. 
+              false(2) means invalid and the performace data is useless."       
+        ::= { zxAnOpticalHis1DayPerfEntry 2 }        
+
+    zxAnOpticalH1DDateTime  OBJECT-TYPE   
+        SYNTAX      DateAndTime
+        MAX-ACCESS  read-only
+        STATUS      current
+        DESCRIPTION     
+             "The 1-day interval performance data generation time."       
+        ::= { zxAnOpticalHis1DayPerfEntry 3 }  
+
+    zxAnOpticalH1DTxPower  OBJECT-TYPE   
+        SYNTAX      Integer32
+        UNITS       "0.001dBm"
+        MAX-ACCESS  read-only
+        STATUS      current
+        DESCRIPTION     
+             "The optical module transmitted power value in historical 1-day 
+              interval."       
+        ::= { zxAnOpticalHis1DayPerfEntry 4 }  
+
+    zxAnOpticalH1DRxPower  OBJECT-TYPE   
+        SYNTAX      Integer32
+        UNITS       "0.001dBm"
+        MAX-ACCESS  read-only
+        STATUS      current
+        DESCRIPTION     
+             "The optical module received power value in historical 1-day 
+              interval."       
+        ::= { zxAnOpticalHis1DayPerfEntry 5 }  
+
+    zxAnOpticalH1DBiasCurrent  OBJECT-TYPE   
+        SYNTAX      Integer32
+        UNITS       "0.001mA"
+        MAX-ACCESS  read-only
+        STATUS      current
+        DESCRIPTION     
+             "The optical module bias current value in historical 1-day 
+              interval." 
+        ::= { zxAnOpticalHis1DayPerfEntry 6 } 
+  
+    zxAnOpticalH1DSupplyVoltage  OBJECT-TYPE
+        SYNTAX      Integer32
+        UNITS       "0.001Volts"
+        MAX-ACCESS  read-only
+        STATUS      current
+        DESCRIPTION
+             "The optical module supply voltage value in historical 1-day 
+              interval." 
+        ::= { zxAnOpticalHis1DayPerfEntry 7 } 
+
+    zxAnOpticalH1DTemperature  OBJECT-TYPE
+        SYNTAX      Integer32
+        UNITS       "0.001Centigrade"
+        MAX-ACCESS  read-only
+        STATUS      current
+        DESCRIPTION 
+             "The optical module temperature value in historical 1-day 
+              interval."
+        ::= { zxAnOpticalHis1DayPerfEntry 8 }
+    
+--------------------------------------------------------------------------------
+-- 1.6 Optical Module Current Minutes Performance Table
+--------------------------------------------------------------------------------
+    zxAnOpticalCurrMinPerfTable  OBJECT-TYPE
+        SYNTAX      SEQUENCE OF ZxAnOpticalCurrMinPerfEntry
+        MAX-ACCESS  not-accessible
+        STATUS      current
+        DESCRIPTION
+            "The minutes interval performance data table of the optical 
+             module."
+        ::= { zxAnOpticalModulePerfObjects 7 }
+
+    zxAnOpticalCurrMinPerfEntry  OBJECT-TYPE
+        SYNTAX      ZxAnOpticalCurrMinPerfEntry
+        MAX-ACCESS  not-accessible
+        STATUS      current
+        DESCRIPTION
+            "An entry of zxAnOpticalCurrMinPerfTable."
+        INDEX  { ifIndex }
+        ::= { zxAnOpticalCurrMinPerfTable 1 }
+
+    ZxAnOpticalCurrMinPerfEntry ::= SEQUENCE {
+        zxAnOpticalCMinTimeElapsed   HCPerfTimeElapsed,
+        zxAnOpticalCMinTxPower       Integer32,
+        zxAnOpticalCMinRxPower       Integer32,
+        zxAnOpticalCMinBiasCurrent   Integer32,
+        zxAnOpticalCMinSupplyVoltage Integer32,
+        zxAnOpticalCMinTemperature   Integer32
+        }
+        
+    zxAnOpticalCMinTimeElapsed  OBJECT-TYPE 
+        SYNTAX      HCPerfTimeElapsed
+        UNITS       "Seconds"
+        MAX-ACCESS  read-only
+        STATUS      current
+        DESCRIPTION     
+            "The number of seconds that have elapsed since the beginning of the 
+             current minutes interval."
+        ::= { zxAnOpticalCurrMinPerfEntry 1 }
+    
+    zxAnOpticalCMinTxPower  OBJECT-TYPE 
+        SYNTAX      Integer32
+        UNITS       "0.001dBm"
+        MAX-ACCESS  read-only
+        STATUS      current
+        DESCRIPTION     
+            "The optical module transmitted power value in current minutes 
+             interval." 
+        ::= { zxAnOpticalCurrMinPerfEntry 2 }
+  
+    zxAnOpticalCMinRxPower  OBJECT-TYPE 
+        SYNTAX      Integer32
+        UNITS       "0.001dBm"
+        MAX-ACCESS  read-only
+        STATUS      current
+        DESCRIPTION 
+            "The optical module received power value in current minutes 
+             interval." 
+        ::= { zxAnOpticalCurrMinPerfEntry 3 }
+
+    zxAnOpticalCMinBiasCurrent  OBJECT-TYPE 
+        SYNTAX      Integer32
+        UNITS       "0.001mA"
+        MAX-ACCESS  read-only
+        STATUS      current
+        DESCRIPTION 
+            "The optical module bias current value in current minutes 
+             interval." 
+        ::= { zxAnOpticalCurrMinPerfEntry 4 }
+
+    zxAnOpticalCMinSupplyVoltage  OBJECT-TYPE 
+        SYNTAX      Integer32
+        UNITS       "0.001Volts"
+        MAX-ACCESS  read-only
+        STATUS      current
+        DESCRIPTION
+            "The optical module supply voltage value in current minutes 
+             interval." 
+        ::= { zxAnOpticalCurrMinPerfEntry 5 }
+
+    zxAnOpticalCMinTemperature  OBJECT-TYPE 
+        SYNTAX      Integer32
+        UNITS       "0.001Centigrade"
+        MAX-ACCESS  read-only
+        STATUS      current
+        DESCRIPTION 
+            "The optical mudule temperature value in current minutes 
+             interval." 
+        ::= { zxAnOpticalCurrMinPerfEntry 6 }
+    
+--------------------------------------------------------------------------------
+-- 1.7 Optical Module History Minutes Performance Table
+--------------------------------------------------------------------------------
+     zxAnOpticalHisMinPerfTable  OBJECT-TYPE
+        SYNTAX      SEQUENCE OF ZxAnOpticalHisMinPerfEntry
+        MAX-ACCESS  not-accessible
+        STATUS      current
+        DESCRIPTION 
+             "The minutes interval historical performance data table of the 
+              optical module."
+        ::= { zxAnOpticalModulePerfObjects 8 }
+
+    zxAnOpticalHisMinPerfEntry  OBJECT-TYPE
+        SYNTAX      ZxAnOpticalHisMinPerfEntry
+        MAX-ACCESS  not-accessible
+        STATUS      current
+        DESCRIPTION 
+            "An entry of zxAnOpticalHisMinPerfTable."
+        INDEX   { ifIndex, zxAnOpticalHMinIntervalNo }
+        ::= { zxAnOpticalHisMinPerfTable 1 }
+
+    ZxAnOpticalHisMinPerfEntry ::= SEQUENCE {
+        zxAnOpticalHMinIntervalNo           Integer32,
+        zxAnOpticalHMinIntervalValidData    TruthValue,
+        zxAnOpticalHMinDateTime             DateAndTime,
+        zxAnOpticalHMinTxPower              Integer32,
+        zxAnOpticalHMinRxPower              Integer32,
+        zxAnOpticalHMinBiasCurrent          Integer32,
+        zxAnOpticalHMinSupplyVoltage        Integer32,
+        zxAnOpticalHMinTemperature          Integer32
+        }
+
+   zxAnOpticalHMinIntervalNo  OBJECT-TYPE 
+        SYNTAX      Integer32
+        MAX-ACCESS  not-accessible
+        STATUS      current
+        DESCRIPTION 
+             "The performance data interval number."
+        ::= { zxAnOpticalHisMinPerfEntry 1 }
+
+    zxAnOpticalHMinIntervalValidData  OBJECT-TYPE 
+        SYNTAX      TruthValue
+        MAX-ACCESS  read-only
+        STATUS      current
+        DESCRIPTION 
+             "Performance data valid flag. 
+              true(1) means valid. 
+              false(2) means invalid and the performace data is useless."
+        ::= { zxAnOpticalHisMinPerfEntry 2 }
+
+    zxAnOpticalHMinDateTime  OBJECT-TYPE   
+        SYNTAX      DateAndTime
+        MAX-ACCESS  read-only
+        STATUS      current
+        DESCRIPTION 
+             "The minutes interval performance data generation time."
+        ::= { zxAnOpticalHisMinPerfEntry 3 } 
+
+    zxAnOpticalHMinTxPower  OBJECT-TYPE 
+        SYNTAX      Integer32
+        UNITS       "0.001dBm"
+        MAX-ACCESS  read-only
+        STATUS      current
+        DESCRIPTION 
+             "The optical module transmitted power value in historical 
+              minutes interval." 
+        ::= { zxAnOpticalHisMinPerfEntry 4 }
+
+    zxAnOpticalHMinRxPower  OBJECT-TYPE 
+        SYNTAX      Integer32
+        UNITS       "0.001dBm"
+        MAX-ACCESS  read-only
+        STATUS      current
+        DESCRIPTION 
+             "The optical module received power value in historical minutes 
+              interval." 
+        ::= { zxAnOpticalHisMinPerfEntry 5 }
+
+    zxAnOpticalHMinBiasCurrent  OBJECT-TYPE 
+        SYNTAX      Integer32
+        UNITS       "0.001mA"
+        MAX-ACCESS  read-only
+        STATUS      current
+        DESCRIPTION 
+             "The optical module bias current value in historical minutes 
+              interval."
+        ::= { zxAnOpticalHisMinPerfEntry 6 }
+  
+    zxAnOpticalHMinSupplyVoltage  OBJECT-TYPE 
+        SYNTAX      Integer32
+        UNITS       "0.001Volts"
+        MAX-ACCESS  read-only
+        STATUS      current
+        DESCRIPTION 
+             "The optical module supply voltage value in historical minutes 
+              interval." 
+        ::= { zxAnOpticalHisMinPerfEntry 7 } 
+
+    zxAnOpticalHMinTemperature  OBJECT-TYPE 
+        SYNTAX      Integer32
+        UNITS       "0.001Centigrade"
+        MAX-ACCESS  read-only
+        STATUS      current
+        DESCRIPTION 
+             "The optical module temperature value in historical minutes 
+              interval." 
+        ::= { zxAnOpticalHisMinPerfEntry 8 }
+        
+--------------------------------------------------------------------------------
+-- 1.8 Optical Module Channel Current 15 Minutes Performance Table
+--------------------------------------------------------------------------------
+    zxAnOptChanCurr15MinPerfTable  OBJECT-TYPE
+        SYNTAX      SEQUENCE OF ZxAnOptChanCurr15MinPerfEntry
+        MAX-ACCESS  not-accessible
+        STATUS      current
+        DESCRIPTION
+            "The 15-minute interval performance data table of the optical
+             module channel."
+        ::= { zxAnOpticalModulePerfObjects 11 }
+
+    zxAnOptChanCurr15MinPerfEntry  OBJECT-TYPE
+        SYNTAX      ZxAnOptChanCurr15MinPerfEntry
+        MAX-ACCESS  not-accessible
+        STATUS      current
+        DESCRIPTION
+            "An entry of zxAnOptChanCurr15MinPerfTable."
+        INDEX  { ifIndex }
+        ::= { zxAnOptChanCurr15MinPerfTable 1 }
+
+    ZxAnOptChanCurr15MinPerfEntry ::= SEQUENCE {
+        zxAnOptChanC15MTimeElapsed    HCPerfTimeElapsed,
+        zxAnOptChanC15MTxPower        Integer32,
+        zxAnOptChanC15MBiasCurrent    Integer32
+        }
+
+    zxAnOptChanC15MTimeElapsed  OBJECT-TYPE
+        SYNTAX      HCPerfTimeElapsed
+        UNITS       "Seconds"
+        MAX-ACCESS  read-only
+        STATUS      current
+        DESCRIPTION
+            "The number of seconds that have elapsed since the beginning
+             of the current 15-minute interval."
+        ::= { zxAnOptChanCurr15MinPerfEntry 1 }
+
+    zxAnOptChanC15MTxPower  OBJECT-TYPE
+        SYNTAX      Integer32
+        UNITS       "0.001dBm"
+        MAX-ACCESS  read-only
+        STATUS      current
+        DESCRIPTION
+            "The optical module channel transmitted power in current 15-minute 
+             interval."
+        ::= { zxAnOptChanCurr15MinPerfEntry 2 }
+
+    zxAnOptChanC15MBiasCurrent  OBJECT-TYPE 
+        SYNTAX      Integer32
+        UNITS       "0.001mA"
+        MAX-ACCESS  read-only
+        STATUS      current
+        DESCRIPTION
+            "The optical module channel bias current in current 15-minute
+             interval."
+        ::= { zxAnOptChanCurr15MinPerfEntry 3 }
+
+--------------------------------------------------------------------------------
+-- 1.9 Optical Module Channel Current 1 Day Performance Table
+--------------------------------------------------------------------------------
+    zxAnOptChanCurr1DayPerfTable  OBJECT-TYPE
+        SYNTAX      SEQUENCE OF ZxAnOptChanCurr1DayPerfEntry
+        MAX-ACCESS  not-accessible
+        STATUS      current
+        DESCRIPTION
+            "The 1-day interval performance data table of the optical module 
+             channel."
+        ::= { zxAnOpticalModulePerfObjects 12 }
+
+    zxAnOptChanCurr1DayPerfEntry  OBJECT-TYPE
+        SYNTAX      ZxAnOptChanCurr1DayPerfEntry
+        MAX-ACCESS  not-accessible
+        STATUS      current
+        DESCRIPTION
+            "An entry of zxAnOptChanCurr1DayPerfTable."
+        INDEX  { ifIndex }
+        ::= { zxAnOptChanCurr1DayPerfTable 1 }
+
+    ZxAnOptChanCurr1DayPerfEntry ::= SEQUENCE {
+        zxAnOptChanC1DTimeElapsed    HCPerfTimeElapsed,
+        zxAnOptChanC1DTxPower        Integer32,
+        zxAnOptChanC1DBiasCurrent    Integer32
+        }
+
+    zxAnOptChanC1DTimeElapsed  OBJECT-TYPE
+        SYNTAX      HCPerfTimeElapsed
+        UNITS       "Seconds"
+        MAX-ACCESS  read-only
+        STATUS      current
+        DESCRIPTION
+            "The number of seconds that have elapsed since the beginning of the
+             current 1-day interval."
+        ::= { zxAnOptChanCurr1DayPerfEntry 1 }
+
+    zxAnOptChanC1DTxPower  OBJECT-TYPE 
+        SYNTAX      Integer32
+        UNITS       "0.001dBm"
+        MAX-ACCESS  read-only
+        STATUS      current
+        DESCRIPTION
+            "The optical module channel transmitted power in current 1-day 
+             interval."
+        ::= { zxAnOptChanCurr1DayPerfEntry 2 }
+
+    zxAnOptChanC1DBiasCurrent  OBJECT-TYPE 
+        SYNTAX      Integer32
+        UNITS       "0.001mA"
+        MAX-ACCESS  read-only
+        STATUS      current
+        DESCRIPTION
+            "The optical module channel bias current in current 1-day interval."
+       ::= { zxAnOptChanCurr1DayPerfEntry 3 }
+
+--------------------------------------------------------------------------------
+-- 1.10 Optical Module Channel History 15 Minutes Performance Table
+--------------------------------------------------------------------------------
+    zxAnOptChanHis15MinPerfTable  OBJECT-TYPE
+        SYNTAX      SEQUENCE OF ZxAnOptChanHis15MinPerfEntry
+        MAX-ACCESS  not-accessible
+        STATUS      current
+        DESCRIPTION 
+             "The 15-minute interval historical performance data table of the
+              optical module channel."
+        ::= { zxAnOpticalModulePerfObjects 13 }
+
+    zxAnOptChanHis15MinPerfEntry  OBJECT-TYPE
+        SYNTAX      ZxAnOptChanHis15MinPerfEntry
+        MAX-ACCESS  not-accessible
+        STATUS      current
+        DESCRIPTION 
+            "An entry of zxAnOptChanHis15MinPerfTable."
+        INDEX   { ifIndex, zxAnOptChanH15MIntervalNo }
+        ::= { zxAnOptChanHis15MinPerfTable 1 }
+
+    ZxAnOptChanHis15MinPerfEntry ::= SEQUENCE {        
+        zxAnOptChanH15MIntervalNo         Integer32,
+        zxAnOptChanH15MIntervalValidData  TruthValue,
+        zxAnOptChanH15MDateTime           DateAndTime,
+        zxAnOptChanH15MTxPower            Integer32,
+        zxAnOptChanH15MBiasCurrent        Integer32
+        }
+
+    zxAnOptChanH15MIntervalNo  OBJECT-TYPE 
+        SYNTAX      Integer32(1..96)
+        MAX-ACCESS  not-accessible
+        STATUS      current
+        DESCRIPTION 
+             "The performance data interval number."
+        ::= { zxAnOptChanHis15MinPerfEntry 1 }
+
+    zxAnOptChanH15MIntervalValidData  OBJECT-TYPE 
+        SYNTAX      TruthValue
+        MAX-ACCESS  read-only
+        STATUS      current
+        DESCRIPTION 
+             "Performance data valid flag. 
+              true(1) means valid. 
+              false(2) means invalid and the performace data is useless."
+        ::= { zxAnOptChanHis15MinPerfEntry 2 }
+
+    zxAnOptChanH15MDateTime  OBJECT-TYPE 
+        SYNTAX      DateAndTime
+        MAX-ACCESS  read-only
+        STATUS      current
+        DESCRIPTION
+             "The 15-minute interval performance data generation time." 
+        ::= { zxAnOptChanHis15MinPerfEntry 3 } 
+
+    zxAnOptChanH15MTxPower  OBJECT-TYPE   
+        SYNTAX      Integer32
+        UNITS       "0.001dBm"
+        MAX-ACCESS  read-only
+        STATUS      current
+        DESCRIPTION
+             "The optical module channel transmitted power in historical 
+              15-minute interval."
+        ::= { zxAnOptChanHis15MinPerfEntry 4 }
+
+    zxAnOptChanH15MBiasCurrent  OBJECT-TYPE
+        SYNTAX      Integer32
+        UNITS       "0.001mA"
+        MAX-ACCESS  read-only
+        STATUS      current
+        DESCRIPTION
+             "The optical module channel bias current in historical 15-minute 
+              interval." 
+        ::= { zxAnOptChanHis15MinPerfEntry 5 }
+
+--------------------------------------------------------------------------------
+-- 1.11 Optical Module Channel History 1 Day Performance Table
+--------------------------------------------------------------------------------
+    zxAnOptChanHis1DayPerfTable  OBJECT-TYPE
+        SYNTAX      SEQUENCE OF ZxAnOptChanHis1DayPerfEntry
+        MAX-ACCESS  not-accessible
+        STATUS      current
+        DESCRIPTION 
+             "The 1-day interval historical performance data table of the 
+              optical module channel."
+        ::= { zxAnOpticalModulePerfObjects 14 }
+
+    zxAnOptChanHis1DayPerfEntry  OBJECT-TYPE
+        SYNTAX      ZxAnOptChanHis1DayPerfEntry
+        MAX-ACCESS  not-accessible
+        STATUS      current
+        DESCRIPTION 
+            "An entry of zxAnOptChanHis1DayPerfTable."
+        INDEX   { ifIndex, zxAnOptChanH1DIntervalNo }
+        ::= { zxAnOptChanHis1DayPerfTable 1 }
+
+    ZxAnOptChanHis1DayPerfEntry ::= SEQUENCE {
+        zxAnOptChanH1DIntervalNo           Integer32,
+        zxAnOptChanH1DIntervalValidData    TruthValue,
+        zxAnOptChanH1DDateTime             DateAndTime,
+        zxAnOptChanH1DTxPower              Integer32,
+        zxAnOptChanH1DBiasCurrent          Integer32
+        }
+
+    zxAnOptChanH1DIntervalNo  OBJECT-TYPE 
+        SYNTAX      Integer32(1..7)
+        MAX-ACCESS  not-accessible
+        STATUS      current
+        DESCRIPTION 
+             "The performance data interval number."
+        ::= { zxAnOptChanHis1DayPerfEntry 1 }
+
+    zxAnOptChanH1DIntervalValidData  OBJECT-TYPE 
+        SYNTAX      TruthValue
+        MAX-ACCESS  read-only
+        STATUS      current
+        DESCRIPTION 
+             "Performance data valid flag. 
+              true(1) means valid. 
+              false(2) means invalid and the performace data is useless."
+        ::= { zxAnOptChanHis1DayPerfEntry 2 }        
+
+    zxAnOptChanH1DDateTime  OBJECT-TYPE   
+        SYNTAX      DateAndTime
+        MAX-ACCESS  read-only
+        STATUS      current
+        DESCRIPTION
+             "The 1-day interval performance data generation time."
+        ::= { zxAnOptChanHis1DayPerfEntry 3 }
+
+    zxAnOptChanH1DTxPower  OBJECT-TYPE
+        SYNTAX      Integer32
+        UNITS       "0.001dBm"
+        MAX-ACCESS  read-only
+        STATUS      current
+        DESCRIPTION 
+             "The optical module channel transmitted power in historical 1-day 
+              interval."
+        ::= { zxAnOptChanHis1DayPerfEntry 4 }
+
+    zxAnOptChanH1DBiasCurrent  OBJECT-TYPE
+        SYNTAX      Integer32
+        UNITS       "0.001mA"
+        MAX-ACCESS  read-only
+        STATUS      current
+        DESCRIPTION
+             "The optical module channel bias current in historical 1-day
+              interval." 
+        ::= { zxAnOptChanHis1DayPerfEntry 5 }
+  
+--------------------------------------------------------------------------------
+-- 1.12 Optical Module Channel Current Minutes Performance Table
+--------------------------------------------------------------------------------
+    zxAnOptChanCurrMinPerfTable  OBJECT-TYPE
+        SYNTAX      SEQUENCE OF ZxAnOptChanCurrMinPerfEntry
+        MAX-ACCESS  not-accessible
+        STATUS      current
+        DESCRIPTION
+            "The minutes interval performance data table of the optical
+             module channel."
+        ::= { zxAnOpticalModulePerfObjects 15 }
+
+    zxAnOptChanCurrMinPerfEntry  OBJECT-TYPE
+        SYNTAX      ZxAnOptChanCurrMinPerfEntry
+        MAX-ACCESS  not-accessible
+        STATUS      current
+        DESCRIPTION
+            "An entry of zxAnOptChanCurrMinPerfTable."
+        INDEX  { ifIndex }
+        ::= { zxAnOptChanCurrMinPerfTable 1 }
+
+    ZxAnOptChanCurrMinPerfEntry ::= SEQUENCE {
+        zxAnOptChanCMinTimeElapsed    HCPerfTimeElapsed,
+        zxAnOptChanCMinTxPower        Integer32,
+        zxAnOptChanCMinBiasCurrent    Integer32
+        }
+
+    zxAnOptChanCMinTimeElapsed  OBJECT-TYPE
+        SYNTAX      HCPerfTimeElapsed
+        UNITS       "Seconds"
+        MAX-ACCESS  read-only
+        STATUS      current
+        DESCRIPTION
+            "The number of seconds that have elapsed since the beginning
+             of the current minutes interval."
+        ::= { zxAnOptChanCurrMinPerfEntry 1 }
+
+    zxAnOptChanCMinTxPower  OBJECT-TYPE
+        SYNTAX      Integer32
+        UNITS       "0.001dBm"
+        MAX-ACCESS  read-only
+        STATUS      current
+        DESCRIPTION
+            "The optical module channel transmitted power in current minutes 
+             interval."
+        ::= { zxAnOptChanCurrMinPerfEntry 2 }
+
+    zxAnOptChanCMinBiasCurrent  OBJECT-TYPE 
+        SYNTAX      Integer32
+        UNITS       "0.001mA"
+        MAX-ACCESS  read-only
+        STATUS      current
+        DESCRIPTION
+            "The optical module channel bias current in current minutes
+             interval."
+        ::= { zxAnOptChanCurrMinPerfEntry 3 }
+    
+--------------------------------------------------------------------------------
+-- 1.13 Optical Module Channel History Minutes Performance Table
+--------------------------------------------------------------------------------
+    zxAnOptChanHisMinPerfTable  OBJECT-TYPE
+        SYNTAX      SEQUENCE OF ZxAnOptChanHisMinPerfEntry
+        MAX-ACCESS  not-accessible
+        STATUS      current
+        DESCRIPTION 
+             "The minutes interval historical performance data table of the
+              optical module channel."
+        ::= { zxAnOpticalModulePerfObjects 16 }
+
+    zxAnOptChanHisMinPerfEntry  OBJECT-TYPE
+        SYNTAX      ZxAnOptChanHisMinPerfEntry
+        MAX-ACCESS  not-accessible
+        STATUS      current
+        DESCRIPTION 
+            "An entry of zxAnOptChanHisMinPerfTable."
+        INDEX   { ifIndex, zxAnOptChanHMinIntervalNo }
+        ::= { zxAnOptChanHisMinPerfTable 1 }
+
+    ZxAnOptChanHisMinPerfEntry ::= SEQUENCE {        
+        zxAnOptChanHMinIntervalNo         Integer32,
+        zxAnOptChanHMinIntervalValidData  TruthValue,
+        zxAnOptChanHMinDateTime           DateAndTime,
+        zxAnOptChanHMinTxPower            Integer32,
+        zxAnOptChanHMinBiasCurrent        Integer32
+        }
+
+    zxAnOptChanHMinIntervalNo  OBJECT-TYPE 
+        SYNTAX      Integer32
+        MAX-ACCESS  not-accessible
+        STATUS      current
+        DESCRIPTION 
+             "The performance data interval number."
+        ::= { zxAnOptChanHisMinPerfEntry 1 }
+
+    zxAnOptChanHMinIntervalValidData  OBJECT-TYPE 
+        SYNTAX      TruthValue
+        MAX-ACCESS  read-only
+        STATUS      current
+        DESCRIPTION 
+             "Performance data valid flag. 
+              true(1) means valid. 
+              false(2) means invalid and the performace data is useless."
+        ::= { zxAnOptChanHisMinPerfEntry 2 }
+
+    zxAnOptChanHMinDateTime  OBJECT-TYPE 
+        SYNTAX      DateAndTime
+        MAX-ACCESS  read-only
+        STATUS      current
+        DESCRIPTION
+             "The minutes interval performance data generation time." 
+        ::= { zxAnOptChanHisMinPerfEntry 3 } 
+
+    zxAnOptChanHMinTxPower  OBJECT-TYPE   
+        SYNTAX      Integer32
+        UNITS       "0.001dBm"
+        MAX-ACCESS  read-only
+        STATUS      current
+        DESCRIPTION
+             "The optical module channel transmitted power in historical 
+              minutes interval."
+        ::= { zxAnOptChanHisMinPerfEntry 4 }
+
+    zxAnOptChanHMinBiasCurrent  OBJECT-TYPE
+        SYNTAX      Integer32
+        UNITS       "0.001mA"
+        MAX-ACCESS  read-only
+        STATUS      current
+        DESCRIPTION
+             "The optical module channel bias current in historical minutes 
+              interval." 
+        ::= { zxAnOptChanHisMinPerfEntry 5 }
+
+
+--------------------------------------------------------------------------------
+-- 2. zxAnOpticalPerfConformances
+--------------------------------------------------------------------------------
+    zxAnOpticalPerfCompliances  OBJECT IDENTIFIER 
+                                        ::= { zxAnOpticalPerfConformances 1 }
+    zxAnOpticalPerfGroups       OBJECT IDENTIFIER 
+                                        ::= { zxAnOpticalPerfConformances 2 }
+
+    zxAnOpticalPerfCompliance  MODULE-COMPLIANCE
+        STATUS current
+        DESCRIPTION
+            "The compliance statement for support of the optical performance MIB
+             module."
+        MODULE -- this module
+        MANDATORY-GROUPS {
+            zxAnOpticalPerfCurr15MinGroup,
+            zxAnOpticalPerfCurr1DayGroup,
+            zxAnOpticalPerfHis15MinGroup,
+            zxAnOpticalPerfHis1DayGroup
+        }
+        ::= { zxAnOpticalPerfCompliances 1 }
+
+    zxAnOpticalPerfCurr15MinGroup  OBJECT-GROUP
+        OBJECTS {
+            zxAnOpticalC15MTimeElapsed,
+            zxAnOpticalC15MTxPower,
+            zxAnOpticalC15MRxPower,
+            zxAnOpticalC15MBiasCurrent,
+            zxAnOpticalC15MTemperature,
+            zxAnOpticalC15MSupplyVoltage
+        }
+        STATUS  current
+        DESCRIPTION
+            "A collection of objects providing for current 15-minute interval
+             performance data of the optical module."
+        ::= { zxAnOpticalPerfGroups 1 }
+
+    zxAnOpticalPerfCurr1DayGroup  OBJECT-GROUP
+        OBJECTS {
+            zxAnOpticalC1DTimeElapsed,
+            zxAnOpticalC1DTxPower,
+            zxAnOpticalC1DRxPower,
+            zxAnOpticalC1DBiasCurrent,
+            zxAnOpticalC1DTemperature,
+            zxAnOpticalC1DSupplyVoltage
+        }
+        STATUS  current
+        DESCRIPTION
+            "A collection of objects providing for current 1-day interval
+             performance data of the optical module."
+        ::= { zxAnOpticalPerfGroups 2 }
+
+    zxAnOpticalPerfHis15MinGroup  OBJECT-GROUP
+        OBJECTS {
+            zxAnOpticalH15MIntervalValidData,
+            zxAnOpticalH15MDateTime,
+            zxAnOpticalH15MTxPower,
+            zxAnOpticalH15MRxPower,
+            zxAnOpticalH15MBiasCurrent,
+            zxAnOpticalH15MTemperature,
+            zxAnOpticalH15MSupplyVoltage
+        }
+        STATUS  current
+        DESCRIPTION
+            "A collection of objects providing for history 15-minute interval
+             performance data of the optical module."
+        ::= { zxAnOpticalPerfGroups 3 }
+
+    zxAnOpticalPerfHis1DayGroup  OBJECT-GROUP
+        OBJECTS {
+            zxAnOpticalH1DIntervalValidData,
+            zxAnOpticalH1DDateTime,
+            zxAnOpticalH1DTxPower,
+            zxAnOpticalH1DRxPower,
+            zxAnOpticalH1DBiasCurrent,
+            zxAnOpticalH1DTemperature,
+            zxAnOpticalH1DSupplyVoltage
+        }
+        STATUS  current
+        DESCRIPTION
+            "A collection of objects providing for history 1-day interval
+             performance data of the optical module."
+        ::= { zxAnOpticalPerfGroups 4 }
+    
+  zxAnOpticalPerfCurrMinGroup  OBJECT-GROUP
+        OBJECTS {
+            zxAnOpticalCMinTimeElapsed,
+            zxAnOpticalCMinTxPower,
+            zxAnOpticalCMinRxPower,
+            zxAnOpticalCMinBiasCurrent,
+            zxAnOpticalCMinTemperature,
+            zxAnOpticalCMinSupplyVoltage
+        }
+        STATUS  current
+        DESCRIPTION
+            "A collection of objects providing for current minutes interval
+             performance data of the optical module."
+        ::= { zxAnOpticalPerfGroups 5 }
+  
+  zxAnOpticalPerfHisMinGroup  OBJECT-GROUP
+        OBJECTS {
+            zxAnOpticalHMinIntervalValidData,
+            zxAnOpticalHMinDateTime,
+            zxAnOpticalHMinTxPower,
+            zxAnOpticalHMinRxPower,
+            zxAnOpticalHMinBiasCurrent,
+            zxAnOpticalHMinTemperature,
+            zxAnOpticalHMinSupplyVoltage
+        }
+        STATUS  current
+        DESCRIPTION
+            "A collection of objects providing for history minutes interval
+             performance data of the optical module."
+        ::= { zxAnOpticalPerfGroups 6 }
+END

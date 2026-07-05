@@ -1,0 +1,1372 @@
+{
+  "entity_ref": "entity.zte.gpon.hardware.fan",
+  "vendor": "ZTE",
+  "family": "ZXA10 C300",
+  "firmware": [
+    "2.0",
+    "2.1"
+  ],
+  "oids": [
+    {
+      "id": "oid.zte.gpon.fan.env_fan_tray_table",
+      "oid": "1.3.6.1.4.1.3902.1082.10.10.2.4.10",
+      "name": "zxAnEnvFanTrayTable",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "SEQUENCE OF ZxAnEnvFanTrayEntry",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": "The Fan Tray Control table, with rack and shelf information.",
+      "command_ref": null,
+      "status": "verified",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 1.0
+      },
+      "conflicts": [],
+      "empirical": {
+        "source": "ZTE_C300.txt",
+        "sample_oid": "1.3.6.1.4.1.3902.1082.10.10.2.4.10.1.10.1.1",
+        "sample_value": "8",
+        "instances_sampled": 18,
+        "scale_confirmed": null
+      }
+    },
+    {
+      "id": "oid.zte.gpon.fan.env_fan_tray_entry",
+      "oid": "1.3.6.1.4.1.3902.1082.10.10.2.4.10.1",
+      "name": "zxAnEnvFanTrayEntry",
+      "mib_table": null,
+      "index": {
+        "type": "composite",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "ZxAnEnvFanTrayEntry",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": "An entry in the zxAnEnvFanTrayTable.",
+      "command_ref": null,
+      "status": "verified",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 1.0
+      },
+      "conflicts": [],
+      "empirical": {
+        "source": "ZTE_C300.txt",
+        "sample_oid": "1.3.6.1.4.1.3902.1082.10.10.2.4.10.1.10.1.1",
+        "sample_value": "8",
+        "instances_sampled": 18,
+        "scale_confirmed": null
+      }
+    },
+    {
+      "id": "oid.zte.gpon.fan.tray_alarm_beep_enable",
+      "oid": "1.3.6.1.4.1.3902.1082.10.10.2.4.10.1.1",
+      "name": "zxAnFanTrayAlarmBeepEnable",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-write",
+      "enumeration": {
+        "1": "enable",
+        "2": "disable"
+      },
+      "description": "The control status of the fan alarm beep.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.fan.tray_hardware_version",
+      "oid": "1.3.6.1.4.1.3902.1082.10.10.2.4.10.1.3",
+      "name": "zxAnFanTrayHardwareVersion",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "DisplayString",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "The hardware version of the fan tray",
+      "command_ref": null,
+      "status": "verified",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 1.0
+      },
+      "conflicts": [],
+      "empirical": {
+        "source": "ZTE_C300.txt",
+        "sample_oid": "1.3.6.1.4.1.3902.1082.10.10.2.4.10.1.3.1.1",
+        "sample_value": "\"No support\"",
+        "instances_sampled": 1,
+        "scale_confirmed": null
+      }
+    },
+    {
+      "id": "oid.zte.gpon.fan.tray_software_version",
+      "oid": "1.3.6.1.4.1.3902.1082.10.10.2.4.10.1.4",
+      "name": "zxAnFanTraySoftwareVersion",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "DisplayString",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "The software version of the fan tray",
+      "command_ref": null,
+      "status": "verified",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 1.0
+      },
+      "conflicts": [],
+      "empirical": {
+        "source": "ZTE_C300.txt",
+        "sample_oid": "1.3.6.1.4.1.3902.1082.10.10.2.4.10.1.4.1.1",
+        "sample_value": "\"V2.0\"",
+        "instances_sampled": 1,
+        "scale_confirmed": null
+      }
+    },
+    {
+      "id": "oid.zte.gpon.fan.tray_speed_ctrl_mode",
+      "oid": "1.3.6.1.4.1.3902.1082.10.10.2.4.10.1.5",
+      "name": "zxAnFanTraySpeedCtrlMode",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-write",
+      "enumeration": {
+        "1": "temperatureBasedAutoCtrl",
+        "2": "fixSpeed"
+      },
+      "description": "The speed control mode of the fan.\n            When this value is fixSpeed,zxAnFanTrayAdminStatus,\n            zxAnFanTrayConfSpeedLevel,zxAnEnvFanAdminStatus and \n            zxAnEnvFanConfSpeedLevel can be configured.",
+      "command_ref": null,
+      "status": "verified",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 1.0
+      },
+      "conflicts": [],
+      "empirical": {
+        "source": "ZTE_C300.txt",
+        "sample_oid": "1.3.6.1.4.1.3902.1082.10.10.2.4.10.1.5.1.1",
+        "sample_value": "1",
+        "instances_sampled": 1,
+        "scale_confirmed": null
+      }
+    },
+    {
+      "id": "oid.zte.gpon.fan.tray_low_speed",
+      "oid": "1.3.6.1.4.1.3902.1082.10.10.2.4.10.1.6",
+      "name": "zxAnFanTrayLowSpeed",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": "RPM",
+      "scale": null,
+      "access": "read-write",
+      "enumeration": null,
+      "description": "The speed value of the fan's low speed level.\n            The values for ZXDSL9800,9210 are 1500,2400,2700,3000,3400,3700,\n            4000,4400.\n            NOTE:\n               Different equipment maybe has different default value.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.fan.tray_std_speed",
+      "oid": "1.3.6.1.4.1.3902.1082.10.10.2.4.10.1.7",
+      "name": "zxAnFanTrayStdSpeed",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": "RPM",
+      "scale": null,
+      "access": "read-write",
+      "enumeration": null,
+      "description": "The speed value of the fan's standard speed level.\n            The values for ZXDSL9800,9210 are 1500,2400,2700,3000,3400,3700,\n            4000,4400.\n            NOTE:\n               Different equipment maybe has different default value.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.fan.tray_high_speed",
+      "oid": "1.3.6.1.4.1.3902.1082.10.10.2.4.10.1.8",
+      "name": "zxAnFanTrayHighSpeed",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": "RPM",
+      "scale": null,
+      "access": "read-write",
+      "enumeration": null,
+      "description": "The speed value of the fan's high speed level.\n            The values for ZXDSL9800,9210 are 1500,2400,2700,3000,3400,3700,\n            4000,4400.\n            NOTE:\n               Different equipment maybe has different default value.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.fan.tray_super_speed",
+      "oid": "1.3.6.1.4.1.3902.1082.10.10.2.4.10.1.9",
+      "name": "zxAnFanTraySuperSpeed",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": "RPM",
+      "scale": null,
+      "access": "read-write",
+      "enumeration": null,
+      "description": "The speed value of the fan's super speed level.\n            The values for ZXDSL9800,9210 are 1500,2400,2700,3000,3400,3700,\n            4000,4400.\n            NOTE:\n               Different equipment maybe has different default value.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.fan.tray_low_speed_shift_temp",
+      "oid": "1.3.6.1.4.1.3902.1082.10.10.2.4.10.1.10",
+      "name": "zxAnFanTrayLowSpeedShiftTemp",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": "centigrade",
+      "scale": null,
+      "access": "read-write",
+      "enumeration": null,
+      "description": "The temperature to activate the fan tray to shift to\n            the low speed level.",
+      "command_ref": null,
+      "status": "verified",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 1.0
+      },
+      "conflicts": [],
+      "empirical": {
+        "source": "ZTE_C300.txt",
+        "sample_oid": "1.3.6.1.4.1.3902.1082.10.10.2.4.10.1.10.1.1",
+        "sample_value": "8",
+        "instances_sampled": 1,
+        "scale_confirmed": null
+      }
+    },
+    {
+      "id": "oid.zte.gpon.fan.tray_std_speed_shift_temp",
+      "oid": "1.3.6.1.4.1.3902.1082.10.10.2.4.10.1.11",
+      "name": "zxAnFanTrayStdSpeedShiftTemp",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": "centigrade",
+      "scale": null,
+      "access": "read-write",
+      "enumeration": null,
+      "description": "The temperature to activate the fan tray to shift to\n            the standard speed level.",
+      "command_ref": null,
+      "status": "verified",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 1.0
+      },
+      "conflicts": [],
+      "empirical": {
+        "source": "ZTE_C300.txt",
+        "sample_oid": "1.3.6.1.4.1.3902.1082.10.10.2.4.10.1.11.1.1",
+        "sample_value": "29",
+        "instances_sampled": 1,
+        "scale_confirmed": null
+      }
+    },
+    {
+      "id": "oid.zte.gpon.fan.tray_high_speed_shift_temp",
+      "oid": "1.3.6.1.4.1.3902.1082.10.10.2.4.10.1.12",
+      "name": "zxAnFanTrayHighSpeedShiftTemp",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": "centigrade",
+      "scale": null,
+      "access": "read-write",
+      "enumeration": null,
+      "description": "The temperature to activate the fan tray to shift to\n            the high speed level.",
+      "command_ref": null,
+      "status": "verified",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 1.0
+      },
+      "conflicts": [],
+      "empirical": {
+        "source": "ZTE_C300.txt",
+        "sample_oid": "1.3.6.1.4.1.3902.1082.10.10.2.4.10.1.12.1.1",
+        "sample_value": "37",
+        "instances_sampled": 1,
+        "scale_confirmed": null
+      }
+    },
+    {
+      "id": "oid.zte.gpon.fan.tray_super_speed_shift_temp",
+      "oid": "1.3.6.1.4.1.3902.1082.10.10.2.4.10.1.13",
+      "name": "zxAnFanTraySuperSpeedShiftTemp",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": "centigrade",
+      "scale": null,
+      "access": "read-write",
+      "enumeration": null,
+      "description": "The temperature to activate the fan tray to shift to\n            the super speed level.",
+      "command_ref": null,
+      "status": "verified",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 1.0
+      },
+      "conflicts": [],
+      "empirical": {
+        "source": "ZTE_C300.txt",
+        "sample_oid": "1.3.6.1.4.1.3902.1082.10.10.2.4.10.1.13.1.1",
+        "sample_value": "46",
+        "instances_sampled": 1,
+        "scale_confirmed": null
+      }
+    },
+    {
+      "id": "oid.zte.gpon.fan.tray_low_speed_percent",
+      "oid": "1.3.6.1.4.1.3902.1082.10.10.2.4.10.1.14",
+      "name": "zxAnFanTrayLowSpeedPercent",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": "percent",
+      "scale": null,
+      "access": "read-write",
+      "enumeration": null,
+      "description": "The percentage of speed of the low speed level.",
+      "command_ref": null,
+      "status": "verified",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 1.0
+      },
+      "conflicts": [],
+      "empirical": {
+        "source": "ZTE_C300.txt",
+        "sample_oid": "1.3.6.1.4.1.3902.1082.10.10.2.4.10.1.14.1.1",
+        "sample_value": "20",
+        "instances_sampled": 1,
+        "scale_confirmed": null
+      }
+    },
+    {
+      "id": "oid.zte.gpon.fan.tray_std_speed_percent",
+      "oid": "1.3.6.1.4.1.3902.1082.10.10.2.4.10.1.15",
+      "name": "zxAnFanTrayStdSpeedPercent",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": "percent",
+      "scale": null,
+      "access": "read-write",
+      "enumeration": null,
+      "description": "The percentage of speed of the standard speed level.",
+      "command_ref": null,
+      "status": "verified",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 1.0
+      },
+      "conflicts": [],
+      "empirical": {
+        "source": "ZTE_C300.txt",
+        "sample_oid": "1.3.6.1.4.1.3902.1082.10.10.2.4.10.1.15.1.1",
+        "sample_value": "35",
+        "instances_sampled": 1,
+        "scale_confirmed": null
+      }
+    },
+    {
+      "id": "oid.zte.gpon.fan.tray_high_speed_percent",
+      "oid": "1.3.6.1.4.1.3902.1082.10.10.2.4.10.1.16",
+      "name": "zxAnFanTrayHighSpeedPercent",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": "percent",
+      "scale": null,
+      "access": "read-write",
+      "enumeration": null,
+      "description": "The percentage of speed of the high speed level.",
+      "command_ref": null,
+      "status": "verified",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 1.0
+      },
+      "conflicts": [],
+      "empirical": {
+        "source": "ZTE_C300.txt",
+        "sample_oid": "1.3.6.1.4.1.3902.1082.10.10.2.4.10.1.16.1.1",
+        "sample_value": "50",
+        "instances_sampled": 1,
+        "scale_confirmed": null
+      }
+    },
+    {
+      "id": "oid.zte.gpon.fan.tray_super_speed_percent",
+      "oid": "1.3.6.1.4.1.3902.1082.10.10.2.4.10.1.17",
+      "name": "zxAnFanTraySuperSpeedPercent",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": "percent",
+      "scale": null,
+      "access": "read-write",
+      "enumeration": null,
+      "description": "The percentage of speed of the super speed level.",
+      "command_ref": null,
+      "status": "verified",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 1.0
+      },
+      "conflicts": [],
+      "empirical": {
+        "source": "ZTE_C300.txt",
+        "sample_oid": "1.3.6.1.4.1.3902.1082.10.10.2.4.10.1.17.1.1",
+        "sample_value": "75",
+        "instances_sampled": 1,
+        "scale_confirmed": null
+      }
+    },
+    {
+      "id": "oid.zte.gpon.fan.tray_admin_status",
+      "oid": "1.3.6.1.4.1.3902.1082.10.10.2.4.10.1.18",
+      "name": "zxAnFanTrayAdminStatus",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-write",
+      "enumeration": {
+        "1": "up",
+        "2": "down"
+      },
+      "description": "The administrative status of the fan tray.                    \n                    When zxAnFanTrayAdminStatus is configured, all the \n                    zxAnEnvFanAdminStatus values are consistent with \n                    zxAnFanTrayAdminStatus.",
+      "command_ref": null,
+      "status": "verified",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 1.0
+      },
+      "conflicts": [],
+      "empirical": {
+        "source": "ZTE_C300.txt",
+        "sample_oid": "1.3.6.1.4.1.3902.1082.10.10.2.4.10.1.18.1.1",
+        "sample_value": "1",
+        "instances_sampled": 1,
+        "scale_confirmed": null
+      }
+    },
+    {
+      "id": "oid.zte.gpon.fan.tray_conf_speed_level",
+      "oid": "1.3.6.1.4.1.3902.1082.10.10.2.4.10.1.19",
+      "name": "zxAnFanTrayConfSpeedLevel",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-write",
+      "enumeration": {
+        "1": "lowSpeed",
+        "2": "standardSpeed",
+        "3": "highSpeed",
+        "4": "superSpeed"
+      },
+      "description": "The configured speed level of the fan tray.      \n            When zxAnFanTrayConfSpeedLevel is configured, all the \n            zxAnEnvFanConfSpeedLevel values are consistent with \n            zxAnFanTrayConfSpeedLevel.\n            This variable is valid if zxAnFanTrayAdminStatus is up.",
+      "command_ref": null,
+      "status": "verified",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 1.0
+      },
+      "conflicts": [],
+      "empirical": {
+        "source": "ZTE_C300.txt",
+        "sample_oid": "1.3.6.1.4.1.3902.1082.10.10.2.4.10.1.19.1.1",
+        "sample_value": "2",
+        "instances_sampled": 1,
+        "scale_confirmed": null
+      }
+    },
+    {
+      "id": "oid.zte.gpon.fan.tray_power_consumption",
+      "oid": "1.3.6.1.4.1.3902.1082.10.10.2.4.10.1.20",
+      "name": "zxAnFanTrayPowerConsumption",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": "0.001W",
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "Power consumption of the fan tray.\n             Value 0 means not available.",
+      "command_ref": null,
+      "status": "verified",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 1.0
+      },
+      "conflicts": [],
+      "empirical": {
+        "source": "ZTE_C300.txt",
+        "sample_oid": "1.3.6.1.4.1.3902.1082.10.10.2.4.10.1.20.1.1",
+        "sample_value": "36000",
+        "instances_sampled": 1,
+        "scale_confirmed": null
+      }
+    },
+    {
+      "id": "oid.zte.gpon.fan.tray_sn",
+      "oid": "1.3.6.1.4.1.3902.1082.10.10.2.4.10.1.21",
+      "name": "zxAnFanTraySn",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "DisplayString",
+      "unit": null,
+      "scale": null,
+      "access": "read-write",
+      "enumeration": null,
+      "description": "The serial number of fan tray.",
+      "command_ref": null,
+      "status": "verified",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 1.0
+      },
+      "conflicts": [],
+      "empirical": {
+        "source": "ZTE_C300.txt",
+        "sample_oid": "1.3.6.1.4.1.3902.1082.10.10.2.4.10.1.21.1.1",
+        "sample_value": "\"000000000000\"",
+        "instances_sampled": 1,
+        "scale_confirmed": null
+      }
+    },
+    {
+      "id": "oid.zte.gpon.fan.tray_current",
+      "oid": "1.3.6.1.4.1.3902.1082.10.10.2.4.10.1.23",
+      "name": "zxAnFanTrayCurrent",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": "0.001Amp",
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "Current of the fan tray.\n             Value 0 means not available.",
+      "command_ref": null,
+      "status": "verified",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 1.0
+      },
+      "conflicts": [],
+      "empirical": {
+        "source": "ZTE_C300.txt",
+        "sample_oid": "1.3.6.1.4.1.3902.1082.10.10.2.4.10.1.23.1.1",
+        "sample_value": "680",
+        "instances_sampled": 1,
+        "scale_confirmed": null
+      }
+    },
+    {
+      "id": "oid.zte.gpon.fan.tray_temp",
+      "oid": "1.3.6.1.4.1.3902.1082.10.10.2.4.10.1.24",
+      "name": "zxAnFanTrayTemp",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": "Centigrade",
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "The temperature of the fan tray.",
+      "command_ref": null,
+      "status": "verified",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 1.0
+      },
+      "conflicts": [],
+      "empirical": {
+        "source": "ZTE_C300.txt",
+        "sample_oid": "1.3.6.1.4.1.3902.1082.10.10.2.4.10.1.24.1.1",
+        "sample_value": "35",
+        "instances_sampled": 1,
+        "scale_confirmed": null
+      }
+    },
+    {
+      "id": "oid.zte.gpon.fan.env_fan_table",
+      "oid": "1.3.6.1.4.1.3902.1082.10.10.2.4.11",
+      "name": "zxAnEnvFanTable",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "SEQUENCE OF ZxAnEnvFanEntry",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": "This table includes speed information and operational status of \n             the fan units.",
+      "command_ref": null,
+      "status": "verified",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 1.0
+      },
+      "conflicts": [],
+      "empirical": {
+        "source": "ZTE_C300.txt",
+        "sample_oid": "1.3.6.1.4.1.3902.1082.10.10.2.4.11.1.2.1.1.1",
+        "sample_value": "4",
+        "instances_sampled": 18,
+        "scale_confirmed": null
+      }
+    },
+    {
+      "id": "oid.zte.gpon.fan.env_fan_entry",
+      "oid": "1.3.6.1.4.1.3902.1082.10.10.2.4.11.1",
+      "name": "zxAnEnvFanEntry",
+      "mib_table": null,
+      "index": {
+        "type": "composite",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "ZxAnEnvFanEntry",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": "The entry of zxAnEnvFanTable.",
+      "command_ref": null,
+      "status": "verified",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 1.0
+      },
+      "conflicts": [],
+      "empirical": {
+        "source": "ZTE_C300.txt",
+        "sample_oid": "1.3.6.1.4.1.3902.1082.10.10.2.4.11.1.2.1.1.1",
+        "sample_value": "4",
+        "instances_sampled": 18,
+        "scale_confirmed": null
+      }
+    },
+    {
+      "id": "oid.zte.gpon.fan.env_fan_index",
+      "oid": "1.3.6.1.4.1.3902.1082.10.10.2.4.11.1.1",
+      "name": "zxAnEnvFanIndex",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": "The index of this fan unit.\n            \n            For 19-inch shelf, there are 3 fans in each fan tray.\n            The fan index should be integer in [1,3].\n            \n            For 21-inch shelf, there are 4 fans. The fan index should\n            be integer in [1,4].",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.fan.env_fan_conf_speed_level",
+      "oid": "1.3.6.1.4.1.3902.1082.10.10.2.4.11.1.2",
+      "name": "zxAnEnvFanConfSpeedLevel",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-write",
+      "enumeration": {
+        "1": "lowSpeed",
+        "2": "standardSpeed",
+        "3": "highSpeed",
+        "4": "superSpeed"
+      },
+      "description": "The configured speed level of the fan unit singly.",
+      "command_ref": null,
+      "status": "verified",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 1.0
+      },
+      "conflicts": [],
+      "empirical": {
+        "source": "ZTE_C300.txt",
+        "sample_oid": "1.3.6.1.4.1.3902.1082.10.10.2.4.11.1.2.1.1.1",
+        "sample_value": "4",
+        "instances_sampled": 3,
+        "scale_confirmed": null
+      }
+    },
+    {
+      "id": "oid.zte.gpon.fan.env_fan_actual_speed_level",
+      "oid": "1.3.6.1.4.1.3902.1082.10.10.2.4.11.1.3",
+      "name": "zxAnEnvFanActualSpeedLevel",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": {
+        "1": "lowSpeed",
+        "2": "standardSpeed",
+        "3": "highSpeed",
+        "4": "superSpeed",
+        "10": "other"
+      },
+      "description": "The actual speed level of the fan unit.",
+      "command_ref": null,
+      "status": "verified",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 1.0
+      },
+      "conflicts": [],
+      "empirical": {
+        "source": "ZTE_C300.txt",
+        "sample_oid": "1.3.6.1.4.1.3902.1082.10.10.2.4.11.1.3.1.1.1",
+        "sample_value": "4",
+        "instances_sampled": 3,
+        "scale_confirmed": null
+      }
+    },
+    {
+      "id": "oid.zte.gpon.fan.env_fan_admin_status",
+      "oid": "1.3.6.1.4.1.3902.1082.10.10.2.4.11.1.4",
+      "name": "zxAnEnvFanAdminStatus",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-write",
+      "enumeration": {
+        "1": "up",
+        "2": "down"
+      },
+      "description": "The administrative status of the fan unit singly.",
+      "command_ref": null,
+      "status": "verified",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 1.0
+      },
+      "conflicts": [],
+      "empirical": {
+        "source": "ZTE_C300.txt",
+        "sample_oid": "1.3.6.1.4.1.3902.1082.10.10.2.4.11.1.4.1.1.1",
+        "sample_value": "1",
+        "instances_sampled": 3,
+        "scale_confirmed": null
+      }
+    },
+    {
+      "id": "oid.zte.gpon.fan.env_fan_oper_status",
+      "oid": "1.3.6.1.4.1.3902.1082.10.10.2.4.11.1.5",
+      "name": "zxAnEnvFanOperStatus",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": {
+        "1": "up",
+        "2": "down",
+        "3": "unknown"
+      },
+      "description": "The operational status of the fan unit.",
+      "command_ref": null,
+      "status": "verified",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 1.0
+      },
+      "conflicts": [],
+      "empirical": {
+        "source": "ZTE_C300.txt",
+        "sample_oid": "1.3.6.1.4.1.3902.1082.10.10.2.4.11.1.5.1.1.1",
+        "sample_value": "1",
+        "instances_sampled": 3,
+        "scale_confirmed": null
+      }
+    },
+    {
+      "id": "oid.zte.gpon.fan.env_fan_online_status",
+      "oid": "1.3.6.1.4.1.3902.1082.10.10.2.4.11.1.6",
+      "name": "zxAnEnvFanOnlineStatus",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": {
+        "1": "online",
+        "2": "offline",
+        "3": "unknown"
+      },
+      "description": "The actual online status of the fan unit.",
+      "command_ref": null,
+      "status": "verified",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 1.0
+      },
+      "conflicts": [],
+      "empirical": {
+        "source": "ZTE_C300.txt",
+        "sample_oid": "1.3.6.1.4.1.3902.1082.10.10.2.4.11.1.6.1.1.1",
+        "sample_value": "1",
+        "instances_sampled": 3,
+        "scale_confirmed": null
+      }
+    },
+    {
+      "id": "oid.zte.gpon.fan.env_fan_actual_speed",
+      "oid": "1.3.6.1.4.1.3902.1082.10.10.2.4.11.1.7",
+      "name": "zxAnEnvFanActualSpeed",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "The actual speed of the fan unit.\n            NOTE:\n               If not supported, NMS should use the speed value of \n               zxAnEnvFanActualSpeedLevel.",
+      "command_ref": null,
+      "status": "verified",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 1.0
+      },
+      "conflicts": [],
+      "empirical": {
+        "source": "ZTE_C300.txt",
+        "sample_oid": "1.3.6.1.4.1.3902.1082.10.10.2.4.11.1.7.1.1.1",
+        "sample_value": "3100",
+        "instances_sampled": 3,
+        "scale_confirmed": null
+      }
+    },
+    {
+      "id": "oid.zte.gpon.fan.env_fan_tray_reset_rack",
+      "oid": "1.3.6.1.4.1.3902.1082.10.10.2.4.12.1",
+      "name": "zxAnEnvFanTrayResetRack",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-write",
+      "enumeration": null,
+      "description": "The rack number of the fan tray.",
+      "command_ref": null,
+      "status": "verified",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 1.0
+      },
+      "conflicts": [],
+      "empirical": {
+        "source": "ZTE_C300.txt",
+        "sample_oid": "1.3.6.1.4.1.3902.1082.10.10.2.4.12.1.0",
+        "sample_value": "0",
+        "instances_sampled": 1,
+        "scale_confirmed": null
+      }
+    },
+    {
+      "id": "oid.zte.gpon.fan.env_fan_tray_reset_action",
+      "oid": "1.3.6.1.4.1.3902.1082.10.10.2.4.12.3",
+      "name": "zxAnEnvFanTrayResetAction",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-write",
+      "enumeration": {
+        "1": "reset"
+      },
+      "description": "Reset the fan trays. \n             To query this object, always return 1.",
+      "command_ref": null,
+      "status": "verified",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 1.0
+      },
+      "conflicts": [],
+      "empirical": {
+        "source": "ZTE_C300.txt",
+        "sample_oid": "1.3.6.1.4.1.3902.1082.10.10.2.4.12.3.0",
+        "sample_value": "1",
+        "instances_sampled": 1,
+        "scale_confirmed": null
+      }
+    }
+  ]
+}

@@ -1,0 +1,65 @@
+{
+  "project": "Telecom Knowledge Compiler (TKC) — Fase 2",
+  "vendor": "ZTE",
+  "family": "ZXA10 C320",
+  "phase": "walk_validation",
+  "seed_family": "ZXA10 C320",
+  "walks": {
+    "ZTE_C320.txt": "enterprise",
+    "ZTE_C320_entities.txt": "entity_table",
+    "ZTE_C320_ifnames.txt": "if_table"
+  },
+  "generated_at": "2026-07-05T12:28:11",
+  "counts": {
+    "oids_kept": 904,
+    "oids_pruned": 1107,
+    "entities_confirmed": 4
+  },
+  "status_distribution": {
+    "oids": {
+      "documented": 885,
+      "verified_community": 10,
+      "verified_walk": 9
+    },
+    "entities": {
+      "verified": 4,
+      "documented": 7,
+      "verified_walk": 2
+    }
+  },
+  "triggers": {
+    "documented_only": 1992,
+    "observed_only": 30,
+    "pon_operational": 1,
+    "ascii_branch_absent": 1,
+    "pon_onu_count_derived": 1,
+    "community_ingest": 3
+  },
+  "bitcalc_validation": null,
+  "pending_validations": [],
+  "community": {
+    "sources": [
+      "snmp-olt-zte_reference_extract.txt",
+      "snmp-olt-zte_status_serial_columns.txt",
+      "snmp-olt-zte_walk_reconciliation.txt"
+    ],
+    "onu_leaves_added": 16,
+    "index_decoder": {
+      "ONU-ID": "suffix = 285278208 + slot*256 + pon",
+      "TYPE": "suffix = 268435456 + slot*65536 + pon*256"
+    },
+    "snmp_params": {
+      "snmp_max_repetitions": "20",
+      "snmp_timeout_s": "5",
+      "snmp_retries": "2",
+      "enumeration_method": "BulkWalk sobre <prefix>.<suffix>; el último octeto del OID devuelto ES el onuID."
+    },
+    "optical": {
+      "applies_to": "onu_rx_power (.1082.500.20.2.2.2.1.10)",
+      "formula": "dBm = raw * 0.002 - 30.0",
+      "decimals": "2",
+      "source_func": "ConvertAndMultiply (internal/utils/extractor.go)"
+    }
+  },
+  "observed_firmware_strings": []
+}

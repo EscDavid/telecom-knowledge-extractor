@@ -1,0 +1,449 @@
+{
+  "entity_ref": "entity.zte.gpon.hardware.power_supply",
+  "vendor": "ZTE",
+  "family": "ZXA10 C320",
+  "firmware": [
+    "2.0",
+    "2.1"
+  ],
+  "alarms": [
+    {
+      "id": "alarm.zte.gpon.power_supply.zxanenvpowersupplymoduledown",
+      "code": "1.3.6.1.4.1.3902.1082.10.10.3.3.1",
+      "name": "zxAnEnvPowerSupplyModuleDown",
+      "canonical_name": "zx An Env Power Supply Module Down",
+      "entity_ref": "entity.zte.gpon.hardware.power_supply",
+      "severity": "major",
+      "type": "power",
+      "description": "It indicates that the power supply module is down.",
+      "probable_causes": [
+        "Falla de la fuente de alimentacion",
+        "Voltaje de entrada fuera de rango",
+        "Bateria agotada o en fallo"
+      ],
+      "remediation": [
+        "Verificar la fuente y el voltaje de entrada",
+        "Revisar o reemplazar la fuente/bateria"
+      ],
+      "oid_trap": "1.3.6.1.4.1.3902.1082.10.10.3.3.1",
+      "oid_refs": [
+        "zxAnPowerSupplyOperStatus"
+      ],
+      "auto_clear": false,
+      "clear_condition": null,
+      "threshold": null,
+      "escalation": {
+        "warning_after_minutes": null,
+        "major_after_minutes": null,
+        "critical_after_minutes": null
+      },
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "status": "documented",
+      "conflicts": []
+    },
+    {
+      "id": "alarm.zte.gpon.power_supply.zxanenvpowersupplymoduleup",
+      "code": "1.3.6.1.4.1.3902.1082.10.10.3.3.2",
+      "name": "zxAnEnvPowerSupplyModuleUp",
+      "canonical_name": "zx An Env Power Supply Module Up",
+      "entity_ref": "entity.zte.gpon.hardware.power_supply",
+      "severity": "warning",
+      "type": "power",
+      "description": "It indicates that the power supply module is up.",
+      "probable_causes": [
+        "Falla de la fuente de alimentacion",
+        "Voltaje de entrada fuera de rango",
+        "Bateria agotada o en fallo"
+      ],
+      "remediation": [
+        "Verificar la fuente y el voltaje de entrada",
+        "Revisar o reemplazar la fuente/bateria"
+      ],
+      "oid_trap": "1.3.6.1.4.1.3902.1082.10.10.3.3.2",
+      "oid_refs": [
+        "zxAnPowerSupplyOperStatus"
+      ],
+      "auto_clear": false,
+      "clear_condition": null,
+      "threshold": null,
+      "escalation": {
+        "warning_after_minutes": null,
+        "major_after_minutes": null,
+        "critical_after_minutes": null
+      },
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "status": "documented",
+      "conflicts": []
+    },
+    {
+      "id": "alarm.zte.gpon.power_supply.zxanenvpoweroff",
+      "code": "1.3.6.1.4.1.3902.1082.10.10.3.3.7",
+      "name": "zxAnEnvPowerOff",
+      "canonical_name": "zx An Env Power Off",
+      "entity_ref": "entity.zte.gpon.hardware.power_supply",
+      "severity": "warning",
+      "type": "power",
+      "description": "It indicates that the  power supply is off.",
+      "probable_causes": [
+        "Falla de la fuente de alimentacion",
+        "Voltaje de entrada fuera de rango",
+        "Bateria agotada o en fallo"
+      ],
+      "remediation": [
+        "Verificar la fuente y el voltaje de entrada",
+        "Revisar o reemplazar la fuente/bateria"
+      ],
+      "oid_trap": "1.3.6.1.4.1.3902.1082.10.10.3.3.7",
+      "oid_refs": [
+        "zxAnPowerSupplyInVoltageStatus"
+      ],
+      "auto_clear": false,
+      "clear_condition": null,
+      "threshold": null,
+      "escalation": {
+        "warning_after_minutes": null,
+        "major_after_minutes": null,
+        "critical_after_minutes": null
+      },
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "status": "documented",
+      "conflicts": []
+    },
+    {
+      "id": "alarm.zte.gpon.power_supply.zxanenvpoweron",
+      "code": "1.3.6.1.4.1.3902.1082.10.10.3.3.8",
+      "name": "zxAnEnvPowerOn",
+      "canonical_name": "zx An Env Power On",
+      "entity_ref": "entity.zte.gpon.hardware.power_supply",
+      "severity": "warning",
+      "type": "power",
+      "description": "It indicates that the power supply off fault is cleared.",
+      "probable_causes": [
+        "Falla de la fuente de alimentacion",
+        "Voltaje de entrada fuera de rango",
+        "Bateria agotada o en fallo"
+      ],
+      "remediation": [
+        "Verificar la fuente y el voltaje de entrada",
+        "Revisar o reemplazar la fuente/bateria"
+      ],
+      "oid_trap": "1.3.6.1.4.1.3902.1082.10.10.3.3.8",
+      "oid_refs": [
+        "zxAnPowerSupplyInVoltageStatus"
+      ],
+      "auto_clear": false,
+      "clear_condition": null,
+      "threshold": null,
+      "escalation": {
+        "warning_after_minutes": null,
+        "major_after_minutes": null,
+        "critical_after_minutes": null
+      },
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "status": "documented",
+      "conflicts": []
+    },
+    {
+      "id": "alarm.zte.gpon.power_supply.zxanenvemergencypowersavealm",
+      "code": "1.3.6.1.4.1.3902.1082.10.10.3.3.9",
+      "name": "zxAnEnvEmergencyPowerSaveAlm",
+      "canonical_name": "zx An Env Emergency Power Save Alm",
+      "entity_ref": "entity.zte.gpon.hardware.power_supply",
+      "severity": "warning",
+      "type": "power",
+      "description": "The current power supply switches to storage battery, \n           the emergency power saving action has been taken.",
+      "probable_causes": [
+        "Falla de la fuente de alimentacion",
+        "Voltaje de entrada fuera de rango",
+        "Bateria agotada o en fallo"
+      ],
+      "remediation": [
+        "Verificar la fuente y el voltaje de entrada",
+        "Revisar o reemplazar la fuente/bateria"
+      ],
+      "oid_trap": "1.3.6.1.4.1.3902.1082.10.10.3.3.9",
+      "oid_refs": [],
+      "auto_clear": false,
+      "clear_condition": null,
+      "threshold": null,
+      "escalation": {
+        "warning_after_minutes": null,
+        "major_after_minutes": null,
+        "critical_after_minutes": null
+      },
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "status": "documented",
+      "conflicts": []
+    },
+    {
+      "id": "alarm.zte.gpon.power_supply.zxanenvemergencypowersaveclr",
+      "code": "1.3.6.1.4.1.3902.1082.10.10.3.3.10",
+      "name": "zxAnEnvEmergencyPowerSaveClr",
+      "canonical_name": "zx An Env Emergency Power Save Clr",
+      "entity_ref": "entity.zte.gpon.hardware.power_supply",
+      "severity": "warning",
+      "type": "power",
+      "description": "The current power supply switches to normal AC power.",
+      "probable_causes": [
+        "Falla de la fuente de alimentacion",
+        "Voltaje de entrada fuera de rango",
+        "Bateria agotada o en fallo"
+      ],
+      "remediation": [
+        "Verificar la fuente y el voltaje de entrada",
+        "Revisar o reemplazar la fuente/bateria"
+      ],
+      "oid_trap": "1.3.6.1.4.1.3902.1082.10.10.3.3.10",
+      "oid_refs": [],
+      "auto_clear": false,
+      "clear_condition": null,
+      "threshold": null,
+      "escalation": {
+        "warning_after_minutes": null,
+        "major_after_minutes": null,
+        "critical_after_minutes": null
+      },
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "status": "documented",
+      "conflicts": []
+    },
+    {
+      "id": "alarm.zte.gpon.power_supply.zxanenvacpowerdownalm",
+      "code": "1.3.6.1.4.1.3902.1082.10.10.3.3.11",
+      "name": "zxAnEnvACPowerDownAlm",
+      "canonical_name": "zx An Env A C Power Down Alm",
+      "entity_ref": "entity.zte.gpon.hardware.power_supply",
+      "severity": "major",
+      "type": "protocol",
+      "description": "A zxAnEnvACPowerDownAlm trap is sent when the agent detects no AC\n           power input.",
+      "probable_causes": [
+        "Cambio de estado o parametro reportado",
+        "Inconsistencia de configuracion",
+        "Evento de protocolo (registro/deregistro)"
+      ],
+      "remediation": [
+        "Correlacionar con el objeto reportado (oid_refs)",
+        "Revisar la configuracion asociada"
+      ],
+      "oid_trap": "1.3.6.1.4.1.3902.1082.10.10.3.3.11",
+      "oid_refs": [],
+      "auto_clear": false,
+      "clear_condition": null,
+      "threshold": null,
+      "escalation": {
+        "warning_after_minutes": null,
+        "major_after_minutes": null,
+        "critical_after_minutes": null
+      },
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "status": "documented",
+      "conflicts": []
+    },
+    {
+      "id": "alarm.zte.gpon.power_supply.zxanenvacpowerdownclr",
+      "code": "1.3.6.1.4.1.3902.1082.10.10.3.3.12",
+      "name": "zxAnEnvACPowerDownClr",
+      "canonical_name": "zx An Env A C Power Down Clr",
+      "entity_ref": "entity.zte.gpon.hardware.power_supply",
+      "severity": "major",
+      "type": "protocol",
+      "description": "A zxAnEnvACPowerDownClr trap is sent when the agent detects AC\n           power input.",
+      "probable_causes": [
+        "Cambio de estado o parametro reportado",
+        "Inconsistencia de configuracion",
+        "Evento de protocolo (registro/deregistro)"
+      ],
+      "remediation": [
+        "Correlacionar con el objeto reportado (oid_refs)",
+        "Revisar la configuracion asociada"
+      ],
+      "oid_trap": "1.3.6.1.4.1.3902.1082.10.10.3.3.12",
+      "oid_refs": [],
+      "auto_clear": false,
+      "clear_condition": null,
+      "threshold": null,
+      "escalation": {
+        "warning_after_minutes": null,
+        "major_after_minutes": null,
+        "critical_after_minutes": null
+      },
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "status": "documented",
+      "conflicts": []
+    },
+    {
+      "id": "alarm.zte.gpon.power_supply.zxanenvnobatteryalm",
+      "code": "1.3.6.1.4.1.3902.1082.10.10.3.3.13",
+      "name": "zxAnEnvNoBatteryAlm",
+      "canonical_name": "zx An Env No Battery Alm",
+      "entity_ref": "entity.zte.gpon.hardware.power_supply",
+      "severity": "warning",
+      "type": "power",
+      "description": "A zxAnEnvNoBatteryAlm trap is sent when no battery found by\n           the agent.",
+      "probable_causes": [
+        "Falla de la fuente de alimentacion",
+        "Voltaje de entrada fuera de rango",
+        "Bateria agotada o en fallo"
+      ],
+      "remediation": [
+        "Verificar la fuente y el voltaje de entrada",
+        "Revisar o reemplazar la fuente/bateria"
+      ],
+      "oid_trap": "1.3.6.1.4.1.3902.1082.10.10.3.3.13",
+      "oid_refs": [],
+      "auto_clear": false,
+      "clear_condition": null,
+      "threshold": null,
+      "escalation": {
+        "warning_after_minutes": null,
+        "major_after_minutes": null,
+        "critical_after_minutes": null
+      },
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "status": "documented",
+      "conflicts": []
+    },
+    {
+      "id": "alarm.zte.gpon.power_supply.zxanenvnobatteryclr",
+      "code": "1.3.6.1.4.1.3902.1082.10.10.3.3.14",
+      "name": "zxAnEnvNoBatteryClr",
+      "canonical_name": "zx An Env No Battery Clr",
+      "entity_ref": "entity.zte.gpon.hardware.power_supply",
+      "severity": "warning",
+      "type": "power",
+      "description": "A zxAnEnvNoBatteryClr trap is sent when the battery has been found\n           by the agent.",
+      "probable_causes": [
+        "Falla de la fuente de alimentacion",
+        "Voltaje de entrada fuera de rango",
+        "Bateria agotada o en fallo"
+      ],
+      "remediation": [
+        "Verificar la fuente y el voltaje de entrada",
+        "Revisar o reemplazar la fuente/bateria"
+      ],
+      "oid_trap": "1.3.6.1.4.1.3902.1082.10.10.3.3.14",
+      "oid_refs": [],
+      "auto_clear": false,
+      "clear_condition": null,
+      "threshold": null,
+      "escalation": {
+        "warning_after_minutes": null,
+        "major_after_minutes": null,
+        "critical_after_minutes": null
+      },
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "status": "documented",
+      "conflicts": []
+    }
+  ]
+}

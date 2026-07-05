@@ -1,0 +1,1083 @@
+{
+  "entity_ref": "entity.zte.gpon.hardware.card",
+  "vendor": "ZTE",
+  "family": "ZXA10 C300",
+  "firmware": [
+    "2.0",
+    "2.1"
+  ],
+  "alarms": [
+    {
+      "id": "alarm.zte.gpon.card.zxanchassisctrlcardswappedalm",
+      "code": "1.3.6.1.4.1.3902.1082.10.1.3.1.2",
+      "name": "zxAnChassisCtrlCardSwappedAlm",
+      "canonical_name": "zx An Chassis Ctrl Card Swapped Alm",
+      "entity_ref": "entity.zte.gpon.hardware.card",
+      "severity": "warning",
+      "type": "hardware",
+      "description": "A zxAnChassisCtrlCardSwappedAlm trap indicates that the main \n            control card has swapped to slave card.",
+      "probable_causes": [
+        "Falla o mal contacto de tarjeta/subtarjeta",
+        "Tarjeta no soportada o incompatible",
+        "Sobrecalentamiento del modulo"
+      ],
+      "remediation": [
+        "Reasentar o reemplazar la tarjeta",
+        "Verificar compatibilidad de HW/firmware",
+        "Revisar ventilacion y temperatura"
+      ],
+      "oid_trap": "1.3.6.1.4.1.3902.1082.10.1.3.1.2",
+      "oid_refs": [
+        "zxAnCardOperStatus",
+        "zxAnChassisSysLastSwapReason"
+      ],
+      "auto_clear": false,
+      "clear_condition": null,
+      "threshold": null,
+      "escalation": {
+        "warning_after_minutes": null,
+        "major_after_minutes": null,
+        "critical_after_minutes": null
+      },
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "status": "documented",
+      "conflicts": []
+    },
+    {
+      "id": "alarm.zte.gpon.card.zxanchassisctrlcardswappedclr",
+      "code": "1.3.6.1.4.1.3902.1082.10.1.3.1.3",
+      "name": "zxAnChassisCtrlCardSwappedClr",
+      "canonical_name": "zx An Chassis Ctrl Card Swapped Clr",
+      "entity_ref": "entity.zte.gpon.hardware.card",
+      "severity": "warning",
+      "type": "hardware",
+      "description": "A zxAnChassisCtrlCardSwappedClr trap indicates that the main\n            control card swapped trap has cleared.",
+      "probable_causes": [
+        "Falla o mal contacto de tarjeta/subtarjeta",
+        "Tarjeta no soportada o incompatible",
+        "Sobrecalentamiento del modulo"
+      ],
+      "remediation": [
+        "Reasentar o reemplazar la tarjeta",
+        "Verificar compatibilidad de HW/firmware",
+        "Revisar ventilacion y temperatura"
+      ],
+      "oid_trap": "1.3.6.1.4.1.3902.1082.10.1.3.1.3",
+      "oid_refs": [],
+      "auto_clear": false,
+      "clear_condition": null,
+      "threshold": null,
+      "escalation": {
+        "warning_after_minutes": null,
+        "major_after_minutes": null,
+        "critical_after_minutes": null
+      },
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "status": "documented",
+      "conflicts": []
+    },
+    {
+      "id": "alarm.zte.gpon.card.zxanchassiscardoffline",
+      "code": "1.3.6.1.4.1.3902.1082.10.1.3.2.1",
+      "name": "zxAnChassisCardOffline",
+      "canonical_name": "zx An Chassis Card Offline",
+      "entity_ref": "entity.zte.gpon.hardware.card",
+      "severity": "warning",
+      "type": "hardware",
+      "description": "A zxAnChassisCardOffline trap is sent when the agent\n             has detected that the configured card has plugged out.",
+      "probable_causes": [
+        "Falla o mal contacto de tarjeta/subtarjeta",
+        "Tarjeta no soportada o incompatible",
+        "Sobrecalentamiento del modulo"
+      ],
+      "remediation": [
+        "Reasentar o reemplazar la tarjeta",
+        "Verificar compatibilidad de HW/firmware",
+        "Revisar ventilacion y temperatura"
+      ],
+      "oid_trap": "1.3.6.1.4.1.3902.1082.10.1.3.2.1",
+      "oid_refs": [
+        "zxAnCardConfMainType",
+        "zxAnCardActualMainType",
+        "zxAnCardActualType",
+        "zxAnCardAdminStatus",
+        "zxAnCardOperStatus",
+        "zxAnCardInvSn"
+      ],
+      "auto_clear": false,
+      "clear_condition": null,
+      "threshold": null,
+      "escalation": {
+        "warning_after_minutes": null,
+        "major_after_minutes": null,
+        "critical_after_minutes": null
+      },
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "status": "documented",
+      "conflicts": []
+    },
+    {
+      "id": "alarm.zte.gpon.card.zxanchassiscardonline",
+      "code": "1.3.6.1.4.1.3902.1082.10.1.3.2.2",
+      "name": "zxAnChassisCardOnline",
+      "canonical_name": "zx An Chassis Card Online",
+      "entity_ref": "entity.zte.gpon.hardware.card",
+      "severity": "warning",
+      "type": "hardware",
+      "description": "A zxAnChassisCardOnline trap is sent when the agent\n             has detected that the configured card has plugged in.",
+      "probable_causes": [
+        "Falla o mal contacto de tarjeta/subtarjeta",
+        "Tarjeta no soportada o incompatible",
+        "Sobrecalentamiento del modulo"
+      ],
+      "remediation": [
+        "Reasentar o reemplazar la tarjeta",
+        "Verificar compatibilidad de HW/firmware",
+        "Revisar ventilacion y temperatura"
+      ],
+      "oid_trap": "1.3.6.1.4.1.3902.1082.10.1.3.2.2",
+      "oid_refs": [
+        "zxAnCardConfMainType",
+        "zxAnCardActualMainType",
+        "zxAnCardActualType",
+        "zxAnCardAdminStatus",
+        "zxAnCardOperStatus",
+        "zxAnCardInvSn"
+      ],
+      "auto_clear": false,
+      "clear_condition": null,
+      "threshold": null,
+      "escalation": {
+        "warning_after_minutes": null,
+        "major_after_minutes": null,
+        "critical_after_minutes": null
+      },
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "status": "documented",
+      "conflicts": []
+    },
+    {
+      "id": "alarm.zte.gpon.card.zxanchassiscardtypemismatchalm",
+      "code": "1.3.6.1.4.1.3902.1082.10.1.3.2.3",
+      "name": "zxAnChassisCardTypeMismatchAlm",
+      "canonical_name": "zx An Chassis Card Type Mismatch Alm",
+      "entity_ref": "entity.zte.gpon.hardware.card",
+      "severity": "warning",
+      "type": "hardware",
+      "description": "A zxAnChassisCardTypeMismatchAlm trap is sent when the agent\n             has detected that the card has plugged in ,but \n             zxAnCardConfMainType is not same as zxAnCardActualType.",
+      "probable_causes": [
+        "Falla o mal contacto de tarjeta/subtarjeta",
+        "Tarjeta no soportada o incompatible",
+        "Sobrecalentamiento del modulo"
+      ],
+      "remediation": [
+        "Reasentar o reemplazar la tarjeta",
+        "Verificar compatibilidad de HW/firmware",
+        "Revisar ventilacion y temperatura"
+      ],
+      "oid_trap": "1.3.6.1.4.1.3902.1082.10.1.3.2.3",
+      "oid_refs": [
+        "zxAnCardConfMainType",
+        "zxAnCardActualMainType",
+        "zxAnCardActualType",
+        "zxAnCardAdminStatus",
+        "zxAnCardOperStatus",
+        "zxAnCardInvSn"
+      ],
+      "auto_clear": false,
+      "clear_condition": null,
+      "threshold": null,
+      "escalation": {
+        "warning_after_minutes": null,
+        "major_after_minutes": null,
+        "critical_after_minutes": null
+      },
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "status": "documented",
+      "conflicts": []
+    },
+    {
+      "id": "alarm.zte.gpon.card.zxanchassiscardtypemismatchclr",
+      "code": "1.3.6.1.4.1.3902.1082.10.1.3.2.4",
+      "name": "zxAnChassisCardTypeMismatchClr",
+      "canonical_name": "zx An Chassis Card Type Mismatch Clr",
+      "entity_ref": "entity.zte.gpon.hardware.card",
+      "severity": "warning",
+      "type": "hardware",
+      "description": "A zxAnChassisCardTypeMismatchClr trap is sent when the agent\n             has detected that the card has plugged in and \n             zxAnCardConfMainType is same as zxAnCardActualType.",
+      "probable_causes": [
+        "Falla o mal contacto de tarjeta/subtarjeta",
+        "Tarjeta no soportada o incompatible",
+        "Sobrecalentamiento del modulo"
+      ],
+      "remediation": [
+        "Reasentar o reemplazar la tarjeta",
+        "Verificar compatibilidad de HW/firmware",
+        "Revisar ventilacion y temperatura"
+      ],
+      "oid_trap": "1.3.6.1.4.1.3902.1082.10.1.3.2.4",
+      "oid_refs": [
+        "zxAnCardConfMainType",
+        "zxAnCardActualMainType",
+        "zxAnCardActualType",
+        "zxAnCardAdminStatus",
+        "zxAnCardOperStatus",
+        "zxAnCardInvSn"
+      ],
+      "auto_clear": false,
+      "clear_condition": null,
+      "threshold": null,
+      "escalation": {
+        "warning_after_minutes": null,
+        "major_after_minutes": null,
+        "critical_after_minutes": null
+      },
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "status": "documented",
+      "conflicts": []
+    },
+    {
+      "id": "alarm.zte.gpon.card.zxanchassiscardnotrunningalm",
+      "code": "1.3.6.1.4.1.3902.1082.10.1.3.2.5",
+      "name": "zxAnChassisCardNotRunningAlm",
+      "canonical_name": "zx An Chassis Card Not Running Alm",
+      "entity_ref": "entity.zte.gpon.hardware.card",
+      "severity": "warning",
+      "type": "hardware",
+      "description": "A zxAnChassisCardNotRunningAlm trap is sent when the agent has \n            detected that the card has plugged in and configured, but it is not\n            running.",
+      "probable_causes": [
+        "Falla o mal contacto de tarjeta/subtarjeta",
+        "Tarjeta no soportada o incompatible",
+        "Sobrecalentamiento del modulo"
+      ],
+      "remediation": [
+        "Reasentar o reemplazar la tarjeta",
+        "Verificar compatibilidad de HW/firmware",
+        "Revisar ventilacion y temperatura"
+      ],
+      "oid_trap": "1.3.6.1.4.1.3902.1082.10.1.3.2.5",
+      "oid_refs": [
+        "zxAnCardConfMainType",
+        "zxAnCardActualMainType",
+        "zxAnCardActualType",
+        "zxAnCardAdminStatus",
+        "zxAnCardOperStatus",
+        "zxAnCardInvSn"
+      ],
+      "auto_clear": false,
+      "clear_condition": null,
+      "threshold": null,
+      "escalation": {
+        "warning_after_minutes": null,
+        "major_after_minutes": null,
+        "critical_after_minutes": null
+      },
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "status": "documented",
+      "conflicts": []
+    },
+    {
+      "id": "alarm.zte.gpon.card.zxanchassiscardnotrunningclr",
+      "code": "1.3.6.1.4.1.3902.1082.10.1.3.2.6",
+      "name": "zxAnChassisCardNotRunningClr",
+      "canonical_name": "zx An Chassis Card Not Running Clr",
+      "entity_ref": "entity.zte.gpon.hardware.card",
+      "severity": "warning",
+      "type": "hardware",
+      "description": "A zxAnChassisCardNotRunningClr trap is sent when the agent\n             has detected that the card is inservice.",
+      "probable_causes": [
+        "Falla o mal contacto de tarjeta/subtarjeta",
+        "Tarjeta no soportada o incompatible",
+        "Sobrecalentamiento del modulo"
+      ],
+      "remediation": [
+        "Reasentar o reemplazar la tarjeta",
+        "Verificar compatibilidad de HW/firmware",
+        "Revisar ventilacion y temperatura"
+      ],
+      "oid_trap": "1.3.6.1.4.1.3902.1082.10.1.3.2.6",
+      "oid_refs": [
+        "zxAnCardConfMainType",
+        "zxAnCardActualMainType",
+        "zxAnCardActualType",
+        "zxAnCardAdminStatus",
+        "zxAnCardOperStatus",
+        "zxAnCardInvSn"
+      ],
+      "auto_clear": false,
+      "clear_condition": null,
+      "threshold": null,
+      "escalation": {
+        "warning_after_minutes": null,
+        "major_after_minutes": null,
+        "critical_after_minutes": null
+      },
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "status": "documented",
+      "conflicts": []
+    },
+    {
+      "id": "alarm.zte.gpon.card.zxanchassiscardnotconfiguredalm",
+      "code": "1.3.6.1.4.1.3902.1082.10.1.3.2.7",
+      "name": "zxAnChassisCardNotConfiguredAlm",
+      "canonical_name": "zx An Chassis Card Not Configured Alm",
+      "entity_ref": "entity.zte.gpon.hardware.card",
+      "severity": "warning",
+      "type": "hardware",
+      "description": "A zxAnEquipCardNotConfigured trap is sent when the agent\n             has detected that the card has plugged in but \n             not configured.",
+      "probable_causes": [
+        "Falla o mal contacto de tarjeta/subtarjeta",
+        "Tarjeta no soportada o incompatible",
+        "Sobrecalentamiento del modulo"
+      ],
+      "remediation": [
+        "Reasentar o reemplazar la tarjeta",
+        "Verificar compatibilidad de HW/firmware",
+        "Revisar ventilacion y temperatura"
+      ],
+      "oid_trap": "1.3.6.1.4.1.3902.1082.10.1.3.2.7",
+      "oid_refs": [
+        "zxAnCardConfMainType",
+        "zxAnCardActualMainType",
+        "zxAnCardActualType",
+        "zxAnCardAdminStatus",
+        "zxAnCardOperStatus",
+        "zxAnCardInvSn"
+      ],
+      "auto_clear": false,
+      "clear_condition": null,
+      "threshold": null,
+      "escalation": {
+        "warning_after_minutes": null,
+        "major_after_minutes": null,
+        "critical_after_minutes": null
+      },
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "status": "documented",
+      "conflicts": []
+    },
+    {
+      "id": "alarm.zte.gpon.card.zxanchassiscardnotconfiguredclr",
+      "code": "1.3.6.1.4.1.3902.1082.10.1.3.2.8",
+      "name": "zxAnChassisCardNotConfiguredClr",
+      "canonical_name": "zx An Chassis Card Not Configured Clr",
+      "entity_ref": "entity.zte.gpon.hardware.card",
+      "severity": "warning",
+      "type": "hardware",
+      "description": "A zxAnChassisCardNotConfiguredClr trap is sent when the agent\n             has detected that the card has plugged in and \n              configured.",
+      "probable_causes": [
+        "Falla o mal contacto de tarjeta/subtarjeta",
+        "Tarjeta no soportada o incompatible",
+        "Sobrecalentamiento del modulo"
+      ],
+      "remediation": [
+        "Reasentar o reemplazar la tarjeta",
+        "Verificar compatibilidad de HW/firmware",
+        "Revisar ventilacion y temperatura"
+      ],
+      "oid_trap": "1.3.6.1.4.1.3902.1082.10.1.3.2.8",
+      "oid_refs": [
+        "zxAnCardConfMainType",
+        "zxAnCardActualMainType",
+        "zxAnCardActualType",
+        "zxAnCardAdminStatus",
+        "zxAnCardOperStatus",
+        "zxAnCardInvSn"
+      ],
+      "auto_clear": false,
+      "clear_condition": null,
+      "threshold": null,
+      "escalation": {
+        "warning_after_minutes": null,
+        "major_after_minutes": null,
+        "critical_after_minutes": null
+      },
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "status": "documented",
+      "conflicts": []
+    },
+    {
+      "id": "alarm.zte.gpon.card.zxanchassiscardrstbtnabnormalalm",
+      "code": "1.3.6.1.4.1.3902.1082.10.1.3.2.9",
+      "name": "zxAnChassisCardRstBtnAbnormalAlm",
+      "canonical_name": "zx An Chassis Card Rst Btn Abnormal Alm",
+      "entity_ref": "entity.zte.gpon.hardware.card",
+      "severity": "major",
+      "type": "hardware",
+      "description": "A zxAnChassisCardRstBtnAbnormalAlm trap is sent when the agent has \n             detected that the reset button of the card is abnormal.",
+      "probable_causes": [
+        "Falla o mal contacto de tarjeta/subtarjeta",
+        "Tarjeta no soportada o incompatible",
+        "Sobrecalentamiento del modulo"
+      ],
+      "remediation": [
+        "Reasentar o reemplazar la tarjeta",
+        "Verificar compatibilidad de HW/firmware",
+        "Revisar ventilacion y temperatura"
+      ],
+      "oid_trap": "1.3.6.1.4.1.3902.1082.10.1.3.2.9",
+      "oid_refs": [
+        "zxAnCardOperStatus"
+      ],
+      "auto_clear": false,
+      "clear_condition": null,
+      "threshold": null,
+      "escalation": {
+        "warning_after_minutes": null,
+        "major_after_minutes": null,
+        "critical_after_minutes": null
+      },
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "status": "documented",
+      "conflicts": []
+    },
+    {
+      "id": "alarm.zte.gpon.card.zxanchassiscardrstbtnabnormalclr",
+      "code": "1.3.6.1.4.1.3902.1082.10.1.3.2.10",
+      "name": "zxAnChassisCardRstBtnAbnormalClr",
+      "canonical_name": "zx An Chassis Card Rst Btn Abnormal Clr",
+      "entity_ref": "entity.zte.gpon.hardware.card",
+      "severity": "major",
+      "type": "hardware",
+      "description": "A zxAnChassisCardRstBtnAbnormalClr trap is sent when the agent has\n             detected that the reset button of the card is normal.",
+      "probable_causes": [
+        "Falla o mal contacto de tarjeta/subtarjeta",
+        "Tarjeta no soportada o incompatible",
+        "Sobrecalentamiento del modulo"
+      ],
+      "remediation": [
+        "Reasentar o reemplazar la tarjeta",
+        "Verificar compatibilidad de HW/firmware",
+        "Revisar ventilacion y temperatura"
+      ],
+      "oid_trap": "1.3.6.1.4.1.3902.1082.10.1.3.2.10",
+      "oid_refs": [
+        "zxAnCardOperStatus"
+      ],
+      "auto_clear": false,
+      "clear_condition": null,
+      "threshold": null,
+      "escalation": {
+        "warning_after_minutes": null,
+        "major_after_minutes": null,
+        "critical_after_minutes": null
+      },
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "status": "documented",
+      "conflicts": []
+    },
+    {
+      "id": "alarm.zte.gpon.card.zxanchassiscardcpuoverloadalm",
+      "code": "1.3.6.1.4.1.3902.1082.10.1.3.2.20",
+      "name": "zxAnChassisCardCpuOverloadAlm",
+      "canonical_name": "zx An Chassis Card Cpu Overload Alm",
+      "entity_ref": "entity.zte.gpon.hardware.card",
+      "severity": "warning",
+      "type": "traffic",
+      "description": "It indicates that the agent has detected that the\n            zxAnChassisCardCPULoad object of one card has exceeded the \n            configured threshhold value of zxAnCardCpuLoadThreshhold.",
+      "probable_causes": [
+        "Congestion o sobre-suscripcion",
+        "Bucle o tormenta de broadcast",
+        "Perfil de ancho de banda excedido"
+      ],
+      "remediation": [
+        "Revisar perfiles de trafico y VLAN",
+        "Buscar bucles L2",
+        "Reajustar el perfil de ancho de banda"
+      ],
+      "oid_trap": "1.3.6.1.4.1.3902.1082.10.1.3.2.20",
+      "oid_refs": [
+        "zxAnCardCpuLoad",
+        "zxAnCardCpuLoadThreshold",
+        "zxAnCardCpuOverloadReason"
+      ],
+      "auto_clear": false,
+      "clear_condition": null,
+      "threshold": null,
+      "escalation": {
+        "warning_after_minutes": null,
+        "major_after_minutes": null,
+        "critical_after_minutes": null
+      },
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "status": "documented",
+      "conflicts": []
+    },
+    {
+      "id": "alarm.zte.gpon.card.zxanchassiscardcpuoverloadclr",
+      "code": "1.3.6.1.4.1.3902.1082.10.1.3.2.21",
+      "name": "zxAnChassisCardCpuOverloadClr",
+      "canonical_name": "zx An Chassis Card Cpu Overload Clr",
+      "entity_ref": "entity.zte.gpon.hardware.card",
+      "severity": "warning",
+      "type": "traffic",
+      "description": "It indicates that the agent has detected that the\n            zxAnChassisCardCPULoad object of one card has less than the \n            configured threshhold value of zxAnCardCpuLoadThreshhold.",
+      "probable_causes": [
+        "Congestion o sobre-suscripcion",
+        "Bucle o tormenta de broadcast",
+        "Perfil de ancho de banda excedido"
+      ],
+      "remediation": [
+        "Revisar perfiles de trafico y VLAN",
+        "Buscar bucles L2",
+        "Reajustar el perfil de ancho de banda"
+      ],
+      "oid_trap": "1.3.6.1.4.1.3902.1082.10.1.3.2.21",
+      "oid_refs": [
+        "zxAnCardCpuLoad",
+        "zxAnCardCpuLoadThreshold",
+        "zxAnCardCpuOverloadReason"
+      ],
+      "auto_clear": false,
+      "clear_condition": null,
+      "threshold": null,
+      "escalation": {
+        "warning_after_minutes": null,
+        "major_after_minutes": null,
+        "critical_after_minutes": null
+      },
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "status": "documented",
+      "conflicts": []
+    },
+    {
+      "id": "alarm.zte.gpon.card.zxanchassiscardmemoverloadalm",
+      "code": "1.3.6.1.4.1.3902.1082.10.1.3.2.22",
+      "name": "zxAnChassisCardMemOverloadAlm",
+      "canonical_name": "zx An Chassis Card Mem Overload Alm",
+      "entity_ref": "entity.zte.gpon.hardware.card",
+      "severity": "warning",
+      "type": "traffic",
+      "description": "It indicates that the agent has detected that the\n            zxAnChassisCardMemUsage object of one card has exceeded the \n            configured threshhold value of zxAnCardMemUsageThreshhold.",
+      "probable_causes": [
+        "Congestion o sobre-suscripcion",
+        "Bucle o tormenta de broadcast",
+        "Perfil de ancho de banda excedido"
+      ],
+      "remediation": [
+        "Revisar perfiles de trafico y VLAN",
+        "Buscar bucles L2",
+        "Reajustar el perfil de ancho de banda"
+      ],
+      "oid_trap": "1.3.6.1.4.1.3902.1082.10.1.3.2.22",
+      "oid_refs": [
+        "zxAnCardMemUsage",
+        "zxAnCardMemUsageThreshold"
+      ],
+      "auto_clear": false,
+      "clear_condition": null,
+      "threshold": null,
+      "escalation": {
+        "warning_after_minutes": null,
+        "major_after_minutes": null,
+        "critical_after_minutes": null
+      },
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "status": "documented",
+      "conflicts": []
+    },
+    {
+      "id": "alarm.zte.gpon.card.zxanchassiscardmemoverloadclr",
+      "code": "1.3.6.1.4.1.3902.1082.10.1.3.2.23",
+      "name": "zxAnChassisCardMemOverloadClr",
+      "canonical_name": "zx An Chassis Card Mem Overload Clr",
+      "entity_ref": "entity.zte.gpon.hardware.card",
+      "severity": "warning",
+      "type": "traffic",
+      "description": "It indicates that the agent has detected that the\n            zxAnChassisCardMemUsage object of one card has less than the \n            configured threshhold value of zxAnCardMemUsageThreshhold.",
+      "probable_causes": [
+        "Congestion o sobre-suscripcion",
+        "Bucle o tormenta de broadcast",
+        "Perfil de ancho de banda excedido"
+      ],
+      "remediation": [
+        "Revisar perfiles de trafico y VLAN",
+        "Buscar bucles L2",
+        "Reajustar el perfil de ancho de banda"
+      ],
+      "oid_trap": "1.3.6.1.4.1.3902.1082.10.1.3.2.23",
+      "oid_refs": [
+        "zxAnCardMemUsage",
+        "zxAnCardMemUsageThreshold"
+      ],
+      "auto_clear": false,
+      "clear_condition": null,
+      "threshold": null,
+      "escalation": {
+        "warning_after_minutes": null,
+        "major_after_minutes": null,
+        "critical_after_minutes": null
+      },
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "status": "documented",
+      "conflicts": []
+    },
+    {
+      "id": "alarm.zte.gpon.card.zxanchassiscardresourceadded",
+      "code": "1.3.6.1.4.1.3902.1082.10.1.3.2.24",
+      "name": "zxAnChassisCardResourceAdded",
+      "canonical_name": "zx An Chassis Card Resource Added",
+      "entity_ref": "entity.zte.gpon.hardware.card",
+      "severity": "warning",
+      "type": "hardware",
+      "description": "A zxAnChassisCardResourceAdded trap is sent when the agent has \n             detected that the card has come into inService status.",
+      "probable_causes": [
+        "Falla o mal contacto de tarjeta/subtarjeta",
+        "Tarjeta no soportada o incompatible",
+        "Sobrecalentamiento del modulo"
+      ],
+      "remediation": [
+        "Reasentar o reemplazar la tarjeta",
+        "Verificar compatibilidad de HW/firmware",
+        "Revisar ventilacion y temperatura"
+      ],
+      "oid_trap": "1.3.6.1.4.1.3902.1082.10.1.3.2.24",
+      "oid_refs": [
+        "zxAnCardConfMainType",
+        "zxAnCardActualMainType",
+        "zxAnCardPortNums",
+        "zxAnSwCardVersion",
+        "zxAnCardHardwareVersion"
+      ],
+      "auto_clear": false,
+      "clear_condition": null,
+      "threshold": null,
+      "escalation": {
+        "warning_after_minutes": null,
+        "major_after_minutes": null,
+        "critical_after_minutes": null
+      },
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "status": "documented",
+      "conflicts": []
+    },
+    {
+      "id": "alarm.zte.gpon.card.zxanchassiscardresourcedeleted",
+      "code": "1.3.6.1.4.1.3902.1082.10.1.3.2.25",
+      "name": "zxAnChassisCardResourceDeleted",
+      "canonical_name": "zx An Chassis Card Resource Deleted",
+      "entity_ref": "entity.zte.gpon.hardware.card",
+      "severity": "warning",
+      "type": "hardware",
+      "description": "A zxAnChassisCardResourceDeleted trap is sent when the agent has\n             detected that the card has been deleted.",
+      "probable_causes": [
+        "Falla o mal contacto de tarjeta/subtarjeta",
+        "Tarjeta no soportada o incompatible",
+        "Sobrecalentamiento del modulo"
+      ],
+      "remediation": [
+        "Reasentar o reemplazar la tarjeta",
+        "Verificar compatibilidad de HW/firmware",
+        "Revisar ventilacion y temperatura"
+      ],
+      "oid_trap": "1.3.6.1.4.1.3902.1082.10.1.3.2.25",
+      "oid_refs": [
+        "zxAnCardConfMainType",
+        "zxAnCardActualMainType",
+        "zxAnCardPortNums",
+        "zxAnSwCardVersion",
+        "zxAnCardHardwareVersion"
+      ],
+      "auto_clear": false,
+      "clear_condition": null,
+      "threshold": null,
+      "escalation": {
+        "warning_after_minutes": null,
+        "major_after_minutes": null,
+        "critical_after_minutes": null
+      },
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "status": "documented",
+      "conflicts": []
+    },
+    {
+      "id": "alarm.zte.gpon.card.zxanenvcardshutdownalm",
+      "code": "1.3.6.1.4.1.3902.1082.10.10.3.1.30",
+      "name": "zxAnEnvCardShutdownAlm",
+      "canonical_name": "zx An Env Card Shutdown Alm",
+      "entity_ref": "entity.zte.gpon.hardware.card",
+      "severity": "major",
+      "type": "environmental",
+      "description": "A zxAnEnvCardShutdownAlm trap is sent when the card has \n            been shut down because agent has detected that the temperature \n            is too high or the AC power is failure and the battery voltage \n            is lower than zxAnEnvEmergencyBatteryThreshold.\n            \n            zxAnEnvCardShutdownReason indicates the real reason.\n            \n            When zxAnEnvCardShutdownReason is envHighTemperature ( 1 ),\n            it means the environment temperature is too high,\n            zxAnEnvTemp is the value of current environment temperature, \n            zxAnCardTemp is invalid and should be zero.\n            zxAnEnvEmergencyBatteryVoltage and zxAnEnvEmergencyBatteryThreshold \n            are invalid and should be zero.\n            \n            When zxAnEnvCardShutdownReason is cardHighTemperature ( 2 ),\n            it means the card temperature is too high,\n            zxAnCardTemp is the value of current card temperature, \n            zxAnEnvTemp is invalid and should be zero.\n            zxAnEnvEmergencyBatteryVoltage and zxAnEnvEmergencyBatteryThreshold \n            are invalid and should be zero.\n            \n            When zxAnEnvCardShutdownReason is chipHighTemperature ( 3 ),\n            it means the temperature of the chip on the card is too high,\n            zxAnCardTemp and zxAnEnvTemp are invalid and should be zero.\n            zxAnEnvEmergencyBatteryVoltage and zxAnEnvEmergencyBatteryThreshold \n            are invalid and should be zero.\n            \n            When zxAnEnvCardShutdownReason is emergencyPowerSaving ( 4 ),\n            it means the AC power is failure, the emergency power saving action\n            has been taken, zxAnCardTemp and zxAnEnvTemp are invalid \n            and should be zero.\n            zxAnEnvEmergencyBatteryVoltage is the value of the current battery \n            voltage, zxAnEnvEmergencyBatteryThreshold is the threshold of the \n            battery voltage.",
+      "probable_causes": [
+        "Temperatura o humedad fuera de umbral",
+        "Falla de ventilacion",
+        "Obstruccion del flujo de aire"
+      ],
+      "remediation": [
+        "Revisar ventiladores y filtros",
+        "Verificar la climatizacion del sitio"
+      ],
+      "oid_trap": "1.3.6.1.4.1.3902.1082.10.10.3.1.30",
+      "oid_refs": [
+        "zxAnEnvCardShutdownReason",
+        "zxAnCardTemp",
+        "zxAnEnvTemp",
+        "zxAnEnvEmergencyBatteryVoltage",
+        "zxAnEnvEmergencyBatteryThreshold"
+      ],
+      "auto_clear": false,
+      "clear_condition": null,
+      "threshold": null,
+      "escalation": {
+        "warning_after_minutes": null,
+        "major_after_minutes": null,
+        "critical_after_minutes": null
+      },
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "status": "documented",
+      "conflicts": []
+    },
+    {
+      "id": "alarm.zte.gpon.card.zxanenvcardshutdownclr",
+      "code": "1.3.6.1.4.1.3902.1082.10.10.3.1.31",
+      "name": "zxAnEnvCardShutdownClr",
+      "canonical_name": "zx An Env Card Shutdown Clr",
+      "entity_ref": "entity.zte.gpon.hardware.card",
+      "severity": "major",
+      "type": "environmental",
+      "description": "A zxAnEnvCardShutdownClr trap is sent when the card \n            temperature becomes normal,\n            or the environment temperature becomes normal,\n            or the chip temperature becomes normal,\n            or the battery voltage is higher than \n            zxAnEnvEmergencyBatteryThreshold or AC power becomes normal.",
+      "probable_causes": [
+        "Temperatura o humedad fuera de umbral",
+        "Falla de ventilacion",
+        "Obstruccion del flujo de aire"
+      ],
+      "remediation": [
+        "Revisar ventiladores y filtros",
+        "Verificar la climatizacion del sitio"
+      ],
+      "oid_trap": "1.3.6.1.4.1.3902.1082.10.10.3.1.31",
+      "oid_refs": [
+        "zxAnEnvCardShutdownReason",
+        "zxAnCardTemp",
+        "zxAnEnvTemp",
+        "zxAnEnvEmergencyBatteryVoltage",
+        "zxAnEnvEmergencyBatteryThreshold"
+      ],
+      "auto_clear": false,
+      "clear_condition": null,
+      "threshold": null,
+      "escalation": {
+        "warning_after_minutes": null,
+        "major_after_minutes": null,
+        "critical_after_minutes": null
+      },
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "status": "documented",
+      "conflicts": []
+    },
+    {
+      "id": "alarm.zte.gpon.card.zxanenvcardnearcriticaltempalm",
+      "code": "1.3.6.1.4.1.3902.1082.10.10.3.1.36",
+      "name": "zxAnEnvCardNearCriticalTempAlm",
+      "canonical_name": "zx An Env Card Near Critical Temp Alm",
+      "entity_ref": "entity.zte.gpon.hardware.card",
+      "severity": "major",
+      "type": "environmental",
+      "description": "A zxAnEnvCardNearCriticalTempAlm trap is sent when the card \n           temperature is close to the card critical temperature alarm \n           threshold.",
+      "probable_causes": [
+        "Temperatura o humedad fuera de umbral",
+        "Falla de ventilacion",
+        "Obstruccion del flujo de aire"
+      ],
+      "remediation": [
+        "Revisar ventiladores y filtros",
+        "Verificar la climatizacion del sitio"
+      ],
+      "oid_trap": "1.3.6.1.4.1.3902.1082.10.10.3.1.36",
+      "oid_refs": [
+        "zxAnCardTemp",
+        "zxAnCardCriticalTempAlmThreshold"
+      ],
+      "auto_clear": false,
+      "clear_condition": null,
+      "threshold": null,
+      "escalation": {
+        "warning_after_minutes": null,
+        "major_after_minutes": null,
+        "critical_after_minutes": null
+      },
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "status": "documented",
+      "conflicts": []
+    },
+    {
+      "id": "alarm.zte.gpon.card.zxanenvcardnearcriticaltempclr",
+      "code": "1.3.6.1.4.1.3902.1082.10.10.3.1.37",
+      "name": "zxAnEnvCardNearCriticalTempClr",
+      "canonical_name": "zx An Env Card Near Critical Temp Clr",
+      "entity_ref": "entity.zte.gpon.hardware.card",
+      "severity": "major",
+      "type": "hardware",
+      "description": "A zxAnEnvCardNearCriticalTempClr trap is sent when \n           the zxAnEnvCardNearCriticalTempAlm is cleared.",
+      "probable_causes": [
+        "Falla o mal contacto de tarjeta/subtarjeta",
+        "Tarjeta no soportada o incompatible",
+        "Sobrecalentamiento del modulo"
+      ],
+      "remediation": [
+        "Reasentar o reemplazar la tarjeta",
+        "Verificar compatibilidad de HW/firmware",
+        "Revisar ventilacion y temperatura"
+      ],
+      "oid_trap": "1.3.6.1.4.1.3902.1082.10.10.3.1.37",
+      "oid_refs": [
+        "zxAnCardTemp",
+        "zxAnCardCriticalTempAlmThreshold"
+      ],
+      "auto_clear": false,
+      "clear_condition": null,
+      "threshold": null,
+      "escalation": {
+        "warning_after_minutes": null,
+        "major_after_minutes": null,
+        "critical_after_minutes": null
+      },
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "status": "documented",
+      "conflicts": []
+    }
+  ]
+}

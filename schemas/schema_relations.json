@@ -1,0 +1,73 @@
+{
+  "spec_name": "SCHEMA_SPEC_RELATIONS",
+  "version": "1.0.0",
+  "purpose": "Define el JSON intermedio para relaciones entre entidades",
+
+  "file_structure": {
+    "location": "knowledge-dist/{vendor}/{family}/catalog-{version}/relations/",
+    "naming": "{source_entity_name}.json",
+    "example": "knowledge-dist/zte/zxa10-c320/catalog-1.0.0/relations/onu.json"
+  },
+
+  "id_construction": {
+    "pattern": "rel.{vendor}.{technology}.{source_entity}.{relation_type}.{target_entity}",
+    "examples": [
+      "rel.zte.gpon.onu.belongs_to.pon_port",
+      "rel.zte.gpon.onu.uses.gem_port",
+      "rel.zte.gpon.onu.has.service_port",
+      "rel.zte.gpon.onu.uses.line_profile"
+    ]
+  },
+
+  "valid_relation_types": {
+    "belongs_to": "entidad hija → entidad padre",
+    "uses": "referencia a perfil o recurso",
+    "has": "entidad padre → entidad hija",
+    "depends_on": "prerequisito de existencia",
+    "maps_to": "equivalencia lógica entre entidades",
+    "triggers": "acción que genera otra entidad"
+  },
+
+  "valid_cardinalities": ["one_to_one", "one_to_many", "many_to_one", "many_to_many"],
+
+  "schema": {
+    "entity_ref": { "type": "string", "required": true },
+    "vendor": { "type": "string", "required": true },
+    "family": { "type": "string", "required": true },
+    "firmware": { "type": "array<string>", "required": true },
+    "relations": {
+      "type": "array",
+      "required": true,
+      "item_schema": {
+        "id": { "type": "string", "required": true },
+        "type": { "type": "enum", "required": true },
+        "target": { "type": "string", "required": true, "description": "Entity id del target" },
+        "cardinality": { "type": "enum", "required": true },
+        "required": { "type": "boolean", "required": true },
+        "description": { "type": "string", "required": false },
+        "prerequisite": { "type": "boolean", "required": true, "description": "Si true, el target debe existir antes del source" },
+        "creation_order": { "type": "integer|null", "required": false, "description": "Orden de creación si prerequisite=true" },
+        "sources": { "type": "array", "required": true },
+        "confidence": { "type": "object", "required": true },
+        "status": { "type": "enum", "required": true }
+      }
+    }
+  },
+
+  "confidence_propagation": {
+    "rule": "La confianza de una relación no puede ser mayor que la confianza mínima de las entidades que conecta",
+    "formula": "relation.confidence.overall <= min(source_entity.confidence.overall, target_entity.confidence.overall)"
+  },
+
+  "loader_notes": {
+    "prerequisites_from_commands": "El Loader también inserta relaciones depends_on desde commands.json prerequisites[] — no duplicar si ya existe"
+  },
+
+  "db_mapping": {
+    "primary_table": "tkc_relations",
+    "notes": [
+      "tkc_relation_sources eliminada — trazabilidad queda en raw_json",
+      "prerequisites de commands.json se migran aquí como depends_on"
+    ]
+  }
+}

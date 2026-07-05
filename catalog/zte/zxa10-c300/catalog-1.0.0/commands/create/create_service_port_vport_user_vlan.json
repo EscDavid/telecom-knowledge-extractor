@@ -1,0 +1,64 @@
+{
+  "id": "command.zte.gpon.service_port.create",
+  "canonical_name": "create service-port vport user-vlan",
+  "vendor": "ZTE",
+  "family": "ZXA10 C300",
+  "firmware": [
+    "2.0",
+    "2.1"
+  ],
+  "technology": "gpon",
+  "category": "create",
+  "cli_mode": "interface_config",
+  "entity_ref": "entity.zte.gpon.logical.service_port",
+  "description": "Crea un GEM port sobre un t-cont de la ONU.",
+  "syntax": "create service-port {sp-index} vport {vport-id} user-vlan {vlan-id}",
+  "parameters": [
+    {
+      "name": "sp-index",
+      "type": "string",
+      "pattern": null,
+      "range": null,
+      "required": true,
+      "description": null,
+      "example": null
+    },
+    {
+      "name": "vport-id",
+      "type": "string",
+      "pattern": null,
+      "range": null,
+      "required": true,
+      "description": null,
+      "example": null
+    },
+    {
+      "name": "vlan-id",
+      "type": "string",
+      "pattern": null,
+      "range": null,
+      "required": true,
+      "description": null,
+      "example": null
+    }
+  ],
+  "output_fields": [],
+  "prerequisites": [
+    "interface gpon-onu {gpon-onu-index}"
+  ],
+  "related_commands": [],
+  "sources": [
+    {
+      "doc_type": "command_reference",
+      "pages": null,
+      "confidence": 0.4
+    }
+  ],
+  "confidence": {
+    "extraction": 0.95,
+    "correlation": 0.0,
+    "overall": 0.95
+  },
+  "status": "verified",
+  "conflicts": []
+}

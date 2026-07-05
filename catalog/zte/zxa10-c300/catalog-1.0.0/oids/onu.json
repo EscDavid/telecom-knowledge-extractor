@@ -1,0 +1,4429 @@
+{
+  "entity_ref": "entity.zte.gpon.device.onu",
+  "vendor": "ZTE",
+  "family": "ZXA10 C300",
+  "firmware": [
+    "2.0",
+    "2.1"
+  ],
+  "oids": [
+    {
+      "id": "oid.zte.gpon.onu.o_p_tcont_table",
+      "oid": "1.3.6.1.4.1.3902.1082.500.21.2.1.2",
+      "name": "zxAnGponOPTcontTable",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "SEQUENCE OF ZxAnGponOPTcontEntry",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": "The ONU profile T-CONT table.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.onu.o_p_tcont_entry",
+      "oid": "1.3.6.1.4.1.3902.1082.500.21.2.1.2.1",
+      "name": "zxAnGponOPTcontEntry",
+      "mib_table": null,
+      "index": {
+        "type": "composite",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "ZxAnGponOPTcontEntry",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": "The ONU profile T-CONT entry.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.onu.o_p_tcont_index",
+      "oid": "1.3.6.1.4.1.3902.1082.500.21.2.1.2.1.2",
+      "name": "zxAnGponOPTcontIndex",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "ZxAnGponOnuTcontIndex",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": "An arbitrary (unique) integer for identifying an entry\n             in the table, from 1 to upper limit supported T-CONT count of\n             ONU type.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.onu.o_p_tcont_name",
+      "oid": "1.3.6.1.4.1.3902.1082.500.21.2.1.2.1.3",
+      "name": "zxAnGponOPTcontName",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "DisplayString",
+      "unit": null,
+      "scale": null,
+      "access": "read-create",
+      "enumeration": null,
+      "description": "Name of the T-CONT.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.onu.o_p_tcont_bw_prf_name",
+      "oid": "1.3.6.1.4.1.3902.1082.500.21.2.1.2.1.4",
+      "name": "zxAnGponOPTcontBwPrfName",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "DisplayString",
+      "unit": null,
+      "scale": null,
+      "access": "read-create",
+      "enumeration": null,
+      "description": "The name of profile used by T-CONT bandwidth configuration.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.onu.o_p_tcont_dba_gap_mode",
+      "oid": "1.3.6.1.4.1.3902.1082.500.21.2.1.2.1.5",
+      "name": "zxAnGponOPTcontDbaGapMode",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-create",
+      "enumeration": {
+        "1": "mode0",
+        "2": "mode1",
+        "3": "mode2",
+        "4": "mode3",
+        "11": "default"
+      },
+      "description": "The DBA gap mode. \n             For GPON ONU, the explanations of these modes are as follows:\n               mode0 is one frame, \n               mode1 is two frames, \n               mode2 is four frames, \n               mode3 is eight frames.\n               default is the system default policy.\n             For example, 'two frames' indicates that T-CONT will perform DBA \n             in a gap of two data frames.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.onu.o_p_tcont_row_status",
+      "oid": "1.3.6.1.4.1.3902.1082.500.21.2.1.2.1.50",
+      "name": "zxAnGponOPTcontRowStatus",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "Row",
+      "unit": null,
+      "scale": null,
+      "access": "read-create",
+      "enumeration": null,
+      "description": "The status of this conceptual row.\n        \n             To create a row in this table, a manager must\n             set this object to createAndGo(4).\n\n             To delete a row in this table, a manager must\n             set this object to destroy(6).\n             \n             To query this object, always return 1.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.onu.o_p_gem_port_tcont_index",
+      "oid": "1.3.6.1.4.1.3902.1082.500.21.2.1.3.1.3",
+      "name": "zxAnGponOPGemPortTcontIndex",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "ZxAnGponOnuTcontIndex",
+      "unit": null,
+      "scale": null,
+      "access": "read-create",
+      "enumeration": null,
+      "description": "It is equal to the 'zxAnGponOPTcontIndex' \n             of 'zxAnGponOPTcontTable'.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.onu.o_p_gem_port_queue_of_tcont",
+      "oid": "1.3.6.1.4.1.3902.1082.500.21.2.1.3.1.4",
+      "name": "zxAnGponOPGemPortQueueOfTcont",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-create",
+      "enumeration": null,
+      "description": "The queue (index from 0 to 7) of T-CONT for this GEM port.\n             Queue 7 is the highest priority queue.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.onu.o_p_onu_conf_table",
+      "oid": "1.3.6.1.4.1.3902.1082.500.21.2.1.5",
+      "name": "zxAnGponOPOnuConfTable",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "SEQUENCE OF ZxAnGponOPOnuConfEntry",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": "The ONU profile ONU configuration table.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.onu.o_p_onu_conf_entry",
+      "oid": "1.3.6.1.4.1.3902.1082.500.21.2.1.5.1",
+      "name": "zxAnGponOPOnuConfEntry",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "ZxAnGponOPOnuConfEntry",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": "The ONU profile ONU configuration entry.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.onu.o_p_onu_conf_vport_mode",
+      "oid": "1.3.6.1.4.1.3902.1082.500.21.2.1.5.1.1",
+      "name": "zxAnGponOPOnuConfVportMode",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-write",
+      "enumeration": {
+        "1": "gemport",
+        "3": "manual"
+      },
+      "description": "The VPort mode.\n              gemport(1): a related VPort will be created automatically when a \n                          GEM port is created.\n              manual(3): VPort will be created manually.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.onu.o_p_onu_conf_us_fec_enable",
+      "oid": "1.3.6.1.4.1.3902.1082.500.21.2.1.5.1.2",
+      "name": "zxAnGponOPOnuConfUsFecEnable",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-write",
+      "enumeration": {
+        "1": "enabled",
+        "2": "disabled",
+        "3": "auto",
+        "4": "default"
+      },
+      "description": "Enables or disables the ONU upstream FEC function.\n             enabled(1): enable the ONU upstream FEC function.\n             disabled(2): disable the ONU upstream FEC function.\n             auto(3): system will enable or disable the ONU upstream FEC \n                      function automatically according to the system automation \n                      rule.\n             default(4): system will enable or disable the ONU upstream FEC \n                      function according to the system default rule.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.onu.o_p_tcont_queue_sched_table",
+      "oid": "1.3.6.1.4.1.3902.1082.500.21.2.1.8",
+      "name": "zxAnGponOPTcontQueueSchedTable",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "SEQUENCE OF ZxAnGponOPTcontQueueSchedEntry",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": "The ONU profile T-CONT queue schedule table.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.onu.o_p_tcont_queue_sched_entry",
+      "oid": "1.3.6.1.4.1.3902.1082.500.21.2.1.8.1",
+      "name": "zxAnGponOPTcontQueueSchedEntry",
+      "mib_table": null,
+      "index": {
+        "type": "composite",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "ZxAnGponOPTcontQueueSchedEntry",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": "The ONU profile T-CONT queue schedule entry.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.onu.o_p_tcont_queue_sched_prf_name",
+      "oid": "1.3.6.1.4.1.3902.1082.500.21.2.1.8.1.1",
+      "name": "zxAnGponOPTcontQueueSchedPrfName",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "DisplayString",
+      "unit": null,
+      "scale": null,
+      "access": "read-write",
+      "enumeration": null,
+      "description": "The T-CONT queue schedule profile name, this profile is \n             defined in zxAnGponRmTrafficSchedPrfTable. The empty string\n             indicates that no profile is bound to this T-CONT.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.onu.o_p_wan_onu_identifier",
+      "oid": "1.3.6.1.4.1.3902.1082.500.21.2.2.11.1.5",
+      "name": "zxAnGponOPWanOnuIdentifier",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "DisplayString",
+      "unit": null,
+      "scale": null,
+      "access": "read-create",
+      "enumeration": null,
+      "description": "A unique ONU identifier string. This string, if set is provided as\n             part of the DHCP request to allow an alternative to MAC Address in\n             retrieving the DHCP parameters of the specified ONU.\n             This attribute is related to 'zxAnGponOPWanIpMode'.\n             and it is valid only when 'zxAnGponOPWanIpMode' is DHCP.\n             Its default value is null bytes.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.onu.o_p_voip_ip_onu_identifier",
+      "oid": "1.3.6.1.4.1.3902.1082.500.21.2.2.13.1.7",
+      "name": "zxAnGponOPVoipIpOnuIdentifier",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "DisplayString",
+      "unit": null,
+      "scale": null,
+      "access": "read-create",
+      "enumeration": null,
+      "description": "This attribute indicates the ONU identifier string. \n             This attribute is relation to 'zxAnGponOPVoipIpMode'. \n             This attribute is valid only when 'zxAnGponOPVoipIpMode' is DHCP. \n             A unique ONU identifier string. If set to a non-null value,\n             this string is used instead of the MAC address in retrieving\n             DHCP parameters. If the string is shorter than 25 characters,\n             it must be null terminated. Its default value is null bytes.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.onu.pon_onu_type_table",
+      "oid": "1.3.6.1.4.1.3902.1082.500.1.2.2.2",
+      "name": "zxAnPonOnuTypeTable",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "SEQUENCE OF ZxAnPonOnuTypeEntry",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": "Configuration of ONU type.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.onu.pon_onu_type_entry",
+      "oid": "1.3.6.1.4.1.3902.1082.500.1.2.2.2.1",
+      "name": "zxAnPonOnuTypeEntry",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "ZxAnPonOnuTypeEntry",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": "Entry of zxAnPonOnuTypeTable.\n            For the default ONU type such as ZTE-F641,ZTE-F622,\n            ZTE-F625, ZTE-F621, ZTE-F601, ZTE-F640, ZTE-F628, ZTE-9806,\n            ZTE-D400, ZTE-D402, ZTE-D420, ZTE-D421, ZTE-D422, ZTE-F401,\n            ZTE-F420, ZTE-F425, ZTE-F429, ZTE-F430, ZTE-F435, ZTE-F500,\n            ZTE-F803, ZTE-F820, ZTE-F821, ZTE-F822, set operation is prohibited.        \n                    \n            The multi-variables binding rule should be complied with \n            when a manager configures ONU type. According to this rule, \n            all the related mib variables must be included in one SNMP \n            set operation. \n            \n            There are two types of variables: mandatory and optional.\n            All of the mandatory variables must be included in one SNMP\n            set operation. Optional variables may be included in one \n            SNMP set operation with the mandatory variables, but must \n            not be used alone. \n            \n            To create or modify ONU type, the mandatory variables are as \n            follows:\n            mandatoty: zxAnPonOnuTypePonType.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.onu.pon_onu_type_name",
+      "oid": "1.3.6.1.4.1.3902.1082.500.1.2.2.2.1.1",
+      "name": "zxAnPonOnuTypeName",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "DisplayString",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": "Name of ONU type.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.onu.pon_onu_type_pon_type",
+      "oid": "1.3.6.1.4.1.3902.1082.500.1.2.2.2.1.2",
+      "name": "zxAnPonOnuTypePonType",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-create",
+      "enumeration": {
+        "1": "epon",
+        "2": "gpon"
+      },
+      "description": "PON type.There are two types:\n            -epon: Ethernet Passive Optical Network\n            -gpon: Gigabit-Capable PON.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.onu.pon_onu_type_desc",
+      "oid": "1.3.6.1.4.1.3902.1082.500.1.2.2.2.1.3",
+      "name": "zxAnPonOnuTypeDesc",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "DisplayString",
+      "unit": null,
+      "scale": null,
+      "access": "read-create",
+      "enumeration": null,
+      "description": "Description of ONU type.\n             eg. the interface attributes of ONU type.\n             This variable must comply with the multi-variables binding \n             rule described in zxAnPonOnuTypeEntry.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.onu.pon_onu_type_attr1",
+      "oid": "1.3.6.1.4.1.3902.1082.500.1.2.2.2.1.4",
+      "name": "zxAnPonOnuTypeAttr1",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-create",
+      "enumeration": null,
+      "description": "For EPON: This attribute indicates protect type,\n                       1-none, 2-typeC, 3-typeD, default value is 1.\n             For GPON: This attribute indicates the maximum number of T-CONT, \n                       default value is 255.\n             This variable must comply with the multi-variables binding \n             rule described in 'zxAnPonOnuTypeEntry'.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.onu.pon_onu_type_attr2",
+      "oid": "1.3.6.1.4.1.3902.1082.500.1.2.2.2.1.5",
+      "name": "zxAnPonOnuTypeAttr2",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-create",
+      "enumeration": null,
+      "description": "For EPON: This attribute indicates speed,\n                       1-1G, 2-10G Symmetric, 3-10G Asymmetric, \n                       default value is 1.\n             For GPON: This attribute indicates the maximum number of GEM port,\n                       default value is 255.\n             This variable must comply with the multi-variables binding \n             rule described in 'zxAnPonOnuTypeEntry'.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.onu.pon_onu_type_attr3",
+      "oid": "1.3.6.1.4.1.3902.1082.500.1.2.2.2.1.6",
+      "name": "zxAnPonOnuTypeAttr3",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-create",
+      "enumeration": null,
+      "description": "For EPON: This attribute indicates ONU auto dispatch enable status,\n                       1-enable, 2-disable, default value is 1.\n             For GPON: This attribute indicates maximum number of switch per \n                       slot, default value is 255.\n             This variable must comply with the multi-variables binding \n             rule described in 'zxAnPonOnuTypeEntry'.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.onu.pon_onu_type_attr4",
+      "oid": "1.3.6.1.4.1.3902.1082.500.1.2.2.2.1.7",
+      "name": "zxAnPonOnuTypeAttr4",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-create",
+      "enumeration": null,
+      "description": "For GPON: This attribute indicates maximum number of flow per \n                       switch, default value is 255.\n             This attribute is not used for EPON.            \n             This variable must comply with the multi-variables binding \n             rule described in 'zxAnPonOnuTypeEntry'.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.onu.pon_onu_type_attr5",
+      "oid": "1.3.6.1.4.1.3902.1082.500.1.2.2.2.1.8",
+      "name": "zxAnPonOnuTypeAttr5",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-create",
+      "enumeration": null,
+      "description": "For GPON: This attribute indicates maximum number of IP host.\n             MSB : Most Significant Byte\n             LSB : Least Significant Byte\n        \n             |      MSB     |    Byte 2    |    Byte 1       |    LSB          |\n             |--------------|--------------|-----------------|-----------------|\n             |              |              |IPv6 host number | IPv4 host number|\n             |     (8bits)  |  (8bits)     |    (8bits)      |     (8bits)     |\n             |-----------------------------------------------------------------|\n             \n             IPv4 host default number is 2. IPv6 host default number is 0.\n             This attribute is not used for EPON.            \n             This variable must comply with the multi-variables binding \n             rule described in 'zxAnPonOnuTypeEntry'.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.onu.pon_onu_type_attr6",
+      "oid": "1.3.6.1.4.1.3902.1082.500.1.2.2.2.1.9",
+      "name": "zxAnPonOnuTypeAttr6",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-create",
+      "enumeration": null,
+      "description": "For GPON: This attribute indicates service ability of ONU type,\n            there are three service mode :N:1,1:M,1:P.\n            If support the service mode,set the corresponding bit to 1,\n            if not support, set to 0.   \n            Default value is 7.               \n                 \n            | MSB                                  LSB| \n            |-----|-----------|-----------|-----------|\n            | ... |    1:P    |    1:M    |    N:1    |\n            | ... | (1bits)   | (1bits)   | (1bits)   |\n            +-----+-----------+-----------+-----------+\n            This attribute is not used for EPON.\n            This variable must comply with the multi-variables binding \n            rule described in 'zxAnPonOnuTypeEntry'.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.onu.pon_onu_type_attr7",
+      "oid": "1.3.6.1.4.1.3902.1082.500.1.2.2.2.1.10",
+      "name": "zxAnPonOnuTypeAttr7",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-create",
+      "enumeration": null,
+      "description": "The OLT OMCI management mode. \n            |      MSB       |    Byte 2    |    Byte 1    |      LSB     |\n            |-------------------------------------------------------------|\n            |    Reserved    |   Reserved   |   Reserved   |Reserved WiFi |\n            |     (8bits)    |   (8bits)    |    (8bits)   |(7bits) (1bit)|\n            |-------------------------------------------------------------|\n            Bits 1 - 31 are reserved for future use. \n            Bit 0 represents WiFi service, default value is 0.\n            If the bit is set to 1, WiFi service is managed via non-OMCI.                        \n            If the bit is set to 0, WiFi service is managed via OMCI.            \n            This attribute is not used for EPON.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.onu.pon_onu_type_attr8",
+      "oid": "1.3.6.1.4.1.3902.1082.500.1.2.2.2.1.11",
+      "name": "zxAnPonOnuTypeAttr8",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-create",
+      "enumeration": null,
+      "description": "A set of capabilities information about ONU.            \n            | MSB |Byte2|Byte1|               LSB                                       |\n            |---------------------------------------------------------------------------|\n            |Rese-|Rese-|Rese-|Rese-|  GIS    |Extended|       |      |Multicast| OMCI  |\n            |rved |rved |rved |rved |Function |  OMCI  | MGC   | VRG  | Address |Sending|\n            |(8bi-|(8bi-|(8bi-|(1bi-| Enabling|Enabling| Mode  |      |  Range  | Mode  |\n            | ts) | ts) | ts) | ts)-|(1bit)   | (1bit) |(2bits)|(1bit)| (1bit)  |(1bit) |\n            |-----------------------  --------------------------------------------------|\n            Bits 7 - 31 are reserved for future use.            \n            Bit 0 represents OMCI sending mode, default value is 0.\n            If the bit is set to 1, OLT sends OMCI by synchronous mode.             \n            If the bit is set to 0, OLT sends OMCI by asynchronous mode.  \n             \n            Bit 1 represents default multicast address range mode,\n            default value is 0.            \n            If the bit is set to 1, default multicast address range is\n            all-inclusive mode(224.0.0.0-239.255.255.255).                                   \n            If the bit is set to 0, default multicast address range is none. \n            \n            Bit 2 represents VRG enabling status, default value is 0.        \n            If the bit is set to 1, VRG function of the ONU is enabled.            \n            If the bit is set to 0, VRG function of the ONU is disabled.            \n            This attribute is not used for EPON.\n            \n            Bit 3 and bit 4 represent MGC configuration mode, default value \n            is 0. If both of two bits are set to 0, the MGC configuration mode \n            is private. If bit 3 is set to 1 and bit 4 is set to 0, the MGC\n            configuration mode is ITU-T. If bit 3 is set to 0 and bit 4 is set \n            to 1, the MGC configure mode is both.\n\n            Bit 5 represents extended OMCI enabling status, default value is 0.\n            If the bit is set to 1, extended OMCI is enabled.\n            If the bit is set to 0, extended OMCI is disabled.            \n            This attribute is not used for EPON.\n            \n            Bit 6 represents PON GIS function is supported or not, \n            default value is 0.\n            If the bit is set to 1, GIS function is supported.\n            If the bit is set to 0, GIS function is not supported.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.onu.pon_onu_type_attr9",
+      "oid": "1.3.6.1.4.1.3902.1082.500.1.2.2.2.1.12",
+      "name": "zxAnPonOnuTypeAttr9",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-create",
+      "enumeration": null,
+      "description": "A set of capabilities information about ONU.\n            |      MSB       |    Byte 2    |    Byte 1    |      LSB     |\n            |-------------------------------------------------------------|\n            |    Reserved    |   Reserved   |   Reserved   |  VEIP Number |\n            |     (8bits)    |   (8bits)    |    (8bits)   |    (8bits)   |\n            |-------------------------------------------------------------|\n            The LSB represents the number of VEIP port. The value 0 represents\n            the system default.\n            This attribute is not used for EPON.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.onu.pon_onu_type_attr10",
+      "oid": "1.3.6.1.4.1.3902.1082.500.1.2.2.2.1.13",
+      "name": "zxAnPonOnuTypeAttr10",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-create",
+      "enumeration": null,
+      "description": "A set of capabilities information about ONU.\n            |      MSB       |    Byte 2    |    Byte 1    |      LSB          |\n            |------------------------------------------------------------------|\n            |    Reserved    |   Reserved   |   Reserved   |Reserved|Speed Mode|\n            |     (8bits)    |   (8bits)    |    (8bits)   | (4bits)|(4bits)   |\n            |------------------------------------------------------------------|\n            Bits 4 - 31 are reserved for future use.            \n            Bits 0 - 3 represents the ONU speed mode, \n                 1 - GPON, 2 - XG-PON, 3 - XGS-PON, 4 - automatic, \n                 the default value is 4.\n            This attribute is not used for EPON.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.onu.pon_onu_type_row_status",
+      "oid": "1.3.6.1.4.1.3902.1082.500.1.2.2.2.1.50",
+      "name": "zxAnPonOnuTypeRowStatus",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "Row",
+      "unit": null,
+      "scale": null,
+      "access": "read-create",
+      "enumeration": null,
+      "description": "The status of this conceptual row.\n             \n            The supported actions of this conceptual row only include:\n            'createAndGo' and 'destroy'.\n             \n            To create a row in this table, a manager must\n            set this object to createAndGo(4).\n                 \n            In particular, a newly created row cannot be created\n            until the corresponding zxAnPonOnuTypeName\n            and zxAnPonOnuTypePonType have been set.\n    \n            To delete a row in this table, a manager must\n            set this object to destroy(6). \n            \n            To get this object, the agent always returns active(1).",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.onu.pon_onu_if_attr_table",
+      "oid": "1.3.6.1.4.1.3902.1082.500.1.2.2.3",
+      "name": "zxAnPonOnuIfAttrTable",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "SEQUENCE OF ZxAnPonOnuIfAttrEntry",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": "Configuration of ONU interface attributes.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.onu.pon_onu_if_attr_entry",
+      "oid": "1.3.6.1.4.1.3902.1082.500.1.2.2.3.1",
+      "name": "zxAnPonOnuIfAttrEntry",
+      "mib_table": null,
+      "index": {
+        "type": "composite",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "ZxAnPonOnuIfAttrEntry",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": "Entry of zxAnPonOnuIfAttrTable.\n             Entries in the zxAnPonOnuIfAttrTable are created and\n             deleted using the zxAnPonOnuIfAttrRowStatus object,\n             modify is prohibited.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.onu.pon_onu_if_id",
+      "oid": "1.3.6.1.4.1.3902.1082.500.1.2.2.3.1.1",
+      "name": "zxAnPonOnuIfId",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": "The most significant 16 bits indicate the type of this interface:\n            ETH(10), E1(20), T1(21), DS1(22), POTS(30), RF(40), WiFi(50), \n            COM(60), VEIP(70), xDSL(80). \n            The least significant 16 bits indicate the ID of this interface:\n            the first 8 bits specifies the slot ID associated with this UNI,\n            the second 8 bits specifies the port ID associated with this UNI.\n            eg.the zxAnPonOnuIfId for eth_0/1 is 655361(0xA0001).",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.onu.pon_onu_if_attr1",
+      "oid": "1.3.6.1.4.1.3902.1082.500.1.2.2.3.1.2",
+      "name": "zxAnPonOnuIfAttr1",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-create",
+      "enumeration": null,
+      "description": "Reserved for future use.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.onu.pon_onu_if_attr2",
+      "oid": "1.3.6.1.4.1.3902.1082.500.1.2.2.3.1.3",
+      "name": "zxAnPonOnuIfAttr2",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-create",
+      "enumeration": null,
+      "description": "Reserved for future use.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.onu.pon_onu_if_attr3",
+      "oid": "1.3.6.1.4.1.3902.1082.500.1.2.2.3.1.4",
+      "name": "zxAnPonOnuIfAttr3",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-create",
+      "enumeration": null,
+      "description": "Reserved for future use.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.onu.pon_onu_if_attr4",
+      "oid": "1.3.6.1.4.1.3902.1082.500.1.2.2.3.1.5",
+      "name": "zxAnPonOnuIfAttr4",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-create",
+      "enumeration": null,
+      "description": "Reserved for future use.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.onu.pon_onu_if_attr5",
+      "oid": "1.3.6.1.4.1.3902.1082.500.1.2.2.3.1.6",
+      "name": "zxAnPonOnuIfAttr5",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-create",
+      "enumeration": null,
+      "description": "Reserved for future use.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.onu.pon_onu_if_attr6",
+      "oid": "1.3.6.1.4.1.3902.1082.500.1.2.2.3.1.7",
+      "name": "zxAnPonOnuIfAttr6",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-create",
+      "enumeration": null,
+      "description": "Reserved for future use.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.onu.pon_onu_if_attr7",
+      "oid": "1.3.6.1.4.1.3902.1082.500.1.2.2.3.1.8",
+      "name": "zxAnPonOnuIfAttr7",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-create",
+      "enumeration": null,
+      "description": "Reserved for future use.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.onu.pon_onu_if_attr8",
+      "oid": "1.3.6.1.4.1.3902.1082.500.1.2.2.3.1.9",
+      "name": "zxAnPonOnuIfAttr8",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-create",
+      "enumeration": null,
+      "description": "Reserved for future use.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.onu.pon_onu_if_attr9",
+      "oid": "1.3.6.1.4.1.3902.1082.500.1.2.2.3.1.10",
+      "name": "zxAnPonOnuIfAttr9",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-create",
+      "enumeration": null,
+      "description": "Reserved for future use.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.onu.pon_onu_if_attr10",
+      "oid": "1.3.6.1.4.1.3902.1082.500.1.2.2.3.1.11",
+      "name": "zxAnPonOnuIfAttr10",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-create",
+      "enumeration": null,
+      "description": "Reserved for future use.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.onu.pon_onu_if_attr_row_status",
+      "oid": "1.3.6.1.4.1.3902.1082.500.1.2.2.3.1.50",
+      "name": "zxAnPonOnuIfAttrRowStatus",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "Row",
+      "unit": null,
+      "scale": null,
+      "access": "read-create",
+      "enumeration": null,
+      "description": "The status of this conceptual row.\n    \n            The supported actions of this conceptual row only include:\n            'createAndGo' and 'destroy'.\n            \n            To create a row in this table, a manager must\n            set this object to createAndGo(4).\n    \n            To delete a row in this table, a manager must\n            set this object to destroy(6). \n            \n            To get this object, the agent always returns active(1).",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.onu.pon_onu_index",
+      "oid": "1.3.6.1.4.1.3902.1082.500.1.2.4.2.1.1",
+      "name": "zxAnPonOnuIndex",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "ZxAnPonOnuIndex",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": "This attribute represents the index of ONU.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.onu.pon_rogue_onu_olt_index",
+      "oid": "1.3.6.1.4.1.3902.1082.500.1.2.4.1.1.1",
+      "name": "zxAnPonRogueOnuOltIndex",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "InterfaceIndex",
+      "unit": null,
+      "scale": null,
+      "access": "read-write",
+      "enumeration": null,
+      "description": "Same as ifIndex:\n             |-------------+----------|------------|---------|---------|\n             |InterfaceType| rack No. |  Shelf No. | Slot No.| Port No.|\n             |  1 (4bits)  | (4bits)  |  (8bits)   | (8bits) | (8bits) |\n             +-------------+----------+------------+---------+---------+       \n             \n             The multi-variables binding rule should be complied with \n             when a manager configures rogue ONU control. \n             According to this rule, all the related mib variables must be \n             included in one SNMP set operation. \n             \n             There are two types of variables: mandatory and optional.\n             All of the mandatory variables must be included in one SNMP\n             set operation. Optional variables may be included in one \n             SNMP set operation with the mandatory variables, but must \n             not be used alone. \n             \n             To configure rogue ONU control, the mandatory and optional \n             variables are as follows:\n             mandatoty: zxAnPonRogueOnuOltIndex,\n                        zxAnPonRogueOnuIndex",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.onu.pon_rogue_onu_index",
+      "oid": "1.3.6.1.4.1.3902.1082.500.1.2.4.1.1.2",
+      "name": "zxAnPonRogueOnuIndex",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "ZxAnPonOnuIndex",
+      "unit": null,
+      "scale": null,
+      "access": "read-write",
+      "enumeration": null,
+      "description": "Represents the normal ONU index.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.onu.pon_rogue_onu_state",
+      "oid": "1.3.6.1.4.1.3902.1082.500.1.2.4.1.1.3",
+      "name": "zxAnPonRogueOnuState",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-write",
+      "enumeration": {
+        "1": "rogueOn",
+        "2": "rogueOff",
+        "3": "shutDown"
+      },
+      "description": "This object indicates the control action.\n            -rogueOn:open the transmit power.\n            -rogueOff:close the transmit power.\n            -shutDown:shutdown the transceiver.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.onu.pon_rogue_onu_recover_time",
+      "oid": "1.3.6.1.4.1.3902.1082.500.1.2.4.1.1.4",
+      "name": "zxAnPonRogueOnuRecoverTime",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": "Minutes",
+      "scale": null,
+      "access": "read-write",
+      "enumeration": null,
+      "description": "This object indicates the recovery time.\n            When 'zxAnPonRogueOnuState' is 'rogueOn',\n            'zxAnPonRogueOnuRecoverTime' is invalid.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.onu.pon_rogue_onu_detect_info_table",
+      "oid": "1.3.6.1.4.1.3902.1082.500.1.2.4.1.2",
+      "name": "zxAnPonRogueOnuDetectInfoTable",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "SEQUENCE OF ZxAnPonRogueOnuDetectInfoEntry",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": "This table is defined to control rogue ONU.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.onu.pon_rogue_onu_detect_info_entry",
+      "oid": "1.3.6.1.4.1.3902.1082.500.1.2.4.1.2.1",
+      "name": "zxAnPonRogueOnuDetectInfoEntry",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "ZxAnPonRogueOnuDetectInfoEntry",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": "Entry of zxAnPonRogueOnuDetectInfoTable.  \n            \n             The multi-variables binding rule should be complied with \n             when a manager configures rogue ONU detect. \n             According to this rule, \n             all the related mib variables must be included in one SNMP \n             set operation. \n             \n             There are two types of variables: mandatory and optional.\n             All of the mandatory variables must be included in one SNMP\n             set operation. Optional variables may be included in one \n             SNMP set operation with the mandatory variables, but must \n             not be used alone. \n             \n             To configure rogue ONU detect, the mandatory and \n             optional variables are as follows:\n             mandatoty: zxAnRogueOnuDetectEnable,\n                        zxAnRogueOnuLocatingEnable,\n                        zxAnRogueOnuAutoCloseEnable.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.onu.rogue_onu_slot",
+      "oid": "1.3.6.1.4.1.3902.1082.500.1.2.4.1.2.1.1",
+      "name": "zxAnRogueOnuSlot",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": "The OLT slot to be configured rogue ONU detection.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.onu.rogue_onu_detect_enable",
+      "oid": "1.3.6.1.4.1.3902.1082.500.1.2.4.1.2.1.2",
+      "name": "zxAnRogueOnuDetectEnable",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-write",
+      "enumeration": {
+        "1": "enabled",
+        "2": "disabled"
+      },
+      "description": "This object indicates the rogue ONU detection mode.\n            -enabled(1): enable the rogue ONU detection  \n            -disabled(2): disable the rogue ONU detection.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.onu.rogue_onu_locating_enable",
+      "oid": "1.3.6.1.4.1.3902.1082.500.1.2.4.1.2.1.3",
+      "name": "zxAnRogueOnuLocatingEnable",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-write",
+      "enumeration": {
+        "1": "enabled",
+        "2": "disabled"
+      },
+      "description": "This object indicates the rogue ONU locating mode.\n            -enabled(1): locating the rogue ONU\n            -disabled(1): not locating the rogue ONU.\n            When 'zxAnRogueOnuDetectEnable' is 'enabled', you can configure\n            'zxAnRogueOnuLocatingEnable'. \n            When 'zxAnRogueOnuDetectEnable' is 'disabled', you can not \n            configure 'zxAnRogueOnuLocatingEnable'.\n            This object is not supported for C600 serial.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.onu.rogue_onu_auto_close_enable",
+      "oid": "1.3.6.1.4.1.3902.1082.500.1.2.4.1.2.1.4",
+      "name": "zxAnRogueOnuAutoCloseEnable",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-write",
+      "enumeration": {
+        "1": "enabled",
+        "2": "disabled"
+      },
+      "description": "This object indicates the rogue ONU shutdown mode.\n            -enabled(1): shutdown the rogue ONU automatically\n            -disabled(2): shutdown the rogue ONU manually\n            When 'zxAnRogueOnuLocatingEnable' is 'enabled', you can configure\n            'zxAnRogueOnuAutoCloseEnable'. \n            When 'zxAnRogueOnuLocatingEnable' is 'disabled', you can not \n            configure 'zxAnRogueOnuAutoCloseEnable'.\n            This object is not supported for C600 serial.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.onu.pon_rogue_onu_info_table",
+      "oid": "1.3.6.1.4.1.3902.1082.500.1.2.4.1.3",
+      "name": "zxAnPonRogueOnuInfoTable",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "SEQUENCE OF ZxAnPonRogueOnuInfoEntry",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": "This table is defined to get rogue ONU information.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.onu.pon_rogue_onu_info_entry",
+      "oid": "1.3.6.1.4.1.3902.1082.500.1.2.4.1.3.1",
+      "name": "zxAnPonRogueOnuInfoEntry",
+      "mib_table": null,
+      "index": {
+        "type": "composite",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "ZxAnPonRogueOnuInfoEntry",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": "It is an entry in the zxAnPonRogueOnuInfoTable. The index \n                 'ifIndex' represents the normal OLT index",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.onu.pon_rogue_onu_inst_index",
+      "oid": "1.3.6.1.4.1.3902.1082.500.1.2.4.1.3.1.1",
+      "name": "zxAnPonRogueOnuInstIndex",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": "The instance No. of the rogue ONU.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.onu.pon_port_rogue_onu_conf_table",
+      "oid": "1.3.6.1.4.1.3902.1082.500.1.2.4.1.4",
+      "name": "zxAnPonPortRogueOnuConfTable",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "SEQUENCE OF ZxAnPonPortRogueOnuConfEntry",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": "The PON port rogue ONU management table.\n             This table only is used for C600 serial.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.onu.pon_port_rogue_onu_conf_entry",
+      "oid": "1.3.6.1.4.1.3902.1082.500.1.2.4.1.4.1",
+      "name": "zxAnPonPortRogueOnuConfEntry",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "ZxAnPonPortRogueOnuConfEntry",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": "The PON port rogue ONU management entry.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.onu.port_rogue_onu_locating_enable",
+      "oid": "1.3.6.1.4.1.3902.1082.500.1.2.4.1.4.1.1",
+      "name": "zxAnPortRogueOnuLocatingEnable",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-write",
+      "enumeration": {
+        "1": "enabled",
+        "2": "disabled"
+      },
+      "description": "The rogue ONU locating mode.\n             enabled(1): locating the rogue ONU\n             disabled(2): not locating the rogue ONU.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.onu.port_rogue_onu_auto_close_enable",
+      "oid": "1.3.6.1.4.1.3902.1082.500.1.2.4.1.4.1.2",
+      "name": "zxAnPortRogueOnuAutoCloseEnable",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-write",
+      "enumeration": {
+        "1": "enabled",
+        "2": "disabled"
+      },
+      "description": "The rogue ONU shutdown mode.\n             enabled(1): shutdown the rogue ONU automatically\n             disabled(2): shutdown the rogue ONU manually.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.onu.port_rogue_onu_detect_enable",
+      "oid": "1.3.6.1.4.1.3902.1082.500.1.2.4.1.4.1.3",
+      "name": "zxAnPortRogueOnuDetectEnable",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-write",
+      "enumeration": {
+        "1": "enabled",
+        "2": "disabled"
+      },
+      "description": "The rogue ONU detection mode.\n             enabled(1) enable the rogue ONU detection function \n             disabled(2): disable the rogue ONU detection function.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.onu.pon_gis_horizontal_error",
+      "oid": "1.3.6.1.4.1.3902.1082.500.1.2.5.1.4",
+      "name": "zxAnPonGisHorizontalError",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": "Meter",
+      "scale": null,
+      "access": "read-write",
+      "enumeration": null,
+      "description": "The horizontal error of the PON equipment. It caused by the \n             changing of horizontal location during the measurement.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.onu.pon_onu_if_curr_perf_table",
+      "oid": "1.3.6.1.4.1.3902.1082.500.4.2.2.2",
+      "name": "zxAnPonOnuIfCurrPerfTable",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "SEQUENCE OF ZxAnPonOnuIfCurrPerfEntry",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": "PON ONU interface statistics table",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.onu.pon_onu_if_curr_perf_entry",
+      "oid": "1.3.6.1.4.1.3902.1082.500.4.2.2.2.1",
+      "name": "zxAnPonOnuIfCurrPerfEntry",
+      "mib_table": null,
+      "index": {
+        "type": "composite",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "ZxAnPonOnuIfCurrPerfEntry",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": "Entry of zxAnPonOnuIfCurrPerfTable.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.onu.pon_onu_if_curr_perf_reset",
+      "oid": "1.3.6.1.4.1.3902.1082.500.4.2.2.2.1.100",
+      "name": "zxAnPonOnuIfCurrPerfReset",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-write",
+      "enumeration": {
+        "1": "reset"
+      },
+      "description": "Clear ONU current statistics,read invalid.\n            When get this variable, always return 1.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.onu.pon_onu_if_curr15_min_perf_table",
+      "oid": "1.3.6.1.4.1.3902.1082.500.4.2.2.3",
+      "name": "zxAnPonOnuIfCurr15MinPerfTable",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "SEQUENCE OF ZxAnPonOnuIfCurr15MinPerfEntry",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": "The current 15 minutes performance data table of PON ONU \n            interface.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.onu.pon_onu_if_curr15_min_perf_entry",
+      "oid": "1.3.6.1.4.1.3902.1082.500.4.2.2.3.1",
+      "name": "zxAnPonOnuIfCurr15MinPerfEntry",
+      "mib_table": null,
+      "index": {
+        "type": "composite",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "ZxAnPonOnuIfCurr15MinPerfEntry",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": "Entry of zxAnPonOnuIfCurr15MinPerfTable.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.onu.pon_onu_if_c15_m_perf_reset",
+      "oid": "1.3.6.1.4.1.3902.1082.500.4.2.2.3.1.100",
+      "name": "zxAnPonOnuIfC15MPerfReset",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-write",
+      "enumeration": {
+        "1": "reset"
+      },
+      "description": "Clear all the current 15-minutes performance variables.\n            When get this variable, always return 1.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.onu.pon_onu_if_curr_min_perf_table",
+      "oid": "1.3.6.1.4.1.3902.1082.500.4.2.2.10",
+      "name": "zxAnPonOnuIfCurrMinPerfTable",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "SEQUENCE OF ZxAnPonOnuIfCurrMinPerfEntry",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": "The minutes interval performance data table of PON ONU \n            interface.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.onu.pon_onu_if_curr_min_perf_entry",
+      "oid": "1.3.6.1.4.1.3902.1082.500.4.2.2.10.1",
+      "name": "zxAnPonOnuIfCurrMinPerfEntry",
+      "mib_table": null,
+      "index": {
+        "type": "composite",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "ZxAnPonOnuIfCurrMinPerfEntry",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": "An entry in the ONU minutes interval performance data table.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.onu.pon_onu_if_c_min_perf_reset",
+      "oid": "1.3.6.1.4.1.3902.1082.500.4.2.2.10.1.100",
+      "name": "zxAnPonOnuIfCMinPerfReset",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-write",
+      "enumeration": {
+        "1": "reset"
+      },
+      "description": "Clear all the current minutes interval performance variables.\n            When get this variable, always return 1.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.onu.pon_onu_if_curr1_day_perf_table",
+      "oid": "1.3.6.1.4.1.3902.1082.500.4.2.2.4",
+      "name": "zxAnPonOnuIfCurr1DayPerfTable",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "SEQUENCE OF ZxAnPonOnuIfCurr1DayPerfEntry",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": "The current 1 day performance data table of PON ONU interface.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.onu.pon_onu_if_curr1_day_perf_entry",
+      "oid": "1.3.6.1.4.1.3902.1082.500.4.2.2.4.1",
+      "name": "zxAnPonOnuIfCurr1DayPerfEntry",
+      "mib_table": null,
+      "index": {
+        "type": "composite",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "ZxAnPonOnuIfCurr1DayPerfEntry",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": "Entry of zxAnPonOnuIfCurr1DayPerfTable.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.onu.pon_onu_if_c1_d_perf_reset",
+      "oid": "1.3.6.1.4.1.3902.1082.500.4.2.2.4.1.100",
+      "name": "zxAnPonOnuIfC1DPerfReset",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-write",
+      "enumeration": {
+        "1": "reset"
+      },
+      "description": "Clear all the current 1 day performance variables.\n            When get this variable, always return 1.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.onu.pon_onu_if_his15_min_perf_table",
+      "oid": "1.3.6.1.4.1.3902.1082.500.4.2.2.5",
+      "name": "zxAnPonOnuIfHis15MinPerfTable",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "SEQUENCE OF ZxAnPonOnuIfHis15MinPerfEntry",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": "The 15 minutes interval performance data table of PON ONU.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.onu.pon_onu_if_his15_min_perf_entry",
+      "oid": "1.3.6.1.4.1.3902.1082.500.4.2.2.5.1",
+      "name": "zxAnPonOnuIfHis15MinPerfEntry",
+      "mib_table": null,
+      "index": {
+        "type": "composite",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "ZxAnPonOnuIfHis15MinPerfEntry",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": "An entry in the ONU 15 minutes interval performance data table.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.onu.pon_onu_if_h15_m_interval_no",
+      "oid": "1.3.6.1.4.1.3902.1082.500.4.2.2.5.1.1",
+      "name": "zxAnPonOnuIfH15MIntervalNo",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": "Performance Data Interval.\n              \n              Interval 1 is the the most recent previous interval; \n              Interval 96 is 24 hours ago.  \n              Intervals from 2 to 96 are optional.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.onu.pon_onu_if_his_min_perf_table",
+      "oid": "1.3.6.1.4.1.3902.1082.500.4.2.2.11",
+      "name": "zxAnPonOnuIfHisMinPerfTable",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "SEQUENCE OF ZxAnPonOnuIfHisMinPerfEntry",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": "The minutes interval history performance data table of PON ONU.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.onu.pon_onu_if_his_min_perf_entry",
+      "oid": "1.3.6.1.4.1.3902.1082.500.4.2.2.11.1",
+      "name": "zxAnPonOnuIfHisMinPerfEntry",
+      "mib_table": null,
+      "index": {
+        "type": "composite",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "ZxAnPonOnuIfHisMinPerfEntry",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": "An entry in the ONU minutes interval history performance data table.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.onu.pon_onu_if_h_min_interval_no",
+      "oid": "1.3.6.1.4.1.3902.1082.500.4.2.2.11.1.1",
+      "name": "zxAnPonOnuIfHMinIntervalNo",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": "Performance data interval number.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.onu.pon_onu_if_his1_day_perf_table",
+      "oid": "1.3.6.1.4.1.3902.1082.500.4.2.2.6",
+      "name": "zxAnPonOnuIfHis1DayPerfTable",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "SEQUENCE OF ZxAnPonOnuIfHis1DayPerfEntry",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": "The 1 day interval performance data table of PON ONU.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.onu.pon_onu_if_his1_day_perf_entry",
+      "oid": "1.3.6.1.4.1.3902.1082.500.4.2.2.6.1",
+      "name": "zxAnPonOnuIfHis1DayPerfEntry",
+      "mib_table": null,
+      "index": {
+        "type": "composite",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "ZxAnPonOnuIfHis1DayPerfEntry",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": "The 1 day interval performance data entry of interfaces.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.onu.pon_onu_if_h1_d_interval_no",
+      "oid": "1.3.6.1.4.1.3902.1082.500.4.2.2.6.1.1",
+      "name": "zxAnPonOnuIfH1DIntervalNo",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": "Performance Data \n               \n               Interval  1 is the the most recent previous interval\n               Interval 7 is 1 week ago.\n               Intervals from 2 to 7 are optional.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.onu.pon_onu_perf_alm_prf_table",
+      "oid": "1.3.6.1.4.1.3902.1082.500.4.2.2.7",
+      "name": "zxAnPonOnuPerfAlmPrfTable",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "SEQUENCE OF ZxAnPonOnuPerfAlmPrfEntry",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": "The performance alarm threshold profile \n             list table of interfaces.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.onu.pon_onu_perf_alm_prf_entry",
+      "oid": "1.3.6.1.4.1.3902.1082.500.4.2.2.7.1",
+      "name": "zxAnPonOnuPerfAlmPrfEntry",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "ZxAnPonOnuPerfAlmPrfEntry",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": "The performance alarm threshold profile \n            applying entry of interfaces.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.onu.pon_onu_perf_alm_prf_name",
+      "oid": "1.3.6.1.4.1.3902.1082.500.4.2.2.7.1.1",
+      "name": "zxAnPonOnuPerfAlmPrfName",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "DisplayString",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": "The performance alarm threshold profile name.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.onu.pon_onu_perf_alm_prf_row_status",
+      "oid": "1.3.6.1.4.1.3902.1082.500.4.2.2.7.1.50",
+      "name": "zxAnPonOnuPerfAlmPrfRowStatus",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "Row",
+      "unit": null,
+      "scale": null,
+      "access": "read-create",
+      "enumeration": null,
+      "description": "The status of this conceptual row.\n             \n             The supported actions of this conceptual row only include:\n             'createAndGo' and 'destroy'.\n\n             To create a row in this table, a manager must\n             set this object to createAndGo(4).\n            \n             To delete a row in this table, a manager must\n             set this object to destroy(6). \n             \n             To query this object, always return 1.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.onu.pon_onu_perf_alm_prf_conf_table",
+      "oid": "1.3.6.1.4.1.3902.1082.500.4.2.2.8",
+      "name": "zxAnPonOnuPerfAlmPrfConfTable",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "SEQUENCE OF ZxAnPonOnuPerfAlmPrfConfEntry",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": "The performance alarm threshold profile table of interfaces.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.onu.pon_onu_perf_alm_prf_conf_entry",
+      "oid": "1.3.6.1.4.1.3902.1082.500.4.2.2.8.1",
+      "name": "zxAnPonOnuPerfAlmPrfConfEntry",
+      "mib_table": null,
+      "index": {
+        "type": "composite",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "ZxAnPonOnuPerfAlmPrfConfEntry",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": "An entry in zxAnPonOnuPerfAlmPrfConfTable.\n            When a manager wants to create or modify an ONU performance \n            alarm threshold item,it must comply with the multi-variables \n            usage rule that all the mib variables related to same \n            fuction must be in one snmp set operation, the variables have\n            only one type: mandatory.\n            \n            Mandatory variables must be in the one snmp set operation.\n                   \n            To create an ONU performance alarm threshold item on\n            different level, alarm threshold ,restore threshold and \n            zxAnPonOnuPerfAlmConfRowStatus should be in one snmp set operation.\n            The alarm threshold and restore threshold variables in the \n            one snmp set operationshould be on same level.\n            Such as:\n            zxAnPonOnuPerfRiseAlmThresh and zxAnPonOnuPerfRiseAlmClrThresh,\n            zxAnPonOnuPerfRiseWarnThresh and zxAnPonOnuPerfRiseWarnClrThresh,\n            zxAnPonOnuPerfFallWarnThresh and zxAnPonOnuPerfFallWarnClrThresh,\n            zxAnPonOnuPerfFallAlmThresh and zxAnPonOnuPerfFallAlmClrThresh.\n                          \n            To modify an ONU performance alarm threshold item on\n            different level,alarm threshold and restore threshold\n            should be also in the one snmp set \n            operation regardless of modifying alarm or restore threshold \n            value alone.\n            The alarm threshold and restore threshold variables in the \n            one snmp set operationshould be on same level.\n            Such as:\n            zxAnPonOnuPerfRiseAlmThresh and zxAnPonOnuPerfRiseAlmClrThresh,\n            zxAnPonOnuPerfRiseWarnThresh and zxAnPonOnuPerfRiseWarnClrThresh,\n            zxAnPonOnuPerfFallWarnThresh and zxAnPonOnuPerfFallWarnClrThresh,\n            zxAnPonOnuPerfFallAlmThresh and zxAnPonOnuPerfFallAlmClrThresh.\n            \n            To remove an ONU performance alarm threshold item, only \n            zxAnPonOnuPerfAlmConfRowStatus should be set to destroy(6) while\n            all levels of this ONU performance alarm threshold item will be \n            removed.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.onu.pon_onu_perf_variable",
+      "oid": "1.3.6.1.4.1.3902.1082.500.4.2.2.8.1.1",
+      "name": "zxAnPonOnuPerfVariable",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "OBJECT IDENTIFIER",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": "The object identifier of performance variables.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.onu.pon_onu_perf_rise_alm_thresh",
+      "oid": "1.3.6.1.4.1.3902.1082.500.4.2.2.8.1.2",
+      "name": "zxAnPonOnuPerfRiseAlmThresh",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "HCPerfCurrentCount",
+      "unit": null,
+      "scale": null,
+      "access": "read-create",
+      "enumeration": null,
+      "description": "The threshold for rising alarm.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.onu.pon_onu_perf_rise_alm_clr_thresh",
+      "oid": "1.3.6.1.4.1.3902.1082.500.4.2.2.8.1.3",
+      "name": "zxAnPonOnuPerfRiseAlmClrThresh",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "HCPerfCurrentCount",
+      "unit": null,
+      "scale": null,
+      "access": "read-create",
+      "enumeration": null,
+      "description": "The threshold for rising alarm restore.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.onu.pon_onu_perf_rise_warn_thresh",
+      "oid": "1.3.6.1.4.1.3902.1082.500.4.2.2.8.1.4",
+      "name": "zxAnPonOnuPerfRiseWarnThresh",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "HCPerfCurrentCount",
+      "unit": null,
+      "scale": null,
+      "access": "read-create",
+      "enumeration": null,
+      "description": "The threshold for rising warning.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.onu.pon_onu_perf_rise_warn_clr_thresh",
+      "oid": "1.3.6.1.4.1.3902.1082.500.4.2.2.8.1.5",
+      "name": "zxAnPonOnuPerfRiseWarnClrThresh",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "HCPerfCurrentCount",
+      "unit": null,
+      "scale": null,
+      "access": "read-create",
+      "enumeration": null,
+      "description": "The threshold for rising warning restore.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.onu.pon_onu_perf_fall_warn_thresh",
+      "oid": "1.3.6.1.4.1.3902.1082.500.4.2.2.8.1.6",
+      "name": "zxAnPonOnuPerfFallWarnThresh",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "HCPerfCurrentCount",
+      "unit": null,
+      "scale": null,
+      "access": "read-create",
+      "enumeration": null,
+      "description": "The threshold for falling warning.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.onu.pon_onu_perf_fall_warn_clr_thresh",
+      "oid": "1.3.6.1.4.1.3902.1082.500.4.2.2.8.1.7",
+      "name": "zxAnPonOnuPerfFallWarnClrThresh",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "HCPerfCurrentCount",
+      "unit": null,
+      "scale": null,
+      "access": "read-create",
+      "enumeration": null,
+      "description": "The threshold for falling warning restore.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.onu.pon_onu_perf_fall_alm_thresh",
+      "oid": "1.3.6.1.4.1.3902.1082.500.4.2.2.8.1.8",
+      "name": "zxAnPonOnuPerfFallAlmThresh",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "HCPerfCurrentCount",
+      "unit": null,
+      "scale": null,
+      "access": "read-create",
+      "enumeration": null,
+      "description": "The threshold for falling alarm.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.onu.pon_onu_perf_fall_alm_clr_thresh",
+      "oid": "1.3.6.1.4.1.3902.1082.500.4.2.2.8.1.9",
+      "name": "zxAnPonOnuPerfFallAlmClrThresh",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "HCPerfCurrentCount",
+      "unit": null,
+      "scale": null,
+      "access": "read-create",
+      "enumeration": null,
+      "description": "The threshold for falling alarm restore.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.onu.pon_onu_perf_thresh_used",
+      "oid": "1.3.6.1.4.1.3902.1082.500.4.2.2.8.1.10",
+      "name": "zxAnPonOnuPerfThreshUsed",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "BITS",
+      "unit": null,
+      "scale": null,
+      "access": "read-create",
+      "enumeration": {
+        "0": "riseAlmThresh",
+        "1": "riseAlmClrThresh",
+        "2": "riseWarnThresh",
+        "3": "riseWarnClrThresh",
+        "4": "fallWarnThresh",
+        "5": "fallWarnClrThresh",
+        "6": "fallAlmThresh",
+        "7": "fallAlmClrThresh"
+      },
+      "description": "The threshold used flag for falling alarm restore.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.onu.pon_onu_perf_alm_conf_row_status",
+      "oid": "1.3.6.1.4.1.3902.1082.500.4.2.2.8.1.50",
+      "name": "zxAnPonOnuPerfAlmConfRowStatus",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "Row",
+      "unit": null,
+      "scale": null,
+      "access": "read-create",
+      "enumeration": null,
+      "description": "The status of this conceptual row. \n             \n             The supported actions of this conceptual row only include:\n             'createAndGo' and 'destroy'.\n\n             To create a row in this table, a manager must\n             set this object to createAndGo(4).\n             \n             To delete a row in this table, a manager must\n             set this object to destroy(6). \n             \n             To query this object, always return 1.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.onu.pon_onu_perf_alm_prf_apply_table",
+      "oid": "1.3.6.1.4.1.3902.1082.500.4.2.2.9",
+      "name": "zxAnPonOnuPerfAlmPrfApplyTable",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "SEQUENCE OF ZxAnPonOnuPerfAlmPrfApplyEntry",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": "The performance alarm threshold profile \n             applying table of interfaces.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.onu.pon_onu_perf_alm_prf_apply_entry",
+      "oid": "1.3.6.1.4.1.3902.1082.500.4.2.2.9.1",
+      "name": "zxAnPonOnuPerfAlmPrfApplyEntry",
+      "mib_table": null,
+      "index": {
+        "type": "composite",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "ZxAnPonOnuPerfAlmPrfApplyEntry",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": "An entry in zxAnPonOnuPerfAlmPrfApplyTable.\n            The index 'zxAnPonOnuIndex' represents the normal ONU index.\n            When a manager wants to apply an ONU performance alarm \n            profile to specificed ONU interface,it must comply with \n            the multi-variables usage rule that all the mib variables \n            related to same fuction must be in one snmp set operation, \n            the variables have only one type: mandatory.\n            \n            Mandatory variables must be in the one snmp set operation.\n                   \n            To apply an ONU performance alarm profile to the specificed ONU \n            interface, 'zxAnPonOnuPerfAlmPrf' and \n            'zxAnPonOnuAlmPrfApplyRowStatus' should be in the one snmp set \n            operation.\n            \n            To remove the application of an ONU performance alarm profile \n            to the specificed ONU interface, \n            only 'zxAnPonOnuAlmPrfApplyRowStatus' should be set to destroy(6).",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.onu.pon_onu_perf_alm_prf",
+      "oid": "1.3.6.1.4.1.3902.1082.500.4.2.2.9.1.1",
+      "name": "zxAnPonOnuPerfAlmPrf",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "DisplayString",
+      "unit": null,
+      "scale": null,
+      "access": "read-create",
+      "enumeration": null,
+      "description": "The performance alarm threshold profile.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.onu.pon_onu_alm_prf_apply_row_status",
+      "oid": "1.3.6.1.4.1.3902.1082.500.4.2.2.9.1.50",
+      "name": "zxAnPonOnuAlmPrfApplyRowStatus",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "Row",
+      "unit": null,
+      "scale": null,
+      "access": "read-create",
+      "enumeration": null,
+      "description": "The status of this conceptual row.\n             \n             The supported actions of this conceptual row only include:\n             'createAndGo' and 'destroy'.\n\n             To create a row in this table, a manager must\n             set this object to createAndGo(4).\n            \n             To delete a row in this table, a manager must\n             set this object to destroy(6). \n             \n             To query this object, always return 1.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.onu.notification_table",
+      "oid": "1.3.6.1.4.1.3902.3.302.6",
+      "name": "notificationTable",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "SEQUENCE OF NotificationEntry",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": "A list of notification entries.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.onu.onu_name",
+      "oid": "1.3.6.1.4.1.3902.1082.500.10.2.3.3.1.2",
+      "name": "UNRESOLVED",
+      "mib_name": "UNRESOLVED",
+      "attribute": "onu_name",
+      "entity_ref": "entity.zte.gpon.device.onu",
+      "mib_table": null,
+      "index": {
+        "type": "composite",
+        "bit_calculation": true,
+        "decoder": "community_formula",
+        "space": "ONU-ID",
+        "formula": "suffix = 285278208 + slot*256 + pon",
+        "applies_to_base": ".1.3.6.1.4.1.3902.1082",
+        "shelf": 1,
+        "onu_id_append": true,
+        "ranges": "slot 1..30, pon 1..16, onu 1..N",
+        "validated": true,
+        "source": "community",
+        "status": "verified_walk",
+        "supersedes": "bit_map"
+      },
+      "syntax": "DisplayString",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "leaf operativo de ONU (fuente community, validado en hardware)",
+      "full_oid_template": ".1.3.6.1.4.1.3902.1082.500.10.2.3.3.1.2.<suffix>.<onuID>",
+      "command_ref": null,
+      "status": "verified_community",
+      "sources": [
+        {
+          "doc_type": "community",
+          "pages": null,
+          "confidence": 0.0
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "provenance": "community: https://github.com/Cepat-Kilat-Teknologi/snmp-olt-zte",
+      "conflicts": [],
+      "variant_note": "ausente en walk C300/C320 (44-52MB); rama .1082 no poblada por este firmware. Posible variante de firmware/plataforma. Usar los equivalentes del espacio TYPE (SECCIÓN B) como camino verified_walk."
+    },
+    {
+      "id": "oid.zte.gpon.onu.onu_serial_number",
+      "oid": "1.3.6.1.4.1.3902.1082.500.10.2.3.3.1.18",
+      "name": "UNRESOLVED",
+      "mib_name": "UNRESOLVED",
+      "attribute": "onu_serial_number",
+      "entity_ref": "entity.zte.gpon.device.onu",
+      "mib_table": null,
+      "index": {
+        "type": "composite",
+        "bit_calculation": true,
+        "decoder": "community_formula",
+        "space": "ONU-ID",
+        "formula": "suffix = 285278208 + slot*256 + pon",
+        "applies_to_base": ".1.3.6.1.4.1.3902.1082",
+        "shelf": 1,
+        "onu_id_append": true,
+        "ranges": "slot 1..30, pon 1..16, onu 1..N",
+        "validated": true,
+        "source": "community",
+        "status": "verified_walk",
+        "supersedes": "bit_map"
+      },
+      "syntax": "DisplayString (serial GPON, ej. \"CDTC505A956D\")",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "leaf operativo de ONU (fuente community, validado en hardware)",
+      "full_oid_template": ".1.3.6.1.4.1.3902.1082.500.10.2.3.3.1.18.<suffix>.<onuID>",
+      "command_ref": null,
+      "status": "verified_community",
+      "sources": [
+        {
+          "doc_type": "community",
+          "pages": null,
+          "confidence": 0.0
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "provenance": "community: https://github.com/Cepat-Kilat-Teknologi/snmp-olt-zte",
+      "conflicts": [],
+      "variant_note": "ausente en walk C300/C320 (44-52MB); rama .1082 no poblada por este firmware. Posible variante de firmware/plataforma. Usar los equivalentes del espacio TYPE (SECCIÓN B) como camino verified_walk."
+    },
+    {
+      "id": "oid.zte.gpon.onu.onu_description",
+      "oid": "1.3.6.1.4.1.3902.1082.500.10.2.3.3.1.3",
+      "name": "UNRESOLVED",
+      "mib_name": "UNRESOLVED",
+      "attribute": "onu_description",
+      "entity_ref": "entity.zte.gpon.device.onu",
+      "mib_table": null,
+      "index": {
+        "type": "composite",
+        "bit_calculation": true,
+        "decoder": "community_formula",
+        "space": "ONU-ID",
+        "formula": "suffix = 285278208 + slot*256 + pon",
+        "applies_to_base": ".1.3.6.1.4.1.3902.1082",
+        "shelf": 1,
+        "onu_id_append": true,
+        "ranges": "slot 1..30, pon 1..16, onu 1..N",
+        "validated": true,
+        "source": "community",
+        "status": "verified_walk",
+        "supersedes": "bit_map"
+      },
+      "syntax": "DisplayString",
+      "unit": null,
+      "scale": null,
+      "access": "read-write",
+      "enumeration": null,
+      "description": "leaf operativo de ONU (fuente community, validado en hardware)",
+      "full_oid_template": ".1.3.6.1.4.1.3902.1082.500.10.2.3.3.1.3.<suffix>.<onuID>",
+      "command_ref": null,
+      "status": "verified_community",
+      "sources": [
+        {
+          "doc_type": "community",
+          "pages": null,
+          "confidence": 0.0
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "provenance": "community: https://github.com/Cepat-Kilat-Teknologi/snmp-olt-zte",
+      "conflicts": [],
+      "variant_note": "ausente en walk C300/C320 (44-52MB); rama .1082 no poblada por este firmware. Posible variante de firmware/plataforma. Usar los equivalentes del espacio TYPE (SECCIÓN B) como camino verified_walk."
+    },
+    {
+      "id": "oid.zte.gpon.onu.onu_status",
+      "oid": "1.3.6.1.4.1.3902.1082.500.10.2.3.8.1.4",
+      "name": "UNRESOLVED",
+      "mib_name": "UNRESOLVED",
+      "attribute": "onu_status",
+      "entity_ref": "entity.zte.gpon.device.onu",
+      "mib_table": null,
+      "index": {
+        "type": "composite",
+        "bit_calculation": true,
+        "decoder": "community_formula",
+        "space": "ONU-ID",
+        "formula": "suffix = 285278208 + slot*256 + pon",
+        "applies_to_base": ".1.3.6.1.4.1.3902.1082",
+        "shelf": 1,
+        "onu_id_append": true,
+        "ranges": "slot 1..30, pon 1..16, onu 1..N",
+        "validated": true,
+        "source": "community",
+        "status": "verified_walk",
+        "supersedes": "bit_map"
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": {
+        "1": "Logging",
+        "2": "LOS",
+        "3": "Synchronization",
+        "4": "Online",
+        "5": "DyingGasp",
+        "6": "AuthFailed",
+        "7": "Offline",
+        "default": "Unknown"
+      },
+      "description": "leaf operativo de ONU (fuente community, validado en hardware)",
+      "full_oid_template": ".1.3.6.1.4.1.3902.1082.500.10.2.3.8.1.4.<suffix>.<onuID>",
+      "command_ref": null,
+      "status": "verified_community",
+      "sources": [
+        {
+          "doc_type": "community",
+          "pages": null,
+          "confidence": 0.0
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "provenance": "community: https://github.com/Cepat-Kilat-Teknologi/snmp-olt-zte",
+      "conflicts": [],
+      "variant_note": "ausente en walk C300/C320 (44-52MB); rama .1082 no poblada por este firmware. Posible variante de firmware/plataforma. Usar los equivalentes del espacio TYPE (SECCIÓN B) como camino verified_walk."
+    },
+    {
+      "id": "oid.zte.gpon.onu.onu_rx_power",
+      "oid": "1.3.6.1.4.1.3902.1082.500.20.2.2.2.1.10",
+      "name": "UNRESOLVED",
+      "mib_name": "UNRESOLVED",
+      "attribute": "onu_rx_power",
+      "entity_ref": "entity.zte.gpon.device.onu",
+      "mib_table": null,
+      "index": {
+        "type": "composite",
+        "bit_calculation": true,
+        "decoder": "community_formula",
+        "space": "ONU-ID",
+        "formula": "suffix = 285278208 + slot*256 + pon",
+        "applies_to_base": ".1.3.6.1.4.1.3902.1082",
+        "shelf": 1,
+        "onu_id_append": true,
+        "ranges": "slot 1..30, pon 1..16, onu 1..N",
+        "validated": true,
+        "source": "community",
+        "status": "verified_walk",
+        "supersedes": "bit_map",
+        "index_quirk": "RX lleva un octeto EXTRA \".1\" al final (SNMPOIDSuffix); único caso"
+      },
+      "syntax": "INTEGER",
+      "unit": "dBm",
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "leaf operativo de ONU (fuente community, validado en hardware)",
+      "full_oid_template": ".1.3.6.1.4.1.3902.1082.500.20.2.2.2.1.10.<suffix>.<onuID>.1",
+      "command_ref": null,
+      "status": "verified_community",
+      "sources": [
+        {
+          "doc_type": "community",
+          "pages": null,
+          "confidence": 0.0
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "provenance": "community: https://github.com/Cepat-Kilat-Teknologi/snmp-olt-zte",
+      "conflicts": [
+        {
+          "field": "scale",
+          "source_a": "community: raw*0.002 - 30",
+          "source_b": "catálogo TKC: scale=null / SmartOLT: ÷100",
+          "resolution": "resolved: escala confirmada en espacio TYPE (.1012)",
+          "severity": "medium"
+        }
+      ],
+      "scale_formula": "raw*0.002 - 30",
+      "variant_note": "ausente en walk C300/C320 (44-52MB); rama .1082 no poblada por este firmware. Posible variante de firmware/plataforma. Usar los equivalentes del espacio TYPE (SECCIÓN B) como camino verified_walk."
+    },
+    {
+      "id": "oid.zte.gpon.onu.onu_last_online_time",
+      "oid": "1.3.6.1.4.1.3902.1082.500.10.2.3.8.1.5",
+      "name": "UNRESOLVED",
+      "mib_name": "UNRESOLVED",
+      "attribute": "onu_last_online_time",
+      "entity_ref": "entity.zte.gpon.device.onu",
+      "mib_table": null,
+      "index": {
+        "type": "composite",
+        "bit_calculation": true,
+        "decoder": "community_formula",
+        "space": "ONU-ID",
+        "formula": "suffix = 285278208 + slot*256 + pon",
+        "applies_to_base": ".1.3.6.1.4.1.3902.1082",
+        "shelf": 1,
+        "onu_id_append": true,
+        "ranges": "slot 1..30, pon 1..16, onu 1..N",
+        "validated": true,
+        "source": "community",
+        "status": "verified_walk",
+        "supersedes": "bit_map"
+      },
+      "syntax": null,
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "leaf operativo de ONU (fuente community, validado en hardware)",
+      "full_oid_template": ".1.3.6.1.4.1.3902.1082.500.10.2.3.8.1.5.<suffix>.<onuID>",
+      "command_ref": null,
+      "status": "verified_community",
+      "sources": [
+        {
+          "doc_type": "community",
+          "pages": null,
+          "confidence": 0.0
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "provenance": "community: https://github.com/Cepat-Kilat-Teknologi/snmp-olt-zte",
+      "conflicts": [],
+      "variant_note": "ausente en walk C300/C320 (44-52MB); rama .1082 no poblada por este firmware. Posible variante de firmware/plataforma. Usar los equivalentes del espacio TYPE (SECCIÓN B) como camino verified_walk."
+    },
+    {
+      "id": "oid.zte.gpon.onu.onu_last_offline_time",
+      "oid": "1.3.6.1.4.1.3902.1082.500.10.2.3.8.1.6",
+      "name": "UNRESOLVED",
+      "mib_name": "UNRESOLVED",
+      "attribute": "onu_last_offline_time",
+      "entity_ref": "entity.zte.gpon.device.onu",
+      "mib_table": null,
+      "index": {
+        "type": "composite",
+        "bit_calculation": true,
+        "decoder": "community_formula",
+        "space": "ONU-ID",
+        "formula": "suffix = 285278208 + slot*256 + pon",
+        "applies_to_base": ".1.3.6.1.4.1.3902.1082",
+        "shelf": 1,
+        "onu_id_append": true,
+        "ranges": "slot 1..30, pon 1..16, onu 1..N",
+        "validated": true,
+        "source": "community",
+        "status": "verified_walk",
+        "supersedes": "bit_map"
+      },
+      "syntax": null,
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "leaf operativo de ONU (fuente community, validado en hardware)",
+      "full_oid_template": ".1.3.6.1.4.1.3902.1082.500.10.2.3.8.1.6.<suffix>.<onuID>",
+      "command_ref": null,
+      "status": "verified_community",
+      "sources": [
+        {
+          "doc_type": "community",
+          "pages": null,
+          "confidence": 0.0
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "provenance": "community: https://github.com/Cepat-Kilat-Teknologi/snmp-olt-zte",
+      "conflicts": [],
+      "variant_note": "ausente en walk C300/C320 (44-52MB); rama .1082 no poblada por este firmware. Posible variante de firmware/plataforma. Usar los equivalentes del espacio TYPE (SECCIÓN B) como camino verified_walk."
+    },
+    {
+      "id": "oid.zte.gpon.onu.onu_last_offline_reason",
+      "oid": "1.3.6.1.4.1.3902.1082.500.10.2.3.8.1.7",
+      "name": "UNRESOLVED",
+      "mib_name": "UNRESOLVED",
+      "attribute": "onu_last_offline_reason",
+      "entity_ref": "entity.zte.gpon.device.onu",
+      "mib_table": null,
+      "index": {
+        "type": "composite",
+        "bit_calculation": true,
+        "decoder": "community_formula",
+        "space": "ONU-ID",
+        "formula": "suffix = 285278208 + slot*256 + pon",
+        "applies_to_base": ".1.3.6.1.4.1.3902.1082",
+        "shelf": 1,
+        "onu_id_append": true,
+        "ranges": "slot 1..30, pon 1..16, onu 1..N",
+        "validated": true,
+        "source": "community",
+        "status": "verified_walk",
+        "supersedes": "bit_map"
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": {
+        "1": "Unknown",
+        "2": "LOS",
+        "3": "LOSi",
+        "4": "LOFi",
+        "5": "sfi",
+        "6": "loai",
+        "7": "loami",
+        "8": "AuthFail",
+        "9": "PowerOff",
+        "10": "deactiveSucc",
+        "11": "deactiveFail",
+        "12": "Reboot",
+        "13": "Shutdown",
+        "default": "Unknown"
+      },
+      "description": "leaf operativo de ONU (fuente community, validado en hardware)",
+      "full_oid_template": ".1.3.6.1.4.1.3902.1082.500.10.2.3.8.1.7.<suffix>.<onuID>",
+      "command_ref": null,
+      "status": "verified_community",
+      "sources": [
+        {
+          "doc_type": "community",
+          "pages": null,
+          "confidence": 0.0
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "provenance": "community: https://github.com/Cepat-Kilat-Teknologi/snmp-olt-zte",
+      "conflicts": [],
+      "variant_note": "ausente en walk C300/C320 (44-52MB); rama .1082 no poblada por este firmware. Posible variante de firmware/plataforma. Usar los equivalentes del espacio TYPE (SECCIÓN B) como camino verified_walk."
+    },
+    {
+      "id": "oid.zte.gpon.onu.onu_gpon_optical_distance",
+      "oid": "1.3.6.1.4.1.3902.1082.500.10.2.3.10.1.2",
+      "name": "UNRESOLVED",
+      "mib_name": "UNRESOLVED",
+      "attribute": "onu_gpon_optical_distance",
+      "entity_ref": "entity.zte.gpon.device.onu",
+      "mib_table": null,
+      "index": {
+        "type": "composite",
+        "bit_calculation": true,
+        "decoder": "community_formula",
+        "space": "ONU-ID",
+        "formula": "suffix = 285278208 + slot*256 + pon",
+        "applies_to_base": ".1.3.6.1.4.1.3902.1082",
+        "shelf": 1,
+        "onu_id_append": true,
+        "ranges": "slot 1..30, pon 1..16, onu 1..N",
+        "validated": true,
+        "source": "community",
+        "status": "verified_walk",
+        "supersedes": "bit_map"
+      },
+      "syntax": null,
+      "unit": "m (metros, distancia óptica lógica)",
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "leaf operativo de ONU (fuente community, validado en hardware)",
+      "full_oid_template": ".1.3.6.1.4.1.3902.1082.500.10.2.3.10.1.2.<suffix>.<onuID>",
+      "command_ref": null,
+      "status": "verified_community",
+      "sources": [
+        {
+          "doc_type": "community",
+          "pages": null,
+          "confidence": 0.0
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "provenance": "community: https://github.com/Cepat-Kilat-Teknologi/snmp-olt-zte",
+      "conflicts": [],
+      "variant_note": "ausente en walk C300/C320 (44-52MB); rama .1082 no poblada por este firmware. Posible variante de firmware/plataforma. Usar los equivalentes del espacio TYPE (SECCIÓN B) como camino verified_walk."
+    },
+    {
+      "id": "oid.zte.gpon.onu.onu_type_type",
+      "oid": "1.3.6.1.4.1.3902.1012.3.50.11.2.1.17",
+      "name": "UNRESOLVED",
+      "mib_name": "UNRESOLVED",
+      "attribute": "onu_type",
+      "entity_ref": "entity.zte.gpon.device.onu",
+      "mib_table": null,
+      "index": {
+        "type": "composite",
+        "bit_calculation": true,
+        "decoder": "community_formula",
+        "space": "TYPE",
+        "formula": "suffix = 268435456 + slot*65536 + pon*256",
+        "applies_to_base": ".1.3.6.1.4.1.3902.1012",
+        "shelf": 1,
+        "onu_id_append": true,
+        "ranges": null,
+        "validated": true,
+        "source": "community",
+        "status": "verified_walk",
+        "supersedes": "bit_map"
+      },
+      "syntax": "DisplayString (ej. \"MONUV411\")",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "leaf operativo de ONU (fuente community, validado en hardware)",
+      "full_oid_template": ".1.3.6.1.4.1.3902.1012.3.50.11.2.1.17.<suffixTYPE>.<onuID>",
+      "command_ref": null,
+      "status": "verified_walk",
+      "sources": [
+        {
+          "doc_type": "community",
+          "pages": null,
+          "confidence": 0.0
+        }
+      ],
+      "confidence": {
+        "extraction": 0.9,
+        "correlation": 0.0,
+        "overall": 0.9
+      },
+      "provenance": "community",
+      "conflicts": [],
+      "note": "confirma la referencia (mismo OID .11.2.1.17)."
+    },
+    {
+      "id": "oid.zte.gpon.onu.onu_tx_power_type",
+      "oid": "1.3.6.1.4.1.3902.1012.3.50.12.1.1.14",
+      "name": "UNRESOLVED",
+      "mib_name": "UNRESOLVED",
+      "attribute": "onu_tx_power",
+      "entity_ref": "entity.zte.gpon.device.onu",
+      "mib_table": null,
+      "index": {
+        "type": "composite",
+        "bit_calculation": true,
+        "decoder": "community_formula",
+        "space": "TYPE",
+        "formula": "suffix = 268435456 + slot*65536 + pon*256",
+        "applies_to_base": ".1.3.6.1.4.1.3902.1012",
+        "shelf": 1,
+        "onu_id_append": true,
+        "ranges": null,
+        "validated": true,
+        "source": "community",
+        "status": "verified_walk",
+        "supersedes": "bit_map"
+      },
+      "syntax": "INTEGER",
+      "unit": "dBm",
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "leaf operativo de ONU (fuente community, validado en hardware)",
+      "full_oid_template": ".1.3.6.1.4.1.3902.1012.3.50.12.1.1.14.<suffixTYPE>.<onuID>.1",
+      "command_ref": null,
+      "status": "verified_walk",
+      "sources": [
+        {
+          "doc_type": "community",
+          "pages": null,
+          "confidence": 0.0
+        }
+      ],
+      "confidence": {
+        "extraction": 0.9,
+        "correlation": 0.0,
+        "overall": 0.9
+      },
+      "provenance": "community",
+      "conflicts": [],
+      "scale_formula": "raw*0.002-30",
+      "note": "confirma la referencia (mismo OID .12.1.1.14). Rango ~+2 dBm (TX de ONU).",
+      "scale_status": "verified_walk"
+    },
+    {
+      "id": "oid.zte.gpon.onu.onu_ip_address",
+      "oid": "1.3.6.1.4.1.3902.1012.3.50.16.1.1.10",
+      "name": "UNRESOLVED",
+      "mib_name": "UNRESOLVED",
+      "attribute": "onu_ip_address",
+      "entity_ref": "entity.zte.gpon.device.onu",
+      "mib_table": null,
+      "index": {
+        "type": "composite",
+        "bit_calculation": true,
+        "decoder": "community_formula",
+        "space": "TYPE",
+        "formula": "suffix = 268435456 + slot*65536 + pon*256",
+        "applies_to_base": ".1.3.6.1.4.1.3902.1012",
+        "shelf": 1,
+        "onu_id_append": true,
+        "ranges": null,
+        "validated": true,
+        "source": "community",
+        "status": "verified_walk",
+        "supersedes": "bit_map"
+      },
+      "syntax": "IpAddress",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "leaf operativo de ONU (fuente community, validado en hardware)",
+      "full_oid_template": ".1.3.6.1.4.1.3902.1012.3.50.16.1.1.10.<suffixTYPE>.<onuID>",
+      "command_ref": null,
+      "status": "verified_community",
+      "sources": [
+        {
+          "doc_type": "community",
+          "pages": null,
+          "confidence": 0.0
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "provenance": "community: https://github.com/Cepat-Kilat-Teknologi/snmp-olt-zte",
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.onu.onu_status_type",
+      "oid": "1.3.6.1.4.1.3902.1012.3.50.11.2.1.8",
+      "name": "UNRESOLVED",
+      "mib_name": "UNRESOLVED",
+      "attribute": "onu_status",
+      "entity_ref": "entity.zte.gpon.device.onu",
+      "mib_table": null,
+      "index": {
+        "type": "composite",
+        "bit_calculation": true,
+        "decoder": "community_formula",
+        "space": "TYPE",
+        "formula": "suffix = 268435456 + slot*65536 + pon*256",
+        "applies_to_base": ".1.3.6.1.4.1.3902.1012",
+        "shelf": 1,
+        "onu_id_append": true,
+        "ranges": null,
+        "validated": true,
+        "source": "community",
+        "status": "verified_walk",
+        "supersedes": "bit_map"
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": {
+        "1": "Online",
+        "2": "Offline",
+        "65535": "Unknown",
+        "default": "Unknown"
+      },
+      "description": "leaf operativo de ONU (fuente community, validado en hardware)",
+      "full_oid_template": ".1.3.6.1.4.1.3902.1012.3.50.11.2.1.8.<suffixTYPE>.<onuID>",
+      "command_ref": null,
+      "status": "verified_walk",
+      "sources": [
+        {
+          "doc_type": "community",
+          "pages": null,
+          "confidence": 0.0
+        }
+      ],
+      "confidence": {
+        "extraction": 0.9,
+        "correlation": 0.0,
+        "overall": 0.9
+      },
+      "provenance": "community",
+      "conflicts": [],
+      "note": "estado operativo real del espacio TYPE (columna .8), derivado por correlacion con RX. Reemplaza el onu_status .1082.500.10.2.3.8.1.4 (variante, ausente en walk)."
+    },
+    {
+      "id": "oid.zte.gpon.onu.onu_serial_number_type",
+      "oid": "1.3.6.1.4.1.3902.1012.3.50.11.2.1.3",
+      "name": "UNRESOLVED",
+      "mib_name": "UNRESOLVED",
+      "attribute": "onu_serial_number",
+      "entity_ref": "entity.zte.gpon.device.onu",
+      "mib_table": null,
+      "index": {
+        "type": "composite",
+        "bit_calculation": true,
+        "decoder": "community_formula",
+        "space": "TYPE",
+        "formula": "suffix = 268435456 + slot*65536 + pon*256",
+        "applies_to_base": ".1.3.6.1.4.1.3902.1012",
+        "shelf": 1,
+        "onu_id_append": true,
+        "ranges": null,
+        "validated": true,
+        "source": "community",
+        "status": "verified_walk",
+        "supersedes": "bit_map"
+      },
+      "syntax": "Hex-STRING (4 bytes ASCII vendor + 4 bytes unicos = serial GPON completo)",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "leaf operativo de ONU (fuente community, validado en hardware)",
+      "full_oid_template": ".1.3.6.1.4.1.3902.1012.3.50.11.2.1.3.<suffixTYPE>.<onuID>",
+      "command_ref": null,
+      "status": "verified_walk",
+      "sources": [
+        {
+          "doc_type": "community",
+          "pages": null,
+          "confidence": 0.0
+        }
+      ],
+      "confidence": {
+        "extraction": 0.9,
+        "correlation": 0.0,
+        "overall": 0.9
+      },
+      "provenance": "community",
+      "conflicts": [],
+      "note": "serial GPON completo real. Reemplaza el onu_serial_number .1082.500.10.2.3.3.1.18 (variante, ausente en walk). Decodificar: ASCII(bytes 0-3) + HEX(bytes 4-7)."
+    },
+    {
+      "id": "oid.zte.gpon.onu.onu_rx_power_type",
+      "oid": "1.3.6.1.4.1.3902.1012.3.50.12.1.1.10",
+      "name": "UNRESOLVED",
+      "mib_name": "UNRESOLVED",
+      "attribute": "onu_rx_power",
+      "entity_ref": "entity.zte.gpon.device.onu",
+      "mib_table": null,
+      "index": {
+        "type": "composite",
+        "bit_calculation": true,
+        "decoder": "community_formula",
+        "space": "TYPE",
+        "formula": "suffix = 268435456 + slot*65536 + pon*256",
+        "applies_to_base": ".1.3.6.1.4.1.3902.1012",
+        "shelf": 1,
+        "onu_id_append": true,
+        "ranges": null,
+        "validated": true,
+        "source": "community",
+        "status": "verified_walk",
+        "supersedes": "bit_map"
+      },
+      "syntax": "INTEGER",
+      "unit": "dBm",
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "leaf operativo de ONU (fuente community, validado en hardware)",
+      "full_oid_template": ".1.3.6.1.4.1.3902.1012.3.50.12.1.1.10.<suffixTYPE>.<onuID>.1",
+      "command_ref": null,
+      "status": "verified_walk",
+      "sources": [
+        {
+          "doc_type": "community",
+          "pages": null,
+          "confidence": 0.0
+        }
+      ],
+      "confidence": {
+        "extraction": 0.9,
+        "correlation": 0.0,
+        "overall": 0.9
+      },
+      "provenance": "community",
+      "conflicts": [],
+      "note": "ESTE es el RX real de este hardware (rango observado -30..-20 dBm). Reemplaza al RX .1082.500.20.2.2.2.1.10 de la referencia (ausente en walk).",
+      "scale_formula": "raw*0.002-30",
+      "scale_status": "verified_walk"
+    },
+    {
+      "id": "oid.zte.gpon.onu.onu_vendor_id",
+      "oid": "1.3.6.1.4.1.3902.1012.3.50.11.2.1.1",
+      "name": "UNRESOLVED",
+      "mib_name": "UNRESOLVED",
+      "attribute": "onu_vendor_id",
+      "entity_ref": "entity.zte.gpon.device.onu",
+      "mib_table": null,
+      "index": {
+        "type": "composite",
+        "bit_calculation": true,
+        "decoder": "community_formula",
+        "space": "TYPE",
+        "formula": "suffix = 268435456 + slot*65536 + pon*256",
+        "applies_to_base": ".1.3.6.1.4.1.3902.1012",
+        "shelf": 1,
+        "onu_id_append": true,
+        "ranges": null,
+        "validated": true,
+        "source": "community",
+        "status": "verified_walk",
+        "supersedes": "bit_map"
+      },
+      "syntax": "DisplayString (prefijo de vendor: \"ZTEG\",\"CDTC\",\"HWTC\")",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "leaf operativo de ONU (fuente community, validado en hardware)",
+      "full_oid_template": ".1.3.6.1.4.1.3902.1012.3.50.11.2.1.1.<suffixTYPE>.<onuID>",
+      "command_ref": null,
+      "status": "verified_walk",
+      "sources": [
+        {
+          "doc_type": "community",
+          "pages": null,
+          "confidence": 0.0
+        }
+      ],
+      "confidence": {
+        "extraction": 0.9,
+        "correlation": 0.0,
+        "overall": 0.9
+      },
+      "provenance": "community",
+      "conflicts": [],
+      "note": "prefijo de 4 chars del serial GPON. El serial COMPLETO no está en .1082 en este walk; ubicar columna de serial completo por correlación MIB en .11.2.1."
+    }
+  ]
+}
