@@ -1,5 +1,5 @@
 {
-  "id": "command.zte.gpon.onu.modify",
+  "id": "command.zte.gpon.onu.modify.profile",
   "canonical_name": "modify onu profile",
   "vendor": "ZTE",
   "family": "ZXA10 C300",

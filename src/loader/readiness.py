@@ -1,11 +1,11 @@
-"""Readiness del catalogo en 4 tiers (semaforo para recomendar que subir).
+"""Readiness del catalogo en 4 tiers (el backend usa el tier mas alto = el "en uso").
 
 Combina completitud (capas presentes) y confianza (avg_overall, % inferred, walk).
 
   Tier 1  Incompleto            falta >=1 capa  o  avg < 0.5
-  Tier 2  Algo completo         todas las capas, pero avg < 0.75  o  entidades inferred
-  Tier 3  Faltantes menores     avg >= 0.75  y  0 entidades inferred  (default "sano")
-  Tier 4  Completo              avg >= 0.90  y  evidencia empirica (walk)  y  sin conflictos
+  Tier 2  Parcial               todas las capas, pero avg < 0.75  o  entidades inferred
+  Tier 3  Casi listo            completo y confiable, pero TEORICO (sin walk) o con conflicto
+  Tier 4  Listo (en uso)        confirmado contra hardware (walk) y sin conflictos -> deployable
 """
 from __future__ import annotations
 
@@ -13,10 +13,10 @@ import json
 from pathlib import Path
 
 TIER_NAMES = {
-    1: "Incompleto (muy poca confianza)",
-    2: "Algo completo (algo de confianza)",
-    3: "Faltantes menores (buena confianza)",
-    4: "Completo (confianza total)",
+    1: "Incompleto",
+    2: "Parcial (baja confianza)",
+    3: "Casi listo (validado, aun no en uso)",
+    4: "Listo (en uso / produccion)",
 }
 
 _GROUPS = [("entities", None), ("commands", None), ("oids", "oids"),
@@ -66,10 +66,10 @@ def readiness(catalog_dir) -> tuple[int, str, dict]:
         tier = 1
     elif avg < 0.75 or ent_inferred > 0:
         tier = 2
-    elif avg >= 0.90 and has_walk and conflicts == 0:
-        tier = 4
+    elif has_walk and conflicts == 0:
+        tier = 4                        # Listo: confirmado contra hardware (walk), sin conflictos
     else:
-        tier = 3
+        tier = 3                        # Casi listo: completo pero teorico (sin walk) o con conflicto
 
     # clave de ranking para desempatar: tier manda; a igual tier, gana el que tiene
     # MAS evidencia empirica (verified_walk), luego mayor avg, luego menos inferred.

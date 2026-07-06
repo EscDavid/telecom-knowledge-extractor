@@ -1,1 +1,15 @@
 node_modules/
+
+# Credenciales — NUNCA versionar
+.env
+.env.*
+!.env.example
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+.pytest_cache/
+
+# Logs
+logs/

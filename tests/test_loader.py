@@ -3,6 +3,7 @@ import json
 from pathlib import Path
 
 from src.loader.hashing import catalog_root_hash
+from src.loader.loader import alarm_row, entity_row, oid_row
 from src.loader.readiness import readiness
 
 
@@ -71,3 +72,42 @@ def test_readiness_tier1_incompleto(tmp_path):
         f.unlink()
     tier, _, m = readiness(d)
     assert tier == 1 and not m["layers_ok"]
+
+
+# --- loader mappers (puros, sin DB) ------------------------------------------
+def test_oid_row_mapea_campos_fase2():
+    o = {"id": "oid.x", "oid": "1.3.6", "name": "zx", "status": "verified_walk",
+         "access": "read-create", "confidence": {"extraction": 0.9, "overall": 0.9},
+         "index": {"type": "composite", "bit_calculation": True, "formula": "F"},
+         "enumeration": {"1": "up"}, "scale_formula": "raw*0.002-30",
+         "attribute": "onu_rx_power", "empirical": {"source": "walk"}}
+    r = oid_row(o, cvid=5)
+    assert r["status"] == "verified_walk" and r["access"] == "read-create"
+    assert r["bit_calculation"] is True and r["index_type"] == "composite"
+    assert r["attribute"] == "onu_rx_power" and r["scale_formula"] == "raw*0.002-30"
+    assert json.loads(r["index_def"])["formula"] == "F"
+    assert json.loads(r["empirical"])["source"] == "walk"
+    assert json.loads(r["raw_json"])["id"] == "oid.x"
+
+
+def test_oid_row_trunca_syntax_larga():
+    r = oid_row({"id": "o", "oid": "1", "name": "n", "syntax": "X" * 300}, 1)
+    assert len(r["syntax"]) == 255
+
+
+def test_entity_row_lifecycle_firmware():
+    e = {"id": "entity.onu", "canonical_name": "ONU", "type": "device",
+         "status": "documented", "is_critical": True, "description": "d",
+         "confidence": {"overall": 0.85}, "lifecycle": {"introduced_in": "2.0", "status": "stable"}}
+    r = entity_row(e, 1, 2, 3, {"2.0": 7})
+    assert r["entity_type"] == "device" and r["lifecycle_introduced_in"] == 7
+    assert r["is_critical"] is True and r["confidence_overall"] == 0.85
+
+
+def test_alarm_row_causes_remediation_json():
+    a = {"id": "al", "code": "1.3", "name": "n", "canonical_name": "c", "entity_ref": "e",
+         "severity": "major", "type": "optical", "probable_causes": ["x"],
+         "remediation": ["y"], "confidence": {"overall": 0.85}}
+    r = alarm_row(a, 1)
+    assert r["alarm_type"] == "optical"
+    assert json.loads(r["probable_causes"]) == ["x"] and json.loads(r["remediation"]) == ["y"]

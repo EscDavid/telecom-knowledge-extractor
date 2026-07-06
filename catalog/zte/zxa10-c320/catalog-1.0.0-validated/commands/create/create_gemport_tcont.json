@@ -1,5 +1,5 @@
 {
-  "id": "command.zte.gpon.global.create",
+  "id": "command.zte.gpon.global.create.gemport_tcont",
   "canonical_name": "create gemport tcont",
   "vendor": "ZTE",
   "family": "ZXA10 C320",

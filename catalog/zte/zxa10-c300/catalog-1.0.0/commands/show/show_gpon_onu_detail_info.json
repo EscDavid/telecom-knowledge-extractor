@@ -1,5 +1,5 @@
 {
-  "id": "command.zte.gpon.onu.show",
+  "id": "command.zte.gpon.onu.show.detail_info",
   "canonical_name": "show gpon onu detail-info",
   "vendor": "ZTE",
   "family": "ZXA10 C300",

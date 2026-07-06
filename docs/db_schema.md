@@ -1,15 +1,15 @@
-# Esquema `isp_catalog` + Fase 2 del Loader (mapeo JSON → tablas)
+# Esquema `ispm_tkc` + Fase 2 del Loader (mapeo JSON → tablas)
 
 Referencia consolidada de la DB que vamos a crear y de que hace exactamente el Loader
-en la Fase 2. El SQL vive en `database/tkc_schema.sql` (base v3) + `database/migration.sql`
+en la Fase 2. El SQL vive en `database/ispm_tkc.sql` (base v3) + `database/migration.sql`
 (delta Fase 2). Este doc es la vista legible + el contrato de carga.
 
 ## Despliegue (orden)
 
 ```sql
-CREATE DATABASE isp_catalog CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
-USE isp_catalog;
--- source tkc_schema.sql   ← SIN el bloque final "ALTER TABLE olts ..." (olts vive en isp_management)
+CREATE DATABASE ispm_tkc CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+USE ispm_tkc;
+-- source ispm_tkc.sql   ← SIN el bloque final "ALTER TABLE olts ..." (olts vive en isp_management)
 -- source migration.sql    ← ENUMs Fase2 + columnas tkc_oids + content_hash + active_sessions
 -- source triggers.sql     ← AL FINAL (Fase 3)
 ```
@@ -35,7 +35,7 @@ USE isp_catalog;
 `tkc_completeness_reports`.
 
 **Seguridad (Fase 2/3)** — `active_sessions(superadmin_id CHAR(36), token_hash, expires_at)`
-en `isp_catalog` (ref blanda a `db_auth.users.id`). El trigger (Fase 3) valida contra ella.
+en `ispm_tkc` (ref blanda a `db_auth.users.id`). El trigger (Fase 3) valida contra ella.
 
 ### Adiciones de Fase 2 (migration.sql)
 - `status` ENUM += `verified_walk`, `verified_community` (oids/entities/commands/relations/alarms).

@@ -43,13 +43,13 @@ classifier:
   # Nº de páginas iniciales que se inspeccionan para la capa header_text.
   header_pages: 3
 
-# Fase DB — Loader del catálogo a MySQL (isp_catalog, base aparte).
+# Fase DB — Loader del catálogo a MySQL (ispm_tkc, base aparte).
 # El password NUNCA va aquí: se lee de la variable de entorno password_env
 # (o se pide oculto por prompt en `load`). Ver docs/db_loader_design.md.
 database:
   host: 157.137.210.239        # instancia prod (misma que db_auth/isp_management)
   port: 3306
-  name: isp_catalog
+  name: ispm_tkc
   user: tkc_loader             # grants acotados: INSERT tkc_*+active_sessions, SELECT db_auth.users
   password_env: TKC_DB_PASSWORD
 # DB de auth (solo lectura, para el factor 1):

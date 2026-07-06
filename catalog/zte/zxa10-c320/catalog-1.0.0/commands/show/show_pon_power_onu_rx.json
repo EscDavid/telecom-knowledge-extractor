@@ -1,5 +1,5 @@
 {
-  "id": "command.zte.gpon.global.show",
+  "id": "command.zte.gpon.global.show.pon_power_onu_rx",
   "canonical_name": "show pon power onu-rx",
   "vendor": "ZTE",
   "family": "ZXA10 C320",

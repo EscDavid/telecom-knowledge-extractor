@@ -9,7 +9,7 @@
     "ZTE_C300_entities.txt": "entity_table",
     "ZTE_C300_ifnames.txt": "if_table"
   },
-  "generated_at": "2026-07-05T12:28:06",
+  "generated_at": "2026-07-05T19:01:16",
   "counts": {
     "oids_kept": 945,
     "oids_pruned": 1066,

@@ -1,5 +1,5 @@
 {
-  "id": "command.zte.gpon.onu.create",
+  "id": "command.zte.gpon.onu.create.type_sn",
   "canonical_name": "create onu type sn",
   "vendor": "ZTE",
   "family": "ZXA10 C300",

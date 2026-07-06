@@ -208,6 +208,10 @@ class Normalizer:
         return oids
 
     def _id_commands(self, commands, short_to_id, alias_index) -> list:
+        # entidad+categoria no es unico: puede haber varios "show" (baseinfo/state/
+        # detail-info) para la misma entidad. Se desambigua con un sufijo derivado
+        # del canonical_name (palabras que no son la entidad ni el verbo/categoria).
+        seen: dict[str, int] = {}
         for c in commands:
             entity_short = self._command_entity(c, alias_index, short_to_id)
             if entity_short and entity_short in short_to_id:
@@ -215,8 +219,28 @@ class Normalizer:
             else:
                 c.entity_ref = None              # comando global (save, enable...)
                 entity_short = "global"
-            c.id = build_command_id(self.vendor, self.technology, entity_short, c.category)
+            base = build_command_id(self.vendor, self.technology, entity_short, c.category)
+            suffix = self._command_suffix(c, entity_short)
+            cid = f"{base}.{suffix}" if suffix else base
+            if cid in seen:
+                seen[cid] += 1
+                cid = f"{cid}{seen[cid]}"
+            else:
+                seen[cid] = 1
+            c.id = cid
         return commands
+
+    _COMMAND_VERBS = {"show", "display", "create", "add", "delete", "no", "remove",
+                      "set", "modify", "config", "configure", "enable", "disable",
+                      "reset", "reboot", "ping", "test", "diagnose"}
+
+    def _command_suffix(self, command, entity_short: str) -> str:
+        """Palabras del canonical_name que distinguen variantes de una misma
+        entidad+categoria (ej. 'baseinfo'/'state'/'detail_info' en varios 'show onu')."""
+        skip = {snake(entity_short), snake(self.technology)} | self._COMMAND_VERBS
+        tokens = [snake(tok) for tok in command.canonical_name.split()]
+        rest = [t for t in tokens if t and t not in skip]
+        return "_".join(rest)
 
     @staticmethod
     def _command_entity(command, alias_index, short_to_id) -> Optional[str]:

@@ -5,27 +5,27 @@ deteccion automatica de cambios. Estado: DISENO (pendiente de confirmar decision
 
 ## 1. Arquitectura
 
-- **DB aparte, misma instancia MySQL 8**: `isp_catalog` separada de `isp_management`
+- **DB aparte, misma instancia MySQL 8**: `ispm_tkc` separada de `isp_management`
   (operativa) y de `db_auth`. Referencia entre proyectos por dato blando
   (`olts.tkc_family_id INT`, sin FK cross-DB).
 - **Instancia**: prod `157.137.210.239` (misma que `db_auth`/`isp_management`), porque el
   catalogo referencia `olts` y la network-api lo lee en vivo. Confirmado: acopla el output del
   pipeline a la instancia productiva (a cambio de que el runtime lo consuma directo).
 - El catalogo es **referencia read-mostly, recargable por version**.
-- **Grants (contenidos):** la app → `SELECT` en `isp_catalog`. El Loader → `INSERT/UPDATE/DELETE`
-  solo en `isp_catalog.tkc_*` y `isp_catalog.active_sessions`, y `SELECT` en `db_auth.users`.
+- **Grants (contenidos):** la app → `SELECT` en `ispm_tkc`. El Loader → `INSERT/UPDATE/DELETE`
+  solo en `ispm_tkc.tkc_*` y `ispm_tkc.active_sessions`, y `SELECT` en `db_auth.users`.
   Nada mas (el token no da poder extra si los grants estan acotados).
 
-## 2. Migration (delta sobre `database/tkc_schema.sql`)
+## 2. Migration (delta sobre `database/ispm_tkc.sql`)
 
-- Correr `tkc_schema.sql` en `isp_catalog` **sin** el `ALTER TABLE olts` final.
+- Correr `ispm_tkc.sql` en `ispm_tkc` **sin** el `ALTER TABLE olts` final.
 - `migration.sql` agrega:
   - `status` ENUM += `verified_walk`, `verified_community` (oids/entities/relations/alarms).
   - `access` ENUM += `read-create`, `write-only`, `accessible-for-notify`.
   - `tkc_oids` += `attribute`, `scale_formula`, `full_oid_template`, `empirical JSON`,
     `pending_validation JSON`.
   - `tkc_catalog_versions` += `content_hash CHAR(64)` (deteccion de cambios).
-  - **nueva** `isp_catalog.active_sessions(superadmin_id CHAR(36), token_hash CHAR(64),
+  - **nueva** `ispm_tkc.active_sessions(superadmin_id CHAR(36), token_hash CHAR(64),
     created_at, expires_at)` — sesion efimera del loader (NO va en `db_auth`, ver seccion 6).
 - Todo lo demas ya sobrevive en `raw_json` (forward-compat).
 
@@ -82,7 +82,7 @@ de contenido que debe disparar recarga. Solo se excluyen campos volatiles por-co
 
 `db_auth` no tiene tabla `superadmins` ni columna `verified`: **superadmin es un ROL**.
 No hay tabla de sesiones (el ISP usa JWT stateless) → la sesion efimera es **infra nueva en
-`isp_catalog`**, NO en `db_auth`. Passwords bcrypt (`$2b$`, varchar 255) → se validan con
+`ispm_tkc`**, NO en `db_auth`. Passwords bcrypt (`$2b$`, varchar 255) → se validan con
 `bcrypt.checkpw` en Python (lib `bcrypt`).
 
 - **Factor 1 (app, lee `db_auth` read-only):** el Loader no inserta sin `--authorize` + credenciales.
@@ -94,10 +94,10 @@ No hay tabla de sesiones (el ISP usa JWT stateless) → la sesion efimera es **i
     AND status = 'ACTIVO' AND deleted_at IS NULL;          -- equivalente a "verified"
   -- luego: bcrypt.checkpw(password_ingresado, row.password)
   ```
-  Si OK, el Loader inserta una **sesion efimera en `isp_catalog.active_sessions`**
+  Si OK, el Loader inserta una **sesion efimera en `ispm_tkc.active_sessions`**
   (`superadmin_id = users.id` como ref blanda CHAR(36), `token_hash = SHA2(token,256)`,
   `expires_at` corto). NO escribe en `db_auth`.
-- **Factor 2 (trigger en `isp_catalog`, tabla LOCAL):** en la misma conexion el Loader setea:
+- **Factor 2 (trigger en `ispm_tkc`, tabla LOCAL):** en la misma conexion el Loader setea:
   ```sql
   SET @actor_id = '<users.id>';  SET @actor_token = '<token>';
   ```
@@ -135,7 +135,7 @@ $ python -m src.loader load zxa10-c300 --authorize --user <superadmin>
 ## 8. Plan de implementacion — 3 fases
 
 ### Fase 1 — Fundacion y lectura (read-only, sin auth)
-- Setup DB: `isp_catalog` + `tkc_schema.sql` (sin ALTER olts) + `migration.sql` [HECHO].
+- Setup DB: `ispm_tkc` + `ispm_tkc.sql` (sin ALTER olts) + `migration.sql` [HECHO].
 - `src/loader/db.py` — conexion PyMySQL + transaccion (context manager). (+`PyMySQL` a requirements)
 - `src/loader/hashing.py` — hash raiz Merkle (canonico, excluye volatiles, incluye `status`).
 - `src/loader/readiness.py` — 4 tiers desde manifest + status distribution.
@@ -168,10 +168,10 @@ $ python -m src.loader load zxa10-c300 --authorize --user <superadmin>
 
 1. **db_auth:** superadmin = ROL (`role_id = 'ed392bf3-272d-11f1-a6e3-42010a400002'`), no tabla.
    "verified" = `status='ACTIVO' AND deleted_at IS NULL`. Sin tabla de sesiones (JWT stateless);
-   `active_sessions` es NUEVA y vive en `isp_catalog`. Password bcrypt → `bcrypt.checkpw`.
+   `active_sessions` es NUEVA y vive en `ispm_tkc`. Password bcrypt → `bcrypt.checkpw`.
 2. **Password:** `getpass` (prompt oculto) por defecto; `--password-env NOMBRE_VAR` para CI.
 3. **Fuente del Loader:** JSON de `catalog/` (opcion A) — confirmado.
 4. **Hash:** raiz Merkle, JSON canonico, excluye volatiles per-run, **incluye `status`** — confirmado.
 
-Correcciones aplicadas: (A) `active_sessions` en `isp_catalog`, no en db_auth; (B) `db_auth.`
+Correcciones aplicadas: (A) `active_sessions` en `ispm_tkc`, no en db_auth; (B) `db_auth.`
 (no `auth.`); (C) rol por ID, no por nombre (roles con mojibake de encoding).

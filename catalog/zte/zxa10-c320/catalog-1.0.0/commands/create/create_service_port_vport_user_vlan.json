@@ -1,5 +1,5 @@
 {
-  "id": "command.zte.gpon.service_port.create",
+  "id": "command.zte.gpon.service_port.create.vport_user_vlan",
   "canonical_name": "create service-port vport user-vlan",
   "vendor": "ZTE",
   "family": "ZXA10 C320",
