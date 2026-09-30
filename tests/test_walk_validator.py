@@ -29,6 +29,8 @@ def test_detect_vendor_family():
     # los sufijos de tipo no rompen la detección de vendor/modelo
     assert detect_vendor_family(Path("ZTE_C320_entities.txt")) == ("ZTE", "ZXA10 C320")
     assert detect_vendor_family(Path("ZTE_C300_ifnames.txt")) == ("ZTE", "ZXA10 C300")
+    assert detect_vendor_family(Path("ZTE_C620.txt")) == ("ZTE", "ZXA10 C620")
+    assert detect_vendor_family(Path("ZTE_C620_ifnames.txt")) == ("ZTE", "ZXA10 C620")
 
 
 def test_detect_walk_type_and_grouping():

@@ -5,7 +5,7 @@ catálogo nuevo desde el backbone teórico (C320) y lo especializa con la eviden
 empírica, produciendo un catálogo separado (ej. C300) sin tocar la Fase 1.
 
 Un mismo modelo puede aportar VARIOS walks complementarios (todos convergen en un
-único catálogo):
+único catálogo; modelos soportados: C300, C320, C620):
 
     ZTE_C320.txt          → enterprise   (rama 3902.*) → enriquece OIDs
     ZTE_C320_entities.txt → entity_table (entPhysicalTable) → entidades hardware
@@ -34,7 +34,7 @@ log = logging.getLogger("tkc.walk_validator")
 
 VENDOR_MAP = {"ZTE": "ZTE", "Huawei": "Huawei", "VSOL": "VSOL"}
 FAMILY_MAP = {
-    "C300": "ZXA10 C300", "C320": "ZXA10 C320",
+    "C300": "ZXA10 C300", "C320": "ZXA10 C320", "C620": "ZXA10 C620",
     "MA5608T": "MA5608T", "V1600G": "V1600G", "V1600GS": "V1600GS",
 }
 

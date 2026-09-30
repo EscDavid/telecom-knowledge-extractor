@@ -49,6 +49,27 @@ El catálogo queda en `catalog/<vendor>/<family>/catalog-<version>/`.
 Los conflictos y huérfanos detectados se escriben en `results.json` (estilo
 `tkc_results`, para la fase de carga futura).
 
+## Recolector de walks (`src/walk_collector`)
+
+Genera automáticamente los snmpwalks de una OLT **ZTE C620** para la Fase 2 (SNMPv2c, solo
+lectura, una petición en vuelo, reanudable). Detalle y política de publicación en
+[`docs/walks/README.md`](docs/walks/README.md).
+
+```bash
+pip install -r requirements.txt            # incluye pysnmp
+# .env (ver .env.example): TKC_SNMP_HOST, TKC_SNMP_PORT, TKC_SNMP_COMMUNITY
+py -m src.walk_collector --dry-run         # valida todo sin tocar la red
+py -m src.walk_collector --discover-only   # preflight + plan
+py -m src.walk_collector --resume --only entities
+py -m src.walk_collector --resume --only ifnames
+py -m src.walk_collector --resume --only enterprise
+py -m src.walk_collector --help            # todas las opciones
+```
+
+Los walks completos se publican en `docs/walks/` y `main.py` los procesa como cualquier otro.
+Códigos de salida: 0 completo · 1 con tareas fallidas/parciales · 2 uso/config · 3 detenido
+(reanudable) · 4 preflight/auth/modelo · 5 E/S · 130 interrumpido.
+
 ## Tests
 
 ```bash
