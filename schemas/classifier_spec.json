@@ -27,7 +27,8 @@
             { "regex": "vsol|VSOL", "result": "VSOL" }
           ],
           "family": [
-            { "regex": "c320|C320|zxa10", "result": "ZXA10 C320" },
+            { "regex": "c6\\d0", "result": "ZXA10 C620" },
+            { "regex": "c320|zxa10(?![-_ ]?c6\\d0)", "result": "ZXA10 C320" },
             { "regex": "ma5608|MA5608", "result": "MA5608T" },
             { "regex": "v1600g[^s]|V1600G[^S]", "result": "V1600G" },
             { "regex": "v1600gs|V1600GS", "result": "V1600GS" }
@@ -55,6 +56,7 @@
           { "text": "Huawei Technologies", "field": "vendor", "value": "Huawei", "weight": 0.3 },
           { "text": "VSOL", "field": "vendor", "value": "VSOL", "weight": 0.3 },
           { "text": "ZXA10 C320", "field": "family", "value": "ZXA10 C320", "weight": 0.3 },
+          { "text": "ZXA10 C620", "field": "family", "value": "ZXA10 C620", "weight": 0.3 },
           { "text": "MA5608T", "field": "family", "value": "MA5608T", "weight": 0.3 },
           { "text": "Command Reference", "field": "doc_type", "value": "command_reference", "weight": 0.3 },
           { "text": "Initial Configuration", "field": "doc_type", "value": "initial_configuration", "weight": 0.3 },

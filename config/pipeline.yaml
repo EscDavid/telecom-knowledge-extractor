@@ -56,3 +56,77 @@ database:
 auth_database:
   name: db_auth
   superadmin_role_id: "ed392bf3-272d-11f1-a6e3-42010a400002"   # rol "Super Admin" (pineado por id)
+
+# Recolector automático de walks (py -m src.walk_collector) — SNMPv2c de SOLO LECTURA.
+# Genera docs/walks/{VENDOR}_{MODELO}[_tipo].txt en el formato de `snmpbulkwalk -On`.
+# Aquí NO van secretos: host/puerto/community salen de las variables de entorno
+# indicadas en `snmp.*_env` (ver .env.example). La community jamás se imprime ni se guarda.
+walk_collector:
+  vendor: ZTE
+  model: C620
+  expect_sysdescr_regex: "C6[0-9]0"   # aborta (exit 4) si sysDescr no coincide, salvo --force-model
+  snmp:
+    version: 2c
+    host_env: TKC_SNMP_HOST
+    port_env: TKC_SNMP_PORT
+    community_env: TKC_SNMP_COMMUNITY
+    default_port: 161
+    timeout_s: 3
+    # TOPE DURO = 20: con más repeticiones los datagramas superan 1472 B, se fragmentan
+    # y se pierden (medido en producción). Valores > 20 se recortan a 20 con warning.
+    max_repetitions: 20
+    min_repetitions: 1
+    preflight_attempts: 3
+  pacing:                      # ritmo suave: una sola petición en vuelo
+    inter_request_delay_ms: 50
+    inter_task_delay_s: 2
+    checkpoint_every_requests: 25
+    checkpoint_every_s: 5
+  retry:
+    max_attempts_per_request: 4
+    backoff_base_s: 2
+    backoff_max_s: 60
+    jitter: 0.2
+    final_retry_rounds: 1
+    max_stall_pdus: 3
+    max_bumps_per_task: 20
+  outage:                      # caída general del equipo (sanity GET sin respuesta)
+    sanity_oid: "1.3.6.1.2.1.1.1.0"
+    wait_s: [30, 60, 120, 300]
+    max_outage_min: 30
+  safety:                      # kill-switch por latencia degradada
+    latency_window: 50
+    baseline_samples: 20
+    degrade_factor: 4.0
+    degrade_min_ms: 800
+    sustain_checks: 3
+    pause_s: 120
+    max_safety_pauses: 3
+    max_runtime_min: 0         # 0 = sin límite
+  outputs:
+    enterprise:
+      suffix: ""
+      roots: ["1.3.6.1.4.1.3902"]
+      discover: true           # skip-scan con GETNEXT: una tarea por rama
+    entities:
+      suffix: "_entities"
+      roots: ["1.3.6.1.2.1.47.1.1.1.1"]
+      discover: false
+    ifnames:                   # ifTable + ifName (ambas raíces, ensambladas en orden numérico)
+      suffix: "_ifnames"
+      roots: ["1.3.6.1.2.1.2.2.1", "1.3.6.1.2.1.31.1.1.1.1"]
+      discover: false
+  discovery:
+    base_depth: 2
+    expand: ["1.3.6.1.4.1.3902.1012.3", "1.3.6.1.4.1.3902.1015.1010"]
+    max_children: 500
+  paths:
+    # Idealmente FUERA de OneDrive (fsync + sincronización en la nube no se llevan bien);
+    # admite variables de entorno, ej. %LOCALAPPDATA%/tkc/walk_collector/
+    state_dir: state/walk_collector/
+    publish_dir: docs/walks/
+  publish:
+    allow_incomplete: false    # un output incompleto NO se publica en docs/walks/
+  redaction:                   # PII: seriales/nombres de ONU en STRING bajo estos prefijos
+    mode: none                 # none | prefixes
+    prefixes: []

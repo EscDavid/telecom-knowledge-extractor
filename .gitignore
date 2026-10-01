@@ -13,3 +13,8 @@ __pycache__/
 
 # Logs
 logs/
+
+# Walk collector: estado de corridas y walks de C620 (contienen PII de la red del operador)
+state/
+docs/walks/*C620*
+docs/walks/*.tmp

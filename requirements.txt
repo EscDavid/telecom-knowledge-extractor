@@ -6,3 +6,7 @@ python-dotenv==1.0.0      # variables de entorno (fase futura)
 # Fase DB — Loader a MySQL (isp_catalog)
 PyMySQL==1.1.0            # conexión MySQL (driver Python puro)
 bcrypt==4.1.2            # factor 1: validación de password contra db_auth.users ($2b$)
+
+# Walk collector — recolección SNMPv2c de solo lectura
+pysnmp==7.1.30            # cliente SNMP (lextudio, API v1arch.asyncio); import perezoso
+pyasn1==0.6.4             # dependencia directa de pysnmp 7.1.x
