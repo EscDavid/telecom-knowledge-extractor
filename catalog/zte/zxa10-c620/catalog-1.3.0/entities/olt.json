@@ -1,6 +1,6 @@
 {
   "id": "entity.zte.gpon.device.olt",
-  "canonical_name": "OLT",
+  "canonical_name": "Olt",
   "vendor": "ZTE",
   "family": "ZXA10 C620",
   "firmware": [
@@ -8,15 +8,9 @@
   ],
   "technology": "gpon",
   "type": "device",
-  "description": "y se añade `show version` (`observed`): los ejecutó el importador en 5 OLT clásicas (`reports/hallazgos-cli-snmp-zte-2026-10-09",
+  "description": "Optical Line Terminal — equipo de cabecera GPON que agrega los puertos PON.",
   "is_critical": true,
-  "aliases": [
-    {
-      "name": "OLT",
-      "source": "product_catalog",
-      "firmware_scope": "all"
-    }
-  ],
+  "aliases": [],
   "attributes": [
     {
       "name": "sys_descr",
@@ -91,62 +85,17 @@
   ],
   "sources": [
     {
-      "doc_type": "product_catalog",
-      "pages": null,
-      "confidence": 0.07
-    },
-    {
-      "doc_type": "product_catalog",
-      "pages": null,
-      "confidence": 0.07
-    },
-    {
-      "doc_type": "product_catalog",
-      "pages": null,
-      "confidence": 0.07
-    },
-    {
-      "doc_type": "product_catalog",
-      "pages": null,
-      "confidence": 0.07
-    },
-    {
-      "doc_type": "product_catalog",
-      "pages": null,
-      "confidence": 0.07
-    },
-    {
-      "doc_type": "product_catalog",
-      "pages": null,
-      "confidence": 0.07
-    },
-    {
-      "doc_type": "product_catalog",
-      "pages": null,
-      "confidence": 0.07
-    },
-    {
-      "doc_type": "product_catalog",
-      "pages": null,
-      "confidence": 0.07
-    },
-    {
-      "doc_type": "product_catalog",
-      "pages": null,
-      "confidence": 0.07
-    },
-    {
       "doc_type": "mib_file",
       "pages": null,
       "confidence": 0.3
     }
   ],
   "confidence": {
-    "extraction": 0.95,
-    "correlation": 0.75,
-    "overall": 1.0
+    "extraction": 0.85,
+    "correlation": 0.0,
+    "overall": 0.85
   },
-  "status": "verified",
+  "status": "documented",
   "lifecycle": {
     "introduced_in": "2.0",
     "deprecated_in": null,

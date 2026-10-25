@@ -9,30 +9,30 @@
     "ZTE_C620_entities.txt": "entity_table",
     "ZTE_C620_ifnames.txt": "if_table"
   },
-  "generated_at": "2026-10-24T20:38:04",
+  "generated_at": "2026-10-24T20:56:47",
   "counts": {
-    "oids_kept": 4017,
+    "oids_kept": 1795,
     "oids_pruned": 261,
-    "entities_confirmed": 6
+    "entities_confirmed": 4
   },
   "status_distribution": {
     "oids": {
       "verified": 1104,
-      "documented": 2847,
+      "documented": 625,
       "verified_walk": 57,
       "inferred": 9
     },
     "entities": {
-      "verified": 6,
+      "verified": 4,
       "inferred": 4,
-      "documented": 5,
+      "documented": 7,
       "verified_walk": 2
     }
   },
   "triggers": {
     "ascii_index": 9031,
     "oid_not_increasing": 14,
-    "documented_only": 3108,
+    "documented_only": 886,
     "scale_detected": 21,
     "observed_only": 30,
     "entity_confirmed": 2,
@@ -189,7 +189,7 @@
       "entities": 0,
       "alarms": 4,
       "relations": 2,
-      "documented_annotated": 2847,
+      "documented_annotated": 625,
       "absent_columns": 17,
       "findings_redacted": 2293,
       "command_refs": 22

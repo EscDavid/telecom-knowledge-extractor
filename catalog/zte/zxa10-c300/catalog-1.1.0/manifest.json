@@ -9,29 +9,29 @@
     "ZTE_C300_entities.txt": "entity_table",
     "ZTE_C300_ifnames.txt": "if_table"
   },
-  "generated_at": "2026-10-24T20:36:04",
+  "generated_at": "2026-10-24T20:54:58",
   "counts": {
-    "oids_kept": 3174,
+    "oids_kept": 952,
     "oids_pruned": 1066,
-    "entities_confirmed": 7
+    "entities_confirmed": 5
   },
   "status_distribution": {
     "oids": {
-      "documented": 3048,
+      "documented": 826,
       "verified": 110,
       "verified_walk": 16
     },
     "entities": {
-      "verified": 7,
+      "verified": 5,
       "inferred": 4,
-      "documented": 4,
+      "documented": 6,
       "verified_walk": 2
     }
   },
   "triggers": {
     "oid_not_increasing": 9,
     "ascii_index": 15,
-    "documented_only": 4104,
+    "documented_only": 1882,
     "scale_detected": 2,
     "observed_only": 30,
     "entity_confirmed": 5,
@@ -188,7 +188,7 @@
     "module": "src/walk_validator/refinements.py",
     "applied": {
       "downgraded": 10,
-      "commands": 19,
+      "commands": 18,
       "scale_fixed": 14,
       "scale_removed": 0,
       "names": 26,
@@ -199,7 +199,7 @@
       "entities": 0,
       "alarms": 0,
       "relations": 0,
-      "documented_annotated": 3048,
+      "documented_annotated": 826,
       "absent_columns": 52,
       "findings_redacted": 4,
       "command_refs": 0

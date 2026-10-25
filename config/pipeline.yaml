@@ -4,7 +4,13 @@
 # =============================================================================
 
 paths:
-  docs: docs/
+  # Acotado a docs/zte/: con docs/ completo, el Classifier tambien recoge los
+  # .mib sintéticos de Huawei (docs/huawei/ma5608t/synthetic/) y el Extractor
+  # los ingiere TODOS como ZTE (usa config["pipeline"]["vendor"] para TODO doc
+  # clasificado, no el vendor que el Classifier detectó por archivo) —
+  # confirmado en catalog/zte/zxa10-c620 (OIDs 2011.5.100.* contaminando
+  # onu.json con access="unknown", id duplicado, oids_kept desfasado).
+  docs: docs/zte/
   schemas: schemas/
   catalog: catalog/
   walks: docs/walks/        # Fase 2 — snmpwalks reales (VENDOR_MODELO.txt)

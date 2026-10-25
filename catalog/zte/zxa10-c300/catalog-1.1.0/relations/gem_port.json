@@ -15,7 +15,7 @@
       "required": true,
       "description": null,
       "prerequisite": true,
-      "creation_order": 3,
+      "creation_order": 2,
       "sources": [
         {
           "doc_type": "initial_configuration",

@@ -1,6 +1,6 @@
 {
   "id": "entity.zte.gpon.logical.gem_port",
-  "canonical_name": "GEM Port",
+  "canonical_name": "Gem Port",
   "vendor": "ZTE",
   "family": "ZXA10 C620",
   "firmware": [
@@ -10,13 +10,7 @@
   "type": "logical",
   "description": "GEM Port — canal logico de transporte GPON entre OLT y ONU.",
   "is_critical": true,
-  "aliases": [
-    {
-      "name": "GEM Port",
-      "source": "product_catalog",
-      "firmware_scope": "all"
-    }
-  ],
+  "aliases": [],
   "attributes": [
     {
       "name": "onu_gemport_name",
@@ -28,117 +22,17 @@
   ],
   "sources": [
     {
-      "doc_type": "product_catalog",
-      "pages": null,
-      "confidence": 0.07
-    },
-    {
-      "doc_type": "product_catalog",
-      "pages": null,
-      "confidence": 0.07
-    },
-    {
-      "doc_type": "product_catalog",
-      "pages": null,
-      "confidence": 0.07
-    },
-    {
-      "doc_type": "product_catalog",
-      "pages": null,
-      "confidence": 0.07
-    },
-    {
-      "doc_type": "product_catalog",
-      "pages": null,
-      "confidence": 0.07
-    },
-    {
-      "doc_type": "product_catalog",
-      "pages": null,
-      "confidence": 0.07
-    },
-    {
-      "doc_type": "product_catalog",
-      "pages": null,
-      "confidence": 0.07
-    },
-    {
-      "doc_type": "product_catalog",
-      "pages": null,
-      "confidence": 0.07
-    },
-    {
-      "doc_type": "product_catalog",
-      "pages": null,
-      "confidence": 0.07
-    },
-    {
-      "doc_type": "product_catalog",
-      "pages": null,
-      "confidence": 0.07
-    },
-    {
-      "doc_type": "product_catalog",
-      "pages": null,
-      "confidence": 0.07
-    },
-    {
-      "doc_type": "product_catalog",
-      "pages": null,
-      "confidence": 0.07
-    },
-    {
-      "doc_type": "product_catalog",
-      "pages": null,
-      "confidence": 0.07
-    },
-    {
-      "doc_type": "product_catalog",
-      "pages": null,
-      "confidence": 0.07
-    },
-    {
-      "doc_type": "product_catalog",
-      "pages": null,
-      "confidence": 0.07
-    },
-    {
-      "doc_type": "product_catalog",
-      "pages": null,
-      "confidence": 0.07
-    },
-    {
-      "doc_type": "product_catalog",
-      "pages": null,
-      "confidence": 0.07
-    },
-    {
-      "doc_type": "product_catalog",
-      "pages": null,
-      "confidence": 0.07
-    },
-    {
-      "doc_type": "product_catalog",
-      "pages": null,
-      "confidence": 0.07
-    },
-    {
-      "doc_type": "product_catalog",
-      "pages": null,
-      "confidence": 0.07
-    },
-    {
       "doc_type": "mib_file",
       "pages": null,
       "confidence": 0.3
     }
   ],
   "confidence": {
-    "extraction": 0.95,
-    "correlation": 0.75,
-    "overall": 1.0
+    "extraction": 0.85,
+    "correlation": 0.0,
+    "overall": 0.85
   },
-  "status": "verified",
+  "status": "documented",
   "lifecycle": {
     "introduced_in": "2.0",
     "deprecated_in": null,

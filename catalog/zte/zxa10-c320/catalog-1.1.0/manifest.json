@@ -4,34 +4,33 @@
   "family": "ZXA10 C320",
   "technology": "gpon",
   "catalog_version": "1.1.0",
-  "generated_at": "2026-10-24T20:35:48",
+  "generated_at": "2026-10-24T20:54:45",
   "firmware": [
     "2.0",
     "2.1"
   ],
   "counts": {
-    "entities": 17,
+    "entities": 13,
     "commands": 18,
-    "oids": 4214,
-    "relations": 8,
+    "oids": 1992,
+    "relations": 7,
     "alarms": 117,
     "conflicts": 0,
-    "orphans": 4
+    "orphans": 0
   },
   "status_distribution": {
     "entities": {
-      "verified": 7,
-      "inferred": 4,
-      "documented": 6
+      "verified": 5,
+      "documented": 8
     },
     "commands": {
       "verified": 18
     },
     "oids": {
-      "documented": 4214
+      "documented": 1992
     },
     "relations": {
-      "inferred": 8
+      "inferred": 7
     },
     "alarms": {
       "documented": 117
@@ -39,7 +38,7 @@
   },
   "confidence": {
     "avg_overall": 0.849,
-    "min_overall": 0.0
+    "min_overall": 0.26
   },
   "ambiguous_aliases": 0
 }

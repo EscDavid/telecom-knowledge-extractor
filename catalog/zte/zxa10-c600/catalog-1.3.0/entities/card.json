@@ -13,17 +13,12 @@
   "aliases": [
     {
       "name": "Card",
-      "source": "product_catalog",
+      "source": "hardware_description",
       "firmware_scope": "all"
     }
   ],
   "attributes": [],
   "sources": [
-    {
-      "doc_type": "product_catalog",
-      "pages": null,
-      "confidence": 0.07
-    },
     {
       "doc_type": "hardware_description",
       "pages": null,
@@ -36,8 +31,8 @@
     }
   ],
   "confidence": {
-    "extraction": 1.0,
-    "correlation": 0.95,
+    "extraction": 0.95,
+    "correlation": 0.75,
     "overall": 1.0
   },
   "status": "verified",
