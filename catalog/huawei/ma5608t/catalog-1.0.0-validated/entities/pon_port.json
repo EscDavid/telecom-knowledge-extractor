@@ -1,0 +1,63 @@
+{
+  "id": "entity.huawei.gpon.port.pon_port",
+  "canonical_name": "Pon Port",
+  "vendor": "Huawei",
+  "family": "MA5608T",
+  "firmware": [
+    "R015"
+  ],
+  "technology": "gpon",
+  "type": "port",
+  "description": "Puerto PON GPON del OLT (interfaz gpon slot/pon).",
+  "is_critical": true,
+  "aliases": [],
+  "attributes": [],
+  "sources": [
+    {
+      "doc_type": "mib_file",
+      "pages": null,
+      "confidence": 0.3
+    }
+  ],
+  "confidence": {
+    "extraction": 0.85,
+    "correlation": 0.0,
+    "overall": 1.0
+  },
+  "status": "verified_walk",
+  "lifecycle": {
+    "introduced_in": "R015",
+    "deprecated_in": null,
+    "removed_in": null,
+    "status": "introduced",
+    "replacement": null
+  },
+  "relations": [],
+  "conflicts": [],
+  "empirical": {
+    "source": "Huawei_MA5608T_ifnames.txt",
+    "via": "ifXTable",
+    "instances": 32,
+    "samples": [
+      "GPON 0/0/0",
+      "GPON 0/0/1",
+      "GPON 0/0/2",
+      "GPON 0/0/3",
+      "GPON 0/0/4"
+    ],
+    "oper_via": "ifTable (ifType=250)",
+    "pon_ports": 32,
+    "oper_up": 31,
+    "oper_down": 1,
+    "onu_count": {
+      "derived": true,
+      "status": "verified_walk",
+      "source": "conteo por puerto en la tabla ONU hwGponDeviceOntControlInfoTable RunStatus",
+      "total_onus": 1073,
+      "ports_with_onus": 31,
+      "min_per_port": 2,
+      "max_per_port": 105,
+      "rule": "count distinct onuID per port suffix (TYPE space)"
+    }
+  }
+}

@@ -17,4 +17,12 @@ logs/
 # Walk collector: estado de corridas y walks de C620 (contienen PII de la red del operador)
 state/
 docs/walks/*C620*
+docs/walks/*C600*
+docs/walks/diagnostics/*cli_reads*
+staging/
 docs/walks/*.tmp
+
+# Walks Huawei/VSOL: contienen seriales/LOID/descripciones de abonados
+docs/walks/Huawei_*
+docs/walks/VSOL_*
+docs/walks/partial/

@@ -1,0 +1,44 @@
+# =============================================================================
+# TKC — configuración del pipeline para Huawei MA5608T.
+# Fase 1 sin MIB oficial: semilla = .mib SINTÉTICO generado por
+# scripts/observium_to_mib.py desde docs/huawei/ma5608t/observium/*.json
+# (nivel de evidencia B, ver docs/adaptacion_multivendor.md). Solo
+# HUAWEI-XPON-MIB está realmente implementado en el firmware R015 (confirmado
+# por walk real: HUAWEI-GPON-MIB es 0% presente, ver
+# reports/huawei-ma5608t-mib-walk-validation-2026-10-23.md) — se incluyen AMBOS
+# .mib sintéticos de todos modos: Fase 2 (prune_mode: covered_branch, perfil
+# Huawei en config/vendors.yaml) poda GPON-MIB con la misma evidencia real.
+#
+# `paths.docs` apunta SOLO a docs/huawei/ — nunca a docs/ completo: evita que
+# el Classifier recoja documentos de otro vendor al correr esta config (y
+# viceversa, ver el filtro de vendor en la Fase 2 de main.py).
+# =============================================================================
+
+paths:
+  docs: docs/huawei/
+  schemas: schemas/
+  catalog: catalog/
+  walks: docs/walks/
+  validation: docs/validation/
+  logs: logs/
+  reports: reports/
+  research: research/
+
+# Fase 2 — perfil real (seed_family, single_shelf, prune_mode, etc.) viene de
+# config/vendors.yaml → Huawei. Nada vendor-específico se declara aquí.
+walk_validator:
+  prune_unconfirmed_readonly: true
+  halt_on_blocking: true
+
+pipeline:
+  vendor: Huawei
+  family: MA5608T
+  technology: gpon
+  firmware: ["R015"]
+  current_firmware: "R015"
+  catalog_version: "1.0.0"
+
+classifier:
+  min_confidence: 0.5
+  known_vendors: ["ZTE", "Huawei", "VSOL"]
+  header_pages: 3

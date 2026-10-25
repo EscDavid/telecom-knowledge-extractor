@@ -1,0 +1,122 @@
+{
+ "meta": {
+  "vendor": "Huawei",
+  "families": ["MA56xT (MA5603T/MA5608T/MA5680T)"],
+  "status": "documented_community: comandos de solo lectura (display) citados de un post del foro oficial de Huawei Enterprise, no verificados aún contra nuestro equipo (requiere sesión CLI privilegiada que hoy no tenemos; nuestra cuenta Telnet está en vista de usuario Mnz.principal>).",
+  "source": "pdf-p-...-comandos-de-diagnostico-para-olts-huawei-p_compress.pdf == 'Compilación de comandos de diagnóstico en OLTs Huawei | MA56xT' (Destacado), forum.huawei.com/enterprise, autor RicoFranco, publicado 2019-03-01, 28419 vistas, 14 likes — descargado por el usuario en /home/david/Descargas",
+  "extraction_date": "2026-10-23",
+  "note": "A diferencia de provisioning_recipes.json (curso de terceros), esta fuente es un post oficial del foro de Huawei Enterprise con alta visibilidad/validación social (14 likes, 0 dislikes, 11 favoritos) — mayor confianza relativa, pero sigue sin confirmar contra un walk o sesión real de este proyecto."
+ },
+ "commands": {
+  "ver_ont_detallada": {
+   "cmd": "display ont info {by-desc|by-ip|by-loid|by-mac|by-password|by-sn|<frame>} <slot> <port> <ont-id>",
+   "example": "display ont info 0 3 0 0",
+   "fields_observed": ["F/S/P", "ONT-ID", "Control flag", "Run state", "Config state", "Match state", "ONT LLID", "ONT distance(m)", "ONT RTT(TQ)", "Memory occupation", "CPU occupation", "Temperature", "Authentic type", "Discovery mode", "Discovery state", "MAC", "Password", "Management mode"]
+  },
+  "trafico_puerta_pon": {
+   "cmd": "display port traffic <port>",
+   "context": "huawei(config-if-gpon-0/<slot>)#",
+   "example": "display port traffic 0",
+   "fields_observed": ["Up traffic (kbps)", "Down traffic (kbps)"]
+  },
+  "config_puerta_pon": {
+   "cmd": "display port info <port>",
+   "context": "huawei(config-if-gpon-0/<slot>)#",
+   "fields_observed": ["F/S/P", "Min distance(km)", "Max distance(km)", "Left guaranteed bandwidth(kbps)", "Number of T-CONTs", "Autofind", "FEC check", "Admin State", "ONT encryption key switching interval(m)", "PON-ID switch", "PON-ID identifier", "Jumbo frame switch", "Surplus bandwidth assignment", "Best-effort bandwidth assignment"]
+  },
+  "estado_optico_puerta_pon": {
+   "cmd": "display port state <port>",
+   "context": "huawei(config-if-gpon-0/<slot>)#",
+   "fields_observed": ["Port state", "Last down cause", "Last up time", "Last down time", "Port energy-saving flag", "xPON MAC chipset state", "Signal detect", "Available bandwidth(Kbps)", "Illegal rogue ONT", "Optical Module status", "Laser state", "TX fault", "Temperature(C)", "TX Bias current(mA)", "Supply Voltage(V)", "TX power(dBm)"]
+  },
+  "estadisticas_puerta_pon": {
+   "cmd": "display statistics port ethernet <port>",
+   "context": "huawei(config-if-gpon-0/<slot>)#",
+   "fields_observed": ["Received/Sent frames, bytes, unicast/multicast/broadcast, por rango de tamaño, CRC error frames, discarded frames, error frames"]
+  },
+  "ver_service_port": {
+   "cmd": "display service-port {all|autosense|board|connect-oriented|desc|index <n>|number|port|vlan}",
+   "example": "display service-port 100",
+   "fields_observed": ["Index", "VLAN ID", "VLAN attr", "Port type", "F/S/P", "VPI/VCI", "Admin status", "State", "PVC bundle", "Channel", "Max MAC count", "Tag transform", "Description", "Static MAC", "IP address"]
+  },
+  "trafico_service_port": {
+   "cmd": "display traffic service-port <index>",
+   "fields_observed": ["Service-port", "Upstream(Kbps)", "Downstream(Kbps)"]
+  },
+  "estadisticas_service_port": {
+   "cmd": "display statistics service-port [<index>]",
+   "fields_observed": ["Number of upstream/downstream bytes, packets, discard packets"]
+  },
+  "trafico_puerta_eth": {
+   "cmd": "display port traffic <port>",
+   "context": "huawei(config-if-eth-0/<slot>)#",
+   "fields_observed": ["received/transmitted traffic en packets/s, octets/s, kbits/s"]
+  },
+  "estadisticas_puerta_eth": {
+   "cmd": "display port statistics <port>",
+   "context": "huawei(config-if-eth-0/<slot>)#"
+  },
+  "estado_puerta_eth": {
+   "cmd": "display port state {all|<port>}",
+   "context": "huawei(config-if-giu-0/<slot>)#",
+   "notes": ["giu = interfaz uplink eléctrica, distinto de eth/gpon"]
+  },
+  "estado_modulo_optico_eth": {
+   "cmd": "display port opticstate {all|<port>} [extend] [remote]",
+   "context": "huawei(config-if-opg-0/<slot>)#"
+  },
+  "interfaz_meth": {
+   "cmd": "display interface meth 0",
+   "notes": ["meth0 = interfaz de gestión fuera de banda"]
+  },
+  "interfaz_vlanif": {
+   "cmd": "display interface vlanif <id>"
+  },
+  "listar_line_profiles": {
+   "cmd": "display ont-lineprofile gpon {all|bound-info|profile-id|profile-name}",
+   "example": "display ont-lineprofile gpon all",
+   "columns": ["Profile-ID", "Profile-name", "Binding times"]
+  },
+  "ver_line_profile": {
+   "cmd": "display ont-lineprofile gpon profile-id <id>",
+   "fields_observed": ["Profile-ID", "Profile-name", "Access-type", "FEC upstream switch", "OMCC encrypt switch", "Qos mode", "Mapping mode", "TR069 management", "TR069 IP index", "Bundle-ID/Port-list", "T-CONT <n> DBA Profile-ID"]
+  },
+  "listar_service_profiles": {
+   "cmd": "display ont-srvprofile gpon {all|bound-info|profile-id|profile-name}",
+   "columns": ["Profile-ID", "Profile-name", "Binding times"]
+  },
+  "ver_service_profile": {
+   "cmd": "display ont-srvprofile gpon profile-id <id>",
+   "fields_observed": ["Port-type/Port-number (POTS, ETH, VDSL, TDM, MOCA, CATV)", "TDM port type", "TDM service type", "MAC learning function switch", "ONT transparent function switch", "Multicast forward mode/VLAN", "Native VLAN option"]
+  },
+  "listar_dba_profiles": {
+   "cmd": "display dba-profile all",
+   "context": "huawei(config-if-gpon-0/<slot>)# o global",
+   "columns": ["Profile-ID", "type", "Bandwidth compensation", "Fix(kbps)", "Assure(kbps)", "Max(kbps)", "Bind times"]
+  },
+  "ver_dba_profile": {
+   "cmd": "display dba-profile profile-id <id>",
+   "fields_observed": ["Profile-name", "Profile-ID", "type", "Bandwidth compensation", "Fix-delay", "Fix(kbps)", "Assure(kbps)", "Max(kbps)", "Additional-bandwidth", "Best-effort-priority", "Best-effort-weight", "bind-times"]
+  },
+  "tabla_ruteo_multicast": {
+   "cmd": "display multicast routing-table",
+   "fields_observed": ["grupo/origen", "Uptime", "Upstream Interface", "downstream interfaces"]
+  },
+  "estadisticas_flujo_multicast": {
+   "cmd": "display multicast flow-statistic {vlan <id>|...} {ip|ipv6} <addr> [sourceip]"
+  },
+  "tabla_forwarding_multicast": {
+   "cmd": "display multicast forwarding-table <F>/<S>/<P> ont <ont-id> [eth|verbose]",
+   "fields_observed": ["Group addr", "Source IP", "VLAN", "ONT-port", "Client IP", "Age(second)"],
+   "notes": ["'SSID' en ONT-port indica el SSID WiFi usado"]
+  },
+  "estadisticas_puerta_multicast": {
+   "cmd": "display statistics multicast port [<F>/<S>/<P>]",
+   "fields_observed": ["VLAN ID", "Program IP address", "Source IP address", "Transmit packets/bytes/rate"]
+  },
+  "camino_servicio_multicast": {
+   "cmd": "display multicast forwarding-path groupip <addr> sourceip <addr>",
+   "fields_observed": ["Upstream interface", "Downstream interface", "Downstream port", "Downstream slot"]
+  }
+ }
+}

@@ -1,0 +1,221 @@
+{
+ "meta": {
+  "vendor": "Huawei",
+  "families": [
+   "MA5608T",
+   "MA56xT (MA5603T/MA5608T/MA5680T)",
+   "MA5800-Xx"
+  ],
+  "status": "documented, no verificado en campo: nuestra cuenta Telnet actual está en vista de usuario (Mnz.principal>) y nunca entra a huawei(config)#, por lo que ninguno de estos comandos se ha podido ejecutar contra el equipo real. Transcrito de un curso/compilación de comandos de terceros, no de documentación oficial Huawei.",
+  "source": "pdf-huawei-olt-commands-compilation-guide_compress.pdf (COMPILATION OF COMMANDS FOR THE HUAWEI OLT COURSE), descargado por el usuario en /home/david/Descargas",
+  "extraction_date": "2026-10-23",
+  "why_it_matters": "Explica por qué el intento SNMP RW de crear hwGponDeviceSrvProfileInfoTable (perfil GPON huérfano, ver huawei_rw_profile_test.py) fue rechazado con errorStatus no estándar (6553514/6553511): en este firmware los perfiles se crean por CLI en modo configuración con su propio flujo transaccional (ont-srvprofile/ont-lineprofile + commit), no por RowStatus SNMP."
+ },
+ "recipes": {
+  "activar_autofind_puerta_pon": {
+   "desc": "Habilitar la detección automática de ONT en una puerta PON.",
+   "steps": [
+    {"cmd": "interface gpon 0/7", "rollback": null, "note": "F/S de la tarjeta/puerta"},
+    {"cmd": "port 0 ont-auto-find enable", "rollback": "port 0 ont-auto-find disable", "note": null},
+    {"cmd": "quit", "rollback": null, "note": null}
+   ]
+  },
+  "autorizar_todas_onts_sn_auth_por_puerta": {
+   "desc": "Autorizar en bloque todas las ONT pendientes (autofind) de una puerta PON por SN-AUTH, asignándoles un perfil de línea y de servicio ya existentes.",
+   "preconditions": [
+    "las ONT aparecen en 'display ont autofind <P>'",
+    "existen ont-lineprofile y ont-srvprofile con el profile-id indicado"
+   ],
+   "steps": [
+    {"cmd": "interface gpon 0/7", "rollback": null, "note": null},
+    {"cmd": "ont confirm 0 all sn-auth omci ont-srvprofile index 20 ont-lineprofile 20", "rollback": null, "note": "'0'=puerta PON dentro de la interfaz; 'all' confirma todas las ONT pendientes de esa puerta"}
+   ],
+   "notes": [
+    "variante con profile-id explícito (p. ej. 40): 'ont confirm P all sn-auth omci ont-lineprofile-id 40 ont-srvrpofile-id 40' (sic, typo 'srvrpofile' tal cual aparece en la fuente)"
+   ]
+  },
+  "dar_alta_ont_individual_sn_auth": {
+   "desc": "Dar de alta una ONT concreta por número de serie, asociándola a perfiles ya creados.",
+   "preconditions": [
+    "ont-lineprofile y ont-srvprofile con el profile-id ya existen y están 'commit'eados",
+    "SN de la ONT conocido (display ont autofind 0 lo lista si está en autofind)"
+   ],
+   "steps": [
+    {"cmd": "interface gpon 0/7", "rollback": null, "note": "F/S"},
+    {"cmd": "display ont autofind 0", "rollback": null, "note": "opcional: confirma que la ONT está pendiente"},
+    {"cmd": "ont add 2 sn-auth 485754432B878D9C omci ont-lineprofile-id 50 ont-srvprofile-id 50 desc \"Client/ID\"", "rollback": "ont delete 2 (el ONT-ID usado)", "note": "'2'=ONT-ID elegido; desc es opcional"},
+    {"cmd": "quit", "rollback": null, "note": null}
+   ],
+   "notes": [
+    "forma de lote vista en el documento (alta en frío/offline, sin 'interface' previa): 'ont add 2 sn-auth 485754432B878D1C omci ont-lineprofile-id 50 ont-srvprofile-id 50' repetida por cada ONT-ID"
+   ]
+  },
+  "eliminar_ont": {
+   "desc": "Eliminar una ONT ya dada de alta.",
+   "preconditions": [
+    "cualquier service-port asociado a la ONT debe eliminarse primero (texto literal de la fuente)"
+   ],
+   "steps": [
+    {"cmd": "interface gpon 0/1", "rollback": null, "note": "F/S"},
+    {"cmd": "ont delete <P> <O>", "rollback": null, "note": "P=ONT-ID dentro de esa interfaz PON (la fuente usa notación F/S/P/O para frame/slot/pon/ont; aquí P y O se refieren a puerta PON y ONT-ID respectivamente, ambigüedad propia del documento original)"}
+   ]
+  },
+  "reiniciar_ont": {
+   "desc": "Reiniciar (reset) una ONT ya registrada.",
+   "steps": [
+    {"cmd": "interface gpon 0/7", "rollback": null, "note": null},
+    {"cmd": "ont reset 2 0", "rollback": null, "note": "2=ONT-ID, 0=puerta PON (orden tal como aparece en la fuente)"}
+   ]
+  },
+  "verificar_estado_ont": {
+   "desc": "Consultar el estado completo de una ONT (solo lectura).",
+   "steps": [
+    {"cmd": "display ont info <F> <S> <P> <O>", "rollback": null, "note": "F=Frame, S=Slot, P=PON, O=ONT-ID"}
+   ],
+   "verify": [
+    "Config flag = active",
+    "Run state = online",
+    "Config state = normal",
+    "Match state = match"
+   ],
+   "notes": [
+    "también: 'display ont info by-sn <SN>' para buscar por número de serie",
+    "'display ont info option run-state 0 all' muestra estado/distancia/Rx-Tx de todas las ONT de una puerta",
+    "'display ont info summary 0' resume todas las ONT del OLT"
+   ]
+  },
+  "crear_plan_completo_dba_srv_line_profile": {
+   "desc": "Secuencia completa de un plan de ancho de banda desde cero (ejemplo real del documento: 20M, 6M garantizado subida/30M máx, 10M garantizado bajada/50M máx), hasta el alta de la ONT y su service-port. Es la plantilla base de la que derivan los demás recipes de aprovisionamiento.",
+   "preconditions": [
+    "SVLAN y CVLAN ya creadas (vlan <id> smart / vlan attrib <id> common / port vlan <id> <F>/<S> <P>)"
+   ],
+   "steps": [
+    {"cmd": "dba-profile add profile-id 71 profile-name P65M type3 assure 8192 max 32000", "rollback": "undo dba-profile profile-id 71 (forma vista para line-profile; no confirmado el comando exacto de undo para dba-profile)", "note": "type3 = banda asegurada+máxima; ver 'display dba-profile all' para los demás tipos observados (1,2,4,5)"},
+    {"cmd": "ont-srvprofile gpon profile-id 71", "rollback": null, "note": "entra al modo de edición del perfil de servicio"},
+    {"cmd": "ont-port pots adaptive eth adaptive", "rollback": null, "note": "'adaptive' = el sistema se adapta a cualquier ONT"},
+    {"cmd": "port vlan eth 1 400", "rollback": null, "note": "asocia el puerto ETH 1 a la CVLAN 400; repetir 'eth 1-4' para los 4 puertos si aplica"},
+    {"cmd": "commit", "rollback": null, "note": "paso de la SESIÓN DE CONFIGURACIÓN del perfil, no un RowStatus SNMP"},
+    {"cmd": "quit", "rollback": null, "note": null},
+    {"cmd": "ont-lineprofile gpon profile-id 71", "rollback": null, "note": null},
+    {"cmd": "tcont 1 dba-profile-id 71", "rollback": null, "note": null},
+    {"cmd": "gem add 71 eth tcont 1", "rollback": null, "note": null},
+    {"cmd": "gem mapping 71 0 vlan 400", "rollback": null, "note": "CVLAN 400"},
+    {"cmd": "commit", "rollback": null, "note": null},
+    {"cmd": "quit", "rollback": null, "note": null},
+    {"cmd": "interface gpon 0/1", "rollback": null, "note": "F/S de la ONT a dar de alta"},
+    {"cmd": "ont add 0 sn-auth 48575443D538A19D omci ont-lineprofile-id 71 ont-srvprofile-id 71", "rollback": "ont delete 0", "note": "// desc \"Client/ID\" es opcional"},
+    {"cmd": "ont port native-vlan 1 0 eth 1 vlan 400", "rollback": null, "note": "notación general de la fuente: 'ont port native-vlan P O eth e vlan cvlan' (P=puerta PON, O=ONT-ID, e=puerto ETH)"},
+    {"cmd": "service-port vlan 2000 gpon 0/1/1 ont 0 gemport 40 multi-service user-vlan 400 tag-transform translate rx-cttr 40 tx-cttr 40", "rollback": "no documentado un 'no service-port' explícito en esta fuente para MA56xT (sí existe en ZTE); ver zte_c6xx_provisioning_recipes.json para el patrón equivalente", "note": "SVLAN=2000 (de transporte), CVLAN=400 (de cliente); rx/tx-cttr referencian la traffic-table"}
+   ],
+   "verify": [
+    "display ont info <F> <S> <P> <O>",
+    "display service-port <index>",
+    "display traffic service-port <index>"
+   ],
+   "notes": [
+    "orden obligatorio documentado: 1) SVLAN 2) traffic-table 3) DBA-profile 4) service-profile (srv) 5) line-profile — antes de dar de alta la ONT",
+    "si el índice del service-port no se especifica, el OLT asigna el siguiente libre",
+    "la creación de perfiles NO se puede hacer por SNMP (confirmado contra el error 6553514/6553511 de nuestra prueba RW)"
+   ]
+  },
+  "crear_traffic_table": {
+   "desc": "Crear una tabla de tráfico (perfil de ancho de banda para service-port), usada para limitar subida/bajada.",
+   "steps": [
+    {"cmd": "traffic table ip index 20 cir 1024 cbs 102400 pir 2048 pbs 204800 priority 1 priority-policy tag-In-package", "rollback": null, "note": "cir/pir en kbps; cbs/pbs en bytes"}
+   ],
+   "notes": [
+    "ejemplo más simple visto: 'traffic table ip index 50 cir 1024 cbs 2048 pir 2048 pbs 4096 priority 2 priority-policy tag-In-package'",
+    "se referencia luego en service-port con 'inbound traffic-table index <n> outbound traffic-table index <n>' (u 'otbond', typo visto en la fuente)"
+   ]
+  },
+  "pppoe_ont_en_modo_bridge": {
+   "desc": "Configurar una ONT en modo bridge (puente) para que el router/PC del cliente haga el PPPoE, no la ONT.",
+   "steps": [
+    {"cmd": "ont-srvprofile gpon profile-id 50", "rollback": null, "note": null},
+    {"cmd": "ont-port pots adaptive eth adaptive", "rollback": null, "note": null},
+    {"cmd": "port vlan eth 1 translation 400 user-vlan 400", "rollback": null, "note": null},
+    {"cmd": "commit", "rollback": null, "note": null},
+    {"cmd": "quit", "rollback": null, "note": null},
+    {"cmd": "ont-lineprofile gpon profile-id 50", "rollback": null, "note": null},
+    {"cmd": "tcont 1 dba-profile-id 50", "rollback": null, "note": null},
+    {"cmd": "gem add 50 eth tcont 1", "rollback": null, "note": null},
+    {"cmd": "gem mapping 50 0 vlan 400", "rollback": null, "note": null},
+    {"cmd": "commit", "rollback": null, "note": null},
+    {"cmd": "quit", "rollback": null, "note": null},
+    {"cmd": "interface gpon 0/7", "rollback": null, "note": null},
+    {"cmd": "display ont autofind 0", "rollback": null, "note": null},
+    {"cmd": "ont add 2 sn-auth <ONT_SN> omci ont-lineprofile-id 50 ont-srvprofile-id 50 desc ONT_do_Manuel", "rollback": "ont delete 2", "note": null},
+    {"cmd": "quit", "rollback": null, "note": null},
+    {"cmd": "service-port vlan 2000 gpon 0/7/2 ont 0 gemport 50 multi-service user-vlan 400 tag-transform translate inbond traffic-table index 50 otbond traffic-table index 50", "rollback": null, "note": "reutiliza el DBA-profile y la traffic-table ya creados"}
+   ]
+  },
+  "pppoe_programado_desde_olt_cli": {
+   "desc": "Programar el PPPoE directamente en la ONT (home-gateway) desde la CLI del OLT, sin tocar la ONT por separado. Requiere R018+ en la línea 56000 o R017+ en la línea 5800 según el documento.",
+   "steps": [
+    {"cmd": "gpon ont home-gateway config-method omci", "rollback": null, "note": null},
+    {"cmd": "ont wan-profile profile-id 40", "rollback": null, "note": null},
+    {"cmd": "connection-type route", "rollback": null, "note": null},
+    {"cmd": "nat enable", "rollback": null, "note": null},
+    {"cmd": "quit", "rollback": null, "note": null},
+    {"cmd": "interface gpon 0/1", "rollback": null, "note": null},
+    {"cmd": "ont ipconfig 1 0 pppoe vlan 400 user-account username ccat12 password ccat12", "rollback": null, "note": "'1 0' = P/O, puerta PON y ONT-ID"},
+    {"cmd": "ont wan-config 1 0 ip-index 0 profile-id 40", "rollback": null, "note": null},
+    {"cmd": "ont internet-config 1 0 ip-index 0", "rollback": null, "note": null},
+    {"cmd": "enable port route 1 0 eth 1", "rollback": null, "note": null},
+    {"cmd": "service-port vlan 2000 gpon 0/1/1 ont 0 gemport 20 multi-service user-vlan 400 tag-transform translate rx-cttr 20 tx-cttr 20", "rollback": null, "note": null}
+   ]
+  },
+  "triple_play_basico_hsi_voip_iptv": {
+   "desc": "Aprovisionar una ONT con los 3 servicios clásicos (Internet, VoIP, IPTV) en un único perfil de línea/servicio con 3 T-CONT/GEM separados.",
+   "steps": [
+    {"cmd": "dba-profile add profile-id 10 profile-name \"HSI\" type3 assure 6020 max 49984", "rollback": null, "note": null},
+    {"cmd": "dba-profile add profile-id 11 profile-name VoIP type1 fix 256", "rollback": null, "note": null},
+    {"cmd": "dba-profile add profile-id 12 profile-name IPTV type2 assured 4096", "rollback": null, "note": "'assured' tal como aparece en la fuente (vs 'assure' en otros ejemplos); posible inconsistencia de la fuente, no del equipo"},
+    {"cmd": "ont-srvprofile gpon profile-id 10", "rollback": null, "note": null},
+    {"cmd": "ont-port pots ade lasptive eth ade lasptive catv ade lasptive", "rollback": null, "note": "sic: 'ade lasptive' aparece tal cual en el documento, probable error OCR/tipeo de 'adaptive'"},
+    {"cmd": "port vlan eth 1 translation 100 user-vlan 400", "rollback": null, "note": "HSI"},
+    {"cmd": "port vlan iphost translation 200 user-vlan 200", "rollback": null, "note": "VoIP"},
+    {"cmd": "port vlan eth 2 translation 300 user-vlan 300", "rollback": null, "note": "IPTV"},
+    {"cmd": "commit", "rollback": null, "note": null},
+    {"cmd": "quit", "rollback": null, "note": null},
+    {"cmd": "ont-lineprofile gpon profile-id 10", "rollback": null, "note": null},
+    {"cmd": "tcont 6 dba-profile-id 10", "rollback": null, "note": "HSI"},
+    {"cmd": "tcont 7 dba-profile-id 11", "rollback": null, "note": "VoIP"},
+    {"cmd": "tcont 8 dba-profile-id 12", "rollback": null, "note": "IPTV"},
+    {"cmd": "gem add 6 eth tcont 6", "rollback": null, "note": null},
+    {"cmd": "gem add 7 eth tcont 7", "rollback": null, "note": null},
+    {"cmd": "gem add 8 eth tcont 8", "rollback": null, "note": null},
+    {"cmd": "gem mapping 6 0 vlan 400", "rollback": null, "note": null},
+    {"cmd": "gem mapping 7 0 vlan 200", "rollback": null, "note": null},
+    {"cmd": "gem mapping 8 0 vlan 300", "rollback": null, "note": null},
+    {"cmd": "commit", "rollback": null, "note": null},
+    {"cmd": "quit", "rollback": null, "note": null},
+    {"cmd": "service-port vlan 1000 gpon 0/1/0 ont 0 gemport 6 multi-service user-vlan 100", "rollback": null, "note": "HSI"},
+    {"cmd": "service-port vlan 1500 gpon 0/1/0 ont 0 iphost multi-service user-vlan 200", "rollback": null, "note": "VoIP"},
+    {"cmd": "service-port vlan 1200 gpon 0/1/0 ont 0 eth 2 gemport 8 multi-service user-vlan 300", "rollback": null, "note": "IPTV"}
+   ]
+  },
+  "proteccion_pon_tipo_b": {
+   "desc": "Proteger una puerta PON (work) con otra de respaldo (protect) en el mismo o distinto chasis.",
+   "steps": [
+    {"cmd": "protect-grop 0 protect-target gpon-uni-port workmode timedelay", "rollback": null, "note": "sic 'protect-grop', typo de 'protect-group' tal cual aparece en la fuente"},
+    {"cmd": "protect-grop member port 0/3/0 role work", "rollback": null, "note": null},
+    {"cmd": "protect-grop member port 0/5/9 role protect", "rollback": null, "note": null},
+    {"cmd": "protect-grop enable", "rollback": null, "note": null},
+    {"cmd": "quit", "rollback": null, "note": null}
+   ]
+  },
+  "backup_restore_configuracion": {
+   "desc": "Respaldar y restaurar la configuración del OLT vía FTP.",
+   "steps": [
+    {"cmd": "ftp set", "rollback": null, "note": null},
+    {"cmd": "backup configuration ftp <ip_servidor_ftp> <archivo>.txt", "rollback": null, "note": null}
+   ],
+   "notes": [
+    "restaurar: 'load configuration ftp <ip> <archivo>.txt active' + 'active configuration system'",
+    "también existe backup/restore de 'data' (no solo configuración): 'backup data ftp ...' / 'load data ftp ...'",
+    "programar backup automático: 'file-server auto-backup configuration primary <ip> ftp <user>' + 'auto-backup period configuration interval <n> time HH:MM' + 'Enable auto-backup period configuration'"
+   ]
+  }
+ }
+}

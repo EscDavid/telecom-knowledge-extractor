@@ -1,0 +1,46 @@
+{
+  "id": "entity.huawei.gpon.device.onu",
+  "canonical_name": "Onu",
+  "vendor": "Huawei",
+  "family": "MA5608T",
+  "firmware": [
+    "R015"
+  ],
+  "technology": "gpon",
+  "type": "device",
+  "description": "Optical Network Unit — equipo terminal GPON del lado del abonado.",
+  "is_critical": true,
+  "aliases": [],
+  "attributes": [],
+  "sources": [
+    {
+      "doc_type": "mib_file",
+      "pages": null,
+      "confidence": 0.3
+    }
+  ],
+  "confidence": {
+    "extraction": 0.85,
+    "correlation": 0.0,
+    "overall": 0.85
+  },
+  "status": "documented",
+  "lifecycle": {
+    "introduced_in": "R015",
+    "deprecated_in": null,
+    "removed_in": null,
+    "status": "introduced",
+    "replacement": null
+  },
+  "relations": [
+    {
+      "type": "belongs_to",
+      "target": "entity.huawei.gpon.port.pon_port"
+    },
+    {
+      "type": "uses",
+      "target": "entity.huawei.gpon.logical.gem_port"
+    }
+  ],
+  "conflicts": []
+}

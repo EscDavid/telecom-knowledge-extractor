@@ -1,0 +1,63 @@
+{
+  "project": "Telecom Knowledge Compiler (TKC) — Fase 2",
+  "vendor": "Huawei",
+  "family": "MA5608T",
+  "phase": "walk_validation",
+  "seed_family": "MA5608T",
+  "walks": {
+    "Huawei_MA5608T.txt": "enterprise",
+    "Huawei_MA5608T_entities.txt": "entity_table",
+    "Huawei_MA5608T_ifnames.txt": "if_table"
+  },
+  "generated_at": "2026-10-24T20:34:18",
+  "counts": {
+    "oids_kept": 2225,
+    "oids_pruned": 0,
+    "entities_confirmed": 0
+  },
+  "status_distribution": {
+    "oids": {
+      "documented": 1688,
+      "verified": 534,
+      "verified_walk": 3
+    },
+    "entities": {
+      "documented": 3,
+      "verified_walk": 1
+    }
+  },
+  "triggers": {
+    "ascii_index": 6535,
+    "documented_only": 1688,
+    "scale_detected": 13,
+    "observed_only": 30,
+    "entity_confirmed": 1,
+    "pon_operational": 1,
+    "pon_onu_count_derived": 1
+  },
+  "bitcalc_validation": null,
+  "pending_validations": [],
+  "community": null,
+  "observed_firmware_strings": [
+    " alarm-profile_1",
+    "!alarm-profile_1",
+    "\"alarm-profile_1",
+    "#alarm-profile_1",
+    "$alarm-profile_1",
+    "%alarm-profile_1",
+    "&alarm-profile_1",
+    "'alarm-profile_1",
+    "(alarm-profile_1",
+    "2alarm-profile_1",
+    "3alarm-profile_1",
+    "4alarm-profile_1",
+    "5alarm-profile_1",
+    "9YZziIaq7fVw",
+    "CDATA-FD702XW",
+    "EG8141A5",
+    "EG8143A5",
+    "EG8143H5",
+    "EG8145V5",
+    "EG8247H5"
+  ]
+}

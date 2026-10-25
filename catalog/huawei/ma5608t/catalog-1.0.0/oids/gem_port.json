@@ -1,0 +1,1322 @@
+{
+  "entity_ref": "entity.huawei.gpon.logical.gem_port",
+  "vendor": "Huawei",
+  "family": "MA5608T",
+  "firmware": [
+    "R015"
+  ],
+  "oids": [
+    {
+      "id": "oid.huawei.gpon.gem_port.gem_bundle_slave_list",
+      "oid": "1.3.6.1.4.1.2011.5.100.1.1.1.70.1.1",
+      "name": "hwGponDeviceGemBundleSlaveList",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "OCTET STRING",
+      "unit": null,
+      "scale": null,
+      "access": "read-write",
+      "enumeration": null,
+      "description": "Indicates the slave GEM ports of bundle.\nThe value of slave GEM ports of bundle:\nnumber(1byte) :Indicates the number of slave GEM ports. The maximum number is 7.\ngemportid(2byte * number) :Indicates a slave GEM port ID.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.huawei.gpon.gem_port.base_gemport",
+      "oid": "1.3.6.1.4.1.2011.5.100.1.1.12",
+      "name": "hwGponDeviceBaseGemport",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-write",
+      "enumeration": null,
+      "description": "This object is used to set the start GEM port ID of the entire system in the GEM port CoS rate limitation mode.\nRanging from 128 to 3872.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.huawei.gpon.gem_port.line_test_frame_length",
+      "oid": "1.3.6.1.4.1.2011.5.100.1.1.16.1.1.1",
+      "name": "hwGponGemPortLineTestFrameLength",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-write",
+      "enumeration": null,
+      "description": "Frame length of GEM port line test.\nReading this object will result in implementation-specific results.\nRange: 64-1518\nDefault: 64",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.huawei.gpon.gem_port.line_test_frames_tx_num",
+      "oid": "1.3.6.1.4.1.2011.5.100.1.1.16.1.1.2",
+      "name": "hwGponGemPortLineTestFramesTxNum",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-write",
+      "enumeration": null,
+      "description": "Number of GEM port line test frames sending.\nReading this object will result in implementation-specific results.\nRange: 5-100\nDefault: 5",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.huawei.gpon.gem_port.line_test_frames_rx_num",
+      "oid": "1.3.6.1.4.1.2011.5.100.1.1.16.1.1.3",
+      "name": "hwGponGemPortLineTestFramesRxNum",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "unknown",
+      "enumeration": null,
+      "description": "Number of GEM port line test frames receiving.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.huawei.gpon.gem_port.gemport_statis_up_packts",
+      "oid": "1.3.6.1.4.1.2011.5.100.1.1.2.12.1.1",
+      "name": "hwGponGemportStatisUpPackts",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "unknown",
+      "enumeration": null,
+      "description": "Upstream frames.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.huawei.gpon.gem_port.gemport_statis_down_packts",
+      "oid": "1.3.6.1.4.1.2011.5.100.1.1.2.12.1.2",
+      "name": "hwGponGemportStatisDownPackts",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "unknown",
+      "enumeration": null,
+      "description": "Downstream frames.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.huawei.gpon.gem_port.gemport_statis_up_bytes",
+      "oid": "1.3.6.1.4.1.2011.5.100.1.1.2.12.1.3",
+      "name": "hwGponGemportStatisUpBytes",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "unknown",
+      "enumeration": null,
+      "description": "Upstream bytes.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.huawei.gpon.gem_port.gemport_statis_down_bytes",
+      "oid": "1.3.6.1.4.1.2011.5.100.1.1.2.12.1.4",
+      "name": "hwGponGemportStatisDownBytes",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "unknown",
+      "enumeration": null,
+      "description": "Downstream bytes.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.huawei.gpon.gem_port.gemport_statis_up_drop_packts",
+      "oid": "1.3.6.1.4.1.2011.5.100.1.1.2.12.1.5",
+      "name": "hwGponGemportStatisUpDropPackts",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "unknown",
+      "enumeration": null,
+      "description": "Upstream discarded frames.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.huawei.gpon.gem_port.gemport_statis_down_drop_packts",
+      "oid": "1.3.6.1.4.1.2011.5.100.1.1.2.12.1.6",
+      "name": "hwGponGemportStatisDownDropPackts",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "unknown",
+      "enumeration": null,
+      "description": "Downstream discarded frames.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.huawei.gpon.gem_port.gemport_statistics_clear",
+      "oid": "1.3.6.1.4.1.2011.5.100.1.1.2.12.1.7",
+      "name": "hwGponGemportStatisticsClear",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-write",
+      "enumeration": null,
+      "description": "Clear the statistics.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.huawei.gpon.gem_port.multicast_gemport_id",
+      "oid": "1.3.6.1.4.1.2011.6.128.1.1.1.21",
+      "name": "hwGponDeviceMulticastGemportId",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-write",
+      "enumeration": null,
+      "description": "The special GEM port ID is used for the multicast service, ranging from 4000 to 4095.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.huawei.gpon.gem_port.base_gemport_id",
+      "oid": "1.3.6.1.4.1.2011.6.128.1.1.1.22",
+      "name": "hwGponDeviceBaseGemportId",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-write",
+      "enumeration": null,
+      "description": "The base GEM port is used when the board's car-mode is port-cos, ranging from 128 to 3872.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.huawei.gpon.gem_port.unbound_gem_port_id",
+      "oid": "1.3.6.1.4.1.2011.6.128.1.1.2.140.1.1",
+      "name": "hwGponDeviceUnboundGemPortId",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "unknown",
+      "enumeration": null,
+      "description": "This object indicates the unbound GEM port ID.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.huawei.gpon.gem_port.unbound_gem_port_service_type",
+      "oid": "1.3.6.1.4.1.2011.6.128.1.1.2.140.1.2",
+      "name": "hwGponDeviceUnboundGemPortServiceType",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "Enumeration",
+      "unit": null,
+      "scale": null,
+      "access": "unknown",
+      "enumeration": null,
+      "description": "This object indicates the carried service type of the unbound GEM port.\nOptions:\n1. tdm(1) - TDM\n2. omci(2) - OMCI\n3. eth(3) - ETH\n4. invalid(-1) - Indicates that the query fails or no information is detected",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.huawei.gpon.gem_port.unbound_gem_port_encrypt",
+      "oid": "1.3.6.1.4.1.2011.6.128.1.1.2.140.1.3",
+      "name": "hwGponDeviceUnboundGemPortEncrypt",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "Enumeration",
+      "unit": null,
+      "scale": null,
+      "access": "unknown",
+      "enumeration": null,
+      "description": "This object indicates the downstream encryption switch of the unbound GEM port.\nOptions:\n1. on(1) - Indicates that the downstream encryption switch of the unbound GEM port is on\n2. off(2) - Indicates that the downstream encryption switch of the unbound GEM port is off\n3. invalid(-1) - Indicates that the query fails or no information is detected",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.huawei.gpon.gem_port.unbound_gem_port_cascade",
+      "oid": "1.3.6.1.4.1.2011.6.128.1.1.2.140.1.4",
+      "name": "hwGponDeviceUnboundGemPortCascade",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "Enumeration",
+      "unit": null,
+      "scale": null,
+      "access": "unknown",
+      "enumeration": null,
+      "description": "This object indicates the subtending attribute of the unbound GEM port.\nOptions:\n1. on(1) - Indicates that the subtending attribute of the unbound GEM port is on\n2. off(2) - Indicates that the subtending attribute of the unbound GEM port is off\n3. invalid(-1) - Indicates that the query fails or no information is detected",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.huawei.gpon.gem_port.unbound_gem_port_description",
+      "oid": "1.3.6.1.4.1.2011.6.128.1.1.2.140.1.5",
+      "name": "hwGponDeviceUnboundGemPortDescription",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "OCTET STRING",
+      "unit": null,
+      "scale": null,
+      "access": "unknown",
+      "enumeration": null,
+      "description": "This object indicates the unbound GEM port description.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.huawei.gpon.gem_port.unbound_gem_port_entry_status",
+      "oid": "1.3.6.1.4.1.2011.6.128.1.1.2.140.1.6",
+      "name": "hwGponDeviceUnboundGemPortEntryStatus",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-write",
+      "enumeration": null,
+      "description": "The hwGponDeviceUnboundGemPortEntryStatus is used to create a new row\nor to modify or delete an existing row in this table.\nOptions:\n1. createAndGo(4) -create a new instance of a conceptual row\n2. destroy(6) -delete the instances associated with an existing conceptual row",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.huawei.gpon.gem_port.epon_device_line_profile_tr069_management_ip_index",
+      "oid": "1.3.6.1.4.1.2011.6.128.1.1.3.41.1.6",
+      "name": "hwEponDeviceLineProfileTr069ManagementIpIndex",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-write",
+      "enumeration": null,
+      "description": "The index of IP host which used by TR069.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.huawei.gpon.gem_port.line_profile_tr069_management_ip_index",
+      "oid": "1.3.6.1.4.1.2011.6.128.1.1.3.61.1.12",
+      "name": "hwGponDeviceLineProfileTr069ManagementIpIndex",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-write",
+      "enumeration": null,
+      "description": "The index of IP host which used by TR069.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.huawei.gpon.gem_port.line_profile_tr069_management_switch",
+      "oid": "1.3.6.1.4.1.2011.6.128.1.1.3.61.1.9",
+      "name": "hwGponDeviceLineProfileTr069ManagementSwitch",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "Enumeration",
+      "unit": null,
+      "scale": null,
+      "access": "read-write",
+      "enumeration": null,
+      "description": "This object indicates the GPON line profile tr069 management status.\nOptions:\n1. enable(1) - Enable the GPON line profile tr069 management status\n2. disable(2) - Disable the GPON line profile tr069 management status",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.huawei.gpon.gem_port.line_prof_gem_cfg_line_prof_name_index",
+      "oid": "1.3.6.1.4.1.2011.6.128.1.1.3.63.1.1",
+      "name": "hwGponDeviceLineProfGemCfgLineProfNameIndex",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "OCTET STRING",
+      "unit": null,
+      "scale": null,
+      "access": "unknown",
+      "enumeration": null,
+      "description": "This object indicates the XPON line profile name index.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.huawei.gpon.gem_port.line_prof_gem_cfg_down_p_q_index",
+      "oid": "1.3.6.1.4.1.2011.6.128.1.1.3.63.1.10",
+      "name": "hwGponDeviceLineProfGemCfgDownPQIndex",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-write",
+      "enumeration": null,
+      "description": "This object indicates the XPON line profile gem config down stream PQ index.\n0..7: Down Stream PQ index,\n254 : Apaptive, Gemport Down Stream PQ is decided by ont.\n-1 : Default Value.Gemport Down Stream PQ is decided by olt.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.huawei.gpon.gem_port.line_prof_gem_cfg_car_traffic_table_name",
+      "oid": "1.3.6.1.4.1.2011.6.128.1.1.3.63.1.11",
+      "name": "hwGponDeviceLineProfGemCfgCarTrafficTableName",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "OCTET STRING",
+      "unit": null,
+      "scale": null,
+      "access": "read-write",
+      "enumeration": null,
+      "description": "This object indicates the XPON line profile gem config car profile name.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.huawei.gpon.gem_port.line_prof_gem_cfg_gem_index",
+      "oid": "1.3.6.1.4.1.2011.6.128.1.1.3.63.1.2",
+      "name": "hwGponDeviceLineProfGemCfgGemIndex",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "unknown",
+      "enumeration": null,
+      "description": "This object indicates the XPON line profile gem config gem index.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.huawei.gpon.gem_port.line_prof_gem_cfg_car_traffic_table_id",
+      "oid": "1.3.6.1.4.1.2011.6.128.1.1.3.63.1.3",
+      "name": "hwGponDeviceLineProfGemCfgCarTrafficTableId",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-write",
+      "enumeration": null,
+      "description": "This object indicates the XPON line profile gem config car profile index.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.huawei.gpon.gem_port.line_prof_gem_cfg_service_type",
+      "oid": "1.3.6.1.4.1.2011.6.128.1.1.3.63.1.5",
+      "name": "hwGponDeviceLineProfGemCfgServiceType",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "Enumeration",
+      "unit": null,
+      "scale": null,
+      "access": "read-write",
+      "enumeration": null,
+      "description": "This object indicates the XPON line profile gem config gem service type.\nOptions:\n1. eth(1) - ETH\n2. tdm(2) - TDM",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.huawei.gpon.gem_port.line_prof_gem_cfg_encrypt_mode",
+      "oid": "1.3.6.1.4.1.2011.6.128.1.1.3.63.1.6",
+      "name": "hwGponDeviceLineProfGemCfgEncryptMode",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "Enumeration",
+      "unit": null,
+      "scale": null,
+      "access": "read-write",
+      "enumeration": null,
+      "description": "This object indicates the XPON line profile gem config gem encrypt mode.\nOptions:\n1. on(1) - Indicates that the XPON line profile gem config gem encrypt mode is on\n2. off(2) - Indicates that the XPON line profile gem config gem encrypt mode is off",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.huawei.gpon.gem_port.line_prof_gem_cfg_cascade_mode",
+      "oid": "1.3.6.1.4.1.2011.6.128.1.1.3.63.1.7",
+      "name": "hwGponDeviceLineProfGemCfgCascadeMode",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "Enumeration",
+      "unit": null,
+      "scale": null,
+      "access": "read-write",
+      "enumeration": null,
+      "description": "This object indicates the XPON line profile gem config gem cascade switch.\nOptions:\n1. on(1) - Indicates that the XPON line profile gem config gem cascade switch is on\n2. off(2) - Indicates that the XPON line profile gem config gem cascade switch is off",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.huawei.gpon.gem_port.line_prof_gem_cfg_up_p_q_index",
+      "oid": "1.3.6.1.4.1.2011.6.128.1.1.3.63.1.8",
+      "name": "hwGponDeviceLineProfGemCfgUpPQIndex",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-write",
+      "enumeration": null,
+      "description": "This object indicates the XPON line profile gem config up stream PQ index.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.huawei.gpon.gem_port.line_prof_gem_cfg_row_status",
+      "oid": "1.3.6.1.4.1.2011.6.128.1.1.3.63.1.9",
+      "name": "hwGponDeviceLineProfGemCfgRowStatus",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-write",
+      "enumeration": null,
+      "description": "The hwGponDeviceLineProfGemCfgRowStatus is used to create a new row\nor to modify or delete an existing row in this table.\nOptions:\n1. createAndGo(4) -create a new instance of a conceptual row\n2. destroy(6) -delete the instances associated with an existing conceptual row",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.huawei.gpon.gem_port.line_prof_mapping_cfg_gem_index",
+      "oid": "1.3.6.1.4.1.2011.6.128.1.1.3.64.1.2",
+      "name": "hwGponDeviceLineProfMappingCfgGemIndex",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "unknown",
+      "enumeration": null,
+      "description": "This object indicates the XPON line profile mapping config gem index.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.huawei.gpon.gem_port.line_prof_gem_bundle_line_prof_name_index",
+      "oid": "1.3.6.1.4.1.2011.6.128.1.1.3.74.1.1",
+      "name": "hwGponDeviceLineProfGemBundleLineProfNameIndex",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "OCTET STRING",
+      "unit": null,
+      "scale": null,
+      "access": "unknown",
+      "enumeration": null,
+      "description": "This object indicates the XPON line profile name index.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.huawei.gpon.gem_port.line_prof_gem_bundle_cfg_master",
+      "oid": "1.3.6.1.4.1.2011.6.128.1.1.3.74.1.2",
+      "name": "hwGponDeviceLineProfGemBundleCfgMaster",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "unknown",
+      "enumeration": null,
+      "description": "Indicates the master GEM index of bundle.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.huawei.gpon.gem_port.line_prof_gem_bundle_cfg_slave_list",
+      "oid": "1.3.6.1.4.1.2011.6.128.1.1.3.74.1.3",
+      "name": "hwGponDeviceLineProfGemBundleCfgSlaveList",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "OCTET STRING",
+      "unit": null,
+      "scale": null,
+      "access": "read-write",
+      "enumeration": null,
+      "description": "Indicates the slave GEM ports of bundle.\nThe value of slave GEM ports of bundle:\nnumber(1byte) :Indicates the number of slave GEM ports . The maximum number is 7.\ngemportid(2byte * number) :Indicates a slave GEM port ID.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.huawei.gpon.gem_port.gem_index_object_index",
+      "oid": "1.3.6.1.4.1.2011.6.128.1.1.4.24.1.1",
+      "name": "hwGponDeviceGemIndexObjectIndex",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "unknown",
+      "enumeration": null,
+      "description": "This object indicates the GEM Index.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.huawei.gpon.gem_port.gem_line_test_frame_length",
+      "oid": "1.3.6.1.4.1.2011.6.128.1.1.6.1.1.1",
+      "name": "hwGponGemLineTestFrameLength",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-write",
+      "enumeration": null,
+      "description": "This object indicates the frame length of GEM port line test. Range: 64-1518.\nIf the value of the ACCESS clause is 'write-only',\nthen the value of the MAX-ACCESS clause MUST be 'read-write',\nand the DESCRIPTION clause SHALL note that reading\nthis object will result in implementation-specific results.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.huawei.gpon.gem_port.gem_line_test_frames_tx_num",
+      "oid": "1.3.6.1.4.1.2011.6.128.1.1.6.1.1.2",
+      "name": "hwGponGemLineTestFramesTxNum",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-write",
+      "enumeration": null,
+      "description": "This object indicates the number of GEM port line test frames sending. Range: 5-100.\nIf the value of the ACCESS clause is 'write-only',\nthen the value of the MAX-ACCESS clause MUST be 'read-write',\nand the DESCRIPTION clause SHALL note that reading\nthis object will result in implementation-specific results.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.huawei.gpon.gem_port.gem_line_test_frames_rx_num",
+      "oid": "1.3.6.1.4.1.2011.6.128.1.1.6.1.1.3",
+      "name": "hwGponGemLineTestFramesRxNum",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "unknown",
+      "enumeration": null,
+      "description": "This object indicates the number of GEM port line test frames receiving. Range: 0-100.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    }
+  ]
+}
