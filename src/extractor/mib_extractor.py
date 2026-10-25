@@ -1,8 +1,9 @@
 """MibExtractor — parseo de archivos .my/.mib (ASN.1 SMI).
 
 Extrae cada OBJECT-TYPE como un Oid, resolviendo su OID numérico a partir de las
-asignaciones `name ::= { parent N }` del módulo. Detecta índices compuestos ZTE
-(32 bits) y marca bit_calculation.
+asignaciones `name ::= { parent N }` del módulo. Detecta índices compuestos
+bit-packed (p. ej. 32 bits) solo si el perfil del vendor lo declara
+(config/vendors.yaml → bit_index) y marca bit_calculation.
 
 Sin dependencias externas — todo regex.
 """
@@ -14,6 +15,7 @@ from typing import Any, Optional
 
 from ..models import (QUALITY_DIRECT_NO_PAGE, Alarm, Oid, OidIndex, Source)
 from ..ids import snake
+from ..profiles import default_registry
 
 log = logging.getLogger("tkc.extractor.mib")
 
@@ -146,6 +148,10 @@ class MibExtractor:
         self.family = family
         self.technology = technology
         self.firmware = firmware
+        # índice compuesto bit-packed: solo si el perfil del vendor lo declara
+        profile = default_registry().get(vendor)
+        self.bit_index = profile.bit_index
+        self.metric_prefixes = profile.metric_prefixes
 
     def extract(self, text: str, doc_type: str = "mib_file",
                 extra_assignments: Optional[dict[str, list[str]]] = None) -> list[Oid]:
@@ -353,24 +359,25 @@ class MibExtractor:
             return OidIndex(type="simple", bit_calculation=False)
         cols = [c.strip() for c in index_block.split(",") if c.strip()]
         composite = len(cols) > 1
-        # patrón ZTE: índice compuesto de 32 bits (shelf/slot/port/onu_id)
-        bit_calc = composite and self._looks_like_zte_bitindex(cols)
+        # índice compuesto bit-packed de 32 bits (shelf/slot/port/onu_id), si el perfil lo declara
+        bit_calc = composite and self._looks_like_bitindex(cols)
         components = None
         if bit_calc:
             components = self._bit_components(cols)
         return OidIndex(type="composite" if composite else "simple",
                         bit_calculation=bit_calc, components=components)
 
-    @staticmethod
-    def _looks_like_zte_bitindex(cols: list[str]) -> bool:
+    def _looks_like_bitindex(self, cols: list[str]) -> bool:
+        spec = self.bit_index
+        if not spec:
+            return False
         joined = " ".join(cols).lower()
-        hits = sum(k in joined for k in ("shelf", "slot", "port", "onu"))
-        return hits >= 2
+        hits = sum(k in joined for k in spec.get("keywords", []))
+        return hits >= int(spec.get("min_keyword_hits", 2))
 
-    @staticmethod
-    def _bit_components(cols: list[str]) -> list[dict[str, str]]:
-        # Mapa de bits por defecto del esquema ZTE de 32 bits.
-        default_bits = {"shelf": "31-28", "slot": "27-24", "port": "23-20", "onu": "19-0"}
+    def _bit_components(self, cols: list[str]) -> list[dict[str, str]]:
+        # Mapa de bits por defecto del perfil del vendor.
+        default_bits = dict((self.bit_index or {}).get("default_bits", {}))
         out = []
         for c in cols:
             short = snake(c).split("_")[-1]
@@ -387,10 +394,9 @@ class MibExtractor:
                 return entity
         return "olt"   # por defecto, métrica a nivel de equipo
 
-    @staticmethod
-    def _metric_name(name: str, entity: str) -> str:
+    def _metric_name(self, name: str, entity: str) -> str:
         s = snake(re.sub(r"(?<!^)(?=[A-Z])", "_", name))   # camelCase → snake
-        for prefix in ("zx_an_gpon_", "zx_an_", "zx_", "hw_"):
+        for prefix in self.metric_prefixes:
             if s.startswith(prefix):
                 s = s[len(prefix):]
         return s.replace(f"{entity}_", "", 1) if s.startswith(f"{entity}_") else s

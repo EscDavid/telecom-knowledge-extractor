@@ -1,17 +1,19 @@
-"""Fase 2 — extractores de tablas MIB-2 estándar (no vendor 3902).
+"""Fase 2 — extractores de tablas MIB-2 estándar (no del enterprise del vendor).
 
 Dos walks complementarios describen el mismo equipo desde ángulos estándar:
 
-  entity_table (ZTE_*_entities.txt) → entPhysicalTable (1.3.6.1.2.1.47.1.1.1.1)
+  entity_table (<VENDOR>_*_entities.txt) → entPhysicalTable (1.3.6.1.2.1.47.1.1.1.1)
       inventario físico real: chasis, tarjetas, fuentes, fans, sensores.
       → confirma entidades tkc de tipo hardware.
 
-  if_table (ZTE_*_ifnames.txt) → ifXTable (1.3.6.1.2.1.31.1.1.1.1 = ifName)
+  if_table (<VENDOR>_*_ifnames.txt) → ifXTable (1.3.6.1.2.1.31.1.1.1.1 = ifName)
       interfaces reales y sus ifIndex compuestos.
       → confirma entidades de tipo port y VALIDA el bit_calculation del índice.
 
-A diferencia del walk enterprise, aquí no se cruza contra OIDs 3902 sino que se
-enriquecen ENTIDADES (a nivel de dict JSON) y se valida el mapa de bits del índice.
+A diferencia del walk enterprise, aquí no se cruza contra OIDs del enterprise sino
+que se enriquecen ENTIDADES (a nivel de dict JSON) y se valida el mapa de bits del
+índice. Lo específico de cada vendor (nombres de interfaz, fórmulas, ramas) llega en
+el `VendorProfile` (config/vendors.yaml); sin perfil se usa el de compatibilidad.
 """
 from __future__ import annotations
 
@@ -20,8 +22,14 @@ from bisect import bisect_left
 from collections import Counter, defaultdict
 from typing import Any, Optional
 
-from ..ids import build_oid_id
+from ..ids import build_entity_id, build_oid_id
+from ..profiles import (LEGACY_DEFAULT_VENDOR, VendorProfile, default_registry)
 from .triggers import Findings, decode_ascii_index
+
+
+def _profile(profile: Optional[VendorProfile]) -> VendorProfile:
+    """Perfil explícito o, para llamadas heredadas sin perfil, el de compatibilidad."""
+    return profile or default_registry().get(LEGACY_DEFAULT_VENDOR)
 
 _STATUS_WALK = "verified_walk"
 
@@ -106,19 +114,38 @@ def _verify_entity(ent: dict, source: str, empirical: dict) -> None:
     ent["empirical"] = {"source": source, **empirical}
 
 
+_MODULE_REFINE = [("fan", "fan"), ("power board", "power_supply"), ("power supply", "power_supply")]
+
+
+def _refine_module(short: str, row: dict) -> str:
+    """Un `module` (clase 9) cuya descripción es ventilador/fuente no es una tarjeta."""
+    text = (row.get("descr") or row.get("model") or row.get("name") or "").lower()
+    for kw, refined in _MODULE_REFINE:
+        if kw in text:
+            return refined
+    return short
+
+
 def enrich_hardware_entities(entities_by_short: dict[str, dict], walk: dict[str, dict],
-                             source: str, findings: Findings) -> int:
+                             source: str, findings: Findings,
+                             profile: Optional[VendorProfile] = None) -> int:
     """Confirma entidades hardware con el inventario real de entPhysicalTable."""
+    refine = bool(profile and profile.ent_module_refine)
     rows = extract_ent_physical(walk)
     counts: Counter = Counter()
     samples: dict[str, list] = defaultdict(list)
     for row in rows.values():
         # entPhysicalClass si está; si el walk trae solo Descr, se clasifica por texto
         short = ENT_CLASS_TO_SHORT.get(row.get("class"))
-        if not short:
+        if not short and not (refine and row.get("class") is not None):
+            # la descripción solo clasifica si el walk NO trae entPhysicalClass (con perfil
+            # estricto, una clase presente pero no mapeada —p. ej. 11 "stack" de Huawei con
+            # 65 filas "RACK-300"— no se reinterpreta por texto)
             short = classify_ent_descr(row.get("descr") or row.get("model") or row.get("name"))
         if not short:
             continue
+        if refine and short == "card":
+            short = _refine_module(short, row)
         counts[short] += 1
         label = row.get("descr") or row.get("model") or row.get("name")
         if label and label not in samples[short] and len(samples[short]) < 5:
@@ -139,11 +166,12 @@ def enrich_hardware_entities(entities_by_short: dict[str, dict], walk: dict[str,
 
 
 # --- puertos + validación de bit_calculation ----------------------------------
-def classify_ifname(name: str) -> Optional[str]:
+def classify_ifname(name: str, profile: Optional[VendorProfile] = None) -> Optional[str]:
+    p = _profile(profile)
     low = (name or "").lower()
-    if "pon" in low:                       # gpon/pon-onu → puerto PON
+    if any(k in low for k in p.pon_keywords):          # gpon/pon-onu → puerto PON
         return "pon_port"
-    if any(k in low for k in ("uplink", "gei", "xge", "eth", "gigabit")):
+    if any(k in low for k in p.uplink_keywords):
         return "uplink_port"
     return None
 
@@ -176,13 +204,15 @@ def decode_composite(index_int: int, components: list[dict]) -> dict[str, int]:
 
 
 def enrich_port_entities(entities_by_short: dict[str, dict], oid_groups: list[dict],
-                         walk: dict[str, dict], source: str, findings: Findings) -> None:
+                         walk: dict[str, dict], source: str, findings: Findings,
+                         profile: Optional[VendorProfile] = None) -> None:
     """Confirma entidades de puerto por ifName y valida bit_calculation con ifIndex real."""
+    profile = _profile(profile)
     if_rows = extract_if_names(walk)
     counts: Counter = Counter()
     samples: dict[str, list] = defaultdict(list)
     for name in if_rows.values():
-        short = classify_ifname(name)
+        short = classify_ifname(name, profile)
         if not short:
             continue
         counts[short] += 1
@@ -208,7 +238,7 @@ def enrich_port_entities(entities_by_short: dict[str, dict], oid_groups: list[di
             iv = int(ifindex)
         except ValueError:
             continue
-        parsed = _ifname_indices(name)
+        parsed = _ifname_indices(name, profile)
         if parsed:
             pairs.append((iv, parsed, name))
     if not pairs or not comps:
@@ -253,8 +283,21 @@ def enrich_port_entities(entities_by_short: dict[str, dict], oid_groups: list[di
     findings.add(finding)
 
 
-def _ifname_indices(name: str) -> Optional[tuple[int, int, int]]:
-    """`gpon_1/2/1` → (rack=1, slot=2, port=1). Usa los últimos 3 números del nombre."""
+def _ifname_indices(name: str, profile: Optional[VendorProfile] = None) -> Optional[tuple[int, int, int]]:
+    """`gpon_1/2/1` → (rack=1, slot=2, port=1).
+
+    Si el perfil define `ifname.regex` (grupos rack/slot/port) se usa; si no, los
+    últimos 3 números del nombre.
+    """
+    rx = _profile(profile).ifname_regex
+    if rx:
+        m = re.search(rx, name or "")
+        if not m:
+            return None
+        try:
+            return int(m.group("rack")), int(m.group("slot")), int(m.group("port"))
+        except (IndexError, ValueError):
+            return None
     nums = [int(x) for x in re.findall(r"\d+", name or "")]
     if len(nums) >= 3:
         return nums[-3], nums[-2], nums[-1]
@@ -378,9 +421,15 @@ def apply_bitcalc_fix(oid_groups: list[dict], proposed_fix: dict[str, str],
     return fixed
 
 
-# Rama donde estos equipos exponen realmente el inventario de software (distinta de
-# la del catálogo, 1082.20.30). Candidato conocido para el mapeo pendiente.
-SOFTWARE_ALT_BRANCH = "1.3.6.1.4.1.3902.1015.2.1.2.4"
+# Compatibilidad: ramas de software del perfil heredado (antes constantes del módulo).
+_LEGACY_SW = (_profile(None).software_branches or {})
+SOFTWARE_ALT_BRANCH = _LEGACY_SW.get("alt_branch", "")
+
+
+def _short_oid(oid: str) -> str:
+    """`1.3.6.1.4.1.<ent>.1015.2.1.2.4` → `1015.2.1.2.4` (sin el prefijo enterprise)."""
+    arcs = oid.strip(".").split(".")
+    return ".".join(arcs[7:]) if arcs[:6] == ["1", "3", "6", "1", "4", "1"] and len(arcs) > 7 else oid.strip(".")
 
 
 def _is_string_index(name: str) -> bool:
@@ -411,19 +460,23 @@ def _ascii_samples_under(base: str, sorted_walk: list[str], limit: int = 5) -> l
 
 
 def validate_ascii_indices(oid_groups: list[dict], sorted_walk: list[str],
-                           findings: Findings, source: str = "enterprise_ascii") -> int:
+                           findings: Findings, source: str = "enterprise_ascii",
+                           profile: Optional[VendorProfile] = None) -> int:
     """Confirma componentes de índice tipo string con instancias reales del walk enterprise.
 
     Los índices de software/parche (rama 20.30) se codifican como cadena ASCII en el OID.
     El ifXTable no los ve, pero el walk enterprise sí: se decodifica la cola ASCII de las
     instancias reales y, si hay muestras legibles, se valida el componente. Devuelve nº OIDs.
     """
-    # ¿el equipo expone el software en la rama alternativa conocida (1015)?
-    alt_samples = _ascii_samples_under(SOFTWARE_ALT_BRANCH, sorted_walk)
-    pending = ({"candidate_source": SOFTWARE_ALT_BRANCH,
+    # ¿el equipo expone el software en la rama alternativa conocida del perfil?
+    sw = _profile(profile).software_branches or {}
+    alt_branch = sw.get("alt_branch") or ""
+    catalog_prefix = sw.get("catalog_prefix") or ""
+    alt_samples = _ascii_samples_under(alt_branch, sorted_walk) if alt_branch else []
+    pending = ({"candidate_source": alt_branch,
                 "evidence_samples": alt_samples,
-                "action": "mapear la tabla de software del catálogo (1082.20.30) a la rama "
-                          "real del equipo (1015.2.1.2.4) y validar los índices ASCII allí"}
+                "action": f"mapear la tabla de software del catálogo ({_short_oid(catalog_prefix)}) a la rama "
+                          f"real del equipo ({_short_oid(alt_branch)}) y validar los índices ASCII allí"}
                if alt_samples else None)
 
     confirmed = 0
@@ -439,6 +492,32 @@ def validate_ascii_indices(oid_groups: list[dict], sorted_walk: list[str],
             if not str_comps:
                 continue
             samples = _ascii_samples_under(o.get("oid", ""), sorted_walk)
+            if (not samples and catalog_prefix and alt_samples
+                    and o.get("oid", "").startswith(catalog_prefix)):
+                # la tabla teórica del catálogo no responde en este equipo, pero la rama
+                # alternativa real del perfil sí trae inventario de software/patch —
+                # se confirma el concepto vía esa evidencia, en vez de dejarlo "absent".
+                for c in str_comps:
+                    c["validated"] = True
+                    c["source"] = f"{source}_alt_branch"
+                    c["samples"] = alt_samples
+                    c["note"] = (f"tabla propia sin instancias en el walk; confirmado vía "
+                                 f"rama alternativa real {alt_branch}")
+                    c.pop("reason", None)
+                    c.pop("pending_validation", None)
+                _annotate_components(idx)
+                confirmed += 1
+                findings.add({
+                    "trigger": "ascii_index_validation",
+                    "oid": o.get("oid", ""),
+                    "components": [c["name"] for c in str_comps],
+                    "samples": alt_samples,
+                    "via_alt_branch": alt_branch,
+                    "catalog_action": ("índice ASCII confirmado vía rama alternativa real "
+                                       f"{alt_branch} (tabla propia sin instancias)"),
+                    "severity": "low",
+                })
+                continue
             if not samples:
                 absent.append(o.get("oid", ""))
                 if pending:                       # deja la validación trackeada como pendiente
@@ -479,11 +558,9 @@ def validate_ascii_indices(oid_groups: list[dict], sorted_walk: list[str],
 
 # --- PON port operacional (ifTable) + onu_count derivado ----------------------
 IF_TABLE = "1.3.6.1.2.1.2.2.1"
-IFTYPE_GPON = "250"
 IF_OPER_ENUM = {"1": "up", "2": "down", "3": "testing", "4": "unknown",
                 "5": "dormant", "6": "notPresent", "7": "lowerLayerDown"}
 IF_ADMIN_ENUM = {"1": "up", "2": "down", "3": "testing"}
-ONU_VENDOR_COL = "1.3.6.1.4.1.3902.1012.3.50.11.2.1.1."   # tabla ONU, col vendor
 
 
 def _iftable_col(walk: dict[str, dict], col: str) -> dict[str, str]:
@@ -491,6 +568,24 @@ def _iftable_col(walk: dict[str, dict], col: str) -> dict[str, str]:
     prefix = f"{IF_TABLE}.{col}."
     return {oid[len(prefix):]: data.get("value", "")
             for oid, data in walk.items() if oid.startswith(prefix)}
+
+
+def _pon_port_index(pidx: Optional[dict]) -> dict:
+    """Índice de los OIDs de ifTable a nivel de PON port, según el perfil.
+
+    Con fórmula verificada en el perfil → índice compuesto; sin ella no se afirma
+    ninguna fórmula (el ifIndex se usa tal cual).
+    """
+    if pidx and pidx.get("formula"):
+        return {"type": "composite", "bit_calculation": True,
+                "decoder": "community_formula", "space": pidx.get("space", "ONU-ID"),
+                "formula": pidx["formula"], "shelf": pidx.get("shelf", 1),
+                "onu_id_append": False,
+                "note": "nivel puerto: ifIndex = suffix (sin onuID)",
+                "validated": True, "source": "ifTable", "status": _STATUS_WALK}
+    return {"type": "simple", "bit_calculation": False,
+            "note": "nivel puerto: ifIndex tal cual (sin fórmula de índice verificada para este vendor)",
+            "validated": False, "source": "ifTable", "status": _STATUS_WALK}
 
 
 def _port_group(oid_groups: list[dict], entity_ref: str, vendor: str,
@@ -506,14 +601,18 @@ def _port_group(oid_groups: list[dict], entity_ref: str, vendor: str,
 
 def enrich_pon_operational(entities_by_short: dict[str, dict], oid_groups: list[dict],
                            walk: dict[str, dict], source: str, findings: Findings,
-                           vendor: str = "ZTE", technology: str = "gpon",
-                           family: str | None = None) -> None:
+                           vendor: str | None = None, technology: str = "gpon",
+                           family: str | None = None,
+                           profile: Optional[VendorProfile] = None) -> None:
     """Mapea ifOperStatus/ifType del ifTable a la operación de PON ports.
 
-    PON port = ifType 250; uplink = ifType 6. Enriquece las entidades y agrega los
-    OIDs operativos (oper/admin/type) como verified_walk para que getPonPorts() sepa
-    qué consultar.
+    PON port / uplink se reconocen por el ifType del perfil (IANAifType: gpon=250,
+    ethernetCsmacd=6). Enriquece las entidades y agrega los OIDs operativos
+    (oper/admin/type) como verified_walk para que getPonPorts() sepa qué consultar.
     """
+    profile = _profile(profile)
+    vendor = vendor or profile.vendor
+    pon_t, upl_t = str(profile.iftype_pon), str(profile.iftype_uplink)
     iftype = _iftable_col(walk, "3")
     ifoper = _iftable_col(walk, "8")
     if not ifoper:
@@ -525,7 +624,7 @@ def enrich_pon_operational(entities_by_short: dict[str, dict], oid_groups: list[
         except (TypeError, ValueError):
             return None
 
-    pon_idx = [i for i, t in iftype.items() if str(t).strip() == IFTYPE_GPON] or list(ifoper)
+    pon_idx = [i for i, t in iftype.items() if str(t).strip() == pon_t] or list(ifoper)
     up = sum(1 for i in pon_idx if _int(ifoper.get(i)) == 1)
     down = sum(1 for i in pon_idx if _int(ifoper.get(i)) == 2)
 
@@ -535,36 +634,33 @@ def enrich_pon_operational(entities_by_short: dict[str, dict], oid_groups: list[
         c = ent.setdefault("confidence", {})
         c["overall"] = round(min(1.0, (c.get("overall") or 0.0) + 0.15), 3)
         ent["empirical"] = {**(ent.get("empirical") or {}),
-                            "oper_via": "ifTable (ifType=250)", "pon_ports": len(pon_idx),
+                            "oper_via": f"ifTable (ifType={pon_t})", "pon_ports": len(pon_idx),
                             "oper_up": up, "oper_down": down, "source": source}
-    upl = [i for i, t in iftype.items() if str(t).strip() == "6"]
+    upl = [i for i, t in iftype.items() if str(t).strip() == upl_t]
     e2 = entities_by_short.get("uplink_port")
     if upl and e2:
         e2["status"] = _STATUS_WALK
-        e2["empirical"] = {**(e2.get("empirical") or {}), "via": "ifTable (ifType=6)",
+        e2["empirical"] = {**(e2.get("empirical") or {}), "via": f"ifTable (ifType={upl_t})",
                            "ports": len(upl), "source": source}
 
-    grp = _port_group(oid_groups, "entity.zte.gpon.port.pon_port", vendor, family)
+    pon_ref = build_entity_id(vendor, technology, "port", "pon_port")
+    grp = _port_group(oid_groups, pon_ref, vendor, family)
+    pidx = profile.pon_port_index
     existing = {o.get("oid") for g in oid_groups for o in g.get("oids", [])}
     cols = [(f"{IF_TABLE}.8", "oper_status", IF_OPER_ENUM,
              "estado operativo real por PON port (IF-MIB ifOperStatus); 1=up, 2=down"),
             (f"{IF_TABLE}.7", "admin_status", IF_ADMIN_ENUM,
              "estado administrativo por PON port (IF-MIB ifAdminStatus)"),
             (f"{IF_TABLE}.3", "if_type", None,
-             "tipo de interfaz (250=gpon PON port, 6=uplink)")]
+             f"tipo de interfaz ({pon_t}=gpon PON port, {upl_t}=uplink)")]
     for oid_str, attr, enum, desc in cols:
         if oid_str in existing:
             continue
         grp["oids"].append({
             "id": build_oid_id(vendor, technology, "pon_port", attr),
             "oid": oid_str, "name": "UNRESOLVED", "mib_name": "IF-MIB", "attribute": attr,
-            "entity_ref": "entity.zte.gpon.port.pon_port", "mib_table": "ifTable",
-            "index": {"type": "composite", "bit_calculation": True,
-                      "decoder": "community_formula", "space": "ONU-ID",
-                      "formula": "suffix = 285278208 + slot*256 + pon", "shelf": 1,
-                      "onu_id_append": False,
-                      "note": "nivel puerto: ifIndex = suffix (sin onuID)",
-                      "validated": True, "source": "ifTable", "status": _STATUS_WALK},
+            "entity_ref": pon_ref, "mib_table": "ifTable",
+            "index": _pon_port_index(pidx),
             "syntax": "INTEGER", "unit": None, "scale": None, "access": "read-only",
             "enumeration": enum, "description": desc,
             "full_oid_template": f".{oid_str}.<ifIndex>", "command_ref": None,
@@ -576,19 +672,30 @@ def enrich_pon_operational(entities_by_short: dict[str, dict], oid_groups: list[
 
     findings.add({"trigger": "pon_operational", "pon_ports": len(pon_idx),
                   "oper_up": up, "oper_down": down, "uplink_ports": len(upl),
-                  "catalog_action": "pon_port.oper mapeado desde ifOperStatus (ifType=250)",
+                  "catalog_action": f"pon_port.oper mapeado desde ifOperStatus (ifType={pon_t})",
                   "severity": "low"})
 
 
 def derive_pon_onu_count(entities_by_short: dict[str, dict], enterprise_sorted: list[str],
-                         findings: Findings) -> None:
-    """Deriva ONUs por PON port contando en la tabla ONU (.1012.3.50.11.2.1)."""
+                         findings: Findings, profile: Optional[VendorProfile] = None) -> None:
+    """Deriva ONUs por PON port contando instancias de la tabla ONU del perfil.
+
+    `onu_count_source.oid` es el prefijo (con punto final) tras el cual el OID trae
+    `<...>.<port>.<onu>`; `port_pos`/`onu_pos` dicen en qué posición. Sin fuente en
+    el perfil no se deriva nada.
+    """
+    src = _profile(profile).onu_count_source
+    if not src or not src.get("oid"):
+        return
+    prefix = src["oid"]
+    port_pos, onu_pos = int(src.get("port_pos", 0)), int(src.get("onu_pos", 1))
+    label = src.get("label") or prefix.strip(".")
     per_port: dict[str, set] = defaultdict(set)
     for oid in enterprise_sorted:
-        if oid.startswith(ONU_VENDOR_COL):
-            rest = oid[len(ONU_VENDOR_COL):].split(".")
-            if len(rest) >= 2:
-                per_port[rest[0]].add(rest[1])
+        if oid.startswith(prefix):
+            rest = oid[len(prefix):].split(".")
+            if len(rest) > max(port_pos, onu_pos):
+                per_port[rest[port_pos]].add(rest[onu_pos])
     if not per_port:
         return
     counts = [len(v) for v in per_port.values()]
@@ -597,7 +704,7 @@ def derive_pon_onu_count(entities_by_short: dict[str, dict], enterprise_sorted: 
     if ent:
         ent.setdefault("empirical", {})["onu_count"] = {
             "derived": True, "status": _STATUS_WALK,
-            "source": "conteo por puerto en la tabla ONU .1012.3.50.11.2.1",
+            "source": f"conteo por puerto en la tabla ONU {label}",
             "total_onus": total, "ports_with_onus": len(per_port),
             "min_per_port": min(counts), "max_per_port": max(counts),
             "rule": "count distinct onuID per port suffix (TYPE space)"}

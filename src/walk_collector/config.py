@@ -375,9 +375,19 @@ def mask_host(host: str) -> str:
     return "***" + (("." + parts[-1]) if len(parts) > 1 else "")
 
 
+def _vendor_env(cfg: CollectorConfig, environ: Mapping[str, str] | None) -> Mapping[str, str]:
+    """Entorno con las credenciales por vendor/modelo (TKC_<VENDOR>[_<MODELO>]_*) aplicadas
+    sobre los nombres configurados en `walk_collector.snmp.*_env`. Sin variables por vendor
+    es el entorno tal cual (compatibilidad)."""
+    from .. import creds
+    return creds.overlay(cfg.vendor, cfg.model, environ,
+                         {cfg.snmp.host_env: "HOST", cfg.snmp.port_env: "SNMP_PORT",
+                          cfg.snmp.community_env: "RO_COMMUNITY"})
+
+
 def env_presence(cfg: CollectorConfig, environ: Mapping[str, str] | None = None) -> dict[str, bool]:
     """Presencia (NO valor) de las variables SNMP — para ``--dry-run``."""
-    env = os.environ if environ is None else environ
+    env = _vendor_env(cfg, environ)
     return {name: bool(env.get(name, "").strip()) for name in
             (cfg.snmp.host_env, cfg.snmp.port_env, cfg.snmp.community_env)}
 
@@ -390,7 +400,7 @@ def load_credentials(cfg: CollectorConfig, *, no_prompt: bool = False,
 
     Sin tty o con ``no_prompt`` la community vacía es un error (nombra la variable).
     """
-    env = os.environ if environ is None else environ
+    env = _vendor_env(cfg, environ)
     host = env.get(cfg.snmp.host_env, "").strip()
     if not host:
         raise ConfigError(f"falta la variable de entorno {cfg.snmp.host_env} (host de la OLT)")

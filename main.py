@@ -23,7 +23,7 @@ from src.extractor import Extractor
 from src.normalizer import Normalizer
 from src.validator import Validator
 from src.walk_validator import WalkValidator, model_key
-from src.walk_validator.walk_validator import WalkHalt
+from src.walk_validator.walk_validator import WalkHalt, detect_vendor_family
 from src.writer import CatalogWriter
 
 
@@ -84,7 +84,21 @@ def main() -> int:
     for wf in walk_files:
         by_model.setdefault(model_key(wf), []).append(wf)
     halted = False
+    pipeline_vendor = config["pipeline"]["vendor"]
     for model, files in by_model.items():
+        # docs/walks/ es compartido por TODOS los vendors: sin este filtro, correr
+        # la config de un vendor reprocesaría (y podría re-versionar) los catálogos
+        # ya publicados de otro vendor con los valores de ESTA config (ej. sus
+        # propios release_versions/seed_from_family, que no le corresponden).
+        try:
+            walk_vendor, _ = detect_vendor_family(files[0])
+        except ValueError as exc:
+            log.warning("Fase 2: %s no se pudo identificar (%s) — se omite", model, exc)
+            continue
+        if walk_vendor != pipeline_vendor:
+            log.info("Fase 2: %s es de %s, no de %s (vendor de esta config) — se omite",
+                     model, walk_vendor, pipeline_vendor)
+            continue
         names = ", ".join(f.name for f in files)
         log.info("=== Fase 2: validando modelo %s con %s ===", model, names)
         try:

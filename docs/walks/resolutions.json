@@ -1,4 +1,14 @@
 {
-  "ZXA10 C300": { "bitcalc_validation": "accept" },
-  "ZXA10 C320": { "bitcalc_validation": "accept" }
+  "ZXA10 C300": {
+    "bitcalc_validation": "accept"
+  },
+  "ZXA10 C320": {
+    "bitcalc_validation": "accept"
+  },
+  "ZXA10 C600": {
+    "bitcalc_validation": "accept"
+  },
+  "ZXA10 C620": {
+    "bitcalc_validation": "accept"
+  }
 }

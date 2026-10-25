@@ -9,9 +9,12 @@ Reglas clave:
     algo que empiece por `base + "."`.
   - STATUS_MATRIX (en_mib, en_walk, conflicto) → status.
   - Confirmado → verified (+0.15 de confianza, bloque `empirical`).
-  - No confirmado read-only → PODADO del catálogo C300 (registro en findings).
+  - No confirmado read-only → PODADO del catálogo (registro en findings).
     writable/read-create/not-accessible/notify → se conservan (un GET-walk no los
     lista aunque existan).
+  - Con `prune_mode: covered_branch` (perfil del vendor) solo se poda dentro de las
+    ramas que el walk efectivamente recorrió: un walk parcial por subárbol no debe
+    borrar lo que simplemente no se caminó.
 """
 from __future__ import annotations
 
@@ -19,6 +22,7 @@ from bisect import bisect_left
 from typing import Any, Optional
 
 from ..ids import snake
+from ..profiles import VendorProfile, branch_root
 from . import triggers as T
 from .triggers import Findings
 
@@ -32,9 +36,13 @@ STATUS_MATRIX = {
     (False, False, False): "inferred",
 }
 
-# accesos que NO se podan aunque no respondan (config/acción/estructura/notify)
+# accesos que NO se podan aunque no respondan (config/acción/estructura/notify).
+# "unknown" = fuente de nivel B sin MAX-ACCESS real (ej. render de Observium, que
+# solo distingue "read-write" de "no lo sé"): un acceso desconocido NUNCA se asume
+# read-only, así que tampoco se poda por falta de respuesta (backlog #3 de
+# docs/adaptacion_multivendor.md).
 _KEEP_IF_UNCONFIRMED = {"read-write", "read-create", "write-only",
-                        "not-accessible", "accessible-for-notify"}
+                        "not-accessible", "accessible-for-notify", "unknown"}
 
 _CONFIRM_BUMP = 0.15
 
@@ -42,12 +50,18 @@ _CONFIRM_BUMP = 0.15
 class Enricher:
     def __init__(self, walk_oids: dict[str, dict], sorted_walk: list[str],
                  findings: Findings, source_name: str, *,
-                 prune_unconfirmed_readonly: bool = True):
+                 prune_unconfirmed_readonly: bool = True,
+                 profile: Optional[VendorProfile] = None):
         self.walk = walk_oids
         self.sorted_walk = sorted_walk
         self.findings = findings
         self.source_name = source_name
         self.prune_ro = prune_unconfirmed_readonly
+        # ramas recorridas por el walk (None = modo "all": se poda en todo el catálogo)
+        self._depth = profile.prune_branch_depth if profile else 2
+        self._covered: Optional[set[str]] = None
+        if profile and profile.prune_mode == "covered_branch":
+            self._covered = {branch_root(w, self._depth) for w in sorted_walk}
         # instancias fuera de orden → sus bases quedan conflicted
         self.conflicted_instances = set()
         for f in findings.by_trigger("oid_not_increasing"):
@@ -83,7 +97,7 @@ class Enricher:
 
     # --- enriquecimiento de un OID -------------------------------------------
     def enrich_oid(self, oid: dict) -> Optional[dict]:
-        """Devuelve el OID enriquecido, o None si debe podarse del catálogo C300."""
+        """Devuelve el OID enriquecido, o None si debe podarse del catálogo."""
         base = oid.get("oid") or ""
         access = oid.get("access") or "read-only"
         confirmed, sample, count = self._confirm(base)
@@ -92,7 +106,13 @@ class Enricher:
 
         if not confirmed:
             prune = self.prune_ro and access not in _KEEP_IF_UNCONFIRMED
+            not_walked = (prune and self._covered is not None
+                          and branch_root(base, self._depth) not in self._covered)
+            if not_walked:
+                prune = False            # la rama no se caminó: ausencia ≠ no soportado
             T.trigger_documented_only(self.findings, oid.get("id", ""), base, access, prune)
+            if not_walked:
+                self.findings.items[-1]["branch_not_walked"] = True
             if prune:
                 return None
             oid["status"] = "documented"

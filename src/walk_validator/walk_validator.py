@@ -1,18 +1,22 @@
 """Fase 2 — WalkValidator: valida el catálogo teórico contra snmpwalks reales.
 
 Detecta vendor/modelo por el nombre del archivo, parsea los walks, siembra un
-catálogo nuevo desde el backbone teórico (C320) y lo especializa con la evidencia
-empírica, produciendo un catálogo separado (ej. C300) sin tocar la Fase 1.
+catálogo nuevo desde el backbone teórico y lo especializa con la evidencia empírica,
+produciendo un catálogo separado sin tocar la Fase 1.
 
-Un mismo modelo puede aportar VARIOS walks complementarios (todos convergen en un
-único catálogo; modelos soportados: C300, C320, C620):
+Todo lo específico del vendor (enterprise, ramas, nombres de interfaz, familias,
+semilla) viene de su perfil en config/vendors.yaml (src/profiles.py). Un modelo
+puede aportar VARIOS walks complementarios (todos convergen en un único catálogo):
 
-    ZTE_C320.txt          → enterprise   (rama 3902.*) → enriquece OIDs
-    ZTE_C320_entities.txt → entity_table (entPhysicalTable) → entidades hardware
-    ZTE_C320_ifnames.txt  → if_table     (ifXTable) → entidades port + bit_calculation
+    <VENDOR>_<MODELO>.txt          → enterprise   → enriquece OIDs
+    <VENDOR>_<MODELO>_entities.txt → entity_table (entPhysicalTable) → entidades hardware
+    <VENDOR>_<MODELO>_ifnames.txt  → if_table     (ifXTable) → entidades port + bit_calculation
 
     docs/walks/ZTE_C300*.txt  +  catalog/zte/zxa10-c320/...  (semilla)
       → catalog/zte/zxa10-c300/catalog-1.0.0/  (enriquecido + podado)
+
+Semilla: `walk_validator.seed_from_family` (solo para el vendor del pipeline) >
+`seed_family` del perfil > la propia familia del walk (Fase 1 de ese modelo).
 """
 from __future__ import annotations
 
@@ -24,6 +28,7 @@ from pathlib import Path
 from typing import Any, Union
 
 from ..ids import entity_short_name
+from ..profiles import ProfileRegistry, VendorProfile, default_registry, registry_from_config
 from . import community
 from . import std_tables as ST
 from . import triggers as T
@@ -32,11 +37,9 @@ from .triggers import Findings
 
 log = logging.getLogger("tkc.walk_validator")
 
-VENDOR_MAP = {"ZTE": "ZTE", "Huawei": "Huawei", "VSOL": "VSOL"}
-FAMILY_MAP = {
-    "C300": "ZXA10 C300", "C320": "ZXA10 C320", "C620": "ZXA10 C620",
-    "MA5608T": "MA5608T", "V1600G": "V1600G", "V1600GS": "V1600GS",
-}
+# Vistas de compatibilidad derivadas de config/vendors.yaml (fuente de verdad).
+VENDOR_MAP = {v: v for v in default_registry().vendors()}
+FAMILY_MAP = {tok: fam for tok, (_v, fam) in default_registry().families().items()}
 
 # Sufijo del nombre → tipo de walk. 'enterprise' es el default (sin sufijo).
 WALK_TYPE_MAP = {
@@ -77,19 +80,25 @@ def _base_stem(filepath: Path) -> str:
     return stem
 
 
-def detect_vendor_family(filepath: Path) -> tuple[str, str]:
-    """`ZTE_C300.txt` / `ZTE_C300_entities.txt` → `('ZTE', 'ZXA10 C300')`."""
+def detect_vendor_family(filepath: Path,
+                         registry: ProfileRegistry | None = None) -> tuple[str, str]:
+    """`ZTE_C300.txt` / `ZTE_C300_entities.txt` → `('ZTE', 'ZXA10 C300')`.
+
+    El modelo se busca en las `families` del PERFIL del vendor del nombre (dos
+    vendors pueden compartir un token de modelo sin colisionar).
+    """
+    reg = registry or default_registry()
     parts = _base_stem(filepath).split("_", 1)
     if len(parts) != 2:
         raise ValueError(f"Nombre inválido: {filepath.name}. Esperado VENDOR_MODELO[_tipo].txt")
     vendor_raw, model_raw = parts
-    vendor = VENDOR_MAP.get(vendor_raw)
-    family = FAMILY_MAP.get(model_raw)
-    if not vendor:
-        raise ValueError(f"Vendor '{vendor_raw}' no registrado en tkc_vendors")
+    if vendor_raw not in reg.vendors():
+        raise ValueError(f"Vendor '{vendor_raw}' no registrado en config/vendors.yaml")
+    family = reg.get(vendor_raw).families.get(model_raw)
     if not family:
-        raise ValueError(f"Modelo '{model_raw}' no registrado en tkc_families")
-    return vendor, family
+        raise ValueError(f"Modelo '{model_raw}' no registrado para el vendor {vendor_raw} "
+                         f"(families en config/vendors.yaml)")
+    return vendor_raw, family
 
 
 def model_key(filepath: Path) -> str:
@@ -109,11 +118,13 @@ class WalkValidator:
         self.config = config
         self.catalog_base = Path(config["paths"]["catalog"])
         wv = config.get("walk_validator", {})
-        self.seed_family = wv.get("seed_from_family", "ZXA10 C320")
+        self.registry = registry_from_config(config)
+        self._pipeline_vendor = (config.get("pipeline") or {}).get("vendor")
+        self._cfg_seed = wv.get("seed_from_family")
+        self._cfg_single_shelf = wv.get("single_shelf")
         self.prune_ro = wv.get("prune_unconfirmed_readonly", True)
         self.halt_on_blocking = wv.get("halt_on_blocking", True)
-        # Todos los equipos ZTE C3xx del proyecto son single-shelf (rack=1 siempre).
-        self.single_shelf = wv.get("single_shelf", True)
+        self.release_versions = wv.get("release_versions", {}) or {}
         self.version = config["pipeline"].get("catalog_version", "1.0.0")
         self.walks_dir = Path(config["paths"].get("walks", "docs/walks/"))
         self.validation_dir = Path(config["paths"].get("validation", "docs/validation/"))
@@ -187,13 +198,16 @@ class WalkValidator:
         if isinstance(walk_files, (str, Path)):
             walk_files = [Path(walk_files)]
         walk_files = list(walk_files)
-        vendor, family = detect_vendor_family(walk_files[0])
+        vendor, family = detect_vendor_family(walk_files[0], self.registry)
+        profile = self.registry.get(vendor)
+        seed_family = self._seed_family(profile, family)
+        single_shelf = self._single_shelf(profile)
 
-        seed = self._seed_dir(vendor)
+        seed = self._seed_dir(vendor, seed_family)
         if not seed.exists():
             raise FileNotFoundError(
                 f"Catálogo semilla no encontrado: {seed}. Genera antes la Fase 1 "
-                f"con family='{self.seed_family}'.")
+                f"con vendor='{vendor}' family='{seed_family}'.")
 
         findings = Findings()
         oid_groups = self._load_dir(seed / "oids")
@@ -215,28 +229,33 @@ class WalkValidator:
                 sorted_walk = sorted(walk)
                 enterprise_sorted = sorted_walk
                 enricher = Enricher(walk, sorted_walk, findings, wf.name,
-                                    prune_unconfirmed_readonly=self.prune_ro)
+                                    prune_unconfirmed_readonly=self.prune_ro, profile=profile)
                 base_oids = [o["oid"] for g in oid_groups for o in g.get("oids", [])]
                 enriched_oids = enricher.enrich_groups(oid_groups, family)
                 enricher.detect_observed_only(base_oids)
             elif wtype == "entity_table":
-                n = ST.enrich_hardware_entities(entities_by_short, walk, wf.name, findings)
+                n = ST.enrich_hardware_entities(entities_by_short, walk, wf.name, findings,
+                                            profile=profile)
                 log.info("WalkValidator: %d entidades hardware confirmadas (entPhysicalTable)", n)
             elif wtype == "if_table":
-                ST.enrich_port_entities(entities_by_short, oid_groups, walk, wf.name, findings)
+                ST.enrich_port_entities(entities_by_short, oid_groups, walk, wf.name, findings,
+                                        profile=profile)
                 # ifTable (ifOperStatus/ifType) → operación de PON ports
                 ST.enrich_pon_operational(entities_by_short, enriched_oids, walk, wf.name,
-                                          findings, vendor=vendor, family=family)
+                                          findings, vendor=vendor, technology=profile.technology,
+                                          family=family, profile=profile)
 
         # índices ASCII de software/parche: se validan con las instancias del walk enterprise
         if enterprise_sorted:
-            n = ST.validate_ascii_indices(enriched_oids, enterprise_sorted, findings)
+            n = ST.validate_ascii_indices(enriched_oids, enterprise_sorted, findings,
+                                          profile=profile)
             log.info("WalkValidator: %d índice(s) ASCII confirmados con el walk enterprise", n)
             # onu_count por PON port: derivado de la tabla ONU del walk enterprise
-            ST.derive_pon_onu_count(entities_by_short, enterprise_sorted, findings)
+            ST.derive_pon_onu_count(entities_by_short, enterprise_sorted, findings,
+                                    profile=profile)
 
         # --- gate de bloqueo: hallazgos críticos requieren confirmación/rechazo ---
-        self._resolve_blocking(family, enriched_oids, findings, processed)
+        self._resolve_blocking(family, enriched_oids, findings, processed, single_shelf)
 
         # --- fuente(s) community: leaves de ONU + fórmula de índice + enums --------
         # Las fórmulas de índice pueden estar en una fuente y usarse en otra
@@ -250,25 +269,31 @@ class WalkValidator:
                 continue
             res = community.apply_community(enriched_oids, src, family, findings,
                                             walk_confirmed=True, vendor=vendor,
+                                            technology=profile.technology,
                                             index_spaces=merged_spaces)
             res["source"] = Path(src["_path"]).name
             self._community_summary.append(res)
             log.info("WalkValidator: community %s → +%d OIDs / %d degradados en %s",
                      res["source"], res["stats"]["added"], res["stats"]["downgraded"], family)
 
-        target = self._target_dir(vendor, family)
+        target = self._target_dir(vendor, family, seed_family)
         self._write_catalog(seed, target, vendor, family, enriched_oids,
-                            list(entities_by_short.values()), findings, processed)
+                            list(entities_by_short.values()), findings, processed,
+                            profile=profile, seed_family=seed_family)
         log.info("WalkValidator: catálogo %s enriquecido en %s", family, target)
         return target
 
     def _resolve_blocking(self, family: str, enriched_oids: list[dict],
-                          findings: Findings, processed: dict[str, str]) -> None:
+                          findings: Findings, processed: dict[str, str],
+                          single_shelf: bool | None = None) -> None:
         """Aplica accept/reject a cada hallazgo bloqueante; si queda alguno sin
         resolver y halt_on_blocking está activo, detiene el procesado (WalkHalt)."""
         blocking = findings.blocking()
         if not blocking:
             return
+        if single_shelf is None:        # llamada directa: se deduce del perfil dueño de la familia
+            owner = self.registry.vendor_of_family(family)
+            single_shelf = self._single_shelf(self.registry.get(owner)) if owner else False
         decisions = self.resolutions.get(family, {})
         unresolved = []
         for bf in blocking:
@@ -277,7 +302,7 @@ class WalkValidator:
             if decision == "accept":
                 fix = bf.get("proposed_fix") or {}
                 n = ST.apply_bitcalc_fix(enriched_oids, fix, bf.get("derived_layout"),
-                                         single_shelf=self.single_shelf)
+                                         single_shelf=single_shelf)
                 log.info("WalkValidator: [accept] %s → fix aplicado a %d OIDs (%s)",
                          bf["trigger"], n, fix)
             elif decision == "reject":
@@ -309,14 +334,28 @@ class WalkValidator:
         })
         return path
 
-    def _seed_dir(self, vendor: str) -> Path:
-        return (self.catalog_base / vendor.lower()
-                / self.seed_family.lower().replace(" ", "-") / f"catalog-{self.version}")
+    def _seed_family(self, profile: VendorProfile, family: str) -> str:
+        """Familia semilla: config (solo vendor del pipeline) > perfil > la propia familia."""
+        if self._cfg_seed and profile.vendor == self._pipeline_vendor:
+            return self._cfg_seed
+        return profile.seed_family or family
 
-    def _target_dir(self, vendor: str, family: str) -> Path:
+    def _single_shelf(self, profile: VendorProfile) -> bool:
+        """Single-shelf: perfil > config (solo vendor del pipeline) > False (no se asume)."""
+        if profile.single_shelf is not None:
+            return bool(profile.single_shelf)
+        if self._cfg_single_shelf is not None and profile.vendor == self._pipeline_vendor:
+            return bool(self._cfg_single_shelf)
+        return False
+
+    def _seed_dir(self, vendor: str, seed_family: str) -> Path:
+        return (self.catalog_base / vendor.lower()
+                / seed_family.lower().replace(" ", "-") / f"catalog-{self.version}")
+
+    def _target_dir(self, vendor: str, family: str, seed_family: str) -> Path:
         # Si el modelo del walk es el mismo que la semilla teórica, el catálogo
         # validado va a un directorio aparte para NO pisar la base de Fase 1.
-        version = f"{self.version}-validated" if family == self.seed_family else self.version
+        version = self.release_versions.get(family) or (f"{self.version}-validated" if family == seed_family else self.version)
         return (self.catalog_base / vendor.lower()
                 / family.lower().replace(" ", "-") / f"catalog-{version}")
 
@@ -334,7 +373,9 @@ class WalkValidator:
 
     def _write_catalog(self, seed: Path, target: Path, vendor: str, family: str,
                        enriched_oids: list[dict], enriched_entities: list[dict],
-                       findings: Findings, processed: dict[str, str]) -> None:
+                       findings: Findings, processed: dict[str, str],
+                       profile: VendorProfile | None = None,
+                       seed_family: str | None = None) -> None:
         # OIDs enriquecidos (con poda)
         for g in enriched_oids:
             self._write_json(target / "oids" / f"{_group_name(g)}.json", g)
@@ -353,6 +394,8 @@ class WalkValidator:
                 _relabel_family(data, family)
                 self._write_json(target / f.relative_to(seed), data)
 
+        self._apply_command_sources(target, family)
+
         self._write_json(target / "results.json", {
             "generated_at": dt.datetime.now().isoformat(timespec="seconds"),
             "walks": processed,
@@ -360,11 +403,35 @@ class WalkValidator:
         })
         self._write_json(target / "manifest.json",
                          self._manifest(vendor, family, enriched_oids, enriched_entities,
-                                        findings, processed))
+                                        findings, processed, seed_family))
+        hook = profile.refinement_hook() if profile else None
+        if hook:
+            hook(target, family, self.walks_dir)
+
+    def _apply_command_sources(self, target: Path, family: str) -> int:
+        """Comandos verificados en hardware (docs/validation/commands/*.json). Si el documento declara
+        meta.replace_seed, sustituyen a los comandos heredados de la semilla (sintaxis del manual C320)."""
+        d = self.validation_dir / "commands"
+        if not d.exists():
+            return 0
+        n = 0
+        for f in sorted(d.glob("*.json")):
+            doc = json.loads(f.read_text(encoding="utf-8"))
+            cmds = (doc.get("commands") or {}).get(family)
+            if not cmds:
+                continue
+            if (doc.get("meta") or {}).get("replace_seed"):
+                import shutil
+                shutil.rmtree(target / "commands", ignore_errors=True)
+            for c in cmds:
+                self._write_json(target / "commands" / c["category"] / f"{c['id'].split('.')[-1]}.json", c)
+                n += 1
+            log.info("WalkValidator: comandos verificados %s → +%d en %s", f.name, n, family)
+        return n
 
     def _manifest(self, vendor: str, family: str, enriched_oids: list[dict],
                   enriched_entities: list[dict], findings: Findings,
-                  processed: dict[str, str]) -> dict:
+                  processed: dict[str, str], seed_family: str | None = None) -> dict:
         oid_status = Counter(o["status"] for g in enriched_oids for o in g["oids"])
         ent_status = Counter(e.get("status", "?") for e in enriched_entities)
         trig = Counter(f["trigger"] for f in findings.items)
@@ -380,7 +447,7 @@ class WalkValidator:
             "vendor": vendor,
             "family": family,
             "phase": "walk_validation",
-            "seed_family": self.seed_family,
+            "seed_family": seed_family,
             "walks": processed,
             "generated_at": dt.datetime.now().isoformat(timespec="seconds"),
             "counts": {

@@ -48,13 +48,20 @@ class AlarmExtractor:
             return []
         alarms: list[Alarm] = []
         seen: set[str] = set()
-        for m in _ALARM_ROW_RE.finditer(text):
+        matches = list(_ALARM_ROW_RE.finditer(text))
+        for i, m in enumerate(matches):
             code = m.group("code")
             if code in seen:
                 continue
             seen.add(code)
             name = "_".join(m.group("name").split()).upper()
-            window = text[m.start(): m.start() + 500]
+            # ventana acotada al bloque real (hasta la fila de la alarma siguiente,
+            # tope 500 chars): una ventana de tamano fijo puede cruzar al bloque
+            # vecino en tablas de alarmas densas y mezclar Description/Causes/
+            # Remediation entre alarmas distintas (mismo bug ya confirmado y
+            # corregido en CommandExtractor).
+            next_start = matches[i + 1].start() if i + 1 < len(matches) else len(text)
+            window = text[m.start(): min(m.start() + 500, next_start)]
             alarms.append(Alarm(
                 code=code, name=name,
                 canonical_name=self._canonical(name),

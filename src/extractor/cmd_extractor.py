@@ -33,7 +33,6 @@ _CLI_MODE_HINTS = [
     (r"[\w-]+#", "privileged_exec"),
     (r"[\w-]+>", "user_exec"),
 ]
-_GLOBAL_COMMANDS = {"save", "enable", "reload", "reboot", "write", "exit"}
 
 # línea que parece sintaxis de comando: empieza por un verbo conocido
 _SYNTAX_RE = re.compile(
@@ -54,28 +53,36 @@ class CommandExtractor:
             return []
         seen: set[str] = set()
         commands: list[Command] = []
-        for m in _SYNTAX_RE.finditer(text):
+        matches = list(_SYNTAX_RE.finditer(text))
+        for i, m in enumerate(matches):
             syntax = " ".join(m.group("syntax").split())
             verb = syntax.split()[0].lower()
-            if not self._is_real_syntax(syntax, verb):
+            if not self._is_real_syntax(syntax):
                 continue                            # descarta lineas de OUTPUT del PDF
             canonical = self._canonical_name(syntax)
             if canonical in seen:
                 continue
             seen.add(canonical)
-            window = text[m.start(): m.start() + 600]
+            # ventanas acotadas al bloque real (limite = match anterior/siguiente),
+            # nunca un tamano fijo: en un doc compacto un ancho fijo cruza al bloque
+            # del comando vecino y contamina description/prerequisites con datos
+            # ajenos (confirmado: 'baseinfo' heredaba el prerequisite de 'create onu').
+            prev_end = matches[i - 1].end() if i > 0 else max(0, m.start() - 400)
+            next_start = matches[i + 1].start() if i + 1 < len(matches) else min(len(text), m.end() + 600)
+            back_window = text[prev_end: m.start()]
+            fwd_window = text[m.end(): next_start]
             commands.append(Command(
                 canonical_name=canonical,
                 vendor=self.vendor, family=self.family, technology=self.technology,
                 firmware=list(self.firmware),
                 category=_CATEGORY_BY_VERB.get(verb, "show"),
-                cli_mode=self._detect_mode(window),
+                cli_mode=self._detect_mode(fwd_window),
                 syntax=syntax,
                 entity_ref=None,                       # lo asigna el Normalizer
-                description=self._description(window),
+                description=self._description(back_window),
                 parameters=self._parse_params(syntax),
-                output_fields=self._parse_output_fields(window),
-                prerequisites=self._parse_prereqs(window),
+                output_fields=self._parse_output_fields(fwd_window),
+                prerequisites=self._parse_prereqs(fwd_window),
                 sources=[Source(doc_type=doc_type, pages=None, confidence=0.0,
                                 quality=QUALITY_DIRECT_PAGE)],
             ))
@@ -84,18 +91,15 @@ class CommandExtractor:
 
     # --- helpers --------------------------------------------------------------
     @staticmethod
-    def _is_real_syntax(syntax: str, verb: str) -> bool:
+    def _is_real_syntax(syntax: str) -> bool:
         """Distingue sintaxis CLI real de lineas de OUTPUT del PDF.
 
-        Real: comando global (save, enable...) o con tokens de parametro {..}/[..].
-        Output: 'Field: value', 'state: success', 'ping-response: true' → sin params
-        y con ':' → se descarta.
+        Real: cualquier linea que empieza con un verbo CLI conocido, con o sin
+        parametros {..}/[..] (hay comandos legitimos sin parametros, ej.
+        'show gpon onu uncfg'). Output: 'Field: value', 'state: success' → el
+        ':' es la unica senal confiable para descartarlas.
         """
-        if ":" in syntax:                    # 'Config-Type : ...' , 'state: success'
-            return False
-        if verb in _GLOBAL_COMMANDS:
-            return True
-        return "{" in syntax or "[" in syntax  # sintaxis real declara parametros
+        return ":" not in syntax
 
     @staticmethod
     def _canonical_name(syntax: str) -> str:

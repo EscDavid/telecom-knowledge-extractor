@@ -22,7 +22,8 @@ import re
 from pathlib import Path
 from typing import Any
 
-from ..ids import build_oid_id
+from ..ids import build_entity_id, build_oid_id
+from ..profiles import LEGACY_DEFAULT_VENDOR
 from .triggers import Findings
 
 STATUS_WALK = "verified_walk"            # confirmado por el walk real
@@ -174,9 +175,10 @@ def _unique_id(base_id: str, space: str, used: set[str]) -> str:
 
 def apply_community(oid_groups: list[dict], community: dict, family: str,
                     findings: Findings, *, walk_confirmed: bool = True,
-                    vendor: str = "ZTE", technology: str = "gpon",
+                    vendor: str | None = None, technology: str = "gpon",
                     index_spaces: dict | None = None) -> dict:
     """Aplica la fuente community al catálogo (muta oid_groups). Devuelve resumen."""
+    vendor = vendor or LEGACY_DEFAULT_VENDOR
     spaces = index_spaces or community["index_spaces"]
     enums = community["enums"]
     optical = community.get("optical", {})
@@ -190,7 +192,7 @@ def apply_community(oid_groups: list[dict], community: dict, family: str,
         attr = ce.get("attribute", "")
         space = ce.get("base_space", "ONU-ID")
         oid_str = (ce.get("oid_prefix") or "").lstrip(".")
-        entity_ref = ce.get("entity_ref", "entity.zte.gpon.device.onu")
+        entity_ref = ce.get("entity_ref") or build_entity_id(vendor, technology, "device", "onu")
         status = ce.get("status") or STATUS_COMMUNITY
         # El índice (la fórmula) es verified_walk: el walk lo confirma (285278721=
         # gpon_1/2/1). Es independiente del status del LEAF (que puede ser community).

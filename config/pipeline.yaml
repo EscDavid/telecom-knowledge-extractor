@@ -20,6 +20,9 @@ walk_validator:
   seed_from_family: "ZXA10 C320"    # backbone teórico usado como semilla
   prune_unconfirmed_readonly: true  # poda OIDs read-only sin respaldo empírico
   halt_on_blocking: true            # detener el procesado ante hallazgos críticos
+  release_versions:                 # versión publicada por familia (la semilla sigue en pipeline.catalog_version)
+    "ZXA10 C620": "1.3.0"
+    "ZXA10 C600": "1.3.0"
   single_shelf: true                # equipos de un solo shelf (rack=1); acepta shelf/rack
                                     # con nota de revalidación futura en multi-shelf
   # Las decisiones del operador van en docs/walks/resolutions.json:
@@ -32,7 +35,7 @@ pipeline:
   technology: gpon
   firmware: ["2.0", "2.1"]
   current_firmware: "2.1"
-  catalog_version: "1.0.0"
+  catalog_version: "1.1.0"
 
 classifier:
   # Umbral mínimo de confianza agregada para clasificar un documento.
@@ -128,5 +131,6 @@ walk_collector:
   publish:
     allow_incomplete: false    # un output incompleto NO se publica en docs/walks/
   redaction:                   # PII: seriales/nombres de ONU en STRING bajo estos prefijos
-    mode: none                 # none | prefixes
-    prefixes: []
+    mode: prefixes             # none | prefixes
+    prefixes:                  # contraseñas reversibles de la tabla de usuarios de la OLT (3902.3.6000.51.2.1, col. 2)
+      - ".1.3.6.1.4.1.3902.3.6000.51.2.1.1.1.2"

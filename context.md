@@ -177,8 +177,7 @@ Escalas detectadas empiricamente en C300:
 
 Indices ASCII / cadenas observadas:
 
-- `0q5yGowhv;Kg`
-- `Apls2;x8yEwi`
+- (2 cadenas de 12 caracteres omitidas: probables comunidades SNMP; ver `sensitive_prefixes` en config/vendors.yaml)
 - `default`
 - `gtghg.bt`
 - `gtghg.fw`
@@ -289,6 +288,95 @@ Escala optica: RESUELTA a `dBm = raw*0.002 - 30.0` (la hipotesis `÷100` queda d
   soportan `status`/`note` por OID, `optical_scale`, `downgrade_status` y enums arbitrarios.
 - Cuando el modelo del walk == familia semilla (C320), el catalogo validado se escribe en
   `catalog-<v>-validated` para no pisar la base teorica de Fase 1.
+
+## Walk dirigido PON ports C320 (2026-07-28) — gap ifOperStatus cerrado
+
+Contra el OLT real "MARROQUIN" (`190.14.224.10:161`, `C320 Version V2.1.0 Software`):
+
+- `ifOperStatus` (`.1.3.6.1.2.1.2.2.1.8`) **capturado por primera vez**: 36 valores reales
+  → `docs/walks/ZTE_C320_ifTable.txt`. Antes de esto, 0 coincidencias en todos los walks
+  existentes; era el gap original que motivo el walk dirigido de PON ports.
+- `zxAnGponOP` (`.1.3.6.1.4.1.3902.1082.500.21.2.1`): confirmado `No Such Object` por walk
+  real → `docs/walks/ZTE_C320_gponOP.txt`. Antes solo habia una nota documental de ausencia
+  (`docs/validation/requests/snmp-olt-zte_OLT_ponport_walk_request.txt`); ahora es evidencia
+  empirica.
+- `entPhysicalTable` reintentado con mas retries/timeout: 86 lineas (antes 1 sola, walk
+  parcial/incompleto) → `docs/walks/ZTE_C320_entities_retry.txt`. Revela: shelf, 2 tarjetas
+  de linea GPON de 16 puertos, tarjeta de poder general, tarjeta de gestion/switch tipo A.
+- Rama ambiental `.1.3.6.1.4.1.3902.1082.10.10.3`: `No Such Object` → `docs/walks/ZTE_C320_env.txt`.
+  Esperado: esa rama son definiciones de trap (notificaciones), no tabla de lectura viva;
+  las alarmas de temperatura (`zxAnEnvHighTempAlm` etc.) solo llegarian por trap real, nunca
+  por polling/GET.
+
+**RESUELTO 2026-07-29 — catalogo C320 re-enriquecido con la nueva evidencia.** Contenido de
+`ZTE_C320_ifTable.txt` fusionado en `ZTE_C320_ifnames.txt` y `ZTE_C320_entities_retry.txt` en
+`ZTE_C320_entities.txt` (para que el WalkValidator los reconozca por sufijo `_ifnames`/
+`_entities`). Se corrio `WalkValidator` SOLO para C320 (reusando la semilla Fase 1 ya
+existente, sin tocar C300/C600 que ya estan finalizados y cargados en BD). Resultado en
+`catalog/zte/zxa10-c320/catalog-1.1.0-validated/`:
+- Trigger `pon_operational` disparado: entidad `pon_port` ahora `empirical.oper_via:
+  "ifTable (ifType=250)"`, `pon_ports: 32`, `oper_up: 32`, `oper_down: 0`.
+- 3 OIDs nuevos en `oids/pon_port.json` como `verified_walk`: `oper_status` (`.2.2.1.8`,
+  IF-MIB ifOperStatus), `admin_status` (`.2.2.1.7`), `if_type` (`.2.2.1.3`) — con
+  `full_oid_template: ".<oid>.<ifIndex>"` usando la formula de indice ya confirmada
+  (`suffix = 285278208 + slot*256 + pon`, shelf=1).
+- `entities_confirmed` subio de 4 a 5 (2 entidades hardware confirmadas via entPhysicalTable
+  con el retry, antes 0 por el walk incompleto).
+- Sin hallazgos bloqueantes nuevos (no hubo `WalkHalt`); `bitcalc_validation: null` porque
+  C320 es la familia semilla (no aplica revalidacion de bits, esa logica es solo para
+  familias derivadas como C300/C600).
+
+**AUTOCORRECCION 2026-07-29** — la primera fusion por `cat >>` genero un falso positivo:
+`ZTE_C320_ifnames.txt` YA contenia casi toda la tabla ifTable (columnas 1-22, incluida
+ifPhysAddress), no solo ifName; pegar el walk nuevo duplico ~350 lineas identicas de columnas
+ya presentes, y el checker de secuencia (`oid_not_increasing`, que asume una unica corrida
+`snmpbulkwalk` continua por archivo) marco esto como `severity: high` / `status=conflicted`
+en la tabla ifIndex estandar. Verificado que NO llego a corromper el catalogo (esa tabla
+MIB-2 no forma parte del catalogo vendor ZTE, y las 3 columnas nuevas que si importan
+-.3/.7/.8- no coinciden con la columna afectada -.1-), pero igual se corrigio: deduplicar por
+OID + ordenar antes de reprocesar. Leccion para futuras fusiones de walks: **nunca concatenar
+dumps `snmpbulkwalk` de corridas distintas con `cat >>` sin deduplicar+ordenar por OID
+primero** — el parser asume una sola secuencia estrictamente creciente por archivo.
+
+## Hallazgo mayor 2026-07-29 — `ZTE_C320.txt` NUNCA tuvo la rama enterprise real
+
+Investigando por que 9 OIDs de indice ASCII (rama `1082.20.30`) daban `ascii_branch_absent`,
+se descubrio que **`docs/walks/ZTE_C320.txt` (794550 lineas, nombrado como walk "enterprise")
+contenia el 100% de su contenido bajo `.1012.*` (espacio operativo TYPE/ONU) y CERO lineas
+bajo `.1082.*`** (la rama propia del vendor ZTE, donde vive casi todo el catalogo). El archivo
+terminaba en errores `snmpbulkwalk: Failure in sendto (Network is unreachable)`, señal de que
+la corrida se corto por red — pero el corte fue DESPUES de completar solo `.1012`, la rama
+`.1082` nunca se intento (a diferencia de `ZTE_C300.txt`, que si tiene ambas: 396243 lineas
+`.1012` + 2500 `.1082` — el problema es especifico de este archivo, no del pipeline).
+
+Impacto real: el `WalkValidator` usa este archivo (tipo `enterprise`) para decidir que OIDs de
+`.1082.*` podar por "no observados". Como nunca tuvo NADA de `.1082`, los ~1100 OIDs podados y
+~1990 `documented_only` del catalogo `1.1.0-validated` **nunca fueron realmente contrastados
+contra el equipo real** — no es que el equipo no los soporte, es que faltaba la evidencia.
+
+**Corregido**: se capturo un walk real de `1.3.6.1.4.1.3902.1082` contra el C320 real
+(`190.14.224.10:161`), segmentado por rama de segundo nivel para evitar timeouts (una subrama,
+`1082.20.20`, tiene una tabla gigante de descripciones OSPF que corta la conexion si se camina
+completa — se evito caminando `1082.20.30` de forma acotada en vez de `1082.20` entero). Fusion
+final en `ZTE_C320.txt` (deduplicado + ordenado por OID, ahora 830288 lineas). Resultado tras
+reprocesar:
+- `verified` subio de 0 a 217 OIDs (antes ninguno tenia confirmacion `.1082` real).
+- `oids_kept` 909→1001, `oids_pruned` 1107→1015.
+- De los 9 OIDs ASCII de software (`1082.20.30.*`): **4 confirmados con datos reales**
+  (`zxanswimagefilename`, `zxanswpatchname`, `zxanswcardpatchname`, `zxanswpatchpkgname`) y
+  **5 confirmados como genuinamente ausentes** (`No Such Object` limpio, walkeados uno por uno
+  sin error) — ya no es incertidumbre, es evidencia dura en ambos sentidos.
+- Tambien se confirmo (via `3902.1015.2.1.2.4`, igual que en el hallazgo de C300) que el
+  inventario real de software vive ahi tambien para C320, mismo patron que
+  [[pending-software-branch-mapping]] documento para C300 — el `validate_ascii_indices` del
+  codigo aun NO implementa esa correspondencia `1082.20.30 → 1015.2.1.2.4` (queda igual de
+  pendiente que antes, ahora confirmado que aplica a ambas familias).
+
+Leccion adicional: `timeout N` de shell mata el proceso SIN que `snmpbulkwalk` imprima ningun
+error — una verificacion que solo busca "Timeout"/"Network unreachable" dentro del archivo de
+salida puede dar falso negativo si el corte fue por `timeout` del shell, no por el propio
+cliente SNMP. Siempre verificar tambien que la ULTIMA rama capturada corresponda a donde
+deberia terminar el walk, no asumir por ausencia de mensajes de error.
 
 ## Comandos utiles
 

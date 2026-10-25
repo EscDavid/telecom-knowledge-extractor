@@ -67,8 +67,25 @@ def cmd_status(config: dict) -> int:
     return 0
 
 
+def _contract_gate(family: str, ver: str) -> int:
+    """Puerta previa: scripts/catalog_contract_check.py para las familias con contrato de consumo. 0 = pasa o no aplica."""
+    import json
+    import subprocess
+    import sys
+    root = Path(__file__).resolve().parents[2]
+    cf = root / "docs/validation/consumer_contract.json"
+    key = family.split()[-1].lower()
+    if not cf.exists() or family not in json.loads(cf.read_text(encoding="utf-8")).get("families", {}):
+        return 0
+    if json.loads(cf.read_text(encoding="utf-8"))["families"][family].get("version") != ver:
+        return 0
+    r = subprocess.run([sys.executable, str(root / "scripts/catalog_contract_check.py"), key], capture_output=True, text=True)
+    print(r.stdout.strip())
+    return r.returncode
+
+
 def cmd_load(config: dict, family_slug: str, version, user: str,
-             password_env, authorize: bool) -> int:
+             password_env, authorize: bool, skip_contract: bool = False) -> int:
     if not authorize:
         print("ERROR: la carga requiere --authorize (autorizacion explicita del operador).")
         return 2
@@ -83,6 +100,9 @@ def cmd_load(config: dict, family_slug: str, version, user: str,
     tier, tname, m = readiness.readiness(cdir)
     local = hashing.catalog_root_hash(cdir)
     print(f"Catalogo: {family} {ver}  (T{tier} {tname}, verified_walk={m['verified_walk']})")
+    if not skip_contract and _contract_gate(family, ver) != 0:
+        print("ERROR: el catalogo no cumple el contrato de consumo; no se carga (usa --skip-contract solo si sabes por que).")
+        return 4
 
     if password_env:
         password = os.environ.get(password_env, "")
@@ -156,6 +176,7 @@ def main(argv=None) -> int:
     ld = sub.add_parser("load", help="carga autenticada de un catalogo")
     ld.add_argument("family", help="slug de familia (ej. zxa10-c320)")
     ld.add_argument("--version", default=None)
+    ld.add_argument("--skip-contract", action="store_true", help="omite la puerta de contrato de consumo (no recomendado)")
     ld.add_argument("--user", required=True, help="email o username del superadmin")
     ld.add_argument("--password-env", default=None, help="variable de entorno con el password (CI)")
     ld.add_argument("--authorize", action="store_true", help="autorizacion explicita (obligatoria)")
@@ -177,7 +198,7 @@ def main(argv=None) -> int:
         return cmd_status(config)
     if args.cmd == "load":
         return cmd_load(config, args.family, args.version, args.user,
-                        args.password_env, args.authorize)
+                        args.password_env, args.authorize, args.skip_contract)
     if args.cmd == "deprecate":
         return cmd_deprecate(config, args.vendor, args.family, args.version_label, args.tier,
                              args.user, args.password_env, args.authorize)

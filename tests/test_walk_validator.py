@@ -177,8 +177,9 @@ def test_validate_ascii_indices():
     assert findings.by_trigger("ascii_index_validation")
 
 
-def test_ascii_branch_absent_marks_pending():
+def test_ascii_branch_absent_confirmed_via_alt_branch():
     # el equipo NO expone la rama del catálogo, pero SÍ la rama alternativa (1015)
+    # real de software -- se confirma como ausente-pero-verificado, no queda pendiente
     codes = ".".join(str(ord(ch)) for ch in "gtghg.fw")
     walk = sorted([f"{ST.SOFTWARE_ALT_BRANCH}.1.2.1.1.8.{codes}"])
     groups = [{"oids": [{"oid": "1.3.6.1.4.1.3902.1082.20.30.2.2.4.1",
@@ -186,15 +187,13 @@ def test_ascii_branch_absent_marks_pending():
                              {"name": "zxanswimagefilename", "bits": ""}]}}]}]
     findings = Findings()
     n = ST.validate_ascii_indices(groups, walk, findings)
-    assert n == 0                                    # no hay evidencia en la rama del catálogo
+    assert n == 1                                    # confirmado vía rama alternativa
     c = groups[0]["oids"][0]["index"]["components"][0]
-    assert c["validated"] is False if "validated" in c else True   # aún no validado
-    # queda trackeado como pendiente con la rama candidata y su evidencia
-    pv = c["pending_validation"]
-    assert pv["candidate_source"] == ST.SOFTWARE_ALT_BRANCH
-    assert "gtghg.fw" in pv["evidence_samples"]
-    fnd = findings.by_trigger("ascii_branch_absent")[0]
-    assert fnd["pending"] is True
+    assert c["validated"] is True
+    assert c["source"] == "enterprise_ascii_alt_branch"
+    assert "pending_validation" not in c
+    fnd = findings.by_trigger("ascii_index_validation")[0]
+    assert fnd["via_alt_branch"] == ST.SOFTWARE_ALT_BRANCH
 
 
 def _wv(tmp_path, resolutions=None):
