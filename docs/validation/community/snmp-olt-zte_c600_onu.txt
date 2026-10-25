@@ -1,0 +1,220 @@
+==============================================================================
+ONU OPERATIVA REAL — ZXA10 C600 (primer walk real de este modelo)
+El espacio TYPE (.1012.3.50.11.2.1) esta AUSENTE en este firmware (V1.2.2_RZ):
+GET puntual da "No Such Object" (no solo vacio) -- diferencia estructural real
+de firmware, no un walk fallido. La tabla ONU real de este equipo vive en el
+espacio .1082 (la misma rama que en C300/C320 quedo degradada a
+verified_community por no responder en SUS walks -- aqui SI responde).
+==============================================================================
+
+# META
+doc_type: community
+vendor: ZTE
+families: ZXA10 C600
+walk_sources: docs/walks/ZTE_C600.txt
+extraction_date: 2026-07-28
+provenance: walk real contra OLT "C600 Marroquin" (190.14.224.10:2161, mismo host
+            que la C320 "Net max prueba" en :161, dos dispositivos distintos por
+            puerto UDP). 7 ONUs reales confirmadas 1:1 contra el sistema de
+            gestion (mismos seriales, mismos puertos fisicos gpon_onu-1/1/1:1-6
+            y gpon_onu-1/1/2:1).
+scope: leaves de ONU operativa para C600 (serial + modelo). El indice ONU-ID
+       (suffix = 285278208 + slot*256 + pon) decodifica exacto contra los
+       puertos fisicos reales, sin ajuste -- ver memoria c600-walk-status.
+
+==============================================================================
+# SECCIÓN A — SERIAL (columna .18)   [status: verified_walk]
+==============================================================================
+# STRING "codigo,SERIAL" (no hex crudo como en el espacio TYPE de C300/C320).
+# El codigo fue siempre "1" en las 7 ONUs reales (todas activas); enum completo
+# sin confirmar (no hay muestra de ONU offline/rechazada en este equipo).
+#   "1,XPON6B4CF901" / "1,CDTC505AE38B" / "1,ZTEGC1E0D610" / "1,HWTCA6E4F463"
+#   "1,HWTCA6E54D07" / "1,DF306A06DE54" / "1,XPON23868642"
+
+[oid]
+attribute: onu_serial_number
+entity_ref: entity.zte.gpon.device.onu
+oid_prefix: .1.3.6.1.4.1.3902.1082.500.10.2.3.3.1.18
+base_space: ONU-ID
+full_oid_template: .1.3.6.1.4.1.3902.1082.500.10.2.3.3.1.18.<onuID>
+syntax: STRING "codigo,serial" (codigo=1 en todas las muestras observadas)
+status: verified_walk
+note: confirmado 1:1 contra las 7 ONUs reales del sistema de gestion. En C300/C320
+      este mismo OID esta degradado a verified_community (no responde en SUS
+      walks); en C600 SI responde con datos reales -- diferencia de firmware.
+mib_name: UNRESOLVED
+
+==============================================================================
+# SECCIÓN B — MODELO (columna .2 de la tabla optica/vendor)   [status: verified_walk]
+==============================================================================
+# STRING con el modelo real de la ONU (no un codigo TYPE numerico). Confirmado
+# con 5 modelos distintos reales: "R770.1A", "R850.1A", "V9.0", "RNY1.1A" (x2),
+# "R410.1B", "V1.0". Nombre de atributo distinto de 'onu_type' (que ya mapea el
+# codigo TYPE numerico de .1012.3.50.11.2.1.17, ausente en este firmware) para
+# no colisionar.
+
+[oid]
+attribute: onu_model
+entity_ref: entity.zte.gpon.device.onu
+oid_prefix: .1.3.6.1.4.1.3902.1082.500.20.2.1.2.1.2
+base_space: ONU-ID
+full_oid_template: .1.3.6.1.4.1.3902.1082.500.20.2.1.2.1.2.<onuID>
+syntax: STRING (modelo comercial de la ONU)
+status: verified_walk
+note: confirmado con 7 valores reales (5 distintos) correlacionados 1:1 contra
+      el sistema de gestion. No existe equivalente en C300/C320 (espacio TYPE
+      solo trae un codigo numerico, no el string de modelo).
+mib_name: UNRESOLVED
+
+==============================================================================
+# SECCIÓN C — PREFIJO DE VENDOR (columna .1)   [status: verified_walk]
+==============================================================================
+[oid]
+attribute: onu_vendor_prefix
+entity_ref: entity.zte.gpon.device.onu
+oid_prefix: .1.3.6.1.4.1.3902.1082.500.20.2.1.2.1.1
+base_space: ONU-ID
+full_oid_template: .1.3.6.1.4.1.3902.1082.500.20.2.1.2.1.1.<onuID>
+syntax: STRING (4 caracteres ASCII, prefijo de vendor: XPON/CDTC/ZTEG/HWTC)
+status: verified_walk
+note: confirmado con 7 valores reales, coincide exactamente con los primeros
+      4 caracteres del serial de la SECCIÓN A.
+mib_name: UNRESOLVED
+
+==============================================================================
+# SECCIÓN D — STATUS (columna .4)   [status: verified_walk]
+==============================================================================
+# INTEGER. Correlaciona 1:1 con rx_power (SECCIÓN E): 6 ONUs con status=4 tienen
+# rx_power real; la unica con status=5 tiene rx_power=65535 (N/A, sin senal).
+# Solo 2 valores observados (4 y 5) -- no se documenta un enum completo
+# inventado; puede haber mas estados (rechazada, deshabilitada, etc.) sin
+# confirmar en esta muestra.
+
+[oid]
+attribute: onu_status
+entity_ref: entity.zte.gpon.device.onu
+oid_prefix: .1.3.6.1.4.1.3902.1082.500.10.2.3.8.1.4
+base_space: ONU-ID
+full_oid_template: .1.3.6.1.4.1.3902.1082.500.10.2.3.8.1.4.<onuID>
+syntax: INTEGER
+enumeration: ver onu_status_gpon_enum
+status: verified_walk
+note: en C300/C320 este mismo OID esta degradado a verified_community (no
+      responde en SUS walks); en C600 SI responde. ACTUALIZADO 2026-10-02: enum
+      verificado contra la CLI (show gpon onu state) en 390 ONUs del walk de
+      2026-10-01: 4=working (371), 5=DyingGasp, 7=OffLine (6). El 4 y el 5 de
+      la nota anterior NO eran 'con senal / sin senal' sino working / DyingGasp.
+      El 2=LOS NO se ha visto en la C600 (ninguna ONU en LOS en la muestra); se
+      incluye por haberse verificado en la C620 (mismo arbol y mismo firmware V1.2.2).
+mib_name: UNRESOLVED
+
+==============================================================================
+# SECCIÓN E — RX POWER (columna .10)   [status: verified_walk]
+==============================================================================
+# INTEGER, escala raw*0.002-30 (misma formula ya usada en C300/C320 para este
+# mismo OID). Ej: 3961 -> -22.078 dBm; 65535 = sin senal/invalido (correlaciona
+# con status=5 de la SECCIÓN D).
+
+[oid]
+attribute: onu_rx_power
+entity_ref: entity.zte.gpon.device.onu
+oid_prefix: .1.3.6.1.4.1.3902.1082.500.20.2.2.2.1.10
+base_space: ONU-ID
+full_oid_template: .1.3.6.1.4.1.3902.1082.500.20.2.2.2.1.10.<onuID>.1
+syntax: INTEGER
+scale: raw*0.002-30
+status: verified_walk
+note: mismo OID y misma escala que en C300/C320 (ahi degradado a
+      verified_community); en C600 SI responde con datos reales, correlaciona
+      con onu_status. 65535 = sin senal (ONU con status=5).
+mib_name: UNRESOLVED
+
+==============================================================================
+# SECCIÓN F — TX POWER DE LA ONU (columna .14)   [status: verified_walk]
+==============================================================================
+# RESUELTO 2026-10-02. La columna .14 de la misma tabla que rx_power (.10) es la
+# potencia que TRANSMITE la ONU; misma escala raw*0.002-30. Verificada en vivo
+# contra show pon power attenuation (campo "up ... Tx"): 4 de 4 ONUs coinciden
+# exactamente (p. ej. 1.99 dBm, 2.018 dBm, 1.984 dBm). Tambien verificada en C620.
+# (La nota anterior revisaba solo las columnas .2 a .13 y por eso no la vio.)
+
+[oid]
+attribute: onu_tx_power
+entity_ref: entity.zte.gpon.device.onu
+oid_prefix: .1.3.6.1.4.1.3902.1082.500.20.2.2.2.1.14
+base_space: ONU-ID
+full_oid_template: .1.3.6.1.4.1.3902.1082.500.20.2.2.2.1.14.<onuID>.1
+syntax: INTEGER
+scale: raw*0.002-30
+status: verified_walk
+note: potencia optica que transmite la ONU, en dBm. Verificada contra la CLI.
+mib_name: UNRESOLVED
+
+==============================================================================
+# SECCIÓN G — NOMBRE DEL TIPO DE ONU CONFIGURADO (columna .1 de la tabla de ONU)   [status: verified_walk]
+==============================================================================
+# STRING con el nombre del tipo/perfil de ONU provisionado en la OLT (el mismo
+# que muestra la CLI como "Type" en show gpon onu baseinfo). 375 de 375 ONUs comparadas coinciden (la CLI trunca el nombre a 11 caracteres; sin contar el truncado).
+# Distinto de onu_model (modelo comercial que reporta la ONU) y de onu_type
+# (codigo numerico del espacio TYPE, ausente en este firmware).
+
+[oid]
+attribute: onu_type_name
+entity_ref: entity.zte.gpon.device.onu
+oid_prefix: .1.3.6.1.4.1.3902.1082.500.10.2.3.3.1.1
+base_space: ONU-ID
+full_oid_template: .1.3.6.1.4.1.3902.1082.500.10.2.3.3.1.1.<onuID>
+syntax: STRING (nombre del tipo de ONU; la CLI lo trunca a 11 caracteres)
+status: verified_walk
+note: verificado contra la CLI (show gpon onu baseinfo). Serial (SECCIÓN A) tambien contrastado contra la CLI: 375 de 375 ONUs (walk de 2026-10-01 con 390 ONUs).
+mib_name: UNRESOLVED
+
+==============================================================================
+# SECCIÓN H — NOMBRE DE LA ONU (columna .2 de la tabla de ONU)   [status: verified_walk]
+==============================================================================
+# STRING de texto libre que el operador asigna a la ONU (en la practica el
+# nombre del abonado). DATO PERSONAL: no se documentan muestras. No se pudo
+# contrastar contra la CLI porque la OLT enmascara el campo "Name" con
+# "********" para la cuenta de solo lectura; la identificacion se basa en el
+# contenido de la columna en el walk (nombres de personas) y en que es la
+# columna hermana de la descripcion (SECCIÓN I).
+
+[oid]
+attribute: onu_name
+entity_ref: entity.zte.gpon.device.onu
+oid_prefix: .1.3.6.1.4.1.3902.1082.500.10.2.3.3.1.2
+base_space: ONU-ID
+full_oid_template: .1.3.6.1.4.1.3902.1082.500.10.2.3.3.1.2.<onuID>
+syntax: STRING (texto libre, puede estar vacio; contiene datos personales)
+status: verified_walk
+note: sin contraste CLI (campo enmascarado en la CLI). Tratar como dato personal.
+mib_name: UNRESOLVED
+
+==============================================================================
+# SECCIÓN I — DESCRIPCIÓN DE LA ONU (columna .3 de la tabla de ONU)   [status: verified_walk]
+==============================================================================
+# STRING de texto libre (en la practica la direccion del abonado). DATO
+# PERSONAL: no se documentan muestras. Misma limitacion de contraste que la
+# SECCIÓN H (la CLI muestra "Description: ********").
+
+[oid]
+attribute: onu_description
+entity_ref: entity.zte.gpon.device.onu
+oid_prefix: .1.3.6.1.4.1.3902.1082.500.10.2.3.3.1.3
+base_space: ONU-ID
+full_oid_template: .1.3.6.1.4.1.3902.1082.500.10.2.3.3.1.3.<onuID>
+syntax: STRING (texto libre, puede estar vacio; contiene datos personales)
+status: verified_walk
+note: sin contraste CLI (campo enmascarado en la CLI). Tratar como dato personal.
+mib_name: UNRESOLVED
+
+==============================================================================
+# ENUM DE STATUS (OID onu_status .1082.500.10.2.3.8.1.4)
+==============================================================================
+onu_status_gpon_enum:
+  2: LOS
+  4: Working
+  5: DyingGasp
+  7: OffLine
+  default: Unknown
+==============================================================================

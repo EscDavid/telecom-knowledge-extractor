@@ -1,0 +1,904 @@
+{
+  "entity_ref": "entity.zte.gpon.device.olt",
+  "vendor": "ZTE",
+  "family": "ZXA10 C320",
+  "firmware": [
+    "2.0",
+    "2.1"
+  ],
+  "alarms": [
+    {
+      "id": "alarm.zte.gpon.olt.gmtopologychange",
+      "code": "1.3.6.1.4.1.3902.15.4.5.1",
+      "name": "gmTopologyChange",
+      "canonical_name": "gm Topology Change",
+      "entity_ref": "entity.zte.gpon.device.olt",
+      "severity": "warning",
+      "type": "protocol",
+      "description": "This trap sended by command switch to notify topology change.",
+      "probable_causes": [
+        "Cambio de estado o parametro reportado",
+        "Inconsistencia de configuracion",
+        "Evento de protocolo (registro/deregistro)"
+      ],
+      "remediation": [
+        "Correlacionar con el objeto reportado (oid_refs)",
+        "Revisar la configuracion asociada"
+      ],
+      "oid_trap": "1.3.6.1.4.1.3902.15.4.5.1",
+      "oid_refs": [],
+      "auto_clear": false,
+      "clear_condition": null,
+      "threshold": null,
+      "escalation": {
+        "warning_after_minutes": null,
+        "major_after_minutes": null,
+        "critical_after_minutes": null
+      },
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "status": "documented",
+      "conflicts": []
+    },
+    {
+      "id": "alarm.zte.gpon.olt.gmmemberupdown",
+      "code": "1.3.6.1.4.1.3902.15.4.5.2",
+      "name": "gmMemberUpDown",
+      "canonical_name": "gm Member Up Down",
+      "entity_ref": "entity.zte.gpon.device.olt",
+      "severity": "major",
+      "type": "protocol",
+      "description": "The trap indicates nms that member switch transfer between connect or disconnect with command switch.",
+      "probable_causes": [
+        "Cambio de estado o parametro reportado",
+        "Inconsistencia de configuracion",
+        "Evento de protocolo (registro/deregistro)"
+      ],
+      "remediation": [
+        "Correlacionar con el objeto reportado (oid_refs)",
+        "Revisar la configuracion asociada"
+      ],
+      "oid_trap": "1.3.6.1.4.1.3902.15.4.5.2",
+      "oid_refs": [
+        "memMac",
+        "memId",
+        "memIpAddr",
+        "memStatus"
+      ],
+      "auto_clear": false,
+      "clear_condition": null,
+      "threshold": null,
+      "escalation": {
+        "warning_after_minutes": null,
+        "major_after_minutes": null,
+        "critical_after_minutes": null
+      },
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "status": "documented",
+      "conflicts": []
+    },
+    {
+      "id": "alarm.zte.gpon.olt.dot1agcfmfaultalarm",
+      "code": "1.3.6.1.4.1.3902.3.120.0.1",
+      "name": "dot1agCfmFaultAlarm",
+      "canonical_name": "dot1ag Cfm Fault Alarm",
+      "entity_ref": "entity.zte.gpon.device.olt",
+      "severity": "warning",
+      "type": "protocol",
+      "description": "A MEP has a persistent defect condition. A notification\n                           (fault alarm) is sent to the management entity with the OID\n                           of the MEP that has detected the fault.\n                           Whenever a MEP has a persistent defect,\n                           it may or may not generate a Fault Alarm to warn the system\n                           administrator of the problem, as controlled by the MEP\n                           Fault Notification Generator State Machine and associated\n                           Managed Objects. Only the highest-priority defect, as shown\n                           in Table 20-1, is reported in the Fault Alarm.\n                           If a defect with a higher priority is raised after a Fault\n                           Alarm has been issued, another Fault Alarm is issued.\n                           The management entity receiving the notification can identify\n                           the system from the network source address of the\n                           notification, and can identify the MEP reporting the defect\n                           by the indices in the OID of the dot1agCfmMepHighestPrDefect\n                           variable in the notification:\n                           dot1agCfmMdIndex - Also the index of the MEP's\n                           Maintenance Domain table entry\n                           (dot1agCfmMdTable).\n                           dot1agCfmMaIndex - Also an index (with the MD table index)\n                           of the MEP's Maintenance Association\n                           table entry (dot1agCfmMaTable).\n                           dot1agCfmSessionId - MEP Identifier and final index\n                           into the MEP table (dot1agCfmMepTable).",
+      "probable_causes": [
+        "Cambio de estado o parametro reportado",
+        "Inconsistencia de configuracion",
+        "Evento de protocolo (registro/deregistro)"
+      ],
+      "remediation": [
+        "Correlacionar con el objeto reportado (oid_refs)",
+        "Revisar la configuracion asociada"
+      ],
+      "oid_trap": "1.3.6.1.4.1.3902.3.120.0.1",
+      "oid_refs": [
+        "dot1agCfmMepHighestPrDefect"
+      ],
+      "auto_clear": false,
+      "clear_condition": null,
+      "threshold": null,
+      "escalation": {
+        "warning_after_minutes": null,
+        "major_after_minutes": null,
+        "critical_after_minutes": null
+      },
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "status": "documented",
+      "conflicts": []
+    },
+    {
+      "id": "alarm.zte.gpon.olt.lsppingtrapresult",
+      "code": "1.3.6.1.4.1.3902.3.104.5.3.1",
+      "name": "lsppingTrapResult",
+      "canonical_name": "lspping Trap Result",
+      "entity_ref": "entity.zte.gpon.device.olt",
+      "severity": "warning",
+      "type": "protocol",
+      "description": "The newMaster trap indicates that the sending agent\n         has transitioned to 'Master' state.",
+      "probable_causes": [
+        "Cambio de estado o parametro reportado",
+        "Inconsistencia de configuracion",
+        "Evento de protocolo (registro/deregistro)"
+      ],
+      "remediation": [
+        "Correlacionar con el objeto reportado (oid_refs)",
+        "Revisar la configuracion asociada"
+      ],
+      "oid_trap": "1.3.6.1.4.1.3902.3.104.5.3.1",
+      "oid_refs": [
+        "lspPingResultSerial",
+        "lspPingResultSentPkts",
+        "lspPingResultRcvPkts",
+        "lspPingResultRoundTripMinTime",
+        "lspPingResultRoundTripMaxTime",
+        "lspPingResultRoundTripAvgTime"
+      ],
+      "auto_clear": false,
+      "clear_condition": null,
+      "threshold": null,
+      "escalation": {
+        "warning_after_minutes": null,
+        "major_after_minutes": null,
+        "critical_after_minutes": null
+      },
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "status": "documented",
+      "conflicts": []
+    },
+    {
+      "id": "alarm.zte.gpon.olt.macpingtrapresult",
+      "code": "1.3.6.1.4.1.3902.3.104.4.3.1",
+      "name": "macpingTrapResult",
+      "canonical_name": "macping Trap Result",
+      "entity_ref": "entity.zte.gpon.device.olt",
+      "severity": "warning",
+      "type": "protocol",
+      "description": "The newMaster trap indicates that the sending agent\n         has transitioned to 'Master' state.",
+      "probable_causes": [
+        "Cambio de estado o parametro reportado",
+        "Inconsistencia de configuracion",
+        "Evento de protocolo (registro/deregistro)"
+      ],
+      "remediation": [
+        "Correlacionar con el objeto reportado (oid_refs)",
+        "Revisar la configuracion asociada"
+      ],
+      "oid_trap": "1.3.6.1.4.1.3902.3.104.4.3.1",
+      "oid_refs": [
+        "zxr10PingMacResultSerial",
+        "zxr10PingMacResultSentPkts",
+        "zxr10PingMacResultRcvPkts",
+        "zxr10PingMacResultRoundTripMinTime",
+        "zxr10PingMacResultRoundTripMaxTime",
+        "zxr10PingMacResultRoundTripAvgTime"
+      ],
+      "auto_clear": false,
+      "clear_condition": null,
+      "threshold": null,
+      "escalation": {
+        "warning_after_minutes": null,
+        "major_after_minutes": null,
+        "critical_after_minutes": null
+      },
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "status": "documented",
+      "conflicts": []
+    },
+    {
+      "id": "alarm.zte.gpon.olt.zxr10hardwarealarmtrap",
+      "code": "1.3.6.1.4.1.3902.3.4.20.1",
+      "name": "zxr10HardwareAlarmTrap",
+      "canonical_name": "zxr10 Hardware Alarm Trap",
+      "entity_ref": "entity.zte.gpon.device.olt",
+      "severity": "warning",
+      "type": "hardware",
+      "description": "when a hardware alarm occurred, send the trap PDU to uniform network manager.",
+      "probable_causes": [
+        "Falla o mal contacto de tarjeta/subtarjeta",
+        "Tarjeta no soportada o incompatible",
+        "Sobrecalentamiento del modulo"
+      ],
+      "remediation": [
+        "Reasentar o reemplazar la tarjeta",
+        "Verificar compatibilidad de HW/firmware",
+        "Revisar ventilacion y temperatura"
+      ],
+      "oid_trap": "1.3.6.1.4.1.3902.3.4.20.1",
+      "oid_refs": [
+        "zxr10HardwareAlarmRackNo",
+        "zxr10HardwareAlarmShelfNo",
+        "zxr10HardwareAlarmSlotNo",
+        "zxr10HardwareAlarmPortNo",
+        "zxr10HardwareAlarmCode",
+        "zxr10HardwareAlarmLevel",
+        "zxr10HardwareAlarmTime",
+        "zxr10HardwareAlarmStatus",
+        "zxr10HardwareAlarmType",
+        "zxr10HardwareAlarmVariableValue",
+        "zxr10HardwareAlarmValueRisingThreshold",
+        "zxr10HardwareAlarmValueFallingThreshold",
+        "zxr10HardwareAlarmDescrip"
+      ],
+      "auto_clear": false,
+      "clear_condition": null,
+      "threshold": null,
+      "escalation": {
+        "warning_after_minutes": null,
+        "major_after_minutes": null,
+        "critical_after_minutes": null
+      },
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "status": "documented",
+      "conflicts": []
+    },
+    {
+      "id": "alarm.zte.gpon.olt.zxr10softprotocolalarmtrap",
+      "code": "1.3.6.1.4.1.3902.3.4.20.2",
+      "name": "zxr10SoftProtocolAlarmTrap",
+      "canonical_name": "zxr10 Soft Protocol Alarm Trap",
+      "entity_ref": "entity.zte.gpon.device.olt",
+      "severity": "warning",
+      "type": "protocol",
+      "description": "when a softprotocol alarm occurred, send the trap PDU to unm.",
+      "probable_causes": [
+        "Cambio de estado o parametro reportado",
+        "Inconsistencia de configuracion",
+        "Evento de protocolo (registro/deregistro)"
+      ],
+      "remediation": [
+        "Correlacionar con el objeto reportado (oid_refs)",
+        "Revisar la configuracion asociada"
+      ],
+      "oid_trap": "1.3.6.1.4.1.3902.3.4.20.2",
+      "oid_refs": [
+        "zxr10SoftProtocolAlarmRackNo",
+        "zxr10SoftProtocolAlarmShelfNo",
+        "zxr10SoftProtocolAlarmSlotNo",
+        "zxr10SoftProtocolAlarmCode",
+        "zxr10SoftProtocolAlarmLevel",
+        "zxr10SoftProtocolAlarmTime",
+        "zxr10SoftProtocolAlarmStatus",
+        "zxr10SoftProtocolAlarmType",
+        "zxr10SoftProtocolAlarmDescrip"
+      ],
+      "auto_clear": false,
+      "clear_condition": null,
+      "threshold": null,
+      "escalation": {
+        "warning_after_minutes": null,
+        "major_after_minutes": null,
+        "critical_after_minutes": null
+      },
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "status": "documented",
+      "conflicts": []
+    },
+    {
+      "id": "alarm.zte.gpon.olt.zxr10statisticsalarmtrap",
+      "code": "1.3.6.1.4.1.3902.3.4.20.3",
+      "name": "zxr10StatisticsAlarmTrap",
+      "canonical_name": "zxr10 Statistics Alarm Trap",
+      "entity_ref": "entity.zte.gpon.device.olt",
+      "severity": "warning",
+      "type": "protocol",
+      "description": "when a statistics alarm occurred, send the trap PDU to uniform network manager.",
+      "probable_causes": [
+        "Cambio de estado o parametro reportado",
+        "Inconsistencia de configuracion",
+        "Evento de protocolo (registro/deregistro)"
+      ],
+      "remediation": [
+        "Correlacionar con el objeto reportado (oid_refs)",
+        "Revisar la configuracion asociada"
+      ],
+      "oid_trap": "1.3.6.1.4.1.3902.3.4.20.3",
+      "oid_refs": [
+        "zxr10StatisticsAlarmRackNo",
+        "zxr10StatisticsAlarmShelfNo",
+        "zxr10StatisticsAlarmSlotNo",
+        "zxr10StatisticsAlarmPortNo",
+        "zxr10StatisticsAlarmCode",
+        "zxr10StatisticsAlarmLevel",
+        "zxr10StatisticsAlarmTime",
+        "zxr10StatisticsAlarmStatus",
+        "zxr10StatisticsAlarmType",
+        "zxr10StatisticsAlarmVariableValue",
+        "zxr10StatisticsAlarmValueRisingThreshold",
+        "zxr10StatisticsAlarmValueFallingThreshold",
+        "zxr10StatisticsAlarmDescrip"
+      ],
+      "auto_clear": false,
+      "clear_condition": null,
+      "threshold": null,
+      "escalation": {
+        "warning_after_minutes": null,
+        "major_after_minutes": null,
+        "critical_after_minutes": null
+      },
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "status": "documented",
+      "conflicts": []
+    },
+    {
+      "id": "alarm.zte.gpon.olt.mplsl2vpngenericinterfacetrap",
+      "code": "1.3.6.1.4.1.3902.3.104.1.3.1",
+      "name": "mplsL2vpnGenericInterfaceTrap",
+      "canonical_name": "mpls L2vpn Generic Interface Trap",
+      "entity_ref": "entity.zte.gpon.device.olt",
+      "severity": "major",
+      "type": "protocol",
+      "description": "When one of following conditions happens:\n         (1)Admini,phy or protocol status of a interface is down and it has no children.\n         (2)Interface is off and it has no children.\n         (3)Encapsulation of a interface has changed.\n         (4)MTU of a interface has changed.\n         this type of Trap pdu will be sent.There is only one VPWS type VC affected.",
+      "probable_causes": [
+        "Cambio de estado o parametro reportado",
+        "Inconsistencia de configuracion",
+        "Evento de protocolo (registro/deregistro)"
+      ],
+      "remediation": [
+        "Correlacionar con el objeto reportado (oid_refs)",
+        "Revisar la configuracion asociada"
+      ],
+      "oid_trap": "1.3.6.1.4.1.3902.3.104.1.3.1",
+      "oid_refs": [
+        "zxr10MplsL2vpnTrapIfIndex",
+        "zxr10MplsL2vpnTrapIfName",
+        "zxr10MplsL2vpnTrapLevel",
+        "zxr10MplsL2vpnTrapDetail",
+        "zxr10MplsL2vpnTrapVcid",
+        "zxr10MplsL2vpnTrapPeerAddress",
+        "zxr10MplsL2vpnTrapVpnType"
+      ],
+      "auto_clear": false,
+      "clear_condition": null,
+      "threshold": null,
+      "escalation": {
+        "warning_after_minutes": null,
+        "major_after_minutes": null,
+        "critical_after_minutes": null
+      },
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "status": "documented",
+      "conflicts": []
+    },
+    {
+      "id": "alarm.zte.gpon.olt.mplsl2vpnmatchinterfacetrap",
+      "code": "1.3.6.1.4.1.3902.3.104.1.3.2",
+      "name": "mplsL2vpnMatchInterfaceTrap",
+      "canonical_name": "mpls L2vpn Match Interface Trap",
+      "entity_ref": "entity.zte.gpon.device.olt",
+      "severity": "major",
+      "type": "protocol",
+      "description": "When one of following conditions happens:\n         (1)Admini,phy or protocol status of a interface is down and it has  children.\n         (2)Interface is off and it has children.\n         this type of Trap pdu will be sent.",
+      "probable_causes": [
+        "Cambio de estado o parametro reportado",
+        "Inconsistencia de configuracion",
+        "Evento de protocolo (registro/deregistro)"
+      ],
+      "remediation": [
+        "Correlacionar con el objeto reportado (oid_refs)",
+        "Revisar la configuracion asociada"
+      ],
+      "oid_trap": "1.3.6.1.4.1.3902.3.104.1.3.2",
+      "oid_refs": [
+        "zxr10MplsL2vpnTrapIfIndex",
+        "zxr10MplsL2vpnTrapIfName",
+        "zxr10MplsL2vpnTrapLevel",
+        "zxr10MplsL2vpnTrapDetail"
+      ],
+      "auto_clear": false,
+      "clear_condition": null,
+      "threshold": null,
+      "escalation": {
+        "warning_after_minutes": null,
+        "major_after_minutes": null,
+        "critical_after_minutes": null
+      },
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "status": "documented",
+      "conflicts": []
+    },
+    {
+      "id": "alarm.zte.gpon.olt.mplsl2vpngenericprotocoltrap",
+      "code": "1.3.6.1.4.1.3902.3.104.1.3.3",
+      "name": "mplsL2vpnGenericProtocolTrap",
+      "canonical_name": "mpls L2vpn Generic Protocol Trap",
+      "entity_ref": "entity.zte.gpon.device.olt",
+      "severity": "major",
+      "type": "protocol",
+      "description": "When one of following conditions happens:\n         (1)Receives a VC label withdraw message from remote peer.\n         (2)Deletes a VPWS VC.\n         (3)Delete a VPLS peer.\n         (4)Protocol patameters negotiation fails during VC setup.\n         this type of Trap pdu will be sent.",
+      "probable_causes": [
+        "Cambio de estado o parametro reportado",
+        "Inconsistencia de configuracion",
+        "Evento de protocolo (registro/deregistro)"
+      ],
+      "remediation": [
+        "Correlacionar con el objeto reportado (oid_refs)",
+        "Revisar la configuracion asociada"
+      ],
+      "oid_trap": "1.3.6.1.4.1.3902.3.104.1.3.3",
+      "oid_refs": [
+        "zxr10MplsL2vpnTrapLevel",
+        "zxr10MplsL2vpnTrapDetail",
+        "zxr10MplsL2vpnTrapVcid",
+        "zxr10MplsL2vpnTrapPeerAddress",
+        "zxr10MplsL2vpnTrapVpnType"
+      ],
+      "auto_clear": false,
+      "clear_condition": null,
+      "threshold": null,
+      "escalation": {
+        "warning_after_minutes": null,
+        "major_after_minutes": null,
+        "critical_after_minutes": null
+      },
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "status": "documented",
+      "conflicts": []
+    },
+    {
+      "id": "alarm.zte.gpon.olt.mplsl2vpnsessiondowntrap",
+      "code": "1.3.6.1.4.1.3902.3.104.1.3.4",
+      "name": "mplsL2vpnSessionDownTrap",
+      "canonical_name": "mpls L2vpn Session Down Trap",
+      "entity_ref": "entity.zte.gpon.device.olt",
+      "severity": "major",
+      "type": "protocol",
+      "description": "When session to VC peer is down,all the VC that have been bound to mpls Lsp Tunnel will\n         be down;this kind of trap will be sent.",
+      "probable_causes": [
+        "Cambio de estado o parametro reportado",
+        "Inconsistencia de configuracion",
+        "Evento de protocolo (registro/deregistro)"
+      ],
+      "remediation": [
+        "Correlacionar con el objeto reportado (oid_refs)",
+        "Revisar la configuracion asociada"
+      ],
+      "oid_trap": "1.3.6.1.4.1.3902.3.104.1.3.4",
+      "oid_refs": [
+        "zxr10MplsL2vpnTrapLevel",
+        "zxr10MplsL2vpnTrapDetail",
+        "zxr10MplsL2vpnTrapPeerAddress"
+      ],
+      "auto_clear": false,
+      "clear_condition": null,
+      "threshold": null,
+      "escalation": {
+        "warning_after_minutes": null,
+        "major_after_minutes": null,
+        "critical_after_minutes": null
+      },
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "status": "documented",
+      "conflicts": []
+    },
+    {
+      "id": "alarm.zte.gpon.olt.mplsl2vpnvplsdeletetrap",
+      "code": "1.3.6.1.4.1.3902.3.104.1.3.5",
+      "name": "mplsL2vpnVplsDeleteTrap",
+      "canonical_name": "mpls L2vpn Vpls Delete Trap",
+      "entity_ref": "entity.zte.gpon.device.olt",
+      "severity": "warning",
+      "type": "protocol",
+      "description": "When delete a VPLS instance.,this kind of trap will be sent.",
+      "probable_causes": [
+        "Cambio de estado o parametro reportado",
+        "Inconsistencia de configuracion",
+        "Evento de protocolo (registro/deregistro)"
+      ],
+      "remediation": [
+        "Correlacionar con el objeto reportado (oid_refs)",
+        "Revisar la configuracion asociada"
+      ],
+      "oid_trap": "1.3.6.1.4.1.3902.3.104.1.3.5",
+      "oid_refs": [
+        "zxr10MplsL2vpnTrapLevel",
+        "zxr10MplsL2vpnTrapDetail",
+        "zxr10MplsL2vpnTrapVcid"
+      ],
+      "auto_clear": false,
+      "clear_condition": null,
+      "threshold": null,
+      "escalation": {
+        "warning_after_minutes": null,
+        "major_after_minutes": null,
+        "critical_after_minutes": null
+      },
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "status": "documented",
+      "conflicts": []
+    },
+    {
+      "id": "alarm.zte.gpon.olt.mplsl2vpnlinktrap",
+      "code": "1.3.6.1.4.1.3902.3.104.1.3.6",
+      "name": "mplsL2vpnLinkTrap",
+      "canonical_name": "mpls L2vpn Link Trap",
+      "entity_ref": "entity.zte.gpon.device.olt",
+      "severity": "warning",
+      "type": "protocol",
+      "description": "When one of following conditions happens:\n         (1)The PSN route is off.\n         (2)Can't find outer mpls tunnel label.\n         (3)Can't find outer TE tunnel label.\n         this type of Trap pdu will be sent.",
+      "probable_causes": [
+        "Cambio de estado o parametro reportado",
+        "Inconsistencia de configuracion",
+        "Evento de protocolo (registro/deregistro)"
+      ],
+      "remediation": [
+        "Correlacionar con el objeto reportado (oid_refs)",
+        "Revisar la configuracion asociada"
+      ],
+      "oid_trap": "1.3.6.1.4.1.3902.3.104.1.3.6",
+      "oid_refs": [
+        "zxr10MplsL2vpnTrapLevel",
+        "zxr10MplsL2vpnTrapDetail",
+        "zxr10MplsL2vpnTrapVcid",
+        "zxr10MplsL2vpnTrapPeerAddress",
+        "zxr10MplsL2vpnTrapVpnType"
+      ],
+      "auto_clear": false,
+      "clear_condition": null,
+      "threshold": null,
+      "escalation": {
+        "warning_after_minutes": null,
+        "major_after_minutes": null,
+        "critical_after_minutes": null
+      },
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "status": "documented",
+      "conflicts": []
+    },
+    {
+      "id": "alarm.zte.gpon.olt.mplsl2vpnpsnroutedowntrap",
+      "code": "1.3.6.1.4.1.3902.3.104.1.3.7",
+      "name": "mplsL2vpnPsnRouteDownTrap",
+      "canonical_name": "mpls L2vpn Psn Route Down Trap",
+      "entity_ref": "entity.zte.gpon.device.olt",
+      "severity": "major",
+      "type": "protocol",
+      "description": "When PSN route between PE is down,all the VC between them will be down;\n         this type of Trap pdu will be sent.",
+      "probable_causes": [
+        "Cambio de estado o parametro reportado",
+        "Inconsistencia de configuracion",
+        "Evento de protocolo (registro/deregistro)"
+      ],
+      "remediation": [
+        "Correlacionar con el objeto reportado (oid_refs)",
+        "Revisar la configuracion asociada"
+      ],
+      "oid_trap": "1.3.6.1.4.1.3902.3.104.1.3.7",
+      "oid_refs": [
+        "zxr10MplsL2vpnTrapLevel",
+        "zxr10MplsL2vpnTrapDetail",
+        "zxr10MplsL2vpnTrapPeerAddress"
+      ],
+      "auto_clear": false,
+      "clear_condition": null,
+      "threshold": null,
+      "escalation": {
+        "warning_after_minutes": null,
+        "major_after_minutes": null,
+        "critical_after_minutes": null
+      },
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "status": "documented",
+      "conflicts": []
+    },
+    {
+      "id": "alarm.zte.gpon.olt.mplsl2vpntetunneldowntrap",
+      "code": "1.3.6.1.4.1.3902.3.104.1.3.8",
+      "name": "mplsL2vpnTETunnelDownTrap",
+      "canonical_name": "mpls L2vpn T E Tunnel Down Trap",
+      "entity_ref": "entity.zte.gpon.device.olt",
+      "severity": "major",
+      "type": "protocol",
+      "description": "When one TE Tunnel between is dwon,all the VC between them which has been\n         bound to this tunnel will be down;this type of Trap pdu will be sent",
+      "probable_causes": [
+        "Cambio de estado o parametro reportado",
+        "Inconsistencia de configuracion",
+        "Evento de protocolo (registro/deregistro)"
+      ],
+      "remediation": [
+        "Correlacionar con el objeto reportado (oid_refs)",
+        "Revisar la configuracion asociada"
+      ],
+      "oid_trap": "1.3.6.1.4.1.3902.3.104.1.3.8",
+      "oid_refs": [
+        "zxr10MplsL2vpnTrapLevel",
+        "zxr10MplsL2vpnTrapDetail",
+        "zxr10MplsL2vpnTrapTETunnelId"
+      ],
+      "auto_clear": false,
+      "clear_condition": null,
+      "threshold": null,
+      "escalation": {
+        "warning_after_minutes": null,
+        "major_after_minutes": null,
+        "critical_after_minutes": null
+      },
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "status": "documented",
+      "conflicts": []
+    },
+    {
+      "id": "alarm.zte.gpon.olt.zxr10optalarmtrap",
+      "code": "1.3.6.1.4.1.3902.3.126.0.1",
+      "name": "zxr10optAlarmTrap",
+      "canonical_name": "zxr10opt Alarm Trap",
+      "entity_ref": "entity.zte.gpon.device.olt",
+      "severity": "warning",
+      "type": "protocol",
+      "description": null,
+      "probable_causes": [
+        "Cambio de estado o parametro reportado",
+        "Inconsistencia de configuracion",
+        "Evento de protocolo (registro/deregistro)"
+      ],
+      "remediation": [
+        "Correlacionar con el objeto reportado (oid_refs)",
+        "Revisar la configuracion asociada"
+      ],
+      "oid_trap": "1.3.6.1.4.1.3902.3.126.0.1",
+      "oid_refs": [
+        "zxr10optAlarmIndex",
+        "zxr10optIfIndex",
+        "zxr10optIfName",
+        "zxr10optAlarmType",
+        "zxr10optAlarmOverType",
+        "zxr10optAlarmOverCurValue",
+        "zxr10optHighAlarmValue",
+        "zxr10optHighWarnValue",
+        "zxr10optLowWarnValue",
+        "zxr10optLowAlarmValue"
+      ],
+      "auto_clear": false,
+      "clear_condition": null,
+      "threshold": null,
+      "escalation": {
+        "warning_after_minutes": null,
+        "major_after_minutes": null,
+        "critical_after_minutes": null
+      },
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "status": "documented",
+      "conflicts": []
+    },
+    {
+      "id": "alarm.zte.gpon.olt.pingtrapresult",
+      "code": "1.3.6.1.4.1.3902.3.104.2.3.1",
+      "name": "pingTrapResult",
+      "canonical_name": "ping Trap Result",
+      "entity_ref": "entity.zte.gpon.device.olt",
+      "severity": "warning",
+      "type": "protocol",
+      "description": "The newMaster trap indicates that the sending agent\n         has transitioned to 'Master' state.",
+      "probable_causes": [
+        "Cambio de estado o parametro reportado",
+        "Inconsistencia de configuracion",
+        "Evento de protocolo (registro/deregistro)"
+      ],
+      "remediation": [
+        "Correlacionar con el objeto reportado (oid_refs)",
+        "Revisar la configuracion asociada"
+      ],
+      "oid_trap": "1.3.6.1.4.1.3902.3.104.2.3.1",
+      "oid_refs": [
+        "zxr10PingCommResultSerial",
+        "zxr10PingCommResultSentPkts",
+        "zxr10PingCommResultRcvPkts",
+        "zxr10PingCommResultRoundTripMinTime",
+        "zxr10PingCommResultRoundTripMaxTime",
+        "zxr10PingCommResultRoundTripAvgTime"
+      ],
+      "auto_clear": false,
+      "clear_condition": null,
+      "threshold": null,
+      "escalation": {
+        "warning_after_minutes": null,
+        "major_after_minutes": null,
+        "critical_after_minutes": null
+      },
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "status": "documented",
+      "conflicts": []
+    }
+  ]
+}

@@ -1,0 +1,57 @@
+{
+  "id": "entity.zte.gpon.logical.service_port",
+  "canonical_name": "Service Port",
+  "vendor": "ZTE",
+  "family": "ZXA10 C600",
+  "firmware": [
+    "1.2.2"
+  ],
+  "technology": "gpon",
+  "type": "logical",
+  "description": "Service port — punto de servicio que mapea VLAN/trafico a una ONU.",
+  "is_critical": true,
+  "aliases": [],
+  "attributes": [
+    {
+      "name": "service_port_ingress_profile",
+      "type": "string",
+      "range": null,
+      "required": false,
+      "source": "walk"
+    },
+    {
+      "name": "service_port_egress_profile",
+      "type": "string",
+      "range": null,
+      "required": false,
+      "source": "walk"
+    }
+  ],
+  "sources": [
+    {
+      "doc_type": "mib_file",
+      "pages": null,
+      "confidence": 0.3
+    }
+  ],
+  "confidence": {
+    "extraction": 0.85,
+    "correlation": 0.0,
+    "overall": 0.85
+  },
+  "status": "documented",
+  "lifecycle": {
+    "introduced_in": "2.0",
+    "deprecated_in": null,
+    "removed_in": null,
+    "status": "introduced",
+    "replacement": null
+  },
+  "relations": [
+    {
+      "type": "belongs_to",
+      "target": "entity.zte.gpon.device.onu"
+    }
+  ],
+  "conflicts": []
+}

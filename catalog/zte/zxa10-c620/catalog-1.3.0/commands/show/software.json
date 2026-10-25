@@ -1,0 +1,48 @@
+{
+  "id": "command.zte.gpon.global.show.software",
+  "canonical_name": "show software",
+  "vendor": "ZTE",
+  "family": "ZXA10 C620",
+  "firmware": [
+    "1.2.2"
+  ],
+  "technology": "gpon",
+  "category": "show",
+  "cli_mode": "privileged_exec",
+  "cli_context": null,
+  "entity_ref": null,
+  "description": "Versión de software, imagen y paquetes por slot (equivale a 'show version', que no existe). Slots 1-7 en C620, 1-21 en C600.",
+  "syntax": "show software <1-7>",
+  "parameters": [
+    {
+      "name": "slot",
+      "type": "integer",
+      "pattern": null,
+      "range": "1-7 (C620) / 1-21 (C600)",
+      "required": true,
+      "description": "",
+      "example": "1"
+    }
+  ],
+  "output_fields": [],
+  "prerequisites": [],
+  "related_commands": [],
+  "rollback": null,
+  "errors": [],
+  "notes": null,
+  "evidence": "ejecutado y verificado en la OLT el 2026-10-02",
+  "sources": [
+    {
+      "doc_type": "hardware_verification",
+      "pages": null,
+      "confidence": 0.95
+    }
+  ],
+  "confidence": {
+    "extraction": 0.95,
+    "correlation": 0.0,
+    "overall": 0.95
+  },
+  "status": "verified",
+  "conflicts": []
+}

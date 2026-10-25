@@ -1,0 +1,60 @@
+{
+  "id": "command.zte.gpon.service_port.delete.sp_delete",
+  "canonical_name": "no service-port",
+  "vendor": "ZTE",
+  "family": "ZXA10 C600",
+  "firmware": [
+    "1.2.2"
+  ],
+  "technology": "gpon",
+  "category": "delete",
+  "cli_mode": "interface_config",
+  "cli_context": "interface vport-<pon>.<n>:<v>",
+  "entity_ref": "entity.zte.gpon.logical.service_port",
+  "description": "Elimina el service-port.",
+  "syntax": "no service-port <1-128>",
+  "parameters": [
+    {
+      "name": "service-port",
+      "type": "integer",
+      "pattern": null,
+      "range": "1-128",
+      "required": true,
+      "description": "",
+      "example": null
+    }
+  ],
+  "output_fields": [],
+  "prerequisites": [
+    "entity.zte.gpon.device.onu"
+  ],
+  "related_commands": [
+    "command.zte.gpon.service_port.create.sp_create",
+    "command.zte.gpon.service_port.show.service_port"
+  ],
+  "rollback": null,
+  "errors": [
+    {
+      "code": 90,
+      "meaning": "el 'no …' no tenía nada que borrar (inocuo en rollback)",
+      "severity": "info",
+      "retry": false
+    }
+  ],
+  "notes": null,
+  "evidence": "visto en la configuración/bitácora real de la OLT (ejecutado por SmartOLT)",
+  "sources": [
+    {
+      "doc_type": "hardware_verification",
+      "pages": null,
+      "confidence": 0.85
+    }
+  ],
+  "confidence": {
+    "extraction": 0.85,
+    "correlation": 0.0,
+    "overall": 0.85
+  },
+  "status": "observed",
+  "conflicts": []
+}

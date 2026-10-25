@@ -1,0 +1,6 @@
+OltIndex            Model                SN                 PW         
+-----------------------------------------------------------------------------
+gpon_olt-1/1/5      HG102WT              FAKE39E06163       1234567890 
+gpon_olt-1/1/5      SML-702XW-AX-C       FAKE7093F89F       1234567890 
+gpon_olt-1/1/5      MONUV142             GPON4DFD30D9       1234567890 
+ZXAN#

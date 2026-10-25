@@ -1,0 +1,38 @@
+{
+  "id": "command.zte.gpon.uplink_port.show.iface_stats",
+  "canonical_name": "show interface",
+  "vendor": "ZTE",
+  "family": "ZXA10 C600",
+  "firmware": [
+    "1.2.2"
+  ],
+  "technology": "gpon",
+  "category": "show",
+  "cli_mode": "privileged_exec",
+  "cli_context": null,
+  "entity_ref": "entity.zte.gpon.port.uplink_port",
+  "description": "Estadísticas y tasa de un puerto (también ifHC* por SNMP).",
+  "syntax": "show interface {xgei-<r/s/p>|gpon_olt-<pon>}",
+  "parameters": [],
+  "output_fields": [],
+  "prerequisites": [],
+  "related_commands": [],
+  "rollback": null,
+  "errors": [],
+  "notes": null,
+  "evidence": "ejecutado y verificado en la OLT el 2026-10-02",
+  "sources": [
+    {
+      "doc_type": "hardware_verification",
+      "pages": null,
+      "confidence": 0.95
+    }
+  ],
+  "confidence": {
+    "extraction": 0.95,
+    "correlation": 0.0,
+    "overall": 0.95
+  },
+  "status": "verified",
+  "conflicts": []
+}

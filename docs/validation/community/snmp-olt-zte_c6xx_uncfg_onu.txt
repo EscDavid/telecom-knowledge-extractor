@@ -1,0 +1,119 @@
+==============================================================================
+ONU SIN AUTORIZAR / AUTOFIND — ZXA10 C620 (tabla SNMP en la rama 1082.500.2.2.11)
+Verificado por walk real (docs/walks/ZTE_C620.txt, 2026-10-01) y por una lectura
+en vivo el 2026-10-09 contra la CLI del mismo equipo (show pon onu uncfg, con
+columnas first-find-time / last-find-time / model / pw). CORRIGE la nota anterior
+del catálogo «por SNMP no existe tabla uncfg: solo CLI»: sí existe, pero NO en la
+rama de las clásicas (.1082.500.10.2.2.5.1, vacía en C620) sino en
+.1082.500.2.2.11.2.1.<col>.<ifIndex PON>.<n>.
+==============================================================================
+
+# META
+doc_type: community
+vendor: ZTE
+families: ZXA10 C620
+walk_sources: docs/walks/ZTE_C620.txt
+extraction_date: 2026-10-09
+provenance: OLT ZXA10 C620 V1.2.2 con 2-3 ONU sin autorizar en gpon_olt-1/1/5
+            (modelos HG102WT y SML-702XW-AX-C). Los seriales y modelos del walk
+            coinciden con `show pon onu uncfg`; las fechas de primer y último
+            hallazgo coinciden con la CLI (00:00:54 y 13:57).
+scope: tabla de autofind (ONU detectadas sin configurar). Índice:
+       <ifIndex del puerto PON>.<n>, donde n es el orden de hallazgo en ese
+       puerto (1, 2, 3...), NO un número de ONU. Sin sufijo ".1" final.
+       La tabla queda vacía cuando no hay ONU sin autorizar (C600: 0 ahora;
+       no verificado en C600).
+
+==============================================================================
+# SECCIÓN A — SERIAL (columna .2)   [status: verified_walk]
+==============================================================================
+# Hex-STRING de 8 bytes: 4 ASCII + 4 HEX (misma forma que la clásica).
+#   44 46 33 30 A6 01 10 3C -> "DF30A601103C" (coincide con la CLI)
+
+[oid]
+attribute: uncfg_onu_serial
+entity_ref: entity.zte.gpon.device.onu
+oid_prefix: .1.3.6.1.4.1.3902.1082.500.2.2.11.2.1.2
+base_space: ONU-ID
+full_oid_template: .1.3.6.1.4.1.3902.1082.500.2.2.11.2.1.2.<ifIndexPON>.<n>
+syntax: Hex-STRING (4 bytes ASCII + 4 bytes hex = serial GPON)
+status: verified_walk
+note: serial de la ONU en autofind; 3 de 3 coinciden con show pon onu uncfg.
+mib_name: UNRESOLVED
+
+==============================================================================
+# SECCIÓN B — CONTRASEÑA (columna .3)   [status: verified_walk]
+==============================================================================
+[oid]
+attribute: uncfg_onu_password
+entity_ref: entity.zte.gpon.device.onu
+oid_prefix: .1.3.6.1.4.1.3902.1082.500.2.2.11.2.1.3
+base_space: ONU-ID
+full_oid_template: .1.3.6.1.4.1.3902.1082.500.2.2.11.2.1.3.<ifIndexPON>.<n>
+syntax: STRING
+status: verified_walk
+note: contraseña GPON (PW) declarada por la ONU; coincide con la columna PW de la CLI.
+mib_name: UNRESOLVED
+
+==============================================================================
+# SECCIÓN C — MODELO (columna .8)   [status: verified_walk]
+==============================================================================
+[oid]
+attribute: uncfg_onu_type
+entity_ref: entity.zte.gpon.device.onu
+oid_prefix: .1.3.6.1.4.1.3902.1082.500.2.2.11.2.1.8
+base_space: ONU-ID
+full_oid_template: .1.3.6.1.4.1.3902.1082.500.2.2.11.2.1.8.<ifIndexPON>.<n>
+syntax: STRING (modelo declarado por la ONU; puede venir vacío)
+status: verified_walk
+note: coincide con la columna Model de la CLI (HG102WT, SML-702XW-AX-C).
+mib_name: UNRESOLVED
+
+==============================================================================
+# SECCIÓN D — FIRMWARE (columna .10)   [status: verified_walk]
+==============================================================================
+[oid]
+attribute: uncfg_onu_firmware
+entity_ref: entity.zte.gpon.device.onu
+oid_prefix: .1.3.6.1.4.1.3902.1082.500.2.2.11.2.1.10
+base_space: ONU-ID
+full_oid_template: .1.3.6.1.4.1.3902.1082.500.2.2.11.2.1.10.<ifIndexPON>.<n>
+syntax: STRING (p. ej. "V2.1.15")
+status: verified_walk
+note: versión de firmware declarada por la ONU. No tiene equivalente en show pon onu uncfg.
+mib_name: UNRESOLVED
+
+==============================================================================
+# SECCIÓN E — PRIMER HALLAZGO (columna .12)   [status: verified_walk]
+==============================================================================
+# Hex-STRING de 8 bytes con forma DateAndTime sin zona (año, mes, día, hora, min, seg, décimas):
+#   07 EA 0A 08 00 00 36 00 -> 2026-10-08 00:00:54  (CLI FirstFind: 00:00:54)
+#   07 EA 0A 08 00 01 00 00 -> 2026-10-08 00:01:00  (CLI FirstFind: 00:01:00)
+
+[oid]
+attribute: uncfg_onu_detected
+entity_ref: entity.zte.gpon.device.onu
+oid_prefix: .1.3.6.1.4.1.3902.1082.500.2.2.11.2.1.12
+base_space: ONU-ID
+full_oid_template: .1.3.6.1.4.1.3902.1082.500.2.2.11.2.1.12.<ifIndexPON>.<n>
+syntax: Hex-STRING, 8 bytes (DateAndTime sin zona)
+status: verified_walk
+note: fecha y hora del primer hallazgo; las horas coinciden con la CLI (2 de 2).
+mib_name: UNRESOLVED
+
+==============================================================================
+# SECCIÓN F — ÚLTIMO HALLAZGO (columna .13)   [status: verified_walk]
+==============================================================================
+# Misma forma. Se actualiza en cada pasada (07 EA 0A 09 0D 39 12 00 = 2026-10-09 13:57:18; CLI 13:57:31
+# unos segundos después).
+
+[oid]
+attribute: uncfg_onu_last_found
+entity_ref: entity.zte.gpon.device.onu
+oid_prefix: .1.3.6.1.4.1.3902.1082.500.2.2.11.2.1.13
+base_space: ONU-ID
+full_oid_template: .1.3.6.1.4.1.3902.1082.500.2.2.11.2.1.13.<ifIndexPON>.<n>
+syntax: Hex-STRING, 8 bytes (DateAndTime sin zona)
+status: verified_walk
+note: fecha y hora del último hallazgo.
+mib_name: UNRESOLVED

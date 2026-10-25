@@ -1,0 +1,331 @@
+{
+  "entity_ref": "entity.zte.gpon.hardware.sensor",
+  "vendor": "ZTE",
+  "family": "ZXA10 C320",
+  "firmware": [
+    "2.0",
+    "2.1"
+  ],
+  "oids": [
+    {
+      "id": "oid.zte.gpon.sensor.zxr10_hardware_environ_alarm_table",
+      "oid": "1.3.6.1.4.1.3902.3.4.1",
+      "name": "zxr10HardwareEnvironAlarmTable",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "SEQUENCE OF Zxr10HardwareEnvironAlarmEntry",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": "A list of the environment alarm information.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.sensor.zxr10_hardware_environ_alarm_entry",
+      "oid": "1.3.6.1.4.1.3902.3.4.1.1",
+      "name": "zxr10HardwareEnvironAlarmEntry",
+      "mib_table": null,
+      "index": {
+        "type": "composite",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "Zxr10HardwareEnvironAlarmEntry",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": "An entry to the environ alarm information table.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.sensor.zxr10_hardware_environ_alarm_rack_no",
+      "oid": "1.3.6.1.4.1.3902.3.4.1.1.1",
+      "name": "zxr10HardwareEnvironAlarmRackNo",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "the Rack no .",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.sensor.zxr10_hardware_environ_alarm_slot_no",
+      "oid": "1.3.6.1.4.1.3902.3.4.1.1.3",
+      "name": "zxr10HardwareEnvironAlarmSlotNo",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "the slot no.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.sensor.zxr10_hardware_environ_alarm_code",
+      "oid": "1.3.6.1.4.1.3902.3.4.1.1.4",
+      "name": "zxr10HardwareEnvironAlarmCode",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "the environment alarm code .",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.sensor.zxr10_hardware_environ_alarm_level",
+      "oid": "1.3.6.1.4.1.3902.3.4.1.1.5",
+      "name": "zxr10HardwareEnvironAlarmLevel",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "the alarm level.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.sensor.zxr10_hardware_environ_alarm_time",
+      "oid": "1.3.6.1.4.1.3902.3.4.1.1.6",
+      "name": "zxr10HardwareEnvironAlarmTime",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "TimeTicks",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "the total running-time after the Router System up when the environment alarm occurred.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.sensor.zxr10_hardware_environ_alarm_status",
+      "oid": "1.3.6.1.4.1.3902.3.4.1.1.7",
+      "name": "zxr10HardwareEnvironAlarmStatus",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "Bool",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "the environ alarm status: (true or 1) RAISED or (false or 0) CLEARED .",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.sensor.zxr10_hardware_environ_alarm_type",
+      "oid": "1.3.6.1.4.1.3902.3.4.1.1.8",
+      "name": "zxr10HardwareEnvironAlarmType",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "AlarmType",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "the alarm type, here is environ.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.sensor.zxr10_hardware_environ_alarm_descrip",
+      "oid": "1.3.6.1.4.1.3902.3.4.1.1.9",
+      "name": "zxr10HardwareEnvironAlarmDescrip",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "DisplayString",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "the description string.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    }
+  ]
+}

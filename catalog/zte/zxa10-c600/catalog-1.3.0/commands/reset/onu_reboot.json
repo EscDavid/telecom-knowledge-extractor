@@ -1,0 +1,50 @@
+{
+  "id": "command.zte.gpon.onu.reset.onu_reboot",
+  "canonical_name": "reboot (pon-onu-mng)",
+  "vendor": "ZTE",
+  "family": "ZXA10 C600",
+  "firmware": [
+    "1.2.2"
+  ],
+  "technology": "gpon",
+  "category": "reset",
+  "cli_mode": "interface_config",
+  "cli_context": "pon-onu-mng gpon_onu-<idx>",
+  "entity_ref": "entity.zte.gpon.device.onu",
+  "description": "Reinicia la ONU: pide 'Confirm to reboot? [yes/no]:'; 'no' cancela; 'yes' es silencioso. En una ONU en línea: working -> LOS (~30 s) -> syncMib -> working, corte de ~45-55 s.",
+  "syntax": "reboot",
+  "parameters": [],
+  "output_fields": [],
+  "prerequisites": [
+    "entity.zte.gpon.device.onu"
+  ],
+  "related_commands": [
+    "command.zte.gpon.onu.reset.onu_reset",
+    "command.zte.gpon.onu.show.onu_state"
+  ],
+  "rollback": null,
+  "errors": [
+    {
+      "code": 99,
+      "meaning": "se envió un comando mientras había una confirmación pendiente",
+      "severity": "error",
+      "retry": false
+    }
+  ],
+  "notes": "Verificado en una ONU en línea de la C620 (2026-10-02).",
+  "evidence": "sintaxis obtenida solo con la ayuda '?' de la OLT (no ejecutada)",
+  "sources": [
+    {
+      "doc_type": "hardware_verification",
+      "pages": null,
+      "confidence": 0.6
+    }
+  ],
+  "confidence": {
+    "extraction": 0.6,
+    "correlation": 0.0,
+    "overall": 0.6
+  },
+  "status": "documented",
+  "conflicts": []
+}

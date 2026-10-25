@@ -1,0 +1,185 @@
+==============================================================================
+ONU SIN CONFIGURAR / AUTOFIND — tabla uncfg (leaves nuevos, no en MIB alguno)
+Verificado por walk real dirigido, NO por MIB (esta tabla no aparece en ningún
+MIB del repo; la única referencia previa era la línea de CLI "show gpon onu uncfg"
+sin OID asociado).
+==============================================================================
+
+# META
+doc_type: community
+vendor: ZTE
+families: ZXA10 C300, ZXA10 C320
+walk_sources: docs/walks/ZTE_C300_uncfg.txt, docs/walks/ZTE_C320_uncfg.txt
+extraction_date: 2026-07-06 (C300), 2026-07-28 (C320)
+provenance: walk dirigido real contra OLT "Unete Popular" (38.199.30.51, C300) y
+            OLT "Net max prueba" (190.14.224.10, C320), ONUs en estado autofind
+            detectadas al momento de cada captura.
+scope: tabla .1082.500.10.2.2.5.1 (ONU sin configurar/autofind). Reemplaza el OID
+       fabricado sin fuente que se había propuesto antes en un plan externo — ver
+       memoria uncfg-onu-fabricated-oid.
+
+# NOTA — TABLA CONFIRMADA EN C300 Y C320 (corrige una conclusión previa errónea)
+Primer intento contra C320 dio "No Such Object" en la raíz de la tabla, lo que se
+interpretó (mal) como "la tabla no existe en C320". Corregido: un GET puntual
+sobre una instancia calificada (`.5.1.2.<indice>.1`) da "No Such Instance", que
+confirma que el TIPO de objeto SÍ está registrado en el agente — el "No Such
+Object" del walk-desde-la-raíz solo indica tabla vacía en ese instante (0 ONUs en
+autofind), no ausencia estructural. Confirmado con datos reales el 2026-07-28
+(walk de control, ver docs/walks/ZTE_C320_uncfg.txt). Mismo comportamiento
+confirmado en C600 (tabla registrada, vacía en el momento probado) — ver memoria
+uncfg-onu-fabricated-oid.
+
+# NOTA — DISCREPANCIA DE INDICE SIN RESOLVER
+La fórmula ya documentada (index_space ONU-ID: suffix = 285278208 + slot*256 + pon)
+da slot=2/pon=4 y slot=2/pon=16 para los 2 sufijos observados (285278724 y
+285278736). Un reporte previo (no verificado por mí) afirmaba que la lectura
+física correcta era board/port "1/2" y "1/14" — ambos difieren de la fórmula por
+exactamente -2 en el campo pon. No lo resuelvo acá: si alguien confirma la
+lectura física real contra esas 2 ONUs, hay que decidir si hace falta un
+index_quirk (offset -2 en pon) específico de esta tabla, o si el reporte físico
+estaba mal. Mientras tanto se usa la fórmula ya validada sin quirk.
+
+# NOTA — FORMATO CRUDO OBSERVADO
+Cada valor trae un ".1" final después del sufijo ONU-ID (ej.
+".5.1.2.285278724.1"), constante en las 2 filas observadas. Se documenta como
+parte fija del full_oid_template; con solo 2 muestras no se puede descartar que
+sea un sub-índice que varíe con más de una ONU autofind por puerto.
+
+==============================================================================
+# SECCIÓN A — SERIAL (columna .2)   [status: verified_walk]
+==============================================================================
+# Hex-STRING de 8 bytes: 4 ASCII (vendor) + 4 HEX (id). Mismo formato ya usado
+# en onu_serial_number del espacio TYPE (community/status_serial_columns.txt).
+#   44 43 38 30 6A 1F DE 38 -> "DC80" + 6A1FDE38 -> "DC806A1FDE38"
+#   44 46 33 30 E6 64 F2 BE -> "DF30" + E664F2BE -> "DF30E664F2BE"
+
+[oid]
+attribute: uncfg_onu_serial
+entity_ref: entity.zte.gpon.device.onu
+oid_prefix: .1.3.6.1.4.1.3902.1082.500.10.2.2.5.1.2
+base_space: ONU-ID
+full_oid_template: .1.3.6.1.4.1.3902.1082.500.10.2.2.5.1.2.<onuID>.1
+syntax: Hex-STRING (4 bytes ASCII vendor + 4 bytes hex id = serial GPON)
+status: verified_walk
+note: serial de ONU en estado autofind/sin configurar. Confirmado con 2 ONUs
+      reales en docs/walks/ZTE_C300_uncfg.txt (2026-07-06).
+mib_name: UNRESOLVED
+
+==============================================================================
+# SECCIÓN B — MODELO (columna .7)   [status: verified_walk]
+==============================================================================
+# STRING simple. Vacío en una de las 2 ONUs observadas (vendor sin reportar
+# modelo, ej. chipsets Realtek genéricos) — campo opcional por diseño, no error.
+
+[oid]
+attribute: uncfg_onu_type
+entity_ref: entity.zte.gpon.device.onu
+oid_prefix: .1.3.6.1.4.1.3902.1082.500.10.2.2.5.1.7
+base_space: ONU-ID
+full_oid_template: .1.3.6.1.4.1.3902.1082.500.10.2.2.5.1.7.<onuID>.1
+syntax: STRING (puede venir vacío)
+status: verified_walk
+note: modelo declarado por la ONU en autofind. Vacío observado en 1/2 ONUs
+      reales (no confirmado el vendor exacto, pero el campo vacío es un valor
+      real del walk, no un fallo de lectura).
+mib_name: UNRESOLVED
+
+==============================================================================
+# SECCIÓN C — FIRMWARE (columna .8)   [status: verified_walk]
+==============================================================================
+[oid]
+attribute: uncfg_onu_firmware
+entity_ref: entity.zte.gpon.device.onu
+oid_prefix: .1.3.6.1.4.1.3902.1082.500.10.2.2.5.1.8
+base_space: ONU-ID
+full_oid_template: .1.3.6.1.4.1.3902.1082.500.10.2.2.5.1.8.<onuID>.1
+syntax: STRING (puede venir vacío)
+status: verified_walk
+note: firmware declarado por la ONU en autofind. Mismo patrón vacío/lleno que
+      uncfg_onu_type (correlaciona con la misma ONU vacía en ambos campos).
+mib_name: UNRESOLVED
+
+==============================================================================
+# SECCIÓN D — DETECTADO / TIMESTAMP (columna .9)   [status: verified_walk]
+==============================================================================
+# Hex-STRING de 8 bytes. Patrón consistente con SNMPv2-TC DateAndTime SIN
+# offset UTC (year:2 + month + day + hour + min + sec + deciseconds = 8 bytes):
+#   07 EA 07 1C 0A 2D 32 00 -> año 0x07EA=2026, mes 07, dia 28, 10:45:50
+#   07 EA 06 06 12 27 33 00 -> año 2026, mes 06, dia 06, 18:39:51
+# INFERIDO por forma del byte-pattern (coincide con el TC estandar), NO
+# confirmado contra un timestamp de referencia conocido -- verificar con mas
+# muestras o correlacionando contra la hora real de deteccion si se puede.
+
+[oid]
+attribute: uncfg_onu_detected
+entity_ref: entity.zte.gpon.device.onu
+oid_prefix: .1.3.6.1.4.1.3902.1082.500.10.2.2.5.1.9
+base_space: ONU-ID
+full_oid_template: .1.3.6.1.4.1.3902.1082.500.10.2.2.5.1.9.<onuID>.1
+syntax: Hex-STRING, 8 bytes, patron compatible con DateAndTime (RFC 2579) sin TZ
+status: verified_walk
+note: OID y presencia de dato confirmados por walk; la semantica exacta de
+      "fecha de deteccion" es INFERIDA por forma del byte-pattern, no 100%
+      confirmada contra una referencia externa.
+mib_name: UNRESOLVED
+
+==============================================================================
+# SECCIÓN E — ESTADO (columna .10)   [status: verified_walk, enum sin confirmar]
+==============================================================================
+[oid]
+attribute: uncfg_onu_status
+entity_ref: entity.zte.gpon.device.onu
+oid_prefix: .1.3.6.1.4.1.3902.1082.500.10.2.2.5.1.10
+base_space: ONU-ID
+full_oid_template: .1.3.6.1.4.1.3902.1082.500.10.2.2.5.1.10.<onuID>.1
+syntax: INTEGER
+status: verified_walk
+note: OID confirmado, pero solo se observo el valor 1 en las 2 ONUs de la
+      muestra (ambas en autofind). El enum completo (que otros valores existen,
+      ej. rechazada/pendiente) queda sin confirmar -- no se documenta un enum
+      inventado.
+mib_name: UNRESOLVED
+
+==============================================================================
+# SECCIÓN F — PASSWORD/LOID POR DEFECTO (columna .3)   [status: verified_walk]
+# Agregado 2026-07-30, mismo walk de control (docs/walks/ZTE_C300_uncfg.txt).
+==============================================================================
+# STRING. Constante "1234567890" en las 2 muestras observadas -- parece un
+# valor placeholder/por-defecto reportado durante el autofind antes de que se
+# configure un LOID/password real, no un dato variable por ONU. Con solo 2
+# muestras (ambas iguales) no se puede descartar que sea siempre constante.
+
+[oid]
+attribute: uncfg_default_password
+entity_ref: entity.zte.gpon.device.onu
+oid_prefix: .1.3.6.1.4.1.3902.1082.500.10.2.2.5.1.3
+base_space: ONU-ID
+full_oid_template: .1.3.6.1.4.1.3902.1082.500.10.2.2.5.1.3.<onuID>.1
+syntax: STRING
+status: verified_walk
+note: password/LOID por defecto reportado durante autofind. Valor constante
+      "1234567890" en las 2 muestras -- podria ser un placeholder fijo del
+      firmware, no confirmado con mas muestras.
+mib_name: UNRESOLVED
+
+==============================================================================
+# SECCIÓN G — MAC ADDRESS (columna .4)   [status: verified_walk]
+# Agregado 2026-07-30, mismo walk de control.
+==============================================================================
+# STRING. Vacio en 1 de las 2 ONUs observadas -- correlaciona con la misma ONU
+# que tiene uncfg_onu_type/uncfg_onu_firmware vacios (intercambio OMCI aun
+# incompleto en el momento de la captura), igual que en la Sección B.
+
+[oid]
+attribute: uncfg_mac_address
+entity_ref: entity.zte.gpon.device.onu
+oid_prefix: .1.3.6.1.4.1.3902.1082.500.10.2.2.5.1.4
+base_space: ONU-ID
+full_oid_template: .1.3.6.1.4.1.3902.1082.500.10.2.2.5.1.4.<onuID>.1
+syntax: STRING (puede venir vacio)
+status: verified_walk
+note: MAC address reportada por la ONU en autofind, si el intercambio OMCI ya
+      la entrego. Vacio observado en 1/2 ONUs reales, mismo patron que el
+      campo modelo/firmware de la misma ONU.
+mib_name: UNRESOLVED
+==============================================================================

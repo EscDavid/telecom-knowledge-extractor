@@ -1,0 +1,44 @@
+ONU interface:          gpon_onu-1/1/1:1
+  Name:                 ********
+  Splitter:             
+  Type:                 LATIC
+  Configured speed mode:auto
+  Current speed mode:   GPON
+  Admin state:          enable
+  Phase state:          working
+  Config state:         fail
+  Authentication mode:  sn
+  SN Bind:              enable with SN check
+  Serial number:        FAKE40FA9EDF
+  Password:             
+  Description:          ********
+  Vport mode:           manual
+  DBA Mode:             Hybrid
+  ONU Status:           enable
+  OMCI BW Profile:      704kbps
+  OMCC Encrypt:         disable
+  Line Profile:         N/A
+  Service Profile:      N/A
+  ONU Distance:         842m
+  Online Duration:      126h 47m 54s
+  FEC:                  disable
+  FEC actual mode:      disable
+  1PPS+ToD:             disable
+  Auto replace:         disable 
+  Multicast encryption: disable
+  Multicast encryption current state:N/A
+------------------------------------------
+       Authpass Time          OfflineTime             Cause
+   1   2026-09-26 07:39:14    0000-00-00 00:00:00              
+   2   0000-00-00 00:00:00    0000-00-00 00:00:00              
+   3   0000-00-00 00:00:00    0000-00-00 00:00:00              
+   4   0000-00-00 00:00:00    0000-00-00 00:00:00              
+   5   0000-00-00 00:00:00    0000-00-00 00:00:00              
+   6   0000-00-00 00:00:00    0000-00-00 00:00:00              
+   7   0000-00-00 00:00:00    0000-00-00 00:00:00              
+   8   0000-00-00 00:00:00    0000-00-00 00:00:00              
+   9   0000-00-00 00:00:00    0000-00-00 00:00:00              
+  10   0000-00-00 00:00:00    0000-00-00 00:00:00              
+
+
+ZXAN#

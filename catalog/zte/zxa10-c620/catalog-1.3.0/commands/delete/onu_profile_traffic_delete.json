@@ -1,0 +1,58 @@
+{
+  "id": "command.zte.gpon.global.delete.onu_profile_traffic_delete",
+  "canonical_name": "no onu profile traffic",
+  "vendor": "ZTE",
+  "family": "ZXA10 C620",
+  "firmware": [
+    "1.2.2"
+  ],
+  "technology": "gpon",
+  "category": "delete",
+  "cli_mode": "pon_config",
+  "cli_context": "gpon",
+  "entity_ref": "entity.zte.gpon.logical.onu_traffic_profile",
+  "description": "Borra un perfil de tráfico de ONU.",
+  "syntax": "no onu profile traffic <WORD>",
+  "parameters": [
+    {
+      "name": "WORD",
+      "type": "string",
+      "pattern": null,
+      "range": null,
+      "required": true,
+      "description": "",
+      "example": null
+    }
+  ],
+  "output_fields": [],
+  "prerequisites": [],
+  "related_commands": [
+    "command.zte.gpon.global.create.onu_profile_traffic_create",
+    "command.zte.gpon.global.show.onu_profile_traffic"
+  ],
+  "rollback": null,
+  "errors": [
+    {
+      "code": 90,
+      "meaning": "el 'no …' no tenía nada que borrar (inocuo en rollback)",
+      "severity": "info",
+      "retry": false
+    }
+  ],
+  "notes": null,
+  "evidence": "ejecutado y verificado en la OLT el 2026-10-02",
+  "sources": [
+    {
+      "doc_type": "hardware_verification",
+      "pages": null,
+      "confidence": 0.95
+    }
+  ],
+  "confidence": {
+    "extraction": 0.95,
+    "correlation": 0.0,
+    "overall": 0.95
+  },
+  "status": "verified",
+  "conflicts": []
+}

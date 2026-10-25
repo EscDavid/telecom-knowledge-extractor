@@ -1,0 +1,86 @@
+{
+  "id": "command.zte.gpon.onu.modify.mng_veip",
+  "canonical_name": "veip",
+  "vendor": "ZTE",
+  "family": "ZXA10 C600",
+  "firmware": [
+    "1.2.2"
+  ],
+  "technology": "gpon",
+  "category": "modify",
+  "cli_mode": "interface_config",
+  "cli_context": "pon-onu-mng gpon_onu-<idx>",
+  "entity_ref": "entity.zte.gpon.device.onu",
+  "description": "Interfaz VEIP de la ONU.",
+  "syntax": "veip <1-255> [state {lock|unlock}] [port <1-65535> {tcp|udp}] [inter-domain <WORD>]",
+  "parameters": [
+    {
+      "name": "veip",
+      "type": "integer",
+      "pattern": null,
+      "range": "1-255",
+      "required": true,
+      "description": "",
+      "example": null
+    },
+    {
+      "name": "state",
+      "type": "enum",
+      "pattern": null,
+      "range": "lock|unlock",
+      "required": false,
+      "description": "",
+      "example": null
+    },
+    {
+      "name": "port",
+      "type": "integer",
+      "pattern": null,
+      "range": "1-65535",
+      "required": false,
+      "description": "",
+      "example": null
+    },
+    {
+      "name": "1-65535",
+      "type": "enum",
+      "pattern": null,
+      "range": "tcp|udp",
+      "required": false,
+      "description": "",
+      "example": null
+    },
+    {
+      "name": "WORD",
+      "type": "string",
+      "pattern": null,
+      "range": null,
+      "required": false,
+      "description": "",
+      "example": null
+    }
+  ],
+  "output_fields": [],
+  "prerequisites": [
+    "entity.zte.gpon.device.onu"
+  ],
+  "related_commands": [],
+  "rollback": null,
+  "errors": [],
+  "notes": null,
+  "evidence": "visto en la configuración/bitácora real de la OLT (ejecutado por SmartOLT)",
+  "sources": [
+    {
+      "doc_type": "hardware_verification",
+      "pages": null,
+      "confidence": 0.85
+    }
+  ],
+  "confidence": {
+    "extraction": 0.85,
+    "correlation": 0.0,
+    "overall": 0.85
+  },
+  "status": "observed",
+  "conflicts": []
+}

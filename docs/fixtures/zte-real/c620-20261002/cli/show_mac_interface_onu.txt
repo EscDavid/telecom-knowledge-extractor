@@ -1,0 +1,8 @@
+show mac interface gpon_onu-1/1/1:1
+Total mac address : 1
+
+Mac address      Vlan  Type      Port	                  Vc                      
+           
+-------------------------------------------------------------------------------
+0200.4c50c732   101    Dynamic   vport-1/1/1.1:1                  
+ZXAN#

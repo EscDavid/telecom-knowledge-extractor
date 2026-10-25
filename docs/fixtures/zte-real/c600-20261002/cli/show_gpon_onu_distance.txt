@@ -1,0 +1,5 @@
+show gpon onu distance gpon_onu-1/1/1:1
+    Eqd (bit)       Distance(m)
+.......................................
+261044              528
+ZXAN#

@@ -1,0 +1,648 @@
+{
+ "missing": [
+  {
+   "name": "notificationFlowID",
+   "oid": "1.3.6.1.4.1.3902.3.302.6.1.1",
+   "c620_rows": 5024,
+   "c600_rows": 5000,
+   "description": "Notification Index."
+  },
+  {
+   "name": "notificationAlmCode",
+   "oid": "1.3.6.1.4.1.3902.3.302.6.1.2",
+   "c620_rows": 5198,
+   "c600_rows": 5000,
+   "description": "Notification alarm code."
+  },
+  {
+   "name": "notificationAlmType",
+   "oid": "1.3.6.1.4.1.3902.3.302.6.1.3",
+   "c620_rows": 5015,
+   "c600_rows": 5000,
+   "description": "Notification alarm type."
+  },
+  {
+   "name": "notificationAlmLevel",
+   "oid": "1.3.6.1.4.1.3902.3.302.6.1.4",
+   "c620_rows": 5004,
+   "c600_rows": 5000,
+   "description": "Notification alarm level."
+  },
+  {
+   "name": "notificationAlmOccuredTime",
+   "oid": "1.3.6.1.4.1.3902.3.302.6.1.5",
+   "c620_rows": 5008,
+   "c600_rows": 5000,
+   "description": "Notification occured time, the time is relative to 1970-01-01 00:00:00."
+  },
+  {
+   "name": "notificationTPIDType",
+   "oid": "1.3.6.1.4.1.3902.3.302.6.1.6",
+   "c620_rows": 5014,
+   "c600_rows": 5001,
+   "description": "Notification check point type."
+  },
+  {
+   "name": "notificationTPID",
+   "oid": "1.3.6.1.4.1.3902.3.302.6.1.7",
+   "c620_rows": 5013,
+   "c600_rows": 5000,
+   "description": "Notification check point."
+  },
+  {
+   "name": "notificationAlmParaType",
+   "oid": "1.3.6.1.4.1.3902.3.302.6.1.8",
+   "c620_rows": 5009,
+   "c600_rows": 5000,
+   "description": "Notification alarm paratype, the alarm is sent by."
+  },
+  {
+   "name": "notificationAlmParaValue",
+   "oid": "1.3.6.1.4.1.3902.3.302.6.1.9",
+   "c620_rows": 5037,
+   "c600_rows": 5000,
+   "description": "Notification alarm paravalue, the alarm is sent by."
+  },
+  {
+   "name": "notificationAlmDescription",
+   "oid": "1.3.6.1.4.1.3902.3.302.6.1.10",
+   "c620_rows": 5007,
+   "c600_rows": 5000,
+   "description": "Notification alarm description."
+  },
+  {
+   "name": "notificationAlmStdCode",
+   "oid": "1.3.6.1.4.1.3902.3.302.6.1.11",
+   "c620_rows": 5007,
+   "c600_rows": 5000,
+   "description": "Notification alarm standard code."
+  },
+  {
+   "name": "notificationAlmComment",
+   "oid": "1.3.6.1.4.1.3902.3.302.6.1.12",
+   "c620_rows": 5013,
+   "c600_rows": 5000,
+   "description": "Notification alarm comment."
+  },
+  {
+   "name": "notificationAlmNetID",
+   "oid": "1.3.6.1.4.1.3902.3.302.6.1.13",
+   "c620_rows": 5029,
+   "c600_rows": 5000,
+   "description": "Notification alarm netID."
+  },
+  {
+   "name": "notificationTimestamp",
+   "oid": "1.3.6.1.4.1.3902.3.302.6.1.14",
+   "c620_rows": 5013,
+   "c600_rows": 5000,
+   "description": "Notification timestamp, corresponding to time, can fix an alarm with serial number when the device restarts."
+  },
+  {
+   "name": "notificationTPIDLen",
+   "oid": "1.3.6.1.4.1.3902.3.302.6.1.15",
+   "c620_rows": 5015,
+   "c600_rows": 5000,
+   "description": "The length of notification check point."
+  },
+  {
+   "name": "notificationAlmOccuredMs",
+   "oid": "1.3.6.1.4.1.3902.3.302.6.1.16",
+   "c620_rows": 5016,
+   "c600_rows": 5000,
+   "description": "Notification occured millisecond."
+  },
+  {
+   "name": "notificationNeedConfirm",
+   "oid": "1.3.6.1.4.1.3902.3.302.6.1.17",
+   "c620_rows": 5005,
+   "c600_rows": 5000,
+   "description": "If the notification need confirm."
+  },
+  {
+   "name": "hisAlarmFlowID",
+   "oid": "1.3.6.1.4.1.3902.3.302.2.1.1",
+   "c620_rows": 361,
+   "c600_rows": 1785,
+   "description": "History alarm Index."
+  },
+  {
+   "name": "hisAlarmCode",
+   "oid": "1.3.6.1.4.1.3902.3.302.2.1.2",
+   "c620_rows": 361,
+   "c600_rows": 1785,
+   "description": "History alarm code."
+  },
+  {
+   "name": "hisAlarmClass",
+   "oid": "1.3.6.1.4.1.3902.3.302.2.1.3",
+   "c620_rows": 361,
+   "c600_rows": 1785,
+   "description": "History alarm class."
+  },
+  {
+   "name": "hisAlarmType",
+   "oid": "1.3.6.1.4.1.3902.3.302.2.1.4",
+   "c620_rows": 361,
+   "c600_rows": 1785,
+   "description": "History alarm type, 0:at-Communicationsalarm, 1:at-Qosalarm, 2:at-Equipmentalarm, 3:at-Processingerroralarm, 4:at-Environmentalalarm."
+  },
+  {
+   "name": "hisAlarmLevel",
+   "oid": "1.3.6.1.4.1.3902.3.302.2.1.5",
+   "c620_rows": 361,
+   "c600_rows": 1785,
+   "description": "History alarm level."
+  },
+  {
+   "name": "hisAlarmStatus",
+   "oid": "1.3.6.1.4.1.3902.3.302.2.1.6",
+   "c620_rows": 361,
+   "c600_rows": 1785,
+   "description": "History alarm status."
+  },
+  {
+   "name": "hisAlarmOccuredTime",
+   "oid": "1.3.6.1.4.1.3902.3.302.2.1.7",
+   "c620_rows": 361,
+   "c600_rows": 1785,
+   "description": "History alarm occured time, the time is relative to 1970-01-01 00:00:00."
+  },
+  {
+   "name": "hisAlarmDisappearedTime",
+   "oid": "1.3.6.1.4.1.3902.3.302.2.1.8",
+   "c620_rows": 361,
+   "c600_rows": 1785,
+   "description": "History alarm disappeared time, the time is relative to 1970-01-01 00:00:00."
+  },
+  {
+   "name": "hisAlarmTPIDType",
+   "oid": "1.3.6.1.4.1.3902.3.302.2.1.9",
+   "c620_rows": 361,
+   "c600_rows": 1785,
+   "description": "History alarm check point type."
+  },
+  {
+   "name": "hisAlarmTPID",
+   "oid": "1.3.6.1.4.1.3902.3.302.2.1.10",
+   "c620_rows": 361,
+   "c600_rows": 1785,
+   "description": "History alarm check point."
+  },
+  {
+   "name": "hisAlarmParaType",
+   "oid": "1.3.6.1.4.1.3902.3.302.2.1.11",
+   "c620_rows": 361,
+   "c600_rows": 1785,
+   "description": "History alarm paratype, the alarm is sent by."
+  },
+  {
+   "name": "hisAlarmParaValue",
+   "oid": "1.3.6.1.4.1.3902.3.302.2.1.12",
+   "c620_rows": 361,
+   "c600_rows": 1785,
+   "description": "History alarm paravalue, the alarm is sent by."
+  },
+  {
+   "name": "hisAlarmDescription",
+   "oid": "1.3.6.1.4.1.3902.3.302.2.1.13",
+   "c620_rows": 361,
+   "c600_rows": 1785,
+   "description": "History alarm description."
+  },
+  {
+   "name": "hisAlarmStdCode",
+   "oid": "1.3.6.1.4.1.3902.3.302.2.1.14",
+   "c620_rows": 361,
+   "c600_rows": 1785,
+   "description": "History alarm standard code."
+  },
+  {
+   "name": "hisAlarmComment",
+   "oid": "1.3.6.1.4.1.3902.3.302.2.1.15",
+   "c620_rows": 361,
+   "c600_rows": 1785,
+   "description": "History alarm comment."
+  },
+  {
+   "name": "hisAlarmNetID",
+   "oid": "1.3.6.1.4.1.3902.3.302.2.1.16",
+   "c620_rows": 361,
+   "c600_rows": 1786,
+   "description": "History alarm NetID."
+  },
+  {
+   "name": "hisAlarmGlobalFlowID",
+   "oid": "1.3.6.1.4.1.3902.3.302.2.1.17",
+   "c620_rows": 361,
+   "c600_rows": 1787,
+   "description": "History alarm global index."
+  },
+  {
+   "name": "hisAlarmUpdatedTime",
+   "oid": "1.3.6.1.4.1.3902.3.302.2.1.18",
+   "c620_rows": 361,
+   "c600_rows": 1787,
+   "description": "History alarm Updated time, the time is relative to 1970-01-01 00:00:00."
+  },
+  {
+   "name": "hisAlarmThAlmPeriod",
+   "oid": "1.3.6.1.4.1.3902.3.302.2.1.19",
+   "c620_rows": 361,
+   "c600_rows": 1787,
+   "description": "History alarm period."
+  },
+  {
+   "name": "hisAlarmThAlmType",
+   "oid": "1.3.6.1.4.1.3902.3.302.2.1.20",
+   "c620_rows": 361,
+   "c600_rows": 1787,
+   "description": "History alarm threshold crossing type."
+  },
+  {
+   "name": "hisAlarmThPerfValue",
+   "oid": "1.3.6.1.4.1.3902.3.302.2.1.21",
+   "c620_rows": 361,
+   "c600_rows": 1787,
+   "description": "History alarm performance value."
+  },
+  {
+   "name": "hisAlarmReturnMode",
+   "oid": "1.3.6.1.4.1.3902.3.302.2.1.22",
+   "c620_rows": 361,
+   "c600_rows": 1787,
+   "description": "History alarm revert type."
+  },
+  {
+   "name": "hisAlarmProtectType",
+   "oid": "1.3.6.1.4.1.3902.3.302.2.1.23",
+   "c620_rows": 361,
+   "c600_rows": 1787,
+   "description": "History alarm protected type."
+  },
+  {
+   "name": "hisAlarmSwitchReason",
+   "oid": "1.3.6.1.4.1.3902.3.302.2.1.24",
+   "c620_rows": 361,
+   "c600_rows": 1787,
+   "description": "History alarm switch reason."
+  },
+  {
+   "name": "hisAlarmUlPrtGroupWrkStat",
+   "oid": "1.3.6.1.4.1.3902.3.302.2.1.25",
+   "c620_rows": 361,
+   "c600_rows": 1787,
+   "description": "History alarm protected group work status."
+  },
+  {
+   "name": "hisAlarmTPIDTypeSwitchFrom",
+   "oid": "1.3.6.1.4.1.3902.3.302.2.1.26",
+   "c620_rows": 361,
+   "c600_rows": 1787,
+   "description": "Which check point type switch from."
+  },
+  {
+   "name": "hisAlarmTPIDSwitchFrom",
+   "oid": "1.3.6.1.4.1.3902.3.302.2.1.27",
+   "c620_rows": 361,
+   "c600_rows": 1787,
+   "description": "Which check point switch from."
+  },
+  {
+   "name": "hisAlarmTPIDTypeSwitchTo",
+   "oid": "1.3.6.1.4.1.3902.3.302.2.1.28",
+   "c620_rows": 361,
+   "c600_rows": 1787,
+   "description": "Which check point type switch to."
+  },
+  {
+   "name": "hisAlarmTPIDSwitchTo",
+   "oid": "1.3.6.1.4.1.3902.3.302.2.1.29",
+   "c620_rows": 361,
+   "c600_rows": 1787,
+   "description": "Which check point switch to."
+  },
+  {
+   "name": "hisAlarmTimestamp",
+   "oid": "1.3.6.1.4.1.3902.3.302.2.1.30",
+   "c620_rows": 361,
+   "c600_rows": 1787,
+   "description": "History alarm timestamp, corresponding to time, can fix an alarm with serial number when the device restarts."
+  },
+  {
+   "name": "hisAlarmTPIDLen",
+   "oid": "1.3.6.1.4.1.3902.3.302.2.1.31",
+   "c620_rows": 361,
+   "c600_rows": 1787,
+   "description": "The length of history alarm check point."
+  },
+  {
+   "name": "hisAlarmTPIDLenSwitchFrom",
+   "oid": "1.3.6.1.4.1.3902.3.302.2.1.32",
+   "c620_rows": 361,
+   "c600_rows": 1787,
+   "description": "The length of check point which switch from."
+  },
+  {
+   "name": "hisAlarmTPIDLenSwitchTo",
+   "oid": "1.3.6.1.4.1.3902.3.302.2.1.33",
+   "c620_rows": 361,
+   "c600_rows": 1787,
+   "description": "The length of check point which switch to."
+  },
+  {
+   "name": "hisAlarmOccuredMs",
+   "oid": "1.3.6.1.4.1.3902.3.302.2.1.34",
+   "c620_rows": 361,
+   "c600_rows": 1787,
+   "description": "History alarm occured millisecond."
+  },
+  {
+   "name": "hisAlarmUpdatedMs",
+   "oid": "1.3.6.1.4.1.3902.3.302.2.1.35",
+   "c620_rows": 361,
+   "c600_rows": 1787,
+   "description": "History alarm Updated millisecond."
+  },
+  {
+   "name": "hisAlarmDisappearedMs",
+   "oid": "1.3.6.1.4.1.3902.3.302.2.1.36",
+   "c620_rows": 361,
+   "c600_rows": 1787,
+   "description": "History alarm disappeared millisecond."
+  },
+  {
+   "name": "curAlarmFlowID",
+   "oid": "1.3.6.1.4.1.3902.3.302.1.1.1",
+   "c620_rows": 25,
+   "c600_rows": 20,
+   "description": "Current alarm Index."
+  },
+  {
+   "name": "curAlarmCode",
+   "oid": "1.3.6.1.4.1.3902.3.302.1.1.2",
+   "c620_rows": 25,
+   "c600_rows": 20,
+   "description": "Current alarm code."
+  },
+  {
+   "name": "curAlarmClass",
+   "oid": "1.3.6.1.4.1.3902.3.302.1.1.3",
+   "c620_rows": 25,
+   "c600_rows": 20,
+   "description": "Current alarm class."
+  },
+  {
+   "name": "curAlarmType",
+   "oid": "1.3.6.1.4.1.3902.3.302.1.1.4",
+   "c620_rows": 25,
+   "c600_rows": 20,
+   "description": "Current alarm type."
+  },
+  {
+   "name": "curAlarmLevel",
+   "oid": "1.3.6.1.4.1.3902.3.302.1.1.5",
+   "c620_rows": 25,
+   "c600_rows": 20,
+   "description": "Current alarm level."
+  },
+  {
+   "name": "curAlarmStatus",
+   "oid": "1.3.6.1.4.1.3902.3.302.1.1.6",
+   "c620_rows": 25,
+   "c600_rows": 20,
+   "description": "Current alarm status."
+  },
+  {
+   "name": "curAlarmOccuredTime",
+   "oid": "1.3.6.1.4.1.3902.3.302.1.1.7",
+   "c620_rows": 25,
+   "c600_rows": 20,
+   "description": "Current alarm occured time, the time is relative to 1970-01-01 00:00:00."
+  },
+  {
+   "name": "curAlarmDisappearedTime",
+   "oid": "1.3.6.1.4.1.3902.3.302.1.1.8",
+   "c620_rows": 25,
+   "c600_rows": 20,
+   "description": "Current alarm disappeared time, the time is relative to 1970-01-01 00:00:00."
+  },
+  {
+   "name": "curAlarmTPIDType",
+   "oid": "1.3.6.1.4.1.3902.3.302.1.1.9",
+   "c620_rows": 25,
+   "c600_rows": 20,
+   "description": "Current alarm check point type."
+  },
+  {
+   "name": "curAlarmTPID",
+   "oid": "1.3.6.1.4.1.3902.3.302.1.1.10",
+   "c620_rows": 25,
+   "c600_rows": 20,
+   "description": "Current alarm check point."
+  },
+  {
+   "name": "curAlarmParaType",
+   "oid": "1.3.6.1.4.1.3902.3.302.1.1.11",
+   "c620_rows": 25,
+   "c600_rows": 20,
+   "description": "Current alarm paratype, the alarm is sent by."
+  },
+  {
+   "name": "curAlarmParaValue",
+   "oid": "1.3.6.1.4.1.3902.3.302.1.1.12",
+   "c620_rows": 25,
+   "c600_rows": 20,
+   "description": "Current alarm paravalue, the alarm is sent by."
+  },
+  {
+   "name": "curAlarmDescription",
+   "oid": "1.3.6.1.4.1.3902.3.302.1.1.13",
+   "c620_rows": 25,
+   "c600_rows": 20,
+   "description": "Current alarm description."
+  },
+  {
+   "name": "curAlarmStdCode",
+   "oid": "1.3.6.1.4.1.3902.3.302.1.1.14",
+   "c620_rows": 25,
+   "c600_rows": 20,
+   "description": "Current alarm standard code."
+  },
+  {
+   "name": "curAlarmComment",
+   "oid": "1.3.6.1.4.1.3902.3.302.1.1.15",
+   "c620_rows": 25,
+   "c600_rows": 20,
+   "description": "Current alarm comment."
+  },
+  {
+   "name": "curAlarmNetID",
+   "oid": "1.3.6.1.4.1.3902.3.302.1.1.16",
+   "c620_rows": 25,
+   "c600_rows": 20,
+   "description": "Current alarm NetID."
+  },
+  {
+   "name": "curAlarmGlobalFlowID",
+   "oid": "1.3.6.1.4.1.3902.3.302.1.1.17",
+   "c620_rows": 25,
+   "c600_rows": 20,
+   "description": "Current alarm global index."
+  },
+  {
+   "name": "curAlarmUpdatedTime",
+   "oid": "1.3.6.1.4.1.3902.3.302.1.1.18",
+   "c620_rows": 25,
+   "c600_rows": 20,
+   "description": "Current alarm Updated time, the time is relative to 1970-01-01 00:00:00."
+  },
+  {
+   "name": "curAlarmThAlmPeriod",
+   "oid": "1.3.6.1.4.1.3902.3.302.1.1.19",
+   "c620_rows": 25,
+   "c600_rows": 20,
+   "description": "Current alarm period."
+  },
+  {
+   "name": "curAlarmThAlmType",
+   "oid": "1.3.6.1.4.1.3902.3.302.1.1.20",
+   "c620_rows": 25,
+   "c600_rows": 20,
+   "description": "Current alarm threshold crossing type."
+  },
+  {
+   "name": "curAlarmThPerfValue",
+   "oid": "1.3.6.1.4.1.3902.3.302.1.1.21",
+   "c620_rows": 25,
+   "c600_rows": 20,
+   "description": "Current alarm performance value."
+  },
+  {
+   "name": "curAlarmReturnMode",
+   "oid": "1.3.6.1.4.1.3902.3.302.1.1.22",
+   "c620_rows": 25,
+   "c600_rows": 20,
+   "description": "Current alarm revert type."
+  },
+  {
+   "name": "curAlarmProtectType",
+   "oid": "1.3.6.1.4.1.3902.3.302.1.1.23",
+   "c620_rows": 25,
+   "c600_rows": 20,
+   "description": "Current alarm protected type."
+  },
+  {
+   "name": "curAlarmSwitchReason",
+   "oid": "1.3.6.1.4.1.3902.3.302.1.1.24",
+   "c620_rows": 25,
+   "c600_rows": 20,
+   "description": "Current alarm switch reason."
+  },
+  {
+   "name": "curAlarmUlPrtGroupWrkStat",
+   "oid": "1.3.6.1.4.1.3902.3.302.1.1.25",
+   "c620_rows": 25,
+   "c600_rows": 20,
+   "description": "Current alarm protected group work status."
+  },
+  {
+   "name": "curAlarmTPIDTypeSwitchFrom",
+   "oid": "1.3.6.1.4.1.3902.3.302.1.1.26",
+   "c620_rows": 25,
+   "c600_rows": 20,
+   "description": "Which check point type switch from."
+  },
+  {
+   "name": "curAlarmTPIDSwitchFrom",
+   "oid": "1.3.6.1.4.1.3902.3.302.1.1.27",
+   "c620_rows": 25,
+   "c600_rows": 20,
+   "description": "Which check point switch from."
+  },
+  {
+   "name": "curAlarmTPIDTypeSwitchTo",
+   "oid": "1.3.6.1.4.1.3902.3.302.1.1.28",
+   "c620_rows": 25,
+   "c600_rows": 20,
+   "description": "Which check point type switch to."
+  },
+  {
+   "name": "curAlarmTPIDSwitchTo",
+   "oid": "1.3.6.1.4.1.3902.3.302.1.1.29",
+   "c620_rows": 25,
+   "c600_rows": 20,
+   "description": "Which check point switch to."
+  },
+  {
+   "name": "curAlarmTimestamp",
+   "oid": "1.3.6.1.4.1.3902.3.302.1.1.30",
+   "c620_rows": 25,
+   "c600_rows": 20,
+   "description": "Current alarm timestamp, corresponding to time, can fix an alarm with serial number when the device restarts."
+  },
+  {
+   "name": "curAlarmTPIDLen",
+   "oid": "1.3.6.1.4.1.3902.3.302.1.1.31",
+   "c620_rows": 25,
+   "c600_rows": 20,
+   "description": "The length of current alarm check point."
+  },
+  {
+   "name": "curAlarmTPIDLenSwitchFrom",
+   "oid": "1.3.6.1.4.1.3902.3.302.1.1.32",
+   "c620_rows": 25,
+   "c600_rows": 20,
+   "description": "The length of check point which switch from."
+  },
+  {
+   "name": "curAlarmTPIDLenSwitchTo",
+   "oid": "1.3.6.1.4.1.3902.3.302.1.1.33",
+   "c620_rows": 25,
+   "c600_rows": 20,
+   "description": "The length of check point which switch to."
+  },
+  {
+   "name": "curAlarmOccuredMs",
+   "oid": "1.3.6.1.4.1.3902.3.302.1.1.34",
+   "c620_rows": 25,
+   "c600_rows": 20,
+   "description": "Current alarm occured millisecond."
+  },
+  {
+   "name": "curAlarmUpdatedMs",
+   "oid": "1.3.6.1.4.1.3902.3.302.1.1.35",
+   "c620_rows": 25,
+   "c600_rows": 20,
+   "description": "Current alarm Updated millisecond."
+  },
+  {
+   "name": "curAlarmDisappearedMs",
+   "oid": "1.3.6.1.4.1.3902.3.302.1.1.36",
+   "c620_rows": 25,
+   "c600_rows": 20,
+   "description": "Current alarm disappeared millisecond."
+  },
+  {
+   "name": "curAlarmNeedConfirm",
+   "oid": "1.3.6.1.4.1.3902.3.302.1.1.37",
+   "c620_rows": 25,
+   "c600_rows": 20,
+   "description": "If the alarm need confirm."
+  },
+  {
+   "name": "alarmClearGlobalFlowID",
+   "oid": "1.3.6.1.4.1.3902.3.302.13.1.1",
+   "c620_rows": 25,
+   "c600_rows": 18,
+   "description": "Alarm flowid."
+  },
+  {
+   "name": "alarmHeartBeatType",
+   "oid": "1.3.6.1.4.1.3902.3.302.9.1.1",
+   "c620_rows": 5,
+   "c600_rows": 5,
+   "description": "Alarm heart-beat type. 0:snmp, 1:syslog, 2:ftp, 3:console, 4:all."
+  }
+ ]
+}

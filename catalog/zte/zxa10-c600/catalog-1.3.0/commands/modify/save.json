@@ -1,0 +1,40 @@
+{
+  "id": "command.zte.gpon.global.modify.save",
+  "canonical_name": "write",
+  "vendor": "ZTE",
+  "family": "ZXA10 C600",
+  "firmware": [
+    "1.2.2"
+  ],
+  "technology": "gpon",
+  "category": "modify",
+  "cli_mode": "privileged_exec",
+  "cli_context": null,
+  "entity_ref": null,
+  "description": "Guarda la configuración en el arranque (solo en modo exec, tras 'end'; en config da Invalid input). Responde '......[OK].'.",
+  "syntax": "write",
+  "parameters": [],
+  "output_fields": [],
+  "prerequisites": [],
+  "related_commands": [
+    "command.zte.gpon.global.modify.config_enter"
+  ],
+  "rollback": null,
+  "errors": [],
+  "notes": "Ejecutado tras verificar que la configuración era idéntica a la inicial.",
+  "evidence": "sintaxis obtenida solo con la ayuda '?' de la OLT (no ejecutada)",
+  "sources": [
+    {
+      "doc_type": "hardware_verification",
+      "pages": null,
+      "confidence": 0.6
+    }
+  ],
+  "confidence": {
+    "extraction": 0.6,
+    "correlation": 0.0,
+    "overall": 0.6
+  },
+  "status": "documented",
+  "conflicts": []
+}

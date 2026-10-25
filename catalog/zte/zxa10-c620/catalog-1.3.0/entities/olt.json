@@ -1,0 +1,159 @@
+{
+  "id": "entity.zte.gpon.device.olt",
+  "canonical_name": "OLT",
+  "vendor": "ZTE",
+  "family": "ZXA10 C620",
+  "firmware": [
+    "1.2.2"
+  ],
+  "technology": "gpon",
+  "type": "device",
+  "description": "y se añade `show version` (`observed`): los ejecutó el importador en 5 OLT clásicas (`reports/hallazgos-cli-snmp-zte-2026-10-09",
+  "is_critical": true,
+  "aliases": [
+    {
+      "name": "OLT",
+      "source": "product_catalog",
+      "firmware_scope": "all"
+    }
+  ],
+  "attributes": [
+    {
+      "name": "sys_descr",
+      "type": "string",
+      "range": null,
+      "required": false,
+      "source": "walk"
+    },
+    {
+      "name": "sys_object_id",
+      "type": "string",
+      "range": null,
+      "required": false,
+      "source": "walk"
+    },
+    {
+      "name": "sys_uptime",
+      "type": "string",
+      "range": null,
+      "required": false,
+      "source": "walk"
+    },
+    {
+      "name": "sys_name",
+      "type": "string",
+      "range": null,
+      "required": false,
+      "source": "walk"
+    },
+    {
+      "name": "traffic_profile_cir",
+      "type": "integer",
+      "range": null,
+      "required": false,
+      "source": "walk"
+    },
+    {
+      "name": "traffic_profile_cbs",
+      "type": "integer",
+      "range": null,
+      "required": false,
+      "source": "walk"
+    },
+    {
+      "name": "traffic_profile_pir",
+      "type": "integer",
+      "range": null,
+      "required": false,
+      "source": "walk"
+    },
+    {
+      "name": "traffic_profile_pbs",
+      "type": "integer",
+      "range": null,
+      "required": false,
+      "source": "walk"
+    },
+    {
+      "name": "traffic_profile_type",
+      "type": "integer",
+      "range": null,
+      "required": false,
+      "source": "walk"
+    },
+    {
+      "name": "traffic_profile_row_status",
+      "type": "integer",
+      "range": null,
+      "required": false,
+      "source": "walk"
+    }
+  ],
+  "sources": [
+    {
+      "doc_type": "product_catalog",
+      "pages": null,
+      "confidence": 0.07
+    },
+    {
+      "doc_type": "product_catalog",
+      "pages": null,
+      "confidence": 0.07
+    },
+    {
+      "doc_type": "product_catalog",
+      "pages": null,
+      "confidence": 0.07
+    },
+    {
+      "doc_type": "product_catalog",
+      "pages": null,
+      "confidence": 0.07
+    },
+    {
+      "doc_type": "product_catalog",
+      "pages": null,
+      "confidence": 0.07
+    },
+    {
+      "doc_type": "product_catalog",
+      "pages": null,
+      "confidence": 0.07
+    },
+    {
+      "doc_type": "product_catalog",
+      "pages": null,
+      "confidence": 0.07
+    },
+    {
+      "doc_type": "product_catalog",
+      "pages": null,
+      "confidence": 0.07
+    },
+    {
+      "doc_type": "product_catalog",
+      "pages": null,
+      "confidence": 0.07
+    },
+    {
+      "doc_type": "mib_file",
+      "pages": null,
+      "confidence": 0.3
+    }
+  ],
+  "confidence": {
+    "extraction": 0.95,
+    "correlation": 0.75,
+    "overall": 1.0
+  },
+  "status": "verified",
+  "lifecycle": {
+    "introduced_in": "2.0",
+    "deprecated_in": null,
+    "removed_in": null,
+    "status": "introduced",
+    "replacement": null
+  },
+  "relations": [],
+  "conflicts": []
+}

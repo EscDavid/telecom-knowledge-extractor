@@ -1,0 +1,55 @@
+{
+  "id": "command.zte.gpon.global.show.onu_profile_traffic",
+  "canonical_name": "show gpon onu profile traffic",
+  "vendor": "ZTE",
+  "family": "ZXA10 C620",
+  "firmware": [
+    "1.2.2"
+  ],
+  "technology": "gpon",
+  "category": "show",
+  "cli_mode": "privileged_exec",
+  "cli_context": null,
+  "entity_ref": "entity.zte.gpon.logical.onu_traffic_profile",
+  "description": "Perfiles de tráfico de ONU (para gemport/switchport traffic-limit): SIR, PIR, CBS, PBS, colour mode, meter type. Vacío si no hay ninguno (%Error 224040).",
+  "syntax": "show gpon onu profile traffic [<WORD>]",
+  "parameters": [
+    {
+      "name": "WORD",
+      "type": "string",
+      "pattern": null,
+      "range": null,
+      "required": false,
+      "description": "",
+      "example": null
+    }
+  ],
+  "output_fields": [],
+  "prerequisites": [],
+  "related_commands": [],
+  "rollback": null,
+  "errors": [
+    {
+      "code": 224040,
+      "meaning": "lectura vacía (no es fallo): sin perfiles, sin WiFi, sin config-fail",
+      "severity": "info",
+      "retry": false
+    }
+  ],
+  "notes": null,
+  "evidence": "ejecutado y verificado en la OLT el 2026-10-02",
+  "sources": [
+    {
+      "doc_type": "hardware_verification",
+      "pages": null,
+      "confidence": 0.95
+    }
+  ],
+  "confidence": {
+    "extraction": 0.95,
+    "correlation": 0.0,
+    "overall": 0.95
+  },
+  "status": "verified",
+  "conflicts": []
+}

@@ -1,0 +1,70 @@
+{
+  "id": "command.zte.gpon.onu.modify.onu_type_if",
+  "canonical_name": "onu-type-if",
+  "vendor": "ZTE",
+  "family": "ZXA10 C620",
+  "firmware": [
+    "1.2.2"
+  ],
+  "technology": "gpon",
+  "category": "modify",
+  "cli_mode": "pon_config",
+  "cli_context": "pon",
+  "entity_ref": "entity.zte.gpon.device.onu",
+  "description": "Declara una interfaz de usuario en un tipo de ONU. La interfaz WiFi (wifi_0/1) debe existir en el tipo para poder configurar WiFi/SSID. El CATV se declara SOLO como 'rf_0/1' (tipos reales ZTE-F625/F628/F640, LATIC, PROFILE-DEFAULT; verificado creando tipos de prueba): 'video_0/1', 'video-ani_0/1' y 'catv_0/1' dan Parameter error (230263) aunque la ayuda genérica (type_slot/port) los da por válidos. Interfaces de un tipo: 'show onu-type-if <tipo>'.",
+  "syntax": "onu-type-if <tipo> {eth_0/<n>|pots_0/<n>|wifi_0/<n>|video_0/<n>}",
+  "parameters": [
+    {
+      "name": "tipo",
+      "type": "string",
+      "pattern": null,
+      "range": null,
+      "required": true,
+      "description": "",
+      "example": null
+    }
+  ],
+  "output_fields": [],
+  "prerequisites": [],
+  "related_commands": [
+    "command.zte.gpon.onu.create.onu_type_create",
+    "command.zte.gpon.onu.show.onu_type_if_show"
+  ],
+  "rollback": null,
+  "errors": [
+    {
+      "code": 223845,
+      "meaning": "el tipo de ONU no declara esa interfaz (eth/wifi/video); crear el tipo con onu-type-if y dar de alta la ONU con él",
+      "severity": "error",
+      "retry": false
+    },
+    {
+      "code": 230263,
+      "meaning": "parámetro no válido (domain wifi, splitter, video_0/1 en onu-type-if)",
+      "severity": "error",
+      "retry": false
+    },
+    {
+      "code": 230296,
+      "meaning": "el tipo de ONU está en uso por ONU configuradas: no se puede modificar (p. ej. onu-type … location enable)",
+      "severity": "error",
+      "retry": false
+    }
+  ],
+  "notes": null,
+  "evidence": "ejecutado y verificado en la OLT el 2026-10-02",
+  "sources": [
+    {
+      "doc_type": "hardware_verification",
+      "pages": null,
+      "confidence": 0.95
+    }
+  ],
+  "confidence": {
+    "extraction": 0.95,
+    "correlation": 0.0,
+    "overall": 0.95
+  },
+  "status": "verified",
+  "conflicts": []
+}

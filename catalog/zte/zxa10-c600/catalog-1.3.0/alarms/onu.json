@@ -1,0 +1,255 @@
+{
+  "entity_ref": "entity.zte.gpon.device.onu",
+  "vendor": "ZTE",
+  "family": "ZXA10 C600",
+  "firmware": [
+    "1.2.2"
+  ],
+  "alarms": [
+    {
+      "id": "alarm.zte.gpon.onu.notificationtrap",
+      "code": "1.3.6.1.4.1.3902.3.302.8.3",
+      "name": "notificationTrap",
+      "canonical_name": "notification Trap",
+      "entity_ref": "entity.zte.gpon.device.onu",
+      "severity": "warning",
+      "type": "protocol",
+      "description": "When a notification occurred, \n           send the trap PDU to uniform network manager.\n           Through the configuration command alarm trap-oid-expand, \n           the trap OID can be expanded, adding notification status and code.",
+      "probable_causes": [
+        "Cambio de estado o parametro reportado",
+        "Inconsistencia de configuracion",
+        "Evento de protocolo (registro/deregistro)"
+      ],
+      "remediation": [
+        "Correlacionar con el objeto reportado (oid_refs)",
+        "Revisar la configuracion asociada"
+      ],
+      "oid_trap": "1.3.6.1.4.1.3902.3.302.8.3",
+      "oid_refs": [
+        "notificationFlowID",
+        "notificationAlmCode",
+        "notificationAlmType",
+        "notificationAlmLevel",
+        "notificationAlmOccuredTime",
+        "notificationTPIDType",
+        "notificationTPID",
+        "notificationAlmParaType",
+        "notificationAlmParaValue",
+        "notificationAlmDescription",
+        "notificationAlmStdCode",
+        "notificationAlmComment",
+        "notificationAlmNetID",
+        "notificationTimestamp",
+        "notificationTPIDLen",
+        "notificationAlmOccuredMs",
+        "notificationNeedConfirm"
+      ],
+      "auto_clear": false,
+      "clear_condition": null,
+      "threshold": null,
+      "escalation": {
+        "warning_after_minutes": null,
+        "major_after_minutes": null,
+        "critical_after_minutes": null
+      },
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "status": "documented",
+      "conflicts": []
+    },
+    {
+      "id": "alarm.zte.gpon.onu.offline_cause_los",
+      "code": "offline_cause=2",
+      "name": "onuOfflineLOS",
+      "canonical_name": "ONU offline: LOS",
+      "entity_ref": "entity.zte.gpon.device.onu",
+      "severity": "major",
+      "type": "optical",
+      "description": "Pérdida de señal óptica de la ONU (LOS): fibra cortada/atenuada, ONU apagada o puerto PON caído.",
+      "probable_causes": [
+        "Pérdida de señal óptica de la ONU (LOS): fibra cortada/atenuada, ONU apagada o puerto PON caído."
+      ],
+      "remediation": [
+        "Consultar 'show gpon onu detail-info gpon_onu-<idx>' (historial de bajas)",
+        "Leer el estado por SNMP: 1082.500.10.2.3.8.1.4 (onu_status) y .7 (onu_last_offline_cause)"
+      ],
+      "kind": "historical",
+      "oid_trap": null,
+      "oid_refs": [
+        "onu_status",
+        "onu_last_offline_cause",
+        "onu_last_offline_time"
+      ],
+      "auto_clear": true,
+      "clear_condition": "onu_status = Working",
+      "threshold": null,
+      "escalation": {
+        "warning_after_minutes": null,
+        "major_after_minutes": null,
+        "critical_after_minutes": null
+      },
+      "sources": [
+        {
+          "doc_type": "hardware_verification",
+          "pages": null,
+          "confidence": 0.85
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "status": "verified",
+      "conflicts": []
+    },
+    {
+      "id": "alarm.zte.gpon.onu.offline_cause_losi",
+      "code": "offline_cause=3",
+      "name": "onuOfflineLOSi",
+      "canonical_name": "ONU offline: LOSi",
+      "entity_ref": "entity.zte.gpon.device.onu",
+      "severity": "major",
+      "type": "optical",
+      "description": "Pérdida de señal de la ONU detectada por el OLT (LOSi): ONU no responde en el rango asignado.",
+      "probable_causes": [
+        "Pérdida de señal de la ONU detectada por el OLT (LOSi): ONU no responde en el rango asignado."
+      ],
+      "remediation": [
+        "Consultar 'show gpon onu detail-info gpon_onu-<idx>' (historial de bajas)",
+        "Leer el estado por SNMP: 1082.500.10.2.3.8.1.4 (onu_status) y .7 (onu_last_offline_cause)"
+      ],
+      "kind": "historical",
+      "oid_trap": null,
+      "oid_refs": [
+        "onu_status",
+        "onu_last_offline_cause",
+        "onu_last_offline_time"
+      ],
+      "auto_clear": true,
+      "clear_condition": "onu_status = Working",
+      "threshold": null,
+      "escalation": {
+        "warning_after_minutes": null,
+        "major_after_minutes": null,
+        "critical_after_minutes": null
+      },
+      "sources": [
+        {
+          "doc_type": "hardware_verification",
+          "pages": null,
+          "confidence": 0.85
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "status": "verified",
+      "conflicts": []
+    },
+    {
+      "id": "alarm.zte.gpon.onu.offline_cause_dyinggasp",
+      "code": "offline_cause=9",
+      "name": "onuOfflineDyingGasp",
+      "canonical_name": "ONU offline: DyingGasp",
+      "entity_ref": "entity.zte.gpon.device.onu",
+      "severity": "warning",
+      "type": "power",
+      "description": "La ONU avisó de apagón (dying gasp): corte eléctrico del cliente o equipo apagado.",
+      "probable_causes": [
+        "La ONU avisó de apagón (dying gasp): corte eléctrico del cliente o equipo apagado."
+      ],
+      "remediation": [
+        "Consultar 'show gpon onu detail-info gpon_onu-<idx>' (historial de bajas)",
+        "Leer el estado por SNMP: 1082.500.10.2.3.8.1.4 (onu_status) y .7 (onu_last_offline_cause)"
+      ],
+      "kind": "historical",
+      "oid_trap": null,
+      "oid_refs": [
+        "onu_status",
+        "onu_last_offline_cause",
+        "onu_last_offline_time"
+      ],
+      "auto_clear": true,
+      "clear_condition": "onu_status = Working",
+      "threshold": null,
+      "escalation": {
+        "warning_after_minutes": null,
+        "major_after_minutes": null,
+        "critical_after_minutes": null
+      },
+      "sources": [
+        {
+          "doc_type": "hardware_verification",
+          "pages": null,
+          "confidence": 0.85
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "status": "verified",
+      "conflicts": []
+    },
+    {
+      "id": "alarm.zte.gpon.onu.offline_cause_deactivesucc",
+      "code": "offline_cause=10",
+      "name": "onuOfflineDeactiveSucc",
+      "canonical_name": "ONU offline: DeactiveSucc",
+      "entity_ref": "entity.zte.gpon.device.onu",
+      "severity": "warning",
+      "type": "protocol",
+      "description": "Desactivación ordenada por el OLT (por ejemplo reinicio o baja por gestión).",
+      "probable_causes": [
+        "Desactivación ordenada por el OLT (por ejemplo reinicio o baja por gestión)."
+      ],
+      "remediation": [
+        "Consultar 'show gpon onu detail-info gpon_onu-<idx>' (historial de bajas)",
+        "Leer el estado por SNMP: 1082.500.10.2.3.8.1.4 (onu_status) y .7 (onu_last_offline_cause)"
+      ],
+      "kind": "historical",
+      "oid_trap": null,
+      "oid_refs": [
+        "onu_status",
+        "onu_last_offline_cause",
+        "onu_last_offline_time"
+      ],
+      "auto_clear": false,
+      "clear_condition": "onu_status = Working",
+      "threshold": null,
+      "escalation": {
+        "warning_after_minutes": null,
+        "major_after_minutes": null,
+        "critical_after_minutes": null
+      },
+      "sources": [
+        {
+          "doc_type": "hardware_verification",
+          "pages": null,
+          "confidence": 0.85
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "status": "verified",
+      "conflicts": []
+    }
+  ]
+}

@@ -1,0 +1,94 @@
+{
+  "id": "command.zte.gpon.service_port.create.onu_vport",
+  "canonical_name": "vport / vport-map",
+  "vendor": "ZTE",
+  "family": "ZXA10 C620",
+  "firmware": [
+    "1.2.2"
+  ],
+  "technology": "gpon",
+  "category": "create",
+  "cli_mode": "interface_config",
+  "cli_context": "interface gpon_onu-<idx>",
+  "entity_ref": "entity.zte.gpon.logical.service_port",
+  "description": "Crea el vport y mapea un GEM a una VLAN. Un GEM ya mapeado a otro vport da 'Port-id has been used'. Borrar un mapeo concreto: 'no vport-map <vport> <gem> vlan <V>' (con cos o sin el vlan da 222386).",
+  "syntax": "vport <1-128> map-type {vlan|1:1|cos|cos+vlan} ; vport-map <vport> <gem> vlan {<1-4094>|untag} [cos <0-7>]",
+  "parameters": [
+    {
+      "name": "vport",
+      "type": "integer",
+      "pattern": null,
+      "range": "1-128",
+      "required": true,
+      "description": "",
+      "example": null
+    },
+    {
+      "name": "map-type",
+      "type": "enum",
+      "pattern": null,
+      "range": "vlan|1:1|cos|cos+vlan",
+      "required": true,
+      "description": "",
+      "example": null
+    },
+    {
+      "name": "gem",
+      "type": "string",
+      "pattern": null,
+      "range": null,
+      "required": true,
+      "description": "",
+      "example": null
+    },
+    {
+      "name": "cos",
+      "type": "integer",
+      "pattern": null,
+      "range": "0-7",
+      "required": false,
+      "description": "",
+      "example": null
+    }
+  ],
+  "output_fields": [],
+  "prerequisites": [
+    "entity.zte.gpon.device.onu"
+  ],
+  "related_commands": [
+    "command.zte.gpon.gem_port.create.onu_gemport",
+    "command.zte.gpon.service_port.create.sp_create",
+    "command.zte.gpon.onu.show.rc_onu"
+  ],
+  "rollback": "no vport <1-128> (limpia el vport y sus mapeos) o 'no vport-map <vport> <gem> vlan <V>' (verificado: hay que repetir el vlan del alta; sin él da 222386)",
+  "errors": [
+    {
+      "code": 222357,
+      "meaning": "GEM ya mapeado a otro vport",
+      "severity": "error",
+      "retry": false
+    },
+    {
+      "code": 222386,
+      "meaning": "forma de 'no vport-map' incorrecta; usar 'no vport <n>'",
+      "severity": "error",
+      "retry": false
+    }
+  ],
+  "notes": null,
+  "evidence": "ejecutado y verificado en la OLT el 2026-10-02",
+  "sources": [
+    {
+      "doc_type": "hardware_verification",
+      "pages": null,
+      "confidence": 0.95
+    }
+  ],
+  "confidence": {
+    "extraction": 0.95,
+    "correlation": 0.0,
+    "overall": 0.95
+  },
+  "status": "verified",
+  "conflicts": []
+}

@@ -1,0 +1,57 @@
+{
+  "id": "command.zte.gpon.onu.modify.onu_splitter",
+  "canonical_name": "splitter (ONU)",
+  "vendor": "ZTE",
+  "family": "ZXA10 C600",
+  "firmware": [
+    "1.2.2"
+  ],
+  "technology": "gpon",
+  "category": "modify",
+  "cli_mode": "interface_config",
+  "cli_context": "interface gpon_onu-<idx>",
+  "entity_ref": "entity.zte.gpon.device.onu",
+  "description": "Ubicación de la ONU en el árbol óptico: niveles NUMÉRICOS separados por guion, p. ej. '1-2-3' (máx. 32 caracteres). Texto como TKCSPL o L1-L2-L3 da 230263. No depende de 'location' del tipo (esa opción no se puede cambiar con el tipo en uso: 230296). Se guarda literal (visible en 'show gpon onu detail-info' como 'Splitter:' y en la config). Borrado: 'no splitter'.",
+  "syntax": "splitter <N>-<N>-<N>",
+  "parameters": [
+    {
+      "name": "N",
+      "type": "string",
+      "pattern": null,
+      "range": null,
+      "required": true,
+      "description": "",
+      "example": null
+    }
+  ],
+  "output_fields": [],
+  "prerequisites": [
+    "entity.zte.gpon.device.onu"
+  ],
+  "related_commands": [],
+  "rollback": "no splitter",
+  "errors": [
+    {
+      "code": 230263,
+      "meaning": "parámetro no válido (domain wifi, splitter, video_0/1 en onu-type-if)",
+      "severity": "error",
+      "retry": false
+    }
+  ],
+  "notes": null,
+  "evidence": "sintaxis obtenida solo con la ayuda '?' de la OLT (no ejecutada)",
+  "sources": [
+    {
+      "doc_type": "hardware_verification",
+      "pages": null,
+      "confidence": 0.6
+    }
+  ],
+  "confidence": {
+    "extraction": 0.6,
+    "correlation": 0.0,
+    "overall": 0.6
+  },
+  "status": "documented",
+  "conflicts": []
+}

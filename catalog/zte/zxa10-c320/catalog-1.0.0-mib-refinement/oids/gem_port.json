@@ -1,0 +1,171 @@
+{
+  "entity_ref": "entity.zte.gpon.logical.gem_port",
+  "vendor": "ZTE",
+  "family": "ZXA10 C320",
+  "firmware": [
+    "2.0",
+    "2.1"
+  ],
+  "oids": [
+    {
+      "id": "oid.zte.gpon.gem_port.stp_bridge_max_age",
+      "oid": "1.3.6.1.4.1.3902.3.127.1.1.6",
+      "name": "stpBridgeMaxAge",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "UINT32",
+      "unit": null,
+      "scale": null,
+      "access": "read-write",
+      "enumeration": null,
+      "description": "Bridge Max Age.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.gem_port.stp_bridge_mac",
+      "oid": "1.3.6.1.4.1.3902.3.127.1.2.1.1.3",
+      "name": "stpBridgeMac",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "Char",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "Bridge Mac.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.gem_port.stp_bridge_m_a_x_hops",
+      "oid": "1.3.6.1.4.1.3902.3.127.1.2.1.1.9",
+      "name": "stpBridgeMAXHops",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "UINT32",
+      "unit": null,
+      "scale": null,
+      "access": "read-write",
+      "enumeration": null,
+      "description": "Bridge Max Hops.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.gem_port.stp_port_designated_bridge_mac",
+      "oid": "1.3.6.1.4.1.3902.3.127.1.4.1.1.8",
+      "name": "stpPortDesignatedBridgeMac",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "Char",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "MAC address of Designated Bridge.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.gem_port.zxr10_ping_common_ext_fragement",
+      "oid": "1.3.6.1.4.1.3902.3.104.2.1.1.13",
+      "name": "zxr10PingCommonExtFragement",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-write",
+      "enumeration": null,
+      "description": "set DONT FRAG(0--may frag,1--don't frag)",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    }
+  ]
+}

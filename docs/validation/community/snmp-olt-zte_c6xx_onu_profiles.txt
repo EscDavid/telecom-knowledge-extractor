@@ -1,0 +1,57 @@
+==============================================================================
+PERFIL DE VELOCIDAD APLICADO A CADA ONU (service-port, T-CONT, GEM) — ZXA10 C600 / C620
+==============================================================================
+
+# META
+doc_type: community
+vendor: ZTE
+families: ZXA10 C600, ZXA10 C620
+walk_sources: docs/walks/ZTE_C620.txt, docs/walks/ZTE_C600.txt
+extraction_date: 2026-10-02
+provenance: walks reales de 2026-10-01. En la C620 los perfiles ingress/egress de 26 ONU coinciden exactamente con
+            show running-config-interface vport-<pon>.<n>:1 (26 de 26). Permite comparar velocidades por ONU sin CLI.
+scope: perfil de velocidad por ONU (subida/bajada), perfil T-CONT y nombre de GEM.
+
+[oid]
+attribute: service_port_ingress_profile
+entity_ref: entity.zte.gpon.logical.service_port
+oid_prefix: .1.3.6.1.4.1.3902.1082.110.5.2.2.1.27
+base_space: ONU-ID
+full_oid_template: .1.3.6.1.4.1.3902.1082.110.5.2.2.1.27.<ponIfIndex>.<spKey>
+syntax: STRING
+status: verified_walk
+note: perfil de velocidad de SUBIDA aplicado al service-port de la ONU (nombre del perfil, p. ej. SMARTOLT-200M-UP); spKey = (0x18<<24)|(onu<<16)|0x0100. Contrastado 26/26 ONU con show running-config-interface vport-….
+mib_name: UNRESOLVED
+
+[oid]
+attribute: service_port_egress_profile
+entity_ref: entity.zte.gpon.logical.service_port
+oid_prefix: .1.3.6.1.4.1.3902.1082.110.5.2.2.1.28
+base_space: ONU-ID
+full_oid_template: .1.3.6.1.4.1.3902.1082.110.5.2.2.1.28.<ponIfIndex>.<spKey>
+syntax: STRING
+status: verified_walk
+note: perfil de velocidad de BAJADA aplicado al service-port (p. ej. SMARTOLT-200M-DOWN); misma clave que la columna 27. Contrastado 26/26 ONU.
+mib_name: UNRESOLVED
+
+[oid]
+attribute: onu_tcont_profile
+entity_ref: entity.zte.gpon.device.onu
+oid_prefix: .1.3.6.1.4.1.3902.1082.500.10.2.3.4.1.3
+base_space: ONU-ID
+full_oid_template: .1.3.6.1.4.1.3902.1082.500.10.2.3.4.1.3.<ponIfIndex>.<onu>.<tcont>
+syntax: STRING
+status: verified_walk
+note: perfil T-CONT asignado a la ONU (p. ej. SMARTOLT_DEFAULT_TCONT_GPON).
+mib_name: UNRESOLVED
+
+[oid]
+attribute: onu_gemport_name
+entity_ref: entity.zte.gpon.logical.gem_port
+oid_prefix: .1.3.6.1.4.1.3902.1082.500.10.2.3.5.1.2
+base_space: ONU-ID
+full_oid_template: .1.3.6.1.4.1.3902.1082.500.10.2.3.5.1.2.<ponIfIndex>.<onu>.<gem>
+syntax: STRING
+status: verified_walk
+note: nombre del GEM port de la ONU (p. ej. internet).
+mib_name: UNRESOLVED

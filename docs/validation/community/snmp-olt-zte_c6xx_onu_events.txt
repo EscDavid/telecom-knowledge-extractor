@@ -1,0 +1,105 @@
+==============================================================================
+EVENTOS Y DISTANCIA DE ONU — ZXA10 C600 / C620
+Columnas de la tabla de ONU (.1082.500.10.2.3.*) con el historial de conexion
+y la distancia, contrastadas contra la CLI (show gpon onu detail-info) en ambos
+equipos.
+==============================================================================
+
+# META
+doc_type: community
+vendor: ZTE
+families: ZXA10 C600, ZXA10 C620
+walk_sources: docs/walks/ZTE_C620.txt, docs/walks/ZTE_C600.txt
+extraction_date: 2026-10-02
+provenance: walks reales de 2026-10-01 de una C620 (277 ONUs) y una C600 (390 ONUs)
+            cruzados en vivo con la CLI de cada equipo el 2026-10-02: C620 con
+            7 ONUs en estados distintos, C600 con 8 ONUs (2 por cada codigo de
+            causa). Todos los valores comparados coinciden.
+scope: distancia, ultima autenticacion, ultima baja y causa de la ultima baja.
+       Las fechas son SNMP DateAndTime (8 bytes: anio(2) mes dia hora min seg
+       decimas); 00 00 00 00 00 00 00 00 = sin registro.
+
+==============================================================================
+# SECCIÓN A — DISTANCIA (columna .10.2.3.10.1.2)   [status: verified_walk]
+==============================================================================
+# INTEGER en metros. Coincide con "ONU Distance" de la CLI (C620: 868, 826, 816,
+# 842, 877, 709, 900 m; C600: 528, 547, 555, 706, 1384, 1578 m). 0 = la CLI
+# muestra "N/A" (ONU que nunca se ha conectado).
+# CORRIGE una hipotesis previa: esta columna NO es potencia optica (con la escala
+# raw*0.002-30 daria ~-28 dBm, pero son metros).
+
+[oid]
+attribute: onu_distance
+entity_ref: entity.zte.gpon.device.onu
+oid_prefix: .1.3.6.1.4.1.3902.1082.500.10.2.3.10.1.2
+base_space: ONU-ID
+full_oid_template: .1.3.6.1.4.1.3902.1082.500.10.2.3.10.1.2.<onuID>
+syntax: INTEGER
+unit: m
+status: verified_walk
+note: distancia de rango OLT-ONU en metros; 0 si la ONU nunca se conecto.
+mib_name: UNRESOLVED
+
+==============================================================================
+# SECCIÓN B — ULTIMA AUTENTICACION (columna .10.2.3.8.1.5)   [status: verified_walk]
+==============================================================================
+# DateAndTime. Coincide con "Authpass Time" mas reciente del historial de la CLI.
+
+[oid]
+attribute: onu_last_auth_time
+entity_ref: entity.zte.gpon.device.onu
+oid_prefix: .1.3.6.1.4.1.3902.1082.500.10.2.3.8.1.5
+base_space: ONU-ID
+full_oid_template: .1.3.6.1.4.1.3902.1082.500.10.2.3.8.1.5.<onuID>
+syntax: OCTET STRING (SNMP DateAndTime, 8 bytes)
+status: verified_walk
+note: ultima vez que la ONU paso la autenticacion. Ceros si nunca se conecto.
+mib_name: UNRESOLVED
+
+==============================================================================
+# SECCIÓN C — ULTIMA BAJA (columna .10.2.3.8.1.6)   [status: verified_walk]
+==============================================================================
+# DateAndTime. Coincide con "OfflineTime" mas reciente del historial de la CLI.
+# Ceros si la ONU no ha tenido ninguna baja desde que se registro.
+
+[oid]
+attribute: onu_last_offline_time
+entity_ref: entity.zte.gpon.device.onu
+oid_prefix: .1.3.6.1.4.1.3902.1082.500.10.2.3.8.1.6
+base_space: ONU-ID
+full_oid_template: .1.3.6.1.4.1.3902.1082.500.10.2.3.8.1.6.<onuID>
+syntax: OCTET STRING (SNMP DateAndTime, 8 bytes)
+status: verified_walk
+note: momento de la ultima baja de la ONU.
+mib_name: UNRESOLVED
+
+==============================================================================
+# SECCIÓN D — CAUSA DE LA ULTIMA BAJA (columna .10.2.3.8.1.7)   [status: verified_walk]
+==============================================================================
+# INTEGER. Coincide con la columna "Cause" del registro mas reciente de la CLI.
+# Valores contrastados (C620: 1, 3, 9, 10; C600: 1, 2, 3, 9). Pueden existir
+# otros codigos no observados en estas muestras.
+
+[oid]
+attribute: onu_last_offline_cause
+entity_ref: entity.zte.gpon.device.onu
+oid_prefix: .1.3.6.1.4.1.3902.1082.500.10.2.3.8.1.7
+base_space: ONU-ID
+full_oid_template: .1.3.6.1.4.1.3902.1082.500.10.2.3.8.1.7.<onuID>
+syntax: INTEGER
+enumeration: ver onu_offline_cause_enum
+status: verified_walk
+note: causa de la ultima baja; 1 = sin bajas registradas.
+mib_name: UNRESOLVED
+
+==============================================================================
+# ENUM DE CAUSA DE BAJA
+==============================================================================
+onu_offline_cause_enum:
+  1: None
+  2: LOS
+  3: LOSi
+  9: DyingGasp
+  10: DeactiveSucc
+  default: Unknown
+==============================================================================

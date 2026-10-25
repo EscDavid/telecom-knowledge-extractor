@@ -1,0 +1,2283 @@
+{
+  "entity_ref": "entity.zte.gpon.hardware.optical_module",
+  "vendor": "ZTE",
+  "family": "ZXA10 C320",
+  "firmware": [
+    "2.0",
+    "2.1"
+  ],
+  "oids": [
+    {
+      "id": "oid.zte.gpon.optical_module.zxr10optical_table",
+      "oid": "1.3.6.1.4.1.3902.3.126.1.2",
+      "name": "zxr10opticalTable",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "SEQUENCE OF Zxr10opticalEntry",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": null,
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.optical_module.zxr10optical_entry",
+      "oid": "1.3.6.1.4.1.3902.3.126.1.2.1",
+      "name": "zxr10opticalEntry",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "Zxr10opticalEntry",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": null,
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.optical_module.zxr10optical_if_index",
+      "oid": "1.3.6.1.4.1.3902.3.126.1.2.1.1",
+      "name": "zxr10opticalIfIndex",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "Unsigned32",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "The index of the optiacl Entry.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.optical_module.zxr10optical_state",
+      "oid": "1.3.6.1.4.1.3902.3.126.1.2.1.2",
+      "name": "zxr10opticalState",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "OptStatType",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": null,
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.optical_module.zxr10optical_tx_power",
+      "oid": "1.3.6.1.4.1.3902.3.126.1.2.1.3",
+      "name": "zxr10opticalTxPower",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "DisplayString",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": null,
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.optical_module.zxr10optical_rx_power",
+      "oid": "1.3.6.1.4.1.3902.3.126.1.2.1.4",
+      "name": "zxr10opticalRxPower",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "DisplayString",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": null,
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.optical_module.zxr10optical_tx_current",
+      "oid": "1.3.6.1.4.1.3902.3.126.1.2.1.5",
+      "name": "zxr10opticalTxCurrent",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "DisplayString",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": null,
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.optical_module.zxr10optical_temperature",
+      "oid": "1.3.6.1.4.1.3902.3.126.1.2.1.7",
+      "name": "zxr10opticalTemperature",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "DisplayString",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": null,
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.optical_module.zxr10_optical_table",
+      "oid": "1.3.6.1.4.1.3902.3.103.11.1",
+      "name": "zxr10OpticalTable",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "SEQUENCE OF Zxr10OpticalEntry",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": "Ethnet configuration table",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.optical_module.zxr10_optical_entry",
+      "oid": "1.3.6.1.4.1.3902.3.103.11.1.1",
+      "name": "zxr10OpticalEntry",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "Zxr10OpticalEntry",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": null,
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.optical_module.zxr10_optical_if_index",
+      "oid": "1.3.6.1.4.1.3902.3.103.11.1.1.1",
+      "name": "zxr10OpticalIfIndex",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "Physical Ethnet interface ifIndex",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.optical_module.zxr10_optical_if_name",
+      "oid": "1.3.6.1.4.1.3902.3.103.11.1.1.2",
+      "name": "zxr10OpticalIfName",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "DisplayString",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "Physical Ethnet interface ifName",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.optical_module.zxr10_optical_online",
+      "oid": "1.3.6.1.4.1.3902.3.103.11.1.1.3",
+      "name": "zxr10OpticalOnline",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "OpticalOnline",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "Optical Module is Online",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.optical_module.zxr10_optical_fp_type",
+      "oid": "1.3.6.1.4.1.3902.3.103.11.1.1.4",
+      "name": "zxr10OpticalFpType",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "DisplayString",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "Optical Module Info FpType",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.optical_module.zxr10_optical_sonet_compliance_codes_type",
+      "oid": "1.3.6.1.4.1.3902.3.103.11.1.1.5",
+      "name": "zxr10OpticalSonetComplianceCodesType",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "SonetComplianceCodesType",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "Sonet Compliance Codes Type",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.optical_module.zxr10_optical_sonet_compliance_codes_speed",
+      "oid": "1.3.6.1.4.1.3902.3.103.11.1.1.6",
+      "name": "zxr10OpticalSonetComplianceCodesSpeed",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "SonetComplianceCodesSpeed",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "Sonet Compliance Codes Speed",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.optical_module.zxr10_optical_gigabit_ethernet_compliance_codes_type",
+      "oid": "1.3.6.1.4.1.3902.3.103.11.1.1.7",
+      "name": "zxr10OpticalGigabitEthernetComplianceCodesType",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "DisplayString",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "Gigabit Ethernet Compliance Codes Type",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.optical_module.zxr10_optical_gigabit_ethernet_compliance_codes_speed",
+      "oid": "1.3.6.1.4.1.3902.3.103.11.1.1.8",
+      "name": "zxr10OpticalGigabitEthernetComplianceCodesSpeed",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "GigabitEthernetComplianceCodesSpeed",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "Gigabit Ethernet Compliance Codes Speed",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.optical_module.zxr10_optical_infiniband_compliance_codes_type",
+      "oid": "1.3.6.1.4.1.3902.3.103.11.1.1.9",
+      "name": "zxr10OpticalInfinibandComplianceCodesType",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "InfinibandComplianceCodesType",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "Infiniband Compliance Codes Type",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.optical_module.zxr10_optical_infiniband_compliance_codes_speed",
+      "oid": "1.3.6.1.4.1.3902.3.103.11.1.1.10",
+      "name": "zxr10OpticalInfinibandComplianceCodesSpeed",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "InfinibandComplianceCodesSpeed",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "Infiniband Compliance Codes Speed",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.optical_module.zxr10_optical_dis_s_m_fkm",
+      "oid": "1.3.6.1.4.1.3902.3.103.11.1.1.11",
+      "name": "zxr10OpticalDisSMFkm",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "Optical Module Info DisSMFkm",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.optical_module.zxr10_optical_dis9um",
+      "oid": "1.3.6.1.4.1.3902.3.103.11.1.1.12",
+      "name": "zxr10OpticalDis9um",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "Optical Module Info Dis9-125um",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.optical_module.zxr10_optical_dis50um",
+      "oid": "1.3.6.1.4.1.3902.3.103.11.1.1.13",
+      "name": "zxr10OpticalDis50um",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "Optical Module Info Dis50-125um",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.optical_module.zxr10_optical_dis62um",
+      "oid": "1.3.6.1.4.1.3902.3.103.11.1.1.14",
+      "name": "zxr10OpticalDis62um",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "Optical Module Info Dis62-125um",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.optical_module.zxr10_optical_discopper_line",
+      "oid": "1.3.6.1.4.1.3902.3.103.11.1.1.15",
+      "name": "zxr10OpticalDiscopperLine",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "Optical Module Info DiscopperLine",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.optical_module.zxr10_optical_s_wave_lenth",
+      "oid": "1.3.6.1.4.1.3902.3.103.11.1.1.16",
+      "name": "zxr10OpticalSWaveLenth",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "DisplayString",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "Optical Module Info S-waveLenth",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.optical_module.zxr10_optical_s_wave_lenth_valid",
+      "oid": "1.3.6.1.4.1.3902.3.103.11.1.1.17",
+      "name": "zxr10OpticalSWaveLenthValid",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "Optical Module Info S-waveLenthValid",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.optical_module.zxr10_optical_s_rx_power",
+      "oid": "1.3.6.1.4.1.3902.3.103.11.1.1.18",
+      "name": "zxr10OpticalSRxPower",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "DisplayString",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "Optical Module Info S-rxPower",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.optical_module.zxr10_optical_s_rx_power_valid",
+      "oid": "1.3.6.1.4.1.3902.3.103.11.1.1.19",
+      "name": "zxr10OpticalSRxPowerValid",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "Optical Module Info S-rxPowerValid",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.optical_module.zxr10_optical_s_tx_power",
+      "oid": "1.3.6.1.4.1.3902.3.103.11.1.1.20",
+      "name": "zxr10OpticalSTxPower",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "DisplayString",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "Optical Module Info S-txPower",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.optical_module.zxr10_optical_s_tx_power_valid",
+      "oid": "1.3.6.1.4.1.3902.3.103.11.1.1.21",
+      "name": "zxr10OpticalSTxPowerValid",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "Optical Module Info S-txPowerValid",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.optical_module.zxr10_optical_s_tx_current",
+      "oid": "1.3.6.1.4.1.3902.3.103.11.1.1.22",
+      "name": "zxr10OpticalSTxCurrent",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "DisplayString",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "Optical Module Info S-txCurren",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.optical_module.zxr10_optical_s_tx_current_valid",
+      "oid": "1.3.6.1.4.1.3902.3.103.11.1.1.23",
+      "name": "zxr10OpticalSTxCurrentValid",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "Optical Module Info S-txCurrentValid",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.optical_module.zxr10_optical_s_temperature",
+      "oid": "1.3.6.1.4.1.3902.3.103.11.1.1.24",
+      "name": "zxr10OpticalSTemperature",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "DisplayString",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "Optical Module Info S-temperature",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.optical_module.zxr10_optical_s_temperature_valid",
+      "oid": "1.3.6.1.4.1.3902.3.103.11.1.1.25",
+      "name": "zxr10OpticalSTemperatureValid",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "Optical Module Info S-temperatureValid",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.optical_module.zxr10_optical_v_name",
+      "oid": "1.3.6.1.4.1.3902.3.103.11.1.1.30",
+      "name": "zxr10OpticalVName",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "DisplayString",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "Optical Module Info VName",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.optical_module.zxr10_optical_v_pn",
+      "oid": "1.3.6.1.4.1.3902.3.103.11.1.1.31",
+      "name": "zxr10OpticalVPn",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "DisplayString",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "Optical Module Info VPn",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.optical_module.zxr10_optical_rev",
+      "oid": "1.3.6.1.4.1.3902.3.103.11.1.1.32",
+      "name": "zxr10OpticalRev",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "DisplayString",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "Optical Module Info Rev",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.optical_module.zxr10_optical_v_sn",
+      "oid": "1.3.6.1.4.1.3902.3.103.11.1.1.33",
+      "name": "zxr10OpticalVSn",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "DisplayString",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "Optical Module Info VSn",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.optical_module.zxr10_optical_s_rx_power_channel1",
+      "oid": "1.3.6.1.4.1.3902.3.103.11.1.1.34",
+      "name": "zxr10OpticalSRxPowerChannel1",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "DisplayString",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "Optical Module Info Channel1 S-rxPower",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.optical_module.zxr10_optical_s_rx_power_channel1_valid",
+      "oid": "1.3.6.1.4.1.3902.3.103.11.1.1.35",
+      "name": "zxr10OpticalSRxPowerChannel1Valid",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "Optical Module Info Channel1 S-rxPowerValid",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.optical_module.zxr10_optical_s_rx_power_channel2",
+      "oid": "1.3.6.1.4.1.3902.3.103.11.1.1.36",
+      "name": "zxr10OpticalSRxPowerChannel2",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "DisplayString",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "Optical Module Info Channel2 S-rxPower",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.optical_module.zxr10_optical_s_rx_power_channel2_valid",
+      "oid": "1.3.6.1.4.1.3902.3.103.11.1.1.37",
+      "name": "zxr10OpticalSRxPowerChannel2Valid",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "Optical Module Info Channel2 S-rxPowerValid",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.optical_module.zxr10_optical_s_rx_power_channel3",
+      "oid": "1.3.6.1.4.1.3902.3.103.11.1.1.38",
+      "name": "zxr10OpticalSRxPowerChannel3",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "DisplayString",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "Optical Module Info Channel3 S-rxPower",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.optical_module.zxr10_optical_s_rx_power_channel3_valid",
+      "oid": "1.3.6.1.4.1.3902.3.103.11.1.1.39",
+      "name": "zxr10OpticalSRxPowerChannel3Valid",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "Optical Module Info Channel3 S-rxPowerValid",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.optical_module.zxr10_optical_s_rx_power_channel4",
+      "oid": "1.3.6.1.4.1.3902.3.103.11.1.1.40",
+      "name": "zxr10OpticalSRxPowerChannel4",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "DisplayString",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "Optical Module Info Channel4 S-rxPower",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.optical_module.zxr10_optical_s_rx_power_channel4_valid",
+      "oid": "1.3.6.1.4.1.3902.3.103.11.1.1.41",
+      "name": "zxr10OpticalSRxPowerChannel4Valid",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "Optical Module Info Channel4 S-rxPowerValid",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.optical_module.zxr10_optical_s_tx_power_channel1",
+      "oid": "1.3.6.1.4.1.3902.3.103.11.1.1.42",
+      "name": "zxr10OpticalSTxPowerChannel1",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "DisplayString",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "Optical Module Info Channel1 S-txPower",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.optical_module.zxr10_optical_s_tx_power_channel1_valid",
+      "oid": "1.3.6.1.4.1.3902.3.103.11.1.1.43",
+      "name": "zxr10OpticalSTxPowerChannel1Valid",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "Optical Module Info Channel1 S-txPowerValid",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.optical_module.zxr10_optical_s_tx_power_channel2",
+      "oid": "1.3.6.1.4.1.3902.3.103.11.1.1.44",
+      "name": "zxr10OpticalSTxPowerChannel2",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "DisplayString",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "Optical Module Info Channel2 S-txPower",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.optical_module.zxr10_optical_s_tx_power_channel2_valid",
+      "oid": "1.3.6.1.4.1.3902.3.103.11.1.1.45",
+      "name": "zxr10OpticalSTxPowerChannel2Valid",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "Optical Module Info Channel2 S-txPowerValid",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.optical_module.zxr10_optical_s_tx_power_channel3",
+      "oid": "1.3.6.1.4.1.3902.3.103.11.1.1.46",
+      "name": "zxr10OpticalSTxPowerChannel3",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "DisplayString",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "Optical Module Info Channel3 S-txPower",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.optical_module.zxr10_optical_s_tx_power_channel3_valid",
+      "oid": "1.3.6.1.4.1.3902.3.103.11.1.1.47",
+      "name": "zxr10OpticalSTxPowerChannel3Valid",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "Optical Module Info Channel3 S-txPowerValid",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.optical_module.zxr10_optical_s_tx_power_channel4",
+      "oid": "1.3.6.1.4.1.3902.3.103.11.1.1.48",
+      "name": "zxr10OpticalSTxPowerChannel4",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "DisplayString",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "Optical Module Info Channel4 S-txPower",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.optical_module.zxr10_optical_s_tx_power_channel4_valid",
+      "oid": "1.3.6.1.4.1.3902.3.103.11.1.1.49",
+      "name": "zxr10OpticalSTxPowerChannel4Valid",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "Optical Module Info Channel4 S-txPowerValid",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.optical_module.zxr10_optical_s_tx_current_channel1",
+      "oid": "1.3.6.1.4.1.3902.3.103.11.1.1.50",
+      "name": "zxr10OpticalSTxCurrentChannel1",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "DisplayString",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "Optical Module Info Channel1 S-txCurren",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.optical_module.zxr10_optical_s_tx_current_channel1_valid",
+      "oid": "1.3.6.1.4.1.3902.3.103.11.1.1.51",
+      "name": "zxr10OpticalSTxCurrentChannel1Valid",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "Optical Module Info Channel1 S-txCurrentValid",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.optical_module.zxr10_optical_s_tx_current_channel2",
+      "oid": "1.3.6.1.4.1.3902.3.103.11.1.1.52",
+      "name": "zxr10OpticalSTxCurrentChannel2",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "DisplayString",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "Optical Module Info Channel2 S-txCurren",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.optical_module.zxr10_optical_s_tx_current_channel2_valid",
+      "oid": "1.3.6.1.4.1.3902.3.103.11.1.1.53",
+      "name": "zxr10OpticalSTxCurrentChannel2Valid",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "Optical Module Info Channel2 S-txCurrentValid",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.optical_module.zxr10_optical_s_tx_current_channel3",
+      "oid": "1.3.6.1.4.1.3902.3.103.11.1.1.54",
+      "name": "zxr10OpticalSTxCurrentChannel3",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "DisplayString",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "Optical Module Info Channel3 S-txCurren",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.optical_module.zxr10_optical_s_tx_current_channel3_valid",
+      "oid": "1.3.6.1.4.1.3902.3.103.11.1.1.55",
+      "name": "zxr10OpticalSTxCurrentChannel3Valid",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "Optical Module Info Channel3 S-txCurrentValid",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.optical_module.zxr10_optical_s_tx_current_channel4",
+      "oid": "1.3.6.1.4.1.3902.3.103.11.1.1.56",
+      "name": "zxr10OpticalSTxCurrentChannel4",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "DisplayString",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "Optical Module Info Channel4 S-txCurren",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.optical_module.zxr10_optical_s_tx_current_channel4_valid",
+      "oid": "1.3.6.1.4.1.3902.3.103.11.1.1.57",
+      "name": "zxr10OpticalSTxCurrentChannel4Valid",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "Optical Module Info Channel4 S-txCurrentValid",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.optical_module.zxr10_optical_s_temperature_channel1",
+      "oid": "1.3.6.1.4.1.3902.3.103.11.1.1.58",
+      "name": "zxr10OpticalSTemperatureChannel1",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "DisplayString",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "Optical Module Info Channel1 S-temperature",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.optical_module.zxr10_optical_s_temperature_channel1_valid",
+      "oid": "1.3.6.1.4.1.3902.3.103.11.1.1.59",
+      "name": "zxr10OpticalSTemperatureChannel1Valid",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "Optical Module Info Channel1 S-temperatureValid",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.optical_module.zxr10_optical_s_temperature_channel2",
+      "oid": "1.3.6.1.4.1.3902.3.103.11.1.1.60",
+      "name": "zxr10OpticalSTemperatureChannel2",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "DisplayString",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "Optical Module Info Channel2 S-temperature",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.optical_module.zxr10_optical_s_temperature_channel2_valid",
+      "oid": "1.3.6.1.4.1.3902.3.103.11.1.1.61",
+      "name": "zxr10OpticalSTemperatureChannel2Valid",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "Optical Module Info Channel2 S-temperatureValid",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.optical_module.zxr10_optical_s_temperature_channel3",
+      "oid": "1.3.6.1.4.1.3902.3.103.11.1.1.62",
+      "name": "zxr10OpticalSTemperatureChannel3",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "DisplayString",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "Optical Module Info Channel3 S-temperature",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.optical_module.zxr10_optical_s_temperature_channel3_valid",
+      "oid": "1.3.6.1.4.1.3902.3.103.11.1.1.63",
+      "name": "zxr10OpticalSTemperatureChannel3Valid",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "Optical Module Info Channel3 S-temperatureValid",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.optical_module.zxr10_optical_s_temperature_channel4",
+      "oid": "1.3.6.1.4.1.3902.3.103.11.1.1.64",
+      "name": "zxr10OpticalSTemperatureChannel4",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "DisplayString",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "Optical Module Info Channel4 S-temperature",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.optical_module.zxr10_optical_s_temperature_channel4_valid",
+      "oid": "1.3.6.1.4.1.3902.3.103.11.1.1.65",
+      "name": "zxr10OpticalSTemperatureChannel4Valid",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "Optical Module Info Channel4 S-temperatureValid",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    }
+  ]
+}

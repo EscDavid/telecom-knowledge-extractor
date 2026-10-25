@@ -1,0 +1,95 @@
+{
+  "id": "command.zte.gpon.onu.show.onu_state",
+  "canonical_name": "show gpon onu state",
+  "vendor": "ZTE",
+  "family": "ZXA10 C600",
+  "firmware": [
+    "1.2.2"
+  ],
+  "technology": "gpon",
+  "category": "show",
+  "cli_mode": "privileged_exec",
+  "cli_context": null,
+  "entity_ref": "entity.zte.gpon.device.onu",
+  "description": "Estado de las ONU: Admin, OMCC y Phase state (working, OffLine, LOS, DyingGasp, syncMib, Logging).",
+  "syntax": "show gpon onu state [gpon_olt-<pon>]",
+  "parameters": [
+    {
+      "name": "gpon_olt",
+      "type": "string",
+      "pattern": null,
+      "range": null,
+      "required": false,
+      "description": "",
+      "example": "gpon_olt-1/1/5"
+    }
+  ],
+  "output_fields": [
+    {
+      "name": "onu_index",
+      "type": "string",
+      "unit": null,
+      "oid_ref": null,
+      "oid_status": "not_mapped"
+    },
+    {
+      "name": "admin_state",
+      "type": "string",
+      "unit": null,
+      "oid_ref": null,
+      "oid_status": "not_mapped"
+    },
+    {
+      "name": "omcc_state",
+      "type": "string",
+      "unit": null,
+      "oid_ref": null,
+      "oid_status": "not_mapped"
+    },
+    {
+      "name": "phase_state",
+      "type": "string",
+      "unit": null,
+      "oid_ref": "oid.zte.gpon.onu.onu_status",
+      "oid_status": "mapped"
+    },
+    {
+      "name": "speed_mode",
+      "type": "string",
+      "unit": null,
+      "oid_ref": null,
+      "oid_status": "not_mapped"
+    }
+  ],
+  "prerequisites": [],
+  "related_commands": [
+    "command.zte.gpon.onu.show.onu_baseinfo",
+    "command.zte.gpon.onu.show.onu_detail",
+    "command.zte.gpon.onu.show.onu_uncfg"
+  ],
+  "rollback": null,
+  "errors": [
+    {
+      "code": 230285,
+      "meaning": "lectura vacía (ssid info sin SSID)",
+      "severity": "info",
+      "retry": false
+    }
+  ],
+  "notes": null,
+  "evidence": "ejecutado y verificado en la OLT el 2026-10-02",
+  "sources": [
+    {
+      "doc_type": "hardware_verification",
+      "pages": null,
+      "confidence": 0.95
+    }
+  ],
+  "confidence": {
+    "extraction": 0.95,
+    "correlation": 0.0,
+    "overall": 0.95
+  },
+  "status": "verified",
+  "conflicts": []
+}

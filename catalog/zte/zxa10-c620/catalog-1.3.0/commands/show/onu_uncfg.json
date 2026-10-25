@@ -1,0 +1,101 @@
+{
+  "id": "command.zte.gpon.onu.show.onu_uncfg",
+  "canonical_name": "show pon onu uncfg",
+  "vendor": "ZTE",
+  "family": "ZXA10 C620",
+  "firmware": [
+    "1.2.2"
+  ],
+  "technology": "gpon",
+  "category": "show",
+  "cli_mode": "privileged_exec",
+  "cli_context": null,
+  "entity_ref": "entity.zte.gpon.device.onu",
+  "description": "ONU sin autorizar (equivale a 'show gpon onu uncfg', que no existe). Acepta puerto y columnas opcionales.",
+  "syntax": "show pon onu uncfg [gpon_olt-<pon>] [first-find-time] [last-find-time] [auth-fail-reason] [model <WORD>] [mac] [pw]",
+  "parameters": [
+    {
+      "name": "gpon_olt",
+      "type": "string",
+      "pattern": null,
+      "range": null,
+      "required": false,
+      "description": "",
+      "example": "gpon_olt-1/1/5"
+    }
+  ],
+  "output_fields": [
+    {
+      "name": "olt_index",
+      "type": "string",
+      "unit": null,
+      "oid_ref": null,
+      "oid_status": "not_mapped"
+    },
+    {
+      "name": "model",
+      "type": "string",
+      "unit": null,
+      "oid_ref": "oid.zte.gpon.onu.uncfg_onu_type",
+      "oid_status": "mapped"
+    },
+    {
+      "name": "serial_number",
+      "type": "string",
+      "unit": null,
+      "oid_ref": "oid.zte.gpon.onu.uncfg_onu_serial",
+      "oid_status": "mapped"
+    },
+    {
+      "name": "pw",
+      "type": "string",
+      "unit": null,
+      "oid_ref": "oid.zte.gpon.onu.uncfg_onu_password",
+      "oid_status": "mapped"
+    },
+    {
+      "name": "first_find_time",
+      "type": "string",
+      "unit": null,
+      "oid_ref": "oid.zte.gpon.onu.uncfg_onu_detected",
+      "oid_status": "mapped"
+    },
+    {
+      "name": "last_find_time",
+      "type": "string",
+      "unit": null,
+      "oid_ref": "oid.zte.gpon.onu.uncfg_onu_last_found",
+      "oid_status": "mapped"
+    },
+    {
+      "name": "auth_fail_reason",
+      "type": "string",
+      "unit": null,
+      "oid_ref": null,
+      "oid_status": "not_mapped"
+    }
+  ],
+  "prerequisites": [],
+  "related_commands": [
+    "command.zte.gpon.onu.create.onu_create",
+    "command.zte.gpon.onu.show.onu_by_sn"
+  ],
+  "rollback": null,
+  "errors": [],
+  "notes": "Por SNMP en la C620: tabla 1082.500.2.2.11.2.1.<col>.<ifIndexPON>.<n> (serial col 2, PW 3, modelo 8, firmware 10, primer hallazgo 12, último 13); verificado contra este comando el 2026-10-09. En la C600 no verificado (0 ONU sin autorizar).",
+  "evidence": "ejecutado y verificado en la OLT el 2026-10-02",
+  "sources": [
+    {
+      "doc_type": "hardware_verification",
+      "pages": null,
+      "confidence": 0.95
+    }
+  ],
+  "confidence": {
+    "extraction": 0.95,
+    "correlation": 0.0,
+    "overall": 0.95
+  },
+  "status": "verified",
+  "conflicts": []
+}

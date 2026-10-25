@@ -1,0 +1,44 @@
+{
+  "id": "command.zte.gpon.card.show",
+  "canonical_name": "show card",
+  "vendor": "ZTE",
+  "family": "ZXA10 C300",
+  "firmware": [
+    "2.0",
+    "2.1"
+  ],
+  "technology": "gpon",
+  "category": "show",
+  "cli_mode": "global_config",
+  "entity_ref": "entity.zte.gpon.hardware.card",
+  "description": "Muestra el estado de una tarjeta en un slot del chasis. Sintaxis tomada del manual del C320 sin ejecutar en hardware (la CLI real de clásicas usa `gpon-onu_1/1/1:1`, `gpon-olt_1/1/1` y `no onu N`). No usar para escribir sin verificarla antes.",
+  "syntax": "show card {shelf-slot}",
+  "parameters": [
+    {
+      "name": "shelf-slot",
+      "type": "string",
+      "pattern": null,
+      "range": null,
+      "required": true,
+      "description": null,
+      "example": null
+    }
+  ],
+  "output_fields": [],
+  "prerequisites": [],
+  "related_commands": [],
+  "sources": [
+    {
+      "doc_type": "command_reference",
+      "pages": null,
+      "confidence": 0.4
+    }
+  ],
+  "confidence": {
+    "extraction": 0.95,
+    "correlation": 0.0,
+    "overall": 0.4
+  },
+  "status": "documented",
+  "conflicts": []
+}

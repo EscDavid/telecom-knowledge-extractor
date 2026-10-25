@@ -1,0 +1,50 @@
+{
+  "id": "command.zte.gpon.onu.modify.onu_vport_mode",
+  "canonical_name": "vport-mode",
+  "vendor": "ZTE",
+  "family": "ZXA10 C600",
+  "firmware": [
+    "1.2.2"
+  ],
+  "technology": "gpon",
+  "category": "modify",
+  "cli_mode": "interface_config",
+  "cli_context": "interface gpon_onu-<idx>",
+  "entity_ref": "entity.zte.gpon.device.onu",
+  "description": "Modo de vport (la plantilla real usa manual).",
+  "syntax": "vport-mode {manual|gemport}",
+  "parameters": [
+    {
+      "name": "vport-mode",
+      "type": "enum",
+      "pattern": null,
+      "range": "manual|gemport",
+      "required": true,
+      "description": "",
+      "example": null
+    }
+  ],
+  "output_fields": [],
+  "prerequisites": [
+    "entity.zte.gpon.device.onu"
+  ],
+  "related_commands": [],
+  "rollback": null,
+  "errors": [],
+  "notes": null,
+  "evidence": "visto en la configuración/bitácora real de la OLT (ejecutado por SmartOLT)",
+  "sources": [
+    {
+      "doc_type": "hardware_verification",
+      "pages": null,
+      "confidence": 0.85
+    }
+  ],
+  "confidence": {
+    "extraction": 0.85,
+    "correlation": 0.0,
+    "overall": 0.85
+  },
+  "status": "observed",
+  "conflicts": []
+}

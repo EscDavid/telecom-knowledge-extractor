@@ -1,0 +1,45 @@
+{
+  "id": "command.zte.gpon.onu.show.state",
+  "canonical_name": "show gpon onu state",
+  "vendor": "ZTE",
+  "family": "ZXA10 C320",
+  "firmware": [
+    "2.0",
+    "2.1"
+  ],
+  "technology": "gpon",
+  "category": "show",
+  "cli_mode": "interface_config",
+  "entity_ref": "entity.zte.gpon.device.onu",
+  "description": "Fase de las ONU de un puerto PON (clásicas); sin argumento lista todas.",
+  "syntax": "show gpon onu state gpon-olt_{pon}",
+  "parameters": [
+    {
+      "name": "gpon-onu-index",
+      "type": "string",
+      "pattern": null,
+      "range": null,
+      "required": true,
+      "description": null,
+      "example": null
+    }
+  ],
+  "output_fields": [],
+  "prerequisites": [],
+  "related_commands": [],
+  "sources": [
+    {
+      "doc_type": "hardware_verification",
+      "pages": null,
+      "confidence": 0.8
+    }
+  ],
+  "confidence": {
+    "extraction": 0.8,
+    "correlation": 0.0,
+    "overall": 0.8
+  },
+  "status": "observed",
+  "conflicts": [],
+  "evidence": "ejecutado por el importador (network-api, verificar-olts.ts) en 5 OLT clásicas y registrado en reports/hallazgos-cli-snmp-zte-2026-10-09.md; TKC no lo ejecutó"
+}

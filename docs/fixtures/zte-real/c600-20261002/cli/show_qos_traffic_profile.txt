@@ -1,0 +1,8 @@
+show qos traffic-profile
+No.1       profile :SMARTOLT-1G-UP
+No.2       profile :SMARTOLT-1G-DOWN
+No.3       profile :SMARTOLT-400M-UP
+No.4       profile :SMARTOLT-500M-DOWN
+No.5       profile :SMARTOLT-VOIPMNG-10M
+No.6       profile :SMARTOLT-IPTV-50M-DOWN
+ZXAN#

@@ -1,0 +1,70 @@
+# Recolector de walks para VSOL V1600G2B (GPON, firmware V1.5.0R) — SNMPv2c de SOLO LECTURA.
+# Uso (tras poner TKC_VSOL_RO_COMMUNITY y el puerto UDP correcto en el .env):
+#   .venv/bin/python -m src.walk_collector --config config/collector_vsol.yaml --no-prompt --max-runtime 18
+# La rama real bajo 1.3.6.1.4.1.37950 se DESCUBRE por GETNEXT (skip-scan): no se asume
+# la del MIB V1600D (EPON).
+walk_collector:
+  vendor: VSOL
+  model: V1600G2B
+  expect_sysdescr_regex: "."          # sysDescr real desconocido: se ajusta tras el primer GET
+  snmp:
+    version: 2c
+    host_env: TKC_VSOL_HOST
+    port_env: TKC_VSOL_SNMP_PORT
+    community_env: TKC_VSOL_RO_COMMUNITY
+    default_port: 161
+    timeout_s: 5
+    max_repetitions: 20
+    min_repetitions: 1
+    preflight_attempts: 3
+  pacing:
+    inter_request_delay_ms: 300       # la V1600G2B disparó el kill-switch de latencia a 150 ms
+    inter_task_delay_s: 3
+    checkpoint_every_requests: 25
+    checkpoint_every_s: 5
+  retry:
+    max_attempts_per_request: 4
+    backoff_base_s: 2
+    backoff_max_s: 60
+    jitter: 0.2
+    final_retry_rounds: 1
+    max_stall_pdus: 3
+    max_bumps_per_task: 20
+  outage:
+    sanity_oid: "1.3.6.1.2.1.1.1.0"
+    wait_s: [30, 60, 120]
+    max_outage_min: 10
+  safety:
+    latency_window: 50
+    baseline_samples: 20
+    degrade_factor: 4.0
+    degrade_min_ms: 1500
+    sustain_checks: 3
+    pause_s: 120
+    max_safety_pauses: 3
+    max_runtime_min: 20
+  outputs:
+    entities:
+      suffix: "_entities"
+      roots: ["1.3.6.1.2.1.47.1.1.1.1"]
+      discover: false
+    ifnames:
+      suffix: "_ifnames"
+      roots: ["1.3.6.1.2.1.2.2.1", "1.3.6.1.2.1.31.1.1.1.1"]
+      discover: false
+    enterprise:
+      suffix: ""
+      roots: ["1.3.6.1.4.1.37950"]
+      discover: true                  # skip-scan: una tarea por rama hija
+  discovery:
+    base_depth: 2
+    expand: []
+    max_children: 500
+  paths:
+    state_dir: state/walk_collector/
+    publish_dir: docs/walks/
+  publish:
+    allow_incomplete: false
+  redaction:                          # sin prefijos conocidos aún: los walks VSOL están en .gitignore
+    mode: none
+    prefixes: []

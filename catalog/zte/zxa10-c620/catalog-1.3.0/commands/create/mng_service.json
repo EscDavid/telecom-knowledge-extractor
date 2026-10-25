@@ -1,0 +1,63 @@
+{
+  "id": "command.zte.gpon.onu.create.mng_service",
+  "canonical_name": "service (pon-onu-mng)",
+  "vendor": "ZTE",
+  "family": "ZXA10 C620",
+  "firmware": [
+    "1.2.2"
+  ],
+  "technology": "gpon",
+  "category": "create",
+  "cli_mode": "interface_config",
+  "cli_context": "pon-onu-mng gpon_onu-<idx>",
+  "entity_ref": "entity.zte.gpon.device.onu",
+  "description": "Servicio de la ONU: GEM y VLAN (plantilla real: 'service vlan101 gemport 1 vlan 101' + 'veip 1'). Borrado: 'no service <nombre>'.",
+  "syntax": "service <nombre> gemport <1-255> {vlan <V>|untag|cos <0-7>|ethuni <if>|veip <1-255>}",
+  "parameters": [
+    {
+      "name": "nombre",
+      "type": "string",
+      "pattern": null,
+      "range": null,
+      "required": true,
+      "description": "",
+      "example": null
+    },
+    {
+      "name": "gemport",
+      "type": "integer",
+      "pattern": null,
+      "range": "1-255",
+      "required": true,
+      "description": "",
+      "example": null
+    }
+  ],
+  "output_fields": [],
+  "prerequisites": [
+    "entity.zte.gpon.device.onu"
+  ],
+  "related_commands": [
+    "command.zte.gpon.onu.modify.mng_veip",
+    "command.zte.gpon.vlan.modify.mng_vlan_port",
+    "command.zte.gpon.gem_port.create.onu_gemport"
+  ],
+  "rollback": "no service <nombre>",
+  "errors": [],
+  "notes": null,
+  "evidence": "ejecutado y verificado en la OLT el 2026-10-02",
+  "sources": [
+    {
+      "doc_type": "hardware_verification",
+      "pages": null,
+      "confidence": 0.95
+    }
+  ],
+  "confidence": {
+    "extraction": 0.95,
+    "correlation": 0.0,
+    "overall": 0.95
+  },
+  "status": "verified",
+  "conflicts": []
+}

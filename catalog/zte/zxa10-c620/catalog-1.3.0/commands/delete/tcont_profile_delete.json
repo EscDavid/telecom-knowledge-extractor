@@ -1,0 +1,58 @@
+{
+  "id": "command.zte.gpon.global.delete.tcont_profile_delete",
+  "canonical_name": "no profile tcont",
+  "vendor": "ZTE",
+  "family": "ZXA10 C620",
+  "firmware": [
+    "1.2.2"
+  ],
+  "technology": "gpon",
+  "category": "delete",
+  "cli_mode": "pon_config",
+  "cli_context": "gpon",
+  "entity_ref": "entity.zte.gpon.logical.tcont_profile",
+  "description": "Borra un perfil T-CONT.",
+  "syntax": "no profile tcont <WORD>",
+  "parameters": [
+    {
+      "name": "name",
+      "type": "string",
+      "pattern": null,
+      "range": null,
+      "required": true,
+      "description": "",
+      "example": "SMARTOLT-30M-UP"
+    }
+  ],
+  "output_fields": [],
+  "prerequisites": [],
+  "related_commands": [
+    "command.zte.gpon.global.create.tcont_profile_create",
+    "command.zte.gpon.global.show.tcont_profile_list"
+  ],
+  "rollback": null,
+  "errors": [
+    {
+      "code": 90,
+      "meaning": "el 'no …' no tenía nada que borrar (inocuo en rollback)",
+      "severity": "info",
+      "retry": false
+    }
+  ],
+  "notes": null,
+  "evidence": "ejecutado y verificado en la OLT el 2026-10-02",
+  "sources": [
+    {
+      "doc_type": "hardware_verification",
+      "pages": null,
+      "confidence": 0.95
+    }
+  ],
+  "confidence": {
+    "extraction": 0.95,
+    "correlation": 0.0,
+    "overall": 0.95
+  },
+  "status": "verified",
+  "conflicts": []
+}

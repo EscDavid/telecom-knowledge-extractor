@@ -1,0 +1,7 @@
+show vlan summary
+All created vlan num: 4   
+Details are following:
+  1,100-101,214
+Hardware operate fail following:
+  
+ZXAN#

@@ -1,0 +1,209 @@
+==============================================================================
+IF-MIB ESTANDAR (CONTADORES POR PUERTO) Y GRUPO system — ZXA10 C600 / C620
+OIDs estandar (no ZTE) presentes en el firmware V1.2.2 de ambos equipos.
+==============================================================================
+
+# META
+doc_type: community
+vendor: ZTE
+families: ZXA10 C600, ZXA10 C620
+walk_sources: staging/walk_extra (walks de 2026-10-02 de .1.3.6.1.2.1.1 y .1.3.6.1.2.1.31.1.1) + docs/walks/ZTE_C6x0_ifnames.txt
+extraction_date: 2026-10-02
+provenance: walks reales de 2026-10-02 de una C620 (24 interfaces) y una C600 (40 interfaces).
+            Los contadores del uplink xgei-1/4/1 de la C620 se contrastaron con
+            show interface xgei-1/4/1 de la CLI (bytes y unicasts coinciden; la
+            diferencia entre SNMP y CLI es la esperable por el trafico que paso
+            entre ambas lecturas, ~15 MB/s). Los contadores de los puertos PON
+            solo estan contrastados contra el walk (la CLI de show interface de
+            un gpon_olt muestra su propio bloque de estadisticas, que en esas
+            muestras estaba en cero).
+scope: contadores de trafico por puerto, velocidad y grupo system. El indice es
+       ifIndex (el mismo que ifName / ifTable).
+
+
+[oid]
+attribute: hc_in_octets
+entity_ref: entity.zte.gpon.port.pon_port
+oid_prefix: .1.3.6.1.2.1.31.1.1.1.6
+base_space: ifIndex
+full_oid_template: .1.3.6.1.2.1.31.1.1.1.6.<ifIndex>
+syntax: Counter64
+status: verified_walk
+note: aplica a PON ports (ifType 250) y a uplinks (ifType 6): el catalogo asigna cada OID a una sola entidad y este es el convenio de ifTable. octetos recibidos (64 bits). Estandar IF-MIB; verificado en walk (ver META).
+mib_name: UNRESOLVED
+
+[oid]
+attribute: hc_in_ucast_pkts
+entity_ref: entity.zte.gpon.port.pon_port
+oid_prefix: .1.3.6.1.2.1.31.1.1.1.7
+base_space: ifIndex
+full_oid_template: .1.3.6.1.2.1.31.1.1.1.7.<ifIndex>
+syntax: Counter64
+status: verified_walk
+note: aplica a PON ports (ifType 250) y a uplinks (ifType 6): el catalogo asigna cada OID a una sola entidad y este es el convenio de ifTable. paquetes unicast recibidos. Estandar IF-MIB; verificado en walk (ver META).
+mib_name: UNRESOLVED
+
+[oid]
+attribute: hc_in_multicast_pkts
+entity_ref: entity.zte.gpon.port.pon_port
+oid_prefix: .1.3.6.1.2.1.31.1.1.1.8
+base_space: ifIndex
+full_oid_template: .1.3.6.1.2.1.31.1.1.1.8.<ifIndex>
+syntax: Counter64
+status: verified_walk
+note: aplica a PON ports (ifType 250) y a uplinks (ifType 6): el catalogo asigna cada OID a una sola entidad y este es el convenio de ifTable. paquetes multicast recibidos. Estandar IF-MIB; verificado en walk (ver META).
+mib_name: UNRESOLVED
+
+[oid]
+attribute: hc_in_broadcast_pkts
+entity_ref: entity.zte.gpon.port.pon_port
+oid_prefix: .1.3.6.1.2.1.31.1.1.1.9
+base_space: ifIndex
+full_oid_template: .1.3.6.1.2.1.31.1.1.1.9.<ifIndex>
+syntax: Counter64
+status: verified_walk
+note: aplica a PON ports (ifType 250) y a uplinks (ifType 6): el catalogo asigna cada OID a una sola entidad y este es el convenio de ifTable. paquetes broadcast recibidos. Estandar IF-MIB; verificado en walk (ver META).
+mib_name: UNRESOLVED
+
+[oid]
+attribute: hc_out_octets
+entity_ref: entity.zte.gpon.port.pon_port
+oid_prefix: .1.3.6.1.2.1.31.1.1.1.10
+base_space: ifIndex
+full_oid_template: .1.3.6.1.2.1.31.1.1.1.10.<ifIndex>
+syntax: Counter64
+status: verified_walk
+note: aplica a PON ports (ifType 250) y a uplinks (ifType 6): el catalogo asigna cada OID a una sola entidad y este es el convenio de ifTable. octetos transmitidos (64 bits). Estandar IF-MIB; verificado en walk (ver META).
+mib_name: UNRESOLVED
+
+[oid]
+attribute: hc_out_ucast_pkts
+entity_ref: entity.zte.gpon.port.pon_port
+oid_prefix: .1.3.6.1.2.1.31.1.1.1.11
+base_space: ifIndex
+full_oid_template: .1.3.6.1.2.1.31.1.1.1.11.<ifIndex>
+syntax: Counter64
+status: verified_walk
+note: aplica a PON ports (ifType 250) y a uplinks (ifType 6): el catalogo asigna cada OID a una sola entidad y este es el convenio de ifTable. paquetes unicast transmitidos. Estandar IF-MIB; verificado en walk (ver META).
+mib_name: UNRESOLVED
+
+[oid]
+attribute: hc_out_multicast_pkts
+entity_ref: entity.zte.gpon.port.pon_port
+oid_prefix: .1.3.6.1.2.1.31.1.1.1.12
+base_space: ifIndex
+full_oid_template: .1.3.6.1.2.1.31.1.1.1.12.<ifIndex>
+syntax: Counter64
+status: verified_walk
+note: aplica a PON ports (ifType 250) y a uplinks (ifType 6): el catalogo asigna cada OID a una sola entidad y este es el convenio de ifTable. paquetes multicast transmitidos. Estandar IF-MIB; verificado en walk (ver META).
+mib_name: UNRESOLVED
+
+[oid]
+attribute: hc_out_broadcast_pkts
+entity_ref: entity.zte.gpon.port.pon_port
+oid_prefix: .1.3.6.1.2.1.31.1.1.1.13
+base_space: ifIndex
+full_oid_template: .1.3.6.1.2.1.31.1.1.1.13.<ifIndex>
+syntax: Counter64
+status: verified_walk
+note: aplica a PON ports (ifType 250) y a uplinks (ifType 6): el catalogo asigna cada OID a una sola entidad y este es el convenio de ifTable. paquetes broadcast transmitidos. Estandar IF-MIB; verificado en walk (ver META).
+mib_name: UNRESOLVED
+
+[oid]
+attribute: high_speed
+entity_ref: entity.zte.gpon.port.pon_port
+oid_prefix: .1.3.6.1.2.1.31.1.1.1.15
+base_space: ifIndex
+full_oid_template: .1.3.6.1.2.1.31.1.1.1.15.<ifIndex>
+syntax: Gauge32
+status: verified_walk
+note: aplica a PON ports (ifType 250) y a uplinks (ifType 6): el catalogo asigna cada OID a una sola entidad y este es el convenio de ifTable. velocidad nominal en Mbps. Estandar IF-MIB; verificado en walk (ver META).
+mib_name: UNRESOLVED
+
+[oid]
+attribute: in_discards
+entity_ref: entity.zte.gpon.port.pon_port
+oid_prefix: .1.3.6.1.2.1.2.2.1.13
+base_space: ifIndex
+full_oid_template: .1.3.6.1.2.1.2.2.1.13.<ifIndex>
+syntax: Counter32
+status: verified_walk
+note: aplica a PON ports (ifType 250) y a uplinks (ifType 6): el catalogo asigna cada OID a una sola entidad y este es el convenio de ifTable. paquetes recibidos descartados. Estandar IF-MIB; verificado en walk (ver META).
+mib_name: UNRESOLVED
+
+[oid]
+attribute: in_errors
+entity_ref: entity.zte.gpon.port.pon_port
+oid_prefix: .1.3.6.1.2.1.2.2.1.14
+base_space: ifIndex
+full_oid_template: .1.3.6.1.2.1.2.2.1.14.<ifIndex>
+syntax: Counter32
+status: verified_walk
+note: aplica a PON ports (ifType 250) y a uplinks (ifType 6): el catalogo asigna cada OID a una sola entidad y este es el convenio de ifTable. paquetes recibidos con error. Estandar IF-MIB; verificado en walk (ver META).
+mib_name: UNRESOLVED
+
+[oid]
+attribute: out_discards
+entity_ref: entity.zte.gpon.port.pon_port
+oid_prefix: .1.3.6.1.2.1.2.2.1.19
+base_space: ifIndex
+full_oid_template: .1.3.6.1.2.1.2.2.1.19.<ifIndex>
+syntax: Counter32
+status: verified_walk
+note: aplica a PON ports (ifType 250) y a uplinks (ifType 6): el catalogo asigna cada OID a una sola entidad y este es el convenio de ifTable. paquetes transmitidos descartados. Estandar IF-MIB; verificado en walk (ver META).
+mib_name: UNRESOLVED
+
+[oid]
+attribute: out_errors
+entity_ref: entity.zte.gpon.port.pon_port
+oid_prefix: .1.3.6.1.2.1.2.2.1.20
+base_space: ifIndex
+full_oid_template: .1.3.6.1.2.1.2.2.1.20.<ifIndex>
+syntax: Counter32
+status: verified_walk
+note: aplica a PON ports (ifType 250) y a uplinks (ifType 6): el catalogo asigna cada OID a una sola entidad y este es el convenio de ifTable. paquetes transmitidos con error. Estandar IF-MIB; verificado en walk (ver META).
+mib_name: UNRESOLVED
+
+[oid]
+attribute: sys_descr
+entity_ref: entity.zte.gpon.device.olt
+oid_prefix: .1.3.6.1.2.1.1.1.0
+base_space: scalar
+full_oid_template: .1.3.6.1.2.1.1.1.0
+syntax: STRING
+status: verified_walk
+note: descripcion del equipo (modelo y version de software). Estandar IF-MIB; verificado en walk (ver META).
+mib_name: UNRESOLVED
+
+[oid]
+attribute: sys_object_id
+entity_ref: entity.zte.gpon.device.olt
+oid_prefix: .1.3.6.1.2.1.1.2.0
+base_space: scalar
+full_oid_template: .1.3.6.1.2.1.1.2.0
+syntax: OBJECT IDENTIFIER
+status: verified_walk
+note: sysObjectID: identifica el modelo (C620 .1082.1001.620.1.1, C600 .1082.1001.600.1.1). Estandar IF-MIB; verificado en walk (ver META).
+mib_name: UNRESOLVED
+
+[oid]
+attribute: sys_uptime
+entity_ref: entity.zte.gpon.device.olt
+oid_prefix: .1.3.6.1.2.1.1.3.0
+base_space: scalar
+full_oid_template: .1.3.6.1.2.1.1.3.0
+syntax: Timeticks
+status: verified_walk
+note: tiempo desde el ultimo arranque del agente SNMP, en centesimas de segundo. Estandar IF-MIB; verificado en walk (ver META).
+mib_name: UNRESOLVED
+
+[oid]
+attribute: sys_name
+entity_ref: entity.zte.gpon.device.olt
+oid_prefix: .1.3.6.1.2.1.1.5.0
+base_space: scalar
+full_oid_template: .1.3.6.1.2.1.1.5.0
+syntax: STRING
+status: verified_walk
+note: nombre del equipo. Estandar IF-MIB; verificado en walk (ver META).
+mib_name: UNRESOLVED

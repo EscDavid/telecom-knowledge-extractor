@@ -1,0 +1,78 @@
+{
+  "id": "command.zte.gpon.onu.modify.mng_wan_ip",
+  "canonical_name": "wan-ip",
+  "vendor": "ZTE",
+  "family": "ZXA10 C620",
+  "firmware": [
+    "1.2.2"
+  ],
+  "technology": "gpon",
+  "category": "modify",
+  "cli_mode": "interface_config",
+  "cli_context": "pon-onu-mng gpon_onu-<idx>",
+  "entity_ref": "entity.zte.gpon.device.onu",
+  "description": "WAN IP de la ONU. Primero 'mode …' y después 'ping-response …' (sin el WAN IP previo da 'This wan-ip does not exist'). Se guarda como 'wan-ip ipv4 mode dhcp vlan-profile <P> host 1'.",
+  "syntax": "wan-ip <1-255> ipv4 mode {dhcp [id <WORD>|vlan-profile <WORD>]|inner|pppoe|static} ; wan-ip <1-255> ipv4 ping-response {enable|disable} traceroute-response {enable|disable}",
+  "parameters": [
+    {
+      "name": "wan-ip",
+      "type": "integer",
+      "pattern": null,
+      "range": "1-255",
+      "required": true,
+      "description": "",
+      "example": null
+    },
+    {
+      "name": "ping-response",
+      "type": "enum",
+      "pattern": null,
+      "range": "enable|disable",
+      "required": true,
+      "description": "",
+      "example": null
+    },
+    {
+      "name": "traceroute-response",
+      "type": "enum",
+      "pattern": null,
+      "range": "enable|disable",
+      "required": true,
+      "description": "",
+      "example": null
+    }
+  ],
+  "output_fields": [],
+  "prerequisites": [
+    "entity.zte.gpon.device.onu"
+  ],
+  "related_commands": [
+    "command.zte.gpon.onu.create.mng_service",
+    "command.zte.gpon.onu.show.remote_service"
+  ],
+  "rollback": null,
+  "errors": [
+    {
+      "code": 224011,
+      "meaning": "crear primero wan-ip … mode …",
+      "severity": "error",
+      "retry": false
+    }
+  ],
+  "notes": null,
+  "evidence": "ejecutado y verificado en la OLT el 2026-10-02",
+  "sources": [
+    {
+      "doc_type": "hardware_verification",
+      "pages": null,
+      "confidence": 0.95
+    }
+  ],
+  "confidence": {
+    "extraction": 0.95,
+    "correlation": 0.0,
+    "overall": 0.95
+  },
+  "status": "verified",
+  "conflicts": []
+}

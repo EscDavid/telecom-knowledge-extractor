@@ -1,0 +1,63 @@
+{
+ "model": "C600",
+ "note": "índice SNMP <ifIndexPON>.<nº ONU>; ifIndexPON se resuelve con ifName",
+ "onu_samples": [
+  {
+   "cli_location": "1/1/1:1",
+   "snmp_index": "285278465.1",
+   "admin_state": "enable",
+   "omcc_state": "enable",
+   "phase_state": "working"
+  },
+  {
+   "cli_location": "1/1/1:2",
+   "snmp_index": "285278465.2",
+   "admin_state": "enable",
+   "omcc_state": "enable",
+   "phase_state": "working"
+  },
+  {
+   "cli_location": "1/1/1:3",
+   "snmp_index": "285278465.3",
+   "admin_state": "enable",
+   "omcc_state": "enable",
+   "phase_state": "working"
+  },
+  {
+   "cli_location": "1/1/1:4",
+   "snmp_index": "285278465.4",
+   "admin_state": "enable",
+   "omcc_state": "enable",
+   "phase_state": "working"
+  },
+  {
+   "cli_location": "1/1/1:5",
+   "snmp_index": "285278465.5",
+   "admin_state": "enable",
+   "omcc_state": "enable",
+   "phase_state": "working"
+  },
+  {
+   "cli_location": "1/1/1:6",
+   "snmp_index": "285278465.6",
+   "admin_state": "enable",
+   "omcc_state": "enable",
+   "phase_state": "working"
+  },
+  {
+   "cli_location": "1/1/1:7",
+   "snmp_index": "285278465.7",
+   "admin_state": "enable",
+   "omcc_state": "enable",
+   "phase_state": "working"
+  },
+  {
+   "cli_location": "1/1/1:8",
+   "snmp_index": "285278465.8",
+   "admin_state": "enable",
+   "omcc_state": "enable",
+   "phase_state": "working"
+  }
+ ],
+ "power_samples": []
+}

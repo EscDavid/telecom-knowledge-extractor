@@ -1,0 +1,29 @@
+show software 1
+ZXA10 C620
+ZTE ZXA10 Software, Version: V1.2.2, Release software
+Copyright (c) 2021 by ZTE Corporation
+Built on 2021/07/25 08:20:07
+System image file is <sysdisk0: verset/C620V1.2.2.set>, file size is 346,737,435
+ Bytes
+System image is loaded from local
+System uptime is 6 day(s), 5 hour(s), 13 minute(s)
+
+[GFBT, shelf 1, slot 1]:
+  Active Packages on Node PFU-1/1/0:
+    Base-1.2.2:
+      Package: Base
+      Version: V1.2.2
+
+[SPUF, shelf 1, slot 4]:
+  Active Packages on Node MPU-1/4/0:
+    Base-1.2.2:
+      Package: Base
+      Version: V1.2.2
+
+[SPUF, shelf 1, slot 5]:
+  Active Packages on Node MPU-1/5/0:
+             Base-1.2.2:
+      Package: Base
+      Version: V1.2.2
+
+ZXAN#

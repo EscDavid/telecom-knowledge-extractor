@@ -1,0 +1,44 @@
+{
+  "id": "command.zte.gpon.onu.reset",
+  "canonical_name": "reset gpon onu",
+  "vendor": "ZTE",
+  "family": "ZXA10 C320",
+  "firmware": [
+    "2.0",
+    "2.1"
+  ],
+  "technology": "gpon",
+  "category": "reset",
+  "cli_mode": "interface_config",
+  "entity_ref": "entity.zte.gpon.device.onu",
+  "description": "Reinicia una ONU de forma remota. Sintaxis tomada del manual del C320 sin ejecutar en hardware (la CLI real de clásicas usa `gpon-onu_1/1/1:1`, `gpon-olt_1/1/1` y `no onu N`). No usar para escribir sin verificarla antes.",
+  "syntax": "reset gpon onu {gpon-onu-index}",
+  "parameters": [
+    {
+      "name": "gpon-onu-index",
+      "type": "string",
+      "pattern": null,
+      "range": null,
+      "required": true,
+      "description": null,
+      "example": null
+    }
+  ],
+  "output_fields": [],
+  "prerequisites": [],
+  "related_commands": [],
+  "sources": [
+    {
+      "doc_type": "command_reference",
+      "pages": null,
+      "confidence": 0.4
+    }
+  ],
+  "confidence": {
+    "extraction": 0.95,
+    "correlation": 0.0,
+    "overall": 0.4
+  },
+  "status": "documented",
+  "conflicts": []
+}

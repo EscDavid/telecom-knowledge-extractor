@@ -1,0 +1,23 @@
+T-CONT number:               16
+GEM port number:             64
+Total priority queue number: 38
+Up priority queue number:    30
+Down priority queue number:  8
+Traffic scheduler number:    16
+Traffic management option:   priority&rate controlled
+Total UNI number:            5
+  Ethernet UNI number:       0    (10GE:0   GE:0   FE:0)
+  CES UNI number:            0
+  POTS UNI number:           0
+  Video UNI number:          1
+  WIFI UNI number:           4
+  xDSL UNI number:           0
+IP host number:              2
+IPv6 host number:            0
+VEIP number:                 1
+Operator ID:                 CTC 
+CTC spc version:             CTC V2.0
+CUC spc version:             N/A
+ONU type:                    HGU
+Tx power supply control:     not support
+ZXAN#

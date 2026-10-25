@@ -1,0 +1,5 @@
+show gpon remote-onu service gpon_onu-1/1/1:1
+Service name   GEM port  IfId      CoS         VLAN      
+--------------------------------------------------------
+vlan11         1         --        --          11
+ZXAN#

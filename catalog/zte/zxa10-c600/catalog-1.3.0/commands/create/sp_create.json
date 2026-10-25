@@ -1,0 +1,89 @@
+{
+  "id": "command.zte.gpon.service_port.create.sp_create",
+  "canonical_name": "service-port",
+  "vendor": "ZTE",
+  "family": "ZXA10 C600",
+  "firmware": [
+    "1.2.2"
+  ],
+  "technology": "gpon",
+  "category": "create",
+  "cli_mode": "interface_config",
+  "cli_context": "interface vport-<pon>.<n>:<v>",
+  "entity_ref": "entity.zte.gpon.logical.service_port",
+  "description": "Service-port de la ONU con los perfiles de velocidad (ingress = perfil de subida, egress = traffic-profile de bajada).",
+  "syntax": "service-port <1-128> user-vlan {<1-4094>|untagged} vlan <1-4094> [ingress <perfil_subida> [egress <perfil_bajada>]] [user-priority|user-etype|user-svlan …] [car-threshold …] [new-cos|svlan …]",
+  "parameters": [
+    {
+      "name": "id",
+      "type": "integer",
+      "pattern": null,
+      "range": "1-128",
+      "required": true,
+      "description": "",
+      "example": "1"
+    },
+    {
+      "name": "user-vlan",
+      "type": "integer",
+      "pattern": null,
+      "range": "1-4094",
+      "required": true,
+      "description": "",
+      "example": "101"
+    },
+    {
+      "name": "ingress",
+      "type": "string",
+      "pattern": null,
+      "range": null,
+      "required": false,
+      "description": "",
+      "example": "SMARTOLT-50M-UP"
+    },
+    {
+      "name": "egress",
+      "type": "string",
+      "pattern": null,
+      "range": null,
+      "required": false,
+      "description": "",
+      "example": "SMARTOLT-50M-DOWN"
+    }
+  ],
+  "output_fields": [],
+  "prerequisites": [
+    "entity.zte.gpon.device.onu"
+  ],
+  "related_commands": [
+    "command.zte.gpon.service_port.delete.sp_delete",
+    "command.zte.gpon.service_port.show.service_port",
+    "command.zte.gpon.service_port.show.rc_vport",
+    "command.zte.gpon.global.create.traffic_profile_create"
+  ],
+  "rollback": "no service-port <1-128>",
+  "errors": [
+    {
+      "code": 241874,
+      "meaning": "qos traffic-profile inexistente",
+      "severity": "error",
+      "retry": false
+    }
+  ],
+  "notes": null,
+  "evidence": "visto en la configuración/bitácora real de la OLT (ejecutado por SmartOLT)",
+  "sources": [
+    {
+      "doc_type": "hardware_verification",
+      "pages": null,
+      "confidence": 0.85
+    }
+  ],
+  "confidence": {
+    "extraction": 0.85,
+    "correlation": 0.0,
+    "overall": 0.85
+  },
+  "status": "observed",
+  "conflicts": []
+}

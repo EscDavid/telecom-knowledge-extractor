@@ -1,0 +1,58 @@
+{
+  "id": "command.zte.gpon.onu.delete.onu_type_delete",
+  "canonical_name": "no onu-type",
+  "vendor": "ZTE",
+  "family": "ZXA10 C600",
+  "firmware": [
+    "1.2.2"
+  ],
+  "technology": "gpon",
+  "category": "delete",
+  "cli_mode": "pon_config",
+  "cli_context": "pon",
+  "entity_ref": "entity.zte.gpon.device.onu",
+  "description": "Borra un tipo de ONU.",
+  "syntax": "no onu-type <WORD>",
+  "parameters": [
+    {
+      "name": "WORD",
+      "type": "string",
+      "pattern": null,
+      "range": null,
+      "required": true,
+      "description": "",
+      "example": null
+    }
+  ],
+  "output_fields": [],
+  "prerequisites": [],
+  "related_commands": [
+    "command.zte.gpon.onu.create.onu_type_create",
+    "command.zte.gpon.onu.show.onu_type_list"
+  ],
+  "rollback": null,
+  "errors": [
+    {
+      "code": 90,
+      "meaning": "el 'no …' no tenía nada que borrar (inocuo en rollback)",
+      "severity": "info",
+      "retry": false
+    }
+  ],
+  "notes": null,
+  "evidence": "sintaxis obtenida solo con la ayuda '?' de la OLT (no ejecutada)",
+  "sources": [
+    {
+      "doc_type": "hardware_verification",
+      "pages": null,
+      "confidence": 0.6
+    }
+  ],
+  "confidence": {
+    "extraction": 0.6,
+    "correlation": 0.0,
+    "overall": 0.6
+  },
+  "status": "documented",
+  "conflicts": []
+}

@@ -1,0 +1,34 @@
+{
+  "id": "command.zte.gpon.global.show.disable_shutdown_port_number_2",
+  "canonical_name": "disable/shutdown port number 2",
+  "vendor": "ZTE",
+  "family": "ZXA10 C320",
+  "firmware": [
+    "2.0",
+    "2.1"
+  ],
+  "technology": "gpon",
+  "category": "show",
+  "cli_mode": "pon_config",
+  "entity_ref": null,
+  "description": null,
+  "syntax": "disable/shutdown port number 2",
+  "parameters": [],
+  "output_fields": [],
+  "prerequisites": [],
+  "related_commands": [],
+  "sources": [
+    {
+      "doc_type": "command_reference",
+      "pages": null,
+      "confidence": 0.4
+    }
+  ],
+  "confidence": {
+    "extraction": 0.95,
+    "correlation": 0.0,
+    "overall": 0.95
+  },
+  "status": "verified",
+  "conflicts": []
+}

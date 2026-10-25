@@ -1,0 +1,48 @@
+{
+  "id": "entity.zte.gpon.protocol.dba",
+  "canonical_name": "DBA",
+  "vendor": "ZTE",
+  "family": "ZXA10 C600",
+  "firmware": [
+    "1.2.2"
+  ],
+  "technology": "gpon",
+  "type": "protocol",
+  "description": null,
+  "is_critical": false,
+  "aliases": [
+    {
+      "name": "DBA",
+      "source": "product_catalog",
+      "firmware_scope": "all"
+    }
+  ],
+  "attributes": [],
+  "sources": [
+    {
+      "doc_type": "product_catalog",
+      "pages": null,
+      "confidence": 0.07
+    },
+    {
+      "doc_type": "product_catalog",
+      "pages": null,
+      "confidence": 0.07
+    }
+  ],
+  "confidence": {
+    "extraction": 0.33,
+    "correlation": 0.0,
+    "overall": 0.0
+  },
+  "status": "inferred",
+  "lifecycle": {
+    "introduced_in": "2.0",
+    "deprecated_in": null,
+    "removed_in": null,
+    "status": "introduced",
+    "replacement": null
+  },
+  "relations": [],
+  "conflicts": []
+}

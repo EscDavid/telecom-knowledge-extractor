@@ -1,0 +1,22 @@
+Vendor ID:                 CDT  
+Version:                   R410.1C 
+SN:                        FAKE8E4AFDD1 
+Admin status:              unlock 
+Battery monitor:           false 
+Security mode:             aes 
+Product code:              0 
+Total priority queue num:  64 
+Total traffic schedule num:16 
+Traffic management option: priority-rate-controlled 
+Operate status:            enable 
+Equipment ID:              KM1303 
+OMCC version:              80 
+Security capability:       aes
+Model:                     KM1303
+Survival time:             N/A
+Total GEM port num:        64
+System uptime:             378.00 s
+Region code:               N/A
+Product SN:                N/A
+Chip info:                 0
+ZXAN#

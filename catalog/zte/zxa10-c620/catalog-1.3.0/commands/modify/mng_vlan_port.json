@@ -1,0 +1,75 @@
+{
+  "id": "command.zte.gpon.vlan.modify.mng_vlan_port",
+  "canonical_name": "vlan port",
+  "vendor": "ZTE",
+  "family": "ZXA10 C620",
+  "firmware": [
+    "1.2.2"
+  ],
+  "technology": "gpon",
+  "category": "modify",
+  "cli_mode": "interface_config",
+  "cli_context": "pon-onu-mng gpon_onu-<idx>",
+  "entity_ref": "entity.zte.gpon.logical.vlan",
+  "description": "Modo VLAN de un puerto de la ONU. La VLAN va dentro del mismo comando ('vlan port eth_0/1 mode tag vlan 101'); 'vlan port eth_0/1 vlan 101' suelto da 'Port mode error'.",
+  "syntax": "vlan port <if> mode {hybrid|tag|transparent|trunk} [vlan <1-4094>] [pri …]",
+  "parameters": [
+    {
+      "name": "if",
+      "type": "string",
+      "pattern": null,
+      "range": null,
+      "required": true,
+      "description": "",
+      "example": null
+    },
+    {
+      "name": "mode",
+      "type": "enum",
+      "pattern": null,
+      "range": "hybrid|tag|transparent|trunk",
+      "required": true,
+      "description": "",
+      "example": null
+    },
+    {
+      "name": "vlan",
+      "type": "integer",
+      "pattern": null,
+      "range": "1-4094",
+      "required": false,
+      "description": "",
+      "example": null
+    }
+  ],
+  "output_fields": [],
+  "prerequisites": [
+    "entity.zte.gpon.device.onu"
+  ],
+  "related_commands": [],
+  "rollback": null,
+  "errors": [
+    {
+      "code": 223983,
+      "meaning": "vlan port sin modo previo; usar 'vlan port <if> mode tag vlan <V>'",
+      "severity": "error",
+      "retry": false
+    }
+  ],
+  "notes": null,
+  "evidence": "ejecutado y verificado en la OLT el 2026-10-02",
+  "sources": [
+    {
+      "doc_type": "hardware_verification",
+      "pages": null,
+      "confidence": 0.95
+    }
+  ],
+  "confidence": {
+    "extraction": 0.95,
+    "correlation": 0.0,
+    "overall": 0.95
+  },
+  "status": "verified",
+  "conflicts": []
+}

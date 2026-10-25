@@ -1,0 +1,86 @@
+{
+  "id": "command.zte.gpon.onu.modify.mng_security",
+  "canonical_name": "security-mgmt",
+  "vendor": "ZTE",
+  "family": "ZXA10 C600",
+  "firmware": [
+    "1.2.2"
+  ],
+  "technology": "gpon",
+  "category": "modify",
+  "cli_mode": "interface_config",
+  "cli_context": "pon-onu-mng gpon_onu-<idx>",
+  "entity_ref": "entity.zte.gpon.device.onu",
+  "description": "Gestión remota segura de la ONU.",
+  "syntax": "security-mgmt <1-255> state {enable [mode {discard|forward}] [ingress-type {iphost|lan|wan}] [protocol {ftp|https|snmp|ssh|telnet|tr069|web}] [start-src-ip <A.B.C.D>]|disable}",
+  "parameters": [
+    {
+      "name": "security-mgmt",
+      "type": "integer",
+      "pattern": null,
+      "range": "1-255",
+      "required": true,
+      "description": "",
+      "example": null
+    },
+    {
+      "name": "mode",
+      "type": "enum",
+      "pattern": null,
+      "range": "discard|forward",
+      "required": false,
+      "description": "",
+      "example": null
+    },
+    {
+      "name": "ingress-type",
+      "type": "enum",
+      "pattern": null,
+      "range": "iphost|lan|wan",
+      "required": false,
+      "description": "",
+      "example": null
+    },
+    {
+      "name": "protocol",
+      "type": "enum",
+      "pattern": null,
+      "range": "ftp|https|snmp|ssh|telnet|tr069|web",
+      "required": false,
+      "description": "",
+      "example": null
+    },
+    {
+      "name": "A_B_C_D",
+      "type": "string",
+      "pattern": null,
+      "range": null,
+      "required": false,
+      "description": "",
+      "example": null
+    }
+  ],
+  "output_fields": [],
+  "prerequisites": [
+    "entity.zte.gpon.device.onu"
+  ],
+  "related_commands": [],
+  "rollback": null,
+  "errors": [],
+  "notes": null,
+  "evidence": "sintaxis obtenida solo con la ayuda '?' de la OLT (no ejecutada)",
+  "sources": [
+    {
+      "doc_type": "hardware_verification",
+      "pages": null,
+      "confidence": 0.6
+    }
+  ],
+  "confidence": {
+    "extraction": 0.6,
+    "correlation": 0.0,
+    "overall": 0.6
+  },
+  "status": "documented",
+  "conflicts": []
+}

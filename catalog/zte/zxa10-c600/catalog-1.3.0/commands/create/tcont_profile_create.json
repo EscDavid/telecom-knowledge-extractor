@@ -1,0 +1,69 @@
+{
+  "id": "command.zte.gpon.global.create.tcont_profile_create",
+  "canonical_name": "profile tcont (perfil T-CONT)",
+  "vendor": "ZTE",
+  "family": "ZXA10 C600",
+  "firmware": [
+    "1.2.2"
+  ],
+  "technology": "gpon",
+  "category": "create",
+  "cli_mode": "pon_config",
+  "cli_context": "gpon",
+  "entity_ref": "entity.zte.gpon.logical.tcont_profile",
+  "description": "Crea un perfil T-CONT (subida). Velocidades 64-9953280 kbps. Los perfiles SMARTOLT-<vel>-UP son tipo 5 con fixed 64 assured 64 maximum <kbps>.",
+  "syntax": "profile tcont <WORD> type {1 fixed <v>|2 assured <v>|3 assured <v> maximum <v>|4 maximum <v> [priority <1-4> [weight <n>]]|5 fixed <v> assured <v> maximum <v> [priority <1-4> [weight <n>]]}",
+  "parameters": [
+    {
+      "name": "name",
+      "type": "string",
+      "pattern": null,
+      "range": null,
+      "required": true,
+      "description": "",
+      "example": "SMARTOLT-30M-UP"
+    },
+    {
+      "name": "type",
+      "type": "integer",
+      "pattern": null,
+      "range": "1-5",
+      "required": true,
+      "description": "",
+      "example": "5"
+    },
+    {
+      "name": "fixed/assured/maximum",
+      "type": "integer",
+      "pattern": null,
+      "range": "64-9953280 kbps",
+      "required": true,
+      "description": "",
+      "example": "64"
+    }
+  ],
+  "output_fields": [],
+  "prerequisites": [],
+  "related_commands": [
+    "command.zte.gpon.global.delete.tcont_profile_delete",
+    "command.zte.gpon.global.show.tcont_profile_list"
+  ],
+  "rollback": "no profile tcont <WORD> (modo gpon)",
+  "errors": [],
+  "notes": null,
+  "evidence": "sintaxis obtenida solo con la ayuda '?' de la OLT (no ejecutada)",
+  "sources": [
+    {
+      "doc_type": "hardware_verification",
+      "pages": null,
+      "confidence": 0.6
+    }
+  ],
+  "confidence": {
+    "extraction": 0.6,
+    "correlation": 0.0,
+    "overall": 0.6
+  },
+  "status": "documented",
+  "conflicts": []
+}

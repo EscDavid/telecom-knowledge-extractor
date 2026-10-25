@@ -1,0 +1,167 @@
+{
+  "id": "command.zte.gpon.onu.create.onu_type_create",
+  "canonical_name": "onu-type",
+  "vendor": "ZTE",
+  "family": "ZXA10 C600",
+  "firmware": [
+    "1.2.2"
+  ],
+  "technology": "gpon",
+  "category": "create",
+  "cli_mode": "pon_config",
+  "cli_context": "pon",
+  "entity_ref": "entity.zte.gpon.device.onu",
+  "description": "Crea un tipo de ONU. Los tipos nuevos nacen con max-switch-perslot/max-flow-perswitch=255. El tipo de una ONU ya creada no se puede cambiar (222366, tampoco a un tipo equivalente ni con la ONU nunca en línea; pide [yes/no] y falla): dar de alta la ONU con el tipo correcto.",
+  "syntax": "onu-type <WORD> gpon [description <WORD>] [max-tcont <1-255>] [max-gemport <1-255>] [max-veip <0-255>] [max-iphost <0-127>] [max-ipv6-host <0-127>] [max-switch-perslot <1-255>] [max-flow-perswitch <1-255>] [service-ability N:1] [omci-send-mode {async|sync}] [mgc-cfg-mode {both|itu-t|zte}] [ex-omci {enable|disable}] [default-multicast-range {all-inclusive|none}] [location {enable|disable}]",
+  "parameters": [
+    {
+      "name": "WORD",
+      "type": "string",
+      "pattern": null,
+      "range": null,
+      "required": true,
+      "description": "",
+      "example": null
+    },
+    {
+      "name": "max-tcont",
+      "type": "integer",
+      "pattern": null,
+      "range": "1-255",
+      "required": false,
+      "description": "",
+      "example": null
+    },
+    {
+      "name": "max-gemport",
+      "type": "integer",
+      "pattern": null,
+      "range": "1-255",
+      "required": false,
+      "description": "",
+      "example": null
+    },
+    {
+      "name": "max-veip",
+      "type": "integer",
+      "pattern": null,
+      "range": "0-255",
+      "required": false,
+      "description": "",
+      "example": null
+    },
+    {
+      "name": "max-iphost",
+      "type": "integer",
+      "pattern": null,
+      "range": "0-127",
+      "required": false,
+      "description": "",
+      "example": null
+    },
+    {
+      "name": "max-ipv6-host",
+      "type": "integer",
+      "pattern": null,
+      "range": "0-127",
+      "required": false,
+      "description": "",
+      "example": null
+    },
+    {
+      "name": "max-switch-perslot",
+      "type": "integer",
+      "pattern": null,
+      "range": "1-255",
+      "required": false,
+      "description": "",
+      "example": null
+    },
+    {
+      "name": "max-flow-perswitch",
+      "type": "integer",
+      "pattern": null,
+      "range": "1-255",
+      "required": false,
+      "description": "",
+      "example": null
+    },
+    {
+      "name": "omci-send-mode",
+      "type": "enum",
+      "pattern": null,
+      "range": "async|sync",
+      "required": false,
+      "description": "",
+      "example": null
+    },
+    {
+      "name": "mgc-cfg-mode",
+      "type": "enum",
+      "pattern": null,
+      "range": "both|itu-t|zte",
+      "required": false,
+      "description": "",
+      "example": null
+    },
+    {
+      "name": "ex-omci",
+      "type": "enum",
+      "pattern": null,
+      "range": "enable|disable",
+      "required": false,
+      "description": "",
+      "example": null
+    },
+    {
+      "name": "default-multicast-range",
+      "type": "enum",
+      "pattern": null,
+      "range": "all-inclusive|none",
+      "required": false,
+      "description": "",
+      "example": null
+    },
+    {
+      "name": "location",
+      "type": "enum",
+      "pattern": null,
+      "range": "enable|disable",
+      "required": false,
+      "description": "",
+      "example": null
+    }
+  ],
+  "output_fields": [],
+  "prerequisites": [],
+  "related_commands": [
+    "command.zte.gpon.onu.delete.onu_type_delete",
+    "command.zte.gpon.onu.modify.onu_type_if",
+    "command.zte.gpon.onu.show.onu_type_list"
+  ],
+  "rollback": "no onu-type <WORD>",
+  "errors": [
+    {
+      "code": 230296,
+      "meaning": "el tipo de ONU está en uso por ONU configuradas: no se puede modificar (p. ej. onu-type … location enable)",
+      "severity": "error",
+      "retry": false
+    }
+  ],
+  "notes": null,
+  "evidence": "sintaxis obtenida solo con la ayuda '?' de la OLT (no ejecutada)",
+  "sources": [
+    {
+      "doc_type": "hardware_verification",
+      "pages": null,
+      "confidence": 0.6
+    }
+  ],
+  "confidence": {
+    "extraction": 0.6,
+    "correlation": 0.0,
+    "overall": 0.6
+  },
+  "status": "documented",
+  "conflicts": []
+}

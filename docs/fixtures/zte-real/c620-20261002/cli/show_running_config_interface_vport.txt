@@ -1,0 +1,11 @@
+!<if-intf>
+interface vport-1/1/1.1:1
+$
+!</if-intf>
+!<MSAN>
+interface vport-1/1/1.1:1
+  service-port 1 user-vlan 101 vlan 101 ingress SMARTOLT-400M-UP egress SMARTOLT
+-400M-DOWN
+$
+!</MSAN>
+ZXAN#

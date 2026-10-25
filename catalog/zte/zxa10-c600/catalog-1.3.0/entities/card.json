@@ -1,0 +1,58 @@
+{
+  "id": "entity.zte.gpon.hardware.card",
+  "canonical_name": "Card",
+  "vendor": "ZTE",
+  "family": "ZXA10 C600",
+  "firmware": [
+    "1.2.2"
+  ],
+  "technology": "gpon",
+  "type": "hardware",
+  "description": "Chapter 3 Cards",
+  "is_critical": false,
+  "aliases": [
+    {
+      "name": "Card",
+      "source": "product_catalog",
+      "firmware_scope": "all"
+    }
+  ],
+  "attributes": [],
+  "sources": [
+    {
+      "doc_type": "product_catalog",
+      "pages": null,
+      "confidence": 0.07
+    },
+    {
+      "doc_type": "hardware_description",
+      "pages": null,
+      "confidence": 0.0
+    },
+    {
+      "doc_type": "mib_file",
+      "pages": null,
+      "confidence": 0.3
+    }
+  ],
+  "confidence": {
+    "extraction": 1.0,
+    "correlation": 0.95,
+    "overall": 1.0
+  },
+  "status": "verified",
+  "lifecycle": {
+    "introduced_in": "2.0",
+    "deprecated_in": null,
+    "removed_in": null,
+    "status": "introduced",
+    "replacement": null
+  },
+  "relations": [
+    {
+      "type": "belongs_to",
+      "target": "entity.zte.gpon.hardware.shelf"
+    }
+  ],
+  "conflicts": []
+}

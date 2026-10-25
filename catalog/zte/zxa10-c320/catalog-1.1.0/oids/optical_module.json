@@ -1,0 +1,4006 @@
+{
+  "entity_ref": "entity.zte.gpon.hardware.optical_module",
+  "vendor": "ZTE",
+  "family": "ZXA10 C320",
+  "firmware": [
+    "2.0",
+    "2.1"
+  ],
+  "oids": [
+    {
+      "id": "oid.zte.gpon.optical_module.capabilities",
+      "oid": "1.3.6.1.4.1.3902.1082.30.40.1.1",
+      "name": "zxAnOpticalModuleCapabilities",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "BITS",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": {
+        "0": "opticalModuleConfClass",
+        "1": "opticalAlarmPrfUnit",
+        "2": "opticalModuleConfTechNorms"
+      },
+      "description": "The optical module management capabilities of this equipment. \n             The bit value 1 means the function represented by this bit is\n             supported by this equipment.\n\n             opticalModuleConfClass (0): value 1 means\n                 zxAnOpticalModuleConfClass is supported.\n             opticalAlarmPrfUnit(1): value 1 means some objects in the \n                 zxAnOpticalModuleAlmPrfTable will use the new unit, for more\n                 information, please see the description of the object in the\n                 zxAnOpticalModuleAlmPrfTable.\n             opticalModuleConfTechNorms(2): value 1 means \n                 zxAnOpticalModuleConfTechNorms is supported.\n\n                 NOTE: No recommended to display it in NMS.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.optical_module.opt_module_if_shutdown_unplug_en",
+      "oid": "1.3.6.1.4.1.3902.1082.30.40.1.2",
+      "name": "zxAnOptModuleIfShutdownUnplugEn",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-write",
+      "enumeration": {
+        "1": "enabled",
+        "2": "disabled"
+      },
+      "description": "Indicates whether the zxAnOpticalModuleUnpluggedAlm should be \n             generated when the port the optical module plugged in has been \n             shutdown.\n             enabled(1) : The zxAnOpticalOfflineTrapEnable indicates whether the \n                 zxAnOpticalModuleUnpluggedAlm should be generated or not.\n             disabled(2): The zxAnOpticalModuleUnpluggedAlm should not be \n                 generated.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.optical_module.opt_module_fst_unplugged_rpt_en",
+      "oid": "1.3.6.1.4.1.3902.1082.30.40.1.3",
+      "name": "zxAnOptModuleFstUnpluggedRptEn",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-write",
+      "enumeration": {
+        "1": "enabled",
+        "2": "disabled"
+      },
+      "description": "Indicates whether the zxAnOpticalModuleUnpluggedAlm should be \n             generated when the agent has detected the optical module is offline\n             for the first time.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.optical_module.alm_prf_table",
+      "oid": "1.3.6.1.4.1.3902.1082.30.40.2.2",
+      "name": "zxAnOpticalModuleAlmPrfTable",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "SEQUENCE  OF  ZxAnOpticalModuleAlmPrfEntry",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": "This table includes the optical module threshold profile.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.optical_module.alm_prf_entry",
+      "oid": "1.3.6.1.4.1.3902.1082.30.40.2.2.1",
+      "name": "zxAnOpticalModuleAlmPrfEntry",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "ZxAnOpticalModuleAlmPrfEntry",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": "An entry in zxAnOpticalModuleAlmPrfTable.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.optical_module.alm_prf_name",
+      "oid": "1.3.6.1.4.1.3902.1082.30.40.2.2.1.1",
+      "name": "zxAnOpticalModuleAlmPrfName",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "DisplayString",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": "A textual string containing information about the\n            optical module alarm threshold profile name .",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.optical_module.optical_rx_pwr_lower_thresh",
+      "oid": "1.3.6.1.4.1.3902.1082.30.40.2.2.1.2",
+      "name": "zxAnOpticalRxPwrLowerThresh",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": "1dBm",
+      "scale": null,
+      "access": "read-create",
+      "enumeration": null,
+      "description": "The lower limit threshold on input optical power.\n             The alarm should be generated  when zxAnOpticalIfRxPwrCurrValue\n             is lower than this threshold. \n             The unit is 1dBm when the value of opticalAlarmPrfUnit(1) is 1, \n             otherwise the unit is 0.1dBm.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.optical_module.optical_rx_pwr_upper_thresh",
+      "oid": "1.3.6.1.4.1.3902.1082.30.40.2.2.1.3",
+      "name": "zxAnOpticalRxPwrUpperThresh",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": "1dBm",
+      "scale": null,
+      "access": "read-create",
+      "enumeration": null,
+      "description": "The upper limit threshold on input optical power. \n             The alarm should be generated when zxAnOpticalIfRxPwrCurrValue\n             exceeds this threshold.\n             The unit is 1dBm when the value of opticalAlarmPrfUnit(1) is 1, \n             otherwise the unit is 0.1dBm.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.optical_module.optical_tx_pwr_lower_thresh",
+      "oid": "1.3.6.1.4.1.3902.1082.30.40.2.2.1.4",
+      "name": "zxAnOpticalTxPwrLowerThresh",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": "1dBm",
+      "scale": null,
+      "access": "read-create",
+      "enumeration": null,
+      "description": "The lower limit threshold on output optical power.\n             The alarm should be generated  when zxAnOpticalIfTxPwrCurrValue\n             is lower than this threshold. \n             The unit is 1dBm when the value of opticalAlarmPrfUnit(1) is 1, \n             otherwise the unit is 0.1dBm.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.optical_module.optical_tx_pwr_upper_thresh",
+      "oid": "1.3.6.1.4.1.3902.1082.30.40.2.2.1.5",
+      "name": "zxAnOpticalTxPwrUpperThresh",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": "1dBm",
+      "scale": null,
+      "access": "read-create",
+      "enumeration": null,
+      "description": "The upper limit threshold on output optical power.\n             The alarm should be generated when zxAnOpticalIfTxPwrCurrValue\n             exceeds this threshold.\n             The unit is 1dBm when the value of opticalAlarmPrfUnit(1) is 1, \n             otherwise the unit is 0.1dBm.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.optical_module.optical_bias_curr_lower_thresh",
+      "oid": "1.3.6.1.4.1.3902.1082.30.40.2.2.1.6",
+      "name": "zxAnOpticalBiasCurrLowerThresh",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": "1mA",
+      "scale": null,
+      "access": "read-create",
+      "enumeration": null,
+      "description": "The lower limit threshold on optical modules bias\n             current.The alarm should be generated  when\n             zxAnOpticalBiasCurrent is lower than this threshold.\n             The unit is 1mA when the value of opticalAlarmPrfUnit(1) is 1, \n             otherwise the unit is 0.1mA.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.optical_module.optical_bias_curr_upper_thresh",
+      "oid": "1.3.6.1.4.1.3902.1082.30.40.2.2.1.7",
+      "name": "zxAnOpticalBiasCurrUpperThresh",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": "1mA",
+      "scale": null,
+      "access": "read-create",
+      "enumeration": null,
+      "description": "The upper limit threshold on optical modules bias current.\n             The alarm should be generated when zxAnOpticalBiasCurrent \n             exceeds this threshold.\n             The unit is 1mA when the value of opticalAlarmPrfUnit(1) is 1, \n             otherwise the unit is 0.1mA.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.optical_module.optical_temp_lower_thresh",
+      "oid": "1.3.6.1.4.1.3902.1082.30.40.2.2.1.10",
+      "name": "zxAnOpticalTempLowerThresh",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": "Centigrade",
+      "scale": null,
+      "access": "read-create",
+      "enumeration": null,
+      "description": "The lower limit threshold on optical modules temperature.\n             The alarm should be generated  when zxAnOpticalTemperature \n             is lower than this threshold.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.optical_module.optical_temp_upper_thresh",
+      "oid": "1.3.6.1.4.1.3902.1082.30.40.2.2.1.11",
+      "name": "zxAnOpticalTempUpperThresh",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": "Centigrade",
+      "scale": null,
+      "access": "read-create",
+      "enumeration": null,
+      "description": "The upper limit threshold on optical modules temperature.\n             The alarm should be generated when zxAnOpticalTemperature \n             exceeds this threshold.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.optical_module.optical_offline_trap_enable",
+      "oid": "1.3.6.1.4.1.3902.1082.30.40.2.2.1.12",
+      "name": "zxAnOpticalOfflineTrapEnable",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-create",
+      "enumeration": {
+        "1": "enabled",
+        "2": "disabled"
+      },
+      "description": "Indicates whether optical module is online/offline traps should \n            be generated for this interface.\n\n            By default, this object should have the value enabled(1) for\n            interfaces which do not operate on 'top' of any other\n            interface (as defined in the ifStackTable), and disabled(2)\n            otherwise.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.optical_module.conf_class",
+      "oid": "1.3.6.1.4.1.3902.1082.30.40.2.2.1.13",
+      "name": "zxAnOpticalModuleConfClass",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "DisplayString",
+      "unit": null,
+      "scale": null,
+      "access": "read-create",
+      "enumeration": null,
+      "description": "The optical module configured class.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.optical_module.alm_prf_row_status",
+      "oid": "1.3.6.1.4.1.3902.1082.30.40.2.2.1.50",
+      "name": "zxAnOpticalModuleAlmPrfRowStatus",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "Row",
+      "unit": null,
+      "scale": null,
+      "access": "read-create",
+      "enumeration": null,
+      "description": "The row status of this entry.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.optical_module.optical_alm_prf_if_conf_table",
+      "oid": "1.3.6.1.4.1.3902.1082.30.40.2.3",
+      "name": "zxAnOpticalAlmPrfIfConfTable",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "SEQUENCE  OF  ZxAnOpticalAlmPrfIfConfEntry",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": "This table includes the optical module profile configuration.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.optical_module.optical_alm_prf_if_conf_entry",
+      "oid": "1.3.6.1.4.1.3902.1082.30.40.2.3.1",
+      "name": "zxAnOpticalAlmPrfIfConfEntry",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "ZxAnOpticalAlmPrfIfConfEntry",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": "An entry in zxAnOpticalAlmPrfIfConfTable.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.optical_module.optical_if_alm_prf",
+      "oid": "1.3.6.1.4.1.3902.1082.30.40.2.3.1.2",
+      "name": "zxAnOpticalIfAlmPrf",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "DisplayString",
+      "unit": null,
+      "scale": null,
+      "access": "read-write",
+      "enumeration": null,
+      "description": "A textual string containing information about the\n            optical module alarm threshold profile name .",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.optical_module.info_table",
+      "oid": "1.3.6.1.4.1.3902.1082.30.40.2.4",
+      "name": "zxAnOpticalModuleInfoTable",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "SEQUENCE  OF  ZxAnOpticalModuleInfoEntry",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": "This table includes the optical module information.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.optical_module.info_entry",
+      "oid": "1.3.6.1.4.1.3902.1082.30.40.2.4.1",
+      "name": "zxAnOpticalModuleInfoEntry",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "ZxAnOpticalModuleInfoEntry",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": "An entry in zxAnOpticalModuleInfoTable.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.optical_module.optical_if_rx_pwr_curr_value",
+      "oid": "1.3.6.1.4.1.3902.1082.30.40.2.4.1.2",
+      "name": "zxAnOpticalIfRxPwrCurrValue",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": "0.001dBm",
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "The optical power monitored at the input.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.optical_module.optical_if_tx_pwr_curr_value",
+      "oid": "1.3.6.1.4.1.3902.1082.30.40.2.4.1.3",
+      "name": "zxAnOpticalIfTxPwrCurrValue",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": "0.001dBm",
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "The optical power monitored at the output.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.optical_module.optical_if_rate",
+      "oid": "1.3.6.1.4.1.3902.1082.30.40.2.4.1.4",
+      "name": "zxAnOpticalIfRate",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": "0.1Gbps",
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "The optical module interface rate.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.optical_module.optical_bias_current",
+      "oid": "1.3.6.1.4.1.3902.1082.30.40.2.4.1.5",
+      "name": "zxAnOpticalBiasCurrent",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": "0.001mA",
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "The optical module bias current .",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.optical_module.optical_wavelength",
+      "oid": "1.3.6.1.4.1.3902.1082.30.40.2.4.1.7",
+      "name": "zxAnOpticalWavelength",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": "nm",
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "The optical  module wavelength.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.optical_module.optical_temperature",
+      "oid": "1.3.6.1.4.1.3902.1082.30.40.2.4.1.8",
+      "name": "zxAnOpticalTemperature",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": "0.001Degrees",
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "The optical module temperature .",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.optical_module.optical_fiber_type",
+      "oid": "1.3.6.1.4.1.3902.1082.30.40.2.4.1.9",
+      "name": "zxAnOpticalFiberType",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": {
+        "1": "singleMode",
+        "2": "multiMode",
+        "3": "unknown"
+      },
+      "description": "The optical module Fiber Type.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.optical_module.optical_version_level",
+      "oid": "1.3.6.1.4.1.3902.1082.30.40.2.4.1.10",
+      "name": "zxAnOpticalVersionLevel",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "DisplayString",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "The optical module vendor Level.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.optical_module.optical_vendor_pn",
+      "oid": "1.3.6.1.4.1.3902.1082.30.40.2.4.1.11",
+      "name": "zxAnOpticalVendorPn",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "DisplayString",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "The optical module vendor P/N.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.optical_module.optical_vendor_name",
+      "oid": "1.3.6.1.4.1.3902.1082.30.40.2.4.1.12",
+      "name": "zxAnOpticalVendorName",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "DisplayString",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "The optical  module vendor name.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.optical_module.optical_vendor_sn",
+      "oid": "1.3.6.1.4.1.3902.1082.30.40.2.4.1.13",
+      "name": "zxAnOpticalVendorSn",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "DisplayString",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "The optical  module vendor sn.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.optical_module.optical_production_date",
+      "oid": "1.3.6.1.4.1.3902.1082.30.40.2.4.1.14",
+      "name": "zxAnOpticalProductionDate",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "DisplayString",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "The optical  module production date.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.optical_module.type",
+      "oid": "1.3.6.1.4.1.3902.1082.30.40.2.4.1.15",
+      "name": "zxAnOpticalModuleType",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "DisplayString",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "The optical  module type.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.optical_module.optical_fiber_interface_type",
+      "oid": "1.3.6.1.4.1.3902.1082.30.40.2.4.1.16",
+      "name": "zxAnOpticalFiberInterfaceType",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "DisplayString",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "The optical fiber interface.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.optical_module.optical_material_number",
+      "oid": "1.3.6.1.4.1.3902.1082.30.40.2.4.1.17",
+      "name": "zxAnOpticalMaterialNumber",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "OCTET STRING",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "The material number of pin(A2).",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.optical_module.optical_register_data",
+      "oid": "1.3.6.1.4.1.3902.1082.30.40.2.4.1.18",
+      "name": "zxAnOpticalRegisterData",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "OCTET STRING",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "The optical module data is from register.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.optical_module.optical_otdr_support",
+      "oid": "1.3.6.1.4.1.3902.1082.30.40.2.4.1.19",
+      "name": "zxAnOpticalOtdrSupport",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": {
+        "1": "supported",
+        "2": "unsupported",
+        "255": "unknown"
+      },
+      "description": "The OTDR is supported by the optical module or not. \n             supported(1): The optical module supports OTDR.\n             unsupported(2): The optical module doesn't support OTDR.\n             unknown(255): Whether the optical module supports OTDR is unknown.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.optical_module.actual_class",
+      "oid": "1.3.6.1.4.1.3902.1082.30.40.2.4.1.20",
+      "name": "zxAnOpticalModuleActualClass",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "DisplayString",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "The optical module actual class.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.optical_module.optical_otdr_version",
+      "oid": "1.3.6.1.4.1.3902.1082.30.40.2.4.1.21",
+      "name": "zxAnOpticalOtdrVersion",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "DisplayString",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "The optical module OTDR software version.\n                         If the optical module doesn't support OTDR or the OTDR \n                         has no software version, this object will be set to an \n                         empty string.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.optical_module.optical_trans_distance_sm_long_r",
+      "oid": "1.3.6.1.4.1.3902.1082.30.40.2.4.1.40",
+      "name": "zxAnOpticalTransDistanceSmLongR",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": "km",
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "This value specifies the transfer distance that is supported by the\n             transceiver while operating in compliance with the applicable \n             standards using single mode based long reach fiber. The value is in\n             units of kilometers. A value of 255 means the transceiver supports \n             a transfer distance greater than 254 km. A value of zero means the \n             transceiver does not support single mode fiber or that the transfer\n             distance information must be determined from the transceiver \n             technology.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.optical_module.optical_trans_distance_sm_short_r",
+      "oid": "1.3.6.1.4.1.3902.1082.30.40.2.4.1.41",
+      "name": "zxAnOpticalTransDistanceSmShortR",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": "100m",
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "This value specifies the transfer distance that is supported by the\n             transceiver while operating in compliance with the applicable \n             standards using single mode based short reach fiber. The value is \n             in units of 100 meters. A value of 255 means the transceiver \n             supports a transfer distance greater than 25.4 km. A value of zero \n             means the transceiver does not support single mode fiber or that \n             the transfer distance information must be determined from the \n             transceiver technology.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.optical_module.optical_trans_distance_om1",
+      "oid": "1.3.6.1.4.1.3902.1082.30.40.2.4.1.42",
+      "name": "zxAnOpticalTransDistanceOm1",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": "10m",
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "This value specifies the transfer distance that is supported by the\n             transceiver wihle operating in compliance with applicable standards \n             using 62.5 micron multimode OM1(200 MHz*km at 850nm, 500MHz*km at \n             1310mm) fiber. The value is in units of 10 meters. A value of 255 \n             means that the transceiver supports a transfer distance greater \n             than 2.54km. A value of zero means that the transceiver does not \n             support 62.5 micron multimode fiber or the transfer distance must \n             determined from the transceiver technology.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.optical_module.optical_trans_distance_om2",
+      "oid": "1.3.6.1.4.1.3902.1082.30.40.2.4.1.43",
+      "name": "zxAnOpticalTransDistanceOm2",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": "10m",
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "This value specifies the transfer distance that is supported by the\n             transceiver wihle operating in compliance with applicable standards\n             using 50 micron multimode OM2(500 MHz*km at 850nm) fiber. The value\n             is in units of 10 meters. A value of 255 means that the transceiver \n             supports a transfer distance greater than 2.54km. A value of zero \n             means that the transceiver does not support OM2 fiber or the \n             transfer distance must determined from the transceiver technology.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.optical_module.optical_trans_distance_om3",
+      "oid": "1.3.6.1.4.1.3902.1082.30.40.2.4.1.44",
+      "name": "zxAnOpticalTransDistanceOm3",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": "10m",
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "This value specifies the transfer distance that is supported by the\n             transceiver wihle operating in compliance with applicable standards\n             using 50 micron multimode OM3(2000 MHz*km) fiber. The value is in \n             units of 10 meters. A value of 255 means that the transceiver \n             supports a transfer distance greater than 2.54km. A value of zero \n             means that the transceiver does not support OM3 fiber or the \n             transfer distance must determined from the transceiver technology.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.optical_module.optical_trans_distance_copper",
+      "oid": "1.3.6.1.4.1.3902.1082.30.40.2.4.1.45",
+      "name": "zxAnOpticalTransDistanceCopper",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": "m",
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "This value specifies the transfer distance that is supported by the\n             transceiver wihle operating in compliance with applicable standards\n             using copper cable. For active cable, this value represents actual \n             length. The value is in units of 1 meter. A value of 255 means that\n             the transceiver supports a transfer distance greater than 254m. A \n             value of zero means that the transceiver does not support copper or\n             active cables or the transfer distance must determined from the \n             transceiver technology.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.optical_module.optical_part_number",
+      "oid": "1.3.6.1.4.1.3902.1082.30.40.2.4.1.48",
+      "name": "zxAnOpticalPartNumber",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "DisplayString",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "The optical module part number.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.optical_module.optical_als_if_conf_table",
+      "oid": "1.3.6.1.4.1.3902.1082.30.40.2.5",
+      "name": "zxAnOpticalAlsIfConfTable",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "SEQUENCE  OF  ZxAnOpticalAlsIfConfEntry",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": "This table includes the ALS configuration of the optical module.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.optical_module.optical_als_if_conf_entry",
+      "oid": "1.3.6.1.4.1.3902.1082.30.40.2.5.1",
+      "name": "zxAnOpticalAlsIfConfEntry",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "ZxAnOpticalAlsIfConfEntry",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": "An entry in zxAnOpticalAlsIfConfTable.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.optical_module.conf_table",
+      "oid": "1.3.6.1.4.1.3902.1082.30.40.2.6",
+      "name": "zxAnOpticalModuleConfTable",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "SEQUENCE  OF  ZxAnOpticalModuleConfEntry",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": "This table includes the optical module configuration.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.optical_module.conf_entry",
+      "oid": "1.3.6.1.4.1.3902.1082.30.40.2.6.1",
+      "name": "zxAnOpticalModuleConfEntry",
+      "mib_table": null,
+      "index": {
+        "type": "composite",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "ZxAnOpticalModuleConfEntry",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": "An entry in zxAnOpticalModuleConfTable.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.optical_module.conf_vendor_name",
+      "oid": "1.3.6.1.4.1.3902.1082.30.40.2.6.1.1",
+      "name": "zxAnOpticalModuleConfVendorName",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "DisplayString",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": "The optical module vendor name.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.optical_module.conf_vendor_pn",
+      "oid": "1.3.6.1.4.1.3902.1082.30.40.2.6.1.2",
+      "name": "zxAnOpticalModuleConfVendorPn",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "DisplayString",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": "The optical module vendor P/N.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.optical_module.configured_class",
+      "oid": "1.3.6.1.4.1.3902.1082.30.40.2.6.1.3",
+      "name": "zxAnOpticalModuleConfiguredClass",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "DisplayString",
+      "unit": null,
+      "scale": null,
+      "access": "read-create",
+      "enumeration": null,
+      "description": "The optical module configured class. \n                         Includes the following:\n                            GPON/B+,\n                            GPON/C+,\n                            GPON/EC+,\n                            XGPON1/N1,\n                            XGPON1/N2a,\n                            EPON/PX20+,\n                            10G-EPON/PRX30,\n                            10G-EPON/PR30,\n                            GPON/D,\n                            XGS-PON/N1,\n                            XGS-PON/N2,\n                            XG-PON&GPON_COMBO/N1-B+,\n                            XG-PON&GPON_COMB0/N2-C+,\n                            GPON-OTDR/C+.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.optical_module.conf_property",
+      "oid": "1.3.6.1.4.1.3902.1082.30.40.2.6.1.4",
+      "name": "zxAnOpticalModuleConfProperty",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-create",
+      "enumeration": {
+        "1": "default",
+        "2": "userDefined"
+      },
+      "description": "The property of the table record.\n                         default: the default record, it can't be modified or \n                                  deleted by the user.\n                         userDefined: the user-defined record.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.optical_module.conf_tech_norms",
+      "oid": "1.3.6.1.4.1.3902.1082.30.40.2.6.1.11",
+      "name": "zxAnOpticalModuleConfTechNorms",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "DisplayString",
+      "unit": null,
+      "scale": null,
+      "access": "read-create",
+      "enumeration": null,
+      "description": "The optical module configured technical norms.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.optical_module.conf_row_status",
+      "oid": "1.3.6.1.4.1.3902.1082.30.40.2.6.1.50",
+      "name": "zxAnOpticalModuleConfRowStatus",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "Row",
+      "unit": null,
+      "scale": null,
+      "access": "read-create",
+      "enumeration": null,
+      "description": "The status of this conceptual row.\n\n             The supported actions of this conceptual row only include:\n             'createAndGo' and 'destroy'. \n\n             To create a row in this table, a manager must set this object to \n             createAndGo(4), and must comply with the rule described in \n             zxAnLacpAggEntry.\n\n             To delete a row in this table, a manager must set this object to \n             destroy(6).\n             \n             To get this object, the agent always returns active(1).",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.optical_module.chan_info_table",
+      "oid": "1.3.6.1.4.1.3902.1082.30.40.2.10",
+      "name": "zxAnOpticalModuleChanInfoTable",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "SEQUENCE  OF  ZxAnOpticalModuleChanInfoEntry",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": "This table includes the optical module channel information.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.optical_module.chan_info_entry",
+      "oid": "1.3.6.1.4.1.3902.1082.30.40.2.10.1",
+      "name": "zxAnOpticalModuleChanInfoEntry",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "ZxAnOpticalModuleChanInfoEntry",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": "An entry in zxAnOpticalModuleChanInfoTable.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.optical_module.optical_chan_laser_switch",
+      "oid": "1.3.6.1.4.1.3902.1082.30.40.2.10.1.1",
+      "name": "zxAnOpticalChanLaserSwitch",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-write",
+      "enumeration": {
+        "1": "open",
+        "2": "close"
+      },
+      "description": "Enables or disables the laser function of the optical module \n             channel.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.optical_module.optical_chan_wavelength",
+      "oid": "1.3.6.1.4.1.3902.1082.30.40.2.10.1.2",
+      "name": "zxAnOpticalChanWavelength",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": "0.01nm",
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "The wavelength of the optical module channel.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.optical_module.optical_chan_curr_tx_pwr",
+      "oid": "1.3.6.1.4.1.3902.1082.30.40.2.10.1.3",
+      "name": "zxAnOpticalChanCurrTxPwr",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": "0.001dBm",
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "The transmitted power of the optical module channel.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.optical_module.optical_chan_bias_current",
+      "oid": "1.3.6.1.4.1.3902.1082.30.40.2.10.1.4",
+      "name": "zxAnOpticalChanBiasCurrent",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": "0.001mA",
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "The bias current of the optical module channel.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.optical_module.class_value_table",
+      "oid": "1.3.6.1.4.1.3902.1082.30.40.2.20",
+      "name": "zxAnOpticalModuleClassValueTable",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "SEQUENCE  OF  ZxAnOpticalModuleClassValueEntry",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": "This table includes the optical module class value.\n                     NOTE: No recommended to develop this function in EMS.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.optical_module.class_value_entry",
+      "oid": "1.3.6.1.4.1.3902.1082.30.40.2.20.1",
+      "name": "zxAnOpticalModuleClassValueEntry",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "ZxAnOpticalModuleClassValueEntry",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": "An entry in zxAnOpticalModuleClassValueTable.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.optical_module.class_id",
+      "oid": "1.3.6.1.4.1.3902.1082.30.40.2.20.1.1",
+      "name": "zxAnOpticalModuleClassId",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": "The optical module class id.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.optical_module.class_value",
+      "oid": "1.3.6.1.4.1.3902.1082.30.40.2.20.1.2",
+      "name": "zxAnOpticalModuleClassValue",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "DisplayString",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "The optical module class value.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.optical_module.optical_curr15_min_perf_table",
+      "oid": "1.3.6.1.4.1.3902.1082.30.45.2.3",
+      "name": "zxAnOpticalCurr15MinPerfTable",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "SEQUENCE OF ZxAnOpticalCurr15MinPerfEntry",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": "The 15-minute interval performance data table of the optical \n             module.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.optical_module.optical_curr15_min_perf_entry",
+      "oid": "1.3.6.1.4.1.3902.1082.30.45.2.3.1",
+      "name": "zxAnOpticalCurr15MinPerfEntry",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "ZxAnOpticalCurr15MinPerfEntry",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": "An entry of zxAnOpticalCurr15MinPerfTable.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.optical_module.optical_c15_m_time_elapsed",
+      "oid": "1.3.6.1.4.1.3902.1082.30.45.2.3.1.1",
+      "name": "zxAnOpticalC15MTimeElapsed",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "HCPerfTimeElapsed",
+      "unit": "Seconds",
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "The number of seconds that have elapsed since the beginning of the \n             current 15-minute interval.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.optical_module.optical_c15_m_tx_power",
+      "oid": "1.3.6.1.4.1.3902.1082.30.45.2.3.1.2",
+      "name": "zxAnOpticalC15MTxPower",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": "0.001dBm",
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "The optical module transmitted power value in current 15-minute \n             interval.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.optical_module.optical_c15_m_rx_power",
+      "oid": "1.3.6.1.4.1.3902.1082.30.45.2.3.1.3",
+      "name": "zxAnOpticalC15MRxPower",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": "0.001dBm",
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "The optical module received power value in current 15-minute \n             interval.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.optical_module.optical_c15_m_bias_current",
+      "oid": "1.3.6.1.4.1.3902.1082.30.45.2.3.1.4",
+      "name": "zxAnOpticalC15MBiasCurrent",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": "0.001mA",
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "The optical module bias current value in current 15-minute \n             interval.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.optical_module.optical_c15_m_temperature",
+      "oid": "1.3.6.1.4.1.3902.1082.30.45.2.3.1.6",
+      "name": "zxAnOpticalC15MTemperature",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": "0.001Centigrade",
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "The optical mudule temperature value in current 15-minute \n             interval.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.optical_module.optical_curr1_day_perf_table",
+      "oid": "1.3.6.1.4.1.3902.1082.30.45.2.4",
+      "name": "zxAnOpticalCurr1DayPerfTable",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "SEQUENCE OF ZxAnOpticalCurr1DayPerfEntry",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": "The 1-day interval performance data table of the optical mudule.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.optical_module.optical_curr1_day_perf_entry",
+      "oid": "1.3.6.1.4.1.3902.1082.30.45.2.4.1",
+      "name": "zxAnOpticalCurr1DayPerfEntry",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "ZxAnOpticalCurr1DayPerfEntry",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": "An entry of zxAnOptModuleCurr1DayPerfTable.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.optical_module.optical_c1_d_time_elapsed",
+      "oid": "1.3.6.1.4.1.3902.1082.30.45.2.4.1.1",
+      "name": "zxAnOpticalC1DTimeElapsed",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "HCPerfTimeElapsed",
+      "unit": "Seconds",
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "The number of seconds that have elapsed since the beginning of the \n             current 1-day interval.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.optical_module.optical_c1_d_tx_power",
+      "oid": "1.3.6.1.4.1.3902.1082.30.45.2.4.1.2",
+      "name": "zxAnOpticalC1DTxPower",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": "0.001dBm",
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "The optical module transmitted power value in current 1-day \n             interval.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.optical_module.optical_c1_d_rx_power",
+      "oid": "1.3.6.1.4.1.3902.1082.30.45.2.4.1.3",
+      "name": "zxAnOpticalC1DRxPower",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": "0.001dBm",
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "The optical module received power value in current 1-day \n             interval.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.optical_module.optical_c1_d_bias_current",
+      "oid": "1.3.6.1.4.1.3902.1082.30.45.2.4.1.4",
+      "name": "zxAnOpticalC1DBiasCurrent",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": "0.001mA",
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "The optical module bias current value in current 1-day interval.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.optical_module.optical_c1_d_temperature",
+      "oid": "1.3.6.1.4.1.3902.1082.30.45.2.4.1.6",
+      "name": "zxAnOpticalC1DTemperature",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": "0.001Centigrade",
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "The optical module temperature value in current 1-day interval.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.optical_module.optical_his15_min_perf_table",
+      "oid": "1.3.6.1.4.1.3902.1082.30.45.2.5",
+      "name": "zxAnOpticalHis15MinPerfTable",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "SEQUENCE OF ZxAnOpticalHis15MinPerfEntry",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": "The 15-minute interval historical performance data table of the \n              optical module.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.optical_module.optical_his15_min_perf_entry",
+      "oid": "1.3.6.1.4.1.3902.1082.30.45.2.5.1",
+      "name": "zxAnOpticalHis15MinPerfEntry",
+      "mib_table": null,
+      "index": {
+        "type": "composite",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "ZxAnOpticalHis15MinPerfEntry",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": "An entry of zxAnOpticalHis15MinPerfTable.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.optical_module.optical_h15_m_interval_no",
+      "oid": "1.3.6.1.4.1.3902.1082.30.45.2.5.1.1",
+      "name": "zxAnOpticalH15MIntervalNo",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": "The performance data interval number.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.optical_module.optical_h15_m_interval_valid_data",
+      "oid": "1.3.6.1.4.1.3902.1082.30.45.2.5.1.2",
+      "name": "zxAnOpticalH15MIntervalValidData",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "TruthValue",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "Performance data valid flag. \n              true(1) means valid. \n              false(2) means invalid and the performace data is useless.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.optical_module.optical_h15_m_date_time",
+      "oid": "1.3.6.1.4.1.3902.1082.30.45.2.5.1.3",
+      "name": "zxAnOpticalH15MDateTime",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "DateAndTime",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "The 15-minute interval performance data generation time.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.optical_module.optical_h15_m_tx_power",
+      "oid": "1.3.6.1.4.1.3902.1082.30.45.2.5.1.4",
+      "name": "zxAnOpticalH15MTxPower",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": "0.001dBm",
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "The optical module transmitted power value in historical \n              15-minute interval.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.optical_module.optical_h15_m_rx_power",
+      "oid": "1.3.6.1.4.1.3902.1082.30.45.2.5.1.5",
+      "name": "zxAnOpticalH15MRxPower",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": "0.001dBm",
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "The optical module received power value in historical 15-minute \n              interval.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.optical_module.optical_h15_m_bias_current",
+      "oid": "1.3.6.1.4.1.3902.1082.30.45.2.5.1.6",
+      "name": "zxAnOpticalH15MBiasCurrent",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": "0.001mA",
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "The optical module bias current value in historical 15-minute \n              interval.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.optical_module.optical_h15_m_temperature",
+      "oid": "1.3.6.1.4.1.3902.1082.30.45.2.5.1.8",
+      "name": "zxAnOpticalH15MTemperature",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": "0.001Centigrade",
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "The optical module temperature value in historical 15-minute \n              interval.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.optical_module.optical_his1_day_perf_table",
+      "oid": "1.3.6.1.4.1.3902.1082.30.45.2.6",
+      "name": "zxAnOpticalHis1DayPerfTable",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "SEQUENCE OF ZxAnOpticalHis1DayPerfEntry",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": "The 1-day interval historical performance data table of the optical \n              module.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.optical_module.optical_his1_day_perf_entry",
+      "oid": "1.3.6.1.4.1.3902.1082.30.45.2.6.1",
+      "name": "zxAnOpticalHis1DayPerfEntry",
+      "mib_table": null,
+      "index": {
+        "type": "composite",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "ZxAnOpticalHis1DayPerfEntry",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": "An entry of zxAnOpticalHis1DayPerfTable.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.optical_module.optical_h1_d_interval_no",
+      "oid": "1.3.6.1.4.1.3902.1082.30.45.2.6.1.1",
+      "name": "zxAnOpticalH1DIntervalNo",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": "The performance data interval number.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.optical_module.optical_h1_d_interval_valid_data",
+      "oid": "1.3.6.1.4.1.3902.1082.30.45.2.6.1.2",
+      "name": "zxAnOpticalH1DIntervalValidData",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "TruthValue",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "Performance data valid flag. \n              true(1) means valid. \n              false(2) means invalid and the performace data is useless.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.optical_module.optical_h1_d_date_time",
+      "oid": "1.3.6.1.4.1.3902.1082.30.45.2.6.1.3",
+      "name": "zxAnOpticalH1DDateTime",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "DateAndTime",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "The 1-day interval performance data generation time.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.optical_module.optical_h1_d_tx_power",
+      "oid": "1.3.6.1.4.1.3902.1082.30.45.2.6.1.4",
+      "name": "zxAnOpticalH1DTxPower",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": "0.001dBm",
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "The optical module transmitted power value in historical 1-day \n              interval.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.optical_module.optical_h1_d_rx_power",
+      "oid": "1.3.6.1.4.1.3902.1082.30.45.2.6.1.5",
+      "name": "zxAnOpticalH1DRxPower",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": "0.001dBm",
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "The optical module received power value in historical 1-day \n              interval.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.optical_module.optical_h1_d_bias_current",
+      "oid": "1.3.6.1.4.1.3902.1082.30.45.2.6.1.6",
+      "name": "zxAnOpticalH1DBiasCurrent",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": "0.001mA",
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "The optical module bias current value in historical 1-day \n              interval.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.optical_module.optical_h1_d_temperature",
+      "oid": "1.3.6.1.4.1.3902.1082.30.45.2.6.1.8",
+      "name": "zxAnOpticalH1DTemperature",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": "0.001Centigrade",
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "The optical module temperature value in historical 1-day \n              interval.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.optical_module.optical_curr_min_perf_table",
+      "oid": "1.3.6.1.4.1.3902.1082.30.45.2.7",
+      "name": "zxAnOpticalCurrMinPerfTable",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "SEQUENCE OF ZxAnOpticalCurrMinPerfEntry",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": "The minutes interval performance data table of the optical \n             module.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.optical_module.optical_curr_min_perf_entry",
+      "oid": "1.3.6.1.4.1.3902.1082.30.45.2.7.1",
+      "name": "zxAnOpticalCurrMinPerfEntry",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "ZxAnOpticalCurrMinPerfEntry",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": "An entry of zxAnOpticalCurrMinPerfTable.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.optical_module.optical_c_min_time_elapsed",
+      "oid": "1.3.6.1.4.1.3902.1082.30.45.2.7.1.1",
+      "name": "zxAnOpticalCMinTimeElapsed",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "HCPerfTimeElapsed",
+      "unit": "Seconds",
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "The number of seconds that have elapsed since the beginning of the \n             current minutes interval.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.optical_module.optical_c_min_tx_power",
+      "oid": "1.3.6.1.4.1.3902.1082.30.45.2.7.1.2",
+      "name": "zxAnOpticalCMinTxPower",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": "0.001dBm",
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "The optical module transmitted power value in current minutes \n             interval.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.optical_module.optical_c_min_rx_power",
+      "oid": "1.3.6.1.4.1.3902.1082.30.45.2.7.1.3",
+      "name": "zxAnOpticalCMinRxPower",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": "0.001dBm",
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "The optical module received power value in current minutes \n             interval.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.optical_module.optical_c_min_bias_current",
+      "oid": "1.3.6.1.4.1.3902.1082.30.45.2.7.1.4",
+      "name": "zxAnOpticalCMinBiasCurrent",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": "0.001mA",
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "The optical module bias current value in current minutes \n             interval.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.optical_module.optical_c_min_temperature",
+      "oid": "1.3.6.1.4.1.3902.1082.30.45.2.7.1.6",
+      "name": "zxAnOpticalCMinTemperature",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": "0.001Centigrade",
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "The optical mudule temperature value in current minutes \n             interval.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.optical_module.optical_his_min_perf_table",
+      "oid": "1.3.6.1.4.1.3902.1082.30.45.2.8",
+      "name": "zxAnOpticalHisMinPerfTable",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "SEQUENCE OF ZxAnOpticalHisMinPerfEntry",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": "The minutes interval historical performance data table of the \n              optical module.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.optical_module.optical_his_min_perf_entry",
+      "oid": "1.3.6.1.4.1.3902.1082.30.45.2.8.1",
+      "name": "zxAnOpticalHisMinPerfEntry",
+      "mib_table": null,
+      "index": {
+        "type": "composite",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "ZxAnOpticalHisMinPerfEntry",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": "An entry of zxAnOpticalHisMinPerfTable.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.optical_module.optical_h_min_interval_no",
+      "oid": "1.3.6.1.4.1.3902.1082.30.45.2.8.1.1",
+      "name": "zxAnOpticalHMinIntervalNo",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": "The performance data interval number.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.optical_module.optical_h_min_interval_valid_data",
+      "oid": "1.3.6.1.4.1.3902.1082.30.45.2.8.1.2",
+      "name": "zxAnOpticalHMinIntervalValidData",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "TruthValue",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "Performance data valid flag. \n              true(1) means valid. \n              false(2) means invalid and the performace data is useless.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.optical_module.optical_h_min_date_time",
+      "oid": "1.3.6.1.4.1.3902.1082.30.45.2.8.1.3",
+      "name": "zxAnOpticalHMinDateTime",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "DateAndTime",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "The minutes interval performance data generation time.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.optical_module.optical_h_min_tx_power",
+      "oid": "1.3.6.1.4.1.3902.1082.30.45.2.8.1.4",
+      "name": "zxAnOpticalHMinTxPower",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": "0.001dBm",
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "The optical module transmitted power value in historical \n              minutes interval.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.optical_module.optical_h_min_rx_power",
+      "oid": "1.3.6.1.4.1.3902.1082.30.45.2.8.1.5",
+      "name": "zxAnOpticalHMinRxPower",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": "0.001dBm",
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "The optical module received power value in historical minutes \n              interval.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.optical_module.optical_h_min_bias_current",
+      "oid": "1.3.6.1.4.1.3902.1082.30.45.2.8.1.6",
+      "name": "zxAnOpticalHMinBiasCurrent",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": "0.001mA",
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "The optical module bias current value in historical minutes \n              interval.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.optical_module.optical_h_min_temperature",
+      "oid": "1.3.6.1.4.1.3902.1082.30.45.2.8.1.8",
+      "name": "zxAnOpticalHMinTemperature",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": "0.001Centigrade",
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "The optical module temperature value in historical minutes \n              interval.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.optical_module.zxr10optical_table",
+      "oid": "1.3.6.1.4.1.3902.3.126.1.2",
+      "name": "zxr10opticalTable",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "SEQUENCE OF Zxr10opticalEntry",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": null,
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.optical_module.zxr10optical_entry",
+      "oid": "1.3.6.1.4.1.3902.3.126.1.2.1",
+      "name": "zxr10opticalEntry",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "Zxr10opticalEntry",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": null,
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.optical_module.zxr10optical_if_index",
+      "oid": "1.3.6.1.4.1.3902.3.126.1.2.1.1",
+      "name": "zxr10opticalIfIndex",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "Unsigned32",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "The index of the optiacl Entry.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.optical_module.zxr10optical_state",
+      "oid": "1.3.6.1.4.1.3902.3.126.1.2.1.2",
+      "name": "zxr10opticalState",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "OptStatType",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": null,
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.optical_module.zxr10optical_tx_power",
+      "oid": "1.3.6.1.4.1.3902.3.126.1.2.1.3",
+      "name": "zxr10opticalTxPower",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "DisplayString",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": null,
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.optical_module.zxr10optical_rx_power",
+      "oid": "1.3.6.1.4.1.3902.3.126.1.2.1.4",
+      "name": "zxr10opticalRxPower",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "DisplayString",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": null,
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.optical_module.zxr10optical_tx_current",
+      "oid": "1.3.6.1.4.1.3902.3.126.1.2.1.5",
+      "name": "zxr10opticalTxCurrent",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "DisplayString",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": null,
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.optical_module.zxr10optical_temperature",
+      "oid": "1.3.6.1.4.1.3902.3.126.1.2.1.7",
+      "name": "zxr10opticalTemperature",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "DisplayString",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": null,
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    }
+  ]
+}

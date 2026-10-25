@@ -1,0 +1,747 @@
+{
+  "entity_ref": "entity.zte.gpon.hardware.card",
+  "vendor": "ZTE",
+  "family": "ZXA10 C320",
+  "firmware": [
+    "2.0",
+    "2.1"
+  ],
+  "oids": [
+    {
+      "id": "oid.zte.gpon.card.zxr10_subcard_max",
+      "oid": "1.3.6.1.4.1.3902.3.2.3.1.11",
+      "name": "zxr10SubcardMax",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "It descripts how many sub slots which can load the sub card in  the  board.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.card.qos_intf_in_car_drop_packets",
+      "oid": "1.3.6.1.4.1.3902.3.101.6.8.1.1.5",
+      "name": "qosIntfInCarDropPackets",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "DisplayString",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "The drop packets of the in interface.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.card.qos_intf_in_car_drop_bytes",
+      "oid": "1.3.6.1.4.1.3902.3.101.6.8.1.1.8",
+      "name": "qosIntfInCarDropBytes",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "DisplayString",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "The drop bytes of the in interface.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.card.qos_intf_out_car_drop_packets",
+      "oid": "1.3.6.1.4.1.3902.3.101.6.8.1.1.12",
+      "name": "qosIntfOutCarDropPackets",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "DisplayString",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "The drop packets of the out interface.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.card.qos_intf_out_car_drop_bytes",
+      "oid": "1.3.6.1.4.1.3902.3.101.6.8.1.1.15",
+      "name": "qosIntfOutCarDropBytes",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "DisplayString",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "The drop bytes of the out interface.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.card.zxr10_standard_a_c_l_src_addr_src_wildcard",
+      "oid": "1.3.6.1.4.1.3902.3.102.2.1.1.9",
+      "name": "zxr10StandardACLSrcAddrSrcWildcard",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "IpAddress",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "A.B.C.D  Wildcard bits",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.card.zxr10_extended_a_c_l_src_wildcard",
+      "oid": "1.3.6.1.4.1.3902.3.102.2.2.1.9",
+      "name": "zxr10ExtendedACLSrcWildcard",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "IpAddress",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "A.B.C.D  Wildcard bits",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.card.zxr10_extended_a_c_l_dest_wildcard",
+      "oid": "1.3.6.1.4.1.3902.3.102.2.2.1.12",
+      "name": "zxr10ExtendedACLDestWildcard",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "IpAddress",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "A.B.C.D  Destination wildcard bits",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.card.zxr10_link_a_c_l_in_m_a_c_wildcard",
+      "oid": "1.3.6.1.4.1.3902.3.102.2.3.1.14",
+      "name": "zxr10LinkACLInMACWildcard",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "MacAddress",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "xxxx.xxxx.xxxx  Source wildcard bits",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.card.zxr10_link_a_c_l_out_m_a_c_wild_card",
+      "oid": "1.3.6.1.4.1.3902.3.102.2.3.1.17",
+      "name": "zxr10LinkACLOutMACWildCard",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "MacAddress",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "xxxx.xxxx.xxxx  Destination wildcard bits",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.card.zxr10_hybrid_a_c_l_src_addr_wildcard",
+      "oid": "1.3.6.1.4.1.3902.3.102.2.4.1.10",
+      "name": "zxr10HybridACLSrcAddrWildcard",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "IpAddress",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "A.B.C.D  Wildcard bits",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.card.zxr10_hybrid_a_c_l_dest_addr_wildcard",
+      "oid": "1.3.6.1.4.1.3902.3.102.2.4.1.13",
+      "name": "zxr10HybridACLDestAddrWildcard",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "IpAddress",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "A.B.C.D  Destination wildcard bits",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.card.zxr10_hybrid_a_c_l_in_m_a_c_wildcard",
+      "oid": "1.3.6.1.4.1.3902.3.102.2.4.1.29",
+      "name": "zxr10HybridACLInMACWildcard",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "MacAddress",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "xxxx.xxxx.xxxx  Source wildcard bits",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.card.zxr10_hybrid_a_c_l_out_m_a_c_wildcard",
+      "oid": "1.3.6.1.4.1.3902.3.102.2.4.1.32",
+      "name": "zxr10HybridACLOutMACWildcard",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "MacAddress",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "xxxx.xxxx.xxxx  Destination wildcard bits",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.card.zxr10_standard_a_c_l_src_addr_src_wildcard",
+      "oid": "1.3.6.1.4.1.3902.3.102.2.1.1.9",
+      "name": "zxr10StandardACLSrcAddrSrcWildcard",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "IpAddress",
+      "unit": null,
+      "scale": null,
+      "access": "read-create",
+      "enumeration": null,
+      "description": "A.B.C.D  Wildcard bits",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.card.zxr10_extended_a_c_l_src_wildcard",
+      "oid": "1.3.6.1.4.1.3902.3.102.2.2.1.9",
+      "name": "zxr10ExtendedACLSrcWildcard",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "IpAddress",
+      "unit": null,
+      "scale": null,
+      "access": "read-create",
+      "enumeration": null,
+      "description": "A.B.C.D  Wildcard bits",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.card.zxr10_extended_a_c_l_dest_wildcard",
+      "oid": "1.3.6.1.4.1.3902.3.102.2.2.1.12",
+      "name": "zxr10ExtendedACLDestWildcard",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "IpAddress",
+      "unit": null,
+      "scale": null,
+      "access": "read-create",
+      "enumeration": null,
+      "description": "A.B.C.D  Destination wildcard bits",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.card.zxr10_link_a_c_l_in_m_a_c_wildcard",
+      "oid": "1.3.6.1.4.1.3902.3.102.2.3.1.16",
+      "name": "zxr10LinkACLInMACWildcard",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "MacAddress",
+      "unit": null,
+      "scale": null,
+      "access": "read-create",
+      "enumeration": null,
+      "description": "# 0x** 0x** 0x** 0x** 0x** 0x**  Source wildcard bits",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.card.zxr10_link_a_c_l_out_m_a_c_wild_card",
+      "oid": "1.3.6.1.4.1.3902.3.102.2.3.1.19",
+      "name": "zxr10LinkACLOutMACWildCard",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "MacAddress",
+      "unit": null,
+      "scale": null,
+      "access": "read-create",
+      "enumeration": null,
+      "description": "# 0x** 0x** 0x** 0x** 0x** 0x**  Destination wildcard bits",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.card.zxr10_hybrid_a_c_l_src_addr_wildcard",
+      "oid": "1.3.6.1.4.1.3902.3.102.2.4.1.10",
+      "name": "zxr10HybridACLSrcAddrWildcard",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "IpAddress",
+      "unit": null,
+      "scale": null,
+      "access": "read-create",
+      "enumeration": null,
+      "description": "A.B.C.D  Wildcard bits",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.card.zxr10_hybrid_a_c_l_dest_addr_wildcard",
+      "oid": "1.3.6.1.4.1.3902.3.102.2.4.1.13",
+      "name": "zxr10HybridACLDestAddrWildcard",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "IpAddress",
+      "unit": null,
+      "scale": null,
+      "access": "read-create",
+      "enumeration": null,
+      "description": "A.B.C.D  Destination wildcard bits",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.card.zxr10_hybrid_a_c_l_in_m_a_c_wildcard",
+      "oid": "1.3.6.1.4.1.3902.3.102.2.4.1.29",
+      "name": "zxr10HybridACLInMACWildcard",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "MacAddress",
+      "unit": null,
+      "scale": null,
+      "access": "read-create",
+      "enumeration": null,
+      "description": "# 0x** 0x** 0x** 0x** 0x** 0x**  Source wildcard bits",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.card.zxr10_hybrid_a_c_l_out_m_a_c_wildcard",
+      "oid": "1.3.6.1.4.1.3902.3.102.2.4.1.32",
+      "name": "zxr10HybridACLOutMACWildcard",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "MacAddress",
+      "unit": null,
+      "scale": null,
+      "access": "read-create",
+      "enumeration": null,
+      "description": "# 0x** 0x** 0x** 0x** 0x** 0x**  Destination wildcard bits",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    }
+  ]
+}

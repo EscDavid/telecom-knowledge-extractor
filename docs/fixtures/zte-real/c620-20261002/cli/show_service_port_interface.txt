@@ -1,0 +1,10 @@
+Interface vport-1/1/1.1:1
+Sport Vport CosList BeginVid EndVid OuterVid InnerVid UserPrio Etype  Vlan Cos S
+Vlan SCos Tls  Cos TlsSVid SCos Ingress Egress  CH  Status Enable
+--------------------------------------------------------------------------------
+---------------------------------------------------------------------
+1     1     --      101      101    --       --       --       --     101  --  -
+-    --   --   --  --      --   SMARTOL.SMARTOL.100 OK     YES 
+Sport total number:
+1
+ZXAN#

@@ -1,0 +1,81 @@
+{
+  "id": "command.zte.gpon.onu.modify.mng_video",
+  "canonical_name": "interface video / video-ani",
+  "vendor": "ZTE",
+  "family": "ZXA10 C620",
+  "firmware": [
+    "1.2.2"
+  ],
+  "technology": "gpon",
+  "category": "modify",
+  "cli_mode": "interface_config",
+  "cli_context": "pon-onu-mng gpon_onu-<idx>",
+  "entity_ref": "entity.zte.gpon.device.onu",
+  "description": "CATV. 'video_0/n' exige que el tipo de la ONU lo declare. En ONU CATV reales se ve 'interface video video_0/1 state lock' y 'interface video-ani state lock'.",
+  "syntax": "interface video video_0/<n> {state {lock|unlock}|arc|power-control} ; interface video-ani {state {lock|unlock}|optical-thresh lower <dBm> upper <dBm>|agc-mode|arc|pilot-frequency}",
+  "parameters": [
+    {
+      "name": "n",
+      "type": "string",
+      "pattern": null,
+      "range": null,
+      "required": true,
+      "description": "",
+      "example": null
+    },
+    {
+      "name": "state",
+      "type": "enum",
+      "pattern": null,
+      "range": "lock|unlock",
+      "required": true,
+      "description": "",
+      "example": null
+    },
+    {
+      "name": "dBm",
+      "type": "string",
+      "pattern": null,
+      "range": null,
+      "required": true,
+      "description": "",
+      "example": null
+    }
+  ],
+  "output_fields": [],
+  "prerequisites": [
+    "entity.zte.gpon.device.onu"
+  ],
+  "related_commands": [],
+  "rollback": null,
+  "errors": [
+    {
+      "code": 223845,
+      "meaning": "el tipo de ONU no declara esa interfaz (eth/wifi/video); crear el tipo con onu-type-if y dar de alta la ONU con él",
+      "severity": "error",
+      "retry": false
+    },
+    {
+      "code": 230263,
+      "meaning": "parámetro no válido (domain wifi, splitter, video_0/1 en onu-type-if)",
+      "severity": "error",
+      "retry": false
+    }
+  ],
+  "notes": null,
+  "evidence": "ejecutado y verificado en la OLT el 2026-10-02",
+  "sources": [
+    {
+      "doc_type": "hardware_verification",
+      "pages": null,
+      "confidence": 0.95
+    }
+  ],
+  "confidence": {
+    "extraction": 0.95,
+    "correlation": 0.0,
+    "overall": 0.95
+  },
+  "status": "verified",
+  "conflicts": []
+}

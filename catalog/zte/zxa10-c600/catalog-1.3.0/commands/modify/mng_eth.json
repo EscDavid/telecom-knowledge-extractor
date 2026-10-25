@@ -1,0 +1,147 @@
+{
+  "id": "command.zte.gpon.onu.modify.mng_eth",
+  "canonical_name": "interface eth",
+  "vendor": "ZTE",
+  "family": "ZXA10 C600",
+  "firmware": [
+    "1.2.2"
+  ],
+  "technology": "gpon",
+  "category": "modify",
+  "cli_mode": "interface_config",
+  "cli_context": "pon-onu-mng gpon_onu-<idx>",
+  "entity_ref": "entity.zte.gpon.device.onu",
+  "description": "Puerto Ethernet de la ONU. Los valores por defecto se aceptan pero no se guardan en la configuración.",
+  "syntax": "interface eth <if> {state {lock|unlock}|speed {auto|full-10|full-100|full-1000|full-10000|half-10|half-100}|mtu <64-12288>|pause-time <0-65535>|l2l3 {l2|l3|either}|loop {enable|disable}|pppoe-filter {enable|disable}|power-control {enable|disable}|arc {enable arc-interval <n>|disable}|type <0-255>|wiring {dce|dte}}",
+  "parameters": [
+    {
+      "name": "if",
+      "type": "string",
+      "pattern": null,
+      "range": null,
+      "required": true,
+      "description": "",
+      "example": null
+    },
+    {
+      "name": "state",
+      "type": "enum",
+      "pattern": null,
+      "range": "lock|unlock",
+      "required": true,
+      "description": "",
+      "example": null
+    },
+    {
+      "name": "lock_unlock_speed",
+      "type": "enum",
+      "pattern": null,
+      "range": "auto|full-10|full-100|full-1000|full-10000|half-10|half-100",
+      "required": true,
+      "description": "",
+      "example": null
+    },
+    {
+      "name": "auto_full-10_full-100_full-1000_full-10000_half-10_half-100_mtu",
+      "type": "integer",
+      "pattern": null,
+      "range": "64-12288",
+      "required": true,
+      "description": "",
+      "example": null
+    },
+    {
+      "name": "64-12288_pause-time",
+      "type": "integer",
+      "pattern": null,
+      "range": "0-65535",
+      "required": true,
+      "description": "",
+      "example": null
+    },
+    {
+      "name": "0-65535_l2l3",
+      "type": "enum",
+      "pattern": null,
+      "range": "l2|l3|either",
+      "required": true,
+      "description": "",
+      "example": null
+    },
+    {
+      "name": "l2_l3_either_loop",
+      "type": "enum",
+      "pattern": null,
+      "range": "enable|disable",
+      "required": true,
+      "description": "",
+      "example": null
+    },
+    {
+      "name": "enable_disable_pppoe-filter",
+      "type": "enum",
+      "pattern": null,
+      "range": "enable|disable",
+      "required": true,
+      "description": "",
+      "example": null
+    },
+    {
+      "name": "enable_disable_power-control",
+      "type": "enum",
+      "pattern": null,
+      "range": "enable|disable",
+      "required": true,
+      "description": "",
+      "example": null
+    },
+    {
+      "name": "n_disable_type",
+      "type": "integer",
+      "pattern": null,
+      "range": "0-255",
+      "required": true,
+      "description": "",
+      "example": null
+    },
+    {
+      "name": "0-255_wiring",
+      "type": "enum",
+      "pattern": null,
+      "range": "dce|dte",
+      "required": true,
+      "description": "",
+      "example": null
+    }
+  ],
+  "output_fields": [],
+  "prerequisites": [
+    "entity.zte.gpon.device.onu"
+  ],
+  "related_commands": [],
+  "rollback": null,
+  "errors": [
+    {
+      "code": 223845,
+      "meaning": "el tipo de ONU no declara esa interfaz (eth/wifi/video); crear el tipo con onu-type-if y dar de alta la ONU con él",
+      "severity": "error",
+      "retry": false
+    }
+  ],
+  "notes": null,
+  "evidence": "sintaxis obtenida solo con la ayuda '?' de la OLT (no ejecutada)",
+  "sources": [
+    {
+      "doc_type": "hardware_verification",
+      "pages": null,
+      "confidence": 0.6
+    }
+  ],
+  "confidence": {
+    "extraction": 0.6,
+    "correlation": 0.0,
+    "overall": 0.6
+  },
+  "status": "documented",
+  "conflicts": []
+}

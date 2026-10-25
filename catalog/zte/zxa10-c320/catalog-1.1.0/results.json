@@ -1,0 +1,46 @@
+[
+  {
+    "result_type": "orphan",
+    "artifact_type": "entity",
+    "artifact_id": "entity.zte.gpon.profile.line_profile",
+    "vendor": "ZTE",
+    "resolved": false,
+    "payload": {
+      "reason": "Artefacto solo respaldado por inferencia, sin documento fuente directo",
+      "since_version": "1.1.0"
+    }
+  },
+  {
+    "result_type": "orphan",
+    "artifact_type": "entity",
+    "artifact_id": "entity.zte.gpon.profile.service_profile",
+    "vendor": "ZTE",
+    "resolved": false,
+    "payload": {
+      "reason": "Artefacto solo respaldado por inferencia, sin documento fuente directo",
+      "since_version": "1.1.0"
+    }
+  },
+  {
+    "result_type": "orphan",
+    "artifact_type": "entity",
+    "artifact_id": "entity.zte.gpon.protocol.dba",
+    "vendor": "ZTE",
+    "resolved": false,
+    "payload": {
+      "reason": "Artefacto solo respaldado por inferencia, sin documento fuente directo",
+      "since_version": "1.1.0"
+    }
+  },
+  {
+    "result_type": "orphan",
+    "artifact_type": "entity",
+    "artifact_id": "entity.zte.gpon.protocol.igmp",
+    "vendor": "ZTE",
+    "resolved": false,
+    "payload": {
+      "reason": "Artefacto solo respaldado por inferencia, sin documento fuente directo",
+      "since_version": "1.1.0"
+    }
+  }
+]

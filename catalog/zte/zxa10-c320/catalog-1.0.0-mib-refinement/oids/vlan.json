@@ -1,0 +1,3420 @@
+{
+  "entity_ref": "entity.zte.gpon.logical.vlan",
+  "vendor": "ZTE",
+  "family": "ZXA10 C320",
+  "firmware": [
+    "2.0",
+    "2.1"
+  ],
+  "oids": [
+    {
+      "id": "oid.zte.gpon.vlan.dpi_show_vlan_service_vlan",
+      "oid": "1.3.6.1.4.1.3902.51.1.2.8.8.1",
+      "name": "dpiShowVlanServiceVlan",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-write",
+      "enumeration": null,
+      "description": null,
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.vlan.dpi_show_vlan_service_service",
+      "oid": "1.3.6.1.4.1.3902.51.1.2.8.8.2",
+      "name": "dpiShowVlanServiceService",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": null,
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.vlan.dpi_vlan_interface_name",
+      "oid": "1.3.6.1.4.1.3902.51.1.6.1",
+      "name": "dpiVlanInterfaceName",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "DisplayString",
+      "unit": null,
+      "scale": null,
+      "access": "read-write",
+      "enumeration": null,
+      "description": "enter the Interface Name",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.vlan.dpi_show_all_vlan_dpi_table",
+      "oid": "1.3.6.1.4.1.3902.51.1.14",
+      "name": "dpiShowAllVlanDpiTable",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "SEQUENCE OF DpiShowAllVlanDpiEntry",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": "the vlan-dpi binding table.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.vlan.dpi_show_all_vlan_dpi_entry",
+      "oid": "1.3.6.1.4.1.3902.51.1.14.1",
+      "name": "dpiShowAllVlanDpiEntry",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "DpiShowAllVlanDpiEntry",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": "A list of  entries of vlan-dpi.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.vlan.dpi_all_vlan_i_d",
+      "oid": "1.3.6.1.4.1.3902.51.1.14.1.1",
+      "name": "dpiAllVlanID",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "the ID of Vlan",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.vlan.dpi_all_vlan_bind_template_i_d",
+      "oid": "1.3.6.1.4.1.3902.51.1.14.1.2",
+      "name": "dpiAllVlanBindTemplateID",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "the ID of Vlan-binding template",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.vlan.dpi_all_vlan_bind_slot_i_d",
+      "oid": "1.3.6.1.4.1.3902.51.1.14.1.3",
+      "name": "dpiAllVlanBindSlotID",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "the ID of Vlan-binding dpi-slot",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.vlan.dpi_all_vlan_bind_service_i_d",
+      "oid": "1.3.6.1.4.1.3902.51.1.14.1.4",
+      "name": "dpiAllVlanBindServiceID",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "the ID of Vlan-binding service",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.vlan.dpi_all_vlan_bind_is_used",
+      "oid": "1.3.6.1.4.1.3902.51.1.14.1.5",
+      "name": "dpiAllVlanBindIsUsed",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": {
+        "1": "used",
+        "0": "notUsed"
+      },
+      "description": "the state of Vlan-binding",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.vlan.tp_vlan",
+      "oid": "1.3.6.1.4.1.3902.15.4.3.2",
+      "name": "tpVlan",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-write",
+      "enumeration": null,
+      "description": "The value of this item can't be changed while gmSwitchRole is commandSwitch",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.vlan.uas_active_subscriber_vlan_id",
+      "oid": "1.3.6.1.4.1.3902.1006.1.1.2.2.1.10",
+      "name": "zxUasActiveSubscriberVlanId",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "active subscriber VlanId.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.vlan.loopdetect_vlan",
+      "oid": "1.3.6.1.4.1.3902.3.102.25.2.1.8",
+      "name": "loopdetectVlan",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "The vlan contains the port which happened loopdetect.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.vlan.dot1ag_cfm_ma_primary_vlan_id",
+      "oid": "1.3.6.1.4.1.3902.3.120.1.2.1.1.2",
+      "name": "dot1agCfmMaPrimaryVlanId",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "VlanIdOrNone",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "The Primary VLAN ID with which the Maintenance Association is\n                           associated, or 0 if the MA is not attached to any VID. If\n                           the MA is associated with more than one VID, the\n                           dot1agCfmVlanTable lists them.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.vlan.dot1ag_cfm_ma_vlan_list_table",
+      "oid": "1.3.6.1.4.1.3902.3.120.1.2.2",
+      "name": "dot1agCfmMaVlanListTable",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "SEQUENCE OF Dot1agCfmMaVlanListEntry",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": "List of Vlan.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.vlan.dot1ag_cfm_ma_vlan_list_entry",
+      "oid": "1.3.6.1.4.1.3902.3.120.1.2.2.1",
+      "name": "dot1agCfmMaVlanListEntry",
+      "mib_table": null,
+      "index": {
+        "type": "composite",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "Dot1agCfmMaVlanListEntry",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": "The known Vlan table entry.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.vlan.dot1ag_cfm_ma_vlan_list_identifier",
+      "oid": "1.3.6.1.4.1.3902.3.120.1.2.2.1.1",
+      "name": "dot1agCfmMaVlanListIdentifier",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "VlanId",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": "VlanId",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.vlan.dot1ag_cfm_ma_vlan_list_row_status",
+      "oid": "1.3.6.1.4.1.3902.3.120.1.2.2.1.2",
+      "name": "dot1agCfmMaVlanListRowStatus",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "Row",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "The status of the row. Read SNMPv2-TC (RFC1903) for an\n                           explanation of the possible values this object can take.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.vlan.condition_vlan_id",
+      "oid": "1.3.6.1.4.1.3902.3.309.2.4.1.7",
+      "name": "conditionVlanId",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-write",
+      "enumeration": null,
+      "description": null,
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.vlan.zxr10_eth_sub_if_config_vlan_i_d",
+      "oid": "1.3.6.1.4.1.3902.3.103.2.1.2.1.1.5",
+      "name": "zxr10EthSubIfConfigVlanID",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-write",
+      "enumeration": null,
+      "description": "Vlan ID of this sub interface",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.vlan.zxr10_ping_mac_ext_result_out_vlan_id",
+      "oid": "1.3.6.1.4.1.3902.3.104.4.2.1.12",
+      "name": "zxr10PingMacExtResultOutVlanId",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "out vlanid",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.vlan.zxr10_ping_mac_ext_result_in_vlan_id",
+      "oid": "1.3.6.1.4.1.3902.3.104.4.2.1.13",
+      "name": "zxr10PingMacExtResultInVlanId",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "in vlanid",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.vlan.zxr10_mpls_l2vpn_p_w_vlanid",
+      "oid": "1.3.6.1.4.1.3902.3.104.1.1.1.1.4",
+      "name": "zxr10MplsL2vpnPWVlanid",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "if zxr10MplsL2vpnPWEncapsulationType is eth-vlan type,this value represents\n        vlan id encapsulated for L2vpn interface.It will be zero otherwise.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.vlan.stp_vlan_maps",
+      "oid": "1.3.6.1.4.1.3902.3.127.1.2.1.1.7",
+      "name": "stpVlanMaps",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "Char",
+      "unit": null,
+      "scale": null,
+      "access": "read-write",
+      "enumeration": null,
+      "description": "VLAN Tag spearated by ',' or '-'.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.vlan.rtm_l2vpn_if_vlan_range_top1",
+      "oid": "1.3.6.1.4.1.3902.3.104.3.1.1.1.9",
+      "name": "rtmL2vpnIfVlanRangeTop1",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "Rtm L2vpn Vfi Interface Vpn Type",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.vlan.rtm_l2vpn_if_vlan_range_top2",
+      "oid": "1.3.6.1.4.1.3902.3.104.3.1.1.1.10",
+      "name": "rtmL2vpnIfVlanRangeTop2",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "Rtm L2vpn Vfi Interface Vpn Type",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.vlan.rtm_l2vpn_if_vlan_range_top3",
+      "oid": "1.3.6.1.4.1.3902.3.104.3.1.1.1.11",
+      "name": "rtmL2vpnIfVlanRangeTop3",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "Rtm L2vpn Vfi Interface Vpn Type",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.vlan.rtm_l2vpn_if_vlan_range_bot1",
+      "oid": "1.3.6.1.4.1.3902.3.104.3.1.1.1.12",
+      "name": "rtmL2vpnIfVlanRangeBot1",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "Rtm L2vpn Vfi Interface Vpn Type",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.vlan.rtm_l2vpn_if_vlan_range_bot2",
+      "oid": "1.3.6.1.4.1.3902.3.104.3.1.1.1.13",
+      "name": "rtmL2vpnIfVlanRangeBot2",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "Rtm L2vpn Vfi Interface Vpn Type",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.vlan.rtm_l2vpn_if_vlan_range_bot3",
+      "oid": "1.3.6.1.4.1.3902.3.104.3.1.1.1.14",
+      "name": "rtmL2vpnIfVlanRangeBot3",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "Rtm L2vpn Vfi Interface Vpn Type",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.vlan.zxr10_link_a_c_l_dout_vlan_i_d",
+      "oid": "1.3.6.1.4.1.3902.3.102.2.3.1.12",
+      "name": "zxr10LinkACLDoutVlanID",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "<1-4094>  Source outer vlan id",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.vlan.zxr10_hybrid_a_c_l_dout_vlan_i_d",
+      "oid": "1.3.6.1.4.1.3902.3.102.2.4.1.27",
+      "name": "zxr10HybridACLDoutVlanID",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "<1-4094>  Source outer vlan id",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.vlan.zxr10_link_a_c_l_din_vlan_i_d",
+      "oid": "1.3.6.1.4.1.3902.3.102.2.3.1.11",
+      "name": "zxr10LinkACLDinVlanID",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-create",
+      "enumeration": null,
+      "description": "<1-4094>  Source inner vlan id",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.vlan.zxr10_link_a_c_l_din_vlan_i_d_right",
+      "oid": "1.3.6.1.4.1.3902.3.102.2.3.1.12",
+      "name": "zxr10LinkACLDinVlanIDRight",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-create",
+      "enumeration": null,
+      "description": "<1-4094>  Right Value of source inner vlan range",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.vlan.zxr10_link_a_c_l_dout_vlan_i_d",
+      "oid": "1.3.6.1.4.1.3902.3.102.2.3.1.13",
+      "name": "zxr10LinkACLDoutVlanID",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-create",
+      "enumeration": null,
+      "description": "<1-4094>  Source outer vlan id",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.vlan.zxr10_link_a_c_l_dout_vlan_i_d_right",
+      "oid": "1.3.6.1.4.1.3902.3.102.2.3.1.14",
+      "name": "zxr10LinkACLDoutVlanIDRight",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-create",
+      "enumeration": null,
+      "description": "<1-4094>  Right Value of source outer vlan range",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.vlan.zxr10_hybrid_a_c_l_din_vlan_i_d",
+      "oid": "1.3.6.1.4.1.3902.3.102.2.4.1.26",
+      "name": "zxr10HybridACLDinVlanID",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-create",
+      "enumeration": null,
+      "description": "<1-4094>  Source inner vlan id",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.vlan.zxr10_hybrid_a_c_l_dout_vlan_i_d",
+      "oid": "1.3.6.1.4.1.3902.3.102.2.4.1.27",
+      "name": "zxr10HybridACLDoutVlanID",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-create",
+      "enumeration": null,
+      "description": "<1-4094>  Source outer vlan id",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.vlan.zxr10_cpu_vlan_pvid_table",
+      "oid": "1.3.6.1.4.1.3902.3.102.1.1",
+      "name": "zxr10CpuVlanPvidTable",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "SEQUENCE OF Zxr10CpuVlanPvidEntry",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": "vlan information table.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.vlan.zxr10_cpu_vlan_pvid_entry",
+      "oid": "1.3.6.1.4.1.3902.3.102.1.1.1",
+      "name": "zxr10CpuVlanPvidEntry",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "Zxr10CpuVlanPvidEntry",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": null,
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.vlan.zxr10_cpu_vlan_id",
+      "oid": "1.3.6.1.4.1.3902.3.102.1.1.1.1",
+      "name": "zxr10CpuVlanId",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "The vlan id (1-4094)",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.vlan.zxr10_cpu_vlan_if",
+      "oid": "1.3.6.1.4.1.3902.3.102.1.1.1.2",
+      "name": "zxr10CpuVlanIf",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "The vlan entry -> L3 interface",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.vlan.zxr10_cpu_vlan_mtu",
+      "oid": "1.3.6.1.4.1.3902.3.102.1.1.1.3",
+      "name": "zxr10CpuVlanMtu",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "vlan MTU size",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.vlan.zxr10_cpu_vlan_state",
+      "oid": "1.3.6.1.4.1.3902.3.102.1.1.1.4",
+      "name": "zxr10CpuVlanState",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": {
+        "1": "up",
+        "0": "down"
+      },
+      "description": "vlan state:active or suspend",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.vlan.zxr10_cpu_vlan_said",
+      "oid": "1.3.6.1.4.1.3902.3.102.1.1.1.5",
+      "name": "zxr10CpuVlanSaid",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "Security Association Identifier(SAID)",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.vlan.zxr10_cpu_vlan_vpnid",
+      "oid": "1.3.6.1.4.1.3902.3.102.1.1.1.6",
+      "name": "zxr10CpuVlanVpnid",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "The vlan entry -> Vpnid",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.vlan.zxr10_cpu_vlan_row_status",
+      "oid": "1.3.6.1.4.1.3902.3.102.1.1.1.7",
+      "name": "zxr10CpuVlanRowStatus",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "Row",
+      "unit": null,
+      "scale": null,
+      "access": "read-create",
+      "enumeration": null,
+      "description": "creat or delete vlan",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.vlan.zxr10_cpu_vlan_name",
+      "oid": "1.3.6.1.4.1.3902.3.102.1.1.1.8",
+      "name": "zxr10CpuVlanName",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "DisplayString",
+      "unit": null,
+      "scale": null,
+      "access": "read-write",
+      "enumeration": null,
+      "description": "vlan name",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.vlan.zxr10_cpu_vlan_mem_ports_pvid",
+      "oid": "1.3.6.1.4.1.3902.3.102.1.1.1.9",
+      "name": "zxr10CpuVlanMemPortsPvid",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "DisplayString",
+      "unit": null,
+      "scale": null,
+      "access": "read-write",
+      "enumeration": null,
+      "description": "pvid of port members",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.vlan.zxr10_cpu_vlan_tag_table",
+      "oid": "1.3.6.1.4.1.3902.3.102.1.2",
+      "name": "zxr10CpuVlanTagTable",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "SEQUENCE OF Zxr10CpuVlanTagEntry",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": "vlan information table.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.vlan.zxr10_cpu_vlan_tag_entry",
+      "oid": "1.3.6.1.4.1.3902.3.102.1.2.1",
+      "name": "zxr10CpuVlanTagEntry",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "Zxr10CpuVlanTagEntry",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": null,
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.vlan.zxr10_cpu_vlanid",
+      "oid": "1.3.6.1.4.1.3902.3.102.1.2.1.1",
+      "name": "zxr10CpuVlanid",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "The vlan id (1-4094)",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.vlan.zxr10_cpu_vlanvpnid",
+      "oid": "1.3.6.1.4.1.3902.3.102.1.2.1.2",
+      "name": "zxr10CpuVlanvpnid",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "The vlan entry -> Vpnid",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.vlan.zxr10_cpu_vlanname",
+      "oid": "1.3.6.1.4.1.3902.3.102.1.2.1.3",
+      "name": "zxr10CpuVlanname",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "DisplayString",
+      "unit": null,
+      "scale": null,
+      "access": "read-write",
+      "enumeration": null,
+      "description": "vlan name",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.vlan.zxr10_cpu_vlan_mem_ports_tag",
+      "oid": "1.3.6.1.4.1.3902.3.102.1.2.1.4",
+      "name": "zxr10CpuVlanMemPortsTag",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "DisplayString",
+      "unit": null,
+      "scale": null,
+      "access": "read-write",
+      "enumeration": null,
+      "description": "tag port members",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.vlan.zxr10_cpu_vlan_untag_table",
+      "oid": "1.3.6.1.4.1.3902.3.102.1.5",
+      "name": "zxr10CpuVlanUntagTable",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "SEQUENCE OF Zxr10CpuVlanUntagEntry",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": "vlan information table.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.vlan.zxr10_cpu_vlan_untag_entry",
+      "oid": "1.3.6.1.4.1.3902.3.102.1.5.1",
+      "name": "zxr10CpuVlanUntagEntry",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "Zxr10CpuVlanUntagEntry",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": null,
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.vlan.zxr10_cpuvlanid",
+      "oid": "1.3.6.1.4.1.3902.3.102.1.5.1.1",
+      "name": "zxr10Cpuvlanid",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "The vlan id (1-4094)",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.vlan.zxr10_cpu_vlanvpn_id",
+      "oid": "1.3.6.1.4.1.3902.3.102.1.5.1.2",
+      "name": "zxr10CpuVlanvpnId",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "The vlan entry -> Vpnid",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.vlan.zxr10_cpuvlanname",
+      "oid": "1.3.6.1.4.1.3902.3.102.1.5.1.3",
+      "name": "zxr10Cpuvlanname",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "DisplayString",
+      "unit": null,
+      "scale": null,
+      "access": "read-write",
+      "enumeration": null,
+      "description": "vlan name",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.vlan.zxr10_cpu_vlan_mem_ports_untag",
+      "oid": "1.3.6.1.4.1.3902.3.102.1.5.1.4",
+      "name": "zxr10CpuVlanMemPortsUntag",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "DisplayString",
+      "unit": null,
+      "scale": null,
+      "access": "read-write",
+      "enumeration": null,
+      "description": "pvid of port members",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.vlan.zxr10igmp_snooping_vlan_id",
+      "oid": "1.3.6.1.4.1.3902.3.102.5.1.1.2",
+      "name": "zxr10igmpSnoopingVlanId",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "ZXR10 igmp snooping Vlan Id",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.vlan.zxr10pim_snooping_neighbor_vlan_id",
+      "oid": "1.3.6.1.4.1.3902.3.102.5.2.1.2",
+      "name": "zxr10pimSnoopingNeighborVlanId",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "zxr10 pim Snooping Neighbor Vlan Id",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.vlan.zxr10_igmp_snooping_vlan_table",
+      "oid": "1.3.6.1.4.1.3902.3.102.5.3",
+      "name": "zxr10IgmpSnoopingVlanTable",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "SEQUENCE OF Zxr10IgmpSnoopingVlanEntry",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": "ZXR10 igmp snooping vlan table.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.vlan.zxr10_igmp_snooping_vlan_entry",
+      "oid": "1.3.6.1.4.1.3902.3.102.5.3.1",
+      "name": "zxr10IgmpSnoopingVlanEntry",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "Zxr10IgmpSnoopingVlanEntry",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": "zxr10 Igmp Snooping Vlan Entry",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.vlan.zxr10igmp_snooping_vlan_entry_vlan_id",
+      "oid": "1.3.6.1.4.1.3902.3.102.5.3.1.1",
+      "name": "zxr10igmpSnoopingVlanEntryVlanId",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "zxr10 igmp Snooping Vlan Entry Vlan Id",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.vlan.zxr10igmp_snooping_vlan_entry_enable",
+      "oid": "1.3.6.1.4.1.3902.3.102.5.3.1.2",
+      "name": "zxr10igmpSnoopingVlanEntryEnable",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": {
+        "0": "enable",
+        "1": "disable"
+      },
+      "description": "Enables/disables IGMP Snooping on this vlan",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.vlan.zxr10pim_snooping_vlan_entry_enable",
+      "oid": "1.3.6.1.4.1.3902.3.102.5.3.1.3",
+      "name": "zxr10pimSnoopingVlanEntryEnable",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": {
+        "0": "enable",
+        "1": "disable"
+      },
+      "description": "Enables/disables PIM Snooping on this vlan",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.vlan.zxr10_member_ship_vlans_tag",
+      "oid": "1.3.6.1.4.1.3902.3.102.1.4.1.1.4",
+      "name": "zxr10MemberShipVlansTag",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "OCTET STRING",
+      "unit": null,
+      "scale": null,
+      "access": "read-write",
+      "enumeration": null,
+      "description": "vlan tag bitMap (1-1023)",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.vlan.zxr10_member_ship_vlans_hybrid_un_tag",
+      "oid": "1.3.6.1.4.1.3902.3.102.1.4.1.1.5",
+      "name": "zxr10MemberShipVlansHybridUnTag",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "OCTET STRING",
+      "unit": null,
+      "scale": null,
+      "access": "read-write",
+      "enumeration": null,
+      "description": "vlan untag bitMap(1-1023) of hybrid ports",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.vlan.zxr10_member_ship_vlans_tag2k",
+      "oid": "1.3.6.1.4.1.3902.3.102.1.4.1.1.6",
+      "name": "zxr10MemberShipVlansTag2k",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "OCTET STRING",
+      "unit": null,
+      "scale": null,
+      "access": "read-write",
+      "enumeration": null,
+      "description": "vlan bitMap (1024-2047)",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.vlan.zxr10_member_ship_vlans_hybrid_un_tag2k",
+      "oid": "1.3.6.1.4.1.3902.3.102.1.4.1.1.7",
+      "name": "zxr10MemberShipVlansHybridUnTag2k",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "OCTET STRING",
+      "unit": null,
+      "scale": null,
+      "access": "read-write",
+      "enumeration": null,
+      "description": "vlan untag bitMap(1024-2047) of hybrid ports",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.vlan.zxr10_member_ship_vlans_tag3k",
+      "oid": "1.3.6.1.4.1.3902.3.102.1.4.1.1.8",
+      "name": "zxr10MemberShipVlansTag3k",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "OCTET STRING",
+      "unit": null,
+      "scale": null,
+      "access": "read-write",
+      "enumeration": null,
+      "description": "vlan tag bitMap (2048-3071)",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.vlan.zxr10_member_ship_vlans_hybrid_un_tag3k",
+      "oid": "1.3.6.1.4.1.3902.3.102.1.4.1.1.9",
+      "name": "zxr10MemberShipVlansHybridUnTag3k",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "OCTET STRING",
+      "unit": null,
+      "scale": null,
+      "access": "read-write",
+      "enumeration": null,
+      "description": "vlan untag bitMap(2048-3071) of hybrid ports",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.vlan.zxr10_member_ship_vlans_tag4k",
+      "oid": "1.3.6.1.4.1.3902.3.102.1.4.1.1.10",
+      "name": "zxr10MemberShipVlansTag4k",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "OCTET STRING",
+      "unit": null,
+      "scale": null,
+      "access": "read-write",
+      "enumeration": null,
+      "description": "vlan tag bitMap (3072-4094)",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.vlan.zxr10_member_ship_vlans_hybrid_un_tag4k",
+      "oid": "1.3.6.1.4.1.3902.3.102.1.4.1.1.11",
+      "name": "zxr10MemberShipVlansHybridUnTag4k",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "OCTET STRING",
+      "unit": null,
+      "scale": null,
+      "access": "read-write",
+      "enumeration": null,
+      "description": "vlan untag bitMap(3072-4094) of hybrid ports",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.vlan.loopdetect_port_vlan",
+      "oid": "1.3.6.1.4.1.3902.3.102.15.2.1.5",
+      "name": "loopdetectPortVlan",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "DisplayString",
+      "unit": null,
+      "scale": null,
+      "access": "read-create",
+      "enumeration": null,
+      "description": "The vlan list which the loopdetect port belong to.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.vlan.zxr10svlan_count",
+      "oid": "1.3.6.1.4.1.3902.3.102.17.10",
+      "name": "zxr10svlanCount",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "The count of svlan session which has been used.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.vlan.zxr10svlan_free_count",
+      "oid": "1.3.6.1.4.1.3902.3.102.17.11",
+      "name": "zxr10svlanFreeCount",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "The count of svlan session which has been not used.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.vlan.zxr10svlan_table",
+      "oid": "1.3.6.1.4.1.3902.3.102.17.12",
+      "name": "zxr10svlanTable",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "SEQUENCE OF Zxr10svlanEntry",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": "A table that contains SVLAN session config info.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.vlan.zxr10svlan_entry",
+      "oid": "1.3.6.1.4.1.3902.3.102.17.12.1",
+      "name": "zxr10svlanEntry",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "Zxr10svlanEntry",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": "A list of  entries of SVLAN session config information.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.vlan.zxr10svlan_session_no",
+      "oid": "1.3.6.1.4.1.3902.3.102.17.12.1.1",
+      "name": "zxr10svlanSessionNo",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "The session number of a session.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.vlan.zxr10svlan_description",
+      "oid": "1.3.6.1.4.1.3902.3.102.17.12.1.2",
+      "name": "zxr10svlanDescription",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "DisplayString",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "The description of a session.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.vlan.zxr10svlan_customer_port",
+      "oid": "1.3.6.1.4.1.3902.3.102.17.12.1.3",
+      "name": "zxr10svlanCustomerPort",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "DisplayString",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "The customer port name of a session.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.vlan.zxr10svlan_invlan",
+      "oid": "1.3.6.1.4.1.3902.3.102.17.12.1.5",
+      "name": "zxr10svlanInvlan",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "DisplayString",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "svlan invlan ID,if invlan doesn't have value, this string will be null.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.vlan.zxr10svlan_ovlan",
+      "oid": "1.3.6.1.4.1.3902.3.102.17.12.1.6",
+      "name": "zxr10svlanOvlan",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "DisplayString",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "The out vlan id of a session in no inner tag mode,\n            if outvlan doesn't have value, this string will be null.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.vlan.zxr10svlan_redirect",
+      "oid": "1.3.6.1.4.1.3902.3.102.17.12.1.7",
+      "name": "zxr10svlanRedirect",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": {
+        "1": "undirect"
+      },
+      "description": "The undirect flag of a session, default value 255 means redirect.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.vlan.zxr10svlan_advanced",
+      "oid": "1.3.6.1.4.1.3902.3.102.17.12.1.8",
+      "name": "zxr10svlanAdvanced",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": {
+        "0": "normal",
+        "1": "special"
+      },
+      "description": "The advanced flag of a session, 0--normal,1--special,default value 255 means not config.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.vlan.zxr10svlan_priority",
+      "oid": "1.3.6.1.4.1.3902.3.102.17.12.1.9",
+      "name": "zxr10svlanPriority",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "Svlan priority can be mapping(8) or be a number of 0..7,\n            default value 255 means that priority has no value.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.vlan.zxr10svlan_helper_vlan",
+      "oid": "1.3.6.1.4.1.3902.3.102.17.12.1.10",
+      "name": "zxr10svlanHelperVlan",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "DisplayString",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "Svlan helper vlan ID, if helper vlan ID doesn't have value, \n            this string will be null.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.vlan.zxr10vfp_in_vlan",
+      "oid": "1.3.6.1.4.1.3902.3.102.18.1.1.4",
+      "name": "zxr10vfpInVlan",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "DisplayString",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "Svlan invlan ID,if invlan doesn't have value, this string will be null.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.vlan.zxr10vfp_ovlan",
+      "oid": "1.3.6.1.4.1.3902.3.102.18.1.1.7",
+      "name": "zxr10vfpOvlan",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "DisplayString",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "The out vlan id of a session in no inner tag mode,\n            if outvlan doesn't have value, this string will be null.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.vlan.zxr10_acl_qos_priority_mark_outer_vlan_id",
+      "oid": "1.3.6.1.4.1.3902.3.102.3.1.1.8",
+      "name": "zxr10AclQosPriorityMarkOuterVlanId",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-create",
+      "enumeration": null,
+      "description": "The acl qos Priority Mark outer vlan id, the valid value is 1-4094.not support by 59 program",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.vlan.zxr10vswitch_vlan_table",
+      "oid": "1.3.6.1.4.1.3902.3.101.4.3",
+      "name": "zxr10vswitchVlanTable",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "SEQUENCE OF Zxr10VswitchVlanEntry",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": "The description of zxr10 vlan transfer table.\n                       It is a list of vlan transfer entries.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.vlan.zxr10vsiwtch_vlan_entry",
+      "oid": "1.3.6.1.4.1.3902.3.101.4.3.1",
+      "name": "zxr10vsiwtchVlanEntry",
+      "mib_table": null,
+      "index": {
+        "type": "composite",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "Zxr10VswitchVlanEntry",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": "A vlan transfer table entry containing objects that\n                       the interface vlan transfer configuration infomation,such as:\n                       input vlanid, inputInner vlanid, outputvlanid, outputInner vlanid, vlanrow status.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.vlan.zxr10vswitch_vlan_ingress_ext_vlanid",
+      "oid": "1.3.6.1.4.1.3902.3.101.4.3.1.1",
+      "name": "zxr10vswitchVlanIngressExtVlanid",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "The vswitch input vlan index.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.vlan.zxr10vswitch_vlan_ingress_if_index",
+      "oid": "1.3.6.1.4.1.3902.3.101.4.3.1.2",
+      "name": "zxr10vswitchVlanIngressIfIndex",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "The interface that the vswitch vlan packet input.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.vlan.zxr10vswitch_vlan_ingress_int_vlanid",
+      "oid": "1.3.6.1.4.1.3902.3.101.4.3.1.3",
+      "name": "zxr10vswitchVlanIngressIntVlanid",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "The vswitch inner vlan index.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.vlan.zxr10vswitch_vlan_egress_ext_vlanid",
+      "oid": "1.3.6.1.4.1.3902.3.101.4.3.1.4",
+      "name": "zxr10vswitchVlanEgressExtVlanid",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-write",
+      "enumeration": null,
+      "description": "The vswitch out vlan index.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.vlan.zxr10vswitch_vlan_egress_if_index",
+      "oid": "1.3.6.1.4.1.3902.3.101.4.3.1.5",
+      "name": "zxr10vswitchVlanEgressIfIndex",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-write",
+      "enumeration": null,
+      "description": "The interface that the vsiwtch vlan packet output.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.vlan.zxr10vswitch_vlan_egress_int_vlanid",
+      "oid": "1.3.6.1.4.1.3902.3.101.4.3.1.6",
+      "name": "zxr10vswitchVlanEgressIntVlanid",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "The vswitch inner out put vlan index.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.vlan.zxr10vswitch_vlan_vlanid_range",
+      "oid": "1.3.6.1.4.1.3902.3.101.4.3.1.7",
+      "name": "zxr10vswitchVlanVlanidRange",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-write",
+      "enumeration": null,
+      "description": "The vswitch vlan index range (default is 1).",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.vlan.zxr10vswitch_vland_direction",
+      "oid": "1.3.6.1.4.1.3902.3.101.4.3.1.8",
+      "name": "zxr10vswitchVlandDirection",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "VsiwtchVlanDirection",
+      "unit": null,
+      "scale": null,
+      "access": "read-write",
+      "enumeration": null,
+      "description": "The vswitch vlan input output direction (default is uni-direction).",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.vlan.zxr10vswitch_vlan_row_status",
+      "oid": "1.3.6.1.4.1.3902.3.101.4.3.1.9",
+      "name": "zxr10vswitchVlanRowStatus",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "Entry",
+      "unit": null,
+      "scale": null,
+      "access": "read-write",
+      "enumeration": null,
+      "description": "The vswitch row status when it changes to invalid the row will be deleted.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.vlan.zxr10vswitch_vlan_desc",
+      "oid": "1.3.6.1.4.1.3902.3.101.4.3.1.10",
+      "name": "zxr10vswitchVlanDesc",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "DisplayString",
+      "unit": null,
+      "scale": null,
+      "access": "read-write",
+      "enumeration": null,
+      "description": "The vswitch row descrption, for nm01 using.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.vlan.zxr10vswitch_vlan_table_lastchange",
+      "oid": "1.3.6.1.4.1.3902.3.101.4.4",
+      "name": "zxr10vswitchVlanTableLastchange",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "TimeTicks",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "The last time of the v-switch vlan table changed.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    }
+  ]
+}

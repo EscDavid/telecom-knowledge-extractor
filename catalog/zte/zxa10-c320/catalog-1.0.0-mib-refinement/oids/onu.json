@@ -1,0 +1,3554 @@
+{
+  "entity_ref": "entity.zte.gpon.device.onu",
+  "vendor": "ZTE",
+  "family": "ZXA10 C320",
+  "firmware": [
+    "2.0",
+    "2.1"
+  ],
+  "oids": [
+    {
+      "id": "oid.zte.gpon.onu.dpi_signature_entry_content",
+      "oid": "1.3.6.1.4.1.3902.51.1.2.3.2.1.1.2",
+      "name": "dpiSignatureEntryContent",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "DisplayString",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "A string description of the Key Content.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.onu.dpi_set_content",
+      "oid": "1.3.6.1.4.1.3902.51.1.2.3.3",
+      "name": "dpiSetContent",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "DisplayString",
+      "unit": null,
+      "scale": null,
+      "access": "read-write",
+      "enumeration": null,
+      "description": "A string description of the Key Content.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.onu.dpi_all_signature_entry_content",
+      "oid": "1.3.6.1.4.1.3902.51.1.7.1.2",
+      "name": "dpiAllSignatureEntryContent",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "DisplayString",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "A string description of the Key Content.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.onu.loopdetect_port_control",
+      "oid": "1.3.6.1.4.1.3902.3.102.25.2.1.3",
+      "name": "loopdetectPortControl",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-write",
+      "enumeration": {
+        "1": "enable",
+        "0": "disable"
+      },
+      "description": "The loopdetect protocol enable/disable.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.onu.zxr10_epon_onu_auth_table",
+      "oid": "1.3.6.1.4.1.3902.3.309.1.1",
+      "name": "zxr10EponOnuAuthTable",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "SEQUENCE OF Zxr10EponOnuAuthEntry",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": null,
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.onu.zxr10_epon_onu_auth_entry",
+      "oid": "1.3.6.1.4.1.3902.3.309.1.1.1",
+      "name": "zxr10EponOnuAuthEntry",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "Zxr10EponOnuAuthEntry",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": null,
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.onu.software_auth",
+      "oid": "1.3.6.1.4.1.3902.3.309.1.1.1.2",
+      "name": "onuSoftwareAuth",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-write",
+      "enumeration": {
+        "0": "sn",
+        "1": "mac"
+      },
+      "description": null,
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.onu.hardware_switch",
+      "oid": "1.3.6.1.4.1.3902.3.309.1.1.1.3",
+      "name": "onuHardwareSwitch",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-write",
+      "enumeration": {
+        "0": "disable",
+        "1": "enable"
+      },
+      "description": null,
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.onu.auto_auth_swtich",
+      "oid": "1.3.6.1.4.1.3902.3.309.1.1.1.4",
+      "name": "onuAutoAuthSwtich",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-write",
+      "enumeration": {
+        "0": "disable",
+        "1": "enable"
+      },
+      "description": null,
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.onu.zxr10_epon_onu_auth_info_table",
+      "oid": "1.3.6.1.4.1.3902.3.309.1.4",
+      "name": "zxr10EponOnuAuthInfoTable",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "SEQUENCE OF Zxr10EponOnuAuthInfoEntry",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": null,
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.onu.zxr10_epon_onu_auth_info_entry",
+      "oid": "1.3.6.1.4.1.3902.3.309.1.4.1",
+      "name": "zxr10EponOnuAuthInfoEntry",
+      "mib_table": null,
+      "index": {
+        "type": "composite",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "Zxr10EponOnuAuthInfoEntry",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": "ifIndex,for example epon-olt_1/1;onuId is the number of yhe onu",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.onu.id",
+      "oid": "1.3.6.1.4.1.3902.3.309.1.4.1.1",
+      "name": "onuId",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": null,
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.onu.auth_state",
+      "oid": "1.3.6.1.4.1.3902.3.309.1.4.1.2",
+      "name": "onuAuthState",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": {
+        "0": "offline",
+        "1": "up",
+        "2": "down"
+      },
+      "description": null,
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.onu.type",
+      "oid": "1.3.6.1.4.1.3902.3.309.1.4.1.3",
+      "name": "onuType",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": {
+        "0": "mac",
+        "1": "sn"
+      },
+      "description": null,
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.onu.auth_p_c_b_ver",
+      "oid": "1.3.6.1.4.1.3902.3.309.1.4.1.4",
+      "name": "onuAuthPCBVer",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "DisplayString",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": null,
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.onu.auth_soft_ver",
+      "oid": "1.3.6.1.4.1.3902.3.309.1.4.1.5",
+      "name": "onuAuthSoftVer",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "DisplayString",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": null,
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.onu.e_e_p_r_o_m_ver",
+      "oid": "1.3.6.1.4.1.3902.3.309.1.4.1.6",
+      "name": "onuEEPROMVer",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "DisplayString",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": null,
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.onu.host_type",
+      "oid": "1.3.6.1.4.1.3902.3.309.1.4.1.7",
+      "name": "onuHostType",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "DisplayString",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": null,
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.onu.optical_len",
+      "oid": "1.3.6.1.4.1.3902.3.309.1.4.1.8",
+      "name": "onuOpticalLen",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": null,
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.onu.hard_ver",
+      "oid": "1.3.6.1.4.1.3902.3.309.1.4.1.9",
+      "name": "onuHardVer",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "DisplayString",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": null,
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.onu.r_t_t",
+      "oid": "1.3.6.1.4.1.3902.3.309.1.4.1.10",
+      "name": "onuRTT",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": null,
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.onu.mac_port_name",
+      "oid": "1.3.6.1.4.1.3902.3.309.1.4.1.11",
+      "name": "onuMacPortName",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "DisplayString",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": null,
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.onu.bind_type_name",
+      "oid": "1.3.6.1.4.1.3902.3.309.1.4.1.12",
+      "name": "onuBindTypeName",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "DisplayString",
+      "unit": null,
+      "scale": null,
+      "access": "read-write",
+      "enumeration": null,
+      "description": null,
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.onu.bind_mac_addr",
+      "oid": "1.3.6.1.4.1.3902.3.309.1.4.1.13",
+      "name": "onuBindMacAddr",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "MacAddress",
+      "unit": null,
+      "scale": null,
+      "access": "read-write",
+      "enumeration": null,
+      "description": "mpcp protocol",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.onu.bind_s_n",
+      "oid": "1.3.6.1.4.1.3902.3.309.1.4.1.14",
+      "name": "onuBindSN",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-write",
+      "enumeration": null,
+      "description": null,
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.onu.mac_max_num",
+      "oid": "1.3.6.1.4.1.3902.3.309.1.4.1.15",
+      "name": "onuMacMaxNum",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-write",
+      "enumeration": null,
+      "description": "default value is 256",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.onu.bind_row_status",
+      "oid": "1.3.6.1.4.1.3902.3.309.1.4.1.16",
+      "name": "onuBindRowStatus",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "Row",
+      "unit": null,
+      "scale": null,
+      "access": "read-write",
+      "enumeration": null,
+      "description": null,
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.onu.zxr10_epon_onu_port_stat_table",
+      "oid": "1.3.6.1.4.1.3902.3.309.1.6",
+      "name": "zxr10EponOnuPortStatTable",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "SEQUENCE OF Zxr10EponOnuPortStatEntry",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": null,
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.onu.zxr10_epon_onu_port_stat_entry",
+      "oid": "1.3.6.1.4.1.3902.3.309.1.6.1",
+      "name": "zxr10EponOnuPortStatEntry",
+      "mib_table": null,
+      "index": {
+        "type": "composite",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "Zxr10EponOnuPortStatEntry",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": "ifIndex,for example epon-olt_1/1;onuId is the number of the onu",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.onu.statis_ber",
+      "oid": "1.3.6.1.4.1.3902.3.309.1.6.1.1",
+      "name": "onuStatisBer",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "Counter64",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": null,
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.onu.statis_fer",
+      "oid": "1.3.6.1.4.1.3902.3.309.1.6.1.2",
+      "name": "onuStatisFer",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "Counter64",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": null,
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.onu.statis_in_pkts",
+      "oid": "1.3.6.1.4.1.3902.3.309.1.6.1.3",
+      "name": "onuStatisInPkts",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "Counter64",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": null,
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.onu.statis_in_octes",
+      "oid": "1.3.6.1.4.1.3902.3.309.1.6.1.4",
+      "name": "onuStatisInOctes",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "Counter64",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": null,
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.onu.statis_in_multi_pkts",
+      "oid": "1.3.6.1.4.1.3902.3.309.1.6.1.5",
+      "name": "onuStatisInMultiPkts",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "Counter64",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": null,
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.onu.statis_in_broad_pkts",
+      "oid": "1.3.6.1.4.1.3902.3.309.1.6.1.6",
+      "name": "onuStatisInBroadPkts",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "Counter64",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": null,
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.onu.statis_out_pkts",
+      "oid": "1.3.6.1.4.1.3902.3.309.1.6.1.7",
+      "name": "onuStatisOutPkts",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "Counter64",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": null,
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.onu.statis_out_octes",
+      "oid": "1.3.6.1.4.1.3902.3.309.1.6.1.8",
+      "name": "onuStatisOutOctes",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "Counter64",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": null,
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.onu.statis_out_multi_pkts",
+      "oid": "1.3.6.1.4.1.3902.3.309.1.6.1.9",
+      "name": "onuStatisOutMultiPkts",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "Counter64",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": null,
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.onu.statis_out_broad_pkts",
+      "oid": "1.3.6.1.4.1.3902.3.309.1.6.1.10",
+      "name": "onuStatisOutBroadPkts",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "Counter64",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": null,
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.onu.zxr10_epon_remote_onu_info_table",
+      "oid": "1.3.6.1.4.1.3902.3.309.2.1",
+      "name": "zxr10EponRemoteOnuInfoTable",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "SEQUENCE OF Zxr10EponRemoteOnuInfoEntry",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": null,
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.onu.zxr10_epon_remote_onu_info_entry",
+      "oid": "1.3.6.1.4.1.3902.3.309.2.1.1",
+      "name": "zxr10EponRemoteOnuInfoEntry",
+      "mib_table": null,
+      "index": {
+        "type": "composite",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "Zxr10EponRemoteOnuInfoEntry",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": "index,for example epon-olt_1/1;onuId is the number of the onu",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.onu.remote_onu_vendor_id",
+      "oid": "1.3.6.1.4.1.3902.3.309.2.1.1.1",
+      "name": "remoteOnuVendorId",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "DisplayString",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": null,
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.onu.remote_onu_model",
+      "oid": "1.3.6.1.4.1.3902.3.309.2.1.1.2",
+      "name": "remoteOnuModel",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "DisplayString",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": null,
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.onu.remote_onu_id",
+      "oid": "1.3.6.1.4.1.3902.3.309.2.1.1.3",
+      "name": "remoteOnuId",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "MacAddress",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": null,
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.onu.zxr10_epon_remote_onu_dba_table",
+      "oid": "1.3.6.1.4.1.3902.3.309.2.2",
+      "name": "zxr10EponRemoteOnuDbaTable",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "SEQUENCE OF Zxr10EponRemoteOnuDbaEntry",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": "DBA queueSet",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.onu.zxr10_epon_remote_onu_dba_entry",
+      "oid": "1.3.6.1.4.1.3902.3.309.2.2.1",
+      "name": "zxr10EponRemoteOnuDbaEntry",
+      "mib_table": null,
+      "index": {
+        "type": "composite",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "Zxr10EponRemoteOnuDbaEntry",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": "index,for example epon-olt_1/1;onuId is the number of the onu",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.onu.dba_row_status",
+      "oid": "1.3.6.1.4.1.3902.3.309.2.2.1.11",
+      "name": "onuDbaRowStatus",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "Row",
+      "unit": null,
+      "scale": null,
+      "access": "read-write",
+      "enumeration": null,
+      "description": null,
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.onu.zxr10_epon_remote_onu_class_rule_table",
+      "oid": "1.3.6.1.4.1.3902.3.309.2.3",
+      "name": "zxr10EponRemoteOnuClassRuleTable",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "SEQUENCE OF Zxr10EponRemoteOnuClassRuleEntry",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": "class rule",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.onu.zxr10_epon_remote_onu_class_rule_entry",
+      "oid": "1.3.6.1.4.1.3902.3.309.2.3.1",
+      "name": "zxr10EponRemoteOnuClassRuleEntry",
+      "mib_table": null,
+      "index": {
+        "type": "composite",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "Zxr10EponRemoteOnuClassRuleEntry",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": "index,for example epon-olt_1/1;onuId is the number of the onu",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.onu.zxr10_epon_remote_onu_class_condi_table",
+      "oid": "1.3.6.1.4.1.3902.3.309.2.4",
+      "name": "zxr10EponRemoteOnuClassCondiTable",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "SEQUENCE OF Zxr10EponRemoteOnuClassCondiEntry",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": "class condition",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.onu.zxr10_epon_remote_onu_class_condi_entry",
+      "oid": "1.3.6.1.4.1.3902.3.309.2.4.1",
+      "name": "zxr10EponRemoteOnuClassCondiEntry",
+      "mib_table": null,
+      "index": {
+        "type": "composite",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "Zxr10EponRemoteOnuClassCondiEntry",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": "index,for example epon-olt_1/1;onuId is the number of the onu",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.onu.zxr10_epon_remote_onu_port_table",
+      "oid": "1.3.6.1.4.1.3902.3.309.2.5",
+      "name": "zxr10EponRemoteOnuPortTable",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "SEQUENCE OF Zxr10EponRemoteOnuPortEntry",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": "onu port",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.onu.zxr10_epon_remote_onu_port_entry",
+      "oid": "1.3.6.1.4.1.3902.3.309.2.5.1",
+      "name": "zxr10EponRemoteOnuPortEntry",
+      "mib_table": null,
+      "index": {
+        "type": "composite",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "Zxr10EponRemoteOnuPortEntry",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": "index,for example epon-olt_1/1;onuId is the number of the onu;and the onuIfIndex is the port of onu",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.onu.eth_uni_number",
+      "oid": "1.3.6.1.4.1.3902.3.309.2.5.1.1",
+      "name": "onuEthUniNumber",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "index:UniNumber,linearity index",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.onu.port_flow_control",
+      "oid": "1.3.6.1.4.1.3902.3.309.2.5.1.2",
+      "name": "onuPortFlowControl",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-write",
+      "enumeration": {
+        "0": "disable",
+        "1": "enable"
+      },
+      "description": null,
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.onu.port_up_policy_switch",
+      "oid": "1.3.6.1.4.1.3902.3.309.2.5.1.3",
+      "name": "onuPortUpPolicySwitch",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-write",
+      "enumeration": {
+        "0": "disable",
+        "1": "enable"
+      },
+      "description": null,
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.onu.port_up_policy_c_i_r",
+      "oid": "1.3.6.1.4.1.3902.3.309.2.5.1.4",
+      "name": "onuPortUpPolicyCIR",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-write",
+      "enumeration": null,
+      "description": null,
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.onu.port_up_policy_c_b_s",
+      "oid": "1.3.6.1.4.1.3902.3.309.2.5.1.5",
+      "name": "onuPortUpPolicyCBS",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-write",
+      "enumeration": null,
+      "description": null,
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.onu.port_up_policy_e_b_s",
+      "oid": "1.3.6.1.4.1.3902.3.309.2.5.1.6",
+      "name": "onuPortUpPolicyEBS",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-write",
+      "enumeration": null,
+      "description": null,
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.onu.port_down_policy_switch",
+      "oid": "1.3.6.1.4.1.3902.3.309.2.5.1.7",
+      "name": "onuPortDownPolicySwitch",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-write",
+      "enumeration": {
+        "0": "disable",
+        "1": "enable"
+      },
+      "description": null,
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.onu.port_down_policy_c_i_r",
+      "oid": "1.3.6.1.4.1.3902.3.309.2.5.1.8",
+      "name": "onuPortDownPolicyCIR",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-write",
+      "enumeration": null,
+      "description": null,
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.onu.port_down_policy_p_i_r",
+      "oid": "1.3.6.1.4.1.3902.3.309.2.5.1.9",
+      "name": "onuPortDownPolicyPIR",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-write",
+      "enumeration": null,
+      "description": null,
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.onu.port_vlan_mode",
+      "oid": "1.3.6.1.4.1.3902.3.309.2.5.1.10",
+      "name": "onuPortVlanMode",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-write",
+      "enumeration": {
+        "0": "transparent",
+        "1": "tag",
+        "2": "translation"
+      },
+      "description": null,
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.onu.port_vlan_tag_value",
+      "oid": "1.3.6.1.4.1.3902.3.309.2.5.1.11",
+      "name": "onuPortVlanTagValue",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-write",
+      "enumeration": null,
+      "description": null,
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.onu.default_vlan",
+      "oid": "1.3.6.1.4.1.3902.3.309.2.5.1.12",
+      "name": "onuDefaultVlan",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-write",
+      "enumeration": null,
+      "description": null,
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.onu.vlan_del_vid1",
+      "oid": "1.3.6.1.4.1.3902.3.309.2.5.1.13",
+      "name": "onuVlanDelVid1",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-write",
+      "enumeration": null,
+      "description": null,
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.onu.vlan_add_vid1",
+      "oid": "1.3.6.1.4.1.3902.3.309.2.5.1.14",
+      "name": "onuVlanAddVid1",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-write",
+      "enumeration": null,
+      "description": null,
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.onu.vlan_del_vid2",
+      "oid": "1.3.6.1.4.1.3902.3.309.2.5.1.15",
+      "name": "onuVlanDelVid2",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-write",
+      "enumeration": null,
+      "description": null,
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.onu.vlan_add_vid2",
+      "oid": "1.3.6.1.4.1.3902.3.309.2.5.1.16",
+      "name": "onuVlanAddVid2",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-write",
+      "enumeration": null,
+      "description": null,
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.onu.vlan_del_vid3",
+      "oid": "1.3.6.1.4.1.3902.3.309.2.5.1.17",
+      "name": "onuVlanDelVid3",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-write",
+      "enumeration": null,
+      "description": null,
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.onu.vlan_add_vid3",
+      "oid": "1.3.6.1.4.1.3902.3.309.2.5.1.18",
+      "name": "onuVlanAddVid3",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-write",
+      "enumeration": null,
+      "description": null,
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.onu.vlan_del_vid4",
+      "oid": "1.3.6.1.4.1.3902.3.309.2.5.1.19",
+      "name": "onuVlanDelVid4",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-write",
+      "enumeration": null,
+      "description": null,
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.onu.vlan_add_vid4",
+      "oid": "1.3.6.1.4.1.3902.3.309.2.5.1.20",
+      "name": "onuVlanAddVid4",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-write",
+      "enumeration": null,
+      "description": null,
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.onu.vlan_del_vid5",
+      "oid": "1.3.6.1.4.1.3902.3.309.2.5.1.21",
+      "name": "onuVlanDelVid5",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-write",
+      "enumeration": null,
+      "description": null,
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.onu.vlan_add_vid5",
+      "oid": "1.3.6.1.4.1.3902.3.309.2.5.1.22",
+      "name": "onuVlanAddVid5",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-write",
+      "enumeration": null,
+      "description": null,
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.onu.vlan_del_vid6",
+      "oid": "1.3.6.1.4.1.3902.3.309.2.5.1.23",
+      "name": "onuVlanDelVid6",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-write",
+      "enumeration": null,
+      "description": null,
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.onu.vlan_add_vid6",
+      "oid": "1.3.6.1.4.1.3902.3.309.2.5.1.24",
+      "name": "onuVlanAddVid6",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-write",
+      "enumeration": null,
+      "description": null,
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.onu.vlan_del_vid7",
+      "oid": "1.3.6.1.4.1.3902.3.309.2.5.1.25",
+      "name": "onuVlanDelVid7",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-write",
+      "enumeration": null,
+      "description": null,
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.onu.vlan_add_vid7",
+      "oid": "1.3.6.1.4.1.3902.3.309.2.5.1.26",
+      "name": "onuVlanAddVid7",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-write",
+      "enumeration": null,
+      "description": null,
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.onu.vlan_del_vid8",
+      "oid": "1.3.6.1.4.1.3902.3.309.2.5.1.27",
+      "name": "onuVlanDelVid8",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-write",
+      "enumeration": null,
+      "description": null,
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.onu.vlan_add_vid8",
+      "oid": "1.3.6.1.4.1.3902.3.309.2.5.1.28",
+      "name": "onuVlanAddVid8",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-write",
+      "enumeration": null,
+      "description": null,
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.onu.rule_precedence_switch",
+      "oid": "1.3.6.1.4.1.3902.3.309.2.5.1.29",
+      "name": "onuRulePrecedenceSwitch",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-write",
+      "enumeration": {
+        "0": "add"
+      },
+      "description": null,
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.onu.rule_precedence_num",
+      "oid": "1.3.6.1.4.1.3902.3.309.2.5.1.30",
+      "name": "onuRulePrecedenceNum",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-write",
+      "enumeration": null,
+      "description": null,
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.onu.rule_profile",
+      "oid": "1.3.6.1.4.1.3902.3.309.2.5.1.31",
+      "name": "onuRuleProfile",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "DisplayString",
+      "unit": null,
+      "scale": null,
+      "access": "read-write",
+      "enumeration": null,
+      "description": null,
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.onu.condition_list",
+      "oid": "1.3.6.1.4.1.3902.3.309.2.5.1.32",
+      "name": "onuConditionList",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "DisplayString",
+      "unit": null,
+      "scale": null,
+      "access": "read-write",
+      "enumeration": null,
+      "description": null,
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.onu.multi_vlan_switch",
+      "oid": "1.3.6.1.4.1.3902.3.309.2.5.1.33",
+      "name": "onuMultiVlanSwitch",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-write",
+      "enumeration": {
+        "0": "add",
+        "1": "delete",
+        "2": "clear"
+      },
+      "description": null,
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.onu.multi_vlan_list",
+      "oid": "1.3.6.1.4.1.3902.3.309.2.5.1.34",
+      "name": "onuMultiVlanList",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "DisplayString",
+      "unit": null,
+      "scale": null,
+      "access": "read-write",
+      "enumeration": null,
+      "description": null,
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.onu.multi_vlan_tag_stripe",
+      "oid": "1.3.6.1.4.1.3902.3.309.2.5.1.35",
+      "name": "onuMultiVlanTagStripe",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-write",
+      "enumeration": {
+        "0": "disable",
+        "1": "enable"
+      },
+      "description": null,
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.onu.multi_group_max_num",
+      "oid": "1.3.6.1.4.1.3902.3.309.2.5.1.36",
+      "name": "onuMultiGroupMaxNum",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-write",
+      "enumeration": null,
+      "description": null,
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.onu.port_row_status",
+      "oid": "1.3.6.1.4.1.3902.3.309.2.5.1.37",
+      "name": "onuPortRowStatus",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "Row",
+      "unit": null,
+      "scale": null,
+      "access": "read-write",
+      "enumeration": null,
+      "description": null,
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.onu.zxr10_epon_remote_onu_voip_table",
+      "oid": "1.3.6.1.4.1.3902.3.309.2.7",
+      "name": "zxr10EponRemoteOnuVoipTable",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "SEQUENCE OF Zxr10EponRemoteOnuVoipEntry",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": null,
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.onu.zxr10_epon_remote_onu_voip_entry",
+      "oid": "1.3.6.1.4.1.3902.3.309.2.7.1",
+      "name": "zxr10EponRemoteOnuVoipEntry",
+      "mib_table": null,
+      "index": {
+        "type": "composite",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "Zxr10EponRemoteOnuVoipEntry",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": "index,for example epon-olt_1/1;onuId is the number of the onu",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.onu.voip_uni_number",
+      "oid": "1.3.6.1.4.1.3902.3.309.2.7.1.1",
+      "name": "onuVoipUniNumber",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": null,
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.onu.voip_enable_switch",
+      "oid": "1.3.6.1.4.1.3902.3.309.2.7.1.2",
+      "name": "onuVoipEnableSwitch",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-write",
+      "enumeration": {
+        "0": "disable",
+        "1": "enable"
+      },
+      "description": null,
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.onu.zxr10_epon_remote_onu_e1_table",
+      "oid": "1.3.6.1.4.1.3902.3.309.2.8",
+      "name": "zxr10EponRemoteOnuE1Table",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "SEQUENCE OF Zxr10EponRemoteOnuE1Entry",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": null,
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.onu.zxr10_epon_remote_onu_e1_entry",
+      "oid": "1.3.6.1.4.1.3902.3.309.2.8.1",
+      "name": "zxr10EponRemoteOnuE1Entry",
+      "mib_table": null,
+      "index": {
+        "type": "composite",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "Zxr10EponRemoteOnuE1Entry",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": "index,for example epon-olt_1/1;onuId is the number of the onu",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.onu.e1_uni_number",
+      "oid": "1.3.6.1.4.1.3902.3.309.2.8.1.1",
+      "name": "onuE1UniNumber",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": null,
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.onu.e1_enable_switch",
+      "oid": "1.3.6.1.4.1.3902.3.309.2.8.1.2",
+      "name": "onuE1EnableSwitch",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-write",
+      "enumeration": {
+        "0": "disable",
+        "1": "enable"
+      },
+      "description": null,
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.onu.zxr10_ping_mac_control_out_ether_if",
+      "oid": "1.3.6.1.4.1.3902.3.104.4.1.1.3",
+      "name": "zxr10PingMacControlOutEtherIf",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-write",
+      "enumeration": null,
+      "description": "output interface if-index",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.onu.zxr10_ping_mac_control_result_type",
+      "oid": "1.3.6.1.4.1.3902.3.104.4.1.1.8",
+      "name": "zxr10PingMacControlResultType",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-write",
+      "enumeration": {
+        "0": "summary",
+        "1": "detail"
+      },
+      "description": "result type",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.onu.zxr10_mpls_l2vpn_p_w_encapsulation_type",
+      "oid": "1.3.6.1.4.1.3902.3.104.1.1.1.1.3",
+      "name": "zxr10MplsL2vpnPWEncapsulationType",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "MplsL2vpnPWEncapsulationType",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "Mpls L2vpn PW  encapsulation type.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.onu.zxr10_mpls_l2vpn_p_w_local_encapsulation_type",
+      "oid": "1.3.6.1.4.1.3902.3.104.1.1.1.1.12",
+      "name": "zxr10MplsL2vpnPWLocalEncapsulationType",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "MplsL2vpnPWEncapsulationType",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "Local Mpls L2vpn PW  encapsulation type.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.onu.zxr10_mpls_l2vpn_p_w_remote_encapsulation_type",
+      "oid": "1.3.6.1.4.1.3902.3.104.1.1.1.1.19",
+      "name": "zxr10MplsL2vpnPWRemoteEncapsulationType",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "MplsL2vpnPWEncapsulationType",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "Remote Mpls L2vpn PW  encapsulation type.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.onu.zxr10_mpls_l2vpn_vpws_if_encapsulation_type",
+      "oid": "1.3.6.1.4.1.3902.3.104.1.2.1.1.3",
+      "name": "zxr10MplsL2vpnVpwsIfEncapsulationType",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "MplsL2vpnPWEncapsulationType",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "Encapsulation type of the VPWS configuration interface.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.onu.zxr10_ping_common_time_out",
+      "oid": "1.3.6.1.4.1.3902.3.104.2.1.1.7",
+      "name": "zxr10PingCommonTimeOut",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-write",
+      "enumeration": null,
+      "description": "timeout in seconds,default:2",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.onu.zxr10_ping_common_trap_oncompletion",
+      "oid": "1.3.6.1.4.1.3902.3.104.2.1.1.28",
+      "name": "zxr10PingCommonTrapOncompletion",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "TruthValue",
+      "unit": null,
+      "scale": null,
+      "access": "read-write",
+      "enumeration": null,
+      "description": null,
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.onu.zxr10_extended_a_c_l_t_c_p_control",
+      "oid": "1.3.6.1.4.1.3902.3.102.2.2.1.22",
+      "name": "zxr10ExtendedACLTCPControl",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-create",
+      "enumeration": null,
+      "description": "<0-63>  Tcp control value",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.onu.zxr10_hybrid_a_c_l_t_c_p_control",
+      "oid": "1.3.6.1.4.1.3902.3.102.2.4.1.19",
+      "name": "zxr10HybridACLTCPControl",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-create",
+      "enumeration": null,
+      "description": "<0-63>  Tcp control value",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.onu.dhcp_ip_source_guard_control",
+      "oid": "1.3.6.1.4.1.3902.3.102.23.2.1.3",
+      "name": "dhcpIpSourceGuardControl",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-write",
+      "enumeration": {
+        "0": "disable",
+        "1": "ip-base",
+        "2": "mac-base",
+        "3": "mac-ip-base"
+      },
+      "description": "Control the ip-source-guard configure, \n            if 0, disable current function;\n            if 1, ip-source-guard is based on ip;\n            if 2, ip-source-guard is based on mac;\n            if 3, ip-source-guard is based on mac and ip.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    }
+  ]
+}

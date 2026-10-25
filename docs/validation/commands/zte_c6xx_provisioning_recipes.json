@@ -1,0 +1,358 @@
+{
+ "meta": {
+  "vendor": "ZTE",
+  "families": [
+   "ZXA10 C620"
+  ],
+  "status": "verificado en C620 (secuencias ejecutadas con rollback); C600 solo configuración vista",
+  "source": "informe secciones F, M–Y"
+ },
+ "recipes": {
+  "alta_onu_internet": {
+   "desc": "Autorizar y aprovisionar una ONU con servicio de Internet (plantilla real de SmartOLT, 52 ONU leídas).",
+   "preconditions": [
+    "la ONU figura en 'show pon onu uncfg'",
+    "índice libre en 'show running-config-interface gpon_olt-<pon>'",
+    "perfiles de subida/bajada existentes (show gpon profile tcont / show qos traffic-profile)",
+    "perfil T-CONT SMARTOLT_DEFAULT_TCONT_GPON"
+   ],
+   "steps": [
+    {
+     "cmd": "configure terminal",
+     "rollback": "end",
+     "note": null
+    },
+    {
+     "cmd": "interface gpon_olt-<pon>",
+     "rollback": null,
+     "note": null
+    },
+    {
+     "cmd": "onu <N> type <TIPO> sn <SN>",
+     "rollback": "no onu <N>",
+     "note": null
+    },
+    {
+     "cmd": "exit",
+     "rollback": null,
+     "note": null
+    },
+    {
+     "cmd": "interface gpon_onu-<pon>:<N>",
+     "rollback": null,
+     "note": null
+    },
+    {
+     "cmd": "name <txt>",
+     "rollback": null,
+     "note": null
+    },
+    {
+     "cmd": "description <txt>",
+     "rollback": null,
+     "note": null
+    },
+    {
+     "cmd": "vport-mode manual",
+     "rollback": null,
+     "note": null
+    },
+    {
+     "cmd": "tcont 1 profile SMARTOLT_DEFAULT_TCONT_GPON",
+     "rollback": null,
+     "note": null
+    },
+    {
+     "cmd": "gemport 1 name internet tcont 1",
+     "rollback": null,
+     "note": null
+    },
+    {
+     "cmd": "vport 1 map-type vlan",
+     "rollback": null,
+     "note": null
+    },
+    {
+     "cmd": "vport-map 1 1 vlan <V>",
+     "rollback": null,
+     "note": null
+    },
+    {
+     "cmd": "exit",
+     "rollback": null,
+     "note": null
+    },
+    {
+     "cmd": "pon-onu-mng gpon_onu-<pon>:<N>",
+     "rollback": null,
+     "note": null
+    },
+    {
+     "cmd": "service vlan<V> gemport 1 vlan <V>",
+     "rollback": null,
+     "note": null
+    },
+    {
+     "cmd": "veip 1",
+     "rollback": null,
+     "note": null
+    },
+    {
+     "cmd": "exit",
+     "rollback": null,
+     "note": null
+    },
+    {
+     "cmd": "interface vport-<pon>.<N>:1",
+     "rollback": null,
+     "note": null
+    },
+    {
+     "cmd": "service-port 1 user-vlan <V> vlan <V> ingress <PERFIL_UP> egress <PERFIL_DOWN>",
+     "rollback": "no service-port 1",
+     "note": null
+    },
+    {
+     "cmd": "end",
+     "rollback": null,
+     "note": null
+    }
+   ],
+   "verify": [
+    "show running-config-interface gpon_onu-<pon>:<N>",
+    "show running-config-interface vport-<pon>.<N>:1",
+    "show gpon onu state gpon_olt-<pon> (esperar working)"
+   ],
+   "rollback": [
+    "configure terminal",
+    "interface gpon_olt-<pon>",
+    "no onu <N>",
+    "end"
+   ],
+   "notes": [
+    "name/description se leen enmascarados",
+    "el índice debe estar en 1-128 (129-256 se aceptan por CLI pero la ONU no registra; medido en C620)",
+    "no escribir 'write' salvo decisión explícita"
+   ]
+  },
+  "alta_onu_con_wifi": {
+   "desc": "Igual que alta_onu_internet pero la ONU debe darse de alta con un tipo que declare wifi_0/1.",
+   "preconditions": [
+    "existe el tipo: onu-type <T> gpon … + onu-type-if <T> eth_0/1 + onu-type-if <T> wifi_0/1"
+   ],
+   "extra_steps": [
+    {
+     "cmd": "pon-onu-mng gpon_onu-<pon>:<N>",
+     "rollback": null,
+     "note": null
+    },
+    {
+     "cmd": "interface wifi wifi_0/1 state unlock",
+     "rollback": null,
+     "note": null
+    },
+    {
+     "cmd": "ssid ctrl wifi_0/1 name <SSID>",
+     "rollback": null,
+     "note": null
+    },
+    {
+     "cmd": "ssid ctrl wifi_0/1 max-users <1-32>",
+     "rollback": null,
+     "note": null
+    },
+    {
+     "cmd": "wifi enable channel <0-13> tx-power-percent <20|40|60|80|100> work-mode <802.11…>",
+     "rollback": null,
+     "note": null
+    }
+   ],
+   "notes": [
+    "el tipo de una ONU registrada no se puede cambiar (222366): baja y alta"
+   ]
+  },
+  "wan_dhcp": {
+   "desc": "WAN IP por DHCP en la ONU.",
+   "steps": [
+    {
+     "cmd": "pon-onu-mng gpon_onu-<pon>:<N>",
+     "rollback": null,
+     "note": null
+    },
+    {
+     "cmd": "wan-ip 1 ipv4 mode dhcp vlan-profile <PERFIL_VLAN>",
+     "rollback": null,
+     "note": null
+    },
+    {
+     "cmd": "wan-ip 1 ipv4 ping-response enable traceroute-response enable",
+     "rollback": null,
+     "note": null
+    }
+   ],
+   "notes": [
+    "orden obligatorio: mode y luego ping-response",
+    "perfil de VLAN: show gpon onu profile vlan"
+   ]
+  },
+  "cambio_velocidad": {
+   "desc": "Cambiar el plan de velocidad de una ONU reescribiendo el service-port (el binding real es ingress/egress en el vport).",
+   "steps": [
+    {
+     "cmd": "configure terminal",
+     "rollback": null,
+     "note": null
+    },
+    {
+     "cmd": "interface vport-<pon>.<N>:1",
+     "rollback": null,
+     "note": null
+    },
+    {
+     "cmd": "no service-port 1",
+     "rollback": null,
+     "note": null
+    },
+    {
+     "cmd": "service-port 1 user-vlan <V> vlan <V> ingress <PERFIL_UP> egress <PERFIL_DOWN>",
+     "rollback": null,
+     "note": null
+    },
+    {
+     "cmd": "end",
+     "rollback": null,
+     "note": null
+    }
+   ],
+   "verify": [
+    "show running-config-interface vport-<pon>.<N>:1",
+    "SNMP …1082.110.5.2.2.1.27/28.<ifIndexPON>.<spKey>"
+   ],
+   "notes": [
+    "secuencia no+add verificada en la C620 (batería final)",
+    "los perfiles deben existir (UP: profile tcont; DOWN: qos traffic-profile)",
+    "ver D3 del plan"
+   ]
+  },
+  "crear_perfil_velocidad": {
+   "desc": "Crear un plan de velocidad (subida + bajada).",
+   "steps": [
+    {
+     "cmd": "configure terminal",
+     "rollback": null,
+     "note": null
+    },
+    {
+     "cmd": "traffic-profile SMARTOLT-<vel>-DOWN cir <kbps> cbs <KB> pir <kbps> pbs <KB>",
+     "rollback": "no traffic-profile <nombre>",
+     "note": null
+    },
+    {
+     "cmd": "gpon",
+     "rollback": null,
+     "note": null
+    },
+    {
+     "cmd": "profile tcont SMARTOLT-<vel>-UP type 5 fixed 64 assured 64 maximum <kbps>",
+     "rollback": "no profile tcont <nombre>",
+     "note": null
+    },
+    {
+     "cmd": "end",
+     "rollback": null,
+     "note": null
+    }
+   ],
+   "notes": [
+    "SmartOLT redondea la velocidad a múltiplos (10220→10240) y usa CBS=PBS=CIR/80 en KB (10240→128, 104960→1312)",
+    "la fila no se puede crear por SNMP"
+   ]
+  },
+  "baja_onu": {
+   "desc": "Eliminar una ONU y todo su aprovisionamiento.",
+   "steps": [
+    {
+     "cmd": "configure terminal",
+     "rollback": null,
+     "note": null
+    },
+    {
+     "cmd": "interface gpon_olt-<pon>",
+     "rollback": null,
+     "note": null
+    },
+    {
+     "cmd": "no onu <N>",
+     "rollback": null,
+     "note": null
+    },
+    {
+     "cmd": "end",
+     "rollback": null,
+     "note": null
+    }
+   ],
+   "verify": [
+    "show pon onu uncfg (la ONU física reaparece si sigue conectada)"
+   ],
+   "notes": [
+    "no hay residuo: el vport y el detail-info dejan de existir"
+   ]
+  },
+  "reinicio_onu": {
+   "desc": "Reiniciar una ONU.",
+   "steps": [
+    {
+     "cmd": "configure terminal",
+     "rollback": null,
+     "note": null
+    },
+    {
+     "cmd": "pon-onu-mng gpon_onu-<pon>:<N>",
+     "rollback": null,
+     "note": null
+    },
+    {
+     "cmd": "reboot",
+     "rollback": null,
+     "note": null
+    },
+    {
+     "cmd": "yes",
+     "rollback": null,
+     "note": null
+    },
+    {
+     "cmd": "end",
+     "rollback": null,
+     "note": null
+    }
+   ],
+   "expected": "corte de ~45-55 s; working -> LOS -> syncMib -> working",
+   "notes": [
+    "el 'no' cancela",
+    "impacta al cliente: confirmar en la UI"
+   ]
+  },
+  "guardar_configuracion": {
+   "desc": "Persistir la configuración en el arranque.",
+   "steps": [
+    {
+     "cmd": "end",
+     "rollback": null,
+     "note": null
+    },
+    {
+     "cmd": "write",
+     "rollback": null,
+     "note": null
+    }
+   ],
+   "expected": "......[OK].",
+   "notes": [
+    "solo en exec; la operación de SmartOLT lo ejecuta tras cambios",
+    "decisión explícita"
+   ]
+  }
+ }
+}

@@ -1,0 +1,84 @@
+{
+  "id": "command.zte.gpon.global.show.traffic_profile_list",
+  "canonical_name": "show qos traffic-profile",
+  "vendor": "ZTE",
+  "family": "ZXA10 C600",
+  "firmware": [
+    "1.2.2"
+  ],
+  "technology": "gpon",
+  "category": "show",
+  "cli_mode": "privileged_exec",
+  "cli_context": null,
+  "entity_ref": "entity.zte.gpon.logical.traffic_profile",
+  "description": "Perfiles de velocidad de bajada (qos traffic-profile). Sin argumento lista nombres; con 'name' da CIR/CBS/PIR/PBS. También legibles por SNMP en .1.3.6.1.4.1.3902.1082.50.2.2.1.1.<col>.<nombre ASCII>.",
+  "syntax": "show qos traffic-profile [name <WORD>]",
+  "parameters": [
+    {
+      "name": "WORD",
+      "type": "string",
+      "pattern": null,
+      "range": null,
+      "required": false,
+      "description": "",
+      "example": null
+    }
+  ],
+  "output_fields": [
+    {
+      "name": "profile_name",
+      "type": "string",
+      "unit": null,
+      "oid_ref": null,
+      "oid_status": "not_mapped"
+    },
+    {
+      "name": "cir_kbps",
+      "type": "string",
+      "unit": null,
+      "oid_ref": "oid.zte.gpon.onu.traffic_profile_cir",
+      "oid_status": "mapped"
+    },
+    {
+      "name": "cbs_kbytes",
+      "type": "string",
+      "unit": null,
+      "oid_ref": "oid.zte.gpon.onu.traffic_profile_cbs",
+      "oid_status": "mapped"
+    },
+    {
+      "name": "pir_kbps",
+      "type": "string",
+      "unit": null,
+      "oid_ref": "oid.zte.gpon.onu.traffic_profile_pir",
+      "oid_status": "mapped"
+    },
+    {
+      "name": "pbs_kbytes",
+      "type": "string",
+      "unit": null,
+      "oid_ref": "oid.zte.gpon.onu.traffic_profile_pbs",
+      "oid_status": "mapped"
+    }
+  ],
+  "prerequisites": [],
+  "related_commands": [],
+  "rollback": null,
+  "errors": [],
+  "notes": null,
+  "evidence": "ejecutado y verificado en la OLT el 2026-10-02",
+  "sources": [
+    {
+      "doc_type": "hardware_verification",
+      "pages": null,
+      "confidence": 0.95
+    }
+  ],
+  "confidence": {
+    "extraction": 0.95,
+    "correlation": 0.0,
+    "overall": 0.95
+  },
+  "status": "verified",
+  "conflicts": []
+}

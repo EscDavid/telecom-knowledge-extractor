@@ -1,0 +1,199 @@
+{
+  "entity_ref": "entity.zte.gpon.port.uplink_port",
+  "vendor": "ZTE",
+  "family": "ZXA10 C320",
+  "firmware": [
+    "2.0",
+    "2.1"
+  ],
+  "alarms": [
+    {
+      "id": "alarm.zte.gpon.uplink_port.zxanifuplinkup",
+      "code": "1.3.6.1.4.1.3902.1082.30.20.3.1",
+      "name": "zxAnIfUplinkUp",
+      "canonical_name": "zx An If Uplink Up",
+      "entity_ref": "entity.zte.gpon.port.uplink_port",
+      "severity": "warning",
+      "type": "protocol",
+      "description": "The operational status of uplink interface changes to up.",
+      "probable_causes": [
+        "Cambio de estado o parametro reportado",
+        "Inconsistencia de configuracion",
+        "Evento de protocolo (registro/deregistro)"
+      ],
+      "remediation": [
+        "Correlacionar con el objeto reportado (oid_refs)",
+        "Revisar la configuracion asociada"
+      ],
+      "oid_trap": "1.3.6.1.4.1.3902.1082.30.20.3.1",
+      "oid_refs": [
+        "ifAdminStatus",
+        "ifOperStatus",
+        "ifType"
+      ],
+      "auto_clear": false,
+      "clear_condition": null,
+      "threshold": null,
+      "escalation": {
+        "warning_after_minutes": null,
+        "major_after_minutes": null,
+        "critical_after_minutes": null
+      },
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "status": "documented",
+      "conflicts": []
+    },
+    {
+      "id": "alarm.zte.gpon.uplink_port.zxanifuplinkdown",
+      "code": "1.3.6.1.4.1.3902.1082.30.20.3.2",
+      "name": "zxAnIfUplinkDown",
+      "canonical_name": "zx An If Uplink Down",
+      "entity_ref": "entity.zte.gpon.port.uplink_port",
+      "severity": "major",
+      "type": "protocol",
+      "description": "The operational status of uplink interface changes to down.",
+      "probable_causes": [
+        "Cambio de estado o parametro reportado",
+        "Inconsistencia de configuracion",
+        "Evento de protocolo (registro/deregistro)"
+      ],
+      "remediation": [
+        "Correlacionar con el objeto reportado (oid_refs)",
+        "Revisar la configuracion asociada"
+      ],
+      "oid_trap": "1.3.6.1.4.1.3902.1082.30.20.3.2",
+      "oid_refs": [
+        "ifAdminStatus",
+        "ifOperStatus",
+        "ifType"
+      ],
+      "auto_clear": false,
+      "clear_condition": null,
+      "threshold": null,
+      "escalation": {
+        "warning_after_minutes": null,
+        "major_after_minutes": null,
+        "critical_after_minutes": null
+      },
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "status": "documented",
+      "conflicts": []
+    },
+    {
+      "id": "alarm.zte.gpon.uplink_port.zxanuplinkportabnormalalm",
+      "code": "1.3.6.1.4.1.3902.1082.30.20.3.7",
+      "name": "zxAnUplinkPortAbnormalAlm",
+      "canonical_name": "zx An Uplink Port Abnormal Alm",
+      "entity_ref": "entity.zte.gpon.port.uplink_port",
+      "severity": "major",
+      "type": "protocol",
+      "description": "A zxAnUplinkPortAbnormalAlm is sent when the \n             agent has detected that the ifOperStatus is down.",
+      "probable_causes": [
+        "Cambio de estado o parametro reportado",
+        "Inconsistencia de configuracion",
+        "Evento de protocolo (registro/deregistro)"
+      ],
+      "remediation": [
+        "Correlacionar con el objeto reportado (oid_refs)",
+        "Revisar la configuracion asociada"
+      ],
+      "oid_trap": "1.3.6.1.4.1.3902.1082.30.20.3.7",
+      "oid_refs": [
+        "ifAdminStatus",
+        "ifOperStatus",
+        "ifType"
+      ],
+      "auto_clear": false,
+      "clear_condition": null,
+      "threshold": null,
+      "escalation": {
+        "warning_after_minutes": null,
+        "major_after_minutes": null,
+        "critical_after_minutes": null
+      },
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "status": "documented",
+      "conflicts": []
+    },
+    {
+      "id": "alarm.zte.gpon.uplink_port.zxanuplinkportabnormalclr",
+      "code": "1.3.6.1.4.1.3902.1082.30.20.3.8",
+      "name": "zxAnUplinkPortAbnormalClr",
+      "canonical_name": "zx An Uplink Port Abnormal Clr",
+      "entity_ref": "entity.zte.gpon.port.uplink_port",
+      "severity": "major",
+      "type": "protocol",
+      "description": "A zxAnUplinkPortAbnormalClr is sent when the \n             agent has detected that the ifOperStatus is up.",
+      "probable_causes": [
+        "Cambio de estado o parametro reportado",
+        "Inconsistencia de configuracion",
+        "Evento de protocolo (registro/deregistro)"
+      ],
+      "remediation": [
+        "Correlacionar con el objeto reportado (oid_refs)",
+        "Revisar la configuracion asociada"
+      ],
+      "oid_trap": "1.3.6.1.4.1.3902.1082.30.20.3.8",
+      "oid_refs": [
+        "ifAdminStatus",
+        "ifOperStatus",
+        "ifType"
+      ],
+      "auto_clear": false,
+      "clear_condition": null,
+      "threshold": null,
+      "escalation": {
+        "warning_after_minutes": null,
+        "major_after_minutes": null,
+        "critical_after_minutes": null
+      },
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "status": "documented",
+      "conflicts": []
+    }
+  ]
+}

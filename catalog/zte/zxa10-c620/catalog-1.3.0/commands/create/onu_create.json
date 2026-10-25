@@ -1,0 +1,87 @@
+{
+  "id": "command.zte.gpon.onu.create.onu_create",
+  "canonical_name": "onu <N> type … sn …",
+  "vendor": "ZTE",
+  "family": "ZXA10 C620",
+  "firmware": [
+    "1.2.2"
+  ],
+  "technology": "gpon",
+  "category": "create",
+  "cli_mode": "interface_config",
+  "cli_context": "interface gpon_olt-<pon>",
+  "entity_ref": "entity.zte.gpon.device.onu",
+  "description": "Autoriza una ONU en un puerto PON. El índice debe estar libre y en 1-128: la sintaxis admite 1-256 y la OLT acepta cualquier valor, pero solo registran las ONU de los índices 1-128 (medido: 128 registra; 129, 130, 192, 255, 256 y 250 no). Un SN ya autorizado en otro índice da 222320. Con el tipo correcto desde el alta.",
+  "syntax": "onu <1-256> type <TIPO> {sn|sn+pw|sn+hpw|sn+rid|sn+hrid|pw|hpw|rid|hrid|loid|loid+loidpw|loid+loidhpw|psk} <valor>",
+  "parameters": [
+    {
+      "name": "onu-id",
+      "type": "integer",
+      "pattern": null,
+      "range": "1-256",
+      "required": true,
+      "description": "",
+      "example": "3"
+    },
+    {
+      "name": "type",
+      "type": "string",
+      "pattern": null,
+      "range": null,
+      "required": true,
+      "description": "",
+      "example": "LATIC"
+    },
+    {
+      "name": "sn",
+      "type": "string",
+      "pattern": null,
+      "range": null,
+      "required": true,
+      "description": "",
+      "example": "DF306B41EDB0"
+    }
+  ],
+  "output_fields": [],
+  "prerequisites": [
+    "entity.zte.gpon.port.pon_port"
+  ],
+  "related_commands": [
+    "command.zte.gpon.onu.delete.onu_delete",
+    "command.zte.gpon.onu.show.onu_uncfg",
+    "command.zte.gpon.onu.show.onu_state",
+    "command.zte.gpon.pon_port.show.rc_olt",
+    "command.zte.gpon.onu.show.onu_detail"
+  ],
+  "rollback": "no onu <N>",
+  "errors": [
+    {
+      "code": 222320,
+      "meaning": "el serial ya está autorizado en otro índice del puerto",
+      "severity": "error",
+      "retry": false
+    },
+    {
+      "code": 222366,
+      "meaning": "no se puede cambiar el tipo de una ONU registrada",
+      "severity": "error",
+      "retry": false
+    }
+  ],
+  "notes": null,
+  "evidence": "ejecutado y verificado en la OLT el 2026-10-02",
+  "sources": [
+    {
+      "doc_type": "hardware_verification",
+      "pages": null,
+      "confidence": 0.95
+    }
+  ],
+  "confidence": {
+    "extraction": 0.95,
+    "correlation": 0.0,
+    "overall": 0.95
+  },
+  "status": "verified",
+  "conflicts": []
+}

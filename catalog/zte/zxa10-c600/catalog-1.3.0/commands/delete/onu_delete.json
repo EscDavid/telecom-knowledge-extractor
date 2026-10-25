@@ -1,0 +1,60 @@
+{
+  "id": "command.zte.gpon.onu.delete.onu_delete",
+  "canonical_name": "no onu",
+  "vendor": "ZTE",
+  "family": "ZXA10 C600",
+  "firmware": [
+    "1.2.2"
+  ],
+  "technology": "gpon",
+  "category": "delete",
+  "cli_mode": "interface_config",
+  "cli_context": "interface gpon_olt-<pon>",
+  "entity_ref": "entity.zte.gpon.device.onu",
+  "description": "Elimina la ONU y todo su aprovisionamiento; la ONU física vuelve a la lista de espera.",
+  "syntax": "no onu <1-256>",
+  "parameters": [
+    {
+      "name": "onu",
+      "type": "integer",
+      "pattern": null,
+      "range": "1-256",
+      "required": true,
+      "description": "",
+      "example": null
+    }
+  ],
+  "output_fields": [],
+  "prerequisites": [
+    "entity.zte.gpon.port.pon_port"
+  ],
+  "related_commands": [
+    "command.zte.gpon.onu.create.onu_create",
+    "command.zte.gpon.pon_port.show.rc_olt"
+  ],
+  "rollback": null,
+  "errors": [
+    {
+      "code": 90,
+      "meaning": "el 'no …' no tenía nada que borrar (inocuo en rollback)",
+      "severity": "info",
+      "retry": false
+    }
+  ],
+  "notes": null,
+  "evidence": "visto en la configuración/bitácora real de la OLT (ejecutado por SmartOLT)",
+  "sources": [
+    {
+      "doc_type": "hardware_verification",
+      "pages": null,
+      "confidence": 0.85
+    }
+  ],
+  "confidence": {
+    "extraction": 0.85,
+    "correlation": 0.0,
+    "overall": 0.85
+  },
+  "status": "observed",
+  "conflicts": []
+}

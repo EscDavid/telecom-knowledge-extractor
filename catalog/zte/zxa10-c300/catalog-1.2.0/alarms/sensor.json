@@ -1,0 +1,878 @@
+{
+  "entity_ref": "entity.zte.gpon.hardware.sensor",
+  "vendor": "ZTE",
+  "family": "ZXA10 C300",
+  "firmware": [
+    "2.0",
+    "2.1"
+  ],
+  "alarms": [
+    {
+      "id": "alarm.zte.gpon.sensor.zxanenvhightempalm",
+      "code": "1.3.6.1.4.1.3902.1082.10.10.3.1.1",
+      "name": "zxAnEnvHighTempAlm",
+      "canonical_name": "zx An Env High Temp Alm",
+      "entity_ref": "entity.zte.gpon.hardware.sensor",
+      "severity": "warning",
+      "type": "environmental",
+      "description": "The environment temperature has exceeded high temperature \n            threshold zxAnEnvTempHighAlmThreshold. \n            The zxAnEnvTemp object identifies the current temperature.",
+      "probable_causes": [
+        "Temperatura o humedad fuera de umbral",
+        "Falla de ventilacion",
+        "Obstruccion del flujo de aire"
+      ],
+      "remediation": [
+        "Revisar ventiladores y filtros",
+        "Verificar la climatizacion del sitio"
+      ],
+      "oid_trap": "1.3.6.1.4.1.3902.1082.10.10.3.1.1",
+      "oid_refs": [
+        "zxAnEnvTemp",
+        "zxAnEnvTempHighAlmThreshold"
+      ],
+      "auto_clear": false,
+      "clear_condition": null,
+      "threshold": null,
+      "escalation": {
+        "warning_after_minutes": null,
+        "major_after_minutes": null,
+        "critical_after_minutes": null
+      },
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "status": "documented",
+      "conflicts": []
+    },
+    {
+      "id": "alarm.zte.gpon.sensor.zxanenvhightempclr",
+      "code": "1.3.6.1.4.1.3902.1082.10.10.3.1.2",
+      "name": "zxAnEnvHighTempClr",
+      "canonical_name": "zx An Env High Temp Clr",
+      "entity_ref": "entity.zte.gpon.hardware.sensor",
+      "severity": "warning",
+      "type": "environmental",
+      "description": "The environment temperature has returned to normal operating \n            temperature from zxAnEnvTempHighAlmThreshold. \n            The zxAnEnvTemp object identifies the current temperature.",
+      "probable_causes": [
+        "Temperatura o humedad fuera de umbral",
+        "Falla de ventilacion",
+        "Obstruccion del flujo de aire"
+      ],
+      "remediation": [
+        "Revisar ventiladores y filtros",
+        "Verificar la climatizacion del sitio"
+      ],
+      "oid_trap": "1.3.6.1.4.1.3902.1082.10.10.3.1.2",
+      "oid_refs": [
+        "zxAnEnvTemp",
+        "zxAnEnvTempHighAlmThreshold"
+      ],
+      "auto_clear": false,
+      "clear_condition": null,
+      "threshold": null,
+      "escalation": {
+        "warning_after_minutes": null,
+        "major_after_minutes": null,
+        "critical_after_minutes": null
+      },
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "status": "documented",
+      "conflicts": []
+    },
+    {
+      "id": "alarm.zte.gpon.sensor.zxanenvtempsensorfailure",
+      "code": "1.3.6.1.4.1.3902.1082.10.10.3.1.5",
+      "name": "zxAnEnvTempSensorFailure",
+      "canonical_name": "zx An Env Temp Sensor Failure",
+      "entity_ref": "entity.zte.gpon.hardware.sensor",
+      "severity": "major",
+      "type": "environmental",
+      "description": "It indicates that the temperature sensor is in fault.",
+      "probable_causes": [
+        "Temperatura o humedad fuera de umbral",
+        "Falla de ventilacion",
+        "Obstruccion del flujo de aire"
+      ],
+      "remediation": [
+        "Revisar ventiladores y filtros",
+        "Verificar la climatizacion del sitio"
+      ],
+      "oid_trap": "1.3.6.1.4.1.3902.1082.10.10.3.1.5",
+      "oid_refs": [],
+      "auto_clear": false,
+      "clear_condition": null,
+      "threshold": null,
+      "escalation": {
+        "warning_after_minutes": null,
+        "major_after_minutes": null,
+        "critical_after_minutes": null
+      },
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "status": "documented",
+      "conflicts": []
+    },
+    {
+      "id": "alarm.zte.gpon.sensor.zxanenvcriticaltempalm",
+      "code": "1.3.6.1.4.1.3902.1082.10.10.3.1.6",
+      "name": "zxAnEnvCriticalTempAlm",
+      "canonical_name": "zx An Env Critical Temp Alm",
+      "entity_ref": "entity.zte.gpon.hardware.sensor",
+      "severity": "major",
+      "type": "environmental",
+      "description": "The environment temperature has exceeded critical temperature \n            threshold zxAnEnvTempCriticalAlmThreshold. \n            The zxAnEnvTemp object identifies the current temperature.",
+      "probable_causes": [
+        "Temperatura o humedad fuera de umbral",
+        "Falla de ventilacion",
+        "Obstruccion del flujo de aire"
+      ],
+      "remediation": [
+        "Revisar ventiladores y filtros",
+        "Verificar la climatizacion del sitio"
+      ],
+      "oid_trap": "1.3.6.1.4.1.3902.1082.10.10.3.1.6",
+      "oid_refs": [
+        "zxAnEnvTemp",
+        "zxAnEnvTempCriticalAlmThreshold"
+      ],
+      "auto_clear": false,
+      "clear_condition": null,
+      "threshold": null,
+      "escalation": {
+        "warning_after_minutes": null,
+        "major_after_minutes": null,
+        "critical_after_minutes": null
+      },
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "status": "documented",
+      "conflicts": []
+    },
+    {
+      "id": "alarm.zte.gpon.sensor.zxanenvcriticaltempclr",
+      "code": "1.3.6.1.4.1.3902.1082.10.10.3.1.7",
+      "name": "zxAnEnvCriticalTempClr",
+      "canonical_name": "zx An Env Critical Temp Clr",
+      "entity_ref": "entity.zte.gpon.hardware.sensor",
+      "severity": "major",
+      "type": "environmental",
+      "description": "The environment temperature has returned to normal operating \n            temperature from zxAnEnvTempCriticalAlmThreshold. \n            The zxAnEnvTemp object identifies the current temperature.",
+      "probable_causes": [
+        "Temperatura o humedad fuera de umbral",
+        "Falla de ventilacion",
+        "Obstruccion del flujo de aire"
+      ],
+      "remediation": [
+        "Revisar ventiladores y filtros",
+        "Verificar la climatizacion del sitio"
+      ],
+      "oid_trap": "1.3.6.1.4.1.3902.1082.10.10.3.1.7",
+      "oid_refs": [
+        "zxAnEnvTemp",
+        "zxAnEnvTempCriticalAlmThreshold"
+      ],
+      "auto_clear": false,
+      "clear_condition": null,
+      "threshold": null,
+      "escalation": {
+        "warning_after_minutes": null,
+        "major_after_minutes": null,
+        "critical_after_minutes": null
+      },
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "status": "documented",
+      "conflicts": []
+    },
+    {
+      "id": "alarm.zte.gpon.sensor.zxanenvlowtempalm",
+      "code": "1.3.6.1.4.1.3902.1082.10.10.3.1.8",
+      "name": "zxAnEnvLowTempAlm",
+      "canonical_name": "zx An Env Low Temp Alm",
+      "entity_ref": "entity.zte.gpon.hardware.sensor",
+      "severity": "warning",
+      "type": "environmental",
+      "description": "The environment temperature is below low temperature \n            threshold zxAnEnvTempLowAlmThreshold. \n            The zxAnEnvTemp object identifies the current temperature.",
+      "probable_causes": [
+        "Temperatura o humedad fuera de umbral",
+        "Falla de ventilacion",
+        "Obstruccion del flujo de aire"
+      ],
+      "remediation": [
+        "Revisar ventiladores y filtros",
+        "Verificar la climatizacion del sitio"
+      ],
+      "oid_trap": "1.3.6.1.4.1.3902.1082.10.10.3.1.8",
+      "oid_refs": [
+        "zxAnEnvTemp",
+        "zxAnEnvTempLowAlmThreshold"
+      ],
+      "auto_clear": false,
+      "clear_condition": null,
+      "threshold": null,
+      "escalation": {
+        "warning_after_minutes": null,
+        "major_after_minutes": null,
+        "critical_after_minutes": null
+      },
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "status": "documented",
+      "conflicts": []
+    },
+    {
+      "id": "alarm.zte.gpon.sensor.zxanenvlowtempclr",
+      "code": "1.3.6.1.4.1.3902.1082.10.10.3.1.9",
+      "name": "zxAnEnvLowTempClr",
+      "canonical_name": "zx An Env Low Temp Clr",
+      "entity_ref": "entity.zte.gpon.hardware.sensor",
+      "severity": "warning",
+      "type": "environmental",
+      "description": "The environment temperature has returned to normal operating \n            temperature from zxAnEnvTempLowAlmThreshold. \n            The zxAnEnvTemp object identifies the current temperature.",
+      "probable_causes": [
+        "Temperatura o humedad fuera de umbral",
+        "Falla de ventilacion",
+        "Obstruccion del flujo de aire"
+      ],
+      "remediation": [
+        "Revisar ventiladores y filtros",
+        "Verificar la climatizacion del sitio"
+      ],
+      "oid_trap": "1.3.6.1.4.1.3902.1082.10.10.3.1.9",
+      "oid_refs": [
+        "zxAnEnvTemp",
+        "zxAnEnvTempLowAlmThreshold"
+      ],
+      "auto_clear": false,
+      "clear_condition": null,
+      "threshold": null,
+      "escalation": {
+        "warning_after_minutes": null,
+        "major_after_minutes": null,
+        "critical_after_minutes": null
+      },
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "status": "documented",
+      "conflicts": []
+    },
+    {
+      "id": "alarm.zte.gpon.sensor.zxanenvtemperatureabnormalalm",
+      "code": "1.3.6.1.4.1.3902.1082.10.10.3.1.32",
+      "name": "zxAnEnvTemperatureAbnormalAlm",
+      "canonical_name": "zx An Env Temperature Abnormal Alm",
+      "entity_ref": "entity.zte.gpon.hardware.sensor",
+      "severity": "major",
+      "type": "environmental",
+      "description": "In temperature control mode, a zxAnEnvTemperatureAbnormalAlm trap \n           is sent when the environment temperature can't be read.",
+      "probable_causes": [
+        "Temperatura o humedad fuera de umbral",
+        "Falla de ventilacion",
+        "Obstruccion del flujo de aire"
+      ],
+      "remediation": [
+        "Revisar ventiladores y filtros",
+        "Verificar la climatizacion del sitio"
+      ],
+      "oid_trap": "1.3.6.1.4.1.3902.1082.10.10.3.1.32",
+      "oid_refs": [],
+      "auto_clear": false,
+      "clear_condition": null,
+      "threshold": null,
+      "escalation": {
+        "warning_after_minutes": null,
+        "major_after_minutes": null,
+        "critical_after_minutes": null
+      },
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "status": "documented",
+      "conflicts": []
+    },
+    {
+      "id": "alarm.zte.gpon.sensor.zxanenvtemperatureabnormalclr",
+      "code": "1.3.6.1.4.1.3902.1082.10.10.3.1.33",
+      "name": "zxAnEnvTemperatureAbnormalClr",
+      "canonical_name": "zx An Env Temperature Abnormal Clr",
+      "entity_ref": "entity.zte.gpon.hardware.sensor",
+      "severity": "major",
+      "type": "environmental",
+      "description": "A zxAnEnvTemperatureAbnormalClr trap is sent when \n           the zxAnEnvTemperatureAbnormalAlm is cleared.",
+      "probable_causes": [
+        "Temperatura o humedad fuera de umbral",
+        "Falla de ventilacion",
+        "Obstruccion del flujo de aire"
+      ],
+      "remediation": [
+        "Revisar ventiladores y filtros",
+        "Verificar la climatizacion del sitio"
+      ],
+      "oid_trap": "1.3.6.1.4.1.3902.1082.10.10.3.1.33",
+      "oid_refs": [],
+      "auto_clear": false,
+      "clear_condition": null,
+      "threshold": null,
+      "escalation": {
+        "warning_after_minutes": null,
+        "major_after_minutes": null,
+        "critical_after_minutes": null
+      },
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "status": "documented",
+      "conflicts": []
+    },
+    {
+      "id": "alarm.zte.gpon.sensor.zxanenvnearcriticaltempalm",
+      "code": "1.3.6.1.4.1.3902.1082.10.10.3.1.34",
+      "name": "zxAnEnvNearCriticalTempAlm",
+      "canonical_name": "zx An Env Near Critical Temp Alm",
+      "entity_ref": "entity.zte.gpon.hardware.sensor",
+      "severity": "major",
+      "type": "environmental",
+      "description": "A zxAnEnvNearCriticalTempAlm trap is sent when the environment \n           temperature is close to the environment critical temperature alarm \n           threshold.",
+      "probable_causes": [
+        "Temperatura o humedad fuera de umbral",
+        "Falla de ventilacion",
+        "Obstruccion del flujo de aire"
+      ],
+      "remediation": [
+        "Revisar ventiladores y filtros",
+        "Verificar la climatizacion del sitio"
+      ],
+      "oid_trap": "1.3.6.1.4.1.3902.1082.10.10.3.1.34",
+      "oid_refs": [
+        "zxAnEnvTemp",
+        "zxAnEnvTempCriticalAlmThreshold"
+      ],
+      "auto_clear": false,
+      "clear_condition": null,
+      "threshold": null,
+      "escalation": {
+        "warning_after_minutes": null,
+        "major_after_minutes": null,
+        "critical_after_minutes": null
+      },
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "status": "documented",
+      "conflicts": []
+    },
+    {
+      "id": "alarm.zte.gpon.sensor.zxanenvnearcriticaltempclr",
+      "code": "1.3.6.1.4.1.3902.1082.10.10.3.1.35",
+      "name": "zxAnEnvNearCriticalTempClr",
+      "canonical_name": "zx An Env Near Critical Temp Clr",
+      "entity_ref": "entity.zte.gpon.hardware.sensor",
+      "severity": "major",
+      "type": "protocol",
+      "description": "A zxAnEnvNearCriticalTempClr trap is sent when \n           the zxAnEnvNearCriticalTempAlm is cleared.",
+      "probable_causes": [
+        "Cambio de estado o parametro reportado",
+        "Inconsistencia de configuracion",
+        "Evento de protocolo (registro/deregistro)"
+      ],
+      "remediation": [
+        "Correlacionar con el objeto reportado (oid_refs)",
+        "Revisar la configuracion asociada"
+      ],
+      "oid_trap": "1.3.6.1.4.1.3902.1082.10.10.3.1.35",
+      "oid_refs": [
+        "zxAnEnvTemp",
+        "zxAnEnvTempCriticalAlmThreshold"
+      ],
+      "auto_clear": false,
+      "clear_condition": null,
+      "threshold": null,
+      "escalation": {
+        "warning_after_minutes": null,
+        "major_after_minutes": null,
+        "critical_after_minutes": null
+      },
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "status": "documented",
+      "conflicts": []
+    },
+    {
+      "id": "alarm.zte.gpon.sensor.zxanenvoptnearcriticaltempalm",
+      "code": "1.3.6.1.4.1.3902.1082.10.10.3.1.38",
+      "name": "zxAnEnvOptNearCriticalTempAlm",
+      "canonical_name": "zx An Env Opt Near Critical Temp Alm",
+      "entity_ref": "entity.zte.gpon.hardware.sensor",
+      "severity": "major",
+      "type": "environmental",
+      "description": "A zxAnEnvOptNearCriticalTempAlm trap is sent when the optical \n            module temperature is close to the optical module critical \n            temperature alarm threshold.",
+      "probable_causes": [
+        "Temperatura o humedad fuera de umbral",
+        "Falla de ventilacion",
+        "Obstruccion del flujo de aire"
+      ],
+      "remediation": [
+        "Revisar ventiladores y filtros",
+        "Verificar la climatizacion del sitio"
+      ],
+      "oid_trap": "1.3.6.1.4.1.3902.1082.10.10.3.1.38",
+      "oid_refs": [
+        "zxAnCardOptHighestTemp",
+        "zxAnCardOptCriticalTempAlmThresh",
+        "zxAnCardOptHighestTempPortNo"
+      ],
+      "auto_clear": false,
+      "clear_condition": null,
+      "threshold": null,
+      "escalation": {
+        "warning_after_minutes": null,
+        "major_after_minutes": null,
+        "critical_after_minutes": null
+      },
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "status": "documented",
+      "conflicts": []
+    },
+    {
+      "id": "alarm.zte.gpon.sensor.zxanenvoptnearcriticaltempclr",
+      "code": "1.3.6.1.4.1.3902.1082.10.10.3.1.39",
+      "name": "zxAnEnvOptNearCriticalTempClr",
+      "canonical_name": "zx An Env Opt Near Critical Temp Clr",
+      "entity_ref": "entity.zte.gpon.hardware.sensor",
+      "severity": "major",
+      "type": "protocol",
+      "description": "A zxAnEnvOptNearCriticalTempClr trap is sent when \n           the zxAnEnvOptNearCriticalTempAlm is cleared.",
+      "probable_causes": [
+        "Cambio de estado o parametro reportado",
+        "Inconsistencia de configuracion",
+        "Evento de protocolo (registro/deregistro)"
+      ],
+      "remediation": [
+        "Correlacionar con el objeto reportado (oid_refs)",
+        "Revisar la configuracion asociada"
+      ],
+      "oid_trap": "1.3.6.1.4.1.3902.1082.10.10.3.1.39",
+      "oid_refs": [
+        "zxAnCardOptHighestTemp",
+        "zxAnCardOptCriticalTempAlmThresh",
+        "zxAnCardOptHighestTempPortNo"
+      ],
+      "auto_clear": false,
+      "clear_condition": null,
+      "threshold": null,
+      "escalation": {
+        "warning_after_minutes": null,
+        "major_after_minutes": null,
+        "critical_after_minutes": null
+      },
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "status": "documented",
+      "conflicts": []
+    },
+    {
+      "id": "alarm.zte.gpon.sensor.zxanenvheatradiationabnormalalm",
+      "code": "1.3.6.1.4.1.3902.1082.10.10.3.1.40",
+      "name": "zxAnEnvHeatRadiationAbnormalAlm",
+      "canonical_name": "zx An Env Heat Radiation Abnormal Alm",
+      "entity_ref": "entity.zte.gpon.hardware.sensor",
+      "severity": "major",
+      "type": "environmental",
+      "description": "A zxAnEnvHeatRadiationAbnormalAlm trap is sent when the \n            temperature difference between the card and the environment \n            exceeds the zxAnCardHeatRadiationAlmThresh.",
+      "probable_causes": [
+        "Temperatura o humedad fuera de umbral",
+        "Falla de ventilacion",
+        "Obstruccion del flujo de aire"
+      ],
+      "remediation": [
+        "Revisar ventiladores y filtros",
+        "Verificar la climatizacion del sitio"
+      ],
+      "oid_trap": "1.3.6.1.4.1.3902.1082.10.10.3.1.40",
+      "oid_refs": [
+        "zxAnEnvTemp",
+        "zxAnCardTemp",
+        "zxAnCardHeatRadiationAlmThresh"
+      ],
+      "auto_clear": false,
+      "clear_condition": null,
+      "threshold": null,
+      "escalation": {
+        "warning_after_minutes": null,
+        "major_after_minutes": null,
+        "critical_after_minutes": null
+      },
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "status": "documented",
+      "conflicts": []
+    },
+    {
+      "id": "alarm.zte.gpon.sensor.zxanenvheatradiationabnormalclr",
+      "code": "1.3.6.1.4.1.3902.1082.10.10.3.1.41",
+      "name": "zxAnEnvHeatRadiationAbnormalClr",
+      "canonical_name": "zx An Env Heat Radiation Abnormal Clr",
+      "entity_ref": "entity.zte.gpon.hardware.sensor",
+      "severity": "major",
+      "type": "protocol",
+      "description": "A zxAnEnvHeatRadiationAbnormalClr trap is sent when \n           the zxAnEnvHeatRadiationAbnormalAlm is cleared.",
+      "probable_causes": [
+        "Cambio de estado o parametro reportado",
+        "Inconsistencia de configuracion",
+        "Evento de protocolo (registro/deregistro)"
+      ],
+      "remediation": [
+        "Correlacionar con el objeto reportado (oid_refs)",
+        "Revisar la configuracion asociada"
+      ],
+      "oid_trap": "1.3.6.1.4.1.3902.1082.10.10.3.1.41",
+      "oid_refs": [
+        "zxAnEnvTemp",
+        "zxAnCardTemp",
+        "zxAnCardHeatRadiationAlmThresh"
+      ],
+      "auto_clear": false,
+      "clear_condition": null,
+      "threshold": null,
+      "escalation": {
+        "warning_after_minutes": null,
+        "major_after_minutes": null,
+        "critical_after_minutes": null
+      },
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "status": "documented",
+      "conflicts": []
+    },
+    {
+      "id": "alarm.zte.gpon.sensor.zxanenvmonitorinterfacelinkdown",
+      "code": "1.3.6.1.4.1.3902.1082.10.10.3.2.1",
+      "name": "zxAnEnvMonitorInterfaceLinkDown",
+      "canonical_name": "zx An Env Monitor Interface Link Down",
+      "entity_ref": "entity.zte.gpon.hardware.sensor",
+      "severity": "major",
+      "type": "environmental",
+      "description": "It indicates that the agent has detected that the\n             link at the environment monitoring interface has been down.",
+      "probable_causes": [
+        "Temperatura o humedad fuera de umbral",
+        "Falla de ventilacion",
+        "Obstruccion del flujo de aire"
+      ],
+      "remediation": [
+        "Revisar ventiladores y filtros",
+        "Verificar la climatizacion del sitio"
+      ],
+      "oid_trap": "1.3.6.1.4.1.3902.1082.10.10.3.2.1",
+      "oid_refs": [],
+      "auto_clear": false,
+      "clear_condition": null,
+      "threshold": null,
+      "escalation": {
+        "warning_after_minutes": null,
+        "major_after_minutes": null,
+        "critical_after_minutes": null
+      },
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "status": "documented",
+      "conflicts": []
+    },
+    {
+      "id": "alarm.zte.gpon.sensor.zxanenvmonitorinterfacelinkup",
+      "code": "1.3.6.1.4.1.3902.1082.10.10.3.2.2",
+      "name": "zxAnEnvMonitorInterfaceLinkUp",
+      "canonical_name": "zx An Env Monitor Interface Link Up",
+      "entity_ref": "entity.zte.gpon.hardware.sensor",
+      "severity": "warning",
+      "type": "environmental",
+      "description": "It indicates that the agent has detected that the\n             link at the environment monitoring interface has been up.",
+      "probable_causes": [
+        "Temperatura o humedad fuera de umbral",
+        "Falla de ventilacion",
+        "Obstruccion del flujo de aire"
+      ],
+      "remediation": [
+        "Revisar ventiladores y filtros",
+        "Verificar la climatizacion del sitio"
+      ],
+      "oid_trap": "1.3.6.1.4.1.3902.1082.10.10.3.2.2",
+      "oid_refs": [],
+      "auto_clear": false,
+      "clear_condition": null,
+      "threshold": null,
+      "escalation": {
+        "warning_after_minutes": null,
+        "major_after_minutes": null,
+        "critical_after_minutes": null
+      },
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "status": "documented",
+      "conflicts": []
+    },
+    {
+      "id": "alarm.zte.gpon.sensor.zxanenvdeviceabnormalalm",
+      "code": "1.3.6.1.4.1.3902.1082.10.10.3.5.1",
+      "name": "zxAnEnvDeviceAbnormalAlm",
+      "canonical_name": "zx An Env Device Abnormal Alm",
+      "entity_ref": "entity.zte.gpon.hardware.sensor",
+      "severity": "major",
+      "type": "environmental",
+      "description": "A zxAnEnvDeviceAbnormalAlm trap is sent when the current status \n           of environment device is inconsistent with normal status.",
+      "probable_causes": [
+        "Temperatura o humedad fuera de umbral",
+        "Falla de ventilacion",
+        "Obstruccion del flujo de aire"
+      ],
+      "remediation": [
+        "Revisar ventiladores y filtros",
+        "Verificar la climatizacion del sitio"
+      ],
+      "oid_trap": "1.3.6.1.4.1.3902.1082.10.10.3.5.1",
+      "oid_refs": [
+        "zxAnEnvDevMonSwitchDeviceId",
+        "zxAnEnvDevMonSwitchNormalStatus",
+        "zxAnEnvDevMonSwitchCurrStatus",
+        "zxAnEnvDeviceName"
+      ],
+      "auto_clear": false,
+      "clear_condition": null,
+      "threshold": null,
+      "escalation": {
+        "warning_after_minutes": null,
+        "major_after_minutes": null,
+        "critical_after_minutes": null
+      },
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "status": "documented",
+      "conflicts": []
+    },
+    {
+      "id": "alarm.zte.gpon.sensor.zxanenvdeviceabnormalclr",
+      "code": "1.3.6.1.4.1.3902.1082.10.10.3.5.2",
+      "name": "zxAnEnvDeviceAbnormalClr",
+      "canonical_name": "zx An Env Device Abnormal Clr",
+      "entity_ref": "entity.zte.gpon.hardware.sensor",
+      "severity": "major",
+      "type": "environmental",
+      "description": "A zxAnEnvDeviceAbnormalClr trap is sent when current status \n           of environment device is consistent with normal status.",
+      "probable_causes": [
+        "Temperatura o humedad fuera de umbral",
+        "Falla de ventilacion",
+        "Obstruccion del flujo de aire"
+      ],
+      "remediation": [
+        "Revisar ventiladores y filtros",
+        "Verificar la climatizacion del sitio"
+      ],
+      "oid_trap": "1.3.6.1.4.1.3902.1082.10.10.3.5.2",
+      "oid_refs": [
+        "zxAnEnvDevMonSwitchDeviceId",
+        "zxAnEnvDevMonSwitchNormalStatus",
+        "zxAnEnvDevMonSwitchCurrStatus",
+        "zxAnEnvDeviceName"
+      ],
+      "auto_clear": false,
+      "clear_condition": null,
+      "threshold": null,
+      "escalation": {
+        "warning_after_minutes": null,
+        "major_after_minutes": null,
+        "critical_after_minutes": null
+      },
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "status": "documented",
+      "conflicts": []
+    }
+  ]
+}

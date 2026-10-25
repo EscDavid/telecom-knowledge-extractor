@@ -1,0 +1,182 @@
+{
+  "id": "entity.zte.gpon.port.pon_port",
+  "canonical_name": "PON Port",
+  "vendor": "ZTE",
+  "family": "ZXA10 C620",
+  "firmware": [
+    "1.2.2"
+  ],
+  "technology": "gpon",
+  "type": "port",
+  "description": "Puerto PON GPON del OLT (interfaz gpon slot/pon).",
+  "is_critical": true,
+  "aliases": [
+    {
+      "name": "PON Port",
+      "source": "hardware_description",
+      "firmware_scope": "all"
+    }
+  ],
+  "attributes": [
+    {
+      "name": "oper_status",
+      "type": "integer",
+      "range": null,
+      "required": false,
+      "source": "walk"
+    },
+    {
+      "name": "admin_status",
+      "type": "integer",
+      "range": null,
+      "required": false,
+      "source": "walk"
+    },
+    {
+      "name": "if_type",
+      "type": "integer",
+      "range": null,
+      "required": false,
+      "source": "walk"
+    },
+    {
+      "name": "hc_in_octets",
+      "type": "counter",
+      "range": null,
+      "required": false,
+      "source": "walk"
+    },
+    {
+      "name": "hc_in_ucast_pkts",
+      "type": "counter",
+      "range": null,
+      "required": false,
+      "source": "walk"
+    },
+    {
+      "name": "hc_in_multicast_pkts",
+      "type": "counter",
+      "range": null,
+      "required": false,
+      "source": "walk"
+    },
+    {
+      "name": "hc_in_broadcast_pkts",
+      "type": "counter",
+      "range": null,
+      "required": false,
+      "source": "walk"
+    },
+    {
+      "name": "hc_out_octets",
+      "type": "counter",
+      "range": null,
+      "required": false,
+      "source": "walk"
+    },
+    {
+      "name": "hc_out_ucast_pkts",
+      "type": "counter",
+      "range": null,
+      "required": false,
+      "source": "walk"
+    },
+    {
+      "name": "hc_out_multicast_pkts",
+      "type": "counter",
+      "range": null,
+      "required": false,
+      "source": "walk"
+    },
+    {
+      "name": "hc_out_broadcast_pkts",
+      "type": "counter",
+      "range": null,
+      "required": false,
+      "source": "walk"
+    },
+    {
+      "name": "high_speed",
+      "type": "integer",
+      "range": null,
+      "required": false,
+      "source": "walk"
+    },
+    {
+      "name": "in_discards",
+      "type": "counter",
+      "range": null,
+      "required": false,
+      "source": "walk"
+    },
+    {
+      "name": "in_errors",
+      "type": "counter",
+      "range": null,
+      "required": false,
+      "source": "walk"
+    },
+    {
+      "name": "out_discards",
+      "type": "counter",
+      "range": null,
+      "required": false,
+      "source": "walk"
+    },
+    {
+      "name": "out_errors",
+      "type": "counter",
+      "range": null,
+      "required": false,
+      "source": "walk"
+    }
+  ],
+  "sources": [
+    {
+      "doc_type": "hardware_description",
+      "pages": null,
+      "confidence": 0.0
+    },
+    {
+      "doc_type": "mib_file",
+      "pages": null,
+      "confidence": 0.3
+    }
+  ],
+  "confidence": {
+    "extraction": 0.95,
+    "correlation": 0.75,
+    "overall": 1.0
+  },
+  "status": "verified_walk",
+  "lifecycle": {
+    "introduced_in": "2.0",
+    "deprecated_in": null,
+    "removed_in": null,
+    "status": "introduced",
+    "replacement": null
+  },
+  "relations": [
+    {
+      "type": "belongs_to",
+      "target": "entity.zte.gpon.hardware.card"
+    }
+  ],
+  "conflicts": [],
+  "empirical": {
+    "source": "ZTE_C620_ifnames.txt",
+    "via": "ifXTable",
+    "instances": 16,
+    "samples": [
+      "gpon_olt-1/1/1",
+      "gpon_olt-1/1/2",
+      "gpon_olt-1/1/3",
+      "gpon_olt-1/1/4",
+      "gpon_olt-1/1/5"
+    ],
+    "oper_via": "ifTable (ifType=250)",
+    "pon_ports": 16,
+    "oper_up": 11,
+    "oper_down": 5
+  }
+}

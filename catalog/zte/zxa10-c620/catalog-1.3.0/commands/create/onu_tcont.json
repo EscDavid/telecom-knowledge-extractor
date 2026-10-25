@@ -1,0 +1,76 @@
+{
+  "id": "command.zte.gpon.onu.create.onu_tcont",
+  "canonical_name": "tcont (ONU)",
+  "vendor": "ZTE",
+  "family": "ZXA10 C620",
+  "firmware": [
+    "1.2.2"
+  ],
+  "technology": "gpon",
+  "category": "create",
+  "cli_mode": "interface_config",
+  "cli_context": "interface gpon_onu-<idx>",
+  "entity_ref": "entity.zte.gpon.device.onu",
+  "description": "Asocia un T-CONT a un perfil. Para varios parámetros 'name' exige 'profile' a continuación.",
+  "syntax": "tcont <1-255> {profile <WORD>|name <WORD> profile <WORD>|allocid <256-4095>|gap {default|mode0|mode1|mode2|mode3}}",
+  "parameters": [
+    {
+      "name": "tcont-id",
+      "type": "integer",
+      "pattern": null,
+      "range": "1-255",
+      "required": true,
+      "description": "",
+      "example": "1"
+    },
+    {
+      "name": "profile",
+      "type": "string",
+      "pattern": null,
+      "range": null,
+      "required": true,
+      "description": "",
+      "example": "SMARTOLT_DEFAULT_TCONT_GPON"
+    }
+  ],
+  "output_fields": [],
+  "prerequisites": [
+    "entity.zte.gpon.device.onu"
+  ],
+  "related_commands": [
+    "command.zte.gpon.global.create.tcont_profile_create",
+    "command.zte.gpon.global.show.tcont_profile_list",
+    "command.zte.gpon.gem_port.create.onu_gemport"
+  ],
+  "rollback": "no tcont <1-255>",
+  "errors": [
+    {
+      "code": 222306,
+      "meaning": "perfil T-CONT inexistente",
+      "severity": "error",
+      "retry": false
+    },
+    {
+      "code": 140305,
+      "meaning": "faltan parámetros al final (p. ej. arc sin arc-interval, tcont name sin profile)",
+      "severity": "error",
+      "retry": false
+    }
+  ],
+  "notes": null,
+  "evidence": "ejecutado y verificado en la OLT el 2026-10-02",
+  "sources": [
+    {
+      "doc_type": "hardware_verification",
+      "pages": null,
+      "confidence": 0.95
+    }
+  ],
+  "confidence": {
+    "extraction": 0.95,
+    "correlation": 0.0,
+    "overall": 0.95
+  },
+  "status": "verified",
+  "conflicts": []
+}

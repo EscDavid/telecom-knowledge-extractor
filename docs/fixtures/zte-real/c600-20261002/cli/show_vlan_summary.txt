@@ -1,0 +1,7 @@
+show vlan summary
+All created vlan num: 22  
+Details are following:
+  1,10-27,35,100-101
+Hardware operate fail following:
+  
+ZXAN#

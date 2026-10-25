@@ -1,0 +1,79 @@
+{
+  "id": "entity.zte.gpon.logical.onu_traffic_profile",
+  "canonical_name": "Perfil de tráfico de ONU",
+  "vendor": "ZTE",
+  "family": "ZXA10 C620",
+  "firmware": [
+    "1.2.2"
+  ],
+  "technology": "gpon",
+  "type": "logical",
+  "description": "Perfil 'onu profile traffic' (SIR/PIR/CBS/PBS) para gemport/switchport traffic-limit.",
+  "is_critical": false,
+  "aliases": [
+    {
+      "name": "Perfil de tráfico de ONU",
+      "source": "hardware_description",
+      "firmware_scope": "all"
+    }
+  ],
+  "attributes": [
+    {
+      "name": "name",
+      "type": "string",
+      "range": null,
+      "required": false,
+      "source": "cli"
+    },
+    {
+      "name": "sir",
+      "type": "integer",
+      "range": null,
+      "required": false,
+      "source": "cli"
+    },
+    {
+      "name": "pir",
+      "type": "integer",
+      "range": null,
+      "required": false,
+      "source": "cli"
+    },
+    {
+      "name": "cbs",
+      "type": "integer",
+      "range": null,
+      "required": false,
+      "source": "cli"
+    },
+    {
+      "name": "pbs",
+      "type": "integer",
+      "range": null,
+      "required": false,
+      "source": "cli"
+    }
+  ],
+  "sources": [
+    {
+      "doc_type": "hardware_verification",
+      "pages": null,
+      "confidence": 0.95
+    }
+  ],
+  "confidence": {
+    "extraction": 0.95,
+    "correlation": 0.0,
+    "overall": 0.95
+  },
+  "status": "verified",
+  "lifecycle": {
+    "introduced_in": "2.0",
+    "deprecated_in": null,
+    "removed_in": null,
+    "status": "introduced",
+    "replacement": null
+  },
+  "relations": [],
+  "conflicts": []
+}

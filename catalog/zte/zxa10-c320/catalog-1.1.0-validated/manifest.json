@@ -1,0 +1,102 @@
+{
+  "project": "Telecom Knowledge Compiler (TKC) — Fase 2",
+  "vendor": "ZTE",
+  "family": "ZXA10 C320",
+  "phase": "walk_validation",
+  "seed_family": "ZXA10 C320",
+  "walks": {
+    "ZTE_C320.txt": "enterprise",
+    "ZTE_C320_entities.txt": "entity_table",
+    "ZTE_C320_ifnames.txt": "if_table"
+  },
+  "generated_at": "2026-10-24T20:36:31",
+  "counts": {
+    "oids_kept": 3225,
+    "oids_pruned": 1015,
+    "entities_confirmed": 7
+  },
+  "status_distribution": {
+    "oids": {
+      "documented": 2992,
+      "verified": 217,
+      "verified_walk": 16
+    },
+    "entities": {
+      "verified": 7,
+      "inferred": 4,
+      "documented": 4,
+      "verified_walk": 2
+    }
+  },
+  "triggers": {
+    "ascii_index": 678,
+    "documented_only": 3997,
+    "scale_detected": 1,
+    "observed_only": 30,
+    "entity_confirmed": 2,
+    "pon_operational": 1,
+    "ascii_index_validation": 9,
+    "pon_onu_count_derived": 1,
+    "community_ingest": 4
+  },
+  "bitcalc_validation": null,
+  "pending_validations": [],
+  "community": {
+    "sources": [
+      "snmp-olt-zte_reference_extract.txt",
+      "snmp-olt-zte_status_serial_columns.txt",
+      "snmp-olt-zte_uncfg_onu.txt",
+      "snmp-olt-zte_walk_reconciliation.txt"
+    ],
+    "onu_leaves_added": 23,
+    "index_decoder": {
+      "ONU-ID": "suffix = 285278208 + slot*256 + pon",
+      "TYPE": "suffix = 268435456 + slot*65536 + pon*256"
+    },
+    "snmp_params": {
+      "snmp_max_repetitions": "20",
+      "snmp_timeout_s": "5",
+      "snmp_retries": "2",
+      "enumeration_method": "BulkWalk sobre <prefix>.<suffix>; el último octeto del OID devuelto ES el onuID."
+    },
+    "optical": {
+      "applies_to": "onu_rx_power (.1082.500.20.2.2.2.1.10)",
+      "formula": "dBm = raw * 0.002 - 30.0",
+      "decimals": "2",
+      "source_func": "ConvertAndMultiply (internal/utils/extractor.go)"
+    }
+  },
+  "observed_firmware_strings": [],
+  "not_exposed_attributes": {
+    "onu_name": "sin filas en la rama 1082.500.10.2.3 de la familia; el nombre vive en la OLT pero no se expone por SNMP: traerlo de la BD/SmartOLT",
+    "onu_description": "ídem onu_name",
+    "onu_ip_address": "sin filas en 1012.3.50.16; no existe fuente SNMP de la IP de gestión en esta familia"
+  },
+  "serial_format": {
+    "oid.zte.gpon.onu.onu_serial_number_type": "binary-8",
+    "oid.zte.gpon.onu.uncfg_onu_serial": "binary-8"
+  },
+  "observed_software": "V2.1.0",
+  "refinements": {
+    "module": "src/walk_validator/refinements.py",
+    "applied": {
+      "downgraded": 10,
+      "commands": 19,
+      "scale_fixed": 15,
+      "scale_removed": 0,
+      "names": 26,
+      "id_append": 0,
+      "firmware": 0,
+      "uplink_oids": 0,
+      "attributes": 23,
+      "entities": 0,
+      "alarms": 0,
+      "relations": 0,
+      "documented_annotated": 2992,
+      "absent_columns": 21,
+      "findings_redacted": 8,
+      "command_refs": 0
+    },
+    "firmware": null
+  }
+}

@@ -1,0 +1,104 @@
+{
+  "id": "command.zte.gpon.onu.modify.onu_misc",
+  "canonical_name": "parámetros de ONU",
+  "vendor": "ZTE",
+  "family": "ZXA10 C620",
+  "firmware": [
+    "1.2.2"
+  ],
+  "technology": "gpon",
+  "category": "modify",
+  "cli_mode": "interface_config",
+  "cli_context": "interface gpon_onu-<idx>",
+  "entity_ref": "entity.zte.gpon.device.onu",
+  "description": "Ajustes de autenticación/FEC/reemplazo automático de la ONU (ejecutados con éxito en la C620 con la ONU de prueba).",
+  "syntax": "sn-bind {enable|disable} {sn|both|update-sn} | fec {auto|default|enable|disable} | authpass-control <0-10> | auto-replace {enable|disable} | auth-id {sn|pw|loid|rid|hpw|hrid|psk} <v>",
+  "parameters": [
+    {
+      "name": "sn-bind",
+      "type": "enum",
+      "pattern": null,
+      "range": "enable|disable",
+      "required": true,
+      "description": "",
+      "example": null
+    },
+    {
+      "name": "enable_disable",
+      "type": "enum",
+      "pattern": null,
+      "range": "sn|both|update-sn",
+      "required": true,
+      "description": "",
+      "example": null
+    },
+    {
+      "name": "fec",
+      "type": "enum",
+      "pattern": null,
+      "range": "auto|default|enable|disable",
+      "required": true,
+      "description": "",
+      "example": null
+    },
+    {
+      "name": "authpass-control",
+      "type": "integer",
+      "pattern": null,
+      "range": "0-10",
+      "required": true,
+      "description": "",
+      "example": null
+    },
+    {
+      "name": "auto-replace",
+      "type": "enum",
+      "pattern": null,
+      "range": "enable|disable",
+      "required": true,
+      "description": "",
+      "example": null
+    },
+    {
+      "name": "auth-id",
+      "type": "enum",
+      "pattern": null,
+      "range": "sn|pw|loid|rid|hpw|hrid|psk",
+      "required": true,
+      "description": "",
+      "example": null
+    },
+    {
+      "name": "v",
+      "type": "string",
+      "pattern": null,
+      "range": null,
+      "required": true,
+      "description": "",
+      "example": null
+    }
+  ],
+  "output_fields": [],
+  "prerequisites": [
+    "entity.zte.gpon.device.onu"
+  ],
+  "related_commands": [],
+  "rollback": null,
+  "errors": [],
+  "notes": null,
+  "evidence": "ejecutado y verificado en la OLT el 2026-10-02",
+  "sources": [
+    {
+      "doc_type": "hardware_verification",
+      "pages": null,
+      "confidence": 0.95
+    }
+  ],
+  "confidence": {
+    "extraction": 0.95,
+    "correlation": 0.0,
+    "overall": 0.95
+  },
+  "status": "verified",
+  "conflicts": []
+}

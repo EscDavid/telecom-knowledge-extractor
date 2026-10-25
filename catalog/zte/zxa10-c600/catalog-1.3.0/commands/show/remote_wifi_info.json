@@ -1,0 +1,61 @@
+{
+  "id": "command.zte.gpon.onu.show.remote_wifi_info",
+  "canonical_name": "show gpon remote-onu wifi info",
+  "vendor": "ZTE",
+  "family": "ZXA10 C600",
+  "firmware": [
+    "1.2.2"
+  ],
+  "technology": "gpon",
+  "category": "show",
+  "cli_mode": "privileged_exec",
+  "cli_context": null,
+  "entity_ref": "entity.zte.gpon.device.onu",
+  "description": "Estado de la radio WiFi (admin/operación, modo, ancho de banda).",
+  "syntax": "show gpon remote-onu wifi info gpon_onu-<idx>",
+  "parameters": [
+    {
+      "name": "idx",
+      "type": "string",
+      "pattern": null,
+      "range": null,
+      "required": true,
+      "description": "",
+      "example": null
+    }
+  ],
+  "output_fields": [],
+  "prerequisites": [],
+  "related_commands": [],
+  "rollback": null,
+  "errors": [
+    {
+      "code": 224040,
+      "meaning": "lectura vacía (no es fallo): sin perfiles, sin WiFi, sin config-fail",
+      "severity": "info",
+      "retry": false
+    },
+    {
+      "code": 230285,
+      "meaning": "lectura vacía (ssid info sin SSID)",
+      "severity": "info",
+      "retry": false
+    }
+  ],
+  "notes": null,
+  "evidence": "ejecutado y verificado en la OLT el 2026-10-02",
+  "sources": [
+    {
+      "doc_type": "hardware_verification",
+      "pages": null,
+      "confidence": 0.95
+    }
+  ],
+  "confidence": {
+    "extraction": 0.95,
+    "correlation": 0.0,
+    "overall": 0.95
+  },
+  "status": "verified",
+  "conflicts": []
+}

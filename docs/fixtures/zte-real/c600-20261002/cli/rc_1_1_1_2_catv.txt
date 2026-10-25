@@ -1,0 +1,25 @@
+show running-config-interface gpon_onu-1/1/1:2
+!<if-intf>
+interface gpon_onu-1/1/1:2
+$
+!</if-intf>
+!<xpon>
+interface gpon_onu-1/1/1:2
+  real-speed gpon
+  name ********
+  description ********
+  vport-mode manual
+  tcont 1 profile SMARTOLT_DEFAULT_TCONT_GPON
+  gemport 1 name internet tcont 1
+  vport 1 map-type vlan
+  vport-map 1 1 vlan 27
+  vport-map 1 1 vlan 100
+$
+pon-onu-mng gpon_onu-1/1/1:2
+  interface video video_0/1 state lock
+  interface video-ani state lock
+  service vlan100 gemport 1 vlan 100
+  veip 1
+$
+!</xpon>
+         ZXAN#

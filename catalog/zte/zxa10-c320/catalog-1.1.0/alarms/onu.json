@@ -1,0 +1,72 @@
+{
+  "entity_ref": "entity.zte.gpon.device.onu",
+  "vendor": "ZTE",
+  "family": "ZXA10 C320",
+  "firmware": [
+    "2.0",
+    "2.1"
+  ],
+  "alarms": [
+    {
+      "id": "alarm.zte.gpon.onu.notificationtrap",
+      "code": "1.3.6.1.4.1.3902.3.302.8.3",
+      "name": "notificationTrap",
+      "canonical_name": "notification Trap",
+      "entity_ref": "entity.zte.gpon.device.onu",
+      "severity": "warning",
+      "type": "protocol",
+      "description": "When a notification occurred, \n           send the trap PDU to uniform network manager.\n           Through the configuration command alarm trap-oid-expand, \n           the trap OID can be expanded, adding notification status and code.",
+      "probable_causes": [
+        "Cambio de estado o parametro reportado",
+        "Inconsistencia de configuracion",
+        "Evento de protocolo (registro/deregistro)"
+      ],
+      "remediation": [
+        "Correlacionar con el objeto reportado (oid_refs)",
+        "Revisar la configuracion asociada"
+      ],
+      "oid_trap": "1.3.6.1.4.1.3902.3.302.8.3",
+      "oid_refs": [
+        "notificationFlowID",
+        "notificationAlmCode",
+        "notificationAlmType",
+        "notificationAlmLevel",
+        "notificationAlmOccuredTime",
+        "notificationTPIDType",
+        "notificationTPID",
+        "notificationAlmParaType",
+        "notificationAlmParaValue",
+        "notificationAlmDescription",
+        "notificationAlmStdCode",
+        "notificationAlmComment",
+        "notificationAlmNetID",
+        "notificationTimestamp",
+        "notificationTPIDLen",
+        "notificationAlmOccuredMs",
+        "notificationNeedConfirm"
+      ],
+      "auto_clear": false,
+      "clear_condition": null,
+      "threshold": null,
+      "escalation": {
+        "warning_after_minutes": null,
+        "major_after_minutes": null,
+        "critical_after_minutes": null
+      },
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "status": "documented",
+      "conflicts": []
+    }
+  ]
+}

@@ -1,0 +1,44 @@
+ONU interface:          gpon_onu-1/1/1:1
+  Name:                 ********
+  Splitter:             
+  Type:                 CDATACTV
+  Conf6DEFAFA2d speed mode:auto
+  Current speed mode:   GPON
+  Admin state:          enable
+  Phase state:          working
+  Config state:         fail
+  Authentication mode:  sn
+  SN Bind:              enable with SN check
+  Serial number:        CDTC070C5F33
+  Password:             
+  Description:          ********
+  Vport mode:           manual
+  DBA Mode:             Hybrid
+  ONU Status:           enable
+  OMCI BW Profile:      704kbps
+  OMCC Encrypt:         disable
+  Line Profile:         N/A
+  Service Profile:      N/A
+  ONU Distance:         528m
+  Online Duration:      5h 49m 04s
+  FEC:                  disable
+  FEC actual mode:      disable
+  1PPS+ToD:             disable
+  Auto replace:         disable 
+  Multicast encryption: disable
+  Multicast encryption current state:N/A
+------------------------------------------
+       Authpass Time          OfflineTime             Cause
+   1   2026-09-20 16:25:44    2026-09-23 12:54:18     DyingGasp 
+   2   2026-09-23 12:55:27    2026-09-25 02:31:42     DyingGasp 
+   3   2026-09-25 07:52:27    2026-09-25 15:35:00     DyingGasp 
+   4   2026-09-25 16:52:35    2026-09-26 02:57:12     DyingGasp 
+   5   2026-09-26 02:59:03    2026-10-01 08:50:40     LOSi     
+   6   2026-10-01 08:53:26    0000-00-00 00:00:00              
+   7   0000-00-00 00:00:00    0000-00-00 00:00:00              
+   8   0000-00-00 00:00:00    0000-00-00 00:00:00              
+   9   0000-00-00 00:00:00    0000-00-00 00:00:00              
+  10   0000-00-00 00:00:00    0000-00-00 00:00:00              
+
+
+ZXAN#

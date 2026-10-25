@@ -1,0 +1,66 @@
+{
+  "id": "command.zte.gpon.pon_port.modify.pon_description",
+  "canonical_name": "description / blacklist (puerto PON)",
+  "vendor": "ZTE",
+  "family": "ZXA10 C600",
+  "firmware": [
+    "1.2.2"
+  ],
+  "technology": "gpon",
+  "category": "modify",
+  "cli_mode": "interface_config",
+  "cli_context": "interface gpon_olt-<pon>",
+  "entity_ref": "entity.zte.gpon.port.pon_port",
+  "description": "Descripción del puerto y lista negra de ONU. El SN de la lista negra necesita formato válido (4 letras de fabricante + 8 caracteres); 'TKCBL0000001' dio error.",
+  "syntax": "description <LINE> | no description | blacklist sn <SN> | no blacklist sn <SN>",
+  "parameters": [
+    {
+      "name": "LINE",
+      "type": "string",
+      "pattern": null,
+      "range": null,
+      "required": true,
+      "description": "",
+      "example": null
+    },
+    {
+      "name": "SN",
+      "type": "string",
+      "pattern": null,
+      "range": null,
+      "required": true,
+      "description": "",
+      "example": null
+    }
+  ],
+  "output_fields": [],
+  "prerequisites": [
+    "entity.zte.gpon.port.pon_port"
+  ],
+  "related_commands": [],
+  "rollback": null,
+  "errors": [
+    {
+      "code": 141000,
+      "meaning": "error genérico; visto con blacklist sn de formato inválido",
+      "severity": "error",
+      "retry": false
+    }
+  ],
+  "notes": null,
+  "evidence": "sintaxis obtenida solo con la ayuda '?' de la OLT (no ejecutada)",
+  "sources": [
+    {
+      "doc_type": "hardware_verification",
+      "pages": null,
+      "confidence": 0.6
+    }
+  ],
+  "confidence": {
+    "extraction": 0.6,
+    "correlation": 0.0,
+    "overall": 0.6
+  },
+  "status": "documented",
+  "conflicts": []
+}

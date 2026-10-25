@@ -1,0 +1,63 @@
+{
+  "id": "command.zte.gpon.onu.show.onu_distance",
+  "canonical_name": "show gpon onu distance",
+  "vendor": "ZTE",
+  "family": "ZXA10 C600",
+  "firmware": [
+    "1.2.2"
+  ],
+  "technology": "gpon",
+  "category": "show",
+  "cli_mode": "privileged_exec",
+  "cli_context": null,
+  "entity_ref": "entity.zte.gpon.device.onu",
+  "description": "Distancia OLT-ONU en metros (también por SNMP .1082.500.10.2.3.10.1.2).",
+  "syntax": "show gpon onu distance gpon_onu-<idx>",
+  "parameters": [
+    {
+      "name": "idx",
+      "type": "string",
+      "pattern": null,
+      "range": null,
+      "required": true,
+      "description": "",
+      "example": null
+    }
+  ],
+  "output_fields": [
+    {
+      "name": "eqd_bit",
+      "type": "string",
+      "unit": null,
+      "oid_ref": null,
+      "oid_status": "not_mapped"
+    },
+    {
+      "name": "distance_m",
+      "type": "string",
+      "unit": null,
+      "oid_ref": "oid.zte.gpon.onu.onu_distance",
+      "oid_status": "mapped"
+    }
+  ],
+  "prerequisites": [],
+  "related_commands": [],
+  "rollback": null,
+  "errors": [],
+  "notes": null,
+  "evidence": "ejecutado y verificado en la OLT el 2026-10-02",
+  "sources": [
+    {
+      "doc_type": "hardware_verification",
+      "pages": null,
+      "confidence": 0.95
+    }
+  ],
+  "confidence": {
+    "extraction": 0.95,
+    "correlation": 0.0,
+    "overall": 0.95
+  },
+  "status": "verified",
+  "conflicts": []
+}

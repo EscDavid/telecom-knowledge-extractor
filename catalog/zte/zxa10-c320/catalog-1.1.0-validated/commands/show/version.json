@@ -1,0 +1,35 @@
+{
+  "id": "command.zte.gpon.global.show.version",
+  "canonical_name": "show version",
+  "vendor": "ZTE",
+  "family": "ZXA10 C320",
+  "firmware": [
+    "2.0",
+    "2.1"
+  ],
+  "technology": "gpon",
+  "category": "show",
+  "cli_mode": "privileged_exec",
+  "entity_ref": null,
+  "description": "Versión de software de la OLT (clásicas; en C6 es `show software 1`).",
+  "syntax": "show version",
+  "parameters": [],
+  "output_fields": [],
+  "prerequisites": [],
+  "related_commands": [],
+  "sources": [
+    {
+      "doc_type": "hardware_verification",
+      "pages": null,
+      "confidence": 0.8
+    }
+  ],
+  "confidence": {
+    "extraction": 0.8,
+    "correlation": 0.0,
+    "overall": 0.8
+  },
+  "status": "observed",
+  "conflicts": [],
+  "evidence": "ejecutado por el importador (network-api, verificar-olts.ts) en 5 OLT clásicas y registrado en reports/hallazgos-cli-snmp-zte-2026-10-09.md; TKC no lo ejecutó"
+}

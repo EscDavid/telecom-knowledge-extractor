@@ -1,0 +1,13 @@
+Admin status:              enable
+Operate status:            enable
+Radio measurement:         enable
+SSID isolation:            not isolated
+Work mode:                 802.11b-11g-11n
+Bandwidth:                 20(MHz)
+SGI status:                disable
+Current regulatory domain: chn
+Channel:                   0
+Tx rate:                   auto
+Transmitting power:        100%
+QoS type:                  wmm
+ZXAN#

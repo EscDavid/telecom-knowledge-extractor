@@ -1,0 +1,1 @@
+iso.3.6.1.2.1.1.1.0 = STRING: "C320 Version V2.1.0 Software, Copyright (c) by ZTE Corporation Compiled"

@@ -1,0 +1,674 @@
+{
+  "entity_ref": "entity.zte.gpon.hardware.power_supply",
+  "vendor": "ZTE",
+  "family": "ZXA10 C320",
+  "firmware": [
+    "2.0",
+    "2.1"
+  ],
+  "oids": [
+    {
+      "id": "oid.zte.gpon.power_supply.env_emergency_power_save_enable",
+      "oid": "1.3.6.1.4.1.3902.1082.10.10.2.3.1.1",
+      "name": "zxAnEnvEmergencyPowerSaveEnable",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-write",
+      "enumeration": {
+        "1": "enabled",
+        "2": "disabled"
+      },
+      "description": "Enables or disables the emergency power saving.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.power_supply.env_emergency_power_save_delay",
+      "oid": "1.3.6.1.4.1.3902.1082.10.10.2.3.1.2",
+      "name": "zxAnEnvEmergencyPowerSaveDelay",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": "Minutes",
+      "scale": null,
+      "access": "read-write",
+      "enumeration": null,
+      "description": "If AC power failure lasts more than zxAnEnvEmergencyPowerSaveDelay,\n            emergency power saving action will be taken.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.power_supply.env_emergency_power_save_recover",
+      "oid": "1.3.6.1.4.1.3902.1082.10.10.2.3.1.3",
+      "name": "zxAnEnvEmergencyPowerSaveRecover",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": "Minutes",
+      "scale": null,
+      "access": "read-write",
+      "enumeration": null,
+      "description": "If AC power recovered, after this delay, the emergency power save\n            action will be cancelled.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.power_supply.env_emergency_power_save_svc_type",
+      "oid": "1.3.6.1.4.1.3902.1082.10.10.2.3.1.4",
+      "name": "zxAnEnvEmergencyPowerSaveSvcType",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "ZxAnEnvShutdownServiceType",
+      "unit": null,
+      "scale": null,
+      "access": "read-write",
+      "enumeration": null,
+      "description": "The service types will be shut down in emergency power saving \n            action.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.power_supply.env_power_mode",
+      "oid": "1.3.6.1.4.1.3902.1082.10.10.2.3.1.5",
+      "name": "zxAnEnvPowerMode",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-write",
+      "enumeration": {
+        "1": "normal",
+        "2": "battery"
+      },
+      "description": "The current power supply mode of the equipment, emergency power \n            saving action is on the basis of the power mode zxAnEnvPowerMode.\n            normal(1) means using AC power as power supply.\n            battery(2) means using storage battery as power supply.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.power_supply.env_emergency_battery_threshold",
+      "oid": "1.3.6.1.4.1.3902.1082.10.10.2.3.1.7",
+      "name": "zxAnEnvEmergencyBatteryThreshold",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": "0.001Volts",
+      "scale": null,
+      "access": "read-write",
+      "enumeration": null,
+      "description": "The threshold of the battery voltage.\n            If the battery voltage is less than \n            zxAnEnvEmergencyBatteryThreshold, the emergency power saving action \n            will be taken.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.power_supply.capability_table",
+      "oid": "1.3.6.1.4.1.3902.1082.10.10.2.3.10",
+      "name": "zxAnPowerSupplyCapabilityTable",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "SEQUENCE OF ZxAnPowerSupplyCapabilityEntry",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": "This table includes power supply capability table.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.power_supply.capability_entry",
+      "oid": "1.3.6.1.4.1.3902.1082.10.10.2.3.10.1",
+      "name": "zxAnPowerSupplyCapabilityEntry",
+      "mib_table": null,
+      "index": {
+        "type": "composite",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "ZxAnPowerSupplyCapabilityEntry",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": "The entry of zxAnPowerSupplyCapabilityTable.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.power_supply.max_power_num",
+      "oid": "1.3.6.1.4.1.3902.1082.10.10.2.3.10.1.1",
+      "name": "zxAnPowerSupplyMaxPowerNum",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "The max number of power supply in the equipment.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.power_supply.table",
+      "oid": "1.3.6.1.4.1.3902.1082.10.10.2.3.11",
+      "name": "zxAnPowerSupplyTable",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "SEQUENCE OF ZxAnPowerSupplyEntry",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": "This table includes power supply table.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.power_supply.entry",
+      "oid": "1.3.6.1.4.1.3902.1082.10.10.2.3.11.1",
+      "name": "zxAnPowerSupplyEntry",
+      "mib_table": null,
+      "index": {
+        "type": "composite",
+        "bit_calculation": true,
+        "components": [
+          {
+            "name": "zxanenvrack",
+            "bits": ""
+          },
+          {
+            "name": "shelf",
+            "bits": "31-28"
+          },
+          {
+            "name": "slot",
+            "bits": "27-24"
+          }
+        ]
+      },
+      "syntax": "ZxAnPowerSupplyEntry",
+      "unit": null,
+      "scale": null,
+      "access": "not-accessible",
+      "enumeration": null,
+      "description": "An entry in zxAnPowerSupplyTable.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.power_supply.oper_status",
+      "oid": "1.3.6.1.4.1.3902.1082.10.10.2.3.11.1.1",
+      "name": "zxAnPowerSupplyOperStatus",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": {
+        "1": "inService",
+        "2": "hwOffline",
+        "3": "powerFaulty"
+      },
+      "description": "The operational status of the power supply module.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.power_supply.in_current",
+      "oid": "1.3.6.1.4.1.3902.1082.10.10.2.3.11.1.6",
+      "name": "zxAnPowerSupplyInCurrent",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": "Amp",
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "The actual current of the power supply module.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.power_supply.power_in_current_thresh",
+      "oid": "1.3.6.1.4.1.3902.1082.10.10.2.3.11.1.7",
+      "name": "zxAnPowerInCurrentThresh",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": "Amp",
+      "scale": null,
+      "access": "read-write",
+      "enumeration": null,
+      "description": "The upper threshold of input current.The alarm should be generated\n        when zxAnPowerSupplyInCurrent exceeds this threshold.\n            If it is 0, no alarm reported to manager.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.power_supply.opt_chan_c15_m_tx_power",
+      "oid": "1.3.6.1.4.1.3902.1082.30.45.2.11.1.2",
+      "name": "zxAnOptChanC15MTxPower",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": "0.001dBm",
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "The optical module channel transmitted power in current 15-minute \n             interval.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.power_supply.opt_chan_c1_d_tx_power",
+      "oid": "1.3.6.1.4.1.3902.1082.30.45.2.12.1.2",
+      "name": "zxAnOptChanC1DTxPower",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": "0.001dBm",
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "The optical module channel transmitted power in current 1-day \n             interval.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.power_supply.opt_chan_h15_m_tx_power",
+      "oid": "1.3.6.1.4.1.3902.1082.30.45.2.13.1.4",
+      "name": "zxAnOptChanH15MTxPower",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": "0.001dBm",
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "The optical module channel transmitted power in historical \n              15-minute interval.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.power_supply.opt_chan_h1_d_tx_power",
+      "oid": "1.3.6.1.4.1.3902.1082.30.45.2.14.1.4",
+      "name": "zxAnOptChanH1DTxPower",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": "0.001dBm",
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "The optical module channel transmitted power in historical 1-day \n              interval.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.power_supply.opt_chan_c_min_tx_power",
+      "oid": "1.3.6.1.4.1.3902.1082.30.45.2.15.1.2",
+      "name": "zxAnOptChanCMinTxPower",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": "0.001dBm",
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "The optical module channel transmitted power in current minutes \n             interval.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.zte.gpon.power_supply.opt_chan_h_min_tx_power",
+      "oid": "1.3.6.1.4.1.3902.1082.30.45.2.16.1.4",
+      "name": "zxAnOptChanHMinTxPower",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": "0.001dBm",
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "The optical module channel transmitted power in historical \n              minutes interval.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    }
+  ]
+}

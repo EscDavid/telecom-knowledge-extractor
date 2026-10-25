@@ -1,0 +1,38 @@
+{
+  "id": "command.zte.gpon.global.show.alarm_other",
+  "canonical_name": "show alarm",
+  "vendor": "ZTE",
+  "family": "ZXA10 C620",
+  "firmware": [
+    "1.2.2"
+  ],
+  "technology": "gpon",
+  "category": "show",
+  "cli_mode": "privileged_exec",
+  "cli_context": null,
+  "entity_ref": null,
+  "description": "Variantes de consulta de alarmas (solo ayuda).",
+  "syntax": "show alarm {class <id>|level-change <code>|notification [code|flowid|end-time|earliest-first|latest-first]}",
+  "parameters": [],
+  "output_fields": [],
+  "prerequisites": [],
+  "related_commands": [],
+  "rollback": null,
+  "errors": [],
+  "notes": null,
+  "evidence": "sintaxis obtenida solo con la ayuda '?' de la OLT (no ejecutada)",
+  "sources": [
+    {
+      "doc_type": "hardware_verification",
+      "pages": null,
+      "confidence": 0.6
+    }
+  ],
+  "confidence": {
+    "extraction": 0.6,
+    "correlation": 0.0,
+    "overall": 0.6
+  },
+  "status": "documented",
+  "conflicts": []
+}

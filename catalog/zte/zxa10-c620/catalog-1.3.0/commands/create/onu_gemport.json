@@ -1,0 +1,106 @@
+{
+  "id": "command.zte.gpon.gem_port.create.onu_gemport",
+  "canonical_name": "gemport (ONU)",
+  "vendor": "ZTE",
+  "family": "ZXA10 C620",
+  "firmware": [
+    "1.2.2"
+  ],
+  "technology": "gpon",
+  "category": "create",
+  "cli_mode": "interface_config",
+  "cli_context": "interface gpon_onu-<idx>",
+  "entity_ref": "entity.zte.gpon.logical.gem_port",
+  "description": "Crea un GEM port. 'gemport <n> portid <129-4095> tcont <m>' da 'Not support this operation' (222370) porque portid solo se admite con 'resource mode2' en el puerto PON (por defecto mode1: la OLT asigna Port-ID y Alloc-ID automáticamente y la configuración no los muestra). Con mode2 (verificado en un puerto vacío) el valor 300 se rechaza igualmente (230405 Port-id / 230404 Alloc-id out of range): los asignados automáticamente empiezan en 1024; en mode2 la configuración lista 'tcont 1 allocid 1024 profile <P>' y 'gemport 1 name <n> portid 1024 tcont 1'. No es necesario para aprovisionar.",
+  "syntax": "gemport <1-255> name <WORD> tcont <1-255> [queue <0-7>]",
+  "parameters": [
+    {
+      "name": "gemport",
+      "type": "integer",
+      "pattern": null,
+      "range": "1-255",
+      "required": true,
+      "description": "",
+      "example": null
+    },
+    {
+      "name": "WORD",
+      "type": "string",
+      "pattern": null,
+      "range": null,
+      "required": true,
+      "description": "",
+      "example": null
+    },
+    {
+      "name": "tcont",
+      "type": "integer",
+      "pattern": null,
+      "range": "1-255",
+      "required": true,
+      "description": "",
+      "example": null
+    },
+    {
+      "name": "queue",
+      "type": "integer",
+      "pattern": null,
+      "range": "0-7",
+      "required": false,
+      "description": "",
+      "example": null
+    }
+  ],
+  "output_fields": [],
+  "prerequisites": [
+    "entity.zte.gpon.device.onu"
+  ],
+  "related_commands": [
+    "command.zte.gpon.onu.create.onu_tcont",
+    "command.zte.gpon.service_port.create.onu_vport",
+    "command.zte.gpon.onu.show.rc_onu"
+  ],
+  "rollback": "no gemport <1-255>",
+  "errors": [
+    {
+      "code": 222357,
+      "meaning": "GEM ya mapeado a otro vport",
+      "severity": "error",
+      "retry": false
+    },
+    {
+      "code": 222370,
+      "meaning": "gemport portid manual no soportado",
+      "severity": "error",
+      "retry": false
+    },
+    {
+      "code": 230404,
+      "meaning": "allocid manual fuera del rango válido en resource mode2 (300 rechazado; los automáticos empiezan en 1024)",
+      "severity": "error",
+      "retry": false
+    },
+    {
+      "code": 230405,
+      "meaning": "portid manual fuera del rango válido en resource mode2: 300 se rechaza aunque la ayuda diga 129-4095; los asignados automáticamente empiezan en 1024",
+      "severity": "error",
+      "retry": false
+    }
+  ],
+  "notes": null,
+  "evidence": "ejecutado y verificado en la OLT el 2026-10-02",
+  "sources": [
+    {
+      "doc_type": "hardware_verification",
+      "pages": null,
+      "confidence": 0.95
+    }
+  ],
+  "confidence": {
+    "extraction": 0.95,
+    "correlation": 0.0,
+    "overall": 0.95
+  },
+  "status": "verified",
+  "conflicts": []
+}

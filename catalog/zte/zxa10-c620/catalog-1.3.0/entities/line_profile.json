@@ -1,0 +1,48 @@
+{
+  "id": "entity.zte.gpon.profile.line_profile",
+  "canonical_name": "Line Profile",
+  "vendor": "ZTE",
+  "family": "ZXA10 C620",
+  "firmware": [
+    "1.2.2"
+  ],
+  "technology": "gpon",
+  "type": "profile",
+  "description": null,
+  "is_critical": true,
+  "aliases": [
+    {
+      "name": "Line Profile",
+      "source": "product_catalog",
+      "firmware_scope": "all"
+    }
+  ],
+  "attributes": [],
+  "sources": [
+    {
+      "doc_type": "product_catalog",
+      "pages": null,
+      "confidence": 0.07
+    },
+    {
+      "doc_type": "product_catalog",
+      "pages": null,
+      "confidence": 0.07
+    }
+  ],
+  "confidence": {
+    "extraction": 0.33,
+    "correlation": 0.0,
+    "overall": 0.0
+  },
+  "status": "inferred",
+  "lifecycle": {
+    "introduced_in": "2.0",
+    "deprecated_in": null,
+    "removed_in": null,
+    "status": "introduced",
+    "replacement": null
+  },
+  "relations": [],
+  "conflicts": []
+}

@@ -1,0 +1,2137 @@
+{
+  "entity_ref": "entity.zte.gpon.device.olt",
+  "vendor": "ZTE",
+  "family": "ZXA10 C320",
+  "firmware": [
+    "2.0",
+    "2.1"
+  ],
+  "alarms": [
+    {
+      "id": "alarm.zte.gpon.olt.zxanenvpowerovervoltagealm",
+      "code": "1.3.6.1.4.1.3902.1082.10.10.3.3.3",
+      "name": "zxAnEnvPowerOverVoltageAlm",
+      "canonical_name": "zx An Env Power Over Voltage Alm",
+      "entity_ref": "entity.zte.gpon.device.olt",
+      "severity": "warning",
+      "type": "power",
+      "description": "It indicates that the input voltage of power supply is \n           over-voltage.",
+      "probable_causes": [
+        "Falla de la fuente de alimentacion",
+        "Voltaje de entrada fuera de rango",
+        "Bateria agotada o en fallo"
+      ],
+      "remediation": [
+        "Verificar la fuente y el voltaje de entrada",
+        "Revisar o reemplazar la fuente/bateria"
+      ],
+      "oid_trap": "1.3.6.1.4.1.3902.1082.10.10.3.3.3",
+      "oid_refs": [
+        "zxAnPowerSupplyInVoltage",
+        "zxAnPowerInVoltageUpperThresh"
+      ],
+      "auto_clear": false,
+      "clear_condition": null,
+      "threshold": null,
+      "escalation": {
+        "warning_after_minutes": null,
+        "major_after_minutes": null,
+        "critical_after_minutes": null
+      },
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "status": "documented",
+      "conflicts": []
+    },
+    {
+      "id": "alarm.zte.gpon.olt.zxanenvpowerovervoltageclr",
+      "code": "1.3.6.1.4.1.3902.1082.10.10.3.3.4",
+      "name": "zxAnEnvPowerOverVoltageClr",
+      "canonical_name": "zx An Env Power Over Voltage Clr",
+      "entity_ref": "entity.zte.gpon.device.olt",
+      "severity": "warning",
+      "type": "power",
+      "description": "It indicates that the over-voltage fault is cleared.",
+      "probable_causes": [
+        "Falla de la fuente de alimentacion",
+        "Voltaje de entrada fuera de rango",
+        "Bateria agotada o en fallo"
+      ],
+      "remediation": [
+        "Verificar la fuente y el voltaje de entrada",
+        "Revisar o reemplazar la fuente/bateria"
+      ],
+      "oid_trap": "1.3.6.1.4.1.3902.1082.10.10.3.3.4",
+      "oid_refs": [
+        "zxAnPowerSupplyInVoltage",
+        "zxAnPowerInVoltageUpperThresh"
+      ],
+      "auto_clear": false,
+      "clear_condition": null,
+      "threshold": null,
+      "escalation": {
+        "warning_after_minutes": null,
+        "major_after_minutes": null,
+        "critical_after_minutes": null
+      },
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "status": "documented",
+      "conflicts": []
+    },
+    {
+      "id": "alarm.zte.gpon.olt.zxanenvpowerundervoltagealm",
+      "code": "1.3.6.1.4.1.3902.1082.10.10.3.3.5",
+      "name": "zxAnEnvPowerUnderVoltageAlm",
+      "canonical_name": "zx An Env Power Under Voltage Alm",
+      "entity_ref": "entity.zte.gpon.device.olt",
+      "severity": "warning",
+      "type": "power",
+      "description": "It indicates that the input voltage of power supply is \n           under-voltage.",
+      "probable_causes": [
+        "Falla de la fuente de alimentacion",
+        "Voltaje de entrada fuera de rango",
+        "Bateria agotada o en fallo"
+      ],
+      "remediation": [
+        "Verificar la fuente y el voltaje de entrada",
+        "Revisar o reemplazar la fuente/bateria"
+      ],
+      "oid_trap": "1.3.6.1.4.1.3902.1082.10.10.3.3.5",
+      "oid_refs": [
+        "zxAnPowerSupplyInVoltage",
+        "zxAnPowerInVoltageLowerThresh"
+      ],
+      "auto_clear": false,
+      "clear_condition": null,
+      "threshold": null,
+      "escalation": {
+        "warning_after_minutes": null,
+        "major_after_minutes": null,
+        "critical_after_minutes": null
+      },
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "status": "documented",
+      "conflicts": []
+    },
+    {
+      "id": "alarm.zte.gpon.olt.zxanenvpowerundervoltageclr",
+      "code": "1.3.6.1.4.1.3902.1082.10.10.3.3.6",
+      "name": "zxAnEnvPowerUnderVoltageClr",
+      "canonical_name": "zx An Env Power Under Voltage Clr",
+      "entity_ref": "entity.zte.gpon.device.olt",
+      "severity": "warning",
+      "type": "power",
+      "description": "It indicates that the under-voltage fault is cleared.",
+      "probable_causes": [
+        "Falla de la fuente de alimentacion",
+        "Voltaje de entrada fuera de rango",
+        "Bateria agotada o en fallo"
+      ],
+      "remediation": [
+        "Verificar la fuente y el voltaje de entrada",
+        "Revisar o reemplazar la fuente/bateria"
+      ],
+      "oid_trap": "1.3.6.1.4.1.3902.1082.10.10.3.3.6",
+      "oid_refs": [
+        "zxAnPowerSupplyInVoltage",
+        "zxAnPowerInVoltageLowerThresh"
+      ],
+      "auto_clear": false,
+      "clear_condition": null,
+      "threshold": null,
+      "escalation": {
+        "warning_after_minutes": null,
+        "major_after_minutes": null,
+        "critical_after_minutes": null
+      },
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "status": "documented",
+      "conflicts": []
+    },
+    {
+      "id": "alarm.zte.gpon.olt.zxanenvbatteryundervoltagealm",
+      "code": "1.3.6.1.4.1.3902.1082.10.10.3.3.15",
+      "name": "zxAnEnvBatteryUnderVoltageAlm",
+      "canonical_name": "zx An Env Battery Under Voltage Alm",
+      "entity_ref": "entity.zte.gpon.device.olt",
+      "severity": "warning",
+      "type": "power",
+      "description": "A zxAnEnvBatteryUnderVoltageAlm trap is sent when the battery \n           voltage is under-voltage.",
+      "probable_causes": [
+        "Falla de la fuente de alimentacion",
+        "Voltaje de entrada fuera de rango",
+        "Bateria agotada o en fallo"
+      ],
+      "remediation": [
+        "Verificar la fuente y el voltaje de entrada",
+        "Revisar o reemplazar la fuente/bateria"
+      ],
+      "oid_trap": "1.3.6.1.4.1.3902.1082.10.10.3.3.15",
+      "oid_refs": [],
+      "auto_clear": false,
+      "clear_condition": null,
+      "threshold": null,
+      "escalation": {
+        "warning_after_minutes": null,
+        "major_after_minutes": null,
+        "critical_after_minutes": null
+      },
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "status": "documented",
+      "conflicts": []
+    },
+    {
+      "id": "alarm.zte.gpon.olt.zxanenvbatteryundervoltageclr",
+      "code": "1.3.6.1.4.1.3902.1082.10.10.3.3.16",
+      "name": "zxAnEnvBatteryUnderVoltageClr",
+      "canonical_name": "zx An Env Battery Under Voltage Clr",
+      "entity_ref": "entity.zte.gpon.device.olt",
+      "severity": "warning",
+      "type": "power",
+      "description": "A zxAnEnvBatteryUnderVoltageClr trap is sent when the battery \n           voltage becomes normal.",
+      "probable_causes": [
+        "Falla de la fuente de alimentacion",
+        "Voltaje de entrada fuera de rango",
+        "Bateria agotada o en fallo"
+      ],
+      "remediation": [
+        "Verificar la fuente y el voltaje de entrada",
+        "Revisar o reemplazar la fuente/bateria"
+      ],
+      "oid_trap": "1.3.6.1.4.1.3902.1082.10.10.3.3.16",
+      "oid_refs": [],
+      "auto_clear": false,
+      "clear_condition": null,
+      "threshold": null,
+      "escalation": {
+        "warning_after_minutes": null,
+        "major_after_minutes": null,
+        "critical_after_minutes": null
+      },
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "status": "documented",
+      "conflicts": []
+    },
+    {
+      "id": "alarm.zte.gpon.olt.zxanifaccesslinkup",
+      "code": "1.3.6.1.4.1.3902.1082.30.20.3.3",
+      "name": "zxAnIfAccesslinkUp",
+      "canonical_name": "zx An If Accesslink Up",
+      "entity_ref": "entity.zte.gpon.device.olt",
+      "severity": "warning",
+      "type": "protocol",
+      "description": "The operational status of access link interface changes to up.",
+      "probable_causes": [
+        "Cambio de estado o parametro reportado",
+        "Inconsistencia de configuracion",
+        "Evento de protocolo (registro/deregistro)"
+      ],
+      "remediation": [
+        "Correlacionar con el objeto reportado (oid_refs)",
+        "Revisar la configuracion asociada"
+      ],
+      "oid_trap": "1.3.6.1.4.1.3902.1082.30.20.3.3",
+      "oid_refs": [
+        "ifAdminStatus",
+        "ifOperStatus",
+        "ifType"
+      ],
+      "auto_clear": false,
+      "clear_condition": null,
+      "threshold": null,
+      "escalation": {
+        "warning_after_minutes": null,
+        "major_after_minutes": null,
+        "critical_after_minutes": null
+      },
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "status": "documented",
+      "conflicts": []
+    },
+    {
+      "id": "alarm.zte.gpon.olt.zxanifaccesslinkdown",
+      "code": "1.3.6.1.4.1.3902.1082.30.20.3.4",
+      "name": "zxAnIfAccesslinkDown",
+      "canonical_name": "zx An If Accesslink Down",
+      "entity_ref": "entity.zte.gpon.device.olt",
+      "severity": "major",
+      "type": "protocol",
+      "description": "The operational status of access link interface changes to down.",
+      "probable_causes": [
+        "Cambio de estado o parametro reportado",
+        "Inconsistencia de configuracion",
+        "Evento de protocolo (registro/deregistro)"
+      ],
+      "remediation": [
+        "Correlacionar con el objeto reportado (oid_refs)",
+        "Revisar la configuracion asociada"
+      ],
+      "oid_trap": "1.3.6.1.4.1.3902.1082.30.20.3.4",
+      "oid_refs": [
+        "ifAdminStatus",
+        "ifOperStatus",
+        "ifType"
+      ],
+      "auto_clear": false,
+      "clear_condition": null,
+      "threshold": null,
+      "escalation": {
+        "warning_after_minutes": null,
+        "major_after_minutes": null,
+        "critical_after_minutes": null
+      },
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "status": "documented",
+      "conflicts": []
+    },
+    {
+      "id": "alarm.zte.gpon.olt.zxaninnerportdownalm",
+      "code": "1.3.6.1.4.1.3902.1082.30.20.3.5",
+      "name": "zxAnInnerPortDownAlm",
+      "canonical_name": "zx An Inner Port Down Alm",
+      "entity_ref": "entity.zte.gpon.device.olt",
+      "severity": "major",
+      "type": "hardware",
+      "description": "When the inner port of the card is down, the card will be reset \n            by NE twice. If the fault still exists, a zxAnInnerPortDownAlm \n            trap will be sent.",
+      "probable_causes": [
+        "Falla o mal contacto de tarjeta/subtarjeta",
+        "Tarjeta no soportada o incompatible",
+        "Sobrecalentamiento del modulo"
+      ],
+      "remediation": [
+        "Reasentar o reemplazar la tarjeta",
+        "Verificar compatibilidad de HW/firmware",
+        "Revisar ventilacion y temperatura"
+      ],
+      "oid_trap": "1.3.6.1.4.1.3902.1082.30.20.3.5",
+      "oid_refs": [
+        "zxAnLeftConnectInnerPortStatus",
+        "zxAnRightConnectInnerPortStatus"
+      ],
+      "auto_clear": false,
+      "clear_condition": null,
+      "threshold": null,
+      "escalation": {
+        "warning_after_minutes": null,
+        "major_after_minutes": null,
+        "critical_after_minutes": null
+      },
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "status": "documented",
+      "conflicts": []
+    },
+    {
+      "id": "alarm.zte.gpon.olt.zxaninnerportdownclr",
+      "code": "1.3.6.1.4.1.3902.1082.30.20.3.6",
+      "name": "zxAnInnerPortDownClr",
+      "canonical_name": "zx An Inner Port Down Clr",
+      "entity_ref": "entity.zte.gpon.device.olt",
+      "severity": "major",
+      "type": "protocol",
+      "description": "A zxAnInnerPortDownClr trap is sent when the \n            zxAnInnerPortDownAlm is cleared.",
+      "probable_causes": [
+        "Cambio de estado o parametro reportado",
+        "Inconsistencia de configuracion",
+        "Evento de protocolo (registro/deregistro)"
+      ],
+      "remediation": [
+        "Correlacionar con el objeto reportado (oid_refs)",
+        "Revisar la configuracion asociada"
+      ],
+      "oid_trap": "1.3.6.1.4.1.3902.1082.30.20.3.6",
+      "oid_refs": [
+        "zxAnLeftConnectInnerPortStatus",
+        "zxAnRightConnectInnerPortStatus"
+      ],
+      "auto_clear": false,
+      "clear_condition": null,
+      "threshold": null,
+      "escalation": {
+        "warning_after_minutes": null,
+        "major_after_minutes": null,
+        "critical_after_minutes": null
+      },
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "status": "documented",
+      "conflicts": []
+    },
+    {
+      "id": "alarm.zte.gpon.olt.zxanoptrxpwrunderthreshalm",
+      "code": "1.3.6.1.4.1.3902.1082.30.40.3.1",
+      "name": "zxAnOptRxPwrUnderThreshAlm",
+      "canonical_name": "zx An Opt Rx Pwr Under Thresh Alm",
+      "entity_ref": "entity.zte.gpon.device.olt",
+      "severity": "warning",
+      "type": "optical",
+      "description": "It indicates that zxAnOpticalIfRxPwrCurrValue is below  the zxAnOpticalRxPwrLowerThresh.",
+      "probable_causes": [
+        "Corte o degradacion de la fibra",
+        "Conector optico sucio o mal insertado",
+        "Potencia optica Rx/Tx fuera de rango",
+        "ONU apagada o desconectada"
+      ],
+      "remediation": [
+        "Verificar continuidad y limpieza de la fibra",
+        "Medir potencia optica Rx/Tx en el puerto",
+        "Revisar estado y alimentacion de la ONU"
+      ],
+      "oid_trap": "1.3.6.1.4.1.3902.1082.30.40.3.1",
+      "oid_refs": [
+        "zxAnOpticalIfRxPwrCurrValue",
+        "zxAnOpticalRxPwrLowerThresh"
+      ],
+      "auto_clear": false,
+      "clear_condition": null,
+      "threshold": null,
+      "escalation": {
+        "warning_after_minutes": null,
+        "major_after_minutes": null,
+        "critical_after_minutes": null
+      },
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "status": "documented",
+      "conflicts": []
+    },
+    {
+      "id": "alarm.zte.gpon.olt.zxanoptrxpwrunderthreshclr",
+      "code": "1.3.6.1.4.1.3902.1082.30.40.3.2",
+      "name": "zxAnOptRxPwrUnderThreshClr",
+      "canonical_name": "zx An Opt Rx Pwr Under Thresh Clr",
+      "entity_ref": "entity.zte.gpon.device.olt",
+      "severity": "warning",
+      "type": "protocol",
+      "description": "zxAnOptRxPwrUnderThreshAlm clear",
+      "probable_causes": [
+        "Cambio de estado o parametro reportado",
+        "Inconsistencia de configuracion",
+        "Evento de protocolo (registro/deregistro)"
+      ],
+      "remediation": [
+        "Correlacionar con el objeto reportado (oid_refs)",
+        "Revisar la configuracion asociada"
+      ],
+      "oid_trap": "1.3.6.1.4.1.3902.1082.30.40.3.2",
+      "oid_refs": [
+        "zxAnOpticalIfRxPwrCurrValue",
+        "zxAnOpticalRxPwrLowerThresh"
+      ],
+      "auto_clear": false,
+      "clear_condition": null,
+      "threshold": null,
+      "escalation": {
+        "warning_after_minutes": null,
+        "major_after_minutes": null,
+        "critical_after_minutes": null
+      },
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "status": "documented",
+      "conflicts": []
+    },
+    {
+      "id": "alarm.zte.gpon.olt.zxanoptrxpwroverthreshalm",
+      "code": "1.3.6.1.4.1.3902.1082.30.40.3.3",
+      "name": "zxAnOptRxPwrOverThreshAlm",
+      "canonical_name": "zx An Opt Rx Pwr Over Thresh Alm",
+      "entity_ref": "entity.zte.gpon.device.olt",
+      "severity": "warning",
+      "type": "optical",
+      "description": "It indicates that zxAnOpticalIfRxPwrCurrValue is exceeds  the zxAnOpticalRxPwrUpperThresh.",
+      "probable_causes": [
+        "Corte o degradacion de la fibra",
+        "Conector optico sucio o mal insertado",
+        "Potencia optica Rx/Tx fuera de rango",
+        "ONU apagada o desconectada"
+      ],
+      "remediation": [
+        "Verificar continuidad y limpieza de la fibra",
+        "Medir potencia optica Rx/Tx en el puerto",
+        "Revisar estado y alimentacion de la ONU"
+      ],
+      "oid_trap": "1.3.6.1.4.1.3902.1082.30.40.3.3",
+      "oid_refs": [
+        "zxAnOpticalIfRxPwrCurrValue",
+        "zxAnOpticalRxPwrUpperThresh"
+      ],
+      "auto_clear": false,
+      "clear_condition": null,
+      "threshold": null,
+      "escalation": {
+        "warning_after_minutes": null,
+        "major_after_minutes": null,
+        "critical_after_minutes": null
+      },
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "status": "documented",
+      "conflicts": []
+    },
+    {
+      "id": "alarm.zte.gpon.olt.zxanoptrxpwroverthreshclr",
+      "code": "1.3.6.1.4.1.3902.1082.30.40.3.4",
+      "name": "zxAnOptRxPwrOverThreshClr",
+      "canonical_name": "zx An Opt Rx Pwr Over Thresh Clr",
+      "entity_ref": "entity.zte.gpon.device.olt",
+      "severity": "warning",
+      "type": "protocol",
+      "description": "zxAnOptPwrRxOverThreshAlarm clear.",
+      "probable_causes": [
+        "Cambio de estado o parametro reportado",
+        "Inconsistencia de configuracion",
+        "Evento de protocolo (registro/deregistro)"
+      ],
+      "remediation": [
+        "Correlacionar con el objeto reportado (oid_refs)",
+        "Revisar la configuracion asociada"
+      ],
+      "oid_trap": "1.3.6.1.4.1.3902.1082.30.40.3.4",
+      "oid_refs": [
+        "zxAnOpticalIfRxPwrCurrValue",
+        "zxAnOpticalRxPwrUpperThresh"
+      ],
+      "auto_clear": false,
+      "clear_condition": null,
+      "threshold": null,
+      "escalation": {
+        "warning_after_minutes": null,
+        "major_after_minutes": null,
+        "critical_after_minutes": null
+      },
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "status": "documented",
+      "conflicts": []
+    },
+    {
+      "id": "alarm.zte.gpon.olt.zxanopttxpwrunderthreshalm",
+      "code": "1.3.6.1.4.1.3902.1082.30.40.3.5",
+      "name": "zxAnOptTxPwrUnderThreshAlm",
+      "canonical_name": "zx An Opt Tx Pwr Under Thresh Alm",
+      "entity_ref": "entity.zte.gpon.device.olt",
+      "severity": "warning",
+      "type": "optical",
+      "description": "It indicates that zxAnOpticalIfTxPwrCurrValue is below  the zxAnOpticalTxPwrLowerThresh.",
+      "probable_causes": [
+        "Corte o degradacion de la fibra",
+        "Conector optico sucio o mal insertado",
+        "Potencia optica Rx/Tx fuera de rango",
+        "ONU apagada o desconectada"
+      ],
+      "remediation": [
+        "Verificar continuidad y limpieza de la fibra",
+        "Medir potencia optica Rx/Tx en el puerto",
+        "Revisar estado y alimentacion de la ONU"
+      ],
+      "oid_trap": "1.3.6.1.4.1.3902.1082.30.40.3.5",
+      "oid_refs": [
+        "zxAnOpticalIfTxPwrCurrValue",
+        "zxAnOpticalTxPwrLowerThresh"
+      ],
+      "auto_clear": false,
+      "clear_condition": null,
+      "threshold": null,
+      "escalation": {
+        "warning_after_minutes": null,
+        "major_after_minutes": null,
+        "critical_after_minutes": null
+      },
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "status": "documented",
+      "conflicts": []
+    },
+    {
+      "id": "alarm.zte.gpon.olt.zxanopttxpwrunderthreshclr",
+      "code": "1.3.6.1.4.1.3902.1082.30.40.3.6",
+      "name": "zxAnOptTxPwrUnderThreshClr",
+      "canonical_name": "zx An Opt Tx Pwr Under Thresh Clr",
+      "entity_ref": "entity.zte.gpon.device.olt",
+      "severity": "warning",
+      "type": "protocol",
+      "description": "zxAnOptPwrTxUnderThreshAlarm clear",
+      "probable_causes": [
+        "Cambio de estado o parametro reportado",
+        "Inconsistencia de configuracion",
+        "Evento de protocolo (registro/deregistro)"
+      ],
+      "remediation": [
+        "Correlacionar con el objeto reportado (oid_refs)",
+        "Revisar la configuracion asociada"
+      ],
+      "oid_trap": "1.3.6.1.4.1.3902.1082.30.40.3.6",
+      "oid_refs": [
+        "zxAnOpticalIfTxPwrCurrValue",
+        "zxAnOpticalTxPwrLowerThresh"
+      ],
+      "auto_clear": false,
+      "clear_condition": null,
+      "threshold": null,
+      "escalation": {
+        "warning_after_minutes": null,
+        "major_after_minutes": null,
+        "critical_after_minutes": null
+      },
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "status": "documented",
+      "conflicts": []
+    },
+    {
+      "id": "alarm.zte.gpon.olt.zxanopttxpwroverthreshalm",
+      "code": "1.3.6.1.4.1.3902.1082.30.40.3.7",
+      "name": "zxAnOptTxPwrOverThreshAlm",
+      "canonical_name": "zx An Opt Tx Pwr Over Thresh Alm",
+      "entity_ref": "entity.zte.gpon.device.olt",
+      "severity": "warning",
+      "type": "optical",
+      "description": "It indicates that zxAnOpticalIfTxPwrCurrValue is exceeds  the zxAnOpticalTxPwrUpperThresh.",
+      "probable_causes": [
+        "Corte o degradacion de la fibra",
+        "Conector optico sucio o mal insertado",
+        "Potencia optica Rx/Tx fuera de rango",
+        "ONU apagada o desconectada"
+      ],
+      "remediation": [
+        "Verificar continuidad y limpieza de la fibra",
+        "Medir potencia optica Rx/Tx en el puerto",
+        "Revisar estado y alimentacion de la ONU"
+      ],
+      "oid_trap": "1.3.6.1.4.1.3902.1082.30.40.3.7",
+      "oid_refs": [
+        "zxAnOpticalIfTxPwrCurrValue",
+        "zxAnOpticalTxPwrUpperThresh"
+      ],
+      "auto_clear": false,
+      "clear_condition": null,
+      "threshold": null,
+      "escalation": {
+        "warning_after_minutes": null,
+        "major_after_minutes": null,
+        "critical_after_minutes": null
+      },
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "status": "documented",
+      "conflicts": []
+    },
+    {
+      "id": "alarm.zte.gpon.olt.zxanopttxpwroverthreshclr",
+      "code": "1.3.6.1.4.1.3902.1082.30.40.3.8",
+      "name": "zxAnOptTxPwrOverThreshClr",
+      "canonical_name": "zx An Opt Tx Pwr Over Thresh Clr",
+      "entity_ref": "entity.zte.gpon.device.olt",
+      "severity": "warning",
+      "type": "protocol",
+      "description": "zxAnOptPwrTxOverThreshAlarm clear.",
+      "probable_causes": [
+        "Cambio de estado o parametro reportado",
+        "Inconsistencia de configuracion",
+        "Evento de protocolo (registro/deregistro)"
+      ],
+      "remediation": [
+        "Correlacionar con el objeto reportado (oid_refs)",
+        "Revisar la configuracion asociada"
+      ],
+      "oid_trap": "1.3.6.1.4.1.3902.1082.30.40.3.8",
+      "oid_refs": [
+        "zxAnOpticalIfTxPwrCurrValue",
+        "zxAnOpticalTxPwrUpperThresh"
+      ],
+      "auto_clear": false,
+      "clear_condition": null,
+      "threshold": null,
+      "escalation": {
+        "warning_after_minutes": null,
+        "major_after_minutes": null,
+        "critical_after_minutes": null
+      },
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "status": "documented",
+      "conflicts": []
+    },
+    {
+      "id": "alarm.zte.gpon.olt.zxanoptbiascurrunderthreshalm",
+      "code": "1.3.6.1.4.1.3902.1082.30.40.3.9",
+      "name": "zxAnOptBiasCurrUnderThreshAlm",
+      "canonical_name": "zx An Opt Bias Curr Under Thresh Alm",
+      "entity_ref": "entity.zte.gpon.device.olt",
+      "severity": "warning",
+      "type": "optical",
+      "description": "It indicates that zxAnOpticalBiasCurrent \n               is below the zxAnOpticalBiasCurrLowerThresh.",
+      "probable_causes": [
+        "Corte o degradacion de la fibra",
+        "Conector optico sucio o mal insertado",
+        "Potencia optica Rx/Tx fuera de rango",
+        "ONU apagada o desconectada"
+      ],
+      "remediation": [
+        "Verificar continuidad y limpieza de la fibra",
+        "Medir potencia optica Rx/Tx en el puerto",
+        "Revisar estado y alimentacion de la ONU"
+      ],
+      "oid_trap": "1.3.6.1.4.1.3902.1082.30.40.3.9",
+      "oid_refs": [
+        "zxAnOpticalBiasCurrent",
+        "zxAnOpticalBiasCurrLowerThresh"
+      ],
+      "auto_clear": false,
+      "clear_condition": null,
+      "threshold": null,
+      "escalation": {
+        "warning_after_minutes": null,
+        "major_after_minutes": null,
+        "critical_after_minutes": null
+      },
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "status": "documented",
+      "conflicts": []
+    },
+    {
+      "id": "alarm.zte.gpon.olt.zxanoptbiascurrunderthreshclr",
+      "code": "1.3.6.1.4.1.3902.1082.30.40.3.10",
+      "name": "zxAnOptBiasCurrUnderThreshClr",
+      "canonical_name": "zx An Opt Bias Curr Under Thresh Clr",
+      "entity_ref": "entity.zte.gpon.device.olt",
+      "severity": "warning",
+      "type": "protocol",
+      "description": "zxAnOptBiasCurrUnderThreshAlm clear.",
+      "probable_causes": [
+        "Cambio de estado o parametro reportado",
+        "Inconsistencia de configuracion",
+        "Evento de protocolo (registro/deregistro)"
+      ],
+      "remediation": [
+        "Correlacionar con el objeto reportado (oid_refs)",
+        "Revisar la configuracion asociada"
+      ],
+      "oid_trap": "1.3.6.1.4.1.3902.1082.30.40.3.10",
+      "oid_refs": [
+        "zxAnOpticalBiasCurrent",
+        "zxAnOpticalBiasCurrLowerThresh"
+      ],
+      "auto_clear": false,
+      "clear_condition": null,
+      "threshold": null,
+      "escalation": {
+        "warning_after_minutes": null,
+        "major_after_minutes": null,
+        "critical_after_minutes": null
+      },
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "status": "documented",
+      "conflicts": []
+    },
+    {
+      "id": "alarm.zte.gpon.olt.zxanoptbiascurroverthreshalm",
+      "code": "1.3.6.1.4.1.3902.1082.30.40.3.11",
+      "name": "zxAnOptBiasCurrOverThreshAlm",
+      "canonical_name": "zx An Opt Bias Curr Over Thresh Alm",
+      "entity_ref": "entity.zte.gpon.device.olt",
+      "severity": "warning",
+      "type": "optical",
+      "description": "It indicates that zxAnOpticalBiasCurrent \n               is over the zxAnOpticalBiasCurrUpperThresh.",
+      "probable_causes": [
+        "Corte o degradacion de la fibra",
+        "Conector optico sucio o mal insertado",
+        "Potencia optica Rx/Tx fuera de rango",
+        "ONU apagada o desconectada"
+      ],
+      "remediation": [
+        "Verificar continuidad y limpieza de la fibra",
+        "Medir potencia optica Rx/Tx en el puerto",
+        "Revisar estado y alimentacion de la ONU"
+      ],
+      "oid_trap": "1.3.6.1.4.1.3902.1082.30.40.3.11",
+      "oid_refs": [
+        "zxAnOpticalBiasCurrent",
+        "zxAnOpticalBiasCurrUpperThresh"
+      ],
+      "auto_clear": false,
+      "clear_condition": null,
+      "threshold": null,
+      "escalation": {
+        "warning_after_minutes": null,
+        "major_after_minutes": null,
+        "critical_after_minutes": null
+      },
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "status": "documented",
+      "conflicts": []
+    },
+    {
+      "id": "alarm.zte.gpon.olt.zxanoptbiascurroverthreshclr",
+      "code": "1.3.6.1.4.1.3902.1082.30.40.3.12",
+      "name": "zxAnOptBiasCurrOverThreshClr",
+      "canonical_name": "zx An Opt Bias Curr Over Thresh Clr",
+      "entity_ref": "entity.zte.gpon.device.olt",
+      "severity": "warning",
+      "type": "protocol",
+      "description": "zxAnOptBiasCurrOverThreshAlm clear.",
+      "probable_causes": [
+        "Cambio de estado o parametro reportado",
+        "Inconsistencia de configuracion",
+        "Evento de protocolo (registro/deregistro)"
+      ],
+      "remediation": [
+        "Correlacionar con el objeto reportado (oid_refs)",
+        "Revisar la configuracion asociada"
+      ],
+      "oid_trap": "1.3.6.1.4.1.3902.1082.30.40.3.12",
+      "oid_refs": [
+        "zxAnOpticalBiasCurrent",
+        "zxAnOpticalBiasCurrUpperThresh"
+      ],
+      "auto_clear": false,
+      "clear_condition": null,
+      "threshold": null,
+      "escalation": {
+        "warning_after_minutes": null,
+        "major_after_minutes": null,
+        "critical_after_minutes": null
+      },
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "status": "documented",
+      "conflicts": []
+    },
+    {
+      "id": "alarm.zte.gpon.olt.zxanoptvoltageunderthreshalm",
+      "code": "1.3.6.1.4.1.3902.1082.30.40.3.13",
+      "name": "zxAnOptVoltageUnderThreshAlm",
+      "canonical_name": "zx An Opt Voltage Under Thresh Alm",
+      "entity_ref": "entity.zte.gpon.device.olt",
+      "severity": "warning",
+      "type": "power",
+      "description": "It indicates that zxAnOpticalSupplyVoltage is below \n              the zxAnOpticalVoltageLowerThresh.",
+      "probable_causes": [
+        "Falla de la fuente de alimentacion",
+        "Voltaje de entrada fuera de rango",
+        "Bateria agotada o en fallo"
+      ],
+      "remediation": [
+        "Verificar la fuente y el voltaje de entrada",
+        "Revisar o reemplazar la fuente/bateria"
+      ],
+      "oid_trap": "1.3.6.1.4.1.3902.1082.30.40.3.13",
+      "oid_refs": [
+        "zxAnOpticalSupplyVoltage",
+        "zxAnOpticalVoltageLowerThresh"
+      ],
+      "auto_clear": false,
+      "clear_condition": null,
+      "threshold": null,
+      "escalation": {
+        "warning_after_minutes": null,
+        "major_after_minutes": null,
+        "critical_after_minutes": null
+      },
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "status": "documented",
+      "conflicts": []
+    },
+    {
+      "id": "alarm.zte.gpon.olt.zxanoptvoltageunderthreshclr",
+      "code": "1.3.6.1.4.1.3902.1082.30.40.3.14",
+      "name": "zxAnOptVoltageUnderThreshClr",
+      "canonical_name": "zx An Opt Voltage Under Thresh Clr",
+      "entity_ref": "entity.zte.gpon.device.olt",
+      "severity": "warning",
+      "type": "power",
+      "description": "zxAnOptVoltageUnderThreshAlm clear.",
+      "probable_causes": [
+        "Falla de la fuente de alimentacion",
+        "Voltaje de entrada fuera de rango",
+        "Bateria agotada o en fallo"
+      ],
+      "remediation": [
+        "Verificar la fuente y el voltaje de entrada",
+        "Revisar o reemplazar la fuente/bateria"
+      ],
+      "oid_trap": "1.3.6.1.4.1.3902.1082.30.40.3.14",
+      "oid_refs": [
+        "zxAnOpticalSupplyVoltage",
+        "zxAnOpticalVoltageLowerThresh"
+      ],
+      "auto_clear": false,
+      "clear_condition": null,
+      "threshold": null,
+      "escalation": {
+        "warning_after_minutes": null,
+        "major_after_minutes": null,
+        "critical_after_minutes": null
+      },
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "status": "documented",
+      "conflicts": []
+    },
+    {
+      "id": "alarm.zte.gpon.olt.zxanoptvoltageoverthreshalm",
+      "code": "1.3.6.1.4.1.3902.1082.30.40.3.15",
+      "name": "zxAnOptVoltageOverThreshAlm",
+      "canonical_name": "zx An Opt Voltage Over Thresh Alm",
+      "entity_ref": "entity.zte.gpon.device.olt",
+      "severity": "warning",
+      "type": "power",
+      "description": "It indicates that zxAnOpticalSupplyVoltage \n             is over the zxAnOpticalVoltageUpperThresh.",
+      "probable_causes": [
+        "Falla de la fuente de alimentacion",
+        "Voltaje de entrada fuera de rango",
+        "Bateria agotada o en fallo"
+      ],
+      "remediation": [
+        "Verificar la fuente y el voltaje de entrada",
+        "Revisar o reemplazar la fuente/bateria"
+      ],
+      "oid_trap": "1.3.6.1.4.1.3902.1082.30.40.3.15",
+      "oid_refs": [
+        "zxAnOpticalSupplyVoltage",
+        "zxAnOpticalVoltageUpperThresh"
+      ],
+      "auto_clear": false,
+      "clear_condition": null,
+      "threshold": null,
+      "escalation": {
+        "warning_after_minutes": null,
+        "major_after_minutes": null,
+        "critical_after_minutes": null
+      },
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "status": "documented",
+      "conflicts": []
+    },
+    {
+      "id": "alarm.zte.gpon.olt.zxanoptvoltageoverthreshclr",
+      "code": "1.3.6.1.4.1.3902.1082.30.40.3.16",
+      "name": "zxAnOptVoltageOverThreshClr",
+      "canonical_name": "zx An Opt Voltage Over Thresh Clr",
+      "entity_ref": "entity.zte.gpon.device.olt",
+      "severity": "warning",
+      "type": "power",
+      "description": "zxAnOptVoltageOverThreshAlm clear.",
+      "probable_causes": [
+        "Falla de la fuente de alimentacion",
+        "Voltaje de entrada fuera de rango",
+        "Bateria agotada o en fallo"
+      ],
+      "remediation": [
+        "Verificar la fuente y el voltaje de entrada",
+        "Revisar o reemplazar la fuente/bateria"
+      ],
+      "oid_trap": "1.3.6.1.4.1.3902.1082.30.40.3.16",
+      "oid_refs": [
+        "zxAnOpticalSupplyVoltage",
+        "zxAnOpticalVoltageUpperThresh"
+      ],
+      "auto_clear": false,
+      "clear_condition": null,
+      "threshold": null,
+      "escalation": {
+        "warning_after_minutes": null,
+        "major_after_minutes": null,
+        "critical_after_minutes": null
+      },
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "status": "documented",
+      "conflicts": []
+    },
+    {
+      "id": "alarm.zte.gpon.olt.zxanopttempunderthreshalm",
+      "code": "1.3.6.1.4.1.3902.1082.30.40.3.17",
+      "name": "zxAnOptTempUnderThreshAlm",
+      "canonical_name": "zx An Opt Temp Under Thresh Alm",
+      "entity_ref": "entity.zte.gpon.device.olt",
+      "severity": "warning",
+      "type": "environmental",
+      "description": "It indicates that zxAnOpticalTemperature is below \n              the zxAnOpticalTempLowerThresh.",
+      "probable_causes": [
+        "Temperatura o humedad fuera de umbral",
+        "Falla de ventilacion",
+        "Obstruccion del flujo de aire"
+      ],
+      "remediation": [
+        "Revisar ventiladores y filtros",
+        "Verificar la climatizacion del sitio"
+      ],
+      "oid_trap": "1.3.6.1.4.1.3902.1082.30.40.3.17",
+      "oid_refs": [
+        "zxAnOpticalTemperature",
+        "zxAnOpticalTempLowerThresh"
+      ],
+      "auto_clear": false,
+      "clear_condition": null,
+      "threshold": null,
+      "escalation": {
+        "warning_after_minutes": null,
+        "major_after_minutes": null,
+        "critical_after_minutes": null
+      },
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "status": "documented",
+      "conflicts": []
+    },
+    {
+      "id": "alarm.zte.gpon.olt.zxanopttempunderthreshclr",
+      "code": "1.3.6.1.4.1.3902.1082.30.40.3.18",
+      "name": "zxAnOptTempUnderThreshClr",
+      "canonical_name": "zx An Opt Temp Under Thresh Clr",
+      "entity_ref": "entity.zte.gpon.device.olt",
+      "severity": "warning",
+      "type": "protocol",
+      "description": "zxAnOptTempUnderThreshAlm clear.",
+      "probable_causes": [
+        "Cambio de estado o parametro reportado",
+        "Inconsistencia de configuracion",
+        "Evento de protocolo (registro/deregistro)"
+      ],
+      "remediation": [
+        "Correlacionar con el objeto reportado (oid_refs)",
+        "Revisar la configuracion asociada"
+      ],
+      "oid_trap": "1.3.6.1.4.1.3902.1082.30.40.3.18",
+      "oid_refs": [
+        "zxAnOpticalTemperature",
+        "zxAnOpticalTempLowerThresh"
+      ],
+      "auto_clear": false,
+      "clear_condition": null,
+      "threshold": null,
+      "escalation": {
+        "warning_after_minutes": null,
+        "major_after_minutes": null,
+        "critical_after_minutes": null
+      },
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "status": "documented",
+      "conflicts": []
+    },
+    {
+      "id": "alarm.zte.gpon.olt.zxanopttempoverthreshalm",
+      "code": "1.3.6.1.4.1.3902.1082.30.40.3.19",
+      "name": "zxAnOptTempOverThreshAlm",
+      "canonical_name": "zx An Opt Temp Over Thresh Alm",
+      "entity_ref": "entity.zte.gpon.device.olt",
+      "severity": "warning",
+      "type": "environmental",
+      "description": "It indicates that zxAnOpticalTemperature is over \n             the zxAnOpticalTempUpperThresh.",
+      "probable_causes": [
+        "Temperatura o humedad fuera de umbral",
+        "Falla de ventilacion",
+        "Obstruccion del flujo de aire"
+      ],
+      "remediation": [
+        "Revisar ventiladores y filtros",
+        "Verificar la climatizacion del sitio"
+      ],
+      "oid_trap": "1.3.6.1.4.1.3902.1082.30.40.3.19",
+      "oid_refs": [
+        "zxAnOpticalTemperature",
+        "zxAnOpticalTempUpperThresh"
+      ],
+      "auto_clear": false,
+      "clear_condition": null,
+      "threshold": null,
+      "escalation": {
+        "warning_after_minutes": null,
+        "major_after_minutes": null,
+        "critical_after_minutes": null
+      },
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "status": "documented",
+      "conflicts": []
+    },
+    {
+      "id": "alarm.zte.gpon.olt.zxanopttempoverthreshclr",
+      "code": "1.3.6.1.4.1.3902.1082.30.40.3.20",
+      "name": "zxAnOptTempOverThreshClr",
+      "canonical_name": "zx An Opt Temp Over Thresh Clr",
+      "entity_ref": "entity.zte.gpon.device.olt",
+      "severity": "warning",
+      "type": "protocol",
+      "description": "zxAnOptTempOverThreshAlm clear.",
+      "probable_causes": [
+        "Cambio de estado o parametro reportado",
+        "Inconsistencia de configuracion",
+        "Evento de protocolo (registro/deregistro)"
+      ],
+      "remediation": [
+        "Correlacionar con el objeto reportado (oid_refs)",
+        "Revisar la configuracion asociada"
+      ],
+      "oid_trap": "1.3.6.1.4.1.3902.1082.30.40.3.20",
+      "oid_refs": [
+        "zxAnOpticalTemperature",
+        "zxAnOpticalTempUpperThresh"
+      ],
+      "auto_clear": false,
+      "clear_condition": null,
+      "threshold": null,
+      "escalation": {
+        "warning_after_minutes": null,
+        "major_after_minutes": null,
+        "critical_after_minutes": null
+      },
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "status": "documented",
+      "conflicts": []
+    },
+    {
+      "id": "alarm.zte.gpon.olt.zxanoptchantxpwrunderthreshalm",
+      "code": "1.3.6.1.4.1.3902.1082.30.40.3.51",
+      "name": "zxAnOptChanTxPwrUnderThreshAlm",
+      "canonical_name": "zx An Opt Chan Tx Pwr Under Thresh Alm",
+      "entity_ref": "entity.zte.gpon.device.olt",
+      "severity": "warning",
+      "type": "optical",
+      "description": "A zxAnOptChanTxPwrUnderThreshAlm trap is sent when the agent has\n             detected that the zxAnOpticalChanCurrTxPwr has been less than \n             the zxAnOpticalTxPwrLowerThresh.",
+      "probable_causes": [
+        "Corte o degradacion de la fibra",
+        "Conector optico sucio o mal insertado",
+        "Potencia optica Rx/Tx fuera de rango",
+        "ONU apagada o desconectada"
+      ],
+      "remediation": [
+        "Verificar continuidad y limpieza de la fibra",
+        "Medir potencia optica Rx/Tx en el puerto",
+        "Revisar estado y alimentacion de la ONU"
+      ],
+      "oid_trap": "1.3.6.1.4.1.3902.1082.30.40.3.51",
+      "oid_refs": [
+        "zxAnOpticalChanCurrTxPwr",
+        "zxAnOpticalTxPwrLowerThresh"
+      ],
+      "auto_clear": false,
+      "clear_condition": null,
+      "threshold": null,
+      "escalation": {
+        "warning_after_minutes": null,
+        "major_after_minutes": null,
+        "critical_after_minutes": null
+      },
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "status": "documented",
+      "conflicts": []
+    },
+    {
+      "id": "alarm.zte.gpon.olt.zxanoptchantxpwrunderthreshclr",
+      "code": "1.3.6.1.4.1.3902.1082.30.40.3.52",
+      "name": "zxAnOptChanTxPwrUnderThreshClr",
+      "canonical_name": "zx An Opt Chan Tx Pwr Under Thresh Clr",
+      "entity_ref": "entity.zte.gpon.device.olt",
+      "severity": "warning",
+      "type": "protocol",
+      "description": "A zxAnOptChanTxPwrUnderThreshClr trap is sent when the \n             zxAnOptChanTxPwrUnderThreshAlm is cleared.",
+      "probable_causes": [
+        "Cambio de estado o parametro reportado",
+        "Inconsistencia de configuracion",
+        "Evento de protocolo (registro/deregistro)"
+      ],
+      "remediation": [
+        "Correlacionar con el objeto reportado (oid_refs)",
+        "Revisar la configuracion asociada"
+      ],
+      "oid_trap": "1.3.6.1.4.1.3902.1082.30.40.3.52",
+      "oid_refs": [
+        "zxAnOpticalChanCurrTxPwr",
+        "zxAnOpticalTxPwrLowerThresh"
+      ],
+      "auto_clear": false,
+      "clear_condition": null,
+      "threshold": null,
+      "escalation": {
+        "warning_after_minutes": null,
+        "major_after_minutes": null,
+        "critical_after_minutes": null
+      },
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "status": "documented",
+      "conflicts": []
+    },
+    {
+      "id": "alarm.zte.gpon.olt.zxanoptchantxpwroverthreshalm",
+      "code": "1.3.6.1.4.1.3902.1082.30.40.3.53",
+      "name": "zxAnOptChanTxPwrOverThreshAlm",
+      "canonical_name": "zx An Opt Chan Tx Pwr Over Thresh Alm",
+      "entity_ref": "entity.zte.gpon.device.olt",
+      "severity": "warning",
+      "type": "optical",
+      "description": "A zxAnOptChanTxPwrOverThreshAlm trap is sent when the agent has\n             detected that the zxAnOpticalChanCurrTxPwr has been exceeded \n             the zxAnOpticalTxPwrUpperThresh.",
+      "probable_causes": [
+        "Corte o degradacion de la fibra",
+        "Conector optico sucio o mal insertado",
+        "Potencia optica Rx/Tx fuera de rango",
+        "ONU apagada o desconectada"
+      ],
+      "remediation": [
+        "Verificar continuidad y limpieza de la fibra",
+        "Medir potencia optica Rx/Tx en el puerto",
+        "Revisar estado y alimentacion de la ONU"
+      ],
+      "oid_trap": "1.3.6.1.4.1.3902.1082.30.40.3.53",
+      "oid_refs": [
+        "zxAnOpticalChanCurrTxPwr",
+        "zxAnOpticalTxPwrUpperThresh"
+      ],
+      "auto_clear": false,
+      "clear_condition": null,
+      "threshold": null,
+      "escalation": {
+        "warning_after_minutes": null,
+        "major_after_minutes": null,
+        "critical_after_minutes": null
+      },
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "status": "documented",
+      "conflicts": []
+    },
+    {
+      "id": "alarm.zte.gpon.olt.zxanoptchantxpwroverthreshclr",
+      "code": "1.3.6.1.4.1.3902.1082.30.40.3.54",
+      "name": "zxAnOptChanTxPwrOverThreshClr",
+      "canonical_name": "zx An Opt Chan Tx Pwr Over Thresh Clr",
+      "entity_ref": "entity.zte.gpon.device.olt",
+      "severity": "warning",
+      "type": "protocol",
+      "description": "A zxAnOptChanTxPwrOverThreshClr trap is sent when the \n             zxAnOptChanTxPwrOverThreshAlm is cleared.",
+      "probable_causes": [
+        "Cambio de estado o parametro reportado",
+        "Inconsistencia de configuracion",
+        "Evento de protocolo (registro/deregistro)"
+      ],
+      "remediation": [
+        "Correlacionar con el objeto reportado (oid_refs)",
+        "Revisar la configuracion asociada"
+      ],
+      "oid_trap": "1.3.6.1.4.1.3902.1082.30.40.3.54",
+      "oid_refs": [
+        "zxAnOpticalChanCurrTxPwr",
+        "zxAnOpticalTxPwrUpperThresh"
+      ],
+      "auto_clear": false,
+      "clear_condition": null,
+      "threshold": null,
+      "escalation": {
+        "warning_after_minutes": null,
+        "major_after_minutes": null,
+        "critical_after_minutes": null
+      },
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "status": "documented",
+      "conflicts": []
+    },
+    {
+      "id": "alarm.zte.gpon.olt.zxanoptchanbiasunderthreshalm",
+      "code": "1.3.6.1.4.1.3902.1082.30.40.3.55",
+      "name": "zxAnOptChanBiasUnderThreshAlm",
+      "canonical_name": "zx An Opt Chan Bias Under Thresh Alm",
+      "entity_ref": "entity.zte.gpon.device.olt",
+      "severity": "warning",
+      "type": "optical",
+      "description": "A zxAnOptChanBiasUnderThreshAlm trap is sent when the agent has\n             detected that the zxAnOpticalChanBiasCurrent has been less than\n             the zxAnOpticalBiasCurrLowerThresh.",
+      "probable_causes": [
+        "Corte o degradacion de la fibra",
+        "Conector optico sucio o mal insertado",
+        "Potencia optica Rx/Tx fuera de rango",
+        "ONU apagada o desconectada"
+      ],
+      "remediation": [
+        "Verificar continuidad y limpieza de la fibra",
+        "Medir potencia optica Rx/Tx en el puerto",
+        "Revisar estado y alimentacion de la ONU"
+      ],
+      "oid_trap": "1.3.6.1.4.1.3902.1082.30.40.3.55",
+      "oid_refs": [
+        "zxAnOpticalChanBiasCurrent",
+        "zxAnOpticalBiasCurrLowerThresh"
+      ],
+      "auto_clear": false,
+      "clear_condition": null,
+      "threshold": null,
+      "escalation": {
+        "warning_after_minutes": null,
+        "major_after_minutes": null,
+        "critical_after_minutes": null
+      },
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "status": "documented",
+      "conflicts": []
+    },
+    {
+      "id": "alarm.zte.gpon.olt.zxanoptchanbiasunderthreshclr",
+      "code": "1.3.6.1.4.1.3902.1082.30.40.3.56",
+      "name": "zxAnOptChanBiasUnderThreshClr",
+      "canonical_name": "zx An Opt Chan Bias Under Thresh Clr",
+      "entity_ref": "entity.zte.gpon.device.olt",
+      "severity": "warning",
+      "type": "protocol",
+      "description": "A zxAnOptChanBiasCurrUnderThreshClr trap is sent when the \n             zxAnOptChanBiasUnderThreshAlm is cleared.",
+      "probable_causes": [
+        "Cambio de estado o parametro reportado",
+        "Inconsistencia de configuracion",
+        "Evento de protocolo (registro/deregistro)"
+      ],
+      "remediation": [
+        "Correlacionar con el objeto reportado (oid_refs)",
+        "Revisar la configuracion asociada"
+      ],
+      "oid_trap": "1.3.6.1.4.1.3902.1082.30.40.3.56",
+      "oid_refs": [
+        "zxAnOpticalChanBiasCurrent",
+        "zxAnOpticalBiasCurrLowerThresh"
+      ],
+      "auto_clear": false,
+      "clear_condition": null,
+      "threshold": null,
+      "escalation": {
+        "warning_after_minutes": null,
+        "major_after_minutes": null,
+        "critical_after_minutes": null
+      },
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "status": "documented",
+      "conflicts": []
+    },
+    {
+      "id": "alarm.zte.gpon.olt.zxanoptchanbiasoverthreshalm",
+      "code": "1.3.6.1.4.1.3902.1082.30.40.3.57",
+      "name": "zxAnOptChanBiasOverThreshAlm",
+      "canonical_name": "zx An Opt Chan Bias Over Thresh Alm",
+      "entity_ref": "entity.zte.gpon.device.olt",
+      "severity": "warning",
+      "type": "optical",
+      "description": "A zxAnOptChanBiasOverThreshAlm trap is sent when the agent has \n             detected that the zxAnOpticalChanBiasCurrent has been exceeded \n             the zxAnOpticalBiasCurrUpperThresh.",
+      "probable_causes": [
+        "Corte o degradacion de la fibra",
+        "Conector optico sucio o mal insertado",
+        "Potencia optica Rx/Tx fuera de rango",
+        "ONU apagada o desconectada"
+      ],
+      "remediation": [
+        "Verificar continuidad y limpieza de la fibra",
+        "Medir potencia optica Rx/Tx en el puerto",
+        "Revisar estado y alimentacion de la ONU"
+      ],
+      "oid_trap": "1.3.6.1.4.1.3902.1082.30.40.3.57",
+      "oid_refs": [
+        "zxAnOpticalChanBiasCurrent",
+        "zxAnOpticalBiasCurrUpperThresh"
+      ],
+      "auto_clear": false,
+      "clear_condition": null,
+      "threshold": null,
+      "escalation": {
+        "warning_after_minutes": null,
+        "major_after_minutes": null,
+        "critical_after_minutes": null
+      },
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "status": "documented",
+      "conflicts": []
+    },
+    {
+      "id": "alarm.zte.gpon.olt.zxanoptchanbiasoverthreshclr",
+      "code": "1.3.6.1.4.1.3902.1082.30.40.3.58",
+      "name": "zxAnOptChanBiasOverThreshClr",
+      "canonical_name": "zx An Opt Chan Bias Over Thresh Clr",
+      "entity_ref": "entity.zte.gpon.device.olt",
+      "severity": "warning",
+      "type": "protocol",
+      "description": "A zxAnOptChanBiasOverThreshClr trap is sent when the \n             zxAnOptChanBiasOverThreshAlm is cleared.",
+      "probable_causes": [
+        "Cambio de estado o parametro reportado",
+        "Inconsistencia de configuracion",
+        "Evento de protocolo (registro/deregistro)"
+      ],
+      "remediation": [
+        "Correlacionar con el objeto reportado (oid_refs)",
+        "Revisar la configuracion asociada"
+      ],
+      "oid_trap": "1.3.6.1.4.1.3902.1082.30.40.3.58",
+      "oid_refs": [
+        "zxAnOpticalChanBiasCurrent",
+        "zxAnOpticalBiasCurrUpperThresh"
+      ],
+      "auto_clear": false,
+      "clear_condition": null,
+      "threshold": null,
+      "escalation": {
+        "warning_after_minutes": null,
+        "major_after_minutes": null,
+        "critical_after_minutes": null
+      },
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "status": "documented",
+      "conflicts": []
+    },
+    {
+      "id": "alarm.zte.gpon.olt.zxanswautoupdatefinished",
+      "code": "1.3.6.1.4.1.3902.1082.20.30.3.1.1",
+      "name": "zxAnSwAutoUpdateFinished",
+      "canonical_name": "zx An Sw Auto Update Finished",
+      "entity_ref": "entity.zte.gpon.device.olt",
+      "severity": "warning",
+      "type": "protocol",
+      "description": "A zxAnSwAutoUpdateFinished is sent when the agent has detected \n            that the automatic update is finished.",
+      "probable_causes": [
+        "Cambio de estado o parametro reportado",
+        "Inconsistencia de configuracion",
+        "Evento de protocolo (registro/deregistro)"
+      ],
+      "remediation": [
+        "Correlacionar con el objeto reportado (oid_refs)",
+        "Revisar la configuracion asociada"
+      ],
+      "oid_trap": "1.3.6.1.4.1.3902.1082.20.30.3.1.1",
+      "oid_refs": [
+        "zxAnSwAutoUpdateStatus",
+        "zxAnSwAutoUpdateFailedReason"
+      ],
+      "auto_clear": false,
+      "clear_condition": null,
+      "threshold": null,
+      "escalation": {
+        "warning_after_minutes": null,
+        "major_after_minutes": null,
+        "critical_after_minutes": null
+      },
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "status": "documented",
+      "conflicts": []
+    },
+    {
+      "id": "alarm.zte.gpon.olt.zxanswautoupdateswdiffer",
+      "code": "1.3.6.1.4.1.3902.1082.20.30.3.1.2",
+      "name": "zxAnSwAutoUpdateSwDiffer",
+      "canonical_name": "zx An Sw Auto Update Sw Differ",
+      "entity_ref": "entity.zte.gpon.device.olt",
+      "severity": "warning",
+      "type": "protocol",
+      "description": "A zxAnSwAutoUpdateSwDiffer is sent when the agent has \n            detected different version files between NE and file server.",
+      "probable_causes": [
+        "Cambio de estado o parametro reportado",
+        "Inconsistencia de configuracion",
+        "Evento de protocolo (registro/deregistro)"
+      ],
+      "remediation": [
+        "Correlacionar con el objeto reportado (oid_refs)",
+        "Revisar la configuracion asociada"
+      ],
+      "oid_trap": "1.3.6.1.4.1.3902.1082.20.30.3.1.2",
+      "oid_refs": [
+        "zxAnSwAutoUpdateCurrChkStartTime",
+        "zxAnSwAutoUpdateChkDifferFiles"
+      ],
+      "auto_clear": false,
+      "clear_condition": null,
+      "threshold": null,
+      "escalation": {
+        "warning_after_minutes": null,
+        "major_after_minutes": null,
+        "critical_after_minutes": null
+      },
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "status": "documented",
+      "conflicts": []
+    },
+    {
+      "id": "alarm.zte.gpon.olt.zxanswautoupdateswchkfailed",
+      "code": "1.3.6.1.4.1.3902.1082.20.30.3.1.3",
+      "name": "zxAnSwAutoUpdateSwChkFailed",
+      "canonical_name": "zx An Sw Auto Update Sw Chk Failed",
+      "entity_ref": "entity.zte.gpon.device.olt",
+      "severity": "major",
+      "type": "protocol",
+      "description": "A zxAnSwAutoUpdateSwChkFailed is sent when the agent has \n            detected that version check is failed.",
+      "probable_causes": [
+        "Cambio de estado o parametro reportado",
+        "Inconsistencia de configuracion",
+        "Evento de protocolo (registro/deregistro)"
+      ],
+      "remediation": [
+        "Correlacionar con el objeto reportado (oid_refs)",
+        "Revisar la configuracion asociada"
+      ],
+      "oid_trap": "1.3.6.1.4.1.3902.1082.20.30.3.1.3",
+      "oid_refs": [
+        "zxAnSwAutoUpdateCurrChkStartTime",
+        "zxAnSwAutoUpdateChkFailedReason"
+      ],
+      "auto_clear": false,
+      "clear_condition": null,
+      "threshold": null,
+      "escalation": {
+        "warning_after_minutes": null,
+        "major_after_minutes": null,
+        "critical_after_minutes": null
+      },
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "status": "documented",
+      "conflicts": []
+    },
+    {
+      "id": "alarm.zte.gpon.olt.curalarmtrap",
+      "code": "1.3.6.1.4.1.3902.3.302.8.1",
+      "name": "curAlarmTrap",
+      "canonical_name": "cur Alarm Trap",
+      "entity_ref": "entity.zte.gpon.device.olt",
+      "severity": "warning",
+      "type": "protocol",
+      "description": "When an alarm occurred, \n           send the trap PDU to uniform network manager.\n           Through the configuration command alarm trap-oid-expand, \n           the trap OID can be expanded, adding alarm status and code.",
+      "probable_causes": [
+        "Cambio de estado o parametro reportado",
+        "Inconsistencia de configuracion",
+        "Evento de protocolo (registro/deregistro)"
+      ],
+      "remediation": [
+        "Correlacionar con el objeto reportado (oid_refs)",
+        "Revisar la configuracion asociada"
+      ],
+      "oid_trap": "1.3.6.1.4.1.3902.3.302.8.1",
+      "oid_refs": [
+        "curAlarmFlowID",
+        "curAlarmCode",
+        "curAlarmClass",
+        "curAlarmType",
+        "curAlarmLevel",
+        "curAlarmStatus",
+        "curAlarmOccuredTime",
+        "curAlarmDisappearedTime",
+        "curAlarmTPIDType",
+        "curAlarmTPID",
+        "curAlarmParaType",
+        "curAlarmParaValue",
+        "curAlarmDescription",
+        "curAlarmStdCode",
+        "curAlarmComment",
+        "curAlarmNetID",
+        "curAlarmGlobalFlowID",
+        "curAlarmUpdatedTime",
+        "curAlarmThAlmPeriod",
+        "curAlarmThAlmType",
+        "curAlarmThPerfValue",
+        "curAlarmReturnMode",
+        "curAlarmProtectType",
+        "curAlarmSwitchReason",
+        "curAlarmUlPrtGroupWrkStat",
+        "curAlarmTPIDTypeSwitchFrom",
+        "curAlarmTPIDSwitchFrom",
+        "curAlarmTPIDTypeSwitchTo",
+        "curAlarmTPIDSwitchTo",
+        "curAlarmTimestamp",
+        "curAlarmTPIDLen",
+        "curAlarmTPIDLenSwitchFrom",
+        "curAlarmTPIDLenSwitchTo",
+        "curAlarmOccuredMs",
+        "curAlarmUpdatedMs",
+        "curAlarmDisappearedMs",
+        "curAlarmNeedConfirm"
+      ],
+      "auto_clear": false,
+      "clear_condition": null,
+      "threshold": null,
+      "escalation": {
+        "warning_after_minutes": null,
+        "major_after_minutes": null,
+        "critical_after_minutes": null
+      },
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "status": "documented",
+      "conflicts": []
+    },
+    {
+      "id": "alarm.zte.gpon.olt.heartbeatnotification",
+      "code": "1.3.6.1.4.1.3902.3.302.8.4",
+      "name": "heartbeatNotification",
+      "canonical_name": "heartbeat Notification",
+      "entity_ref": "entity.zte.gpon.device.olt",
+      "severity": "warning",
+      "type": "protocol",
+      "description": "Send a heart-beat trap when required.",
+      "probable_causes": [
+        "Cambio de estado o parametro reportado",
+        "Inconsistencia de configuracion",
+        "Evento de protocolo (registro/deregistro)"
+      ],
+      "remediation": [
+        "Correlacionar con el objeto reportado (oid_refs)",
+        "Revisar la configuracion asociada"
+      ],
+      "oid_trap": "1.3.6.1.4.1.3902.3.302.8.4",
+      "oid_refs": [],
+      "auto_clear": false,
+      "clear_condition": null,
+      "threshold": null,
+      "escalation": {
+        "warning_after_minutes": null,
+        "major_after_minutes": null,
+        "critical_after_minutes": null
+      },
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "status": "documented",
+      "conflicts": []
+    },
+    {
+      "id": "alarm.zte.gpon.olt.zxr10alarmpreloadcanceltrap",
+      "code": "1.3.6.1.4.1.3902.3.302.8.5",
+      "name": "zxr10AlarmPreloadCancelTrap",
+      "canonical_name": "zxr10 Alarm Preload Cancel Trap",
+      "entity_ref": "entity.zte.gpon.device.olt",
+      "severity": "warning",
+      "type": "protocol",
+      "description": "When an alarm preload canceled, \n           send the trap PDU to uniform network manager.",
+      "probable_causes": [
+        "Cambio de estado o parametro reportado",
+        "Inconsistencia de configuracion",
+        "Evento de protocolo (registro/deregistro)"
+      ],
+      "remediation": [
+        "Correlacionar con el objeto reportado (oid_refs)",
+        "Revisar la configuracion asociada"
+      ],
+      "oid_trap": "1.3.6.1.4.1.3902.3.302.8.5",
+      "oid_refs": [
+        "zxr10AlarmPreloadInterface"
+      ],
+      "auto_clear": false,
+      "clear_condition": null,
+      "threshold": null,
+      "escalation": {
+        "warning_after_minutes": null,
+        "major_after_minutes": null,
+        "critical_after_minutes": null
+      },
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "status": "documented",
+      "conflicts": []
+    },
+    {
+      "id": "alarm.zte.gpon.olt.zxr10optalarmtrap",
+      "code": "1.3.6.1.4.1.3902.3.126.0.1",
+      "name": "zxr10optAlarmTrap",
+      "canonical_name": "zxr10opt Alarm Trap",
+      "entity_ref": "entity.zte.gpon.device.olt",
+      "severity": "warning",
+      "type": "protocol",
+      "description": null,
+      "probable_causes": [
+        "Cambio de estado o parametro reportado",
+        "Inconsistencia de configuracion",
+        "Evento de protocolo (registro/deregistro)"
+      ],
+      "remediation": [
+        "Correlacionar con el objeto reportado (oid_refs)",
+        "Revisar la configuracion asociada"
+      ],
+      "oid_trap": "1.3.6.1.4.1.3902.3.126.0.1",
+      "oid_refs": [
+        "zxr10optAlarmIndex",
+        "zxr10optIfIndex",
+        "zxr10optIfName",
+        "zxr10optAlarmType",
+        "zxr10optAlarmOverType",
+        "zxr10optAlarmOverCurValue",
+        "zxr10optHighAlarmValue",
+        "zxr10optHighWarnValue",
+        "zxr10optLowWarnValue",
+        "zxr10optLowAlarmValue"
+      ],
+      "auto_clear": false,
+      "clear_condition": null,
+      "threshold": null,
+      "escalation": {
+        "warning_after_minutes": null,
+        "major_after_minutes": null,
+        "critical_after_minutes": null
+      },
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "status": "documented",
+      "conflicts": []
+    }
+  ]
+}

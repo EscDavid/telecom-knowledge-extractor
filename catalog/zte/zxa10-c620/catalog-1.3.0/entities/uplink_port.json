@@ -1,0 +1,163 @@
+{
+  "id": "entity.zte.gpon.port.uplink_port",
+  "canonical_name": "Uplink Port",
+  "vendor": "ZTE",
+  "family": "ZXA10 C620",
+  "firmware": [
+    "1.2.2"
+  ],
+  "technology": "gpon",
+  "type": "port",
+  "description": "Puerto de enlace ascendente (uplink) del OLT (GE/10GE).",
+  "is_critical": false,
+  "aliases": [],
+  "attributes": [
+    {
+      "name": "uplink_oper_status",
+      "type": "integer",
+      "range": null,
+      "required": false,
+      "source": "walk"
+    },
+    {
+      "name": "uplink_admin_status",
+      "type": "integer",
+      "range": null,
+      "required": false,
+      "source": "walk"
+    },
+    {
+      "name": "uplink_if_type",
+      "type": "integer",
+      "range": null,
+      "required": false,
+      "source": "walk"
+    },
+    {
+      "name": "uplink_hc_in_octets",
+      "type": "counter",
+      "range": null,
+      "required": false,
+      "source": "walk"
+    },
+    {
+      "name": "uplink_hc_in_ucast_pkts",
+      "type": "counter",
+      "range": null,
+      "required": false,
+      "source": "walk"
+    },
+    {
+      "name": "uplink_hc_in_multicast_pkts",
+      "type": "counter",
+      "range": null,
+      "required": false,
+      "source": "walk"
+    },
+    {
+      "name": "uplink_hc_in_broadcast_pkts",
+      "type": "counter",
+      "range": null,
+      "required": false,
+      "source": "walk"
+    },
+    {
+      "name": "uplink_hc_out_octets",
+      "type": "counter",
+      "range": null,
+      "required": false,
+      "source": "walk"
+    },
+    {
+      "name": "uplink_hc_out_ucast_pkts",
+      "type": "counter",
+      "range": null,
+      "required": false,
+      "source": "walk"
+    },
+    {
+      "name": "uplink_hc_out_multicast_pkts",
+      "type": "counter",
+      "range": null,
+      "required": false,
+      "source": "walk"
+    },
+    {
+      "name": "uplink_hc_out_broadcast_pkts",
+      "type": "counter",
+      "range": null,
+      "required": false,
+      "source": "walk"
+    },
+    {
+      "name": "uplink_high_speed",
+      "type": "integer",
+      "range": null,
+      "required": false,
+      "source": "walk"
+    },
+    {
+      "name": "uplink_in_discards",
+      "type": "counter",
+      "range": null,
+      "required": false,
+      "source": "walk"
+    },
+    {
+      "name": "uplink_in_errors",
+      "type": "counter",
+      "range": null,
+      "required": false,
+      "source": "walk"
+    },
+    {
+      "name": "uplink_out_discards",
+      "type": "counter",
+      "range": null,
+      "required": false,
+      "source": "walk"
+    },
+    {
+      "name": "uplink_out_errors",
+      "type": "counter",
+      "range": null,
+      "required": false,
+      "source": "walk"
+    }
+  ],
+  "sources": [
+    {
+      "doc_type": "mib_file",
+      "pages": null,
+      "confidence": 0.3
+    }
+  ],
+  "confidence": {
+    "extraction": 0.85,
+    "correlation": 0.0,
+    "overall": 1.0
+  },
+  "status": "verified_walk",
+  "lifecycle": {
+    "introduced_in": "2.0",
+    "deprecated_in": null,
+    "removed_in": null,
+    "status": "introduced",
+    "replacement": null
+  },
+  "relations": [],
+  "conflicts": [],
+  "empirical": {
+    "source": "ZTE_C620_ifnames.txt",
+    "via": "ifTable (ifType=6)",
+    "instances": 8,
+    "samples": [
+      "xgei-1/4/1",
+      "xgei-1/4/2",
+      "xgei-1/4/3",
+      "xgei-1/4/4",
+      "xgei-1/5/1"
+    ],
+    "ports": 8
+  }
+}

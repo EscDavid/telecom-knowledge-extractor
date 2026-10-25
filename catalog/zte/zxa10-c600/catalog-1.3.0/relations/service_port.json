@@ -1,0 +1,56 @@
+{
+  "entity_ref": "entity.zte.gpon.logical.service_port",
+  "vendor": "ZTE",
+  "family": "ZXA10 C600",
+  "firmware": [
+    "1.2.2"
+  ],
+  "relations": [
+    {
+      "id": "rel.zte.gpon.service_port.belongs_to.onu",
+      "type": "belongs_to",
+      "target": "entity.zte.gpon.device.onu",
+      "cardinality": "many_to_one",
+      "required": true,
+      "description": null,
+      "prerequisite": true,
+      "creation_order": 3,
+      "sources": [
+        {
+          "doc_type": "initial_configuration",
+          "pages": null,
+          "confidence": 0.2
+        }
+      ],
+      "confidence": {
+        "extraction": 0.95,
+        "correlation": 0.0,
+        "overall": 0.95
+      },
+      "status": "verified"
+    },
+    {
+      "id": "rel.zte.gpon.service_port.uses.traffic_profile",
+      "type": "uses",
+      "target": "entity.zte.gpon.logical.traffic_profile",
+      "cardinality": "many_to_one",
+      "required": false,
+      "description": "ingress <perfil_subida> egress <traffic-profile de bajada> (deben existir antes)",
+      "prerequisite": true,
+      "creation_order": 2,
+      "sources": [
+        {
+          "doc_type": "hardware_verification",
+          "pages": null,
+          "confidence": 0.95
+        }
+      ],
+      "confidence": {
+        "extraction": 0.95,
+        "correlation": 0.0,
+        "overall": 0.95
+      },
+      "status": "verified"
+    }
+  ]
+}

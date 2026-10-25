@@ -1,0 +1,6 @@
+Interface       Admin-status   ARC   ARC-interval  Power-control   Operate-statu
+s
+................................................................................
+...
+video_0/1         unlock         0     0             disable         enable
+ZXAN#

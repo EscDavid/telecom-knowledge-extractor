@@ -1,0 +1,86 @@
+{
+  "id": "entity.zte.gpon.logical.traffic_profile",
+  "canonical_name": "Perfil de velocidad de bajada",
+  "vendor": "ZTE",
+  "family": "ZXA10 C620",
+  "firmware": [
+    "1.2.2"
+  ],
+  "technology": "gpon",
+  "type": "logical",
+  "description": "Perfil qos traffic-profile (CIR/CBS/PIR/PBS) usado como egress del service-port; también legible por SNMP.",
+  "is_critical": false,
+  "aliases": [
+    {
+      "name": "Perfil de velocidad de bajada",
+      "source": "hardware_description",
+      "firmware_scope": "all"
+    }
+  ],
+  "attributes": [
+    {
+      "name": "name",
+      "type": "string",
+      "range": null,
+      "required": false,
+      "source": "cli"
+    },
+    {
+      "name": "cir",
+      "type": "integer",
+      "range": null,
+      "required": false,
+      "source": "cli"
+    },
+    {
+      "name": "cbs",
+      "type": "integer",
+      "range": null,
+      "required": false,
+      "source": "cli"
+    },
+    {
+      "name": "pir",
+      "type": "integer",
+      "range": null,
+      "required": false,
+      "source": "cli"
+    },
+    {
+      "name": "pbs",
+      "type": "integer",
+      "range": null,
+      "required": false,
+      "source": "cli"
+    },
+    {
+      "name": "type",
+      "type": "string",
+      "range": null,
+      "required": false,
+      "source": "cli"
+    }
+  ],
+  "sources": [
+    {
+      "doc_type": "hardware_verification",
+      "pages": null,
+      "confidence": 0.95
+    }
+  ],
+  "confidence": {
+    "extraction": 0.95,
+    "correlation": 0.0,
+    "overall": 0.95
+  },
+  "status": "verified",
+  "lifecycle": {
+    "introduced_in": "2.0",
+    "deprecated_in": null,
+    "removed_in": null,
+    "status": "introduced",
+    "replacement": null
+  },
+  "relations": [],
+  "conflicts": []
+}

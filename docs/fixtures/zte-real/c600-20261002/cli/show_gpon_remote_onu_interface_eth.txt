@@ -1,0 +1,72 @@
+Interface      : eth_0/1
+Speed status   : unknown
+Operate status : disable
+Admin status   : unlock
+ARC            : 0  
+ARC interval   : 0
+Expect type    : 0
+Speed config   : auto
+Ethernet loop  : disable
+Max frame      : 1632B (ONU's MTU capability:1518B)
+Pause time     : 0
+Wiring         : dce
+Bridge or IP   : either
+PPPoE filter   : disable
+Power control  : disable
+Status changes : 0
+
+
+Interface      : eth_0/2
+Speed status   : unknown
+Operate status : disable
+Admin status   : unlock
+ARC            : 0  
+ARC interval   : 0
+Expect type    : 0
+Speed config   : auto
+Ethernet loop  : disable
+Max frame      : 1632B (ONU's MTU capability:1518B)
+Pause time     : 0
+Wiring         : dce
+Bridge or IP   : either
+PPPoE filter   : disable
+Power control  : disable
+Status changes : 0
+
+
+Interface      : eth_0/3
+Speed status   : N/A
+Operate status : N/A
+Admin status   : unlock
+ARC            : 0  
+ARC interval   : 0
+Expect type    : 0
+Speed config   : auto
+Ethernet loop  : disable
+Max frame      : 1632B (ONU's MTU capability:N/A)
+Pause time     : 0
+Wiring         : dce
+Bridge or IP   : either
+PPPoE filter   : disable
+Power control  : disable
+Status changes : 0
+
+
+Interface      : eth_0/4
+Speed status   : N/A
+Operate status : N/A
+Admin status   : unlock
+ARC            : 0  
+ARC interval   : 0
+Expect type    : 0
+Speed config   : auto
+Ethernet loop  : disable
+Max frame      : 1632B (ONU's MTU capability:N/A)
+Pause time     : 0
+Wiring         : dce
+Bridge or IP   : either
+PPPoE filter   : disable
+Power control  : disable
+Status changes : 0
+
+ZXAN#

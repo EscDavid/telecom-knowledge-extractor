@@ -1,0 +1,9 @@
+show card
+Shelf Slot CfgType CardName     Port HardVer Status
+---------------------------------------------------
+1     1    GFBT    A02GFBT      16   V1.0.0  INSERVICE
+1     3    FCSDA   FCSDA        0    V1.0.0  INSERVICE
+1     4    SPUF    B01SPUF      4    V1.0.0  INSERVICE
+1     5    SPUF    B01SPUF      4    V1.0.0  STANDBY
+1     6    PRAF    PRAF         0    V1.0.0  INSERVICE
+ZXAN#

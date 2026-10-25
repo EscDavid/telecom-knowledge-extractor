@@ -1,0 +1,89 @@
+{
+  "id": "entity.zte.gpon.device.olt",
+  "canonical_name": "OLT",
+  "vendor": "ZTE",
+  "family": "ZXA10 C300",
+  "firmware": [
+    "2.0",
+    "2.1"
+  ],
+  "technology": "gpon",
+  "type": "device",
+  "description": "y se añade `show version` (`observed`): los ejecutó el importador en 5 OLT clásicas (`reports/hallazgos-cli-snmp-zte-2026-10-09",
+  "is_critical": true,
+  "aliases": [
+    {
+      "name": "OLT",
+      "source": "product_catalog",
+      "firmware_scope": "all"
+    }
+  ],
+  "attributes": [],
+  "sources": [
+    {
+      "doc_type": "product_catalog",
+      "pages": null,
+      "confidence": 0.07
+    },
+    {
+      "doc_type": "product_catalog",
+      "pages": null,
+      "confidence": 0.07
+    },
+    {
+      "doc_type": "product_catalog",
+      "pages": null,
+      "confidence": 0.07
+    },
+    {
+      "doc_type": "product_catalog",
+      "pages": null,
+      "confidence": 0.07
+    },
+    {
+      "doc_type": "product_catalog",
+      "pages": null,
+      "confidence": 0.07
+    },
+    {
+      "doc_type": "product_catalog",
+      "pages": null,
+      "confidence": 0.07
+    },
+    {
+      "doc_type": "product_catalog",
+      "pages": null,
+      "confidence": 0.07
+    },
+    {
+      "doc_type": "product_catalog",
+      "pages": null,
+      "confidence": 0.07
+    },
+    {
+      "doc_type": "product_catalog",
+      "pages": null,
+      "confidence": 0.07
+    },
+    {
+      "doc_type": "mib_file",
+      "pages": null,
+      "confidence": 0.3
+    }
+  ],
+  "confidence": {
+    "extraction": 0.95,
+    "correlation": 0.75,
+    "overall": 1.0
+  },
+  "status": "verified",
+  "lifecycle": {
+    "introduced_in": "2.0",
+    "deprecated_in": null,
+    "removed_in": null,
+    "status": "introduced",
+    "replacement": null
+  },
+  "relations": [],
+  "conflicts": []
+}

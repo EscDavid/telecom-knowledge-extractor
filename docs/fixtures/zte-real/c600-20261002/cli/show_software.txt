@@ -1,0 +1,35 @@
+show software 1
+ZXA10 C600
+ZTE ZXA10 Software, Version: V1.2.2_RZ, Release software
+Copyright (c) 2021 by ZTE Corporation
+Built on 2021/03/19 02:15:37
+System image file is <sysdisk0: verset/C6XXV1.2.2_RZ.set>, file size is 686,465,
+818 Bytes
+System image is loaded from local
+System uptime is 11 day(s), 20 hour(s), 53 minute(s)
+
+[GFBT, shelf 1, slot 1]:
+  Active Packages on Node PFU-1/1/0:
+    Base-1.2.2:
+      Package: Base
+      Version: V1.2.2_RZ
+
+[GFBT, shelf 1, slot 2]:
+  Active Packages on Node PFU-1/2/0:
+    Base-1.2.2:
+      Package: Base
+      Version: V1.2.2_RZ
+
+[SFUC, shelf 1, slot 10]:
+  Active Packages on Node MPU-1/10/0:
+             Base-1.2.2:
+      Package: Base
+      Version: V1.2.2_RZ
+
+[SFUC, shelf 1, slot 11]:
+  Active Packages on Node MPU-1/11/0:
+    Base-1.2.2:
+      Package: Base
+      Version: V1.2.2_RZ
+
+ZXAN#

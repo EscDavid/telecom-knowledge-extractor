@@ -1,0 +1,283 @@
+{
+ "meta": {
+  "vendor": "ZTE",
+  "families": [
+   "ZXA10 C620",
+   "ZXA10 C600"
+  ],
+  "firmware": "V1.2.2",
+  "source": "reports/cli_verification_c620_c600_2026-10-02.md",
+  "verified": "C620 en hardware 2026-10-02; C600 igual en lecturas y ayuda"
+ },
+ "transport": {
+  "protocol": "telnet",
+  "ports_note": "el puerto Telnet lo define cada OLT (p. ej. 1123/2123 tras NAT); SNMP es UDP aparte",
+  "login": [
+   "Username:",
+   "Password:"
+  ],
+  "post_login_prompt": "ZXAN#",
+  "pager": {
+   "marker": "--More--",
+   "disable": "terminal length 0 (verificado: desactiva el paginador en la C620)"
+  },
+  "line_echo": "las líneas largas se reescriben en pantalla recortadas con '$' al inicio (solo eco; el comando se ejecuta completo)",
+  "success_signal": "los comandos de configuración exitosos no imprimen nada: solo vuelve el prompt",
+  "write_output": "......[OK].",
+  "error_signal": "línea que empieza por '%Error <código>:' (o '%Info 90:' para 'The config does not exist')"
+ },
+ "prompts": [
+  {
+   "mode": "exec",
+   "regex": "ZXAN#\\s*$",
+   "example": "ZXAN#"
+  },
+  {
+   "mode": "global_config",
+   "regex": "ZXAN\\(config\\)#\\s*$",
+   "example": "ZXAN(config)#"
+  },
+  {
+   "mode": "gpon",
+   "regex": "ZXAN\\(config-gpon\\)#\\s*$"
+  },
+  {
+   "mode": "pon",
+   "regex": "ZXAN\\(config-pon\\)#\\s*$"
+  },
+  {
+   "mode": "interface_olt",
+   "regex": "ZXAN\\(config-if-gpon_olt-[\\d/]+\\)#\\s*$",
+   "example": "ZXAN(config-if-gpon_olt-1/1/5)#"
+  },
+  {
+   "mode": "interface_onu",
+   "regex": "ZXAN\\(config-if-gpon_onu-[\\d/:]+\\)#\\s*$",
+   "example": "ZXAN(config-if-gpon_onu-1/1/5:3)#"
+  },
+  {
+   "mode": "interface_vport",
+   "regex": "ZXAN\\(config-if-vport-[\\d/.:]+\\)#\\s*$",
+   "example": "ZXAN(config-if-vport-1/1/5.3:1)#"
+  },
+  {
+   "mode": "pon_onu_mng",
+   "regex": "ZXAN\\(config-gpon-onu-mng\\)#\\s*$",
+   "note": "sin índice de ONU en el prompt"
+  },
+  {
+   "mode": "confirmation",
+   "regex": "\\[yes/no\\]:\\s*$",
+   "note": "el prompt de confirmación NO es de la forma ZXAN…#; hay que responder yes/no antes de enviar nada más (si no: '%Error 99: Invalid character(s). Please enter yes/no.')"
+  }
+ ],
+ "confirmations": [
+  {
+   "command": "reboot",
+   "mode": "pon_onu_mng",
+   "text": "Confirm to reboot? [yes/no]:",
+   "yes": "silencioso",
+   "no": "cancela"
+  },
+  {
+   "command": "type <tipo> (interface gpon_onu-)",
+   "text": "Need to restore ONU after modification, confirm to modify? [yes/no]:",
+   "note": "con 'yes' falló con 222366 al cambiar a otro tipo; tratar el cambio de tipo como baja+alta"
+  }
+ ],
+ "errors": [
+  {
+   "code": 140303,
+   "text": "Invalid input detected at '^' marker",
+   "meaning": "sintaxis inexistente en este equipo (p. ej. sintaxis de C300/C320)",
+   "retry": false
+  },
+  {
+   "code": 140305,
+   "text": "Incomplete command",
+   "meaning": "faltan parámetros al final (p. ej. arc sin arc-interval, tcont name sin profile)",
+   "retry": false
+  },
+  {
+   "code": 140301,
+   "text": "Ambiguous command",
+   "meaning": "prefijo ambiguo (show onu …)",
+   "retry": false
+  },
+  {
+   "code": 141000,
+   "text": "Common error happened",
+   "meaning": "error genérico; visto con blacklist sn de formato inválido",
+   "retry": false
+  },
+  {
+   "code": 222306,
+   "text": "Profile does not exist",
+   "meaning": "perfil T-CONT inexistente",
+   "retry": false
+  },
+  {
+   "code": 222357,
+   "text": "Port-id has been used",
+   "meaning": "GEM ya mapeado a otro vport",
+   "retry": false
+  },
+  {
+   "code": 222366,
+   "text": "Modify ONU type failed",
+   "meaning": "no se puede cambiar el tipo de una ONU registrada",
+   "retry": false
+  },
+  {
+   "code": 222370,
+   "text": "Not support this operation",
+   "meaning": "gemport portid manual no soportado",
+   "retry": false
+  },
+  {
+   "code": 222386,
+   "text": "Vport Map param input error",
+   "meaning": "forma de 'no vport-map' incorrecta; usar 'no vport <n>'",
+   "retry": false
+  },
+  {
+   "code": 223845,
+   "text": "UNI does not exist",
+   "meaning": "el tipo de ONU no declara esa interfaz (eth/wifi/video); crear el tipo con onu-type-if y dar de alta la ONU con él",
+   "retry": false
+  },
+  {
+   "code": 223876,
+   "text": "Parameter error",
+   "meaning": "gemport traffic-limit exige un perfil de 'onu profile traffic', no uno de qos traffic-profile",
+   "retry": false
+  },
+  {
+   "code": 223981,
+   "text": "Profile does not exist",
+   "meaning": "switchport traffic-limit: el perfil no existe en 'onu profile traffic'",
+   "retry": false
+  },
+  {
+   "code": 223983,
+   "text": "Port mode error",
+   "meaning": "vlan port sin modo previo; usar 'vlan port <if> mode tag vlan <V>'",
+   "retry": false
+  },
+  {
+   "code": 224011,
+   "text": "This wan-ip does not exist",
+   "meaning": "crear primero wan-ip … mode …",
+   "retry": false
+  },
+  {
+   "code": 224040,
+   "text": "No related information to show",
+   "meaning": "lectura vacía (no es fallo): sin perfiles, sin WiFi, sin config-fail",
+   "retry": false,
+   "is_error": false
+  },
+  {
+   "code": 230263,
+   "text": "Parameter error",
+   "meaning": "parámetro no válido (domain wifi, splitter, video_0/1 en onu-type-if)",
+   "retry": false
+  },
+  {
+   "code": 230285,
+   "text": "No related information to show",
+   "meaning": "lectura vacía (ssid info sin SSID)",
+   "retry": false,
+   "is_error": false
+  },
+  {
+   "code": 241874,
+   "text": "MsQosTrafficPrf - The profile does not exist",
+   "meaning": "qos traffic-profile inexistente",
+   "retry": false
+  },
+  {
+   "code": 99,
+   "text": "Invalid character(s). Please enter yes/no.",
+   "meaning": "se envió un comando mientras había una confirmación pendiente",
+   "retry": false
+  },
+  {
+   "code": 90,
+   "text": "The config does not exist",
+   "level": "Info",
+   "meaning": "el 'no …' no tenía nada que borrar (inocuo en rollback)",
+   "is_error": false
+  },
+  {
+   "code": 222320,
+   "text": "GPON ONU sn already exists",
+   "meaning": "el serial ya está autorizado en otro índice del puerto",
+   "retry": false
+  },
+  {
+   "code": 230296,
+   "text": "Profile is being used",
+   "meaning": "el tipo de ONU está en uso por ONU configuradas: no se puede modificar (p. ej. onu-type … location enable)",
+   "retry": false
+  },
+  {
+   "code": 230405,
+   "text": "Port-id is out of range",
+   "meaning": "portid manual fuera del rango válido en resource mode2: 300 se rechaza aunque la ayuda diga 129-4095; los asignados automáticamente empiezan en 1024",
+   "retry": false
+  },
+  {
+   "code": 230404,
+   "text": "Alloc-id is out of range",
+   "meaning": "allocid manual fuera del rango válido en resource mode2 (300 rechazado; los automáticos empiezan en 1024)",
+   "retry": false
+  },
+  {
+   "code": 230240,
+   "text": "(sin texto registrado) al ejecutar 'real-speed gpon'",
+   "meaning": "'real-speed gpon' rechazado en la C620; reportado por la sesión del importador, que lo vio dejar una ONU a medias en una prueba. No usarlo en el aprovisionamiento; no reproducido por el TKC",
+   "retry": false
+  }
+ ],
+ "limits": {
+  "onu_index": {
+   "syntax_range": "1-256 (la OLT acepta la autorización de cualquier índice sin error)",
+   "real_range": "1-128",
+   "evidence": "2026-10-02, puerto 1/1/5 C620, ONU de prueba: registran 64, 96, 127 y 128 (salen de OffLine a syncMib en 10-60 s); 129, 130, 192, 255, 256 se autorizan sin error pero NO registran en 90 s (OMCC disable, OffLine); el 250 tampoco en 4 min",
+   "recommendation": "validar 1-128 en el importador; los índices 129-256 se aceptan por CLI pero la ONU nunca se pone en línea",
+   "pitfall": "la ONU queda con un 'onu N type … sn …' en la configuración y puede seguir figurando en 'show pon onu uncfg'; una segunda alta con el mismo SN da %Error 222320 (GPON ONU sn already exists)"
+  },
+  "snmp": {
+   "getbulk_max_repetitions": "<=8 en C620 (10-20 provocan timeout/resourceUnavailable en algunas columnas)",
+   "timeout": "3 s insuficiente en la columna 1082.500.20.2.1.25 (3 s por fila); usar >=15 s o saltarla",
+   "one_request_in_flight": true,
+   "cli_vs_snmp": "el SNMP de lectura es la vía rápida; la CLI es lenta y se atiende en sesiones secuenciales"
+  }
+ },
+ "timings": {
+  "reboot_online_onu": "corte de ~45-55 s: working -> LOS (~15-45 s) -> syncMib -> working",
+  "onu_registration_new": "OffLine -> syncMib (~20 s) -> working si la fibra es estable",
+  "state_samples": "muestrear 'show gpon onu state gpon_olt-<pon>' cada 10 s"
+ },
+ "onu_phase_states": [
+  "working",
+  "OffLine",
+  "LOS",
+  "DyingGasp",
+  "syncMib",
+  "Logging"
+ ],
+ "snmp_status_enum": {
+  "2": "LOS",
+  "4": "Working",
+  "5": "DyingGasp",
+  "7": "OffLine"
+ },
+ "resource_assign_mode": {
+  "default": "mode1 (la OLT asigna Port-ID y Alloc-ID; la configuración NO muestra ids)",
+  "mode2": "se activa con 'resource mode2' en interface gpon_olt-<pon> y se ve en la configuración del puerto como 'resource-id-assign-mode mode2'; entonces la configuración de la ONU lista los ids: 'tcont 1 allocid 1024 profile <P>' y 'gemport 1 name internet portid 1024 tcont 1'",
+  "restore": "'resource mode1' elimina la línea y deja el puerto idéntico al original",
+  "parser_note": "los parsers de 'show running-config-interface gpon_onu-…' deben aceptar ambas formas"
+ }
+}

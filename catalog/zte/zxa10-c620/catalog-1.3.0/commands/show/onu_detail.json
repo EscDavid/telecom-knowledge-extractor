@@ -1,0 +1,102 @@
+{
+  "id": "command.zte.gpon.onu.show.onu_detail",
+  "canonical_name": "show gpon onu detail-info",
+  "vendor": "ZTE",
+  "family": "ZXA10 C620",
+  "firmware": [
+    "1.2.2"
+  ],
+  "technology": "gpon",
+  "category": "show",
+  "cli_mode": "privileged_exec",
+  "cli_context": null,
+  "entity_ref": "entity.zte.gpon.device.onu",
+  "description": "Detalle de una ONU: tipo, estado, serial, distancia, tiempo en línea y últimas 10 altas/bajas con causa. Name/Description salen enmascarados (********).",
+  "syntax": "show gpon onu detail-info gpon_onu-<idx>",
+  "parameters": [
+    {
+      "name": "gpon_onu",
+      "type": "string",
+      "pattern": null,
+      "range": null,
+      "required": true,
+      "description": "",
+      "example": "gpon_onu-1/1/5:1"
+    }
+  ],
+  "output_fields": [
+    {
+      "name": "phase_state",
+      "type": "string",
+      "unit": null,
+      "oid_ref": "oid.zte.gpon.onu.onu_status",
+      "oid_status": "mapped"
+    },
+    {
+      "name": "serial_number",
+      "type": "string",
+      "unit": null,
+      "oid_ref": "oid.zte.gpon.onu.onu_serial_number",
+      "oid_status": "mapped"
+    },
+    {
+      "name": "onu_distance",
+      "type": "string",
+      "unit": null,
+      "oid_ref": "oid.zte.gpon.onu.onu_distance",
+      "oid_status": "mapped"
+    },
+    {
+      "name": "online_duration",
+      "type": "string",
+      "unit": null,
+      "oid_ref": null,
+      "oid_status": "not_mapped"
+    },
+    {
+      "name": "authpass_time",
+      "type": "string",
+      "unit": null,
+      "oid_ref": "oid.zte.gpon.onu.onu_last_auth_time",
+      "oid_status": "mapped"
+    },
+    {
+      "name": "offline_time",
+      "type": "string",
+      "unit": null,
+      "oid_ref": "oid.zte.gpon.onu.onu_last_offline_time",
+      "oid_status": "mapped"
+    },
+    {
+      "name": "offline_cause",
+      "type": "string",
+      "unit": null,
+      "oid_ref": "oid.zte.gpon.onu.onu_last_offline_cause",
+      "oid_status": "mapped"
+    }
+  ],
+  "prerequisites": [],
+  "related_commands": [
+    "command.zte.gpon.onu.show.onu_state",
+    "command.zte.gpon.onu.show.onu_distance",
+    "command.zte.gpon.onu.show.pon_power"
+  ],
+  "rollback": null,
+  "errors": [],
+  "notes": null,
+  "evidence": "ejecutado y verificado en la OLT el 2026-10-02",
+  "sources": [
+    {
+      "doc_type": "hardware_verification",
+      "pages": null,
+      "confidence": 0.95
+    }
+  ],
+  "confidence": {
+    "extraction": 0.95,
+    "correlation": 0.0,
+    "overall": 0.95
+  },
+  "status": "verified",
+  "conflicts": []
+}

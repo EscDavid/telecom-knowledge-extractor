@@ -1,0 +1,23 @@
+show vlan 100
+vlanid          :100
+name            :VLAN0100
+description     :N/A
+multicast-packet:flood-unknown
+protocol-filter :N/A
+cos-to-dei      :N/A
+dei-mark        :disable
+tpid            :N/A
+forwarding-mode :vlan-mac
+status          :OK
+cos copy-to-inner :N/A
+cos copy-to-outer :N/A
+port(untagged):
+port(tagged):
+  vport-1/1/1.2,57,88-89:1,2.1-4:1
+  vport-1/1/2.5-10:1,3.11,15:1
+  vport-1/1/3.19,67,109-112:1,5.6,18:1
+  vport-1/1/5.53,57,79,83,85:1,7.1,21,32:1
+  vport-1/1/7.87:1,9.1:1,16.1-6:1
+  vport-1/1/16.7-9:1
+  xgei-1/10/1  
+ZXAN#

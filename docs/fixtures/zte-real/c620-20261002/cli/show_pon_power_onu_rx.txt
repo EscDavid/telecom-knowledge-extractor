@@ -1,0 +1,5 @@
+show pon power onu-rx gpon_onu-1/1/1:1
+Onu                  Rx power   
+------------------------------------
+gpon_onu-1/1/1:1     -24.686(dbm)
+ZXAN#

@@ -1,0 +1,45 @@
+{
+  "project": "Telecom Knowledge Compiler (TKC)",
+  "vendor": "ZTE",
+  "family": "ZXA10 C320",
+  "technology": "gpon",
+  "catalog_version": "1.1.0",
+  "generated_at": "2026-10-24T20:35:48",
+  "firmware": [
+    "2.0",
+    "2.1"
+  ],
+  "counts": {
+    "entities": 17,
+    "commands": 18,
+    "oids": 4214,
+    "relations": 8,
+    "alarms": 117,
+    "conflicts": 0,
+    "orphans": 4
+  },
+  "status_distribution": {
+    "entities": {
+      "verified": 7,
+      "inferred": 4,
+      "documented": 6
+    },
+    "commands": {
+      "verified": 18
+    },
+    "oids": {
+      "documented": 4214
+    },
+    "relations": {
+      "inferred": 8
+    },
+    "alarms": {
+      "documented": 117
+    }
+  },
+  "confidence": {
+    "avg_overall": 0.849,
+    "min_overall": 0.0
+  },
+  "ambiguous_aliases": 0
+}

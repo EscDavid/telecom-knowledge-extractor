@@ -1,0 +1,84 @@
+{
+  "id": "command.zte.gpon.onu.modify.mng_traffic_limit",
+  "canonical_name": "traffic-limit (ONU)",
+  "vendor": "ZTE",
+  "family": "ZXA10 C620",
+  "firmware": [
+    "1.2.2"
+  ],
+  "technology": "gpon",
+  "category": "modify",
+  "cli_mode": "interface_config",
+  "cli_context": "pon-onu-mng gpon_onu-<idx>",
+  "entity_ref": "entity.zte.gpon.device.onu",
+  "description": "Limita la tasa con un perfil de 'onu profile traffic' (NO con los SMARTOLT-* de qos traffic-profile). Se guarda como 'gemport traffic-limit 1 downstream <P> upstream <P>'.",
+  "syntax": "gemport traffic-limit <1-255> {upstream <perfil>|downstream <perfil>} ; switchport ethuni <if> traffic-limit {in|out} <perfil>",
+  "parameters": [
+    {
+      "name": "traffic-limit",
+      "type": "integer",
+      "pattern": null,
+      "range": "1-255",
+      "required": true,
+      "description": "",
+      "example": null
+    },
+    {
+      "name": "if",
+      "type": "string",
+      "pattern": null,
+      "range": null,
+      "required": true,
+      "description": "",
+      "example": null
+    },
+    {
+      "name": "perfil",
+      "type": "string",
+      "pattern": null,
+      "range": null,
+      "required": true,
+      "description": "",
+      "example": null
+    }
+  ],
+  "output_fields": [],
+  "prerequisites": [
+    "entity.zte.gpon.device.onu"
+  ],
+  "related_commands": [
+    "command.zte.gpon.global.create.onu_profile_traffic_create",
+    "command.zte.gpon.global.show.onu_profile_traffic"
+  ],
+  "rollback": null,
+  "errors": [
+    {
+      "code": 223876,
+      "meaning": "gemport traffic-limit exige un perfil de 'onu profile traffic', no uno de qos traffic-profile",
+      "severity": "error",
+      "retry": false
+    },
+    {
+      "code": 223981,
+      "meaning": "switchport traffic-limit: el perfil no existe en 'onu profile traffic'",
+      "severity": "error",
+      "retry": false
+    }
+  ],
+  "notes": null,
+  "evidence": "ejecutado y verificado en la OLT el 2026-10-02",
+  "sources": [
+    {
+      "doc_type": "hardware_verification",
+      "pages": null,
+      "confidence": 0.95
+    }
+  ],
+  "confidence": {
+    "extraction": 0.95,
+    "correlation": 0.0,
+    "overall": 0.95
+  },
+  "status": "verified",
+  "conflicts": []
+}

@@ -1,0 +1,69 @@
+{
+  "id": "command.zte.gpon.global.create.onu_profile_traffic_create",
+  "canonical_name": "onu profile traffic",
+  "vendor": "ZTE",
+  "family": "ZXA10 C600",
+  "firmware": [
+    "1.2.2"
+  ],
+  "technology": "gpon",
+  "category": "create",
+  "cli_mode": "pon_config",
+  "cli_context": "gpon",
+  "entity_ref": "entity.zte.gpon.logical.onu_traffic_profile",
+  "description": "Crea un perfil de tráfico de ONU (usado por gemport/switchport traffic-limit). Por defecto CBS/PBS 0, colour-blind, no-marking.",
+  "syntax": "onu profile traffic <WORD> sir <kbps> pir <kbps> [cbs <n>] [colour-mode …] [meter-type …]",
+  "parameters": [
+    {
+      "name": "name",
+      "type": "string",
+      "pattern": null,
+      "range": null,
+      "required": true,
+      "description": "",
+      "example": "TKC-OP"
+    },
+    {
+      "name": "sir",
+      "type": "integer",
+      "pattern": null,
+      "range": "0-10000000 kbps",
+      "required": true,
+      "description": "",
+      "example": "1024"
+    },
+    {
+      "name": "pir",
+      "type": "integer",
+      "pattern": null,
+      "range": "0-10000000 kbps",
+      "required": true,
+      "description": "",
+      "example": "1024"
+    }
+  ],
+  "output_fields": [],
+  "prerequisites": [],
+  "related_commands": [
+    "command.zte.gpon.global.delete.onu_profile_traffic_delete",
+    "command.zte.gpon.global.show.onu_profile_traffic"
+  ],
+  "rollback": "no onu profile traffic <WORD>",
+  "errors": [],
+  "notes": null,
+  "evidence": "sintaxis obtenida solo con la ayuda '?' de la OLT (no ejecutada)",
+  "sources": [
+    {
+      "doc_type": "hardware_verification",
+      "pages": null,
+      "confidence": 0.6
+    }
+  ],
+  "confidence": {
+    "extraction": 0.6,
+    "correlation": 0.0,
+    "overall": 0.6
+  },
+  "status": "documented",
+  "conflicts": []
+}

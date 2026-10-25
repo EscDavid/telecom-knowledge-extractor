@@ -1,0 +1,310 @@
+{
+  "_nota": "Atributos que lee el importador (network-api) y cómo se comprueban contra fixtures reales anonimizadas. kind: tipo de decodificación; fixture: archivo de docs/fixtures/zte-real/<modelo>/snmp/.",
+  "families": {
+    "ZXA10 C620": {
+      "fixtures": "docs/fixtures/zte-real/c620-20261002",
+      "version": "1.3.0",
+      "attributes": {
+        "onu_serial_number": {
+          "fixture": "onu_serial_pon1.txt",
+          "kind": "serial_text"
+        },
+        "onu_status": {
+          "fixture": "onu_status_pon1.txt",
+          "kind": "enum",
+          "ground_truth": "phase_state"
+        },
+        "onu_rx_power": {
+          "fixture": "onu_rx_power_pon1.txt",
+          "kind": "dbm_formula",
+          "range": [
+            -45,
+            10
+          ]
+        },
+        "onu_tx_power": {
+          "fixture": "onu_tx_power_pon1.txt",
+          "kind": "dbm_formula",
+          "range": [
+            -10,
+            10
+          ]
+        },
+        "onu_name": {
+          "fixture": null,
+          "kind": "present"
+        },
+        "onu_description": {
+          "fixture": null,
+          "kind": "present"
+        },
+        "onu_distance": {
+          "fixture": "onu_distance_pon1.txt",
+          "kind": "int_range",
+          "range": [
+            0,
+            60000
+          ]
+        },
+        "onu_type_name": {
+          "fixture": "onu_type_name_pon1.txt",
+          "kind": "text"
+        },
+        "onu_model": {
+          "fixture": "onu_model_pon1.txt",
+          "kind": "text"
+        },
+        "onu_last_offline_cause": {
+          "fixture": "onu_offline_cause_pon1.txt",
+          "kind": "enum"
+        },
+        "service_port_ingress_profile": {
+          "fixture": "service_port_profiles_pon1.txt",
+          "kind": "text"
+        },
+        "service_port_egress_profile": {
+          "fixture": "service_port_profiles_pon1.txt",
+          "kind": "text"
+        },
+        "oper_status": {
+          "fixture": "ifName_ifTable.txt",
+          "kind": "present",
+          "oid_exact": "1.3.6.1.2.1.2.2.1.8"
+        },
+        "uncfg_onu_serial": {
+          "fixture": "uncfg_autofind.txt",
+          "kind": "serial_hex"
+        },
+        "uncfg_onu_type": {
+          "fixture": "uncfg_autofind.txt",
+          "kind": "text"
+        },
+        "uncfg_onu_firmware": {
+          "fixture": "uncfg_autofind.txt",
+          "kind": "text"
+        },
+        "uncfg_onu_detected": {
+          "fixture": "uncfg_autofind.txt",
+          "kind": "datetime_hex"
+        },
+        "onu_type": {
+          "fixture": "onu_type_name_pon1.txt",
+          "kind": "text"
+        },
+        "onu_rx_power_signed": {
+          "attribute": "onu_rx_power",
+          "fixture": "onu_rx_power_signed.txt",
+          "kind": "dbm_signed",
+          "range": [
+            -45,
+            10
+          ],
+          "ground_truth": "power_samples"
+        }
+      }
+    },
+    "ZXA10 C600": {
+      "fixtures": "docs/fixtures/zte-real/c600-20261002",
+      "version": "1.3.0",
+      "attributes": {
+        "onu_serial_number": {
+          "fixture": "onu_serial_pon1.txt",
+          "kind": "serial_text"
+        },
+        "onu_status": {
+          "fixture": "onu_status_pon1.txt",
+          "kind": "enum"
+        },
+        "onu_rx_power": {
+          "fixture": "onu_rx_power_pon1.txt",
+          "kind": "dbm_formula",
+          "range": [
+            -45,
+            10
+          ]
+        },
+        "onu_tx_power": {
+          "fixture": "onu_tx_power_pon1.txt",
+          "kind": "dbm_formula",
+          "range": [
+            -10,
+            10
+          ]
+        },
+        "onu_distance": {
+          "fixture": "onu_distance_pon1.txt",
+          "kind": "int_range",
+          "range": [
+            0,
+            60000
+          ]
+        },
+        "oper_status": {
+          "fixture": "ifName_ifTable.txt",
+          "kind": "present",
+          "oid_exact": "1.3.6.1.2.1.2.2.1.8"
+        },
+        "onu_type": {
+          "fixture": "onu_type_name_pon1.txt",
+          "kind": "text"
+        },
+        "onu_rx_power_signed": {
+          "attribute": "onu_rx_power",
+          "fixture": "onu_rx_power_signed.txt",
+          "kind": "dbm_signed",
+          "range": [
+            -45,
+            10
+          ],
+          "ground_truth": "power_samples"
+        },
+        "onu_type_name": {
+          "fixture": "onu_type_name_pon1.txt",
+          "kind": "text"
+        },
+        "onu_model": {
+          "fixture": "onu_model_pon1.txt",
+          "kind": "text"
+        },
+        "onu_last_offline_cause": {
+          "fixture": "onu_offline_cause_pon1.txt",
+          "kind": "enum"
+        },
+        "service_port_ingress_profile": {
+          "fixture": "service_port_profiles_pon1.txt",
+          "kind": "text"
+        },
+        "service_port_egress_profile": {
+          "fixture": "service_port_profiles_pon1.txt",
+          "kind": "text"
+        },
+        "onu_name": {
+          "fixture": null,
+          "kind": "present"
+        },
+        "onu_description": {
+          "fixture": null,
+          "kind": "present"
+        }
+      }
+    },
+    "ZXA10 C320": {
+      "fixtures": "docs/fixtures/zte-real/c320-20261001",
+      "version": "1.2.0",
+      "attributes": {
+        "onu_serial_number": {
+          "fixture": "onu_serial.txt",
+          "kind": "serial_hex"
+        },
+        "onu_status": {
+          "fixture": "onu_status.txt",
+          "kind": "enum"
+        },
+        "onu_rx_power": {
+          "fixture": "onu_rx_power.txt",
+          "kind": "dbm_signed_all",
+          "range": [
+            -45,
+            10
+          ]
+        },
+        "onu_tx_power": {
+          "fixture": "onu_tx_power.txt",
+          "kind": "dbm_signed_all",
+          "range": [
+            -10,
+            10
+          ]
+        },
+        "onu_rx_power_signed": {
+          "attribute": "onu_rx_power",
+          "fixture": "onu_rx_power_signed.txt",
+          "kind": "dbm_signed",
+          "range": [
+            -45,
+            10
+          ]
+        },
+        "onu_type": {
+          "fixture": "onu_type.txt",
+          "kind": "text"
+        },
+        "onu_vendor_id": {
+          "fixture": "onu_vendor_id.txt",
+          "kind": "text"
+        },
+        "onu_name": {
+          "fixture": null,
+          "kind": "absent"
+        },
+        "onu_description": {
+          "fixture": null,
+          "kind": "absent"
+        },
+        "onu_ip_address": {
+          "fixture": null,
+          "kind": "absent"
+        }
+      }
+    },
+    "ZXA10 C300": {
+      "fixtures": "docs/fixtures/zte-real/c300-20261001",
+      "version": "1.2.0",
+      "attributes": {
+        "onu_serial_number": {
+          "fixture": "onu_serial.txt",
+          "kind": "serial_hex"
+        },
+        "onu_status": {
+          "fixture": "onu_status.txt",
+          "kind": "enum"
+        },
+        "onu_rx_power": {
+          "fixture": "onu_rx_power.txt",
+          "kind": "dbm_signed_all",
+          "range": [
+            -45,
+            10
+          ]
+        },
+        "onu_tx_power": {
+          "fixture": "onu_tx_power.txt",
+          "kind": "dbm_signed_all",
+          "range": [
+            -10,
+            10
+          ]
+        },
+        "onu_rx_power_signed": {
+          "attribute": "onu_rx_power",
+          "fixture": "onu_rx_power_signed.txt",
+          "kind": "dbm_signed",
+          "range": [
+            -45,
+            10
+          ]
+        },
+        "onu_type": {
+          "fixture": "onu_type.txt",
+          "kind": "text"
+        },
+        "onu_vendor_id": {
+          "fixture": "onu_vendor_id.txt",
+          "kind": "text"
+        },
+        "onu_name": {
+          "fixture": null,
+          "kind": "absent"
+        },
+        "onu_description": {
+          "fixture": null,
+          "kind": "absent"
+        },
+        "onu_ip_address": {
+          "fixture": null,
+          "kind": "absent"
+        }
+      }
+    }
+  }
+}

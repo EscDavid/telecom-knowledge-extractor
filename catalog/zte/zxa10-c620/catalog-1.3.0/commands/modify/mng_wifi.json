@@ -1,0 +1,172 @@
+{
+  "id": "command.zte.gpon.onu.modify.mng_wifi",
+  "canonical_name": "WiFi (pon-onu-mng)",
+  "vendor": "ZTE",
+  "family": "ZXA10 C620",
+  "firmware": [
+    "1.2.2"
+  ],
+  "technology": "gpon",
+  "category": "modify",
+  "cli_mode": "interface_config",
+  "cli_context": "pon-onu-mng gpon_onu-<idx>",
+  "entity_ref": "entity.zte.gpon.device.onu",
+  "description": "WiFi de la ONU. Solo en C620. Requiere que la ONU se haya dado de alta con un tipo que tenga wifi_0/1 (si no: 'UNI does not exist'). Orden obligatorio: work-mode, domain, channel (verificado: 'wifi enable channel 6 work-mode … domain …' da Invalid input). 'domain bra' solo con 'work-mode 802.11b' (sin él: 230263); el resto de países (usa esp chn ger fra uk…) valen con cualquier work-mode; canal 0-11 en CAN/USA. Verificado: 'wifi enable work-mode 802.11b domain bra channel 6 tx-power-percent 80', 'wifi enable domain usa channel 6', 'wifi 5g enable domain chn channel 36'. El dominio por defecto (chn) no se guarda en la configuración.",
+  "syntax": "interface wifi wifi_0/<n> {state {lock|unlock}|arc {enable arc-interval <n>|disable}} ; ssid ctrl wifi_0/<n> {name <WORD>|hide {enable|disable}|max-users <1-32>|user-isolation {enable|disable}} ; wifi enable [channel <0-13>] [qos-type {disable|ssid|wmm}] [radio-measure …] [ssid-isolate …] [tx-power-percent {20|40|60|80|100}] [tx-rate …] [work-mode {802.11b|802.11g|802.11n|802.11b-11g|802.11b-11g-11n}] ; wifi 5g {enable|disable} ; ssid auth {wep|wpa}",
+  "parameters": [
+    {
+      "name": "n",
+      "type": "string",
+      "pattern": null,
+      "range": null,
+      "required": true,
+      "description": "",
+      "example": null
+    },
+    {
+      "name": "state",
+      "type": "enum",
+      "pattern": null,
+      "range": "lock|unlock",
+      "required": true,
+      "description": "",
+      "example": null
+    },
+    {
+      "name": "WORD",
+      "type": "string",
+      "pattern": null,
+      "range": null,
+      "required": true,
+      "description": "",
+      "example": null
+    },
+    {
+      "name": "WORD_hide",
+      "type": "enum",
+      "pattern": null,
+      "range": "enable|disable",
+      "required": true,
+      "description": "",
+      "example": null
+    },
+    {
+      "name": "enable_disable_max-users",
+      "type": "integer",
+      "pattern": null,
+      "range": "1-32",
+      "required": true,
+      "description": "",
+      "example": null
+    },
+    {
+      "name": "1-32_user-isolation",
+      "type": "enum",
+      "pattern": null,
+      "range": "enable|disable",
+      "required": true,
+      "description": "",
+      "example": null
+    },
+    {
+      "name": "channel",
+      "type": "integer",
+      "pattern": null,
+      "range": "0-13",
+      "required": false,
+      "description": "",
+      "example": null
+    },
+    {
+      "name": "qos-type",
+      "type": "enum",
+      "pattern": null,
+      "range": "disable|ssid|wmm",
+      "required": false,
+      "description": "",
+      "example": null
+    },
+    {
+      "name": "tx-power-percent",
+      "type": "enum",
+      "pattern": null,
+      "range": "20|40|60|80|100",
+      "required": false,
+      "description": "",
+      "example": null
+    },
+    {
+      "name": "work-mode",
+      "type": "enum",
+      "pattern": null,
+      "range": "802.11b|802.11g|802.11n|802.11b-11g|802.11b-11g-11n",
+      "required": false,
+      "description": "",
+      "example": null
+    },
+    {
+      "name": "5g",
+      "type": "enum",
+      "pattern": null,
+      "range": "enable|disable",
+      "required": true,
+      "description": "",
+      "example": null
+    },
+    {
+      "name": "auth",
+      "type": "enum",
+      "pattern": null,
+      "range": "wep|wpa",
+      "required": true,
+      "description": "",
+      "example": null
+    }
+  ],
+  "output_fields": [],
+  "prerequisites": [
+    "entity.zte.gpon.device.onu"
+  ],
+  "related_commands": [
+    "command.zte.gpon.onu.show.remote_wifi_info",
+    "command.zte.gpon.onu.show.remote_ssid_info",
+    "command.zte.gpon.onu.modify.onu_type_if"
+  ],
+  "rollback": null,
+  "errors": [
+    {
+      "code": 223845,
+      "meaning": "el tipo de ONU no declara esa interfaz (eth/wifi/video); crear el tipo con onu-type-if y dar de alta la ONU con él",
+      "severity": "error",
+      "retry": false
+    },
+    {
+      "code": 230263,
+      "meaning": "parámetro no válido (domain wifi, splitter, video_0/1 en onu-type-if)",
+      "severity": "error",
+      "retry": false
+    },
+    {
+      "code": 140305,
+      "meaning": "faltan parámetros al final (p. ej. arc sin arc-interval, tcont name sin profile)",
+      "severity": "error",
+      "retry": false
+    }
+  ],
+  "notes": null,
+  "evidence": "ejecutado y verificado en la OLT el 2026-10-02",
+  "sources": [
+    {
+      "doc_type": "hardware_verification",
+      "pages": null,
+      "confidence": 0.95
+    }
+  ],
+  "confidence": {
+    "extraction": 0.95,
+    "correlation": 0.0,
+    "overall": 0.95
+  },
+  "status": "verified",
+  "conflicts": []
+}

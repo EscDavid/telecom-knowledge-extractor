@@ -1,0 +1,38 @@
+{
+  "id": "command.zte.gpon.global.modify.config_enter",
+  "canonical_name": "configure terminal",
+  "vendor": "ZTE",
+  "family": "ZXA10 C620",
+  "firmware": [
+    "1.2.2"
+  ],
+  "technology": "gpon",
+  "category": "modify",
+  "cli_mode": "privileged_exec",
+  "cli_context": null,
+  "entity_ref": null,
+  "description": "Entra a modo configuración (en la bitácora aparece como 'conf t'). 'end' vuelve a exec; 'exit' sube un nivel.",
+  "syntax": "configure terminal",
+  "parameters": [],
+  "output_fields": [],
+  "prerequisites": [],
+  "related_commands": [],
+  "rollback": "end",
+  "errors": [],
+  "notes": null,
+  "evidence": "ejecutado y verificado en la OLT el 2026-10-02",
+  "sources": [
+    {
+      "doc_type": "hardware_verification",
+      "pages": null,
+      "confidence": 0.95
+    }
+  ],
+  "confidence": {
+    "extraction": 0.95,
+    "correlation": 0.0,
+    "overall": 0.95
+  },
+  "status": "verified",
+  "conflicts": []
+}

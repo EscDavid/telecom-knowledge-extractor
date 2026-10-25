@@ -1,0 +1,60 @@
+{
+  "id": "command.zte.gpon.global.show.logfile_brief",
+  "canonical_name": "show logfile brief",
+  "vendor": "ZTE",
+  "family": "ZXA10 C620",
+  "firmware": [
+    "1.2.2"
+  ],
+  "technology": "gpon",
+  "category": "show",
+  "cli_mode": "privileged_exec",
+  "cli_context": null,
+  "entity_ref": null,
+  "description": "Bitácora de comandos de la OLT (más reciente primero): bloques 'Time / User (usuario, vty, IP) / CMDLine' con cada comando y cada inicio de sesión Telnet. Cubre ~14 h. Equivalente CLI de la rama SNMP 3902.3.305.2.1.3.",
+  "syntax": "show logfile brief",
+  "parameters": [],
+  "output_fields": [
+    {
+      "name": "time",
+      "type": "string",
+      "unit": null,
+      "oid_ref": null,
+      "oid_status": "not_mapped"
+    },
+    {
+      "name": "user",
+      "type": "string",
+      "unit": null,
+      "oid_ref": null,
+      "oid_status": "not_mapped"
+    },
+    {
+      "name": "cmdline",
+      "type": "string",
+      "unit": null,
+      "oid_ref": null,
+      "oid_status": "not_mapped"
+    }
+  ],
+  "prerequisites": [],
+  "related_commands": [],
+  "rollback": null,
+  "errors": [],
+  "notes": "Verificado en la C620 y la C600 el 2026-10-09. Contiene el usuario de la sesión: no publicar salidas crudas.",
+  "evidence": "ejecutado y verificado en la OLT el 2026-10-02",
+  "sources": [
+    {
+      "doc_type": "hardware_verification",
+      "pages": null,
+      "confidence": 0.95
+    }
+  ],
+  "confidence": {
+    "extraction": 0.95,
+    "correlation": 0.0,
+    "overall": 0.95
+  },
+  "status": "verified",
+  "conflicts": []
+}
