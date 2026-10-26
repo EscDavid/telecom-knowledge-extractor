@@ -1,0 +1,43 @@
+ONU interface:         gpon-onu_1/3/1:2
+  Name:                <anonimizado>
+  Type:                OPTICTIMES
+  State:               ready
+  Configured channel:  auto
+  Current channel:     1(GPON)
+  Admin state:         enable
+  Phase state:         working
+  Config state:        fail
+  Authentication mode: sn
+  SN Bind:             enable with SN check
+  Serial number:       OPTI925A2B9B
+  Password:            
+  Description:         <anonimizado>
+  Vport mode:          gemport
+  DBA Mode:            Hybrid
+  ONU Status:          enable
+  OMCI BW Profile:     
+  Line Profile:        N/A
+  Service Profile:     N/A
+  ONU Distance:        1047m
+  Online Duration:     23h 03m 25s
+  FEC:                 none
+  FEC actual mode:     N/A
+  1PPS+ToD:            disable
+  Auto replace:        disable 
+  Multicast encryption:disable
+  Multicast encryption current state:N/A
+------------------------------------------
+       Authpass Time          OfflineTime             Cause
+   1   2026-10-25 11:09:24    0000-00-00 00:00:00              
+   2   0000-00-00 00:00:00    0000-00-00 00:00:00              
+   3   0000-00-00 00:00:00    0000-00-00 00:00:00              
+   4   0000-00-00 00:00:00    0000-00-00 00:00:00              
+   5   0000-00-00 00:00:00    0000-00-00 00:00:00              
+   6   0000-00-00 00:00:00    0000-00-00 00:00:00              
+   7   0000-00-00 00:00:00    0000-00-00 00:00:00              
+   8   0000-00-00 00:00:00    0000-00-00 00:00:00              
+   9   0000-00-00 00:00:00    0000-00-00 00:00:00              
+  10   0000-00-00 00:00:00    0000-00-00 00:00:00              
+
+
+ZXAN#

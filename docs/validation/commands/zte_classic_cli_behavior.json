@@ -1,0 +1,40 @@
+{
+ "meta": {"vendor": "ZTE", "families": ["ZXA10 C300", "ZXA10 C320"], "firmware": "V2.1.0",
+          "source": "reports/cli_verification_c620_c600_2026-10-02.md (secciones BJ y BK)",
+          "evidence": "sonda de solo lectura ejecutada el 2026-10-26 en una OLT ZXA10 C300 V2.1.0 (103 ONU); la C320 comparte plataforma y firmware pero no se ejecutó en ella"},
+ "syntax": {
+  "interface_olt": "gpon-olt_<rack>/<slot>/<puerto>",
+  "interface_onu": "gpon-onu_<rack>/<slot>/<puerto>:<n>",
+  "note": "NO existe la sintaxis de C6 (gpon_olt-P, gpon_onu-P:N): Invalid input. Rango de ONU por puerto: 128 (show interface gpon-olt)",
+  "prompt": "ZXAN#",
+  "version_command": "show version-running (show version es ambiguo, 20204; show software 1 no existe)",
+  "uncfg_command": "show gpon onu uncfg (show pon onu uncfg también responde, vacío con 0 ONU)",
+  "running_config": "show running-config interface <iface> (con espacio; show running-config-interface no existe)",
+  "pii": "la cuenta de lectura ve Name y Description de la ONU EN CLARO (en C6 salen enmascarados)"
+ },
+ "errors": [
+  {"code": 20200, "meaning": "Invalid input detected at '^' marker.Invalid command (comando o árbol inexistente)", "retry": false},
+  {"code": 20202, "meaning": "Invalid input detected at '^' marker.Invalid parameter (ONU, puerto o argumento que no existe)", "retry": false},
+  {"code": 20203, "meaning": "Incomplete command (faltan argumentos)", "retry": false},
+  {"code": 20204, "meaning": "Ambiguous command (el prefijo coincide con varios comandos; usar el nombre completo)", "retry": false},
+  {"code": 62310, "meaning": "lectura vacía (%Code 62310-GPONSRV: No related information to show)", "retry": false},
+  {"code": 64040, "meaning": "lectura vacía (%Code 64040-GPONRM: No relate information to show)", "retry": false}
+ ],
+ "rejected_on_c300_v2_1_0": [
+  "show version (20204)", "show software 1", "show running-config-interface <iface>", "show mac interface <iface>",
+  "show qos traffic-profile", "show logfile brief", "show alarm current", "show alarm history", "show pon olt-tx <iface>",
+  "show gpon onu tcont|gemport|vport <iface>", "show gpon onu next-available <iface>", "show version-saved (20203)", "show pon version (20203)"
+ ],
+ "show_alarm_tree": ["configure", "counter", "crtv-active", "crtv-event", "crtv-history", "filter", "level-change", "pool", "profile"],
+ "provisioning_template_observed": {
+  "olt_port": ["onu <n> type <tipo> sn <serial>"],
+  "onu": ["name <texto>", "description <texto>", "tcont 1 profile <perfil-subida>", "gemport 1 tcont 1",
+          "gemport 1 traffic-limit downstream <perfil-bajada>", "service-port 1 vport 1 user-vlan <v> vlan <v>"],
+  "pon_onu_mng": ["flow mode 1 tag-filter vlan-filter untag-filter discard", "flow 1 pri 0 vlan <v>", "gemport 1 flow 1",
+                  "switchport-bind switch_0/1 iphost 1", "switchport-bind switch_0/1 veip 1",
+                  "ip-host 1 dhcp-enable enable ping-response enable traceroute-response enable",
+                  "vlan-filter-mode iphost 1 tag-filter vlan-filter untag-filter discard", "vlan-filter iphost 1 pri 0 vlan <v>",
+                  "dhcp-ip ethuni eth_0/<n> from-onu", "security-mgmt <n> state enable ..."],
+  "note": "visto en show running-config interface gpon-onu_… y show onu running config …; a diferencia de C6, el perfil de bajada va en `gemport … traffic-limit downstream` y el service-port se declara dentro de la interfaz de la ONU. No ejecutado por TKC."
+ }
+}

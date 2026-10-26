@@ -1,0 +1,10 @@
+Rack Shelf Slot CfgType RealType Port  HardVer SoftVer         Status
+-------------------------------------------------------------------------------
+1    1     0    PRWH    PRWH     0     V1.0.0                  INSERVICE
+1    1     1    PRWH    PRWH     0     V1.0.0                  NOPOWER
+1    1     3    GTGH    GTGHG    16    V1.0.0  V2.1.0          INSERVICE
+1    1     10   SCXM    SCXM     0     V1.0.0  V2.1.0          INSERVICE
+1    1     11   SCXM    SCXM     0     V1.0.0  V2.1.0          STANDBY
+1    1     19   HUVQ    HUVQ     4     V1.0.0  V2.1.0          INSERVICE
+1    1     20   HUVQ    HUVQ     4     V1.0.0  V2.1.0          INSERVICE
+ZXAN#

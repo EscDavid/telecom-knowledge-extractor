@@ -1,0 +1,73 @@
+Profile name  :default          
+  SIR(kbps)           PIR(kbps)           CBS(kbytes)         PBS(kbytes)       
+   
+ 9953280             9953280             default             default            
+ 
+ 
+Profile name  :SMARTOLT-VOIPMNG-10M          
+  SIR(kbps)           PIR(kbps)           CBS(kbytes)         PBS(kbytes)       
+   
+ 10480               11264               default             default            
+ 
+ 
+Profile name  :SMARTOLT-IPTV-50M-DOWN          
+  SIR(kbps)           PIR(kbps)           CBS(kbytes)         PBS(kbytes)       
+   
+ 56320               56320               default             default            
+ 
+ 
+Profile name  :SMARTOLT-40M-DOWN          
+  SIR(kbps)           PIR(kbps)           CBS(kbytes)         PBS(kbytes)       
+   
+ 41984               41984               524                 524                
+ 
+ 
+Profile name  :SMARTOLT-30M-DOWN          
+  SIR(kbps)           PIR(kbps)           CBS(kbytes)         PBS(kbytes)       
+   
+ 31488               31488               393                 393                
+ 
+ 
+Profile name  :SMARTOLT-100M-DOWN          
+  SIR(kbps)           PIR(kbps)           CBS(kbytes)         PBS(kbytes)       
+   
+ 104960              104960              1023                1023               
+ 
+ 
+Profile name  :SMARTOLT-1G-DOWN          
+  SIR(kbps)           PIR(kbps)           CBS(kbytes)         PBS(kbytes)       
+   
+ 1048064             1048064             1023                1023               
+ 
+ 
+Profile name  :SMARTOLT-50M-DOWN          
+  SIR(kbps)           PIR(kbps)           CBS(kbytes)         PBS(kbytes)       
+   
+ 52480               52480               656                 656                
+ 
+ 
+Profile name  :SMARTOLT-70M-DOWN          
+  SIR(kbps)           PIR(kbps)           CBS(kbytes)         PBS(kbytes)       
+   
+ 73472               73472               918                 918                
+ 
+ 
+Profile name  :SMARTOLT-80M-DOWN          
+  SIR(kbps)           PIR(kbps)           CBS(kbytes)         PBS(kbytes)       
+   
+ 83968               83968               1023                1023               
+ 
+ 
+Profile name  :SMARTOLT-60M-DOWN          
+  SIR(kbps)           PIR(kbps)           CBS(kbytes)         PBS(kbytes)       
+   
+ 62976               62976               787                 787                
+ 
+ 
+Profile name  :SMARTOLT-90M-DOWN          
+  SIR(kbps)           PIR(kbps)           CBS(kbytes)         PBS(kbytes)       
+   
+ 94464               94464               1023                1023               
+ 
+ 
+ZXAN#

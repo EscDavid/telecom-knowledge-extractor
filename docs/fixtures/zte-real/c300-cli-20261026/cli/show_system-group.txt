@@ -1,0 +1,10 @@
+System Description: C300 Version V2.1.0 Software, Copyright (c) by ZTE Corporati
+on Compiled
+System ObjectId: .1.3.6.1.4.1.0000.0000.0000.300.2.1
+Started before: 0 days, 23 hours, 30 minutes
+Contact with: +86-21-68895000
+System name:  ZXAN
+Location: No.889 BiBo Rd.PuDong District, Shanghai, China
+System Info:  5902  64edc4c6
+This system primarily offers a set of 78 services
+ZXAN#

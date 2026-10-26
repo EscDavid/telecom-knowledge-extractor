@@ -1,0 +1,3 @@
+           ^
+%Error 20200: Invalid input detected at '^' marker.Invalid command
+ZXAN#

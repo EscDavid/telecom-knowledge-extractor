@@ -1,0 +1,205 @@
+{
+  "entity_ref": "entity.zte.gpon.hardware.optical_module",
+  "vendor": "ZTE",
+  "family": "ZXA10 C300",
+  "firmware": [
+    "2.0",
+    "2.1"
+  ],
+  "alarms": [
+    {
+      "id": "alarm.zte.gpon.optical_module.zxanopticalmoduleunpluggedalm",
+      "code": "1.3.6.1.4.1.3902.1082.30.40.3.21",
+      "name": "zxAnOpticalModuleUnpluggedAlm",
+      "canonical_name": "zx An Optical Module Unplugged Alm",
+      "entity_ref": "entity.zte.gpon.hardware.optical_module",
+      "severity": "warning",
+      "type": "optical",
+      "description": "The alarm occurred when optical module is not online.",
+      "probable_causes": [
+        "Corte o degradacion de la fibra",
+        "Conector optico sucio o mal insertado",
+        "Potencia optica Rx/Tx fuera de rango",
+        "ONU apagada o desconectada"
+      ],
+      "remediation": [
+        "Verificar continuidad y limpieza de la fibra",
+        "Medir potencia optica Rx/Tx en el puerto",
+        "Revisar estado y alimentacion de la ONU"
+      ],
+      "oid_trap": "1.3.6.1.4.1.3902.1082.30.40.3.21",
+      "oid_refs": [
+        "ifAdminStatus",
+        "ifOperStatus",
+        "ifType"
+      ],
+      "auto_clear": false,
+      "clear_condition": null,
+      "threshold": null,
+      "escalation": {
+        "warning_after_minutes": null,
+        "major_after_minutes": null,
+        "critical_after_minutes": null
+      },
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "status": "documented",
+      "conflicts": []
+    },
+    {
+      "id": "alarm.zte.gpon.optical_module.zxanopticalmoduleunpluggedclr",
+      "code": "1.3.6.1.4.1.3902.1082.30.40.3.22",
+      "name": "zxAnOpticalModuleUnpluggedClr",
+      "canonical_name": "zx An Optical Module Unplugged Clr",
+      "entity_ref": "entity.zte.gpon.hardware.optical_module",
+      "severity": "warning",
+      "type": "optical",
+      "description": "The alarm restore when optical module is online.",
+      "probable_causes": [
+        "Corte o degradacion de la fibra",
+        "Conector optico sucio o mal insertado",
+        "Potencia optica Rx/Tx fuera de rango",
+        "ONU apagada o desconectada"
+      ],
+      "remediation": [
+        "Verificar continuidad y limpieza de la fibra",
+        "Medir potencia optica Rx/Tx en el puerto",
+        "Revisar estado y alimentacion de la ONU"
+      ],
+      "oid_trap": "1.3.6.1.4.1.3902.1082.30.40.3.22",
+      "oid_refs": [
+        "ifAdminStatus",
+        "ifOperStatus",
+        "ifType"
+      ],
+      "auto_clear": false,
+      "clear_condition": null,
+      "threshold": null,
+      "escalation": {
+        "warning_after_minutes": null,
+        "major_after_minutes": null,
+        "critical_after_minutes": null
+      },
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "status": "documented",
+      "conflicts": []
+    },
+    {
+      "id": "alarm.zte.gpon.optical_module.zxanoptmoduleclassmismatchalm",
+      "code": "1.3.6.1.4.1.3902.1082.30.40.3.23",
+      "name": "zxAnOptModuleClassMismatchAlm",
+      "canonical_name": "zx An Opt Module Class Mismatch Alm",
+      "entity_ref": "entity.zte.gpon.hardware.optical_module",
+      "severity": "warning",
+      "type": "optical",
+      "description": "A zxAnOptModuleClassMismatchAlm trap is sent when the agent has \n             detected that the optical module has plugged in, but \n             zxAnOpticalModuleConfClass is not same as \n             zxAnOpticalModuleActualClass.",
+      "probable_causes": [
+        "Corte o degradacion de la fibra",
+        "Conector optico sucio o mal insertado",
+        "Potencia optica Rx/Tx fuera de rango",
+        "ONU apagada o desconectada"
+      ],
+      "remediation": [
+        "Verificar continuidad y limpieza de la fibra",
+        "Medir potencia optica Rx/Tx en el puerto",
+        "Revisar estado y alimentacion de la ONU"
+      ],
+      "oid_trap": "1.3.6.1.4.1.3902.1082.30.40.3.23",
+      "oid_refs": [
+        "zxAnOpticalModuleConfClass",
+        "zxAnOpticalModuleActualClass"
+      ],
+      "auto_clear": false,
+      "clear_condition": null,
+      "threshold": null,
+      "escalation": {
+        "warning_after_minutes": null,
+        "major_after_minutes": null,
+        "critical_after_minutes": null
+      },
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "status": "documented",
+      "conflicts": []
+    },
+    {
+      "id": "alarm.zte.gpon.optical_module.zxanoptmoduleclassmismatchclr",
+      "code": "1.3.6.1.4.1.3902.1082.30.40.3.24",
+      "name": "zxAnOptModuleClassMismatchClr",
+      "canonical_name": "zx An Opt Module Class Mismatch Clr",
+      "entity_ref": "entity.zte.gpon.hardware.optical_module",
+      "severity": "warning",
+      "type": "optical",
+      "description": "A zxAnOptModuleClassMismatchClr trap is sent when the agent has\n             detected that the optical module has plugged in, and \n             zxAnOpticalModuleConfClass is same as \n             zxAnOpticalModuleActualClass.",
+      "probable_causes": [
+        "Corte o degradacion de la fibra",
+        "Conector optico sucio o mal insertado",
+        "Potencia optica Rx/Tx fuera de rango",
+        "ONU apagada o desconectada"
+      ],
+      "remediation": [
+        "Verificar continuidad y limpieza de la fibra",
+        "Medir potencia optica Rx/Tx en el puerto",
+        "Revisar estado y alimentacion de la ONU"
+      ],
+      "oid_trap": "1.3.6.1.4.1.3902.1082.30.40.3.24",
+      "oid_refs": [
+        "zxAnOpticalModuleConfClass",
+        "zxAnOpticalModuleActualClass"
+      ],
+      "auto_clear": false,
+      "clear_condition": null,
+      "threshold": null,
+      "escalation": {
+        "warning_after_minutes": null,
+        "major_after_minutes": null,
+        "critical_after_minutes": null
+      },
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "status": "documented",
+      "conflicts": []
+    }
+  ]
+}

@@ -1,0 +1,5 @@
+CPU usage:             0%
+Memory usage:          0%
+CPU usage threshold:   100%
+Memory usage threshold:100%
+ZXAN#

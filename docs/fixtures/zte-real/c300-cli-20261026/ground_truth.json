@@ -1,0 +1,25 @@
+{
+ "olt": "ZXA10 C300 V2.1.0 (103 ONU, un módulo GTGHG)",
+ "date": "2026-10-26",
+ "power_samples": [
+  {
+   "onu": "1/3/1:2",
+   "up_rx_dbm": -22.644,
+   "up_tx_dbm": 2.398,
+   "down_rx_dbm": -19.788,
+   "snmp_raw_expected": 3678
+  },
+  {
+   "onu": "1/3/1:3",
+   "olt_rx_dbm": -33.666,
+   "snmp_raw_expected": 63703,
+   "nota": "< -30 dBm: el raw sin signo es 63703; confirmar con snmpget 1012.3.50.12.1.1.10.268632320.3.1"
+  },
+  {
+   "onu": "1/3/1:4",
+   "olt_rx_dbm": -21.387,
+   "snmp_raw_expected": 4306
+  }
+ ],
+ "snmp_raw_confirmed": false
+}

@@ -133,49 +133,23 @@ def _fix_scale_unit(o: dict, stats: dict) -> None:
         o["empirical"]["scale_confirmed"] = factor
 
 
-CLASSIC_EVIDENCE = ("ejecutado por el importador (network-api, verificar-olts.ts) en 5 OLT clásicas y registrado en "
-                    "reports/hallazgos-cli-snmp-zte-2026-10-09.md; TKC no lo ejecutó")
-CLASSIC_OBSERVED = {      # id -> (syntax, descripción); lecturas confirmadas por el importador, sintaxis de clásicas
-    "command.zte.gpon.onu.show.uncfg": ("show gpon onu uncfg", "ONU sin autorizar (clásicas; en C6 es `show pon onu uncfg`)."),
-    "command.zte.gpon.onu.show.state": ("show gpon onu state gpon-olt_{pon}",
-                                        "Fase de las ONU de un puerto PON (clásicas); sin argumento lista todas."),
-}
-CLASSIC_NEW = {           # lecturas que no estaban en la semilla
-    "command.zte.gpon.global.show.version": ("show version", "Versión de software de la OLT (clásicas; en C6 es `show software 1`)."),
-}
-
-
 def _classic_commands(target: Path, stats: dict) -> None:
-    """La semilla trae 18 comandos del manual del C320 marcados `verified` con confianza 0,4 y sin ejecutarse nunca
-    en hardware. Se degradan a `documented` y se marcan las lecturas que el importador sí confirmó en las 5 OLT."""
+    """La semilla trae 18 comandos del manual del C320 marcados `verified` con confianza 0,4 y sin ejecutarse nunca en hardware.
+    Los que la sonda de solo lectura (docs/validation/commands/zte_classic_verified_commands.json) volvió a describir con el mismo id
+    sustituyen a la versión de la semilla; el resto se degrada a `documented` con aviso."""
     cdir = target / "commands"
-    for f in sorted(cdir.glob("*/*.json")):
-        c = _rd(f)
-        if c["id"] in CLASSIC_OBSERVED:
-            syn, desc = CLASSIC_OBSERVED[c["id"]]
-            c.update({"syntax": syn, "description": desc, "status": "observed", "evidence": CLASSIC_EVIDENCE})
-            c["sources"] = [{"doc_type": "hardware_verification", "pages": None, "confidence": 0.8}]
-            c["confidence"] = {"extraction": 0.8, "correlation": 0.0, "overall": 0.8}
-        elif c.get("status") == "verified" and all(x.get("doc_type") == "command_reference" for x in c.get("sources", [])):
+    files = {f: _rd(f) for f in sorted(cdir.glob("*/*.json"))}
+    verified_ids = {c["id"] for c in files.values() if any(x.get("doc_type") == "hardware_verification" for x in c.get("sources", []))}
+    for f, c in files.items():
+        hw = any(x.get("doc_type") == "hardware_verification" for x in c.get("sources", []))
+        if not hw and c["id"] in verified_ids:        # misma id re-descrita por la sonda: se elimina la copia de la semilla
+            f.unlink(); stats["commands"] += 1
+        elif not hw and c.get("status") == "verified":
             c["status"] = "documented"
             c["confidence"] = {**c.get("confidence", {}), "overall": 0.4}
             if CLASSIC_CMD_NOTE not in (c.get("description") or ""):
                 c["description"] = (c.get("description") or "").rstrip() + " " + CLASSIC_CMD_NOTE
-        else:
-            continue
-        _wr(f, c); stats["commands"] += 1
-    ref = next(iter(sorted(cdir.glob("show/*.json"))), None)
-    for cid, (syn, desc) in CLASSIC_NEW.items():
-        p = cdir / "show" / f"{cid.split('.')[-1]}.json"
-        if p.exists() or ref is None:
-            continue
-        c = _rd(ref)
-        c.update({"id": cid, "canonical_name": syn, "category": "show", "cli_mode": "privileged_exec", "entity_ref": None,
-                  "description": desc, "syntax": syn, "parameters": [], "output_fields": [], "prerequisites": [],
-                  "related_commands": [], "status": "observed", "evidence": CLASSIC_EVIDENCE, "conflicts": [],
-                  "sources": [{"doc_type": "hardware_verification", "pages": None, "confidence": 0.8}],
-                  "confidence": {"extraction": 0.8, "correlation": 0.0, "overall": 0.8}})
-        _wr(p, c); stats["commands"] += 1
+            _wr(f, c); stats["commands"] += 1
 
 
 def refine_catalog(target: Path, family: str, walks_dir: Path | None = None) -> dict:
@@ -350,6 +324,15 @@ def refine_catalog(target: Path, family: str, walks_dir: Path | None = None) -> 
         by_entity_attrs.setdefault(f"entity.zte.gpon.logical.{key}", {}).update(
             {a: {"name": a, "type": "string" if a in ("name", "type") else "integer", "range": None, "required": False,
                  "source": "cli"} for a in attrs})
+    if classic:     # cascarones del extractor: entidad `inferred`, confianza < 0,1, sin atributos, OID ni relaciones (bajan el tier a 2)
+        used = {o.get("entity_ref") or g.get("entity_ref") for g in groups.values() for o in g.get("oids", [])}
+        rel_txt = "".join(p.read_text(encoding="utf-8") for p in (target / "relations").glob("*.json"))
+        for p in sorted(ent_dir.glob("*.json")):
+            e = _rd(p)
+            conf = max((x.get("confidence") or 0 for x in e.get("sources", [])), default=0)
+            if (e.get("status") == "inferred" and conf < 0.1 and not e.get("attributes") and e["id"] not in used
+                    and e["id"] not in rel_txt and e["id"] not in by_entity_attrs):
+                p.unlink(); stats["entities"] -= 1
     for p in sorted(ent_dir.glob("*.json")):
         e = _rd(p)
         if fw:

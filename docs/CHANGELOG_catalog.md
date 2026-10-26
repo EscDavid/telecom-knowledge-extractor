@@ -6,6 +6,32 @@
 - **Mayor (x.0.0):** se quitan o renombran ids, o cambia el significado de un atributo.
 - Antes de cargar: `python scripts/catalog_contract_check.py` (lo ejecuta el loader; `--skip-contract` lo omite) y `python scripts/catalog_diff.py <anterior> <nuevo>` para ver el detalle.
 
+## 1.3.0 — 2026-10-26 (C320 y C300, clásicas)
+Sustituye a la 1.2.0 de clásicas. Mismos OID (C320 1003, C300 952), ningún id quitado ni renombrado; +37 comandos. Procede de la sonda de solo lectura
+del 2026-10-26 en una **ZXA10 C300 V2.1.0** (103 ONU; `show system-group`: `C300 Version V2.1.0`; la OLT que se creía C320 era un C300). Informe: secciones BJ y BK.
+
+### Cambios que un consumidor debe revisar
+- **Versión por CLI: `show version-running`.** `show version` es ambiguo (`%Error 20204`) y `show software 1` no existe en clásicas. La 1.2.0 daba `show version` como `observed` (error mío, tomado del informe del importador sin ejecutarlo):
+  el id `command.zte.gpon.global.show.version` se conserva y ahora describe `show version-running`. La versión también sale de `show system-group` (sysDescr y uptime por CLI).
+- **Sintaxis de clásicas:** `gpon-olt_<rack>/<slot>/<puerto>` y `gpon-onu_<rack>/<slot>/<puerto>:<n>`. La de C6 (`gpon_olt-…`, `gpon_onu-…`) da `Invalid input`.
+  `show running-config interface <iface>` lleva espacio (`show running-config-interface` no existe).
+- **Comandos de lectura:** 37 `verified` en C300 (ejecutados) y `observed` en C320 (misma plataforma y firmware, no ejecutados): `clock`, `version-running`, `system-group`, `card`, `card-temperature`, `card-power`, `gpon onu state|baseinfo|uncfg|detail-info|distance|by sn`,
+  `pon onu information`, `pon power attenuation|onu-rx|onu-tx|olt-rx|olt-tx`, `interface gpon-olt`, `service-port interface`, `mac gpon onu`, `running-config interface` (puerto y ONU), `onu running config`, `gpon remote-onu equip|capability|interface eth|sys-attr`,
+  `onu-type`, `vlan summary`, `gpon profile tcont|traffic`, `gpon onu profile vlan|traffic`, `logging alarm`, `alarm pool|counter`. Con `errors[]` (20200, 20202, 20203, 20204, 62310, 64040; los dos últimos son lecturas vacías, `severity: info`).
+  No existen en esta versión: `show logfile brief`, `show alarm current|history`, `show mac interface`, `show qos traffic-profile`, `show pon olt-tx`, `show gpon onu tcont|gemport|vport`, `show version-saved`/`show pon version` (incompletos). Detalle en `docs/validation/commands/zte_classic_cli_behavior.json`.
+- **PII por CLI:** en clásicas la cuenta de lectura ve `Name` y `Description` de la ONU **en claro** (detail-info y running-config). En C6 salen enmascarados. No registrar esas salidas.
+- **Plantilla de aprovisionamiento observada** (7 comandos `observed`, no ejecutados por TKC): `onu <n> type <tipo> sn <serial>` en el puerto; en la ONU `name`, `description`, `tcont <n> profile <subida>`, `gemport <n> tcont <m>`,
+  `gemport <n> traffic-limit downstream <bajada>` y `service-port <n> vport <v> user-vlan <v> vlan <v>`. Diferencia con C6: el perfil de bajada va en el `gemport`, no en el service-port.
+- **`show pon power attenuation`:** `up Rx` es la potencia recibida por la OLT (la de `onu_rx_power_type`, rama `1012.3.50.12.1.1.10`; correspondencia `inferred` hasta leer ese OID de la misma ONU) y puede ser menor de -30 dBm (caso con signo).
+
+### Quitado (sin ids de OID/comando afectados)
+- 4 entidades cascarón (`protocol.dba`, `protocol.igmp`, `profile.line_profile`, `profile.service_profile`): `inferred`, confianza 0,07, sin atributos, OID ni relaciones. Aparecieron al regenerar la semilla y bajaban el tier de 4 a 2.
+  Regla en `refinements.py`; el contrato ahora falla si vuelven.
+
+### Puerta de contrato y fixtures
+- Fixtures de CLI anonimizadas: `docs/fixtures/zte-real/c300-cli-20261026` (29 salidas, `ground_truth.json`), generadas con `scripts/build_classic_cli_fixtures.py` (comprueba que no queda ningún serial, MAC ni nombre).
+- Reglas nuevas para clásicas: comando de versión, ≥ 35 comandos `verified`/`observed`, sin entidades cascarón, sin sintaxis de C6, fixtures de CLI presentes.
+
 ## 1.2.0 — 2026-10-23 (C320 y C300, clásicas)
 Primera reparación de las clásicas; sustituye a `1.1.0-validated` (C320) y `1.1.0` (C300). Mismo número de OID (C320 1003, C300 952): ningún id quitado ni renombrado.
 Se genera con `scripts/build_classic_catalog.py` (en una copia, comparada con `catalog_diff.py`) y pasa la puerta de contrato (fixtures `docs/fixtures/zte-real/c320-20261001`, `c300-20261001`).

@@ -1,0 +1,5 @@
+All created vlan num: 2   
+Details are following:
+    1,500 
+    
+ZXAN#

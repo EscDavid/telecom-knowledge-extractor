@@ -1,0 +1,10 @@
+Interface gpon-onu_1/3/1:2
+Sport Vport BeginVid EndVid OuterVid InnerVid UserPrio Etype  Vlan Cos SVlan SCo
+s Tls  TlsSVid  Mode PacketFilter Ingress Egress  Queue Status Enable
+--------------------------------------------------------------------------------
+---------------------------------------------------------------------
+1     1     500      500    --       --       --       --     500  --  --    -- 
+  --   --       1:1  --           --      --      --    OK     YES 
+Sport total number:
+1
+ZXAN#

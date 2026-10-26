@@ -1,0 +1,39 @@
+{
+  "id": "command.zte.gpon.sp.create.onu_service_port",
+  "canonical_name": "service-port (ONU)",
+  "vendor": "ZTE",
+  "family": "ZXA10 C320",
+  "firmware": [
+    "2.0",
+    "2.1"
+  ],
+  "technology": "gpon",
+  "category": "create",
+  "cli_mode": "interface_config",
+  "cli_context": "interface gpon-onu_<idx>",
+  "entity_ref": "entity.zte.gpon.logical.service_port",
+  "description": "Service-port declarado dentro de la interfaz de la ONU.",
+  "syntax": "service-port <n> vport <v> user-vlan <vlan> vlan <vlan>",
+  "parameters": [],
+  "output_fields": [],
+  "prerequisites": [],
+  "related_commands": [],
+  "rollback": null,
+  "errors": [],
+  "notes": null,
+  "evidence": "visto en la configuración real de una OLT ZXA10 C300 V2.1.0 (show running-config); no ejecutado por TKC",
+  "sources": [
+    {
+      "doc_type": "hardware_verification",
+      "pages": null,
+      "confidence": 0.7
+    }
+  ],
+  "confidence": {
+    "extraction": 0.7,
+    "correlation": 0.0,
+    "overall": 0.7
+  },
+  "status": "observed",
+  "conflicts": []
+}

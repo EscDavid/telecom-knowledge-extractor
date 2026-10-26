@@ -1,0 +1,38 @@
+gpon-olt_1/3/1 is deactivate,line protocol is up.
+  Description is none.
+  The port is deactivate.
+  The port link up/down notification is trap disable.
+  The port has 128 onus, the number of registered onus is 5.
+
+Current channel num : 1
+
+OLT statistic:
+   Input rate :              86832 Bps              513 pps
+   Output rate:            1765141 Bps             1569 pps
+   Input Instantaneous bandwidth throughput : 0.1%    
+   Output Instantaneous bandwidth throughput: 0.6%    
+   Input Average bandwidth throughput : 0.0%    
+   Output Average bandwidth throughput: 0.2%    
+   Output Multicast Instantaneous rate:               0 Bps                0 pps
+Interface peak rate:
+   Input peak rate :            2492575 Bps             4834 pps
+   Output peak rate:           11006235 Bps             8613 pps
+Total statistic:
+ Input :
+   PassPackets   :17250836             DropPackets   :0                   
+   PassBytes     :3719591225           UnicastsPkts  :17247436            
+   MulticastsPkts:3380                 BroadcastsPkts:20                  
+   CRCAlignErrors:0                    OversizePkts  :74523               
+   UndersizePkts :0                    CollisionPkts : N/A                
+   Fragments     : N/A                 Jabbers       : N/A                
+   64B       :157559                   65-127B   :11079295            
+   128-255B  :3834724                  256-511B  :331703              
+   512-1023B :241299                   1024-1518B:1531733             
+ Output :
+   PassPackets   :49865554             DropPackets   :341142              
+   PassBytes     :53430966887          UnicastsPkts  :49837098            
+   MulticastsPkts:0                    BroadcastsPkts:23405               
+   64B       :73639                    65-127B   :7016744             
+   128-255B  :1571659                  256-511B  :512218              
+   512-1023B :620110                   1024-1518B:35541953            
+ZXAN#

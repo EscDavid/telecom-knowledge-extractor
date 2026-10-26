@@ -1,0 +1,39 @@
+{
+  "id": "command.zte.gpon.onu.modify.onu_name",
+  "canonical_name": "name (ONU)",
+  "vendor": "ZTE",
+  "family": "ZXA10 C300",
+  "firmware": [
+    "2.0",
+    "2.1"
+  ],
+  "technology": "gpon",
+  "category": "modify",
+  "cli_mode": "interface_config",
+  "cli_context": "interface gpon-onu_<idx>",
+  "entity_ref": "entity.zte.gpon.device.onu",
+  "description": "Nombre de la ONU (PII).",
+  "syntax": "name <texto>",
+  "parameters": [],
+  "output_fields": [],
+  "prerequisites": [],
+  "related_commands": [],
+  "rollback": null,
+  "errors": [],
+  "notes": null,
+  "evidence": "visto en la configuración real de una OLT ZXA10 C300 V2.1.0 (show running-config); no ejecutado por TKC",
+  "sources": [
+    {
+      "doc_type": "hardware_verification",
+      "pages": null,
+      "confidence": 0.7
+    }
+  ],
+  "confidence": {
+    "extraction": 0.7,
+    "correlation": 0.0,
+    "overall": 0.7
+  },
+  "status": "observed",
+  "conflicts": []
+}

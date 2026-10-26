@@ -1,0 +1,39 @@
+{
+  "id": "command.zte.gpon.onu.create.onu_create",
+  "canonical_name": "onu <n> type <tipo> sn <serial>",
+  "vendor": "ZTE",
+  "family": "ZXA10 C300",
+  "firmware": [
+    "2.0",
+    "2.1"
+  ],
+  "technology": "gpon",
+  "category": "create",
+  "cli_mode": "interface_config",
+  "cli_context": "interface gpon-olt_<pon>",
+  "entity_ref": "entity.zte.gpon.device.onu",
+  "description": "Declara una ONU en el puerto PON con su tipo y serial.",
+  "syntax": "onu <1-128> type <onu-type> sn <sn>",
+  "parameters": [],
+  "output_fields": [],
+  "prerequisites": [],
+  "related_commands": [],
+  "rollback": null,
+  "errors": [],
+  "notes": null,
+  "evidence": "visto en la configuración real de una OLT ZXA10 C300 V2.1.0 (show running-config); no ejecutado por TKC",
+  "sources": [
+    {
+      "doc_type": "hardware_verification",
+      "pages": null,
+      "confidence": 0.7
+    }
+  ],
+  "confidence": {
+    "extraction": 0.7,
+    "correlation": 0.0,
+    "overall": 0.7
+  },
+  "status": "observed",
+  "conflicts": []
+}

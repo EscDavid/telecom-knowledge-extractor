@@ -1,0 +1,80 @@
+{
+  "entity_ref": "entity.zte.gpon.device.onu",
+  "vendor": "ZTE",
+  "family": "ZXA10 C300",
+  "firmware": [
+    "2.0",
+    "2.1"
+  ],
+  "relations": [
+    {
+      "id": "rel.zte.gpon.onu.belongs_to.pon_port",
+      "type": "belongs_to",
+      "target": "entity.zte.gpon.port.pon_port",
+      "cardinality": "many_to_one",
+      "required": true,
+      "description": null,
+      "prerequisite": true,
+      "creation_order": 0,
+      "sources": [
+        {
+          "doc_type": "initial_configuration",
+          "pages": null,
+          "confidence": 0.2
+        }
+      ],
+      "confidence": {
+        "extraction": 0.51,
+        "correlation": 0.0,
+        "overall": 0.26
+      },
+      "status": "inferred"
+    },
+    {
+      "id": "rel.zte.gpon.onu.uses.gem_port",
+      "type": "uses",
+      "target": "entity.zte.gpon.logical.gem_port",
+      "cardinality": "one_to_many",
+      "required": true,
+      "description": null,
+      "prerequisite": false,
+      "creation_order": null,
+      "sources": [
+        {
+          "doc_type": "initial_configuration",
+          "pages": null,
+          "confidence": 0.2
+        }
+      ],
+      "confidence": {
+        "extraction": 0.51,
+        "correlation": 0.0,
+        "overall": 0.26
+      },
+      "status": "inferred"
+    },
+    {
+      "id": "rel.zte.gpon.onu.has.service_port",
+      "type": "has",
+      "target": "entity.zte.gpon.logical.service_port",
+      "cardinality": "one_to_many",
+      "required": false,
+      "description": null,
+      "prerequisite": false,
+      "creation_order": null,
+      "sources": [
+        {
+          "doc_type": "initial_configuration",
+          "pages": null,
+          "confidence": 0.2
+        }
+      ],
+      "confidence": {
+        "extraction": 0.51,
+        "correlation": 0.0,
+        "overall": 0.26
+      },
+      "status": "inferred"
+    }
+  ]
+}

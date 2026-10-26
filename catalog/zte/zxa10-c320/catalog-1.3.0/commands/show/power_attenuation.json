@@ -1,0 +1,99 @@
+{
+  "id": "command.zte.gpon.onu.show.power_attenuation",
+  "canonical_name": "show pon power attenuation",
+  "vendor": "ZTE",
+  "family": "ZXA10 C320",
+  "firmware": [
+    "2.0",
+    "2.1"
+  ],
+  "technology": "gpon",
+  "category": "show",
+  "cli_mode": "privileged_exec",
+  "cli_context": null,
+  "entity_ref": "entity.zte.gpon.device.onu",
+  "description": "Potencias y atenuación de ambos sentidos: `up Rx` (recibida por la OLT, negativa; puede ser < -30 dBm), `Tx` de la ONU, `down Tx` de la OLT y `Rx` de la ONU.",
+  "syntax": "show pon power attenuation gpon-onu_<idx>",
+  "parameters": [
+    {
+      "name": "onu-idx",
+      "type": "string",
+      "pattern": null,
+      "range": null,
+      "required": true,
+      "description": "ONU rack/slot/puerto:n",
+      "example": "1/3/1:2"
+    }
+  ],
+  "output_fields": [
+    {
+      "name": "up_rx_dbm",
+      "type": "string",
+      "unit": null,
+      "oid_ref": "oid.zte.gpon.onu.onu_rx_power_type",
+      "oid_status": "inferred"
+    },
+    {
+      "name": "up_tx_dbm",
+      "type": "string",
+      "unit": null,
+      "oid_ref": "oid.zte.gpon.onu.onu_tx_power_type",
+      "oid_status": "inferred"
+    },
+    {
+      "name": "up_attenuation_db",
+      "type": "string",
+      "unit": null,
+      "oid_ref": null,
+      "oid_status": "not_mapped"
+    },
+    {
+      "name": "down_tx_dbm",
+      "type": "string",
+      "unit": null,
+      "oid_ref": null,
+      "oid_status": "not_mapped"
+    },
+    {
+      "name": "down_rx_dbm",
+      "type": "string",
+      "unit": null,
+      "oid_ref": null,
+      "oid_status": "not_mapped"
+    },
+    {
+      "name": "down_attenuation_db",
+      "type": "string",
+      "unit": null,
+      "oid_ref": null,
+      "oid_status": "not_mapped"
+    }
+  ],
+  "prerequisites": [],
+  "related_commands": [],
+  "rollback": null,
+  "errors": [
+    {
+      "code": 20202,
+      "meaning": "Invalid input detected at '^' marker.Invalid parameter (ONU, puerto o argumento que no existe)",
+      "severity": "error",
+      "retry": false
+    }
+  ],
+  "notes": "La correspondencia up_rx_dbm↔onu_rx_power_type (1012.3.50.12.1.1.10) es una inferencia: queda por confirmar leyendo ese OID de la misma ONU.",
+  "evidence": "ejecutado en una OLT ZXA10 C300 V2.1.0 el 2026-10-26; misma plataforma y firmware, no ejecutado en C320",
+  "sources": [
+    {
+      "doc_type": "hardware_verification",
+      "pages": null,
+      "confidence": 0.85
+    }
+  ],
+  "confidence": {
+    "extraction": 0.85,
+    "correlation": 0.0,
+    "overall": 0.85
+  },
+  "status": "observed",
+  "conflicts": []
+}

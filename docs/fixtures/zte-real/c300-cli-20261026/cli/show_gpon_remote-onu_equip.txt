@@ -1,0 +1,22 @@
+Vendor ID:                 OPTI 
+Version:                   V2.0 
+SN:                        OPTI95C75BF8 
+Admin status:              unlock 
+Battery monitor:           false 
+Security mode:             aes 
+Product code:              0 
+Total priority queue num:  96 
+Total traffic schedule num:12 
+Traffic management option: priority-rate-controlled 
+Operate status:            enable 
+Equipment ID:              MONUV142 
+OMCC version:              86 
+Security capability:       aes
+Model:                     MONUV142
+Survival time:             N/A
+Total GEM port num:        127
+System uptime:             83519.00 s
+Region code:               N/A
+Product SN:                N/A
+Chip info:                 0
+ZXAN#

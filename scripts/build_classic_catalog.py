@@ -1,4 +1,4 @@
-"""Genera el catálogo 1.2.0 de C300/C320 en un directorio de PRUEBA (staging/classic_build/catalog) sin tocar `catalog/`.
+"""Genera el catálogo de C300/C320 (VERSION) en un directorio de PRUEBA (staging/classic_build/catalog) sin tocar `catalog/`.
 La semilla (catalog-1.1.0 del C320) se copia al staging; los walks se leen de docs/walks.
 Después se compara con la versión publicada (scripts/catalog_diff.py) y, si es correcta, se promueve con --promote.
 
@@ -15,7 +15,7 @@ sys.path.insert(0, str(ROOT))
 from src.walk_validator import WalkValidator, model_key  # noqa: E402
 
 STAGE = ROOT / "staging" / "classic_build"
-VERSION = "1.2.0"
+VERSION = "1.3.0"
 FAMILIES = {"c320": "ZXA10 C320", "c300": "ZXA10 C300"}
 
 

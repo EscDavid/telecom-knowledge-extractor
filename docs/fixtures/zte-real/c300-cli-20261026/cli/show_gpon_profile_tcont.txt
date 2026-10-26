@@ -1,0 +1,49 @@
+Profile name :default  
+ Type           FBW(kbps)   ABW(kbps)   MBW(kbps)   PRIORITY   WEIGHT    
+ 1              10000       0           0           N/A         N/A         
+ 
+Profile name :SMARTOLT-VOIPMNG-10M  
+ Type           FBW(kbps)   ABW(kbps)   MBW(kbps)   PRIORITY   WEIGHT    
+ 5              512         1024        11264       N/A         N/A         
+ 
+Profile name :SMARTOLT-IPTV-10M-UP  
+ Type           FBW(kbps)   ABW(kbps)   MBW(kbps)   PRIORITY   WEIGHT    
+ 5              512         1024        11264       N/A         N/A         
+ 
+Profile name :SMARTOLT-40M-UP  
+ Type           FBW(kbps)   ABW(kbps)   MBW(kbps)   PRIORITY   WEIGHT    
+ 5              64          64          41984       N/A         N/A         
+ 
+Profile name :SMARTOLT-30M-UP  
+ Type           FBW(kbps)   ABW(kbps)   MBW(kbps)   PRIORITY   WEIGHT    
+ 5              64          64          31488       N/A         N/A         
+ 
+Profile name :SMARTOLT-100M-UP  
+ Type           FBW(kbps)   ABW(kbps)   MBW(kbps)   PRIORITY   WEIGHT    
+ 5              64          64          104960      N/A         N/A         
+ 
+Profile name :SMARTOLT-1G-UP  
+ Type           FBW(kbps)   ABW(kbps)   MBW(kbps)   PRIORITY   WEIGHT    
+ 5              64          64          1048064     N/A         N/A         
+ 
+Profile name :SMARTOLT-70M-UP  
+ Type           FBW(kbps)   ABW(kbps)   MBW(kbps)   PRIORITY   WEIGHT    
+ 5              64          64          73472       N/A         N/A         
+ 
+Profile name :SMARTOLT-80M-UP  
+ Type           FBW(kbps)   ABW(kbps)   MBW(kbps)   PRIORITY   WEIGHT    
+ 5              64          64          83968       N/A         N/A         
+ 
+Profile name :SMARTOLT-60M-UP  
+ Type           FBW(kbps)   ABW(kbps)   MBW(kbps)   PRIORITY   WEIGHT    
+ 5              64          64          62976       N/A         N/A         
+ 
+Profile name :SMARTOLT-50M-UP  
+ Type           FBW(kbps)   ABW(kbps)   MBW(kbps)   PRIORITY   WEIGHT    
+ 5              64          64          52480       N/A         N/A         
+ 
+Profile name :SMARTOLT-90M-UP  
+ Type           FBW(kbps)   ABW(kbps)   MBW(kbps)   PRIORITY   WEIGHT    
+ 5              64          64          94464       N/A         N/A         
+ 
+ZXAN#

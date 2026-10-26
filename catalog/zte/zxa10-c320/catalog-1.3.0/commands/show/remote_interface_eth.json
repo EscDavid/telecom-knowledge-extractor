@@ -1,0 +1,56 @@
+{
+  "id": "command.zte.gpon.onu.show.remote_interface_eth",
+  "canonical_name": "show gpon remote-onu interface eth",
+  "vendor": "ZTE",
+  "family": "ZXA10 C320",
+  "firmware": [
+    "2.0",
+    "2.1"
+  ],
+  "technology": "gpon",
+  "category": "show",
+  "cli_mode": "privileged_exec",
+  "cli_context": null,
+  "entity_ref": "entity.zte.gpon.device.onu",
+  "description": "Puertos Ethernet de la ONU: velocidad, estado operativo y administrativo, trama máxima.",
+  "syntax": "show gpon remote-onu interface eth gpon-onu_<idx>",
+  "parameters": [
+    {
+      "name": "onu-idx",
+      "type": "string",
+      "pattern": null,
+      "range": null,
+      "required": true,
+      "description": "ONU rack/slot/puerto:n",
+      "example": "1/3/1:2"
+    }
+  ],
+  "output_fields": [],
+  "prerequisites": [],
+  "related_commands": [],
+  "rollback": null,
+  "errors": [
+    {
+      "code": 20202,
+      "meaning": "Invalid input detected at '^' marker.Invalid parameter (ONU, puerto o argumento que no existe)",
+      "severity": "error",
+      "retry": false
+    }
+  ],
+  "notes": null,
+  "evidence": "ejecutado en una OLT ZXA10 C300 V2.1.0 el 2026-10-26; misma plataforma y firmware, no ejecutado en C320",
+  "sources": [
+    {
+      "doc_type": "hardware_verification",
+      "pages": null,
+      "confidence": 0.85
+    }
+  ],
+  "confidence": {
+    "extraction": 0.85,
+    "correlation": 0.0,
+    "overall": 0.85
+  },
+  "status": "observed",
+  "conflicts": []
+}

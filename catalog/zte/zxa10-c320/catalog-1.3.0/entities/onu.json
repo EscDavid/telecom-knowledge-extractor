@@ -1,0 +1,203 @@
+{
+  "id": "entity.zte.gpon.device.onu",
+  "canonical_name": "ONU",
+  "vendor": "ZTE",
+  "family": "ZXA10 C320",
+  "firmware": [
+    "2.0",
+    "2.1"
+  ],
+  "technology": "gpon",
+  "type": "device",
+  "description": "Optical Network Unit — equipo terminal GPON del lado del abonado.",
+  "is_critical": true,
+  "aliases": [
+    {
+      "name": "ONU",
+      "source": "hardware_description",
+      "firmware_scope": "all"
+    }
+  ],
+  "attributes": [
+    {
+      "name": "onu_name",
+      "type": "string",
+      "range": null,
+      "required": false,
+      "source": "walk"
+    },
+    {
+      "name": "onu_serial_number",
+      "type": "string",
+      "range": null,
+      "required": false,
+      "source": "walk"
+    },
+    {
+      "name": "onu_description",
+      "type": "string",
+      "range": null,
+      "required": false,
+      "source": "walk"
+    },
+    {
+      "name": "onu_status",
+      "type": "integer",
+      "range": null,
+      "required": false,
+      "source": "walk"
+    },
+    {
+      "name": "onu_rx_power",
+      "type": "integer",
+      "range": null,
+      "required": false,
+      "source": "walk"
+    },
+    {
+      "name": "onu_last_online_time",
+      "type": "string",
+      "range": null,
+      "required": false,
+      "source": "walk"
+    },
+    {
+      "name": "onu_last_offline_time",
+      "type": "string",
+      "range": null,
+      "required": false,
+      "source": "walk"
+    },
+    {
+      "name": "onu_last_offline_reason",
+      "type": "integer",
+      "range": null,
+      "required": false,
+      "source": "walk"
+    },
+    {
+      "name": "onu_gpon_optical_distance",
+      "type": "string",
+      "range": null,
+      "required": false,
+      "source": "walk"
+    },
+    {
+      "name": "onu_type",
+      "type": "string",
+      "range": null,
+      "required": false,
+      "source": "walk"
+    },
+    {
+      "name": "onu_tx_power",
+      "type": "integer",
+      "range": null,
+      "required": false,
+      "source": "walk"
+    },
+    {
+      "name": "onu_ip_address",
+      "type": "string",
+      "range": null,
+      "required": false,
+      "source": "walk"
+    },
+    {
+      "name": "uncfg_onu_serial",
+      "type": "string",
+      "range": null,
+      "required": false,
+      "source": "walk"
+    },
+    {
+      "name": "uncfg_onu_type",
+      "type": "string",
+      "range": null,
+      "required": false,
+      "source": "walk"
+    },
+    {
+      "name": "uncfg_onu_firmware",
+      "type": "string",
+      "range": null,
+      "required": false,
+      "source": "walk"
+    },
+    {
+      "name": "uncfg_onu_detected",
+      "type": "string",
+      "range": null,
+      "required": false,
+      "source": "walk"
+    },
+    {
+      "name": "uncfg_onu_status",
+      "type": "integer",
+      "range": null,
+      "required": false,
+      "source": "walk"
+    },
+    {
+      "name": "uncfg_default_password",
+      "type": "string",
+      "range": null,
+      "required": false,
+      "source": "walk"
+    },
+    {
+      "name": "uncfg_mac_address",
+      "type": "string",
+      "range": null,
+      "required": false,
+      "source": "walk"
+    },
+    {
+      "name": "onu_vendor_id",
+      "type": "string",
+      "range": null,
+      "required": false,
+      "source": "walk"
+    }
+  ],
+  "sources": [
+    {
+      "doc_type": "hardware_description",
+      "pages": null,
+      "confidence": 0.0
+    },
+    {
+      "doc_type": "mib_file",
+      "pages": null,
+      "confidence": 0.3
+    }
+  ],
+  "confidence": {
+    "extraction": 0.95,
+    "correlation": 0.75,
+    "overall": 1.0
+  },
+  "status": "verified",
+  "lifecycle": {
+    "introduced_in": "2.0",
+    "deprecated_in": null,
+    "removed_in": null,
+    "status": "introduced",
+    "replacement": null
+  },
+  "relations": [
+    {
+      "type": "belongs_to",
+      "target": "entity.zte.gpon.port.pon_port"
+    },
+    {
+      "type": "uses",
+      "target": "entity.zte.gpon.logical.gem_port"
+    },
+    {
+      "type": "has",
+      "target": "entity.zte.gpon.logical.service_port"
+    }
+  ],
+  "conflicts": []
+}

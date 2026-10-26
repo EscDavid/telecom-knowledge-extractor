@@ -1,0 +1,477 @@
+ONU type name:          HG8242
+PON type:               gpon
+Description:            
+Max T-CONT:             8
+Max GEM port:           32
+Max switch per slot:    8
+Max flow per switch:    8
+Max IP host:            5
+Max IPv6 host:          0
+Service ability N:1:    support
+Service ability 1:M:    support
+Service ability 1:P:    support
+WIFI mgmt via non OMCI: disable
+OMCI send mode:         async
+Default multicast range:none
+VRG:                    disable
+MGC configure mode:     zte
+Max VEIP:               0(default: 1 VEIP)
+Extended OMCI:          disable
+Location:               disable
+
+ONU type name:          HG8311
+PON type:               gpon
+Description:            
+Max T-CONT:             8
+Max GEM port:           32
+Max switch per slot:    8
+Max flow per switch:    8
+Max IP host:            5
+Max IPv6 host:          0
+Service ability N:1:    support
+Service ability 1:M:    support
+Service ability 1:P:    support
+WIFI mgmt via non OMCI: disable
+OMCI send mode:         async
+Default multicast range:none
+VRG:                    disable
+MGC configure mode:     zte
+Max VEIP:               0(default: 1 VEIP)
+Extended OMCI:          disable
+Location:               disable
+
+ONU type name:          HG8010H
+PON type:               gpon
+Description:            
+Max T-CONT:             8
+Max GEM port:           32
+Max switch per slot:    8
+Max flow per switch:    8
+Max IP host:            5
+Max IPv6 host:          0
+Service ability N:1:    support
+Service ability 1:M:    support
+Service ability 1:P:    support
+WIFI mgmt via non OMCI: disable
+OMCI send mode:         async
+Default multicast range:none
+VRG:                    disable
+MGC configure mode:     zte
+Max VEIP:               0(default: 1 VEIP)
+Extended OMCI:          disable
+Location:               disable
+
+ONU type name:          HG8120C
+PON type:               gpon
+Description:            
+Max T-CONT:             8
+Max GEM port:           32
+Max switch per slot:    8
+Max flow per switch:    8
+Max IP host:            5
+Max IPv6 host:          0
+Service ability N:1:    support
+Service ability 1:M:    support
+Service ability 1:P:    support
+WIFI mgmt via non OMCI: disable
+OMCI send mode:         async
+Default multicast range:none
+VRG:                    disable
+MGC configure mode:     zte
+Max VEIP:               0(default: 1 VEIP)
+Extended OMCI:          disable
+Location:               disable
+
+ONU type name:          HG8310M
+PON type:               gpon
+Description:            
+Max T-CONT:             8
+Max GEM port:           32
+Max switch per slot:    8
+Max flow per switch:    8
+Max IP host:            5
+Max IPv6 host:          0
+Service ability N:1:    support
+Service ability 1:M:    support
+Service ability 1:P:    support
+WIFI mgmt via non OMCI: disable
+OMCI send mode:         async
+Default multicast range:none
+VRG:                    disable
+MGC configure mode:     zte
+Max VEIP:               0(default: 1 VEIP)
+Extended OMCI:          disable
+Location:               disable
+
+ONU type name:          ZP_CABLE
+PON type:               gpon
+Description:            
+Max T-CONT:             8
+Max GEM port:           32
+Max switch per slot:    8
+Max flow per switch:    8
+Max IP host:            5
+Max IPv6 host:          0
+Service ability N:1:    support
+Service ability 1:M:    support
+Service ability 1:P:    support
+WIFI mgmt via non OMCI: disable
+OMCI send mode:         async
+Default multicast range:none
+VRG:                    disable
+MGC configure mode:     zte
+Max VEIP:               0(default: 1 VEIP)
+Extended OMCI:          disable
+Location:               disable
+
+ONU type name:          ZTE-9806
+PON type:               epon
+Description:            <anonimizado>
+Protect type:           none
+Speed:                  1g
+Location:               disable
+
+ONU type name:          ZTE-D400
+PON type:               epon
+Description:            <anonimizado>
+Protect type:           none
+Speed:                  1g
+Location:               disable
+
+ONU type name:          ZTE-D402
+PON type:               epon
+Description:            <anonimizado>
+Protect type:           none
+Speed:                  1g
+Location:               disable
+
+ONU type name:          ZTE-D420
+PON type:               epon
+Description:            <anonimizado>
+Protect type:           none
+Speed:                  1g
+Location:               disable
+
+ONU type name:          ZTE-D421
+PON type:               epon
+Description:            <anonimizado>
+Protect type:           none
+Speed:                  1g
+Location:               disable
+
+ONU type name:          ZTE-D422
+PON type:               epon
+Description:            <anonimizado>
+Protect type:           none
+Speed:                  1g
+Location:               disable
+
+ONU type name:          ZTE-F401
+PON type:               epon
+Description:            <anonimizado>
+Protect type:           none
+Speed:                  1g
+Location:               disable
+
+ONU type name:          ZTE-F420
+PON type:               epon
+Description:            <anonimizado>
+Protect type:           none
+Speed:                  1g
+Location:               disable
+
+ONU type name:          ZTE-F425
+PON type:               epon
+Description:            <anonimizado>
+Protect type:           none
+Speed:                  1g
+Location:               disable
+
+ONU type name:          ZTE-F429
+PON type:               epon
+Description:            <anonimizado>
+Protect type:           none
+Speed:                  1g
+Location:               disable
+
+ONU type name:          ZTE-F430
+PON type:               epon
+Description:            <anonimizado>
+Protect type:           none
+Speed:                  1g
+Location:               disable
+
+ONU type name:          ZTE-F435
+PON type:               epon
+Description:            <anonimizado>
+Protect type:           none
+Speed:                  1g
+Location:               disable
+
+ONU type name:          ZTE-F500
+PON type:               epon
+Description:            <anonimizado>
+Protect type:           none
+Speed:                  1g
+Location:               disable
+
+ONU type name:          ZTE-F600
+PON type:               gpon
+Description:            
+Max T-CONT:             8
+Max GEM port:           32
+Max switch per slot:    8
+Max flow per switch:    8
+Max IP host:            5
+Max IPv6 host:          0
+Service ability N:1:    support
+Service ability 1:M:    support
+Service ability 1:P:    support
+WIFI mgmt via non OMCI: disable
+OMCI send mode:         async
+Default multicast range:none
+VRG:                    disable
+MGC configure mode:     zte
+Max VEIP:               0(default: 1 VEIP)
+Extended OMCI:          disable
+Location:               disable
+
+ONU type name:          ZTE-F601
+PON type:               gpon
+Description:            <anonimizado>
+Max T-CONT:             8
+Max GEM port:           32
+Max switch per slot:    8
+Max flow per switch:    8
+Max IP host:            2
+Max IPv6 host:          0
+Service ability N:1:    support
+Service ability 1:M:    support
+Service ability 1:P:    support
+WIFI mgmt via non OMCI: disable
+OMCI send mode:         async
+Default multicast range:none
+VRG:                    disable
+MGC configure mode:     zte
+Max VEIP:               0(default: 1 VEIP)
+Extended OMCI:          disable
+Location:               disable
+
+ONU type name:          ZTE-F621
+PON type:               gpon
+Description:            <anonimizado>
+Max T-CONT:             8
+Max GEM port:           32
+Max switch per slot:    8
+Max flow per switch:    8
+Max IP host:            2
+Max IPv6 host:          0
+Service ability N:1:    support
+Service ability 1:M:    support
+Service ability 1:P:    support
+WIFI mgmt via non OMCI: disable
+OMCI send mode:         async
+Default multicast range:none
+VRG:                    disable
+MGC configure mode:     zte
+Max VEIP:               0(default: 1 VEIP)
+Extended OMCI:          disable
+Location:               disable
+
+ONU type name:          ZTE-F622
+PON type:               gpon
+Description:            <anonimizado>
+Max T-CONT:             8
+Max GEM port:           32
+Max switch per slot:    8
+Max flow per switch:    8
+Max IP host:            2
+Max IPv6 host:          0
+Service ability N:1:    support
+Service ability 1:M:    support
+Service ability 1:P:    support
+WIFI mgmt via non OMCI: disable
+OMCI send mode:         async
+Default multicast range:none
+VRG:                    disable
+MGC configure mode:     zte
+Max VEIP:               0(default: 1 VEIP)
+Extended OMCI:          disable
+Location:               disable
+
+ONU type name:          ZTE-F625
+PON type:               gpon
+Description:            <anonimizado>
+Max T-CONT:             8
+Max GEM port:           32
+Max switch per slot:    8
+Max flow per switch:    8
+Max IP host:            2
+Max IPv6 host:          0
+Service ability N:1:    support
+Service ability 1:M:    support
+Service ability 1:P:    support
+WIFI mgmt via non OMCI: disable
+OMCI send mode:         async
+Default multicast range:none
+VRG:                    disable
+MGC configure mode:     zte
+Max VEIP:               0(default: 1 VEIP)
+Extended OMCI:          disable
+Location:               disable
+
+ONU type name:          ZTE-F627
+PON type:               gpon
+Description:            
+Max T-CONT:             8
+Max GEM port:           32
+Max switch per slot:    8
+Max flow per switch:    8
+Max IP host:            5
+Max IPv6 host:          0
+Service ability N:1:    support
+Service ability 1:M:    support
+Service ability 1:P:    support
+WIFI mgmt via non OMCI: disable
+OMCI send mode:         async
+Default multicast range:none
+VRG:                    disable
+MGC configure mode:     zte
+Max VEIP:               0(default: 1 VEIP)
+Extended OMCI:          disable
+Location:               disable
+
+ONU type name:          ZTE-F628
+PON type:               gpon
+Description:            <anonimizado>
+Max T-CONT:             7
+Max GEM port:           32
+Max switch per slot:    32
+Max flow per switch:    8
+Max IP host:            2
+Max IPv6 host:          0
+Service ability N:1:    support
+Service ability 1:M:    support
+Service ability 1:P:    support
+WIFI mgmt via non OMCI: disable
+OMCI send mode:         async
+Default multicast range:none
+VRG:                    disable
+MGC configure mode:     zte
+Max VEIP:               0(default: 1 VEIP)
+Extended OMCI:          disable
+Location:               disable
+
+ONU type name:          ZTE-F640
+PON type:               gpon
+Description:            <anonimizado>
+Max T-CONT:             8
+Max GEM port:           32
+Max switch per slot:    8
+Max flow per switch:    8
+Max IP host:            2
+Max IPv6 host:          0
+Service ability N:1:    support
+Service ability 1:M:    support
+Service ability 1:P:    support
+WIFI mgmt via non OMCI: disable
+OMCI send mode:         async
+Default multicast range:none
+VRG:                    disable
+MGC configure mode:     zte
+Max VEIP:               0(default: 1 VEIP)
+Extended OMCI:          disable
+Location:               disable
+
+ONU type name:          ZTE-F641
+PON type:               gpon
+Description:            <anonimizado>
+Max T-CONT:             8
+Max GEM port:           32
+Max switch per slot:    8
+Max flow per switch:    8
+Max IP host:            2
+Max IPv6 host:          0
+Service ability N:1:    support
+Service ability 1:M:    support
+Service ability 1:P:    support
+WIFI mgmt via non OMCI: disable
+OMCI send mode:         async
+Default multicast range:none
+VRG:                    disable
+MGC configure mode:     zte
+Max VEIP:               0(default: 1 VEIP)
+Extended OMCI:          disable
+Location:               disable
+
+ONU type name:          ZTE-F803
+PON type:               epon
+Description:            <anonimizado>
+Protect type:           none
+Speed:                  1g
+Location:               disable
+
+ONU type name:          ZTE-F820
+PON type:               epon
+Description:            <anonimizado>
+Protect type:           none
+Speed:                  1g
+Location:               disable
+
+ONU type name:          ZTE-F821
+PON type:               epon
+Description:            <anonimizado>
+Protect type:           none
+Speed:                  1g
+Location:               disable
+
+ONU type name:          ZTE-F822
+PON type:               epon
+Description:            <anonimizado>
+Protect type:           none
+Speed:                  1g
+Location:               disable
+
+ONU type name:          OPTICTIMES
+PON type:               gpon
+Description:            
+Max T-CONT:             8
+Max GEM port:           32
+Max switch per slot:    8
+Max flow per switch:    8
+Max IP host:            5
+Max IPv6 host:          0
+Service ability N:1:    support
+Service ability 1:M:    support
+Service ability 1:P:    support
+WIFI mgmt via non OMCI: disable
+OMCI send mode:         async
+Default multicast range:none
+VRG:                    disable
+MGC configure mode:     zte
+Max VEIP:               0(default: 1 VEIP)
+Extended OMCI:          disable
+Location:               disable
+
+ONU type name:          ZTE-F660V5.2
+PON type:               gpon
+Description:            
+Max T-CONT:             8
+Max GEM port:           32
+Max switch per slot:    8
+Max flow per switch:    8
+Max IP host:            5
+Max IPv6 host:          0
+Service ability N:1:    support
+Service ability 1:M:    support
+Service ability 1:P:    support
+WIFI mgmt via non OMCI: disable
+OMCI send mode:         async
+Default multicast range:none
+VRG:                    disable
+MGC configure mode:     zte
+Max VEIP:               0(default: 1 VEIP)
+Extended OMCI:          disable
+Location:               disable
+
+ZXAN#

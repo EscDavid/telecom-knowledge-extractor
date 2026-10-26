@@ -1,0 +1,56 @@
+{
+  "id": "command.zte.gpon.onu.show.running_onu",
+  "canonical_name": "show running-config interface (ONU)",
+  "vendor": "ZTE",
+  "family": "ZXA10 C300",
+  "firmware": [
+    "2.0",
+    "2.1"
+  ],
+  "technology": "gpon",
+  "category": "show",
+  "cli_mode": "privileged_exec",
+  "cli_context": null,
+  "entity_ref": "entity.zte.gpon.device.onu",
+  "description": "Configuración de la ONU: name, description (EN CLARO), tcont, gemport, `gemport … traffic-limit downstream`, service-port.",
+  "syntax": "show running-config interface gpon-onu_<idx>",
+  "parameters": [
+    {
+      "name": "onu-idx",
+      "type": "string",
+      "pattern": null,
+      "range": null,
+      "required": true,
+      "description": "ONU rack/slot/puerto:n",
+      "example": "1/3/1:2"
+    }
+  ],
+  "output_fields": [],
+  "prerequisites": [],
+  "related_commands": [],
+  "rollback": null,
+  "errors": [
+    {
+      "code": 20202,
+      "meaning": "Invalid input detected at '^' marker.Invalid parameter (ONU, puerto o argumento que no existe)",
+      "severity": "error",
+      "retry": false
+    }
+  ],
+  "notes": "PII: name/description en claro.",
+  "evidence": "ejecutado y verificado en una OLT ZXA10 C300 V2.1.0 el 2026-10-26 (solo lectura)",
+  "sources": [
+    {
+      "doc_type": "hardware_verification",
+      "pages": null,
+      "confidence": 0.95
+    }
+  ],
+  "confidence": {
+    "extraction": 0.95,
+    "correlation": 0.0,
+    "overall": 0.95
+  },
+  "status": "verified",
+  "conflicts": []
+}

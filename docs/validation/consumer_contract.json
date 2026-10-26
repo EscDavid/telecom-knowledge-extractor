@@ -190,7 +190,7 @@
     },
     "ZXA10 C320": {
       "fixtures": "docs/fixtures/zte-real/c320-20261001",
-      "version": "1.2.0",
+      "version": "1.3.0",
       "attributes": {
         "onu_serial_number": {
           "fixture": "onu_serial.txt",
@@ -245,11 +245,12 @@
           "fixture": null,
           "kind": "absent"
         }
-      }
+      },
+      "cli_fixtures": "docs/fixtures/zte-real/c300-cli-20261026"
     },
     "ZXA10 C300": {
       "fixtures": "docs/fixtures/zte-real/c300-20261001",
-      "version": "1.2.0",
+      "version": "1.3.0",
       "attributes": {
         "onu_serial_number": {
           "fixture": "onu_serial.txt",
@@ -304,7 +305,8 @@
           "fixture": null,
           "kind": "absent"
         }
-      }
+      },
+      "cli_fixtures": "docs/fixtures/zte-real/c300-cli-20261026"
     }
   }
 }

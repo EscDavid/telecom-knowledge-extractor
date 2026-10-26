@@ -160,6 +160,16 @@ def run(fam_key):
         check(bool((st.get("enumeration_meta") or {}).get("observed")), f"[{fam}] onu_status_type enumeration_meta", "falta")
         check(oids.get("oid.zte.gpon.onu.onu_serial_number_type", {}).get("serial_format") == "binary-8", f"[{fam}] serial_format", "falta")
         check(bool(man.get("not_exposed_attributes")), f"[{fam}] manifest not_exposed_attributes", "falta")
+        ver = cmds.get("command.zte.gpon.global.show.version", {})
+        check(ver.get("syntax") == "show version-running", f"[{fam}] comando de versión", str(ver.get("syntax")))
+        want_st = "verified" if fam_key == "c300" else "observed"
+        check(sum(c["status"] == want_st for c in cmds.values()) >= 35, f"[{fam}] comandos {want_st} por la sonda", "menos de 35")
+        check(not [e for e in ents.values() if e.get("status") == "inferred" and not e.get("attributes")], f"[{fam}] entidades cascarón inferred", "bajan el tier")
+        for c in cmds.values():
+            check(bool(c.get("syntax")) and "gpon_olt-" not in c["syntax"] and "gpon_onu-" not in c["syntax"] and c["syntax"] != "show version",
+                  f"[{fam}] sintaxis de clásicas", f"{c['id']}: {c.get('syntax')}")
+        clidir = ROOT / contract.get("cli_fixtures", "")
+        check(clidir.is_dir() and any((clidir / "cli").glob("show_version-running.txt")), f"[{fam}] fixtures de CLI", str(clidir))
     else:
         check("index_layout_final" in man, f"[{fam}] manifest index_layout_final", "falta")
         st = oids.get("oid.zte.gpon.onu.onu_status", {})

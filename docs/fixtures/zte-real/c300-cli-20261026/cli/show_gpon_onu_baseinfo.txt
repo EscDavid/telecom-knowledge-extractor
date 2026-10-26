@@ -1,0 +1,8 @@
+OnuIndex            Type        Mode    AuthInfo                State
+-------------------------------------------------------------------------------
+gpon-onu_1/3/1:2    OPTICTIMES  sn      SN:OPTI925A2B9B         ready
+gpon-onu_1/3/1:3    OPTICTIMES  sn      SN:OPTI5F6AB5FE         ready
+gpon-onu_1/3/1:4    OPTICTIMES  sn      SN:OPTI9E09F467         ready
+gpon-onu_1/3/1:5    OPTICTIMES  sn      SN:OPTIAD04A6EA         ready
+gpon-onu_1/3/1:6    OPTICTIMES  sn      SN:OPTI6FBDA83B         ready
+ZXAN#

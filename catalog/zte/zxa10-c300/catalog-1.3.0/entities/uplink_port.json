@@ -1,0 +1,51 @@
+{
+  "id": "entity.zte.gpon.port.uplink_port",
+  "canonical_name": "Uplink Port",
+  "vendor": "ZTE",
+  "family": "ZXA10 C300",
+  "firmware": [
+    "2.0",
+    "2.1"
+  ],
+  "technology": "gpon",
+  "type": "port",
+  "description": "Puerto de enlace ascendente (uplink) del OLT (GE/10GE).",
+  "is_critical": false,
+  "aliases": [],
+  "attributes": [],
+  "sources": [
+    {
+      "doc_type": "mib_file",
+      "pages": null,
+      "confidence": 0.3
+    }
+  ],
+  "confidence": {
+    "extraction": 0.85,
+    "correlation": 0.0,
+    "overall": 1.0
+  },
+  "status": "verified_walk",
+  "lifecycle": {
+    "introduced_in": "2.0",
+    "deprecated_in": null,
+    "removed_in": null,
+    "status": "introduced",
+    "replacement": null
+  },
+  "relations": [],
+  "conflicts": [],
+  "empirical": {
+    "source": "ZTE_C300_ifnames.txt",
+    "via": "ifTable (ifType=6)",
+    "instances": 8,
+    "samples": [
+      "xgei_1/19/1",
+      "xgei_1/19/2",
+      "gei_1/19/3",
+      "gei_1/19/4",
+      "xgei_1/20/1"
+    ],
+    "ports": 9
+  }
+}
