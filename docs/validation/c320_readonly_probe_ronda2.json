@@ -1,0 +1,240 @@
+{
+ "generated_at": "2026-10-26T15:34:46",
+ "model": "C320",
+ "results": [
+  {
+   "group": "sesion",
+   "variant": "-",
+   "cmd": "terminal length 0",
+   "verdict": "VACIO"
+  },
+  {
+   "group": "global",
+   "variant": "-",
+   "cmd": "show gpon onu state",
+   "verdict": "OK"
+  },
+  {
+   "group": "puerto",
+   "variant": "classic",
+   "cmd": "show gpon onu baseinfo gpon-olt_<idx>",
+   "verdict": "OK"
+  },
+  {
+   "group": "ayuda",
+   "variant": "-",
+   "cmd": "show ver?",
+   "verdict": "OK"
+  },
+  {
+   "group": "ayuda",
+   "variant": "-",
+   "cmd": "show version?",
+   "verdict": "OK"
+  },
+  {
+   "group": "ayuda",
+   "variant": "-",
+   "cmd": "show system?",
+   "verdict": "OK"
+  },
+  {
+   "group": "ayuda",
+   "variant": "-",
+   "cmd": "show running-config?",
+   "verdict": "OK"
+  },
+  {
+   "group": "ayuda",
+   "variant": "-",
+   "cmd": "show running-config interface?",
+   "verdict": "OK"
+  },
+  {
+   "group": "ayuda",
+   "variant": "-",
+   "cmd": "show mac?",
+   "verdict": "OK"
+  },
+  {
+   "group": "ayuda",
+   "variant": "-",
+   "cmd": "show logging?",
+   "verdict": "OK"
+  },
+  {
+   "group": "ayuda",
+   "variant": "-",
+   "cmd": "show interface?",
+   "verdict": "OK"
+  },
+  {
+   "group": "ayuda",
+   "variant": "-",
+   "cmd": "show gpon onu profile?",
+   "verdict": "OK"
+  },
+  {
+   "group": "ayuda",
+   "variant": "-",
+   "cmd": "show gpon onu by?",
+   "verdict": "OK"
+  },
+  {
+   "group": "ayuda",
+   "variant": "-",
+   "cmd": "show gpon onu vport?",
+   "verdict": "OK"
+  },
+  {
+   "group": "ayuda",
+   "variant": "-",
+   "cmd": "show gpon onu tcont?",
+   "verdict": "OK"
+  },
+  {
+   "group": "ayuda",
+   "variant": "-",
+   "cmd": "show gpon onu gemport?",
+   "verdict": "OK"
+  },
+  {
+   "group": "ayuda",
+   "variant": "-",
+   "cmd": "show gpon onu next-available?",
+   "verdict": "OK"
+  },
+  {
+   "group": "ayuda",
+   "variant": "-",
+   "cmd": "show onu?",
+   "verdict": "OK"
+  },
+  {
+   "group": "ayuda",
+   "variant": "-",
+   "cmd": "show pon onu?",
+   "verdict": "OK"
+  },
+  {
+   "group": "ayuda",
+   "variant": "-",
+   "cmd": "show pon olt?",
+   "verdict": "OK"
+  },
+  {
+   "group": "ayuda",
+   "variant": "-",
+   "cmd": "show card?",
+   "verdict": "OK"
+  },
+  {
+   "group": "ronda2",
+   "variant": "classic",
+   "cmd": "show running-config interface gpon-olt_<idx>",
+   "verdict": "OK"
+  },
+  {
+   "group": "ronda2",
+   "variant": "classic",
+   "cmd": "show running-config interface gpon-onu_<idx>",
+   "verdict": "OK"
+  },
+  {
+   "group": "ronda2",
+   "variant": "classic",
+   "cmd": "show onu running config gpon-onu_<idx>",
+   "verdict": "OK"
+  },
+  {
+   "group": "ronda2",
+   "variant": "classic",
+   "cmd": "show mac gpon onu gpon-onu_<idx>",
+   "verdict": "OK"
+  },
+  {
+   "group": "ronda2",
+   "variant": "classic",
+   "cmd": "show gpon onu tcont gpon-onu_<idx>",
+   "verdict": "RECHAZADO"
+  },
+  {
+   "group": "ronda2",
+   "variant": "classic",
+   "cmd": "show gpon onu gemport gpon-onu_<idx>",
+   "verdict": "RECHAZADO"
+  },
+  {
+   "group": "ronda2",
+   "variant": "classic",
+   "cmd": "show gpon onu vport gpon-onu_<idx>",
+   "verdict": "RECHAZADO"
+  },
+  {
+   "group": "ronda2",
+   "variant": "classic",
+   "cmd": "show gpon onu config-fail",
+   "verdict": "RECHAZADO"
+  },
+  {
+   "group": "ronda2",
+   "variant": "classic",
+   "cmd": "show gpon onu profile vlan",
+   "verdict": "OK"
+  },
+  {
+   "group": "ronda2",
+   "variant": "classic",
+   "cmd": "show gpon onu profile traffic",
+   "verdict": "OK"
+  },
+  {
+   "group": "ronda2",
+   "variant": "classic",
+   "cmd": "show gpon onu next-available gpon-olt_<idx>",
+   "verdict": "RECHAZADO"
+  },
+  {
+   "group": "ronda2",
+   "variant": "classic",
+   "cmd": "show pon bandwidth",
+   "verdict": "RECHAZADO"
+  },
+  {
+   "group": "ronda2",
+   "variant": "classic",
+   "cmd": "show pon blacklist",
+   "verdict": "RECHAZADO"
+  },
+  {
+   "group": "ronda2",
+   "variant": "classic",
+   "cmd": "show pon olt-tx gpon-olt_<idx>",
+   "verdict": "RECHAZADO"
+  },
+  {
+   "group": "ronda2",
+   "variant": "classic",
+   "cmd": "show pon power olt-tx gpon-olt_<idx>",
+   "verdict": "OK"
+  },
+  {
+   "group": "ronda2",
+   "variant": "classic",
+   "cmd": "show alarm pool",
+   "verdict": "OK"
+  },
+  {
+   "group": "ronda2",
+   "variant": "classic",
+   "cmd": "show alarm counter",
+   "verdict": "OK"
+  },
+  {
+   "group": "ronda2",
+   "variant": "classic",
+   "cmd": "show gpon onu by sn OPTI54601D35",
+   "verdict": "OK"
+  }
+ ]
+}

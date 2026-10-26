@@ -38,7 +38,8 @@ import telnetlib  # noqa: E402  (stdlib en 3.12, deprecado)
 ROOT = Path(__file__).resolve().parents[1]
 PROMPT_RE = re.compile(r"(?:^|\n)[\w.\-()/:]*[#>] ?$")
 MORE_RE = re.compile(r"--\s*More\s*--", re.I)
-REJECT_RE = re.compile(r"%\s*(Invalid|Unknown|Incomplete|Ambiguous)|%Error|Error \d+|not exist|No related|Unrecognized", re.I)
+REJECT_RE = re.compile(r"%\s*(Invalid|Unknown|Incomplete|Ambiguous)|%Error|Error \d+|not exist|Unrecognized", re.I)
+EMPTY_RE = re.compile(r"%Code \d+\S* ?: No related information", re.I)      # comando válido sin datos que mostrar
 PACE_S = 1.0
 SESSION_OK = {"terminal length 0"}
 
@@ -122,6 +123,10 @@ class Probe:
 def verdict(out: str) -> str:
     if "[TIMEOUT" in out:
         return "TIMEOUT"
+    if EMPTY_RE.search(out):
+        return "VACIO"
+    if re.search(r"Error 20204|Ambiguous", out):
+        return "AMBIGUO"
     if REJECT_RE.search(out):
         return "RECHAZADO"
     body = [l for l in out.split("\n") if l.strip() and not PROMPT_RE.search(l)]
@@ -151,13 +156,29 @@ def main() -> int:
     ap.add_argument("--model", default="c320", choices=["c320", "c300"])
     ap.add_argument("--pon", help="puerto PON (p. ej. 1/1/1); por defecto el primero con ONU working")
     ap.add_argument("--onu", action="append", default=[], help="ONU extra a medir (p. ej. 1/1/4:12); repetible")
+    ap.add_argument("--round2", action="store_true",
+                    help="segunda ronda: ayuda `?` y variantes de lectura que la primera ronda rechazó (versión, running-config, mac, alarmas)")
+    ap.add_argument("--cmd", action="append", default=[],
+                    help="ejecuta SOLO estos comandos `show …` (repetible; lista cerrada igual que el resto) y termina")
+    ap.add_argument("--from-env", metavar="MARCA",
+                    help="toma host/puerto/usuario/contraseña de TKC_<MARCA>_HOST, _CLI_PORT, _CLI_USER y _CLI_PASSWORD del .env (p. ej. ZTE) en vez de pedirlos")
     ap.add_argument("--signed-fixture", help="fixture SNMP de potencia con signo de ESTA misma OLT (derivan ONU extra)")
     args = ap.parse_args()
 
-    host = input("Host de la OLT (IP o nombre): ").strip()
-    port = int(input("Puerto Telnet [23]: ").strip() or "23")
-    user = input("Usuario Telnet (solo lectura): ").strip()
-    pwd = getpass.getpass("Contraseña Telnet (no se muestra): ")
+    if args.from_env:
+        from dotenv import dotenv_values
+        ev, m = dotenv_values(ROOT / ".env"), args.from_env.upper()
+        host, port = (ev.get(f"TKC_{m}_HOST") or "").strip(), int(ev.get(f"TKC_{m}_CLI_PORT") or "23")
+        user, pwd = (ev.get(f"TKC_{m}_CLI_USER") or "").strip(), ev.get(f"TKC_{m}_CLI_PASSWORD") or ""
+        proto = (ev.get(f"TKC_{m}_CLI_PROTO") or "telnet").lower()
+        if proto != "telnet":
+            print(f"TKC_{m}_CLI_PROTO={proto}: esta sonda solo habla Telnet.", file=sys.stderr)
+            return 2
+    else:
+        host = input("Host de la OLT (IP o nombre): ").strip()
+        port = int(input("Puerto Telnet [23]: ").strip() or "23")
+        user = input("Usuario Telnet (solo lectura): ").strip()
+        pwd = getpass.getpass("Contraseña Telnet (no se muestra): ")
     if not (host and user and pwd):
         print("Faltan datos.", file=sys.stderr)
         return 2
@@ -181,6 +202,38 @@ def main() -> int:
             results.append((group, variant, cmd, out))
             print(f"[{verdict(out):9}] {variant:7} {cmd}", flush=True)
             return out
+
+        if args.cmd:
+            do("sesion", "-", "terminal length 0")
+            for c in args.cmd:
+                do("cmd", "classic", c, 40)
+            args.round2 = True
+            return finish(p, results, args, host, port)
+        if args.round2:
+            do("sesion", "-", "terminal length 0")
+            state = do("global", "-", "show gpon onu state", 120)
+            rows = re.findall(r"(\d+/\d+/\d+):(\d+)\s+\S+\s+\S+\s+(\w+)", state)
+            work = [(a, b) for a, b, st in rows if st.lower() == "working"]
+            pon, n = (next(((a, b) for a, b in work if a == args.pon), None) if args.pon else None) or (work[0] if work else ("1/1/1", "1"))
+            idx = f"{pon}:{n}"
+            base = do("puerto", "classic", f"show gpon onu baseinfo gpon-olt_{pon}", 40)
+            sn = (re.search(r"SN:(\w+)", base) or [None, None])[1]
+            for h in ("show ver?", "show version?", "show system?", "show running-config?", "show running-config interface?",
+                      "show mac?", "show logging?", "show interface?", "show gpon onu profile?", "show gpon onu by?",
+                      "show gpon onu vport?", "show gpon onu tcont?", "show gpon onu gemport?", "show gpon onu next-available?",
+                      "show onu?", "show pon onu?", "show pon olt?", "show card?"):
+                do("ayuda", "-", h, 6)
+            for cmd in (f"show running-config interface gpon-olt_{pon}", f"show running-config interface gpon-onu_{idx}",
+                        f"show onu running config gpon-onu_{idx}", f"show mac gpon onu gpon-onu_{idx}",
+                        f"show gpon onu tcont gpon-onu_{idx}", f"show gpon onu gemport gpon-onu_{idx}",
+                        f"show gpon onu vport gpon-onu_{idx}", "show gpon onu config-fail", "show gpon onu profile vlan",
+                        "show gpon onu profile traffic", "show gpon onu next-available gpon-olt_" + pon,
+                        "show pon bandwidth", "show pon blacklist", "show pon olt-tx gpon-olt_" + pon,
+                        "show pon power olt-tx gpon-olt_" + pon, "show alarm pool", "show alarm counter"):
+                do("ronda2", "classic", cmd, 40)
+            if sn:
+                do("ronda2", "classic", f"show gpon onu by sn {sn}", 30)
+            return finish(p, results, args, host, port)
 
         # 1. Sesión y descubrimiento global
         do("sesion", "-", "terminal length 0")
@@ -253,10 +306,13 @@ def main() -> int:
         for h in ("show gpon onu ?", "show pon ?", "show pon power ?", "show gpon remote-onu ?", "show alarm ?",
                   "show gpon profile ?", "show qos ?"):
             do("ayuda", "-", h, 6)
+        return finish(p, results, args, host, port)
     finally:
         p.close()
 
-    stamp = datetime.now().strftime("%Y%m%d")
+
+def finish(p, results, args, host, port) -> int:
+    stamp = datetime.now().strftime("%Y%m%d") + ("_ronda2" if args.round2 else "")
     model = args.model.upper()
     out = ROOT / f"docs/walks/diagnostics/ZTE_{model}_cli_reads_{stamp}.txt"
     out.parent.mkdir(parents=True, exist_ok=True)
@@ -267,7 +323,7 @@ def main() -> int:
             f.write(f"{verdict(o):9} {g:10} {v:7} {c}\n")
         for g, v, c, o in results:
             f.write(f"\n{'=' * 78}\n## [{g}/{v}] {c}\n{'=' * 78}\n{o}\n")
-    summ = ROOT / f"docs/validation/{args.model}_readonly_probe.json"
+    summ = ROOT / f"docs/validation/{args.model}_readonly_probe{'_ronda2' if args.round2 else ''}.json"
     summ.write_text(json.dumps(
         {"generated_at": datetime.now().isoformat(timespec="seconds"), "model": model,
          "results": [{"group": g, "variant": v, "cmd": re.sub(r"\d+/\d+/\d+(:\d+)?", "<idx>", c), "verdict": verdict(o)}

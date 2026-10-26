@@ -1,6 +1,7 @@
 {
- "generated_at": "2026-10-26T15:17:34",
+ "generated_at": "2026-10-26",
  "model": "C320",
+ "note": "veredictos reclasificados (VACIO/AMBIGUO)",
  "results": [
   {
    "group": "sesion",
@@ -18,7 +19,7 @@
    "group": "sesion",
    "variant": "-",
    "cmd": "show version",
-   "verdict": "RECHAZADO"
+   "verdict": "AMBIGUO"
   },
   {
    "group": "sesion",
@@ -42,13 +43,13 @@
    "group": "global",
    "variant": "classic",
    "cmd": "show gpon onu uncfg",
-   "verdict": "RECHAZADO"
+   "verdict": "VACIO"
   },
   {
    "group": "global",
    "variant": "c6",
    "cmd": "show pon onu uncfg",
-   "verdict": "RECHAZADO"
+   "verdict": "VACIO"
   },
   {
    "group": "global",
@@ -126,7 +127,7 @@
    "group": "puerto",
    "variant": "classic",
    "cmd": "show gpon onu uncfg gpon-olt_<idx>",
-   "verdict": "RECHAZADO"
+   "verdict": "VACIO"
   },
   {
    "group": "puerto",
