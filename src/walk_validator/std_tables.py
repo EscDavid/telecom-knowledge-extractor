@@ -23,6 +23,7 @@ from collections import Counter, defaultdict
 from typing import Any, Optional
 
 from ..ids import build_entity_id, build_oid_id
+from ..normalizer.normalizer import CRITICAL_SHORT, ENTITY_DESCRIPTIONS, SHORT_NAME_TYPE
 from ..profiles import (LEGACY_DEFAULT_VENDOR, VendorProfile, default_registry)
 from .triggers import Findings, decode_ascii_index
 
@@ -107,6 +108,34 @@ def extract_if_names(walk: dict[str, dict]) -> dict[str, str]:
 
 
 # --- enriquecimiento de entidades --------------------------------------------
+def _ensure_entity(entities_by_short: dict[str, dict], short: str, *, vendor: str,
+                   family: str, technology: str, firmware: list[str]) -> dict:
+    """Entidad existente, o (solo en modo walk-first, sin semilla) una mínima
+    sintetizada ahora mismo — ver backlog #1 de docs/adaptacion_multivendor.md.
+    Fuera de walk-first, `short` ausente del dict significa "no aplica a esta
+    familia" y NO debe crearse una entidad nueva (por eso los llamadores solo
+    pasan por aquí cuando ya se confirmó walk_first=True)."""
+    ent = entities_by_short.get(short)
+    if ent:
+        return ent
+    etype = SHORT_NAME_TYPE.get(short, "logical")
+    canonical = short.replace("_", " ").title()
+    ent = {
+        "id": build_entity_id(vendor, technology, etype, canonical),
+        "canonical_name": canonical,
+        "vendor": vendor, "family": family, "firmware": list(firmware),
+        "technology": technology, "type": etype,
+        "description": ENTITY_DESCRIPTIONS.get(short),
+        "is_critical": short in CRITICAL_SHORT,
+        "aliases": [], "attributes": [],
+        "sources": [{"doc_type": "walk", "pages": None, "confidence": 0.0}],
+        "status": "observed",
+        "confidence": {"overall": 0.0},
+    }
+    entities_by_short[short] = ent
+    return ent
+
+
 def _verify_entity(ent: dict, source: str, empirical: dict) -> None:
     ent["status"] = "verified"
     conf = ent.setdefault("confidence", {})
@@ -128,8 +157,14 @@ def _refine_module(short: str, row: dict) -> str:
 
 def enrich_hardware_entities(entities_by_short: dict[str, dict], walk: dict[str, dict],
                              source: str, findings: Findings,
-                             profile: Optional[VendorProfile] = None) -> int:
-    """Confirma entidades hardware con el inventario real de entPhysicalTable."""
+                             profile: Optional[VendorProfile] = None,
+                             walk_first: bool = False, family: Optional[str] = None) -> int:
+    """Confirma entidades hardware con el inventario real de entPhysicalTable.
+
+    walk_first=True (sin semilla, ver backlog #1): una entidad sin equivalente en
+    el catálogo se SINTETIZA (status=observed) en vez de descartarse — con semilla,
+    "no está en el catálogo" significa "no aplica a esta familia", no se inventa."""
+    profile = _profile(profile)
     refine = bool(profile and profile.ent_module_refine)
     rows = extract_ent_physical(walk)
     counts: Counter = Counter()
@@ -154,7 +189,11 @@ def enrich_hardware_entities(entities_by_short: dict[str, dict], walk: dict[str,
     for short, n in counts.items():
         ent = entities_by_short.get(short)
         if not ent:
-            continue
+            if not walk_first:
+                continue
+            ent = _ensure_entity(entities_by_short, short, vendor=profile.vendor,
+                                 family=family or "", technology=profile.technology,
+                                 firmware=[])
         _verify_entity(ent, source, {"via": "entPhysicalTable", "instances": n,
                                      "samples": [s for s in samples[short] if s]})
         confirmed += 1
@@ -205,7 +244,8 @@ def decode_composite(index_int: int, components: list[dict]) -> dict[str, int]:
 
 def enrich_port_entities(entities_by_short: dict[str, dict], oid_groups: list[dict],
                          walk: dict[str, dict], source: str, findings: Findings,
-                         profile: Optional[VendorProfile] = None) -> None:
+                         profile: Optional[VendorProfile] = None,
+                         walk_first: bool = False, family: Optional[str] = None) -> None:
     """Confirma entidades de puerto por ifName y valida bit_calculation con ifIndex real."""
     profile = _profile(profile)
     if_rows = extract_if_names(walk)
@@ -220,13 +260,18 @@ def enrich_port_entities(entities_by_short: dict[str, dict], oid_groups: list[di
             samples[short].append(name)
     for short, n in counts.items():
         ent = entities_by_short.get(short)
-        if ent:
-            _verify_entity(ent, source, {"via": "ifXTable", "instances": n,
-                                         "samples": samples[short]})
-            findings.add({"trigger": "entity_confirmed", "entity": short, "instances": n,
-                          "via": "ifXTable",
-                          "catalog_action": f"status=verified para {short} (interfaces reales)",
-                          "severity": "low"})
+        if not ent:
+            if not walk_first:
+                continue
+            ent = _ensure_entity(entities_by_short, short, vendor=profile.vendor,
+                                 family=family or "", technology=profile.technology,
+                                 firmware=[])
+        _verify_entity(ent, source, {"via": "ifXTable", "instances": n,
+                                     "samples": samples[short]})
+        findings.add({"trigger": "entity_confirmed", "entity": short, "instances": n,
+                      "via": "ifXTable",
+                      "catalog_action": f"status=verified para {short} (interfaces reales)",
+                      "severity": "low"})
 
     # Validación del índice compuesto: se compara el decode del catálogo contra el
     # rack/slot/port REAL que trae el ifName (ground truth). No basta con que los
@@ -603,7 +648,8 @@ def enrich_pon_operational(entities_by_short: dict[str, dict], oid_groups: list[
                            walk: dict[str, dict], source: str, findings: Findings,
                            vendor: str | None = None, technology: str = "gpon",
                            family: str | None = None,
-                           profile: Optional[VendorProfile] = None) -> None:
+                           profile: Optional[VendorProfile] = None,
+                           walk_first: bool = False) -> None:
     """Mapea ifOperStatus/ifType del ifTable a la operación de PON ports.
 
     PON port / uplink se reconocen por el ifType del perfil (IANAifType: gpon=250,
@@ -629,6 +675,9 @@ def enrich_pon_operational(entities_by_short: dict[str, dict], oid_groups: list[
     down = sum(1 for i in pon_idx if _int(ifoper.get(i)) == 2)
 
     ent = entities_by_short.get("pon_port")
+    if not ent and walk_first and pon_idx:
+        ent = _ensure_entity(entities_by_short, "pon_port", vendor=vendor,
+                             family=family or "", technology=technology, firmware=[])
     if ent:
         ent["status"] = _STATUS_WALK
         c = ent.setdefault("confidence", {})
@@ -638,6 +687,9 @@ def enrich_pon_operational(entities_by_short: dict[str, dict], oid_groups: list[
                             "oper_up": up, "oper_down": down, "source": source}
     upl = [i for i, t in iftype.items() if str(t).strip() == upl_t]
     e2 = entities_by_short.get("uplink_port")
+    if not e2 and walk_first and upl:
+        e2 = _ensure_entity(entities_by_short, "uplink_port", vendor=vendor,
+                            family=family or "", technology=technology, firmware=[])
     if upl and e2:
         e2["status"] = _STATUS_WALK
         e2["empirical"] = {**(e2.get("empirical") or {}), "via": f"ifTable (ifType={upl_t})",

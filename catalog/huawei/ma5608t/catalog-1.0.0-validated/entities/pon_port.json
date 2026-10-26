@@ -24,7 +24,7 @@
     "correlation": 0.0,
     "overall": 1.0
   },
-  "status": "verified_walk",
+  "status": "verified",
   "lifecycle": {
     "introduced_in": "R015",
     "deprecated_in": null,
@@ -35,7 +35,7 @@
   "relations": [],
   "conflicts": [],
   "empirical": {
-    "source": "Huawei_MA5608T_ifnames.txt",
+    "source": "Huawei_MA5608T_ifxfull.txt",
     "via": "ifXTable",
     "instances": 32,
     "samples": [
@@ -45,10 +45,6 @@
       "GPON 0/0/3",
       "GPON 0/0/4"
     ],
-    "oper_via": "ifTable (ifType=250)",
-    "pon_ports": 32,
-    "oper_up": 31,
-    "oper_down": 1,
     "onu_count": {
       "derived": true,
       "status": "verified_walk",

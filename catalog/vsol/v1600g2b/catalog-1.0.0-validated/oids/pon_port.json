@@ -1,0 +1,140 @@
+{
+  "entity_ref": "entity.vsol.gpon.port.pon_port",
+  "vendor": "VSOL",
+  "family": "V1600G2B",
+  "firmware": [],
+  "oids": [
+    {
+      "id": "oid.vsol.gpon.pon_port.oper_status",
+      "oid": "1.3.6.1.2.1.2.2.1.8",
+      "name": "UNRESOLVED",
+      "mib_name": "IF-MIB",
+      "attribute": "oper_status",
+      "entity_ref": "entity.vsol.gpon.port.pon_port",
+      "mib_table": "ifTable",
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "note": "nivel puerto: ifIndex tal cual (sin fórmula de índice verificada para este vendor)",
+        "validated": false,
+        "source": "ifTable",
+        "status": "verified_walk"
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": {
+        "1": "up",
+        "2": "down",
+        "3": "testing",
+        "4": "unknown",
+        "5": "dormant",
+        "6": "notPresent",
+        "7": "lowerLayerDown"
+      },
+      "description": "estado operativo real por PON port (IF-MIB ifOperStatus); 1=up, 2=down",
+      "full_oid_template": ".1.3.6.1.2.1.2.2.1.8.<ifIndex>",
+      "command_ref": null,
+      "status": "verified_walk",
+      "sources": [
+        {
+          "doc_type": "walk",
+          "pages": null,
+          "confidence": 0.0
+        }
+      ],
+      "confidence": {
+        "extraction": 0.9,
+        "correlation": 0.0,
+        "overall": 0.9
+      },
+      "provenance": "walk ifTable: VSOL_V1600G2B_ifnames.txt",
+      "conflicts": []
+    },
+    {
+      "id": "oid.vsol.gpon.pon_port.admin_status",
+      "oid": "1.3.6.1.2.1.2.2.1.7",
+      "name": "UNRESOLVED",
+      "mib_name": "IF-MIB",
+      "attribute": "admin_status",
+      "entity_ref": "entity.vsol.gpon.port.pon_port",
+      "mib_table": "ifTable",
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "note": "nivel puerto: ifIndex tal cual (sin fórmula de índice verificada para este vendor)",
+        "validated": false,
+        "source": "ifTable",
+        "status": "verified_walk"
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": {
+        "1": "up",
+        "2": "down",
+        "3": "testing"
+      },
+      "description": "estado administrativo por PON port (IF-MIB ifAdminStatus)",
+      "full_oid_template": ".1.3.6.1.2.1.2.2.1.7.<ifIndex>",
+      "command_ref": null,
+      "status": "verified_walk",
+      "sources": [
+        {
+          "doc_type": "walk",
+          "pages": null,
+          "confidence": 0.0
+        }
+      ],
+      "confidence": {
+        "extraction": 0.9,
+        "correlation": 0.0,
+        "overall": 0.9
+      },
+      "provenance": "walk ifTable: VSOL_V1600G2B_ifnames.txt",
+      "conflicts": []
+    },
+    {
+      "id": "oid.vsol.gpon.pon_port.if_type",
+      "oid": "1.3.6.1.2.1.2.2.1.3",
+      "name": "UNRESOLVED",
+      "mib_name": "IF-MIB",
+      "attribute": "if_type",
+      "entity_ref": "entity.vsol.gpon.port.pon_port",
+      "mib_table": "ifTable",
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "note": "nivel puerto: ifIndex tal cual (sin fórmula de índice verificada para este vendor)",
+        "validated": false,
+        "source": "ifTable",
+        "status": "verified_walk"
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-only",
+      "enumeration": null,
+      "description": "tipo de interfaz (250=gpon PON port, 6=uplink)",
+      "full_oid_template": ".1.3.6.1.2.1.2.2.1.3.<ifIndex>",
+      "command_ref": null,
+      "status": "verified_walk",
+      "sources": [
+        {
+          "doc_type": "walk",
+          "pages": null,
+          "confidence": 0.0
+        }
+      ],
+      "confidence": {
+        "extraction": 0.9,
+        "correlation": 0.0,
+        "overall": 0.9
+      },
+      "provenance": "walk ifTable: VSOL_V1600G2B_ifnames.txt",
+      "conflicts": []
+    }
+  ]
+}

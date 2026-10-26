@@ -1,0 +1,36 @@
+{
+  "id": "entity.vsol.gpon.port.pon_port",
+  "canonical_name": "Pon Port",
+  "vendor": "VSOL",
+  "family": "V1600G2B",
+  "firmware": [],
+  "technology": "gpon",
+  "type": "port",
+  "description": "Puerto PON GPON del OLT (interfaz gpon slot/pon).",
+  "is_critical": true,
+  "aliases": [],
+  "attributes": [],
+  "sources": [
+    {
+      "doc_type": "walk",
+      "pages": null,
+      "confidence": 0.0
+    }
+  ],
+  "status": "verified",
+  "confidence": {
+    "overall": 0.45
+  },
+  "empirical": {
+    "source": "VSOL_V1600G2B_ifxfull.txt",
+    "via": "ifXTable",
+    "instances": 265,
+    "samples": [
+      "GPON0/1 la_soledad",
+      "GPON0/2 pueblo_sol",
+      "GPON0/3 3_canchas",
+      "GPON0/4 altos_de_la_soledad",
+      "GPON0/5 EL_ENSUENO"
+    ]
+  }
+}

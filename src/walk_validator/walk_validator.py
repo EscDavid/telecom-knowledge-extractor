@@ -45,6 +45,9 @@ FAMILY_MAP = {tok: fam for tok, (_v, fam) in default_registry().families().items
 WALK_TYPE_MAP = {
     "_entities": "entity_table",   # entPhysicalTable (1.3.6.1.2.1.47.1.1.1.1)
     "_ifnames": "if_table",        # ifXTable ifName   (1.3.6.1.2.1.31.1.1.1.1)
+    "_ifxfull": "if_table",        # ifXTable completa (con contadores 64-bit); mismo tipo
+    "_system": "enterprise",       # escalares MIB-II (sysDescr/sysObjectID...); se tratan
+                                   # como evidencia "enterprise" más, no como tabla aparte
 }
 
 
@@ -204,14 +207,18 @@ class WalkValidator:
         single_shelf = self._single_shelf(profile)
 
         seed = self._seed_dir(vendor, seed_family)
-        if not seed.exists():
-            raise FileNotFoundError(
-                f"Catálogo semilla no encontrado: {seed}. Genera antes la Fase 1 "
-                f"con vendor='{vendor}' family='{seed_family}'.")
-
         findings = Findings()
         oid_groups = self._load_dir(seed / "oids")
         entities = self._load_dir(seed / "entities")
+        # modo walk-first (backlog #1 de docs/adaptacion_multivendor.md): sin semilla
+        # (ni MIB oficial ni .mib sintético), el catálogo se construye ENTERO desde el
+        # walk — nombres UNRESOLVED, status=observed. Nunca se activa para un vendor que
+        # sí tiene semilla (oid_groups/entities no vacíos), así que no cambia nada de lo
+        # que ya funciona para ZTE/Huawei.
+        walk_first = not oid_groups and not entities
+        if walk_first:
+            log.warning("WalkValidator: sin catálogo semilla en %s — modo walk-first "
+                        "(todo status=observed, nombres UNRESOLVED)", seed)
         for coll in (oid_groups, entities):
             for d in coll:
                 _relabel_family(d, family)
@@ -230,20 +237,26 @@ class WalkValidator:
                 enterprise_sorted = sorted_walk
                 enricher = Enricher(walk, sorted_walk, findings, wf.name,
                                     prune_unconfirmed_readonly=self.prune_ro, profile=profile)
-                base_oids = [o["oid"] for g in oid_groups for o in g.get("oids", [])]
-                enriched_oids = enricher.enrich_groups(oid_groups, family)
-                enricher.detect_observed_only(base_oids)
+                if walk_first:
+                    enriched_oids = enricher.materialize_observed_groups(
+                        vendor, family, profile.technology)
+                    log.info("WalkValidator: walk-first → %d OID(s) UNRESOLVED materializados "
+                             "de %s", sum(len(g["oids"]) for g in enriched_oids), wf.name)
+                else:
+                    base_oids = [o["oid"] for g in oid_groups for o in g.get("oids", [])]
+                    enriched_oids = enricher.enrich_groups(oid_groups, family)
+                    enricher.detect_observed_only(base_oids)
             elif wtype == "entity_table":
                 n = ST.enrich_hardware_entities(entities_by_short, walk, wf.name, findings,
-                                            profile=profile)
+                                            profile=profile, walk_first=walk_first, family=family)
                 log.info("WalkValidator: %d entidades hardware confirmadas (entPhysicalTable)", n)
             elif wtype == "if_table":
                 ST.enrich_port_entities(entities_by_short, oid_groups, walk, wf.name, findings,
-                                        profile=profile)
+                                        profile=profile, walk_first=walk_first, family=family)
                 # ifTable (ifOperStatus/ifType) → operación de PON ports
                 ST.enrich_pon_operational(entities_by_short, enriched_oids, walk, wf.name,
                                           findings, vendor=vendor, technology=profile.technology,
-                                          family=family, profile=profile)
+                                          family=family, profile=profile, walk_first=walk_first)
 
         # índices ASCII de software/parche: se validan con las instancias del walk enterprise
         if enterprise_sorted:

@@ -1,0 +1,38 @@
+# =============================================================================
+# TKC — configuración del pipeline para VSOL V1600G2B.
+# Sin MIB (ni oficial ni fuente tipo Observium): primer vendor que ejercita el
+# modo WALK-FIRST (backlog #1 de docs/adaptacion_multivendor.md). Fase 1 no
+# tiene nada que extraer de docs/vsol/ (no existe aún) — el catálogo entero
+# sale de Fase 2 directo del walk real, con status=observed y nombres
+# UNRESOLVED donde no hay forma de saber el nombre MIB real.
+#
+# `paths.docs` apunta a docs/vsol/ por la misma razón que en los demás
+# pipelines por vendor: evita que el Classifier mezcle documentos de otro
+# fabricante (ver el fix en config/pipeline.yaml, commit 6fe4a93).
+# =============================================================================
+
+paths:
+  docs: docs/vsol/
+  schemas: schemas/
+  catalog: catalog/
+  walks: docs/walks/
+  validation: docs/validation/
+  logs: logs/
+  reports: reports/
+  research: research/
+
+walk_validator:
+  prune_unconfirmed_readonly: true
+  halt_on_blocking: true
+
+pipeline:
+  vendor: VSOL
+  family: V1600G2B
+  technology: gpon
+  firmware: []
+  catalog_version: "1.0.0"
+
+classifier:
+  min_confidence: 0.5
+  known_vendors: ["ZTE", "Huawei", "VSOL"]
+  header_pages: 3

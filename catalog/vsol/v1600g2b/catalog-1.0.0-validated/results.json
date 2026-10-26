@@ -1,0 +1,52 @@
+{
+  "generated_at": "2026-10-26T15:20:21",
+  "walks": {
+    "VSOL_V1600G2B_system.txt": "enterprise",
+    "VSOL_V1600G2B_entities.txt": "entity_table",
+    "VSOL_V1600G2B_ifnames.txt": "if_table",
+    "VSOL_V1600G2B_ifxfull.txt": "if_table"
+  },
+  "findings": [
+    {
+      "trigger": "entity_confirmed",
+      "entity": "uplink_port",
+      "instances": 8,
+      "via": "ifXTable",
+      "catalog_action": "status=verified para uplink_port (interfaces reales)",
+      "severity": "low"
+    },
+    {
+      "trigger": "entity_confirmed",
+      "entity": "pon_port",
+      "instances": 265,
+      "via": "ifXTable",
+      "catalog_action": "status=verified para pon_port (interfaces reales)",
+      "severity": "low"
+    },
+    {
+      "trigger": "pon_operational",
+      "pon_ports": 274,
+      "oper_up": 210,
+      "oper_down": 64,
+      "uplink_ports": 8,
+      "catalog_action": "pon_port.oper mapeado desde ifOperStatus (ifType=250)",
+      "severity": "low"
+    },
+    {
+      "trigger": "entity_confirmed",
+      "entity": "uplink_port",
+      "instances": 8,
+      "via": "ifXTable",
+      "catalog_action": "status=verified para uplink_port (interfaces reales)",
+      "severity": "low"
+    },
+    {
+      "trigger": "entity_confirmed",
+      "entity": "pon_port",
+      "instances": 265,
+      "via": "ifXTable",
+      "catalog_action": "status=verified para pon_port (interfaces reales)",
+      "severity": "low"
+    }
+  ]
+}

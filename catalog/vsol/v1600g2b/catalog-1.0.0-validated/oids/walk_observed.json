@@ -1,0 +1,248 @@
+{
+  "entity_ref": "entity.vsol.gpon.unresolved.walk_observed",
+  "vendor": "VSOL",
+  "family": "V1600G2B",
+  "firmware": [],
+  "oids": [
+    {
+      "id": "oid.vsol.gpon.unresolved.1_3_6_1_2_1_1_1",
+      "oid": "1.3.6.1.2.1.1.1",
+      "name": "UNRESOLVED",
+      "entity_ref": "entity.vsol.gpon.unresolved.walk_observed",
+      "vendor": "VSOL",
+      "family": "V1600G2B",
+      "technology": "gpon",
+      "firmware": [],
+      "syntax": "STRING",
+      "access": "unknown",
+      "status": "observed",
+      "description": "Walk-first: sin MIB/semilla para este vendor. Base inferida recortando el último componente del OID como índice de instancia (aproximación — puede ser incorrecta si el índice real es compuesto).",
+      "empirical": {
+        "source": "VSOL_V1600G2B_system.txt",
+        "instances": 1,
+        "sample_oid": "1.3.6.1.2.1.1.1.0",
+        "sample_value": "\"V1600G2B\""
+      },
+      "sources": [
+        {
+          "doc_type": "walk",
+          "pages": null,
+          "confidence": 0.0
+        }
+      ],
+      "confidence": {
+        "overall": 0.0
+      }
+    },
+    {
+      "id": "oid.vsol.gpon.unresolved.1_3_6_1_2_1_1_2",
+      "oid": "1.3.6.1.2.1.1.2",
+      "name": "UNRESOLVED",
+      "entity_ref": "entity.vsol.gpon.unresolved.walk_observed",
+      "vendor": "VSOL",
+      "family": "V1600G2B",
+      "technology": "gpon",
+      "firmware": [],
+      "syntax": "OID",
+      "access": "unknown",
+      "status": "observed",
+      "description": "Walk-first: sin MIB/semilla para este vendor. Base inferida recortando el último componente del OID como índice de instancia (aproximación — puede ser incorrecta si el índice real es compuesto).",
+      "empirical": {
+        "source": "VSOL_V1600G2B_system.txt",
+        "instances": 1,
+        "sample_oid": "1.3.6.1.2.1.1.2.0",
+        "sample_value": ".1.3.6.1.4.1.37950.1.1.5.10.14.1"
+      },
+      "sources": [
+        {
+          "doc_type": "walk",
+          "pages": null,
+          "confidence": 0.0
+        }
+      ],
+      "confidence": {
+        "overall": 0.0
+      }
+    },
+    {
+      "id": "oid.vsol.gpon.unresolved.1_3_6_1_2_1_1_3",
+      "oid": "1.3.6.1.2.1.1.3",
+      "name": "UNRESOLVED",
+      "entity_ref": "entity.vsol.gpon.unresolved.walk_observed",
+      "vendor": "VSOL",
+      "family": "V1600G2B",
+      "technology": "gpon",
+      "firmware": [],
+      "syntax": "Timeticks",
+      "access": "unknown",
+      "status": "observed",
+      "description": "Walk-first: sin MIB/semilla para este vendor. Base inferida recortando el último componente del OID como índice de instancia (aproximación — puede ser incorrecta si el índice real es compuesto).",
+      "empirical": {
+        "source": "VSOL_V1600G2B_system.txt",
+        "instances": 1,
+        "sample_oid": "1.3.6.1.2.1.1.3.0",
+        "sample_value": "(118878800) 13 days, 18:13:08.00"
+      },
+      "sources": [
+        {
+          "doc_type": "walk",
+          "pages": null,
+          "confidence": 0.0
+        }
+      ],
+      "confidence": {
+        "overall": 0.0
+      }
+    },
+    {
+      "id": "oid.vsol.gpon.unresolved.1_3_6_1_2_1_1_4",
+      "oid": "1.3.6.1.2.1.1.4",
+      "name": "UNRESOLVED",
+      "entity_ref": "entity.vsol.gpon.unresolved.walk_observed",
+      "vendor": "VSOL",
+      "family": "V1600G2B",
+      "technology": "gpon",
+      "firmware": [],
+      "syntax": "STRING",
+      "access": "unknown",
+      "status": "observed",
+      "description": "Walk-first: sin MIB/semilla para este vendor. Base inferida recortando el último componente del OID como índice de instancia (aproximación — puede ser incorrecta si el índice real es compuesto).",
+      "empirical": {
+        "source": "VSOL_V1600G2B_system.txt",
+        "instances": 1,
+        "sample_oid": "1.3.6.1.2.1.1.4.0",
+        "sample_value": "\"Contact\""
+      },
+      "sources": [
+        {
+          "doc_type": "walk",
+          "pages": null,
+          "confidence": 0.0
+        }
+      ],
+      "confidence": {
+        "overall": 0.0
+      }
+    },
+    {
+      "id": "oid.vsol.gpon.unresolved.1_3_6_1_2_1_1_5",
+      "oid": "1.3.6.1.2.1.1.5",
+      "name": "UNRESOLVED",
+      "entity_ref": "entity.vsol.gpon.unresolved.walk_observed",
+      "vendor": "VSOL",
+      "family": "V1600G2B",
+      "technology": "gpon",
+      "firmware": [],
+      "syntax": "STRING",
+      "access": "unknown",
+      "status": "observed",
+      "description": "Walk-first: sin MIB/semilla para este vendor. Base inferida recortando el último componente del OID como índice de instancia (aproximación — puede ser incorrecta si el índice real es compuesto).",
+      "empirical": {
+        "source": "VSOL_V1600G2B_system.txt",
+        "instances": 1,
+        "sample_oid": "1.3.6.1.2.1.1.5.0",
+        "sample_value": "\"gpon-olt\""
+      },
+      "sources": [
+        {
+          "doc_type": "walk",
+          "pages": null,
+          "confidence": 0.0
+        }
+      ],
+      "confidence": {
+        "overall": 0.0
+      }
+    },
+    {
+      "id": "oid.vsol.gpon.unresolved.1_3_6_1_2_1_1_6",
+      "oid": "1.3.6.1.2.1.1.6",
+      "name": "UNRESOLVED",
+      "entity_ref": "entity.vsol.gpon.unresolved.walk_observed",
+      "vendor": "VSOL",
+      "family": "V1600G2B",
+      "technology": "gpon",
+      "firmware": [],
+      "syntax": "STRING",
+      "access": "unknown",
+      "status": "observed",
+      "description": "Walk-first: sin MIB/semilla para este vendor. Base inferida recortando el último componente del OID como índice de instancia (aproximación — puede ser incorrecta si el índice real es compuesto).",
+      "empirical": {
+        "source": "VSOL_V1600G2B_system.txt",
+        "instances": 1,
+        "sample_oid": "1.3.6.1.2.1.1.6.0",
+        "sample_value": "\"Location\""
+      },
+      "sources": [
+        {
+          "doc_type": "walk",
+          "pages": null,
+          "confidence": 0.0
+        }
+      ],
+      "confidence": {
+        "overall": 0.0
+      }
+    },
+    {
+      "id": "oid.vsol.gpon.unresolved.1_3_6_1_2_1_1_7",
+      "oid": "1.3.6.1.2.1.1.7",
+      "name": "UNRESOLVED",
+      "entity_ref": "entity.vsol.gpon.unresolved.walk_observed",
+      "vendor": "VSOL",
+      "family": "V1600G2B",
+      "technology": "gpon",
+      "firmware": [],
+      "syntax": "INTEGER",
+      "access": "unknown",
+      "status": "observed",
+      "description": "Walk-first: sin MIB/semilla para este vendor. Base inferida recortando el último componente del OID como índice de instancia (aproximación — puede ser incorrecta si el índice real es compuesto).",
+      "empirical": {
+        "source": "VSOL_V1600G2B_system.txt",
+        "instances": 1,
+        "sample_oid": "1.3.6.1.2.1.1.7.0",
+        "sample_value": "6"
+      },
+      "sources": [
+        {
+          "doc_type": "walk",
+          "pages": null,
+          "confidence": 0.0
+        }
+      ],
+      "confidence": {
+        "overall": 0.0
+      }
+    },
+    {
+      "id": "oid.vsol.gpon.unresolved.1_3_6_1_2_1_1_8",
+      "oid": "1.3.6.1.2.1.1.8",
+      "name": "UNRESOLVED",
+      "entity_ref": "entity.vsol.gpon.unresolved.walk_observed",
+      "vendor": "VSOL",
+      "family": "V1600G2B",
+      "technology": "gpon",
+      "firmware": [],
+      "syntax": "Timeticks",
+      "access": "unknown",
+      "status": "observed",
+      "description": "Walk-first: sin MIB/semilla para este vendor. Base inferida recortando el último componente del OID como índice de instancia (aproximación — puede ser incorrecta si el índice real es compuesto).",
+      "empirical": {
+        "source": "VSOL_V1600G2B_system.txt",
+        "instances": 1,
+        "sample_oid": "1.3.6.1.2.1.1.8.0",
+        "sample_value": "(1) 0:00:00.01"
+      },
+      "sources": [
+        {
+          "doc_type": "walk",
+          "pages": null,
+          "confidence": 0.0
+        }
+      ],
+      "confidence": {
+        "overall": 0.0
+      }
+    }
+  ]
+}

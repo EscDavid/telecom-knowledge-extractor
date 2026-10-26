@@ -1,0 +1,36 @@
+{
+  "project": "Telecom Knowledge Compiler (TKC) — Fase 2",
+  "vendor": "VSOL",
+  "family": "V1600G2B",
+  "phase": "walk_validation",
+  "seed_family": "V1600G2B",
+  "walks": {
+    "VSOL_V1600G2B_system.txt": "enterprise",
+    "VSOL_V1600G2B_entities.txt": "entity_table",
+    "VSOL_V1600G2B_ifnames.txt": "if_table",
+    "VSOL_V1600G2B_ifxfull.txt": "if_table"
+  },
+  "generated_at": "2026-10-26T15:20:21",
+  "counts": {
+    "oids_kept": 11,
+    "oids_pruned": 0,
+    "entities_confirmed": 2
+  },
+  "status_distribution": {
+    "oids": {
+      "observed": 8,
+      "verified_walk": 3
+    },
+    "entities": {
+      "verified": 2
+    }
+  },
+  "triggers": {
+    "entity_confirmed": 4,
+    "pon_operational": 1
+  },
+  "bitcalc_validation": null,
+  "pending_validations": [],
+  "community": null,
+  "observed_firmware_strings": []
+}

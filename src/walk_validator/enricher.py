@@ -21,7 +21,7 @@ from __future__ import annotations
 from bisect import bisect_left
 from typing import Any, Optional
 
-from ..ids import snake
+from ..ids import build_oid_id, snake
 from ..profiles import VendorProfile, branch_root
 from . import triggers as T
 from .triggers import Findings
@@ -159,6 +159,47 @@ class Enricher:
             if g["oids"]:
                 out.append(g)
         return out
+
+    def materialize_observed_groups(self, vendor: str, family: str,
+                                    technology: str = "gpon") -> list[dict]:
+        """Backlog #1 de docs/adaptacion_multivendor.md — modo walk-first: SIN semilla
+        (ni MIB oficial ni Observium), construye el catálogo entero a partir del walk.
+
+        Sin MIB no sabemos dónde termina cada OID base y empieza su índice de
+        instancia, así que se usa la misma aproximación de `triggers.extract_table_prefix`
+        que ya usa `detect_observed_only` para findings (recorta el último componente).
+        Cada base distinta se vuelve UN Oid con nombre UNRESOLVED, acceso "unknown"
+        (ver _KEEP_IF_UNCONFIRMED) y status="observed" — el nivel de confianza más bajo
+        del catálogo: confirma que el OID existe, no qué significa."""
+        bases: dict[str, dict] = {}
+        for w in self.sorted_walk:
+            base = T.extract_table_prefix(w)
+            entry = bases.setdefault(base, {"count": 0, "sample_oid": w})
+            entry["count"] += 1
+        entity_ref = f"entity.{vendor.lower()}.{technology.lower()}.unresolved.walk_observed"
+        oids = []
+        for base, info in sorted(bases.items(), key=lambda kv: tuple(
+                int(p) for p in kv[0].split(".") if p.isdigit())):
+            sample = info["sample_oid"]
+            snmp_type = self.walk.get(sample, {}).get("type", "UNKNOWN")
+            oids.append({
+                "id": build_oid_id(vendor, technology, "unresolved", base.replace(".", "_")),
+                "oid": base, "name": "UNRESOLVED", "entity_ref": entity_ref,
+                "vendor": vendor, "family": family, "technology": technology,
+                "firmware": [], "syntax": snmp_type, "access": "unknown",
+                "status": "observed",
+                "description": ("Walk-first: sin MIB/semilla para este vendor. Base inferida "
+                                "recortando el último componente del OID como índice de "
+                                "instancia (aproximación — puede ser incorrecta si el índice "
+                                "real es compuesto)."),
+                "empirical": {"source": self.source_name, "instances": info["count"],
+                             "sample_oid": sample,
+                             "sample_value": self.walk.get(sample, {}).get("value")},
+                "sources": [{"doc_type": "walk", "pages": None, "confidence": 0.0}],
+                "confidence": {"overall": 0.0},
+            })
+        return [{"entity_ref": entity_ref, "vendor": vendor, "family": family,
+                 "firmware": [], "oids": oids}] if oids else []
 
     def detect_observed_only(self, base_oids: list[str], top: int = 30) -> None:
         """Ramas presentes en el walk sin cobertura en el catálogo → findings por tabla."""

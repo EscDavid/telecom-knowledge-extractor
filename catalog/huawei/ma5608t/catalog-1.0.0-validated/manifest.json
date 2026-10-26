@@ -7,13 +7,14 @@
   "walks": {
     "Huawei_MA5608T.txt": "enterprise",
     "Huawei_MA5608T_entities.txt": "entity_table",
-    "Huawei_MA5608T_ifnames.txt": "if_table"
+    "Huawei_MA5608T_ifnames.txt": "if_table",
+    "Huawei_MA5608T_ifxfull.txt": "if_table"
   },
-  "generated_at": "2026-10-24T20:34:18",
+  "generated_at": "2026-10-26T15:21:35",
   "counts": {
     "oids_kept": 2225,
     "oids_pruned": 0,
-    "entities_confirmed": 0
+    "entities_confirmed": 1
   },
   "status_distribution": {
     "oids": {
@@ -23,7 +24,7 @@
     },
     "entities": {
       "documented": 3,
-      "verified_walk": 1
+      "verified": 1
     }
   },
   "triggers": {
@@ -31,8 +32,9 @@
     "documented_only": 1688,
     "scale_detected": 13,
     "observed_only": 30,
-    "entity_confirmed": 1,
+    "entity_confirmed": 2,
     "pon_operational": 1,
+    "oid_not_increasing": 1,
     "pon_onu_count_derived": 1
   },
   "bitcalc_validation": null,
