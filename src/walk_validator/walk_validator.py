@@ -25,7 +25,7 @@ import json
 import logging
 from collections import Counter
 from pathlib import Path
-from typing import Any, Union
+from typing import Any, Optional, Union
 
 from ..ids import entity_short_name
 from ..profiles import ProfileRegistry, VendorProfile, default_registry, registry_from_config
@@ -361,6 +361,17 @@ class WalkValidator:
             return bool(self._cfg_single_shelf)
         return False
 
+    def _profile_source_rel(self) -> Optional[str]:
+        """Ruta de config/vendors.yaml relativa al cwd (portable entre dispositivos) —
+        backlog #5: la ruta absoluta de `source_path` es específica de la máquina."""
+        p = self.registry.source_path
+        if p is None:
+            return None
+        try:
+            return str(Path(p).resolve().relative_to(Path.cwd().resolve()))
+        except ValueError:
+            return str(p)
+
     def _seed_dir(self, vendor: str, seed_family: str) -> Path:
         return (self.catalog_base / vendor.lower()
                 / seed_family.lower().replace(" ", "-") / f"catalog-{self.version}")
@@ -461,6 +472,11 @@ class WalkValidator:
             "family": family,
             "phase": "walk_validation",
             "seed_family": seed_family,
+            "vendor_profile": {
+                "vendor": vendor,
+                "source": self._profile_source_rel(),
+                "sha256": self.registry.source_sha256,
+            },
             "walks": processed,
             "generated_at": dt.datetime.now().isoformat(timespec="seconds"),
             "counts": {

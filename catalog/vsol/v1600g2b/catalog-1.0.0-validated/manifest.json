@@ -4,13 +4,18 @@
   "family": "V1600G2B",
   "phase": "walk_validation",
   "seed_family": "V1600G2B",
+  "vendor_profile": {
+    "vendor": "VSOL",
+    "source": "config/vendors.yaml",
+    "sha256": "7799867a380b8c89340465e12a23b23a7f4912774042a9c7b4a6e0278c3700b9"
+  },
   "walks": {
     "VSOL_V1600G2B_system.txt": "enterprise",
     "VSOL_V1600G2B_entities.txt": "entity_table",
     "VSOL_V1600G2B_ifnames.txt": "if_table",
     "VSOL_V1600G2B_ifxfull.txt": "if_table"
   },
-  "generated_at": "2026-10-26T15:34:07",
+  "generated_at": "2026-10-26T15:42:25",
   "counts": {
     "oids_kept": 11,
     "oids_pruned": 0,

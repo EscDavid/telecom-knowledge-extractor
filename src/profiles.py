@@ -6,6 +6,7 @@ validación correspondiente se OMITE (nunca se hereda un valor de otro vendor).
 """
 from __future__ import annotations
 
+import hashlib
 import importlib
 import logging
 from dataclasses import dataclass, field
@@ -117,8 +118,13 @@ def _from_dict(vendor: str, d: dict) -> VendorProfile:
 
 
 class ProfileRegistry:
-    def __init__(self, profiles: dict[str, VendorProfile]):
+    def __init__(self, profiles: dict[str, VendorProfile], *,
+                 source_path: Optional[Path] = None, source_sha256: Optional[str] = None):
         self.profiles = profiles
+        # backlog #5 de docs/adaptacion_multivendor.md: trazabilidad de qué
+        # vendors.yaml (y versión exacta de su contenido) produjo un catálogo.
+        self.source_path = source_path
+        self.source_sha256 = source_sha256
 
     def get(self, vendor: str) -> VendorProfile:
         """Perfil del vendor; si no está registrado, uno genérico SIN supuestos de vendor."""
@@ -152,9 +158,12 @@ def load_registry(path: Optional[Path] = None) -> ProfileRegistry:
     f = Path(path) if path else DEFAULT_VENDORS_FILE
     if not f.exists():
         log.warning("no existe %s: todos los vendors usarán el perfil genérico", f)
-        return ProfileRegistry({})
-    raw = yaml.safe_load(f.read_text(encoding="utf-8")) or {}
-    return ProfileRegistry({v: _from_dict(v, d or {}) for v, d in raw.items()})
+        return ProfileRegistry({}, source_path=f)
+    raw_bytes = f.read_bytes()
+    raw = yaml.safe_load(raw_bytes) or {}
+    digest = hashlib.sha256(raw_bytes).hexdigest()
+    return ProfileRegistry({v: _from_dict(v, d or {}) for v, d in raw.items()},
+                           source_path=f, source_sha256=digest)
 
 
 _default: Optional[ProfileRegistry] = None

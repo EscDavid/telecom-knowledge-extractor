@@ -4,13 +4,18 @@
   "family": "MA5608T",
   "phase": "walk_validation",
   "seed_family": "MA5608T",
+  "vendor_profile": {
+    "vendor": "Huawei",
+    "source": "config/vendors.yaml",
+    "sha256": "7799867a380b8c89340465e12a23b23a7f4912774042a9c7b4a6e0278c3700b9"
+  },
   "walks": {
     "Huawei_MA5608T.txt": "enterprise",
     "Huawei_MA5608T_entities.txt": "entity_table",
     "Huawei_MA5608T_ifnames.txt": "if_table",
     "Huawei_MA5608T_ifxfull.txt": "if_table"
   },
-  "generated_at": "2026-10-26T15:34:25",
+  "generated_at": "2026-10-26T15:42:20",
   "counts": {
     "oids_kept": 2225,
     "oids_pruned": 0,
