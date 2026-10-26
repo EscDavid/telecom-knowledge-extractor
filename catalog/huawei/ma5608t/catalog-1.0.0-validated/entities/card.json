@@ -1,0 +1,35 @@
+{
+  "id": "entity.huawei.gpon.hardware.card",
+  "canonical_name": "Card",
+  "vendor": "Huawei",
+  "family": "MA5608T",
+  "firmware": [],
+  "technology": "gpon",
+  "type": "hardware",
+  "description": "Tarjeta de linea o control insertada en un slot del chasis del OLT.",
+  "is_critical": false,
+  "aliases": [],
+  "attributes": [],
+  "sources": [
+    {
+      "doc_type": "walk",
+      "pages": null,
+      "confidence": 0.0
+    }
+  ],
+  "status": "verified",
+  "confidence": {
+    "overall": 0.15
+  },
+  "empirical": {
+    "source": "Huawei_MA5608T_entities.txt",
+    "via": "entPhysicalTable",
+    "instances": 5,
+    "samples": [
+      "H801PMUB",
+      "Manufactured Board,MA5600T,H805GPFD,16 ports GPON OLT Interface Board,1*1",
+      "Manufactured Board, MA5608T, H801MCUD, Control Unit Board, GE Uplink, 1*2",
+      "H801CPCA"
+    ]
+  }
+}

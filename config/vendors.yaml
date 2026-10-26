@@ -93,6 +93,12 @@ Huawei:
   prune_mode: covered_branch           # walks parciales por subárbol: solo se poda donde se caminó
   prune_branch_depth: 2                # 2011.<rama>.<subrama>: 6.128, 5.100, 6.3, 5.25 ...
   ent_module_refine: true              # fan box / power board vienen como entPhysicalClass=module
+  # backlog #8 (2026-10-26): entPhysicalTable real confirma class=3 chassis (1 fila, shelf) y
+  # class=9 module (7 filas, card/fan/power por texto); pero HUAWEI-XPON-MIB no define esas
+  # entidades (hardware vive en HUAWEI-DEVICE-MIB, nunca ingerido) así que la semilla no las
+  # tiene. class=10 "port" (34 filas) y class=11 "stack" (65 filas "RACK-300") quedan sin
+  # mapear a propósito: no son tarjetas, ENT_CLASS_TO_SHORT no las necesita.
+  ent_synthesize_from_walk: true
   refinements: null
 
 VSOL:

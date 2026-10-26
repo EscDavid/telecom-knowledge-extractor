@@ -161,9 +161,11 @@ def enrich_hardware_entities(entities_by_short: dict[str, dict], walk: dict[str,
                              walk_first: bool = False, family: Optional[str] = None) -> int:
     """Confirma entidades hardware con el inventario real de entPhysicalTable.
 
-    walk_first=True (sin semilla, ver backlog #1): una entidad sin equivalente en
-    el catálogo se SINTETIZA (status=observed) en vez de descartarse — con semilla,
-    "no está en el catálogo" significa "no aplica a esta familia", no se inventa."""
+    walk_first=True (sin semilla, ver backlog #1) o profile.ent_synthesize_from_walk
+    (backlog #8: la semilla de este vendor no cubre hardware, pero entPhysicalClass
+    sí confirma uno real) → una entidad sin equivalente en el catálogo se SINTETIZA
+    (status=observed) en vez de descartarse. Con ninguno de los dos, "no está en el
+    catálogo" sigue significando "no aplica a esta familia", no se inventa."""
     profile = _profile(profile)
     refine = bool(profile and profile.ent_module_refine)
     rows = extract_ent_physical(walk)
@@ -186,10 +188,11 @@ def enrich_hardware_entities(entities_by_short: dict[str, dict], walk: dict[str,
         if label and label not in samples[short] and len(samples[short]) < 5:
             samples[short].append(label)
     confirmed = 0
+    synth_ok = walk_first or profile.ent_synthesize_from_walk
     for short, n in counts.items():
         ent = entities_by_short.get(short)
         if not ent:
-            if not walk_first:
+            if not synth_ok:
                 continue
             ent = _ensure_entity(entities_by_short, short, vendor=profile.vendor,
                                  family=family or "", technology=profile.technology,

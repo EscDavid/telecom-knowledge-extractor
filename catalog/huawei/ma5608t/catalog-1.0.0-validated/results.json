@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-26T15:52:09",
+  "generated_at": "2026-10-26T16:04:59",
   "walks": {
     "Huawei_MA5608T.txt": "enterprise",
     "Huawei_MA5608T_entities.txt": "entity_table",
@@ -67877,6 +67877,38 @@
       "sample_oid": "1.3.6.1.4.1.2011.2.6.7.1.1.2.1.5.0.0",
       "sample_value": "16",
       "catalog_action": "status=observed, agregar a investigación",
+      "severity": "low"
+    },
+    {
+      "trigger": "entity_confirmed",
+      "entity": "fan",
+      "instances": 1,
+      "via": "entPhysicalTable",
+      "catalog_action": "status=verified para fan (hardware real)",
+      "severity": "low"
+    },
+    {
+      "trigger": "entity_confirmed",
+      "entity": "card",
+      "instances": 5,
+      "via": "entPhysicalTable",
+      "catalog_action": "status=verified para card (hardware real)",
+      "severity": "low"
+    },
+    {
+      "trigger": "entity_confirmed",
+      "entity": "shelf",
+      "instances": 1,
+      "via": "entPhysicalTable",
+      "catalog_action": "status=verified para shelf (hardware real)",
+      "severity": "low"
+    },
+    {
+      "trigger": "entity_confirmed",
+      "entity": "power_supply",
+      "instances": 1,
+      "via": "entPhysicalTable",
+      "catalog_action": "status=verified para power_supply (hardware real)",
       "severity": "low"
     },
     {

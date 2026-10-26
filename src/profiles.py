@@ -58,6 +58,14 @@ class VendorProfile:
     prune_branch_depth: int = 2
     refinements: Optional[str] = None
     ent_module_refine: bool = False          # entPhysicalClass=module que son ventilador/fuente → fan/power_supply
+    # backlog #8 de docs/adaptacion_multivendor.md: entPhysicalTable confirma hardware real
+    # (entPhysicalClass es un enum estándar, no específico de vendor) pero la semilla de este
+    # vendor puede no tener la entidad (ej. Huawei: XPON-MIB no cubre chassis/tarjetas, esas
+    # viven en HUAWEI-DEVICE-MIB, nunca ingerido). Con esto en true, enrich_hardware_entities
+    # sintetiza la entidad que falte — SOLO respaldada por una clase SNMP real confirmada, no
+    # por heurística de texto. False (default) = comportamiento actual, "no está en el
+    # catálogo" sigue significando "no aplica a esta familia" (ZTE sin cambios).
+    ent_synthesize_from_walk: bool = False
     legacy_env: bool = False                 # acepta las variables antiguas TKC_SNMP_*/TKC_TELNET_*
 
     # --- ids de entidad derivados del vendor (no hardcodeados a ZTE) -----------
@@ -114,6 +122,7 @@ def _from_dict(vendor: str, d: dict) -> VendorProfile:
         refinements=d.get("refinements"),
         legacy_env=bool(d.get("legacy_env", False)),
         ent_module_refine=bool(d.get("ent_module_refine", False)),
+        ent_synthesize_from_walk=bool(d.get("ent_synthesize_from_walk", False)),
     )
 
 

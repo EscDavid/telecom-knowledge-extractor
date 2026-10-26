@@ -7,7 +7,7 @@
   "vendor_profile": {
     "vendor": "Huawei",
     "source": "config/vendors.yaml",
-    "sha256": "7799867a380b8c89340465e12a23b23a7f4912774042a9c7b4a6e0278c3700b9"
+    "sha256": "c2e84091eea9dc3ed8f7ab0405d95c9d45e92db0ab20d069b0570cdbf6d01312"
   },
   "walks": {
     "Huawei_MA5608T.txt": "enterprise",
@@ -15,11 +15,11 @@
     "Huawei_MA5608T_ifnames.txt": "if_table",
     "Huawei_MA5608T_ifxfull.txt": "if_table"
   },
-  "generated_at": "2026-10-26T15:52:09",
+  "generated_at": "2026-10-26T16:04:59",
   "counts": {
     "oids_kept": 2225,
     "oids_pruned": 0,
-    "entities_confirmed": 1
+    "entities_confirmed": 5
   },
   "status_distribution": {
     "oids": {
@@ -29,7 +29,7 @@
     },
     "entities": {
       "documented": 3,
-      "verified": 1
+      "verified": 5
     }
   },
   "triggers": {
@@ -37,7 +37,7 @@
     "documented_only": 1688,
     "scale_detected": 13,
     "observed_only": 30,
-    "entity_confirmed": 2,
+    "entity_confirmed": 6,
     "pon_operational": 1,
     "oid_not_increasing": 1,
     "pon_onu_count_derived": 1

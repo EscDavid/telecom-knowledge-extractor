@@ -1,0 +1,32 @@
+{
+  "id": "entity.huawei.gpon.hardware.fan",
+  "canonical_name": "Fan",
+  "vendor": "Huawei",
+  "family": "MA5608T",
+  "firmware": [],
+  "technology": "gpon",
+  "type": "hardware",
+  "description": "Modulo de ventilacion del OLT.",
+  "is_critical": false,
+  "aliases": [],
+  "attributes": [],
+  "sources": [
+    {
+      "doc_type": "walk",
+      "pages": null,
+      "confidence": 0.0
+    }
+  ],
+  "status": "verified",
+  "confidence": {
+    "overall": 0.15
+  },
+  "empirical": {
+    "source": "Huawei_MA5608T_entities.txt",
+    "via": "entPhysicalTable",
+    "instances": 1,
+    "samples": [
+      "Fan Box ,MA5608T,H831FCBB0,5608T Fan Box"
+    ]
+  }
+}

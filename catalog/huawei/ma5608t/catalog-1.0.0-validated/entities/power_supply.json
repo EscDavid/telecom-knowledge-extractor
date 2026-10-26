@@ -1,0 +1,32 @@
+{
+  "id": "entity.huawei.gpon.hardware.power_supply",
+  "canonical_name": "Power Supply",
+  "vendor": "Huawei",
+  "family": "MA5608T",
+  "firmware": [],
+  "technology": "gpon",
+  "type": "hardware",
+  "description": "Modulo de alimentacion del OLT.",
+  "is_critical": false,
+  "aliases": [],
+  "attributes": [],
+  "sources": [
+    {
+      "doc_type": "walk",
+      "pages": null,
+      "confidence": 0.0
+    }
+  ],
+  "status": "verified",
+  "confidence": {
+    "overall": 0.15
+  },
+  "empirical": {
+    "source": "Huawei_MA5608T_entities.txt",
+    "via": "entPhysicalTable",
+    "instances": 1,
+    "samples": [
+      "Finished Board,MA5608T,H801MPWD,AC Power Board, Power Backup"
+    ]
+  }
+}
