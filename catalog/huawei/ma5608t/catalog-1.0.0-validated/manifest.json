@@ -10,7 +10,7 @@
     "Huawei_MA5608T_ifnames.txt": "if_table",
     "Huawei_MA5608T_ifxfull.txt": "if_table"
   },
-  "generated_at": "2026-10-26T15:21:35",
+  "generated_at": "2026-10-26T15:34:25",
   "counts": {
     "oids_kept": 2225,
     "oids_pruned": 0,

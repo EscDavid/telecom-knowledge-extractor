@@ -10,7 +10,7 @@
     "VSOL_V1600G2B_ifnames.txt": "if_table",
     "VSOL_V1600G2B_ifxfull.txt": "if_table"
   },
-  "generated_at": "2026-10-26T15:20:21",
+  "generated_at": "2026-10-26T15:34:07",
   "counts": {
     "oids_kept": 11,
     "oids_pruned": 0,
@@ -27,6 +27,7 @@
   },
   "triggers": {
     "entity_confirmed": 4,
+    "ifname_unparsed": 4,
     "pon_operational": 1
   },
   "bitcalc_validation": null,

@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-26T15:20:21",
+  "generated_at": "2026-10-26T15:34:07",
   "walks": {
     "VSOL_V1600G2B_system.txt": "enterprise",
     "VSOL_V1600G2B_entities.txt": "entity_table",
@@ -22,6 +22,36 @@
       "via": "ifXTable",
       "catalog_action": "status=verified para pon_port (interfaces reales)",
       "severity": "low"
+    },
+    {
+      "trigger": "ifname_unparsed",
+      "entity": "uplink_port",
+      "total": 8,
+      "unparsed": 8,
+      "samples": [
+        "GE0/1",
+        "GE0/2",
+        "GE0/3",
+        "GE0/4",
+        "GE0/5"
+      ],
+      "catalog_action": "8/8 ifName de uplink_port no coinciden con heurística genérica (últimos 3 números); revisar vendors.yaml → ifname.regex para este vendor/familia",
+      "severity": "high"
+    },
+    {
+      "trigger": "ifname_unparsed",
+      "entity": "pon_port",
+      "total": 265,
+      "unparsed": 28,
+      "samples": [
+        "GPON0/1 la_soledad",
+        "GPON0/2 pueblo_sol",
+        "GPON0/4 altos_de_la_soledad",
+        "GPON0/5 EL_ENSUENO",
+        "GPON0/6"
+      ],
+      "catalog_action": "28/265 ifName de pon_port no coinciden con heurística genérica (últimos 3 números); revisar vendors.yaml → ifname.regex para este vendor/familia",
+      "severity": "medium"
     },
     {
       "trigger": "pon_operational",
@@ -47,6 +77,36 @@
       "via": "ifXTable",
       "catalog_action": "status=verified para pon_port (interfaces reales)",
       "severity": "low"
+    },
+    {
+      "trigger": "ifname_unparsed",
+      "entity": "uplink_port",
+      "total": 8,
+      "unparsed": 8,
+      "samples": [
+        "GE0/1",
+        "GE0/2",
+        "GE0/3",
+        "GE0/4",
+        "GE0/5"
+      ],
+      "catalog_action": "8/8 ifName de uplink_port no coinciden con heurística genérica (últimos 3 números); revisar vendors.yaml → ifname.regex para este vendor/familia",
+      "severity": "high"
+    },
+    {
+      "trigger": "ifname_unparsed",
+      "entity": "pon_port",
+      "total": 265,
+      "unparsed": 28,
+      "samples": [
+        "GPON0/1 la_soledad",
+        "GPON0/2 pueblo_sol",
+        "GPON0/4 altos_de_la_soledad",
+        "GPON0/5 EL_ENSUENO",
+        "GPON0/6"
+      ],
+      "catalog_action": "28/265 ifName de pon_port no coinciden con heurística genérica (últimos 3 números); revisar vendors.yaml → ifname.regex para este vendor/familia",
+      "severity": "medium"
     }
   ]
 }

@@ -117,6 +117,26 @@ def trigger_partial_response(findings: Findings, tabla_prefix: str,
     })
 
 
+def trigger_ifname_unparsed(findings: Findings, short: str, total: int, unparsed: int,
+                            samples: list[str], has_regex: bool) -> None:
+    """Backlog #4 de docs/adaptacion_multivendor.md: un ifName clasificado como
+    pon_port/uplink_port que NO se pudo descomponer en rack/slot/port — antes
+    desaparecía en silencio de `pairs` (ver std_tables._ifname_indices), lo que
+    dejaba sin bit_calculation/validar justo los puertos con layout distinto al
+    esperado, el caso que más interesa detectar."""
+    source = "ifname.regex del perfil" if has_regex else "heurística genérica (últimos 3 números)"
+    findings.add({
+        "trigger": "ifname_unparsed",
+        "entity": short,
+        "total": total,
+        "unparsed": unparsed,
+        "samples": samples,
+        "catalog_action": (f"{unparsed}/{total} ifName de {short} no coinciden con {source}; "
+                           "revisar vendors.yaml → ifname.regex para este vendor/familia"),
+        "severity": "medium" if unparsed < total else "high",
+    })
+
+
 def trigger_observed_only(findings: Findings, tabla: str, instancias: int,
                           sample_oid: str, sample_value: str) -> None:
     """Rama que responde en producción pero no está en el catálogo teórico.

@@ -25,7 +25,7 @@ from typing import Any, Optional
 from ..ids import build_entity_id, build_oid_id
 from ..normalizer.normalizer import CRITICAL_SHORT, ENTITY_DESCRIPTIONS, SHORT_NAME_TYPE
 from ..profiles import (LEGACY_DEFAULT_VENDOR, VendorProfile, default_registry)
-from .triggers import Findings, decode_ascii_index
+from .triggers import Findings, decode_ascii_index, trigger_ifname_unparsed
 
 
 def _profile(profile: Optional[VendorProfile]) -> VendorProfile:
@@ -278,14 +278,31 @@ def enrich_port_entities(entities_by_short: dict[str, dict], oid_groups: list[di
     # valores estén "en rango": deben COINCIDIR con la interfaz observada.
     comps = _find_bitcalc_components(oid_groups)
     pairs = []  # (ifIndex_int, (rack, slot, port))
+    # backlog #4: un ifName clasificado pon_port/uplink_port que no se pudo
+    # descomponer (ifname.regex del perfil no matchea, o el fallback de 3
+    # números tampoco aplica) ya NO desaparece en silencio.
+    total_by_short: Counter = Counter()
+    unparsed_count: Counter = Counter()
+    unparsed_samples: dict[str, list[str]] = defaultdict(list)
     for ifindex, name in if_rows.items():
-        try:
-            iv = int(ifindex)
-        except ValueError:
+        short = classify_ifname(name, profile)
+        if not short:
             continue
+        total_by_short[short] += 1
         parsed = _ifname_indices(name, profile)
         if parsed:
-            pairs.append((iv, parsed, name))
+            try:
+                pairs.append((int(ifindex), parsed, name))
+            except ValueError:
+                parsed = None
+        if not parsed:
+            unparsed_count[short] += 1
+            if len(unparsed_samples[short]) < 5:
+                unparsed_samples[short].append(name)
+    has_regex = bool(profile.ifname_regex)
+    for short, n in unparsed_count.items():
+        trigger_ifname_unparsed(findings, short, total_by_short[short], n,
+                                unparsed_samples[short], has_regex)
     if not pairs or not comps:
         return
 
