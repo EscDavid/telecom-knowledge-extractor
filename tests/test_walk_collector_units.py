@@ -6,8 +6,9 @@ from pathlib import Path
 
 import pytest
 
-from src.walk_collector.config import (ConfigError, load_collector_config, load_credentials,
-                                       lower_max_repetitions, mask_host)
+from src.walk_collector.config import (VENDOR_CONFIG_FILES, ConfigError, load_collector_config,
+                                       load_credentials, lower_max_repetitions, mask_host,
+                                       resolve_config_path)
 from src.walk_collector.formatter import format_line, format_timeticks
 from src.walk_collector.fragments import FragmentCorrupt, FragmentWriter, read_fragment_lines
 from src.walk_collector.oid import (fmt_oid, in_subtree, line_key, next_sibling, parse_oid,
@@ -147,6 +148,21 @@ def test_cli_max_repetitions_can_only_lower(caplog):
     with caplog.at_level(logging.WARNING, logger="tkc.walk_collector.config"):
         assert lower_max_repetitions(cfg, 30).snmp.max_repetitions == 20
     assert "solo puede bajar" in caplog.text
+
+
+def test_resolve_config_path_known_vendors_load_as_collector_config():
+    # backlog #7: --vendor X en vez de recordar el nombre del archivo. Cada ruta
+    # resuelta debe ser un walk_collector válido (no solo "el archivo existe").
+    assert set(VENDOR_CONFIG_FILES) == {"ZTE", "Huawei", "VSOL"}
+    for vendor in VENDOR_CONFIG_FILES:
+        cfg = load_collector_config(resolve_config_path(vendor))
+        assert cfg.vendor == vendor
+    assert resolve_config_path("ZTE") == PIPELINE
+
+
+def test_resolve_config_path_unknown_vendor_is_clear_error():
+    with pytest.raises(ConfigError, match="Huawei, VSOL, ZTE"):
+        resolve_config_path("Nokia")
 
 
 def test_state_dir_expands_env_vars(monkeypatch, tmp_path):

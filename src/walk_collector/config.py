@@ -29,6 +29,29 @@ log = logging.getLogger("tkc.walk_collector.config")
 REPO_ROOT = Path(__file__).resolve().parents[2]
 DEFAULT_CONFIG = REPO_ROOT / "config" / "pipeline.yaml"
 
+# Backlog #7 de docs/adaptacion_multivendor.md: `--vendor X` en vez de recordar el
+# nombre exacto del archivo. Las diferencias reales entre vendors (host_env, ramas
+# del enterprise, pacing afinado por kill-switch real como VSOL a 300ms) siguen
+# viviendo en su propio YAML — esto es solo el mapeo nombre→archivo, no una fusión
+# de configs. Vendor desconocido -> ConfigError (nunca cae a otro equipo por error).
+VENDOR_CONFIG_FILES: dict[str, Path] = {
+    "ZTE": DEFAULT_CONFIG,
+    "Huawei": REPO_ROOT / "config" / "collector_huawei.yaml",
+    "VSOL": REPO_ROOT / "config" / "collector_vsol.yaml",
+}
+
+
+def resolve_config_path(vendor: str) -> Path:
+    """`--vendor Huawei` -> config/collector_huawei.yaml (ver VENDOR_CONFIG_FILES)."""
+    path = VENDOR_CONFIG_FILES.get(vendor)
+    if path is None:
+        known = ", ".join(sorted(VENDOR_CONFIG_FILES))
+        raise ConfigError(f"vendor '{vendor}' sin config de collector registrada "
+                          f"(conocidos: {known}) — usa --config con la ruta directa")
+    if not path.exists():
+        raise ConfigError(f"config de collector para '{vendor}' no encontrada: {path}")
+    return path
+
 # Tope duro de repeticiones por GETBULK: con más, la respuesta supera 1472 B, se
 # fragmenta IP y se pierde (medido en producción en isp-management).
 MAX_REPETITIONS_HARD_CAP = 20

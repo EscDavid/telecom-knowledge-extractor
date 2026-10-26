@@ -51,14 +51,21 @@ Los conflictos y huérfanos detectados se escriben en `results.json` (estilo
 
 ## Recolector de walks (`src/walk_collector`)
 
-Genera automáticamente los snmpwalks de una OLT **ZTE C620** para la Fase 2 (SNMPv2c, solo
-lectura, una petición en vuelo, reanudable). Detalle y política de publicación en
+Genera automáticamente los snmpwalks de una OLT para la Fase 2 (SNMPv2c, solo lectura,
+una petición en vuelo, reanudable). Detalle y política de publicación en
 [`docs/walks/README.md`](docs/walks/README.md).
+
+Multi-vendor: `--vendor {ZTE,Huawei,VSOL}` es un atajo a la config del collector de ese
+vendor (`src/walk_collector/config.py` → `VENDOR_CONFIG_FILES`; no combinar con `--config`).
+ZTE sigue siendo el default (`config/pipeline.yaml`, sin credenciales en el YAML — cada
+vendor nombra sus propias variables de entorno, ver `.env.example`).
 
 ```bash
 pip install -r requirements.txt            # incluye pysnmp
-# .env (ver .env.example): TKC_SNMP_HOST, TKC_SNMP_PORT, TKC_SNMP_COMMUNITY
-py -m src.walk_collector --dry-run         # valida todo sin tocar la red
+# .env (ver .env.example): TKC_<MARCA>_HOST / _SNMP_PORT / _RO_COMMUNITY (ZTE también acepta
+# las variables legacy TKC_SNMP_*)
+py -m src.walk_collector --vendor Huawei --dry-run   # valida todo sin tocar la red
+py -m src.walk_collector --dry-run         # ZTE (default), ídem
 py -m src.walk_collector --discover-only   # preflight + plan
 py -m src.walk_collector --resume --only entities
 py -m src.walk_collector --resume --only ifnames

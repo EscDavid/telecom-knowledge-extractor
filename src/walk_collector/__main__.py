@@ -17,9 +17,9 @@ from pathlib import Path
 from typing import Callable
 
 from .collector import Collector, CollectorAbort
-from .config import (DEFAULT_CONFIG, MAX_REPETITIONS_HARD_CAP, REPO_ROOT, CollectorConfig,
-                     ConfigError, env_presence, load_collector_config, load_credentials,
-                     lower_max_repetitions)
+from .config import (DEFAULT_CONFIG, MAX_REPETITIONS_HARD_CAP, REPO_ROOT, VENDOR_CONFIG_FILES,
+                     CollectorConfig, ConfigError, env_presence, load_collector_config,
+                     load_credentials, lower_max_repetitions, resolve_config_path)
 from .report import compute_result
 from .secrets import Scrubber, install_scrubber
 from .transport import SnmpTransport
@@ -31,7 +31,13 @@ def build_parser() -> argparse.ArgumentParser:
     p = argparse.ArgumentParser(
         prog="py -m src.walk_collector",
         description="Recolector de snmpwalks (SNMPv2c, solo lectura) para la Fase 2 de TKC.")
-    p.add_argument("--config", default=str(DEFAULT_CONFIG), help="pipeline.yaml (default: config/pipeline.yaml)")
+    cfg_group = p.add_mutually_exclusive_group()
+    cfg_group.add_argument("--config", default=str(DEFAULT_CONFIG),
+                           help="pipeline.yaml (default: config/pipeline.yaml)")
+    cfg_group.add_argument("--vendor", choices=sorted(VENDOR_CONFIG_FILES),
+                           help="atajo a la config del collector de ese vendor (ver "
+                                "VENDOR_CONFIG_FILES en src/walk_collector/config.py); "
+                                "equivale a --config <su archivo>, no combinar con --config")
     p.add_argument("--dry-run", action="store_true",
                    help="valida config y presencia de credenciales, imprime el plan; NO usa la red")
     p.add_argument("--discover-only", action="store_true",
@@ -146,7 +152,8 @@ def main(argv: list[str] | None = None,
         except ImportError:
             log.warning("python-dotenv no instalado: se usan solo las variables del entorno")
     try:
-        cfg = _apply_args(load_collector_config(args.config), args)
+        config_path = resolve_config_path(args.vendor) if args.vendor else args.config
+        cfg = _apply_args(load_collector_config(config_path), args)
     except ConfigError as exc:
         print(f"error de configuración: {exc}", file=sys.stderr)
         return 2
