@@ -51,12 +51,14 @@ class Enricher:
     def __init__(self, walk_oids: dict[str, dict], sorted_walk: list[str],
                  findings: Findings, source_name: str, *,
                  prune_unconfirmed_readonly: bool = True,
-                 profile: Optional[VendorProfile] = None):
+                 profile: Optional[VendorProfile] = None,
+                 family: Optional[str] = None):
         self.walk = walk_oids
         self.sorted_walk = sorted_walk
         self.findings = findings
         self.source_name = source_name
         self.prune_ro = prune_unconfirmed_readonly
+        self.family = family       # solo para el texto de catalog_action (backlog #6)
         # ramas recorridas por el walk (None = modo "all": se poda en todo el catálogo)
         self._depth = profile.prune_branch_depth if profile else 2
         self._covered: Optional[set[str]] = None
@@ -110,7 +112,8 @@ class Enricher:
                           and branch_root(base, self._depth) not in self._covered)
             if not_walked:
                 prune = False            # la rama no se caminó: ausencia ≠ no soportado
-            T.trigger_documented_only(self.findings, oid.get("id", ""), base, access, prune)
+            T.trigger_documented_only(self.findings, oid.get("id", ""), base, access, prune,
+                                      family=self.family)
             if not_walked:
                 self.findings.items[-1]["branch_not_walked"] = True
             if prune:

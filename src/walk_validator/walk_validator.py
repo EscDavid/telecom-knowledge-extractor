@@ -236,7 +236,8 @@ class WalkValidator:
                 sorted_walk = sorted(walk)
                 enterprise_sorted = sorted_walk
                 enricher = Enricher(walk, sorted_walk, findings, wf.name,
-                                    prune_unconfirmed_readonly=self.prune_ro, profile=profile)
+                                    prune_unconfirmed_readonly=self.prune_ro, profile=profile,
+                                    family=family)
                 if walk_first:
                     enriched_oids = enricher.materialize_observed_groups(
                         vendor, family, profile.technology)

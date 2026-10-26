@@ -155,19 +155,22 @@ def trigger_observed_only(findings: Findings, tabla: str, instancias: int,
 
 
 def trigger_documented_only(findings: Findings, oid_id: str, oid_string: str,
-                            access: str, pruned: bool) -> None:
+                            access: str, pruned: bool, family: Optional[str] = None) -> None:
     """OID teórico del MIB que no respondió en el walk.
 
-    Si se poda (read-only sin respaldo) → sale del catálogo C300. Si se conserva
+    Si se poda (read-only sin respaldo) → sale del catálogo de ESTA familia (la que
+    está procesando el walk, no necesariamente C300 — texto histórico del primer
+    vendor derivado, backlog #6 de docs/adaptacion_multivendor.md). Si se conserva
     (writable/action) → queda como documented no confirmado.
     """
+    label = f"catálogo {family}" if family else "catálogo"
     findings.add({
         "trigger": "documented_only",
         "oid_id": oid_id,
         "oid": oid_string,
         "access": access,
         "pruned": pruned,
-        "catalog_action": ("podado del catálogo C300 (sin respuesta en walk)"
+        "catalog_action": (f"podado del {label} (sin respuesta en walk)"
                            if pruned else "status=documented (no confirmado en producción)"),
         "severity": "low",
     })
