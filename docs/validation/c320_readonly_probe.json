@@ -1,0 +1,636 @@
+{
+ "generated_at": "2026-10-26T15:17:34",
+ "model": "C320",
+ "results": [
+  {
+   "group": "sesion",
+   "variant": "-",
+   "cmd": "terminal length 0",
+   "verdict": "VACIO"
+  },
+  {
+   "group": "sesion",
+   "variant": "-",
+   "cmd": "show clock",
+   "verdict": "OK"
+  },
+  {
+   "group": "sesion",
+   "variant": "-",
+   "cmd": "show version",
+   "verdict": "RECHAZADO"
+  },
+  {
+   "group": "sesion",
+   "variant": "c6",
+   "cmd": "show software 1",
+   "verdict": "RECHAZADO"
+  },
+  {
+   "group": "global",
+   "variant": "-",
+   "cmd": "show card",
+   "verdict": "OK"
+  },
+  {
+   "group": "global",
+   "variant": "-",
+   "cmd": "show gpon onu state",
+   "verdict": "OK"
+  },
+  {
+   "group": "global",
+   "variant": "classic",
+   "cmd": "show gpon onu uncfg",
+   "verdict": "RECHAZADO"
+  },
+  {
+   "group": "global",
+   "variant": "c6",
+   "cmd": "show pon onu uncfg",
+   "verdict": "RECHAZADO"
+  },
+  {
+   "group": "global",
+   "variant": "classic",
+   "cmd": "show onu-type",
+   "verdict": "OK"
+  },
+  {
+   "group": "global",
+   "variant": "c6",
+   "cmd": "show onu-type gpon",
+   "verdict": "OK"
+  },
+  {
+   "group": "global",
+   "variant": "-",
+   "cmd": "show vlan summary",
+   "verdict": "OK"
+  },
+  {
+   "group": "global",
+   "variant": "-",
+   "cmd": "show gpon profile tcont",
+   "verdict": "OK"
+  },
+  {
+   "group": "global",
+   "variant": "-",
+   "cmd": "show gpon profile traffic",
+   "verdict": "OK"
+  },
+  {
+   "group": "global",
+   "variant": "c6",
+   "cmd": "show qos traffic-profile",
+   "verdict": "RECHAZADO"
+  },
+  {
+   "group": "global",
+   "variant": "-",
+   "cmd": "show logfile brief",
+   "verdict": "RECHAZADO"
+  },
+  {
+   "group": "global",
+   "variant": "-",
+   "cmd": "show logging alarm",
+   "verdict": "OK"
+  },
+  {
+   "group": "global",
+   "variant": "-",
+   "cmd": "show alarm current",
+   "verdict": "RECHAZADO"
+  },
+  {
+   "group": "global",
+   "variant": "-",
+   "cmd": "show alarm history",
+   "verdict": "RECHAZADO"
+  },
+  {
+   "group": "puerto",
+   "variant": "classic",
+   "cmd": "show gpon onu state gpon-olt_<idx>",
+   "verdict": "OK"
+  },
+  {
+   "group": "puerto",
+   "variant": "classic",
+   "cmd": "show gpon onu baseinfo gpon-olt_<idx>",
+   "verdict": "OK"
+  },
+  {
+   "group": "puerto",
+   "variant": "classic",
+   "cmd": "show gpon onu uncfg gpon-olt_<idx>",
+   "verdict": "RECHAZADO"
+  },
+  {
+   "group": "puerto",
+   "variant": "classic",
+   "cmd": "show running-config-interface gpon-olt_<idx>",
+   "verdict": "RECHAZADO"
+  },
+  {
+   "group": "puerto",
+   "variant": "classic",
+   "cmd": "show interface gpon-olt_<idx>",
+   "verdict": "OK"
+  },
+  {
+   "group": "puerto",
+   "variant": "classic",
+   "cmd": "show pon power olt-rx gpon-olt_<idx>",
+   "verdict": "OK"
+  },
+  {
+   "group": "puerto",
+   "variant": "c6",
+   "cmd": "show gpon onu state gpon_olt-<idx>",
+   "verdict": "RECHAZADO"
+  },
+  {
+   "group": "puerto",
+   "variant": "c6",
+   "cmd": "show gpon onu baseinfo gpon_olt-<idx>",
+   "verdict": "RECHAZADO"
+  },
+  {
+   "group": "puerto",
+   "variant": "c6",
+   "cmd": "show gpon onu uncfg gpon_olt-<idx>",
+   "verdict": "RECHAZADO"
+  },
+  {
+   "group": "puerto",
+   "variant": "c6",
+   "cmd": "show running-config-interface gpon_olt-<idx>",
+   "verdict": "RECHAZADO"
+  },
+  {
+   "group": "puerto",
+   "variant": "c6",
+   "cmd": "show interface gpon_olt-<idx>",
+   "verdict": "RECHAZADO"
+  },
+  {
+   "group": "puerto",
+   "variant": "c6",
+   "cmd": "show pon power olt-rx gpon_olt-<idx>",
+   "verdict": "RECHAZADO"
+  },
+  {
+   "group": "onu",
+   "variant": "classic",
+   "cmd": "show gpon onu detail-info gpon-onu_<idx>",
+   "verdict": "OK"
+  },
+  {
+   "group": "onu",
+   "variant": "classic",
+   "cmd": "show gpon onu distance gpon-onu_<idx>",
+   "verdict": "OK"
+  },
+  {
+   "group": "onu",
+   "variant": "classic",
+   "cmd": "show running-config-interface gpon-onu_<idx>",
+   "verdict": "RECHAZADO"
+  },
+  {
+   "group": "onu",
+   "variant": "classic",
+   "cmd": "show service-port interface gpon-onu_<idx>",
+   "verdict": "OK"
+  },
+  {
+   "group": "onu",
+   "variant": "classic",
+   "cmd": "show mac interface gpon-onu_<idx>",
+   "verdict": "RECHAZADO"
+  },
+  {
+   "group": "onu",
+   "variant": "classic",
+   "cmd": "show pon onu information gpon-onu_<idx>",
+   "verdict": "OK"
+  },
+  {
+   "group": "onu",
+   "variant": "classic",
+   "cmd": "show pon power attenuation gpon-onu_<idx>",
+   "verdict": "OK"
+  },
+  {
+   "group": "onu",
+   "variant": "classic",
+   "cmd": "show pon power onu-rx gpon-onu_<idx>",
+   "verdict": "OK"
+  },
+  {
+   "group": "onu",
+   "variant": "classic",
+   "cmd": "show pon power onu-tx gpon-onu_<idx>",
+   "verdict": "OK"
+  },
+  {
+   "group": "onu",
+   "variant": "classic",
+   "cmd": "show gpon remote-onu equip gpon-onu_<idx>",
+   "verdict": "OK"
+  },
+  {
+   "group": "onu",
+   "variant": "classic",
+   "cmd": "show gpon remote-onu capability gpon-onu_<idx>",
+   "verdict": "OK"
+  },
+  {
+   "group": "onu",
+   "variant": "classic",
+   "cmd": "show gpon remote-onu interface eth gpon-onu_<idx>",
+   "verdict": "OK"
+  },
+  {
+   "group": "onu",
+   "variant": "classic",
+   "cmd": "show gpon remote-onu sys-attr gpon-onu_<idx>",
+   "verdict": "OK"
+  },
+  {
+   "group": "onu",
+   "variant": "c6",
+   "cmd": "show gpon onu detail-info gpon_onu-<idx>",
+   "verdict": "RECHAZADO"
+  },
+  {
+   "group": "onu",
+   "variant": "c6",
+   "cmd": "show gpon onu distance gpon_onu-<idx>",
+   "verdict": "RECHAZADO"
+  },
+  {
+   "group": "onu",
+   "variant": "c6",
+   "cmd": "show running-config-interface gpon_onu-<idx>",
+   "verdict": "RECHAZADO"
+  },
+  {
+   "group": "onu",
+   "variant": "c6",
+   "cmd": "show service-port interface gpon_onu-<idx>",
+   "verdict": "RECHAZADO"
+  },
+  {
+   "group": "onu",
+   "variant": "c6",
+   "cmd": "show mac interface gpon_onu-<idx>",
+   "verdict": "RECHAZADO"
+  },
+  {
+   "group": "onu",
+   "variant": "c6",
+   "cmd": "show pon onu information gpon_onu-<idx>",
+   "verdict": "RECHAZADO"
+  },
+  {
+   "group": "onu",
+   "variant": "c6",
+   "cmd": "show pon power attenuation gpon_onu-<idx>",
+   "verdict": "RECHAZADO"
+  },
+  {
+   "group": "onu",
+   "variant": "c6",
+   "cmd": "show pon power onu-rx gpon_onu-<idx>",
+   "verdict": "RECHAZADO"
+  },
+  {
+   "group": "onu",
+   "variant": "c6",
+   "cmd": "show pon power onu-tx gpon_onu-<idx>",
+   "verdict": "RECHAZADO"
+  },
+  {
+   "group": "onu",
+   "variant": "c6",
+   "cmd": "show gpon remote-onu equip gpon_onu-<idx>",
+   "verdict": "RECHAZADO"
+  },
+  {
+   "group": "onu",
+   "variant": "c6",
+   "cmd": "show gpon remote-onu capability gpon_onu-<idx>",
+   "verdict": "RECHAZADO"
+  },
+  {
+   "group": "onu",
+   "variant": "c6",
+   "cmd": "show gpon remote-onu interface eth gpon_onu-<idx>",
+   "verdict": "RECHAZADO"
+  },
+  {
+   "group": "onu",
+   "variant": "c6",
+   "cmd": "show gpon remote-onu sys-attr gpon_onu-<idx>",
+   "verdict": "RECHAZADO"
+  },
+  {
+   "group": "onu",
+   "variant": "classic",
+   "cmd": "show gpon onu detail-info gpon-onu_<idx>",
+   "verdict": "OK"
+  },
+  {
+   "group": "onu",
+   "variant": "classic",
+   "cmd": "show gpon onu distance gpon-onu_<idx>",
+   "verdict": "OK"
+  },
+  {
+   "group": "onu",
+   "variant": "classic",
+   "cmd": "show running-config-interface gpon-onu_<idx>",
+   "verdict": "RECHAZADO"
+  },
+  {
+   "group": "onu",
+   "variant": "classic",
+   "cmd": "show service-port interface gpon-onu_<idx>",
+   "verdict": "OK"
+  },
+  {
+   "group": "onu",
+   "variant": "classic",
+   "cmd": "show mac interface gpon-onu_<idx>",
+   "verdict": "RECHAZADO"
+  },
+  {
+   "group": "onu",
+   "variant": "classic",
+   "cmd": "show pon onu information gpon-onu_<idx>",
+   "verdict": "OK"
+  },
+  {
+   "group": "onu",
+   "variant": "classic",
+   "cmd": "show pon power attenuation gpon-onu_<idx>",
+   "verdict": "OK"
+  },
+  {
+   "group": "onu",
+   "variant": "classic",
+   "cmd": "show pon power onu-rx gpon-onu_<idx>",
+   "verdict": "OK"
+  },
+  {
+   "group": "onu",
+   "variant": "classic",
+   "cmd": "show pon power onu-tx gpon-onu_<idx>",
+   "verdict": "OK"
+  },
+  {
+   "group": "onu",
+   "variant": "classic",
+   "cmd": "show gpon remote-onu equip gpon-onu_<idx>",
+   "verdict": "OK"
+  },
+  {
+   "group": "onu",
+   "variant": "classic",
+   "cmd": "show gpon remote-onu capability gpon-onu_<idx>",
+   "verdict": "OK"
+  },
+  {
+   "group": "onu",
+   "variant": "classic",
+   "cmd": "show gpon remote-onu interface eth gpon-onu_<idx>",
+   "verdict": "OK"
+  },
+  {
+   "group": "onu",
+   "variant": "classic",
+   "cmd": "show gpon remote-onu sys-attr gpon-onu_<idx>",
+   "verdict": "OK"
+  },
+  {
+   "group": "onu",
+   "variant": "c6",
+   "cmd": "show gpon onu detail-info gpon_onu-<idx>",
+   "verdict": "RECHAZADO"
+  },
+  {
+   "group": "onu",
+   "variant": "c6",
+   "cmd": "show gpon onu distance gpon_onu-<idx>",
+   "verdict": "RECHAZADO"
+  },
+  {
+   "group": "onu",
+   "variant": "c6",
+   "cmd": "show running-config-interface gpon_onu-<idx>",
+   "verdict": "RECHAZADO"
+  },
+  {
+   "group": "onu",
+   "variant": "c6",
+   "cmd": "show service-port interface gpon_onu-<idx>",
+   "verdict": "RECHAZADO"
+  },
+  {
+   "group": "onu",
+   "variant": "c6",
+   "cmd": "show mac interface gpon_onu-<idx>",
+   "verdict": "RECHAZADO"
+  },
+  {
+   "group": "onu",
+   "variant": "c6",
+   "cmd": "show pon onu information gpon_onu-<idx>",
+   "verdict": "RECHAZADO"
+  },
+  {
+   "group": "onu",
+   "variant": "c6",
+   "cmd": "show pon power attenuation gpon_onu-<idx>",
+   "verdict": "RECHAZADO"
+  },
+  {
+   "group": "onu",
+   "variant": "c6",
+   "cmd": "show pon power onu-rx gpon_onu-<idx>",
+   "verdict": "RECHAZADO"
+  },
+  {
+   "group": "onu",
+   "variant": "c6",
+   "cmd": "show pon power onu-tx gpon_onu-<idx>",
+   "verdict": "RECHAZADO"
+  },
+  {
+   "group": "onu",
+   "variant": "c6",
+   "cmd": "show gpon remote-onu equip gpon_onu-<idx>",
+   "verdict": "RECHAZADO"
+  },
+  {
+   "group": "onu",
+   "variant": "c6",
+   "cmd": "show gpon remote-onu capability gpon_onu-<idx>",
+   "verdict": "RECHAZADO"
+  },
+  {
+   "group": "onu",
+   "variant": "c6",
+   "cmd": "show gpon remote-onu interface eth gpon_onu-<idx>",
+   "verdict": "RECHAZADO"
+  },
+  {
+   "group": "onu",
+   "variant": "c6",
+   "cmd": "show gpon remote-onu sys-attr gpon_onu-<idx>",
+   "verdict": "RECHAZADO"
+  },
+  {
+   "group": "potencia",
+   "variant": "classic",
+   "cmd": "show pon power attenuation gpon-onu_<idx>",
+   "verdict": "RECHAZADO"
+  },
+  {
+   "group": "potencia",
+   "variant": "classic",
+   "cmd": "show gpon onu detail-info gpon-onu_<idx>",
+   "verdict": "RECHAZADO"
+  },
+  {
+   "group": "potencia",
+   "variant": "c6",
+   "cmd": "show pon power attenuation gpon_onu-<idx>",
+   "verdict": "RECHAZADO"
+  },
+  {
+   "group": "potencia",
+   "variant": "c6",
+   "cmd": "show gpon onu detail-info gpon_onu-<idx>",
+   "verdict": "RECHAZADO"
+  },
+  {
+   "group": "potencia",
+   "variant": "classic",
+   "cmd": "show pon power attenuation gpon-onu_<idx>",
+   "verdict": "RECHAZADO"
+  },
+  {
+   "group": "potencia",
+   "variant": "classic",
+   "cmd": "show gpon onu detail-info gpon-onu_<idx>",
+   "verdict": "RECHAZADO"
+  },
+  {
+   "group": "potencia",
+   "variant": "c6",
+   "cmd": "show pon power attenuation gpon_onu-<idx>",
+   "verdict": "RECHAZADO"
+  },
+  {
+   "group": "potencia",
+   "variant": "c6",
+   "cmd": "show gpon onu detail-info gpon_onu-<idx>",
+   "verdict": "RECHAZADO"
+  },
+  {
+   "group": "potencia",
+   "variant": "classic",
+   "cmd": "show pon power attenuation gpon-onu_<idx>",
+   "verdict": "RECHAZADO"
+  },
+  {
+   "group": "potencia",
+   "variant": "classic",
+   "cmd": "show gpon onu detail-info gpon-onu_<idx>",
+   "verdict": "RECHAZADO"
+  },
+  {
+   "group": "potencia",
+   "variant": "c6",
+   "cmd": "show pon power attenuation gpon_onu-<idx>",
+   "verdict": "RECHAZADO"
+  },
+  {
+   "group": "potencia",
+   "variant": "c6",
+   "cmd": "show gpon onu detail-info gpon_onu-<idx>",
+   "verdict": "RECHAZADO"
+  },
+  {
+   "group": "potencia",
+   "variant": "classic",
+   "cmd": "show pon power attenuation gpon-onu_<idx>",
+   "verdict": "RECHAZADO"
+  },
+  {
+   "group": "potencia",
+   "variant": "classic",
+   "cmd": "show gpon onu detail-info gpon-onu_<idx>",
+   "verdict": "RECHAZADO"
+  },
+  {
+   "group": "potencia",
+   "variant": "c6",
+   "cmd": "show pon power attenuation gpon_onu-<idx>",
+   "verdict": "RECHAZADO"
+  },
+  {
+   "group": "potencia",
+   "variant": "c6",
+   "cmd": "show gpon onu detail-info gpon_onu-<idx>",
+   "verdict": "RECHAZADO"
+  },
+  {
+   "group": "ayuda",
+   "variant": "-",
+   "cmd": "show gpon onu ?",
+   "verdict": "OK"
+  },
+  {
+   "group": "ayuda",
+   "variant": "-",
+   "cmd": "show pon ?",
+   "verdict": "OK"
+  },
+  {
+   "group": "ayuda",
+   "variant": "-",
+   "cmd": "show pon power ?",
+   "verdict": "OK"
+  },
+  {
+   "group": "ayuda",
+   "variant": "-",
+   "cmd": "show gpon remote-onu ?",
+   "verdict": "OK"
+  },
+  {
+   "group": "ayuda",
+   "variant": "-",
+   "cmd": "show alarm ?",
+   "verdict": "OK"
+  },
+  {
+   "group": "ayuda",
+   "variant": "-",
+   "cmd": "show gpon profile ?",
+   "verdict": "OK"
+  },
+  {
+   "group": "ayuda",
+   "variant": "-",
+   "cmd": "show qos ?",
+   "verdict": "OK"
+  }
+ ]
+}
