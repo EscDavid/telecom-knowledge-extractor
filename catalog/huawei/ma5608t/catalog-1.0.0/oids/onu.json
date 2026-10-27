@@ -7,6 +7,934 @@
   ],
   "oids": [
     {
+      "id": "oid.huawei.gpon.onu.dev_horizontal_err",
+      "oid": "1.3.6.1.4.1.2011.6.3.1.35",
+      "name": "hwDevHorizontalErr",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "Unsigned32",
+      "unit": null,
+      "scale": null,
+      "access": "read-write",
+      "enumeration": null,
+      "description": "The horizontal error of the device, in unit of meters.\nThe value 4294967295 indicates invalid horizontal error.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.huawei.gpon.onu.single_control_board_mode",
+      "oid": "1.3.6.1.4.1.2011.6.3.1.57",
+      "name": "hwSingleControlBoardMode",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "Enumeration",
+      "unit": null,
+      "scale": null,
+      "access": "read-write",
+      "enumeration": null,
+      "description": "Single control board mode switch status.\nOptions:\n1. disable(0) -indicates that the single control board mode is disable.\n2. enable(1) -indicates that the single control board mode is enable.\nThe default value disable(0).",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.huawei.gpon.onu.ont_index",
+      "oid": "1.3.6.1.4.1.2011.6.3.23.1.1",
+      "name": "hwOntIndex",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "unknown",
+      "enumeration": null,
+      "description": "ONT ID.\nParameters hwFrameIndex and hwSlotIndex are obligatory, hwOntIndex and hwPortIndex are optional\n(the setting -1 indicates that the parameter is optional).\nFor example, to set the information of all ONTs connected to a specified port returned,\nyou can set hwOntIndex to -1; to set the information about the status of all ONTs\nconnected to all ports of a specified slot returned, you can set hwPortIndex and hwOntIndex to -1",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.huawei.gpon.onu.ont_state",
+      "oid": "1.3.6.1.4.1.2011.6.3.23.1.2",
+      "name": "hwOntState",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "OCTET STRING",
+      "unit": null,
+      "scale": null,
+      "access": "unknown",
+      "enumeration": null,
+      "description": "ONT state.\ndata structure:\n--------------------------------------------------------------------------------------------------\n| m | ONT state combination | ONT state combination | | ONT state combination |\n| (2B) | in Port x | in Port y | ..... | in Port n |\n--------------------------------------------------------------------------------------------------\n/ \\\\\n/ \\\\\n/ \\\\\n-----------------------------------\n| x | ONT m-1 | | ONT 0 |\n|(2B) |state(1b)|...... |state(1b)|\n-----------------------------------\nstate enum:\nnormal(0): ONT state is normal.\nfault(1): ONT state is fault.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.huawei.gpon.onu.ont_type",
+      "oid": "1.3.6.1.4.1.2011.6.3.23.1.3",
+      "name": "hwOntType",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "OCTET STRING",
+      "unit": null,
+      "scale": null,
+      "access": "unknown",
+      "enumeration": null,
+      "description": "ONT type.\ndata structure: ONT IP + ONT type\n-------------------------------------------------------------------\n| ONT NUM | ONT IP | ONT type | | ONT IP | ONT type |\n| (2B) | (4B) | (16B) | ...... | (4B) | (16B) |\n-------------------------------------------------------------------\nBecause of the restrictions on the SNMP packet, the packet of up to 8 KB can be transmitted.\nWhen the size of the packet to be reported exceeds 8 KB, the packet must be compressed.\nThe compress format of the packet is shown in the following figure.\n-----------------------------------------------------------------------\n| DATA-LENGTH | FLAG | TLV-NUM | TYPE | LEN | CRC | |\n------------------------------------------------------------ |\n| |\n| |\n| |\n-----------------------------------------------------------------------\nIn the compressed packet:\nDATA-LENGTH occupies four bytes to store the whole length of the file, including the header structure.\nFLAG occupies two bytes to store the flag, which indicates the format of the file contents.\nIn this compressed packet, the flag indicates that the format of the file contents is compressed.\n0xFEFE indicates compress and 0 indicates non-compress.\nTLV-NUM indicates the number of TLVs that the file carries. In this compressed packet, TLV-NUM is 1,\nindicating the CRC value of the compressed content. The following continuous bytes TYPE, LEN, and CRC\nare data in the TLV format. Each of TYPE, LEN, and CRC occupies two bytes. In this compressed packet,\nTYPE, LEN, and CRC record the CRC value of the compressed content. TYPE indicates the CRC type.\nLEN indicates the number of bytes that the CRC occupies and the actual value is 2.\nCRC stores the CRC value of the compressed content.\nThe actual returned content is compressed in the .zip format and stored in the final field of compressed\ncontent.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.huawei.gpon.onu.ont_version",
+      "oid": "1.3.6.1.4.1.2011.6.3.23.1.4",
+      "name": "hwOntVersion",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "OCTET STRING",
+      "unit": null,
+      "scale": null,
+      "access": "unknown",
+      "enumeration": null,
+      "description": "ONT version.\ndata structure: ONT IP + ONT version\n------------------------------------------------------------------------\n| ONT NUM | ONT IP | ONT version | | ONT IP | ONT version |\n| (2B) | (4B) | (32B) | ...... | (4B) | (32B) |\n------------------------------------------------------------------------",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.huawei.gpon.onu.detection_threshold",
+      "oid": "1.3.6.1.4.1.2011.6.3.25.3",
+      "name": "hwDetectionThreshold",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-write",
+      "enumeration": null,
+      "description": "The threshold of intelligent-signal detection: 0 dBm to 28 dBm.\nFrom 0 to 28 independently indicates form 0 dBm to -28 dBm.\nDefault: -15 dBm.\nDEFVAL { 15 }",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.huawei.gpon.onu.nat_onu_mgmt_switch",
+      "oid": "1.3.6.1.4.1.2011.6.3.27.1.1",
+      "name": "hwNatOnuMgmtSwitch",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "Enumeration",
+      "unit": null,
+      "scale": null,
+      "access": "unknown",
+      "enumeration": null,
+      "description": "The status of the function of managing ONU through the NAT\nproxy for OLT: disable or enable.\nOptions:\n1.disable(1) - the state of the function is disabled\n2.enable(2) - the state of the function is enabled",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.huawei.gpon.onu.nat_onu_vlan_i_d",
+      "oid": "1.3.6.1.4.1.2011.6.3.27.1.2",
+      "name": "hwNatOnuVlanID",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "unknown",
+      "enumeration": null,
+      "description": "The VLANID of the Management Channel which ONU belongs to.\n-1 (default value) indicates this value is not configured.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.huawei.gpon.onu.nat_onu_ip_addr",
+      "oid": "1.3.6.1.4.1.2011.6.3.27.1.3",
+      "name": "hwNatOnuIpAddr",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "unknown",
+      "enumeration": null,
+      "description": "The public IP Address of ONU under the Agent Management of OLT.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.huawei.gpon.onu.nat_onu_priority",
+      "oid": "1.3.6.1.4.1.2011.6.3.27.1.4",
+      "name": "hwNatOnuPriority",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "unknown",
+      "enumeration": null,
+      "description": "The Priority of the SNMP Message from ONU.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.huawei.gpon.onu.nat_onu_start_ip",
+      "oid": "1.3.6.1.4.1.2011.6.3.27.1.5",
+      "name": "hwNatOnuStartIp",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-write",
+      "enumeration": null,
+      "description": "The start IP Address of ONU Inner Ip Segment.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.huawei.gpon.onu.nat_onu_ip_scope",
+      "oid": "1.3.6.1.4.1.2011.6.3.27.1.6",
+      "name": "hwNatOnuIpScope",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-write",
+      "enumeration": null,
+      "description": "The number of ONU Inner Ip.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.huawei.gpon.onu.nat_onu_udp_begin",
+      "oid": "1.3.6.1.4.1.2011.6.3.27.2.1.1",
+      "name": "hwNatOnuUdpBegin",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "unknown",
+      "enumeration": null,
+      "description": "The start UDP Port Number of ONU which is managed by OLT through NAT.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.huawei.gpon.onu.service_migration_ont_id",
+      "oid": "1.3.6.1.4.1.2011.6.3.28.1.1",
+      "name": "hwServiceMigrationOntId",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "unknown",
+      "enumeration": null,
+      "description": "Ont ID.\nWhen hwOntId = 65535, the operating object is Port.\nWhen hwOntId != 65535, the operating object is ONT.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.huawei.gpon.onu.service_cfg_ont_id",
+      "oid": "1.3.6.1.4.1.2011.6.3.29.1.1",
+      "name": "hwServiceCfgOntId",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "unknown",
+      "enumeration": null,
+      "description": "Ont ID.\nWhen hwOntId = 65535, the operating object is Port.\nWhen hwOntId != 65535, the operating object is ONT.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.huawei.gpon.onu.ont_remote_http_chnl_vlan",
+      "oid": "1.3.6.1.4.1.2011.6.3.34.1.1",
+      "name": "hwOntRemoteHttpChnlVlan",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-write",
+      "enumeration": null,
+      "description": "Indicates the VLAN ID of the ONT. If this parameter is not specified,\nthe system automatically obtains an unoccupied VLAN ID and uses it as the default VLAN ID.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.huawei.gpon.onu.ont_remote_http_chnl_row_status",
+      "oid": "1.3.6.1.4.1.2011.6.3.34.1.10",
+      "name": "hwOntRemoteHttpChnlRowStatus",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-write",
+      "enumeration": null,
+      "description": "Indicates the row status, used for creating or deleting\na service configuration object. createAndGo(4) and destroy(6)\nare supported. During the query operation, active(1) is\nalways returned for this leaf.\nOptions:\n2. createAndGo(4) -create a new instance of a conceptual row.\n3. destroy(6) -delete the instances associated with an existing conceptual row.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.huawei.gpon.onu.ont_remote_http_chnl_ip_address",
+      "oid": "1.3.6.1.4.1.2011.6.3.34.1.2",
+      "name": "hwOntRemoteHttpChnlIpAddress",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-write",
+      "enumeration": null,
+      "description": "Indicates the IP address of the ONT.\nIf this parameter is not specified, the system selects an unoccupied IP address and uses it as the default IP address.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.huawei.gpon.onu.ont_remote_http_chnl_http_port",
+      "oid": "1.3.6.1.4.1.2011.6.3.34.1.3",
+      "name": "hwOntRemoteHttpChnlHttpPort",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-write",
+      "enumeration": null,
+      "description": "Indicates the web server port of the ONT. If this parameter is not specified, port 7017 is used by default.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.huawei.gpon.onu.ont_remote_http_chnl_protocol",
+      "oid": "1.3.6.1.4.1.2011.6.3.34.1.4",
+      "name": "hwOntRemoteHttpChnlProtocol",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "Enumeration",
+      "unit": null,
+      "scale": null,
+      "access": "read-write",
+      "enumeration": null,
+      "description": "Indicates the protocol type of the web server of the ONT. If this parameter is not specified, HTTPS protocol is used by default.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.huawei.gpon.onu.ont_remote_http_chnl_user_name",
+      "oid": "1.3.6.1.4.1.2011.6.3.34.1.5",
+      "name": "hwOntRemoteHttpChnlUserName",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "OCTET STRING",
+      "unit": null,
+      "scale": null,
+      "access": "read-write",
+      "enumeration": null,
+      "description": "Indicates the user name used for a temporary user to log in to the web server of the ONT.\nIf this parameter is not specified, the existing user name and password are used for login.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.huawei.gpon.onu.ont_remote_http_proxy_port",
+      "oid": "1.3.6.1.4.1.2011.6.3.34.1.7",
+      "name": "hwOntRemoteHttpProxyPort",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "unknown",
+      "enumeration": null,
+      "description": "Indicates the port ID of the TCP proxy during remote access to the ONT from the OLT through the web page, which is port 8024 fixedly.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.huawei.gpon.onu.ont_remote_http_chnl_duration",
+      "oid": "1.3.6.1.4.1.2011.6.3.34.1.8",
+      "name": "hwOntRemoteHttpChnlDuration",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-write",
+      "enumeration": null,
+      "description": "Indicates the ONT login duration of a temporary user (unit: minute).\nIf this parameter is not specified, the login duration is 30 minutes by default.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.huawei.gpon.onu.ont_remote_http_proxy_status",
+      "oid": "1.3.6.1.4.1.2011.6.3.34.1.9",
+      "name": "hwOntRemoteHttpProxyStatus",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "Enumeration",
+      "unit": null,
+      "scale": null,
+      "access": "unknown",
+      "enumeration": null,
+      "description": "Indicates the enabling status of the TCP proxy. The initial state is disable.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.huawei.gpon.onu.cpu_congestion_time",
+      "oid": "1.3.6.1.4.1.2011.6.3.4.1.9",
+      "name": "hwCpuCongestionTime",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "unknown",
+      "enumeration": null,
+      "description": "Duration of CPU congestion(s).",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.huawei.gpon.onu.entity_optical_direction_type",
+      "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.3.1.18",
+      "name": "hwEntityOpticalDirectionType",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "Enumeration",
+      "unit": null,
+      "scale": null,
+      "access": "unknown",
+      "enumeration": null,
+      "description": "This object indicates the direction type of an optical module.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.huawei.gpon.onu.battery_group_install_time_month",
+      "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.40.1.13",
+      "name": "hwBatteryGroupInstallTimeMonth",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-write",
+      "enumeration": null,
+      "description": "This object indicates the battery install time month.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.huawei.gpon.onu.dispose_ent_physical_contained_in",
+      "oid": "1.3.6.1.4.1.2011.5.25.31.8.4.1.4",
+      "name": "hwDisposeEntPhysicalContainedIn",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "unknown",
+      "enumeration": null,
+      "description": "The value of 'entPhysicalContainedIn' for the predisposed physical entity.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
       "id": "oid.huawei.gpon.onu.olt_object_autofind_ont_enable",
       "oid": "1.3.6.1.4.1.2011.5.100.1.1.1.1.1.8",
       "name": "hwGponDeviceOltObjectAutofindOntEnable",

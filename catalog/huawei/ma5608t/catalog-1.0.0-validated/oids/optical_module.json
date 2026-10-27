@@ -1,0 +1,1802 @@
+{
+  "entity_ref": "entity.huawei.gpon.hardware.optical_module",
+  "vendor": "Huawei",
+  "family": "MA5608T",
+  "firmware": [
+    "R015"
+  ],
+  "oids": [
+    {
+      "id": "oid.huawei.gpon.optical_module.entity_optical_power",
+      "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.1.1.17",
+      "name": "hwEntityOpticalPower",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "unknown",
+      "enumeration": null,
+      "description": "This object indicates the optical module's optical power.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.huawei.gpon.optical_module.entity_optical_power_rx",
+      "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.1.1.22",
+      "name": "hwEntityOpticalPowerRx",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "unknown",
+      "enumeration": null,
+      "description": "This object indicates the receive power of an optical module.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.huawei.gpon.optical_module.entity_optical_mode",
+      "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.3.1.1",
+      "name": "hwEntityOpticalMode",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "Enumeration",
+      "unit": null,
+      "scale": null,
+      "access": "unknown",
+      "enumeration": null,
+      "description": "This object indicates the fiber type.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.huawei.gpon.optical_module.entity_optical_type",
+      "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.3.1.10",
+      "name": "hwEntityOpticalType",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "Enumeration",
+      "unit": null,
+      "scale": null,
+      "access": "unknown",
+      "enumeration": null,
+      "description": "This object indicates the optical module type.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.huawei.gpon.optical_module.entity_optical_trans_b_w",
+      "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.3.1.11",
+      "name": "hwEntityOpticalTransBW",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "unknown",
+      "enumeration": null,
+      "description": "This object indicates the transmission bandwidth of an optical module.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.huawei.gpon.optical_module.entity_optical_fiber_type",
+      "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.3.1.12",
+      "name": "hwEntityOpticalFiberType",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "Enumeration",
+      "unit": null,
+      "scale": null,
+      "access": "unknown",
+      "enumeration": null,
+      "description": "This object indicates the fiber type.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.huawei.gpon.optical_module.entity_optical_rx_low_threshold",
+      "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.3.1.13",
+      "name": "hwEntityOpticalRxLowThreshold",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "unknown",
+      "enumeration": null,
+      "description": "This object indicates the lower threshold of the receive power of an optical module. Unit: dBm. the value is expanded 100 times, so the real value should be reduced 100 times.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.huawei.gpon.optical_module.entity_optical_rx_high_threshold",
+      "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.3.1.14",
+      "name": "hwEntityOpticalRxHighThreshold",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "unknown",
+      "enumeration": null,
+      "description": "This object indicates the upper threshold of the receive power of an optical module. Unit: dBm. the value is expanded 100 times, so the real value should be reduced 100 times.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.huawei.gpon.optical_module.entity_optical_tx_low_threshold",
+      "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.3.1.15",
+      "name": "hwEntityOpticalTxLowThreshold",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "unknown",
+      "enumeration": null,
+      "description": "This object indicates the lower threshold of the transmit power of an optical module. Unit: dBm. the value is expanded 100 times, so the real value should be reduced 100 times.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.huawei.gpon.optical_module.entity_optical_tx_high_threshold",
+      "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.3.1.16",
+      "name": "hwEntityOpticalTxHighThreshold",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "unknown",
+      "enumeration": null,
+      "description": "This object indicates the upper threshold of the transmit power of an optical module. Unit: dBm. the value is expanded 100 times, so the real value should be reduced 100 times.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.huawei.gpon.optical_module.entity_optical_plug",
+      "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.3.1.17",
+      "name": "hwEntityOpticalPlug",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "Enumeration",
+      "unit": null,
+      "scale": null,
+      "access": "unknown",
+      "enumeration": null,
+      "description": "This object indicates whether an optical module is pluggable.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.huawei.gpon.optical_module.entity_optical_user_eeprom",
+      "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.3.1.19",
+      "name": "hwEntityOpticalUserEeprom",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "OCTET STRING",
+      "unit": null,
+      "scale": null,
+      "access": "unknown",
+      "enumeration": null,
+      "description": "This object indicates the EEPROM of an optical module.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.huawei.gpon.optical_module.entity_optical_wave_length",
+      "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.3.1.2",
+      "name": "hwEntityOpticalWaveLength",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "unknown",
+      "enumeration": null,
+      "description": "This object indicates the wavelength of an optical module. Unit: nm",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.huawei.gpon.optical_module.entity_optical_rx_low_warn_threshold",
+      "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.3.1.20",
+      "name": "hwEntityOpticalRxLowWarnThreshold",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "unknown",
+      "enumeration": null,
+      "description": "This object indicates the lower warning threshold for the optical power of an optical module in the receive direction.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.huawei.gpon.optical_module.entity_optical_rx_high_warn_threshold",
+      "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.3.1.21",
+      "name": "hwEntityOpticalRxHighWarnThreshold",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "unknown",
+      "enumeration": null,
+      "description": "This object indicates the upper warning threshold for the optical power of an optical module in the receive direction.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.huawei.gpon.optical_module.entity_optical_tx_low_warn_threshold",
+      "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.3.1.22",
+      "name": "hwEntityOpticalTxLowWarnThreshold",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "unknown",
+      "enumeration": null,
+      "description": "This object indicates the lower warning threshold for the optical power of an optical module in the transmit direction.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.huawei.gpon.optical_module.entity_optical_tx_high_warn_threshold",
+      "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.3.1.23",
+      "name": "hwEntityOpticalTxHighWarnThreshold",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "unknown",
+      "enumeration": null,
+      "description": "This object indicates the upper warning threshold for the optical power of an optical module in the transmit direction.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.huawei.gpon.optical_module.entity_optical_vender_name",
+      "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.3.1.24",
+      "name": "hwEntityOpticalVenderName",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "OCTET STRING",
+      "unit": null,
+      "scale": null,
+      "access": "unknown",
+      "enumeration": null,
+      "description": "This object indicates the vendor name of an optical module.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.huawei.gpon.optical_module.entity_optical_vender_pn",
+      "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.3.1.25",
+      "name": "hwEntityOpticalVenderPn",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "OCTET STRING",
+      "unit": null,
+      "scale": null,
+      "access": "unknown",
+      "enumeration": null,
+      "description": "This object indicates the PN of an optical module.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.huawei.gpon.optical_module.entity_optical_authentication_status",
+      "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.3.1.26",
+      "name": "hwEntityOpticalAuthenticationStatus",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "Enumeration",
+      "unit": null,
+      "scale": null,
+      "access": "unknown",
+      "enumeration": null,
+      "description": "The authentication status of optical module.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.huawei.gpon.optical_module.entity_optical_tunable_type",
+      "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.3.1.27",
+      "name": "hwEntityOpticalTunableType",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "Enumeration",
+      "unit": null,
+      "scale": null,
+      "access": "unknown",
+      "enumeration": null,
+      "description": "The tunable type of the optical module.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.huawei.gpon.optical_module.entity_optical_wave_length_decimal",
+      "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.3.1.28",
+      "name": "hwEntityOpticalWaveLengthDecimal",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "unknown",
+      "enumeration": null,
+      "description": "This object indicates the wavelength of an optical module.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.huawei.gpon.optical_module.entity_optical_tunable_module_channel",
+      "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.3.1.29",
+      "name": "hwEntityOpticalTunableModuleChannel",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "unknown",
+      "enumeration": null,
+      "description": "The current channel of tunable optical module.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.huawei.gpon.optical_module.entity_optical_trans_distance",
+      "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.3.1.3",
+      "name": "hwEntityOpticalTransDistance",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "unknown",
+      "enumeration": null,
+      "description": "This object indicates the transmission distance of an optical module.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.huawei.gpon.optical_module.entity_optical_wave_band",
+      "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.3.1.30",
+      "name": "hwEntityOpticalWaveBand",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "Enumeration",
+      "unit": null,
+      "scale": null,
+      "access": "unknown",
+      "enumeration": null,
+      "description": "The wave band of the optical module.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.huawei.gpon.optical_module.entity_optical_lane_bias_current",
+      "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.3.1.31",
+      "name": "hwEntityOpticalLaneBiasCurrent",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "OCTET STRING",
+      "unit": null,
+      "scale": null,
+      "access": "unknown",
+      "enumeration": null,
+      "description": "The bias current of the QSFP or CFP optical module. Unit: mA.(e.g.,\n37.88,39.15,39.84,37.82)",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.huawei.gpon.optical_module.entity_optical_lane_rx_power",
+      "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.3.1.32",
+      "name": "hwEntityOpticalLaneRxPower",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "OCTET STRING",
+      "unit": null,
+      "scale": null,
+      "access": "unknown",
+      "enumeration": null,
+      "description": "This object indicates the receive power of a QSFP or CFP optical module. Unit: dBm",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.huawei.gpon.optical_module.entity_optical_lane_tx_power",
+      "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.3.1.33",
+      "name": "hwEntityOpticalLaneTxPower",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "OCTET STRING",
+      "unit": null,
+      "scale": null,
+      "access": "unknown",
+      "enumeration": null,
+      "description": "This object indicates the transmission power of a QSFP or CFP optical module. Unit: dBm",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.huawei.gpon.optical_module.entity_optical_vendor_o_u_i",
+      "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.3.1.34",
+      "name": "hwEntityOpticalVendorOUI",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "OCTET STRING",
+      "unit": null,
+      "scale": null,
+      "access": "unknown",
+      "enumeration": null,
+      "description": "Vendor ID of the optical module assigned by IEEE.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.huawei.gpon.optical_module.entity_optical_vendor_rev",
+      "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.3.1.35",
+      "name": "hwEntityOpticalVendorRev",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "OCTET STRING",
+      "unit": null,
+      "scale": null,
+      "access": "unknown",
+      "enumeration": null,
+      "description": "The Vender Version of the optical module.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.huawei.gpon.optical_module.entity_optical_max_rx_power",
+      "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.3.1.38",
+      "name": "hwEntityOpticalMaxRxPower",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "unknown",
+      "enumeration": null,
+      "description": "The maximum receive power of the optical module. Unit: dBm. the value is expanded 100 times,so the real value should be reduced 100 times.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.huawei.gpon.optical_module.entity_optical_min_rx_power",
+      "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.3.1.39",
+      "name": "hwEntityOpticalMinRxPower",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "unknown",
+      "enumeration": null,
+      "description": "The minimum receive power of the optical module. Unit: dBm. the value is expanded 100 times,so the real value should be reduced 100 times.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.huawei.gpon.optical_module.entity_optical_vendor_sn",
+      "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.3.1.4",
+      "name": "hwEntityOpticalVendorSn",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "unknown",
+      "enumeration": null,
+      "description": "This object indicates the vendor information of an optical module.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.huawei.gpon.optical_module.entity_optical_max_tx_power",
+      "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.3.1.40",
+      "name": "hwEntityOpticalMaxTxPower",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "unknown",
+      "enumeration": null,
+      "description": "The maximum transmit power of the optical module. Unit: dBm. the value is expanded 100 times,so the real value should be reduced 100 times.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.huawei.gpon.optical_module.entity_optical_min_tx_power",
+      "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.3.1.41",
+      "name": "hwEntityOpticalMinTxPower",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "unknown",
+      "enumeration": null,
+      "description": "The minimum transmit power of the optical module. Unit: dBm. the value is expanded 100 times,so the real value should be reduced 100 times.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.huawei.gpon.optical_module.entity_optical_trans_type",
+      "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.3.1.42",
+      "name": "hwEntityOpticalTransType",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "OCTET STRING",
+      "unit": null,
+      "scale": null,
+      "access": "unknown",
+      "enumeration": null,
+      "description": "The Transceiver Type of the optical module.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.huawei.gpon.optical_module.entity_optical_connect_type",
+      "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.3.1.43",
+      "name": "hwEntityOpticalConnectType",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "OCTET STRING",
+      "unit": null,
+      "scale": null,
+      "access": "unknown",
+      "enumeration": null,
+      "description": "The Connector Type of the optical module.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.huawei.gpon.optical_module.entity_optical_ordering_name",
+      "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.3.1.44",
+      "name": "hwEntityOpticalOrderingName",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "OCTET STRING",
+      "unit": null,
+      "scale": null,
+      "access": "unknown",
+      "enumeration": null,
+      "description": "The Ordering Name of the optical module.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.huawei.gpon.optical_module.entity_optical_transfer_distance",
+      "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.3.1.45",
+      "name": "hwEntityOpticalTransferDistance",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "OCTET STRING",
+      "unit": null,
+      "scale": null,
+      "access": "unknown",
+      "enumeration": null,
+      "description": "The Transfer Distance of the optical module.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.huawei.gpon.optical_module.entity_optical_band_width",
+      "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.3.1.46",
+      "name": "hwEntityOpticalBandWidth",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "unknown",
+      "enumeration": null,
+      "description": "Maximum bandwidth for an optical module, in Mbps. The value is 0 if the optical module is not present.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.huawei.gpon.optical_module.entity_optical_wave_length_exact",
+      "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.3.1.47",
+      "name": "hwEntityOpticalWaveLengthExact",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "OCTET STRING",
+      "unit": null,
+      "scale": null,
+      "access": "unknown",
+      "enumeration": null,
+      "description": "The wave length of the optical module. Unit: nm.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.huawei.gpon.optical_module.entity_optical_model",
+      "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.3.1.48",
+      "name": "hwEntityOpticalModel",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "unknown",
+      "enumeration": null,
+      "description": "The model of the optical module.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.huawei.gpon.optical_module.entity_optical_manufactured_date",
+      "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.3.1.49",
+      "name": "hwEntityOpticalManufacturedDate",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "unknown",
+      "enumeration": null,
+      "description": "The Manufactured Date of the optical module.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.huawei.gpon.optical_module.entity_optical_temperature",
+      "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.3.1.5",
+      "name": "hwEntityOpticalTemperature",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "unknown",
+      "enumeration": null,
+      "description": "This object indicates the temperature of an optical module. 2147483647 is an invalid value. Unit: C.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.huawei.gpon.optical_module.entity_optical_temp_low_threshold",
+      "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.3.1.50",
+      "name": "hwEntityOpticalTempLowThreshold",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "unknown",
+      "enumeration": null,
+      "description": "The temperature low threshold of the optical module. Unit: C.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.huawei.gpon.optical_module.entity_optical_temp_high_threshold",
+      "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.3.1.51",
+      "name": "hwEntityOpticalTempHighThreshold",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "unknown",
+      "enumeration": null,
+      "description": "The temperature high threshold of the optical module. Unit: C.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.huawei.gpon.optical_module.entity_optical_bias_low_threshold",
+      "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.3.1.54",
+      "name": "hwEntityOpticalBiasLowThreshold",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "unknown",
+      "enumeration": null,
+      "description": "The Bias Low Threshold of the optical module. Unit: uA.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.huawei.gpon.optical_module.entity_optical_bias_high_threshold",
+      "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.3.1.55",
+      "name": "hwEntityOpticalBiasHighThreshold",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "unknown",
+      "enumeration": null,
+      "description": "The Bias High Threshold of the optical module. Unit: uA.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.huawei.gpon.optical_module.entity_optical_huawei_certified",
+      "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.3.1.56",
+      "name": "hwEntityOpticalHuaweiCertified",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "unknown",
+      "enumeration": null,
+      "description": "The Huawei Certification of the optical module. 0 represents yes and 1 represents no.\nAfter disabling non-Huawei-certified alarm. This node can not get information about non-Huawei-certified optical module.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.huawei.gpon.optical_module.entity_optical_support_d_d_m",
+      "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.3.1.57",
+      "name": "hwEntityOpticalSupportDDM",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "Enumeration",
+      "unit": null,
+      "scale": null,
+      "access": "unknown",
+      "enumeration": null,
+      "description": "Judge Optical Support DDM or not.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.huawei.gpon.optical_module.entity_optical_port_name",
+      "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.3.1.58",
+      "name": "hwEntityOpticalPortName",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "unknown",
+      "enumeration": null,
+      "description": "The ShowName of the port.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.huawei.gpon.optical_module.entity_optical_differential_group_delay",
+      "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.3.1.59",
+      "name": "hwEntityOpticalDifferentialGroupDelay",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "Unsigned32",
+      "unit": null,
+      "scale": null,
+      "access": "unknown",
+      "enumeration": null,
+      "description": "Indicates the optical module differential group delay. Unit: ps.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.huawei.gpon.optical_module.entity_optical_chromatic_dispersion",
+      "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.3.1.60",
+      "name": "hwEntityOpticalChromaticDispersion",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "unknown",
+      "enumeration": null,
+      "description": "Indicates the optical module chromatic dispersion. Unit: ps/nm.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.huawei.gpon.optical_module.entity_optical_bias_current",
+      "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.3.1.7",
+      "name": "hwEntityOpticalBiasCurrent",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "unknown",
+      "enumeration": null,
+      "description": "This object indicates the bias current of an optical module. 2147483647 is an invalid value. Unit: uA",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.huawei.gpon.optical_module.entity_optical_rx_power",
+      "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.3.1.8",
+      "name": "hwEntityOpticalRxPower",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "unknown",
+      "enumeration": null,
+      "description": "This object indicates the receive optical power of an optical module. Unit: dBm. the value is expanded 100 times, so the real value should be reduced 100 times.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.huawei.gpon.optical_module.entity_optical_tx_power",
+      "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.3.1.9",
+      "name": "hwEntityOpticalTxPower",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "unknown",
+      "enumeration": null,
+      "description": "This object indicates the transmit optical power of an optical module. Unit: dBm. the value is expanded 100 times, so the real value should be reduced 100 times.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    }
+  ]
+}

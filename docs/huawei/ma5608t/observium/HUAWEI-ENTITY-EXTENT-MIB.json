@@ -1,0 +1,4944 @@
+{
+ "module": "HUAWEI-ENTITY-EXTENT-MIB",
+ "source": "https://mibs.observium.org/mib/HUAWEI-ENTITY-EXTENT-MIB/",
+ "source_kind": "third_party_rendering",
+ "fetched": "2026-10-27T20:12:39Z",
+ "root_oid": "1.3.6.1.4.1.2011.5.25.31",
+ "counts": {
+  "node": 33,
+  "table": 36,
+  "row": 36,
+  "column": 373,
+  "scalar": 65
+ },
+ "objects": [
+  {
+   "name": "hwEntityExtentMIB",
+   "oid": "1.3.6.1.4.1.2011.5.25.31",
+   "kind": "node",
+   "depth": 0
+  },
+  {
+   "name": "hwEntityExtObjects",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1",
+   "kind": "node",
+   "depth": 1
+  },
+  {
+   "name": "hwEntityState",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1",
+   "kind": "node",
+   "depth": 2
+  },
+  {
+   "name": "hwEntityStateTable",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.1",
+   "kind": "table",
+   "depth": 3,
+   "description": "This table describes entity status, including the management status, operation status, backup status, alarm status, CPU usage and usage threshold, and memory usage and usage threshold."
+  },
+  {
+   "name": "hwEntityStateEntry",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.1.1",
+   "kind": "row",
+   "depth": 4,
+   "indexes": [
+    "ENTITY-MIB::entPhysicalIndex"
+   ],
+   "description": "Information about a particular physical entity.\nEach entry provides objects (entPhysicalDescr,\nentPhysicalVendorType, and entPhysicalClass) to help an NMS\nidentify and characterize the entry, and objects\n(entPhysicalContainedIn and entPhysicalParentRelPos) to help\nan NMS relate the particular entry to other entries in this\ntable."
+  },
+  {
+   "name": "hwEntityAdminStatus",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.1.1.1",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "HwAdminState",
+   "description": "This object indicates the entity management status.",
+   "access": "read-write"
+  },
+  {
+   "name": "hwEntityUpTime",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.1.1.10",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "seconds",
+   "description": "This object indicates the total duration when an entity is in the UP state."
+  },
+  {
+   "name": "hwEntityTemperature",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.1.1.11",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "description": "This object indicates the entity temperature. Unit: centigrade"
+  },
+  {
+   "name": "hwEntityTemperatureThreshold",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.1.1.12",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "description": "This object indicates the upper threshold of the entity temperature. Unit: centigrade",
+   "access": "read-write"
+  },
+  {
+   "name": "hwEntityVoltage",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.1.1.13",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "description": "This object indicates the entity voltage. Unit: mV"
+  },
+  {
+   "name": "hwEntityVoltageLowThreshold",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.1.1.14",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "description": "This object indicates the minimum entity voltage threshold. Unit: mV",
+   "access": "read-write"
+  },
+  {
+   "name": "hwEntityVoltageHighThreshold",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.1.1.15",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "description": "This object indicates the maximum entity voltage threshold. Unit: mV",
+   "access": "read-write"
+  },
+  {
+   "name": "hwEntityTemperatureLowThreshold",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.1.1.16",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "description": "This object indicates the lower entity temperature threshold. Unit: centigrade",
+   "access": "read-write"
+  },
+  {
+   "name": "hwEntityOpticalPower",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.1.1.17",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "indexes": [
+    "ENTITY-MIB::entPhysicalIndex"
+   ],
+   "description": "This object indicates the optical module's optical power."
+  },
+  {
+   "name": "hwEntityCurrent",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.1.1.18",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "mA",
+   "description": "This object indicates the entity current."
+  },
+  {
+   "name": "hwEntityMemSizeMega",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.1.1.19",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "M bytes",
+   "description": "This object indicates the size of the entity SDRAM."
+  },
+  {
+   "name": "hwEntityOperStatus",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.1.1.2",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "HwOperState",
+   "description": "This object indicates the entity operation status."
+  },
+  {
+   "name": "hwEntityPortType",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.1.1.20",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Enumeration",
+   "description": "This object indicates the port type."
+  },
+  {
+   "name": "hwEntityDuplex",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.1.1.21",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Enumeration",
+   "description": "This object indicates the duplex mode of a port."
+  },
+  {
+   "name": "hwEntityOpticalPowerRx",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.1.1.22",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "description": "This object indicates the receive power of an optical module."
+  },
+  {
+   "name": "hwEntityCpuUsageLowThreshold",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.1.1.23",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Integer32",
+   "description": "This object indicates the CPU usage threshold of an entity.",
+   "access": "read-write"
+  },
+  {
+   "name": "hwEntityBoardPower",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.1.1.24",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "description": "This object indicates the board power."
+  },
+  {
+   "name": "hwEntityCpuFrequency",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.1.1.25",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Hz",
+   "description": "The frequency of the entity. Unit: Hz"
+  },
+  {
+   "name": "hwEntitySupportFlexCard",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.1.1.26",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Enumeration",
+   "description": "It describes whether the whole board supports flexible cards."
+  },
+  {
+   "name": "hwEntityBoardClass",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.1.1.27",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Enumeration",
+   "description": "This object indicates the board type."
+  },
+  {
+   "name": "hwNseOpmStatus",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.1.1.28",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Integer32",
+   "description": "OPM status. 0: pass, 1: bypass, 2: invalid"
+  },
+  {
+   "name": "hwEntityCpuMaxUsage",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.1.1.29",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "description": "This object indicates the maximum CPU usage."
+  },
+  {
+   "name": "hwEntityStandbyStatus",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.1.1.3",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "HwStandbyStatus",
+   "description": "This object indicates the entity backup status."
+  },
+  {
+   "name": "hwEntityCPUType",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.1.1.30",
+   "kind": "column",
+   "depth": 5,
+   "syntax_module": "SNMP-FRAMEWORK-MIB",
+   "syntax_type": "SnmpAdminString",
+   "description": "This object indicates the CPU type."
+  },
+  {
+   "name": "hwEntityMemoryType",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.1.1.31",
+   "kind": "column",
+   "depth": 5,
+   "syntax_module": "SNMP-FRAMEWORK-MIB",
+   "syntax_type": "SnmpAdminString",
+   "description": "This object indicates the memory type."
+  },
+  {
+   "name": "hwEntityFlashSize",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.1.1.32",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "description": "This object indicates the flash size of an entity."
+  },
+  {
+   "name": "hwEntityIfUpTimes",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.1.1.33",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "description": "Times that the interface goes Up."
+  },
+  {
+   "name": "hwEntityIfDownTimes",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.1.1.34",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "description": "Times that the interface goes Down."
+  },
+  {
+   "name": "hwEntityCPUAvgUsage",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.1.1.35",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "description": "This object indicates the average CPU usage."
+  },
+  {
+   "name": "hwEntityMemoryAvgUsage",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.1.1.36",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Integer32",
+   "constraints": "range: 0-120",
+   "description": "This object indicates the average memory usage."
+  },
+  {
+   "name": "hwEntityMemUsed",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.1.1.37",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Unsigned32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Unsigned32",
+   "description": "This object indicates the used memory size."
+  },
+  {
+   "name": "hwEntityTotalFanNum",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.1.1.38",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "description": "The total numbers of the fans in the chassis ."
+  },
+  {
+   "name": "hwEntityNomalFanNum",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.1.1.39",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "description": "The Nomal numbers of the fans in the chassis ."
+  },
+  {
+   "name": "hwEntityAlarmLight",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.1.1.4",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "HwAlarmStatus",
+   "description": "This object indicates the entity alarm status, which is consistent with the entity alarm indicator status."
+  },
+  {
+   "name": "hwEntityTotalPwrNum",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.1.1.40",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "description": "The total numbers of the powers in the chassis ."
+  },
+  {
+   "name": "hwEntityNomalPwrNum",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.1.1.41",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "constraints": "range: 0-120",
+   "description": "The nomal numbers of the powers in the chassis ."
+  },
+  {
+   "name": "hwEntityFaultLight",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.1.1.42",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Enumeration",
+   "constraints": "range: 0-120",
+   "description": "The repair status for this entity.\nOn the underrepair condition, there is a blue light on the entity.",
+   "access": "read-write"
+  },
+  {
+   "name": "hwEntityBoardName",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.1.1.43",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "OctetString",
+   "description": "The board name for this entity."
+  },
+  {
+   "name": "hwEntityBoardDescription",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.1.1.44",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "OctetString",
+   "description": "The board description for this entity."
+  },
+  {
+   "name": "hwEntity5MinCpuUsage",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.1.1.45",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "description": "Average CPU usage of the last five minutes for this entity."
+  },
+  {
+   "name": "hwEntityStartMode",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.1.1.46",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Enumeration",
+   "description": "This object indicates the board startup mode."
+  },
+  {
+   "name": "hwEntitySplitAttribute",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.1.1.47",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "OctetString",
+   "description": "Number of the split port."
+  },
+  {
+   "name": "hwEntityFaultLightKeepTime",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.1.1.48",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "constraints": "range: 0-255",
+   "description": "Fault light twinkle keep time,the default is 45 seconds.",
+   "access": "read-write"
+  },
+  {
+   "name": "hwEntityPbufUsage",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.1.1.49",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Integer32",
+   "constraints": "range: 0-255",
+   "description": "The Pbuf usage for this entity."
+  },
+  {
+   "name": "hwEntityCpuUsage",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.1.1.5",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Integer32",
+   "description": "This object indicates the CPU usage of an entity. Generally, the overall CPU usage of the entity is calculated, without considering the number of CPUs on the entity."
+  },
+  {
+   "name": "hwEntityTMUsage",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.1.1.50",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Integer32",
+   "constraints": "range: 0-255",
+   "description": "The TM usage for this entity."
+  },
+  {
+   "name": "hwEntityHda1Usage",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.1.1.51",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "constraints": "range: 0-8",
+   "description": "The Hda1 usage for this entity."
+  },
+  {
+   "name": "hwEntityHda1UsageThreshold",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.1.1.52",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Integer32",
+   "constraints": "range: 0-8",
+   "description": "The hda1 usage Threshold for this entity."
+  },
+  {
+   "name": "hwEntityHda1UsageResumeThreshold",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.1.1.53",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Integer32",
+   "constraints": "range: 0-20",
+   "description": "The hda1 usage resume threshold for this entity."
+  },
+  {
+   "name": "hwEntitySlotID",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.1.1.54",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "constraints": "range: 0-80",
+   "description": "The identification of slot."
+  },
+  {
+   "name": "hwEntityCpuID",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.1.1.55",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "description": "The identification of cpu."
+  },
+  {
+   "name": "hwEntityPreviousValue",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.1.1.56",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "description": "The previous value of the sudden change."
+  },
+  {
+   "name": "hwEntityCurrentValue",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.1.1.57",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "description": "The current value of the sudden change."
+  },
+  {
+   "name": "hwEntityChangeValue",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.1.1.58",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "description": "The change of the sudden change."
+  },
+  {
+   "name": "hwEntityChangeValueThreshold",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.1.1.59",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "constraints": "range: 0-50",
+   "description": "The change threshold."
+  },
+  {
+   "name": "hwEntityCpuUsageThreshold",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.1.1.6",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Integer32",
+   "description": "This object indicates the CPU usage threshold. When the CPU usage exceeds the threshold, a notification is sent.",
+   "access": "read-write"
+  },
+  {
+   "name": "hwEntityModelName",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.1.1.60",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "OctetString",
+   "constraints": "range: 0-50",
+   "description": "The model for this entity. If there is no model string in elable of this entity or this entity does not support elabel, the invalid value(zero-string) will be returned."
+  },
+  {
+   "name": "hwEntityIssueNumber",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.1.1.61",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "OctetString",
+   "constraints": "range: 0-50",
+   "description": "The IssueNumber for this entity. If there is no IssueNumber string in elable of this entity or this entity does not support elabel, the invalid value(zero-string) will be returned."
+  },
+  {
+   "name": "hwEntityDeviceStatus",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.1.1.62",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Enumeration",
+   "constraints": "range: 0-100",
+   "description": "This object indicates the state of the device."
+  },
+  {
+   "name": "hwEntityPicStatus",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.1.1.63",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Enumeration",
+   "constraints": "range: 0-400000",
+   "description": "This object indicates the state of the pic."
+  },
+  {
+   "name": "hwEntityMPUType",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.1.1.64",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "OctetString",
+   "constraints": "range: 0-64",
+   "description": "This object indicates the MPU type."
+  },
+  {
+   "name": "hwEntityMemSizeExt",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.1.1.65",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "KByte",
+   "description": "This object indicates the memory size."
+  },
+  {
+   "name": "hwEntityTemperatureMinorThreshold",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.1.1.66",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "description": "The minor threshold of the temperature. If the device temperature is\nhigher than the threshold, a notification is sent.",
+   "access": "read-write"
+  },
+  {
+   "name": "hwEntityVoltageFatalHighThreshold",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.1.1.67",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "description": "The fatal high threshold of the voltage. Generally, the voltage should\nbe greater than the fatal low threshold and lower than the fatal high threshold.\nIf the voltage is greater than the fatal high threshold, a notification is sent.",
+   "access": "read-write"
+  },
+  {
+   "name": "hwEntityVoltageFatalLowThreshold",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.1.1.68",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "description": "The fatal low threshold of the voltage. Generally, the voltage should\nbe greater than the fatal low threshold and lower than the fatal high threshold.\nIf the voltage is lower than the fatal low threshold, a notification is sent.",
+   "access": "read-write"
+  },
+  {
+   "name": "hwEntityMemCacheUsage",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.1.1.69",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Integer32",
+   "description": "This object indicates the memory cache usage of an entity, that is, the percentage of the memory cache that has been used."
+  },
+  {
+   "name": "hwEntityMemUsage",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.1.1.7",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Integer32",
+   "description": "This object indicates the memory usage of an entity, that is, the percentage of the memory that has been used."
+  },
+  {
+   "name": "hwCpuUsageTrapType",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.1.1.70",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Integer32",
+   "description": "This object indicates the forwarding type of an entity."
+  },
+  {
+   "name": "hwCpuUsageTrapSlot",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.1.1.71",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "OctetString",
+   "description": "This object indicates the slot id of an entity."
+  },
+  {
+   "name": "hwCpuUsageTrapCpu",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.1.1.72",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Integer32",
+   "description": "This object indicates the CPU id of an entity."
+  },
+  {
+   "name": "hwCpuUsageCurrentUsage",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.1.1.73",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Integer32",
+   "description": "This object indicates the cpu usage of an entity, that is, the percentage of the cpu resource that has been used."
+  },
+  {
+   "name": "hwCpuUsageThreashold",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.1.1.74",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Integer32",
+   "description": "This object indicates the cpu usage threshold of an entity."
+  },
+  {
+   "name": "hwEntityMemUsageThreshold",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.1.1.8",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Integer32",
+   "description": "This object indicates the memory usage threshold. When the memory usage exceeds the threshold, a notification is sent.",
+   "access": "read-write"
+  },
+  {
+   "name": "hwEntityMemSize",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.1.1.9",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "bytes",
+   "description": "This object indicates the memory size."
+  },
+  {
+   "name": "hwFanStatusTable",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.10",
+   "kind": "table",
+   "depth": 3,
+   "description": "This table describes fan information on a device."
+  },
+  {
+   "name": "hwFanStatusEntry",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.10.1",
+   "kind": "row",
+   "depth": 4,
+   "description": "Defines an entry in the hwFanStatusTable."
+  },
+  {
+   "name": "hwEntityFanSlot",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.10.1.1",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "description": "This object indicates the slot of a fan."
+  },
+  {
+   "name": "hwEntityFanSn",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.10.1.2",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "indexes": [
+    "ENTITY-MIB::entPhysicalIndex"
+   ],
+   "description": "This object indicates the number of the fan in the same slot."
+  },
+  {
+   "name": "hwEntityFanReg",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.10.1.3",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Enumeration",
+   "constraints": "range: 0-100",
+   "description": "This object indicates the fan registration status."
+  },
+  {
+   "name": "hwEntityFanSpdAdjMode",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.10.1.4",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Enumeration",
+   "description": "This object indicates the fan speed adjustment mode."
+  },
+  {
+   "name": "hwEntityFanSpeed",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.10.1.5",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "indexes": [
+    "hwUploadDiagnosticsIndex"
+   ],
+   "description": "This object indicates the fan speed."
+  },
+  {
+   "name": "hwEntityFanPresent",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.10.1.6",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Enumeration",
+   "constraints": "range: 1-2147483647",
+   "description": "This object indicates the fan in-position status."
+  },
+  {
+   "name": "hwEntityFanState",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.10.1.7",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Enumeration",
+   "description": "This object indicates the fan status."
+  },
+  {
+   "name": "hwEntityFanDesc",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.10.1.8",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "OctetString",
+   "constraints": "range: 0-65535",
+   "description": "This object indicates the description of the fan."
+  },
+  {
+   "name": "hwEntityFanName",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.10.1.9",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Enumeration",
+   "constraints": "range: 0-63",
+   "description": "This object indicates the fan name."
+  },
+  {
+   "name": "hwEntityGlobalPara",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.11",
+   "kind": "node",
+   "depth": 3
+  },
+  {
+   "name": "hwEntityServiceType",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.11.1",
+   "kind": "scalar",
+   "depth": 4,
+   "syntax": "Enumeration",
+   "description": "It describes the service-type of spu board ."
+  },
+  {
+   "name": "hwDeviceServiceType",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.11.2",
+   "kind": "scalar",
+   "depth": 4,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "description": "It describes the service-type of the device. bit0 is WLAN, bit1 is SSLVPN, bit2 is ipsec,other bits temporarily without easy back extension. Each bit 0 is disable, 1 is enable."
+  },
+  {
+   "name": "hwEntityManufacturerOUI",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.11.3",
+   "kind": "scalar",
+   "depth": 4,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "description": "It describes the Manufacturer of the device."
+  },
+  {
+   "name": "hwPortBip8StatisticsTable",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.12",
+   "kind": "table",
+   "depth": 3,
+   "constraints": "range: 0-2147483647",
+   "description": "This table describes port BIP8 statistics."
+  },
+  {
+   "name": "hwPortBip8StatisticsEntry",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.12.1",
+   "kind": "row",
+   "depth": 4,
+   "constraints": "range: 0-100",
+   "description": "Indicates the BIP8 statistics.\nThis table lists the various BIP8 statistics."
+  },
+  {
+   "name": "hwPhysicalPortBip8StatisticsEB",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.12.1.1",
+   "kind": "column",
+   "depth": 5,
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Counter64",
+   "description": "This object indicates the bit error block."
+  },
+  {
+   "name": "hwPhysicalPortBip8StatisticsES",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.12.1.2",
+   "kind": "column",
+   "depth": 5,
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Counter64",
+   "description": "This object indicates the errored second."
+  },
+  {
+   "name": "hwPhysicalPortBip8StatisticsSES",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.12.1.3",
+   "kind": "column",
+   "depth": 5,
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Counter64",
+   "description": "This object indicates the severely errored second."
+  },
+  {
+   "name": "hwPhysicalPortBip8StatisticsUAS",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.12.1.4",
+   "kind": "column",
+   "depth": 5,
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Counter64",
+   "description": "This object indicates the unavailable second."
+  },
+  {
+   "name": "hwPhysicalPortBip8StatisticsBBE",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.12.1.5",
+   "kind": "column",
+   "depth": 5,
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Counter64",
+   "indexes": [
+    "hwDownloadDiagnosticsIndex"
+   ],
+   "description": "This object indicates the background block error."
+  },
+  {
+   "name": "hwPhysicalPortSpeed",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.12.1.6",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Unsigned32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Unsigned32",
+   "constraints": "range: 1-2147483647",
+   "description": "This object indicates the port rate, in Mbit/s."
+  },
+  {
+   "name": "hwStorageEntTable",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.13",
+   "kind": "table",
+   "depth": 3,
+   "description": "This table describes CF card information about the local chassis."
+  },
+  {
+   "name": "hwStorageEntEntry",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.13.1",
+   "kind": "row",
+   "depth": 4,
+   "constraints": "range: 0-65535",
+   "description": "Indicates the Storage statistics.\nThis table lists the Entity Storage statistics."
+  },
+  {
+   "name": "hwStorageEntIndex",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.13.1.1",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "constraints": "range: 0-63",
+   "description": "This object indicates the index."
+  },
+  {
+   "name": "hwStorageEntType",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.13.1.2",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "constraints": "range: 0-100",
+   "description": "This object indicates the storage component type."
+  },
+  {
+   "name": "hwStorageEntSpace",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.13.1.3",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "description": "This object indicates the storage space."
+  },
+  {
+   "name": "hwStorageEntSpaceFree",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.13.1.4",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "description": "This object indicates the available space."
+  },
+  {
+   "name": "hwStorageEntName",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.13.1.5",
+   "kind": "column",
+   "depth": 5,
+   "syntax_module": "SNMP-FRAMEWORK-MIB",
+   "syntax_type": "SnmpAdminString",
+   "description": "This object indicates the component name."
+  },
+  {
+   "name": "hwStorageEntDescr",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.13.1.6",
+   "kind": "column",
+   "depth": 5,
+   "syntax_module": "SNMP-FRAMEWORK-MIB",
+   "syntax_type": "SnmpAdminString",
+   "description": "This object indicates the component description."
+  },
+  {
+   "name": "hwSystemPowerTable",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.14",
+   "kind": "table",
+   "depth": 3,
+   "indexes": [
+    "hwIfBandRateIndex"
+   ],
+   "description": "System power information table."
+  },
+  {
+   "name": "hwSystemPowerEntry",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.14.1",
+   "kind": "row",
+   "depth": 4,
+   "constraints": "range: 1-2147483647",
+   "description": "System power information entry."
+  },
+  {
+   "name": "hwSystemPowerDeviceID",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.14.1.1",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "description": "System power information device ID."
+  },
+  {
+   "name": "hwSystemPowerTotalPower",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.14.1.2",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "constraints": "range: 0-100",
+   "description": "System power information total power."
+  },
+  {
+   "name": "hwSystemPowerUsedPower",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.14.1.3",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "constraints": "range: 0-100",
+   "description": "System power information used power."
+  },
+  {
+   "name": "hwSystemPowerRemainPower",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.14.1.4",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "description": "System power information remain power."
+  },
+  {
+   "name": "hwSystemPowerReservedPower",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.14.1.5",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "indexes": [
+    "hwEntityDacsIndex"
+   ],
+   "description": "System power information reserved power."
+  },
+  {
+   "name": "hwBatteryInfoTable",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.15",
+   "kind": "table",
+   "depth": 3,
+   "description": "Description.Battery information table"
+  },
+  {
+   "name": "hwBatteryInfoEntry",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.15.1",
+   "kind": "row",
+   "depth": 4,
+   "description": "Description.Battery information entry"
+  },
+  {
+   "name": "hwBatteryState",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.15.1.1",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Enumeration",
+   "description": "Description.The state of lithium battery."
+  },
+  {
+   "name": "hwBatteryTemperatureLow",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.15.1.2",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "description": "Description.The lowest temperature of lithium battery."
+  },
+  {
+   "name": "hwBatteryTemperatureHigh",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.15.1.3",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "description": "Description.The highest temperature of lithium battery."
+  },
+  {
+   "name": "hwBatteryRemainPercent",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.15.1.4",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "description": "Description. The remained electricity quantity percent of lithium battery,unit in minute."
+  },
+  {
+   "name": "hwBatteryRemainTime",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.15.1.5",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "description": "Description. The remained time of lithium battery."
+  },
+  {
+   "name": "hwBatteryElecTimes",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.15.1.6",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "description": "Description.The charge and discharge times of lithium battery."
+  },
+  {
+   "name": "hwBatteryLifeThreshold",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.15.1.7",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "description": "Description.The warning threshold of lithium battery's lifetime.(unit in minute,the default value is 20)",
+   "access": "read-write"
+  },
+  {
+   "name": "hwGPSLocationInfo",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.16",
+   "kind": "node",
+   "depth": 3
+  },
+  {
+   "name": "hwGPSLongitude",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.16.1",
+   "kind": "scalar",
+   "depth": 4,
+   "syntax": "OctetString",
+   "description": "Description.The longitude of the device location."
+  },
+  {
+   "name": "hwGPSLatitude",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.16.2",
+   "kind": "scalar",
+   "depth": 4,
+   "syntax": "OctetString",
+   "description": "Description.The latidude of the device location."
+  },
+  {
+   "name": "hwGPSVelocity",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.16.3",
+   "kind": "scalar",
+   "depth": 4,
+   "syntax": "OctetString",
+   "description": "Description.The velocity of the device."
+  },
+  {
+   "name": "hwAdmPortTable",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.17",
+   "kind": "table",
+   "depth": 3,
+   "description": "The table of ADM(Add/Drop Multiplexer) port properties."
+  },
+  {
+   "name": "hwAdmPortEntry",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.17.1",
+   "kind": "row",
+   "depth": 4,
+   "description": "The entry of ADM(Add/Drop Multiplexer) port properties table."
+  },
+  {
+   "name": "hwAdmPortDescription",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.17.1.1",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "OctetString",
+   "indexes": [
+    "hwBoardDcOutputLineIndex"
+   ],
+   "description": "The description of ADM(Add/Drop Multiplexer) port.",
+   "access": "read-write"
+  },
+  {
+   "name": "hwPwrStatusTable",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.18",
+   "kind": "table",
+   "depth": 3,
+   "description": "This table lists the status of powers. You can read the status of the powers on the device."
+  },
+  {
+   "name": "hwPwrStatusEntry",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.18.1",
+   "kind": "row",
+   "depth": 4,
+   "description": "Defines an entry in the hwPwrStatusTable."
+  },
+  {
+   "name": "hwEntityPwrSlot",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.18.1.1",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "description": "This object indicates the slot ID of a power."
+  },
+  {
+   "name": "hwEntityPwrPower",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.18.1.10",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "description": "This object indicates the rated power of the power. Unit: W"
+  },
+  {
+   "name": "hwEntityPwrSn",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.18.1.2",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "indexes": [
+    "hwBoardDcOutputTypeIndex"
+   ],
+   "description": "This object indicates the serial number of the power in a certain slot."
+  },
+  {
+   "name": "hwEntityPwrReg",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.18.1.3",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Enumeration",
+   "description": "This object indicates whether the power is registered."
+  },
+  {
+   "name": "hwEntityPwrMode",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.18.1.4",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Enumeration",
+   "description": "This object indicates the mode of the power."
+  },
+  {
+   "name": "hwEntityPwrPresent",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.18.1.5",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Enumeration",
+   "description": "This object indicates the present information of the power."
+  },
+  {
+   "name": "hwEntityPwrState",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.18.1.6",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Enumeration",
+   "description": "This object indicates the state of the power."
+  },
+  {
+   "name": "hwEntityPwrCurrent",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.18.1.7",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "description": "This object indicates the current of the power. Unit: mA"
+  },
+  {
+   "name": "hwEntityPwrVoltage",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.18.1.8",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "indexes": [
+    "hwBoardAcOutputLineIndex"
+   ],
+   "description": "This object indicates the voltage of the power. Unit: mV"
+  },
+  {
+   "name": "hwEntityPwrDesc",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.18.1.9",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "OctetString",
+   "description": "This object indicates the description of the power."
+  },
+  {
+   "name": "hwEntityCpuUsageHistoryTable",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.19",
+   "kind": "table",
+   "depth": 3,
+   "description": "This table lists the CPU usage history."
+  },
+  {
+   "name": "hwEntityCpuUsageHistoryEntry",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.19.1",
+   "kind": "row",
+   "depth": 4,
+   "indexes": [
+    "hwEntityApid",
+    "hwEntityApIndex"
+   ],
+   "description": "Defines an entry in the hwEntityCpuUsageHistoryTable."
+  },
+  {
+   "name": "hwCpuUsageHistoryIndex",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.19.1.1",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "constraints": "range: 1024-8191",
+   "description": "This object indicates the index of the CPU usage."
+  },
+  {
+   "name": "hwCpuUsageHistoryTime",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.19.1.2",
+   "kind": "column",
+   "depth": 5,
+   "syntax_module": "SNMPv2-TC",
+   "syntax_type": "DateAndTime",
+   "description": "This object indicates the time of the CPU usage"
+  },
+  {
+   "name": "hwCpuUsageHistoryRate",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.19.1.3",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "description": "This object indicates the the CPU usage"
+  },
+  {
+   "name": "hwRUModuleInfoTable",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.2",
+   "kind": "table",
+   "depth": 3,
+   "description": "This table describes production information, including the BOM ID, BOM, local description, manufacturing code, and update log. The MIB information is stored in the EEPROM of the physical entity."
+  },
+  {
+   "name": "hwRUModuleInfoEntry",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.2.1",
+   "kind": "row",
+   "depth": 4,
+   "description": "Information about a replaceable unit physical entity.\nEach entry provides objects of a replaceable unit to help\nan NMS identify and characterize the entry in this table."
+  },
+  {
+   "name": "hwEntityBomId",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.2.1.1",
+   "kind": "column",
+   "depth": 5,
+   "syntax_module": "SNMP-FRAMEWORK-MIB",
+   "syntax_type": "SnmpAdminString",
+   "description": "This object indicates the entity BOM ID, which is a unified material identifier."
+  },
+  {
+   "name": "hwEntityIssueNum",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.2.1.10",
+   "kind": "column",
+   "depth": 5,
+   "syntax_module": "SNMP-FRAMEWORK-MIB",
+   "syntax_type": "SnmpAdminString",
+   "indexes": [
+    "hwMonitorOutputIndex",
+    "hwMonitorOutputRuleIndex"
+   ],
+   "description": "This object indicates the release code."
+  },
+  {
+   "name": "hwEntityBoardType",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.2.1.11",
+   "kind": "column",
+   "depth": 5,
+   "syntax_module": "SNMP-FRAMEWORK-MIB",
+   "syntax_type": "SnmpAdminString",
+   "constraints": "range: 1-3",
+   "description": "This object indicates the entity board type."
+  },
+  {
+   "name": "hwEntityExInfo",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.2.1.12",
+   "kind": "column",
+   "depth": 5,
+   "syntax_module": "SNMP-FRAMEWORK-MIB",
+   "syntax_type": "SnmpAdminString",
+   "constraints": "range: 1-16",
+   "description": "Extra information, which satisfies the requirements of special components."
+  },
+  {
+   "name": "hwEntityModel",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.2.1.13",
+   "kind": "column",
+   "depth": 5,
+   "syntax_module": "SNMP-FRAMEWORK-MIB",
+   "syntax_type": "SnmpAdminString",
+   "description": "External type."
+  },
+  {
+   "name": "hwEntityElabelVersion",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.2.1.14",
+   "kind": "column",
+   "depth": 5,
+   "syntax_module": "SNMP-FRAMEWORK-MIB",
+   "syntax_type": "SnmpAdminString",
+   "description": "Electronic label version."
+  },
+  {
+   "name": "hwEntitySafeId",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.2.1.15",
+   "kind": "column",
+   "depth": 5,
+   "syntax_module": "SNMP-FRAMEWORK-MIB",
+   "syntax_type": "SnmpAdminString",
+   "description": "Main board safecard ID."
+  },
+  {
+   "name": "hwEntityBomEnDesc",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.2.1.2",
+   "kind": "column",
+   "depth": 5,
+   "syntax_module": "SNMP-FRAMEWORK-MIB",
+   "syntax_type": "SnmpAdminString",
+   "description": "This object indicates the English description of the entity BOM."
+  },
+  {
+   "name": "hwEntityBomLocalDesc",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.2.1.3",
+   "kind": "column",
+   "depth": 5,
+   "syntax_module": "SNMP-FRAMEWORK-MIB",
+   "syntax_type": "SnmpAdminString",
+   "indexes": [
+    "hwMonitorInputIndex"
+   ],
+   "description": "This object indicates the local description of the entity BOM.",
+   "status": "obsolete"
+  },
+  {
+   "name": "hwEntityManufacturedDate",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.2.1.4",
+   "kind": "column",
+   "depth": 5,
+   "syntax_module": "SNMPv2-TC",
+   "syntax_type": "DateAndTime",
+   "constraints": "range: 1-4",
+   "description": "This object indicates the manufacturing date of an entity."
+  },
+  {
+   "name": "hwEntityManufactureCode",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.2.1.5",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "description": "The code of the place where this physical entity is Manufactured.",
+   "status": "obsolete"
+  },
+  {
+   "name": "hwEntityCLEICode",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.2.1.6",
+   "kind": "column",
+   "depth": 5,
+   "syntax_module": "SNMP-FRAMEWORK-MIB",
+   "syntax_type": "SnmpAdminString",
+   "description": "This object indicates the CLEI code of an entity."
+  },
+  {
+   "name": "hwEntityUpdateLog",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.2.1.7",
+   "kind": "column",
+   "depth": 5,
+   "syntax_module": "SNMP-FRAMEWORK-MIB",
+   "syntax_type": "SnmpAdminString",
+   "description": "The maintenance log of this replaceable unit.",
+   "status": "obsolete"
+  },
+  {
+   "name": "hwEntityArchivesInfoVersion",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.2.1.8",
+   "kind": "column",
+   "depth": 5,
+   "syntax_module": "SNMP-FRAMEWORK-MIB",
+   "syntax_type": "SnmpAdminString",
+   "description": "This object indicates the archive information version of an entity."
+  },
+  {
+   "name": "hwEntityOpenBomId",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.2.1.9",
+   "kind": "column",
+   "depth": 5,
+   "syntax_module": "SNMP-FRAMEWORK-MIB",
+   "syntax_type": "SnmpAdminString",
+   "description": "This object indicates the sales BOM code."
+  },
+  {
+   "name": "hwEntityMemUsageHistoryTable",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.20",
+   "kind": "table",
+   "depth": 3,
+   "constraints": "range: 0-100",
+   "description": "This table lists the MemUsageHistory."
+  },
+  {
+   "name": "hwEntityMemUsageHistoryEntry",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.20.1",
+   "kind": "row",
+   "depth": 4,
+   "constraints": "range: 0-100",
+   "description": "Defines an entry in the hwEntityMemUsageHistoryTable."
+  },
+  {
+   "name": "hwMemUsageHistoryIndex",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.20.1.1",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "description": "This object indicates the the index of memory usage history."
+  },
+  {
+   "name": "hwMemUsageHistoryTime",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.20.1.2",
+   "kind": "column",
+   "depth": 5,
+   "syntax_module": "SNMPv2-TC",
+   "syntax_type": "DateAndTime",
+   "indexes": [
+    "ENTITY-MIB::entPhysicalIndex"
+   ],
+   "description": "This object indicates the the index of memory usage history."
+  },
+  {
+   "name": "hwMemUsageHistoryRate",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.20.1.3",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "description": "This object indicates the the index of memory usage history."
+  },
+  {
+   "name": "hwProcessStateInfo",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.21",
+   "kind": "node",
+   "depth": 3
+  },
+  {
+   "name": "hwProcessName",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.21.1",
+   "kind": "scalar",
+   "depth": 4,
+   "syntax": "OctetString",
+   "description": "This object indicates the process name."
+  },
+  {
+   "name": "hwDiskStateInfo",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.22",
+   "kind": "node",
+   "depth": 3
+  },
+  {
+   "name": "hwDiskType",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.22.1",
+   "kind": "scalar",
+   "depth": 4,
+   "syntax": "OctetString",
+   "description": "This object indicates the disk type."
+  },
+  {
+   "name": "hwDiskSN",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.22.2",
+   "kind": "scalar",
+   "depth": 4,
+   "syntax": "OctetString",
+   "description": "This object indicates the disk SN."
+  },
+  {
+   "name": "hwDiskUsage",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.22.3",
+   "kind": "scalar",
+   "depth": 4,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "description": "This object indicates the disk usage rate."
+  },
+  {
+   "name": "hwDiskUsageThreshold",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.22.4",
+   "kind": "scalar",
+   "depth": 4,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "description": "This object indicates the disk usage rate alarm threshold."
+  },
+  {
+   "name": "hwDiskSlot",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.22.5",
+   "kind": "scalar",
+   "depth": 4,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "description": "This object indicates the disk slot."
+  },
+  {
+   "name": "hwLpuStateInfo",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.23",
+   "kind": "node",
+   "depth": 3,
+   "constraints": "range: 0-100"
+  },
+  {
+   "name": "hwLPUType",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.23.1",
+   "kind": "scalar",
+   "depth": 4,
+   "syntax": "OctetString",
+   "description": "This object indicates the lpu type."
+  },
+  {
+   "name": "hwLPUSlot",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.23.2",
+   "kind": "scalar",
+   "depth": 4,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "description": "This object indicates the lpu slot."
+  },
+  {
+   "name": "hwHardDiskStateTable",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.24",
+   "kind": "table",
+   "depth": 3,
+   "description": "This table lists the status of hard disks. You can read the status of the hard disks on the device."
+  },
+  {
+   "name": "hwHardDiskStateEntry",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.24.1",
+   "kind": "row",
+   "depth": 4,
+   "description": "Defines an entry in the hwHardDiskStateTable."
+  },
+  {
+   "name": "hwHardDiskIndex",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.24.1.1",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "description": "This object indicates the index of a hard disk."
+  },
+  {
+   "name": "hwHardDiskSN",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.24.1.2",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "OctetString",
+   "indexes": [
+    "ENTITY-MIB::entPhysicalIndex"
+   ],
+   "description": "This object indicates the serial number of the hard disk with a specified index."
+  },
+  {
+   "name": "hwHardDiskType",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.24.1.3",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "OctetString",
+   "description": "This object indicates the type of the hard disk with a specified index."
+  },
+  {
+   "name": "hwHardDiskCapacity",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.24.1.4",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "description": "This object indicates the capacity of the hard disk with a specified index."
+  },
+  {
+   "name": "hwHardDiskUsage",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.24.1.5",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "description": "This object indicates the usage of the hard disk with a specified index."
+  },
+  {
+   "name": "hwHardDiskUsageThreshold",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.24.1.6",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "description": "This object indicates the usage threshold of the hard disk with a specified index."
+  },
+  {
+   "name": "hwEntitySDCardUsage",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.24.1.7",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "description": "This object indicates the usage of the SDCard with a specified index."
+  },
+  {
+   "name": "hwEntitySDCardUsageThreshold",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.24.1.8",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "description": "This object indicates the usage threshold of the SDCard with a specified index."
+  },
+  {
+   "name": "hwCfcardStateInfo",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.25",
+   "kind": "node",
+   "depth": 3,
+   "constraints": "range: 0-100"
+  },
+  {
+   "name": "hwLedConfigInfoPara",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.26",
+   "kind": "node",
+   "depth": 3
+  },
+  {
+   "name": "hwLedConfigStatus",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.26.1",
+   "kind": "scalar",
+   "depth": 4,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "description": "Whether Led Off config enabled."
+  },
+  {
+   "name": "hwLedTimeRangeName",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.26.2",
+   "kind": "scalar",
+   "depth": 4,
+   "syntax": "OctetString",
+   "description": "Led off time range name, if Led Off Time Range config enabled."
+  },
+  {
+   "name": "hwUsbConfigInfoPara",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.27",
+   "kind": "node",
+   "depth": 3,
+   "constraints": "range: 0-100"
+  },
+  {
+   "name": "hwUsbConfigStatus",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.27.1",
+   "kind": "scalar",
+   "depth": 4,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "description": "Whether Usb Enable config enabled."
+  },
+  {
+   "name": "hwEntityNPStateTable",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.28",
+   "kind": "table",
+   "depth": 3,
+   "description": "A table of information that displays the forward performance usage of entity ."
+  },
+  {
+   "name": "hwEntityNPStateEntry",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.28.1",
+   "kind": "row",
+   "depth": 4,
+   "description": "Entry of the table of information that displays the forward performance usage of entity."
+  },
+  {
+   "name": "hwEntityForwardPerformanceUsage",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.28.1.1",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Integer32",
+   "description": "The forward performance usage for this entity."
+  },
+  {
+   "name": "hwUploadDiagnosticsTable",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.29",
+   "kind": "table",
+   "depth": 3,
+   "description": "This table lists the info of upload diagnostics. You can read the info of the upload diagnostics on the device."
+  },
+  {
+   "name": "hwUploadDiagnosticsEntry",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.29.1",
+   "kind": "row",
+   "depth": 4,
+   "description": "Defines an entry in the hwUploadDiagnosticsTable."
+  },
+  {
+   "name": "hwUploadDiagnosticsIndex",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.29.1.1",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Integer32",
+   "description": "This object indicates the index of the upload diagnostics."
+  },
+  {
+   "name": "hwUploadDiagnosticsURL",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.29.1.2",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "OctetString",
+   "description": "This object indicates the URL of the upload diagnostics.",
+   "access": "read-write"
+  },
+  {
+   "name": "hwUploadDiagnosticsTransports",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.29.1.3",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Integer32",
+   "description": "This object indicates the transports of the upload diagnostics.",
+   "access": "read-write"
+  },
+  {
+   "name": "hwUploadDiagnosticsDSCP",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.29.1.4",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Integer32",
+   "description": "This object indicates the DSCP of the upload diagnostics.",
+   "access": "read-write"
+  },
+  {
+   "name": "hwUploadDiagnosticsTestFileSize",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.29.1.5",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Integer32",
+   "description": "This object indicates the test file size of the upload diagnostics.",
+   "access": "read-write"
+  },
+  {
+   "name": "hwUploadDiagnosticsProgress",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.29.1.6",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Integer32",
+   "description": "This object indicates the progress of the upload diagnostics."
+  },
+  {
+   "name": "hwUploadDiagnosticsSpeed",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.29.1.7",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "OctetString",
+   "description": "This object indicates the speed of the upload diagnostics."
+  },
+  {
+   "name": "hwUploadDiagnosticsStatus",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.29.1.8",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "OctetString",
+   "description": "This object indicates the status of the upload diagnostics."
+  },
+  {
+   "name": "hwUploadDiagnosticsRowStatus",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.29.1.9",
+   "kind": "column",
+   "depth": 5,
+   "syntax_module": "SNMPv2-TC",
+   "syntax_type": "RowStatus",
+   "description": "This object indicates the row status of the upload diagnostics.",
+   "access": "read-write"
+  },
+  {
+   "name": "hwOpticalModuleInfoTable",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.3",
+   "kind": "table",
+   "depth": 3,
+   "description": "This table describes optical module information,\nincluding the fiber type, wavelength, transmission distance,\nvendor information, temperature, bias current, receive optical power,\ntransmit optical power, optical module type, rate, fiber interface,\nlower threshold of the receive power, upper threshold of the receive power,\nlower threshold of the transmit power, upper threshold of the transmit power,\nand whether the optical module is pluggable."
+  },
+  {
+   "name": "hwOpticalModuleInfoEntry",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.3.1",
+   "kind": "row",
+   "depth": 4,
+   "indexes": [
+    "ENTITY-MIB::entPhysicalIndex"
+   ],
+   "description": "An entry in the table of optical module properties for each optical module."
+  },
+  {
+   "name": "hwEntityOpticalMode",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.3.1.1",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Enumeration",
+   "description": "This object indicates the fiber type."
+  },
+  {
+   "name": "hwEntityOpticalType",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.3.1.10",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Enumeration",
+   "description": "This object indicates the optical module type."
+  },
+  {
+   "name": "hwEntityOpticalTransBW",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.3.1.11",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "description": "This object indicates the transmission bandwidth of an optical module."
+  },
+  {
+   "name": "hwEntityOpticalFiberType",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.3.1.12",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Enumeration",
+   "description": "This object indicates the fiber type."
+  },
+  {
+   "name": "hwEntityOpticalRxLowThreshold",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.3.1.13",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "description": "This object indicates the lower threshold of the receive power of an optical module. Unit: dBm. the value is expanded 100 times, so the real value should be reduced 100 times."
+  },
+  {
+   "name": "hwEntityOpticalRxHighThreshold",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.3.1.14",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "description": "This object indicates the upper threshold of the receive power of an optical module. Unit: dBm. the value is expanded 100 times, so the real value should be reduced 100 times."
+  },
+  {
+   "name": "hwEntityOpticalTxLowThreshold",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.3.1.15",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "description": "This object indicates the lower threshold of the transmit power of an optical module. Unit: dBm. the value is expanded 100 times, so the real value should be reduced 100 times."
+  },
+  {
+   "name": "hwEntityOpticalTxHighThreshold",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.3.1.16",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "description": "This object indicates the upper threshold of the transmit power of an optical module. Unit: dBm. the value is expanded 100 times, so the real value should be reduced 100 times."
+  },
+  {
+   "name": "hwEntityOpticalPlug",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.3.1.17",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Enumeration",
+   "description": "This object indicates whether an optical module is pluggable."
+  },
+  {
+   "name": "hwEntityOpticalDirectionType",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.3.1.18",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Enumeration",
+   "description": "This object indicates the direction type of an optical module."
+  },
+  {
+   "name": "hwEntityOpticalUserEeprom",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.3.1.19",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "OctetString",
+   "description": "This object indicates the EEPROM of an optical module."
+  },
+  {
+   "name": "hwEntityOpticalWaveLength",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.3.1.2",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "description": "This object indicates the wavelength of an optical module. Unit: nm"
+  },
+  {
+   "name": "hwEntityOpticalRxLowWarnThreshold",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.3.1.20",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "description": "This object indicates the lower warning threshold for the optical power of an optical module in the receive direction."
+  },
+  {
+   "name": "hwEntityOpticalRxHighWarnThreshold",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.3.1.21",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "indexes": [
+    "hwEntityTempSlotId",
+    "hwEntityTempI2CId",
+    "hwEntityTempAddr",
+    "hwEntityTempChannel"
+   ],
+   "description": "This object indicates the upper warning threshold for the optical power of an optical module in the receive direction."
+  },
+  {
+   "name": "hwEntityOpticalTxLowWarnThreshold",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.3.1.22",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "description": "This object indicates the lower warning threshold for the optical power of an optical module in the transmit direction."
+  },
+  {
+   "name": "hwEntityOpticalTxHighWarnThreshold",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.3.1.23",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "description": "This object indicates the upper warning threshold for the optical power of an optical module in the transmit direction."
+  },
+  {
+   "name": "hwEntityOpticalVenderName",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.3.1.24",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "OctetString",
+   "description": "This object indicates the vendor name of an optical module."
+  },
+  {
+   "name": "hwEntityOpticalVenderPn",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.3.1.25",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "OctetString",
+   "description": "This object indicates the PN of an optical module."
+  },
+  {
+   "name": "hwEntityOpticalAuthenticationStatus",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.3.1.26",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Enumeration",
+   "description": "The authentication status of optical module."
+  },
+  {
+   "name": "hwEntityOpticalTunableType",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.3.1.27",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Enumeration",
+   "description": "The tunable type of the optical module."
+  },
+  {
+   "name": "hwEntityOpticalWaveLengthDecimal",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.3.1.28",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "description": "This object indicates the wavelength of an optical module."
+  },
+  {
+   "name": "hwEntityOpticalTunableModuleChannel",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.3.1.29",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "description": "The current channel of tunable optical module."
+  },
+  {
+   "name": "hwEntityOpticalTransDistance",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.3.1.3",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "description": "This object indicates the transmission distance of an optical module."
+  },
+  {
+   "name": "hwEntityOpticalWaveBand",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.3.1.30",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Enumeration",
+   "description": "The wave band of the optical module."
+  },
+  {
+   "name": "hwEntityOpticalLaneBiasCurrent",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.3.1.31",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "OctetString",
+   "description": "The bias current of the QSFP or CFP optical module. Unit: mA.(e.g.,\n37.88,39.15,39.84,37.82)"
+  },
+  {
+   "name": "hwEntityOpticalLaneRxPower",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.3.1.32",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "OctetString",
+   "indexes": [
+    "hwEntityVolSlot",
+    "hwEntityVolI2CId",
+    "hwEntityVolAddr",
+    "hwEntityVolChannel"
+   ],
+   "description": "This object indicates the receive power of a QSFP or CFP optical module. Unit: dBm"
+  },
+  {
+   "name": "hwEntityOpticalLaneTxPower",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.3.1.33",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "OctetString",
+   "description": "This object indicates the transmission power of a QSFP or CFP optical module. Unit: dBm"
+  },
+  {
+   "name": "hwEntityOpticalVendorOUI",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.3.1.34",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "OctetString",
+   "description": "Vendor ID of the optical module assigned by IEEE."
+  },
+  {
+   "name": "hwEntityOpticalVendorRev",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.3.1.35",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "OctetString",
+   "description": "The Vender Version of the optical module."
+  },
+  {
+   "name": "hwEntityOpticalGponSN",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.3.1.36",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "OctetString",
+   "description": "The SN of the optical module provided by the vendor."
+  },
+  {
+   "name": "hwEntityTransceiverType",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.3.1.37",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "OctetString",
+   "description": "The transceiver type of the optical module provided by the vendor."
+  },
+  {
+   "name": "hwEntityOpticalMaxRxPower",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.3.1.38",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "description": "The maximum receive power of the optical module. Unit: dBm. the value is expanded 100 times,so the real value should be reduced 100 times."
+  },
+  {
+   "name": "hwEntityOpticalMinRxPower",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.3.1.39",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "description": "The minimum receive power of the optical module. Unit: dBm. the value is expanded 100 times,so the real value should be reduced 100 times."
+  },
+  {
+   "name": "hwEntityOpticalVendorSn",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.3.1.4",
+   "kind": "column",
+   "depth": 5,
+   "syntax_module": "SNMP-FRAMEWORK-MIB",
+   "syntax_type": "SnmpAdminString",
+   "description": "This object indicates the vendor information of an optical module."
+  },
+  {
+   "name": "hwEntityOpticalMaxTxPower",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.3.1.40",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "description": "The maximum transmit power of the optical module. Unit: dBm. the value is expanded 100 times,so the real value should be reduced 100 times."
+  },
+  {
+   "name": "hwEntityOpticalMinTxPower",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.3.1.41",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "description": "The minimum transmit power of the optical module. Unit: dBm. the value is expanded 100 times,so the real value should be reduced 100 times."
+  },
+  {
+   "name": "hwEntityOpticalTransType",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.3.1.42",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "OctetString",
+   "description": "The Transceiver Type of the optical module."
+  },
+  {
+   "name": "hwEntityOpticalConnectType",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.3.1.43",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "OctetString",
+   "description": "The Connector Type of the optical module."
+  },
+  {
+   "name": "hwEntityOpticalOrderingName",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.3.1.44",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "OctetString",
+   "description": "The Ordering Name of the optical module."
+  },
+  {
+   "name": "hwEntityOpticalTransferDistance",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.3.1.45",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "OctetString",
+   "description": "The Transfer Distance of the optical module."
+  },
+  {
+   "name": "hwEntityOpticalBandWidth",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.3.1.46",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Integer32",
+   "indexes": [
+    "hwEntityFanSlot",
+    "hwEntityFanSn"
+   ],
+   "description": "Maximum bandwidth for an optical module, in Mbps. The value is 0 if the optical module is not present."
+  },
+  {
+   "name": "hwEntityOpticalWaveLengthExact",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.3.1.47",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "OctetString",
+   "description": "The wave length of the optical module. Unit: nm."
+  },
+  {
+   "name": "hwEntityOpticalModel",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.3.1.48",
+   "kind": "column",
+   "depth": 5,
+   "syntax_module": "SNMP-FRAMEWORK-MIB",
+   "syntax_type": "SnmpAdminString",
+   "description": "The model of the optical module."
+  },
+  {
+   "name": "hwEntityOpticalManufacturedDate",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.3.1.49",
+   "kind": "column",
+   "depth": 5,
+   "syntax_module": "SNMPv2-TC",
+   "syntax_type": "DateAndTime",
+   "description": "The Manufactured Date of the optical module."
+  },
+  {
+   "name": "hwEntityOpticalTemperature",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.3.1.5",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "description": "This object indicates the temperature of an optical module. 2147483647 is an invalid value. Unit: C."
+  },
+  {
+   "name": "hwEntityOpticalTempLowThreshold",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.3.1.50",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "description": "The temperature low threshold of the optical module. Unit: C."
+  },
+  {
+   "name": "hwEntityOpticalTempHighThreshold",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.3.1.51",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "description": "The temperature high threshold of the optical module. Unit: C."
+  },
+  {
+   "name": "hwEntityOpticalVoltLowThreshold",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.3.1.52",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "description": "The voltage low threshold of the optical module. Unit: mV."
+  },
+  {
+   "name": "hwEntityOpticalVoltHighThreshold",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.3.1.53",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "description": "The voltage high threshold of the optical module. Unit: mV."
+  },
+  {
+   "name": "hwEntityOpticalBiasLowThreshold",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.3.1.54",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "description": "The Bias Low Threshold of the optical module. Unit: uA."
+  },
+  {
+   "name": "hwEntityOpticalBiasHighThreshold",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.3.1.55",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "description": "The Bias High Threshold of the optical module. Unit: uA."
+  },
+  {
+   "name": "hwEntityOpticalHuaweiCertified",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.3.1.56",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "description": "The Huawei Certification of the optical module. 0 represents yes and 1 represents no.\nAfter disabling non-Huawei-certified alarm. This node can not get information about non-Huawei-certified optical module."
+  },
+  {
+   "name": "hwEntityOpticalSupportDDM",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.3.1.57",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Enumeration",
+   "indexes": [
+    "ENTITY-MIB::entPhysicalIndex"
+   ],
+   "description": "Judge Optical Support DDM or not."
+  },
+  {
+   "name": "hwEntityOpticalPortName",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.3.1.58",
+   "kind": "column",
+   "depth": 5,
+   "syntax_module": "SNMPv2-TC",
+   "syntax_type": "DisplayString",
+   "description": "The ShowName of the port."
+  },
+  {
+   "name": "hwEntityOpticalDifferentialGroupDelay",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.3.1.59",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Unsigned32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Unsigned32",
+   "description": "Indicates the optical module differential group delay. Unit: ps."
+  },
+  {
+   "name": "hwEntityOpticalVoltage",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.3.1.6",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "indexes": [
+    "hwVirtualCableTestIfIndex"
+   ],
+   "description": "This object indicates the voltage of an optical module. 2147483647 is an invalid value. Unit: mV."
+  },
+  {
+   "name": "hwEntityOpticalChromaticDispersion",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.3.1.60",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "description": "Indicates the optical module chromatic dispersion. Unit: ps/nm."
+  },
+  {
+   "name": "hwEntityOpticalBiasCurrent",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.3.1.7",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "description": "This object indicates the bias current of an optical module. 2147483647 is an invalid value. Unit: uA"
+  },
+  {
+   "name": "hwEntityOpticalRxPower",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.3.1.8",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "description": "This object indicates the receive optical power of an optical module. Unit: dBm. the value is expanded 100 times, so the real value should be reduced 100 times."
+  },
+  {
+   "name": "hwEntityOpticalTxPower",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.3.1.9",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "description": "This object indicates the transmit optical power of an optical module. Unit: dBm. the value is expanded 100 times, so the real value should be reduced 100 times."
+  },
+  {
+   "name": "hwDownloadDiagnosticsTable",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.30",
+   "kind": "table",
+   "depth": 3,
+   "description": "This table lists the info of download diagnostics. You can read the info of the download diagnostics on the device."
+  },
+  {
+   "name": "hwDownloadDiagnosticsEntry",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.30.1",
+   "kind": "row",
+   "depth": 4,
+   "description": "Defines an entry in the hwdownloadDiagnosticsTable."
+  },
+  {
+   "name": "hwDownloadDiagnosticsIndex",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.30.1.1",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Integer32",
+   "description": "This object indicates the index of the download diagnostics."
+  },
+  {
+   "name": "hwDownloadDiagnosticsURL",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.30.1.2",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "OctetString",
+   "description": "This object indicates the URL of the download diagnostics.",
+   "access": "read-write"
+  },
+  {
+   "name": "hwDownloadDiagnosticsTransports",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.30.1.3",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Integer32",
+   "description": "This object indicates the transports of the download diagnostics.",
+   "access": "read-write"
+  },
+  {
+   "name": "hwDownloadDiagnosticsDSCP",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.30.1.4",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Integer32",
+   "description": "This object indicates the DSCP of the download diagnostics.",
+   "access": "read-write"
+  },
+  {
+   "name": "hwDownloadDiagnosticsProgress",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.30.1.5",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Integer32",
+   "description": "This object indicates the progress of the download diagnostics."
+  },
+  {
+   "name": "hwDownloadDiagnosticsSpeed",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.30.1.6",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "OctetString",
+   "indexes": [
+    "ENTITY-MIB::entPhysicalIndex"
+   ],
+   "description": "This object indicates the speed of the download diagnostics."
+  },
+  {
+   "name": "hwDownloadDiagnosticsStatus",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.30.1.7",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "OctetString",
+   "description": "This object indicates the status of the download diagnostics."
+  },
+  {
+   "name": "hwDownloadDiagnosticsRowStatus",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.30.1.8",
+   "kind": "column",
+   "depth": 5,
+   "syntax_module": "SNMPv2-TC",
+   "syntax_type": "RowStatus",
+   "description": "This object indicates the row status of the download diagnostics.",
+   "access": "read-write"
+  },
+  {
+   "name": "hwIfBandRateTable",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.31",
+   "kind": "table",
+   "depth": 3,
+   "description": "This table lists the info of download diagnostics. You can read the info of the download diagnostics on the device."
+  },
+  {
+   "name": "hwIfBandRateEntry",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.31.1",
+   "kind": "row",
+   "depth": 4,
+   "description": "Defines an entry in the hwdownloadDiagnosticsTable."
+  },
+  {
+   "name": "hwIfBandRateIndex",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.31.1.1",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Integer32",
+   "description": "This object indicates the index of the interface."
+  },
+  {
+   "name": "hwIfBandRateName",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.31.1.2",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "OctetString",
+   "description": "This object indicates the name of the interface."
+  },
+  {
+   "name": "hwIfBandRateInput",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.31.1.3",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Integer32",
+   "description": "This object indicates the input bandwidth utilization of the interface."
+  },
+  {
+   "name": "hwIfBandRateOutput",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.31.1.4",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Integer32",
+   "description": "This object indicates the output bandwidth utilization of the interface."
+  },
+  {
+   "name": "hwDacsStatusTable",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.32",
+   "kind": "table",
+   "depth": 3,
+   "description": "This table lists the status of DACS. You can read the status of the DACS on the device."
+  },
+  {
+   "name": "hwDacsStatusEntry",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.32.1",
+   "kind": "row",
+   "depth": 4,
+   "description": "Defines an entry in the hwDacsStatusTable."
+  },
+  {
+   "name": "hwEntityDacsIndex",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.32.1.1",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "description": "This object indicates the index of a DACS."
+  },
+  {
+   "name": "hwEntityDacsDesc",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.32.1.10",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "OctetString",
+   "description": "This object indicates the description of the DACS."
+  },
+  {
+   "name": "hwEntityDacsPresent",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.32.1.2",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Enumeration",
+   "description": "This object indicates the present information of the DACS."
+  },
+  {
+   "name": "hwEntityDacsStatus",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.32.1.3",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Enumeration",
+   "description": "This object indicates the status of the DACS."
+  },
+  {
+   "name": "hwEntityDacsInSource",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.32.1.4",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "OctetString",
+   "description": "This object indicates the input source of the DACS."
+  },
+  {
+   "name": "hwEntityDacsInVolA",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.32.1.5",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "description": "This object indicates the input voltage from input source A. Unit: mV"
+  },
+  {
+   "name": "hwEntityDacsInVolB",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.32.1.6",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "indexes": [
+    "ENTITY-MIB::entPhysicalIndex"
+   ],
+   "description": "This object indicates the input voltage from input source B. Unit: mV"
+  },
+  {
+   "name": "hwEntityDacsOutVol",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.32.1.7",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "description": "This object indicates the output voltage of the DACS. Unit: mV"
+  },
+  {
+   "name": "hwEntityDacsOutCur",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.32.1.8",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "description": "This object indicates the output current of the DACS. Unit: mA"
+  },
+  {
+   "name": "hwEntityDacsOutStatus",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.32.1.9",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Enumeration",
+   "description": "This object indicates the output status of the DACS."
+  },
+  {
+   "name": "hwBoardDcOutputStateTable",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.33",
+   "kind": "table",
+   "depth": 3,
+   "description": "Description."
+  },
+  {
+   "name": "hwBoardDcOutputStateEntry",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.33.1",
+   "kind": "row",
+   "depth": 4,
+   "description": "Description."
+  },
+  {
+   "name": "hwBoardDcOutputLineIndex",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.33.1.1",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "description": "This object indicates the index of device dc-output line.\n0 indicates 12V-line1 dc-output line.\n1 indicates 12V-line2 dc-output line.\n2 indicates 24V dc-output line."
+  },
+  {
+   "name": "hwBoardDcOutputState",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.33.1.2",
+   "kind": "column",
+   "depth": 5,
+   "syntax_module": "P-BRIDGE-MIB",
+   "syntax_type": "EnabledStatus",
+   "description": "This object indicates the device dc-output line state.",
+   "access": "read-write"
+  },
+  {
+   "name": "hwBoardDcOutputInfoTable",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.34",
+   "kind": "table",
+   "depth": 3,
+   "description": "Description."
+  },
+  {
+   "name": "hwBoardDcOutputInfoEntry",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.34.1",
+   "kind": "row",
+   "depth": 4,
+   "description": "Description."
+  },
+  {
+   "name": "hwBoardDcOutputTypeIndex",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.34.1.1",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "description": "This object indicates the index of device dc-output information.\n0 indicates 12V dc-output line information.\n1 indicates 24V dc-output line information."
+  },
+  {
+   "name": "hwBoardDcOutputVoltage",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.34.1.2",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "indexes": [
+    "ENTITY-MIB::entPhysicalIndex"
+   ],
+   "description": "This object indicates the device dc-output voltage. Unit: V"
+  },
+  {
+   "name": "hwBoardDcOutputCurrent",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.34.1.3",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "description": "This object indicates the device dc-output current. Unit: mA"
+  },
+  {
+   "name": "hwBoardDcOutputPower",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.34.1.4",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "description": "This object indicates the device dc-output power. Unit: mW"
+  },
+  {
+   "name": "hwBoardAcOutputStateTable",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.35",
+   "kind": "table",
+   "depth": 3,
+   "description": "Description."
+  },
+  {
+   "name": "hwBoardAcOutputStateEntry",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.35.1",
+   "kind": "row",
+   "depth": 4,
+   "indexes": [
+    "hwFileGeneIndex"
+   ],
+   "description": "Description."
+  },
+  {
+   "name": "hwBoardAcOutputLineIndex",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.35.1.1",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "constraints": "range: 1-2147483647",
+   "description": "Description."
+  },
+  {
+   "name": "hwBoardAcOutputState",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.35.1.2",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "OctetString",
+   "description": "This object indicates the device ac-output line state.\n1 indicates ac-output 24V enable.\n2 indicates ac-output 24V disable.",
+   "access": "read-write"
+  },
+  {
+   "name": "hwAlarmConfigTable",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.36",
+   "kind": "node",
+   "depth": 3,
+   "constraints": "range: 0-100"
+  },
+  {
+   "name": "hwAlarmResendInterval",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.36.1",
+   "kind": "scalar",
+   "depth": 4,
+   "syntax": "Integer32",
+   "description": "set alarm resend interval,the defult is 10 minutes.",
+   "access": "read-write"
+  },
+  {
+   "name": "hwApInfoTable",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.37",
+   "kind": "table",
+   "depth": 3,
+   "description": "This table describes virtual-access AP device information."
+  },
+  {
+   "name": "hwApInfoEntry",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.37.1",
+   "kind": "row",
+   "depth": 4,
+   "constraints": "range: 0-255",
+   "description": "Information about an AP device. Each entry provides objects of an AP device to help an NMS identify and characterize the entry in this table."
+  },
+  {
+   "name": "hwEntityApid",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.37.1.1",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Integer32",
+   "constraints": "range: 0-255",
+   "description": "Ap-id of the virtual-access AP."
+  },
+  {
+   "name": "hwEntityApIndex",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.37.1.2",
+   "kind": "column",
+   "depth": 5,
+   "syntax_module": "ENTITY-MIB",
+   "syntax_type": "PhysicalIndex",
+   "description": "The index for this entry."
+  },
+  {
+   "name": "hwEntityApName",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.37.1.3",
+   "kind": "column",
+   "depth": 5,
+   "syntax_module": "SNMP-FRAMEWORK-MIB",
+   "syntax_type": "SnmpAdminString",
+   "description": "The textual name of the physical entity."
+  },
+  {
+   "name": "hwEntityApMemUsage",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.37.1.4",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Integer32",
+   "indexes": [
+    "hwDisposeSlot",
+    "hwDisposeCardId"
+   ],
+   "description": "This object indicates the memory usage of an entity, that is, the percentage of the memory that has been used."
+  },
+  {
+   "name": "hwEntityApCpuUsage",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.37.1.5",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Integer32",
+   "description": "This object indicates the CPU usage of an entity. Generally, the overall CPU usage of the entity is calculated, without considering the number of CPUs on the entity."
+  },
+  {
+   "name": "hwIntegratedPowerSystemTable",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.38",
+   "kind": "table",
+   "depth": 3,
+   "description": "This table describes information about the integrated power supply system."
+  },
+  {
+   "name": "hwIntegratedPowerSystemEntry",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.38.1",
+   "kind": "row",
+   "depth": 4,
+   "description": "This entry describes information about the integrated power supply system."
+  },
+  {
+   "name": "hwIntegratedPowerSoftwareVersion",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.38.1.1",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "OctetString",
+   "description": "This object indicates the software version."
+  },
+  {
+   "name": "hwIntegratedPowerHardwareVersion",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.38.1.2",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "OctetString",
+   "description": "This object indicates the hardware version."
+  },
+  {
+   "name": "hwIntegratedPowerSoftwareVersionASCII",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.38.1.3",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "OctetString",
+   "description": "This object indicates the software version (ASCII)."
+  },
+  {
+   "name": "hwIntegratedPowerTable",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.39",
+   "kind": "table",
+   "depth": 3,
+   "indexes": [
+    "hwDisposeEntPhysicalIndex"
+   ],
+   "description": "This table describes information about the integrated power supply."
+  },
+  {
+   "name": "hwIntegratedPowerEntry",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.39.1",
+   "kind": "row",
+   "depth": 4,
+   "description": "This entry describes information about the integrated power supply."
+  },
+  {
+   "name": "hwIntegratedPowerEnergyWorkmode",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.39.1.1",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Enumeration",
+   "description": "This object indicates the power supply mode."
+  },
+  {
+   "name": "hwIntegratedPowerBusbarVolt",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.39.1.10",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "description": "This object indicates the busbar voltage, in mV."
+  },
+  {
+   "name": "hwIntegratedPowerACVolt",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.39.1.11",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "description": "This object indicates the AC voltage, in mV."
+  },
+  {
+   "name": "hwIntegratedPowerSolarInputVolt",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.39.1.12",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "description": "This object indicates the input voltage of solar power, in mV."
+  },
+  {
+   "name": "hwIntegratedPowerSolarInputCurrent",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.39.1.13",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "constraints": "range: 1-100",
+   "description": "This object indicates the input current of solar power, in mA."
+  },
+  {
+   "name": "hwIntegratedPower53VDCOutVolt",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.39.1.14",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "constraints": "range: 1-100",
+   "description": "This object indicates the 53 V DC output voltage, in mV."
+  },
+  {
+   "name": "hwIntegratedPowerTotalLoadPower",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.39.1.15",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "constraints": "range: 1-100",
+   "description": "This object indicates the total load power, in mW."
+  },
+  {
+   "name": "hwIntegratedPowerDCOverVoltThreshold",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.39.1.16",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "description": "This object indicates the DC overvoltage alarm threshold, in mV.",
+   "access": "read-write"
+  },
+  {
+   "name": "hwIntegratedPowerDCUnderVoltThreshold",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.39.1.17",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "description": "This object indicates the DC undervoltage alarm threshold, in mV.",
+   "access": "read-write"
+  },
+  {
+   "name": "hwIntegratedPowerLowLoadVoltPowerOffThreshold",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.39.1.18",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "description": "This object indicates the voltage lower than which the device is powered off, in mV.",
+   "access": "read-write"
+  },
+  {
+   "name": "hwIntegratedPower53VDCOutVoltLowerThreshold",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.39.1.19",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "constraints": "range: 1-100",
+   "description": "This object indicates the lower voltage threshold for the 53 V DC output, in mV.",
+   "access": "read-write"
+  },
+  {
+   "name": "hwIntegratedPowerTotalInputPower",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.39.1.2",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "description": "This object indicates the total input power, in mW."
+  },
+  {
+   "name": "hwIntegratedPowerACCurrent",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.39.1.20",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "description": "This object indicates the AC current, in mA."
+  },
+  {
+   "name": "hwIntegratedPower53VDCOutCurrent",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.39.1.21",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "description": "This object indicates the lower current threshold for the 53 V DC output, in mA."
+  },
+  {
+   "name": "hwIntegratedPwrChip1UpgrageStatus",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.39.1.22",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Enumeration",
+   "constraints": "range: 0-32",
+   "description": "This object indicates the power chip 1 upgrage status."
+  },
+  {
+   "name": "hwIntegratedPwrChip2UpgrageStatus",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.39.1.23",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Enumeration",
+   "description": "This object indicates the power chip 2 upgrage status."
+  },
+  {
+   "name": "hwIntegratedPwrChip3UpgrageStatus",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.39.1.24",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Enumeration",
+   "constraints": "range: 0-65535",
+   "description": "This object indicates the power chip 3 upgrage status."
+  },
+  {
+   "name": "hwIntegratedPwrChip4UpgrageStatus",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.39.1.25",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Enumeration",
+   "description": "This object indicates the power chip 4 upgrage status."
+  },
+  {
+   "name": "hwIntegratedPowerResetOutput",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.39.1.26",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Enumeration",
+   "description": "This object is used to reset power output.",
+   "access": "read-write"
+  },
+  {
+   "name": "hwIntegratedPower12VDCOutVoltStatus",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.39.1.3",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Enumeration",
+   "constraints": "range: 0-2147483647",
+   "description": "This object indicates the 12 V DC output voltage status."
+  },
+  {
+   "name": "hwIntegratedPower24VACOutVolt",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.39.1.4",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "description": "This object indicates the 24 V AC output voltage, in mV."
+  },
+  {
+   "name": "hwIntegratedPower24VACOutCurrent",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.39.1.5",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "constraints": "range: -1-2147483647",
+   "description": "This object indicates the 24 V AC output current, in mA."
+  },
+  {
+   "name": "hwIntegratedPower53VDCOutVoltStatus",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.39.1.6",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Enumeration",
+   "description": "This object indicates the 53 V DC output voltage status."
+  },
+  {
+   "name": "hwIntegratedPowerACInputVoltStatus",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.39.1.7",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Enumeration",
+   "description": "This object indicates the AC input voltage status."
+  },
+  {
+   "name": "hwIntegratedPowerRebootPower",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.39.1.8",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Enumeration",
+   "description": "This object is used to reset a switch remotely.",
+   "access": "read-write"
+  },
+  {
+   "name": "hwIntegratedPowerCurrentMode",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.39.1.9",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Enumeration",
+   "description": "This object indicates the current power supply mode."
+  },
+  {
+   "name": "hwMonitorInputTable",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.4",
+   "kind": "table",
+   "depth": 3,
+   "description": "This table contains one row per replaceable unit physical entity.\nThis table is used to set the status of monitor port."
+  },
+  {
+   "name": "hwMonitorInputEntry",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.4.1",
+   "kind": "row",
+   "depth": 4,
+   "description": "This is a replaceable unit physical entity."
+  },
+  {
+   "name": "hwMonitorInputIndex",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.4.1.1",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Integer32",
+   "description": "Monitor port index.\nThis is a number of input line,ranging from 1 to 4."
+  },
+  {
+   "name": "hwMonitorInputName",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.4.1.2",
+   "kind": "column",
+   "depth": 5,
+   "syntax_module": "SNMPv2-TC",
+   "syntax_type": "DisplayString",
+   "description": "Monitor line name.",
+   "access": "read-write"
+  },
+  {
+   "name": "hwMonitorInputState",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.4.1.3",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "HWLevelState",
+   "indexes": [
+    "ENTITY-MIB::entPhysicalIndex"
+   ],
+   "description": "Monitor line status.\nThe value is high or low.",
+   "access": "read-write"
+  },
+  {
+   "name": "hwMonitorInputStateEnable",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.4.1.4",
+   "kind": "column",
+   "depth": 5,
+   "syntax_module": "P-BRIDGE-MIB",
+   "syntax_type": "EnabledStatus",
+   "description": "Enable monitor line.",
+   "access": "read-write"
+  },
+  {
+   "name": "hwMonitorInputRowStatus",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.4.1.5",
+   "kind": "column",
+   "depth": 5,
+   "syntax_module": "SNMPv2-TC",
+   "syntax_type": "RowStatus",
+   "description": "Status of monitor input row.",
+   "access": "read-write"
+  },
+  {
+   "name": "hwLithiumBatteryGroupTable",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.40",
+   "kind": "table",
+   "depth": 3,
+   "description": "This table describes information about lithium battery groups."
+  },
+  {
+   "name": "hwLithiumBatteryGroupEntry",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.40.1",
+   "kind": "row",
+   "depth": 4,
+   "description": "This entry describes information about lithium battery groups."
+  },
+  {
+   "name": "hwBatteryGroupBatteryStatus",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.40.1.1",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Enumeration",
+   "description": "This object indicates the battery status."
+  },
+  {
+   "name": "hwBatteryGroupFloatChargingVolt",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.40.1.10",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "description": "This object indicates the float charging voltage, in mV.",
+   "access": "read-write"
+  },
+  {
+   "name": "hwBatteryGroupEqualizedChargingVolt",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.40.1.11",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "description": "This object indicates the equalized charging voltage, in mV.",
+   "access": "read-write"
+  },
+  {
+   "name": "hwBatteryGroupInstallTimeYear",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.40.1.12",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "description": "This object indicates the battery install time year.",
+   "access": "read-write"
+  },
+  {
+   "name": "hwBatteryGroupInstallTimeMonth",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.40.1.13",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "description": "This object indicates the battery install time month.",
+   "access": "read-write"
+  },
+  {
+   "name": "hwBatteryGroupInstallTimeDay",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.40.1.14",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "description": "This object indicates the battery install time day.",
+   "access": "read-write"
+  },
+  {
+   "name": "hwBatteryGroupBatteryVolt",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.40.1.2",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "description": "This object indicates the battery voltage, in mV."
+  },
+  {
+   "name": "hwBatteryGroupBatteryCurrent",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.40.1.3",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "description": "This object indicates the battery current, in mA."
+  },
+  {
+   "name": "hwBatteryGroupTotalBatteryCapacity",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.40.1.4",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "description": "This object indicates the total battery capacity, in Ah."
+  },
+  {
+   "name": "hwBatteryGroupAvailableBatteryCapacity",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.40.1.5",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "OctetString",
+   "description": "This object indicates the available battery capacity, in percentage."
+  },
+  {
+   "name": "hwBatteryGroupBatteryTemperature",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.40.1.6",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "OctetString",
+   "description": "This object indicates the battery temperature, in degC."
+  },
+  {
+   "name": "hwBatteryGroupBatteryRunTime",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.40.1.7",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "OctetString",
+   "description": "This object indicates the battery run time, in hours."
+  },
+  {
+   "name": "hwBatteryGroupNumberOfConnectedESMU",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.40.1.8",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "description": "This object indicates the number of connected ESMUs."
+  },
+  {
+   "name": "hwBatteryGroupChargeCurrentLimitCoefficient",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.40.1.9",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "OctetString",
+   "description": "This object indicates the charge current limit coefficient, in C10.",
+   "access": "read-write"
+  },
+  {
+   "name": "hwLithiumBatteryTable",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.41",
+   "kind": "table",
+   "depth": 3,
+   "description": "This table describes information about a single lithium battery."
+  },
+  {
+   "name": "hwLithiumBatteryEntry",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.41.1",
+   "kind": "row",
+   "depth": 4,
+   "description": "This entry describes information about a single lithium battery."
+  },
+  {
+   "name": "hwLithiumBatteryIndex",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.41.1.1",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "description": "This object indicates the battery index."
+  },
+  {
+   "name": "hwLithiumBatteryVersion",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.41.1.10",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "OctetString",
+   "description": "This object indicates the battery version."
+  },
+  {
+   "name": "hwLithiumBatteryVolt",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.41.1.2",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "description": "This object indicates the battery voltage, in mV."
+  },
+  {
+   "name": "hwLithiumBatteryCurrent",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.41.1.3",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "description": "This object indicates the battery current, in mA."
+  },
+  {
+   "name": "hwLithiumBatteryDeviceAddr",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.41.1.4",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "description": "This object indicates the device address."
+  },
+  {
+   "name": "hwLithiumBatteryStatus",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.41.1.5",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Enumeration",
+   "description": "This object indicates the battery status."
+  },
+  {
+   "name": "hwLithiumBatterySOH",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.41.1.6",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "OctetString",
+   "description": "This object indicates the battery SOH, in percentage."
+  },
+  {
+   "name": "hwLithiumBatteryCapacity",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.41.1.7",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "description": "This object indicates the battery capacity, in Ah."
+  },
+  {
+   "name": "hwLithiumBatteryCellPackageVolt",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.41.1.8",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "description": "This object indicates the electrochemical cell package voltage, in mV."
+  },
+  {
+   "name": "hwLithiumBatteryMaxLimitCoefficient",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.41.1.9",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "OctetString",
+   "description": "This object indicates the maximum allowable current limiting coefficient, in C10."
+  },
+  {
+   "name": "hwBatteryChipTable",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.42",
+   "kind": "table",
+   "depth": 3,
+   "description": "This table describes information about a single battery chip."
+  },
+  {
+   "name": "hwBatteryChipEntry",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.42.1",
+   "kind": "row",
+   "depth": 4,
+   "description": "This entry describes information about a single battery chip."
+  },
+  {
+   "name": "hwBatteryChipVolt",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.42.1.1",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "description": "This object indicates the battery chip voltage, in mv."
+  },
+  {
+   "name": "hwBatteryChipTemp",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.42.1.2",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "OctetString",
+   "description": "This object indicates the battery chip temperature, in degC."
+  },
+  {
+   "name": "hwMonitorOutputTable",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.5",
+   "kind": "table",
+   "depth": 3,
+   "description": "This table contains one row per replaceable unit physical entity.\nThis table is used to create a output view."
+  },
+  {
+   "name": "hwMonitorOutputEntry",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.5.1",
+   "kind": "row",
+   "depth": 4,
+   "description": "This is a replaceable unit physical entity."
+  },
+  {
+   "name": "hwMonitorOutputIndex",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.5.1.1",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Integer32",
+   "description": "Monitor output view index.\nThrough this index ,you can turn into the output view."
+  },
+  {
+   "name": "hwMonitorOutputRuleIndex",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.5.1.2",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Integer32",
+   "description": "Monitor output rule index.\nThis is used to set the rules about all of the input line."
+  },
+  {
+   "name": "hwMonitorOutputMask",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.5.1.3",
+   "kind": "column",
+   "depth": 5,
+   "syntax_module": "SNMPv2-TC",
+   "syntax_type": "DisplayString",
+   "description": "Monitor output mask .\nThis is used to matching the level of monitor input line.",
+   "access": "read-write"
+  },
+  {
+   "name": "hwMonitorOutputKey",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.5.1.4",
+   "kind": "column",
+   "depth": 5,
+   "syntax_module": "SNMPv2-TC",
+   "syntax_type": "DisplayString",
+   "indexes": [
+    "hwSystemPowerDeviceID"
+   ],
+   "description": "Normal level value of this output line.",
+   "access": "read-write"
+  },
+  {
+   "name": "hwMonitorOutputRowStatus",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.5.1.5",
+   "kind": "column",
+   "depth": 5,
+   "syntax_module": "SNMPv2-TC",
+   "syntax_type": "RowStatus",
+   "description": "Status of monitor input row",
+   "access": "read-write"
+  },
+  {
+   "name": "hwEntPowerUsedInfoTable",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.6",
+   "kind": "table",
+   "depth": 3,
+   "description": "A table of information that displays the power use of entity ."
+  },
+  {
+   "name": "hwEntPowerUsedInfoEntry",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.6.1",
+   "kind": "row",
+   "depth": 4,
+   "description": "Entry of the table of information that displays the power use of entity."
+  },
+  {
+   "name": "hwEntPowerUsedInfoBoardName",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.6.1.1",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "OctetString",
+   "description": "Board name."
+  },
+  {
+   "name": "hwEntPowerUsedInfoBoardType",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.6.1.2",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "OctetString",
+   "description": "Board type."
+  },
+  {
+   "name": "hwEntPowerUsedInfoBoardSlot",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.6.1.3",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "description": "Board's slot number."
+  },
+  {
+   "name": "hwEntPowerUsedInfoPower",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.6.1.4",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "indexes": [
+    "ENTITY-MIB::entPhysicalIndex"
+   ],
+   "description": "Used power of board."
+  },
+  {
+   "name": "hwVirtualCableTestTable",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.7",
+   "kind": "table",
+   "depth": 3,
+   "description": "This table contains one row per replaceable unit physical entity.\nThis table is used to display VCT result."
+  },
+  {
+   "name": "hwVirtualCableTestEntry",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.7.1",
+   "kind": "row",
+   "depth": 4,
+   "description": "This is a replaceable unit physical entity."
+  },
+  {
+   "name": "hwVirtualCableTestIfIndex",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.7.1.1",
+   "kind": "column",
+   "depth": 5,
+   "syntax_module": "IF-MIB",
+   "syntax_type": "InterfaceIndex",
+   "description": "IfIndex of port that you want to test cable."
+  },
+  {
+   "name": "hwVirtualCableTestPairALength",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.7.1.10",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "indexes": [
+    "hwEntityPwrSlot",
+    "hwEntityPwrSn"
+   ],
+   "description": "Pair A Length.\nThis indicate the length of cable."
+  },
+  {
+   "name": "hwVirtualCableTestPairBLength",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.7.1.11",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "description": "Pair B Length.\nThis indicate the length of cable."
+  },
+  {
+   "name": "hwVirtualCableTestPairCLength",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.7.1.12",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "description": "Pair C Length.\nThis indicate the length of cable."
+  },
+  {
+   "name": "hwVirtualCableTestPairDLength",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.7.1.13",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "description": "Pair D Length.\nThis indicate the length of cable."
+  },
+  {
+   "name": "hwVirtualCableTestPairStatus",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.7.1.2",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Enumeration",
+   "description": "Pair status.\nThis indicate the status of cable."
+  },
+  {
+   "name": "hwVirtualCableTestPairLength",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.7.1.3",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "description": "Pair Length.\nThis indicate the length of cable."
+  },
+  {
+   "name": "hwVirtualCableTestOperation",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.7.1.4",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Enumeration",
+   "description": "VirtualCableTestOperation.\nThis Operation of VirtualCableTest.",
+   "access": "read-write"
+  },
+  {
+   "name": "hwVirtualCableTestLastTime",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.7.1.5",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "description": "The last test time for the entity. The mean of last time is\nwhen the entity is tested, and the value of the object\nwill add one per seconds until now."
+  },
+  {
+   "name": "hwVirtualCableTestPairAStatus",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.7.1.6",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Enumeration",
+   "description": "Pair A status.\nThis indicate the status of cable."
+  },
+  {
+   "name": "hwVirtualCableTestPairBStatus",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.7.1.7",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Enumeration",
+   "indexes": [
+    "ENTITY-MIB::entPhysicalIndex"
+   ],
+   "description": "Pair B status.\nThis indicate the status of cable."
+  },
+  {
+   "name": "hwVirtualCableTestPairCStatus",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.7.1.8",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Enumeration",
+   "description": "Pair C status.\nThis indicate the status of cable."
+  },
+  {
+   "name": "hwVirtualCableTestPairDStatus",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.7.1.9",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Enumeration",
+   "description": "Pair D status.\nThis indicate the status of cable."
+  },
+  {
+   "name": "hwTemperatureThresholdTable",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.8",
+   "kind": "table",
+   "depth": 3,
+   "description": "This table describes Huawei device temperature objects."
+  },
+  {
+   "name": "hwTemperatureThresholdEntry",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.8.1",
+   "kind": "row",
+   "depth": 4,
+   "description": "Defines an entry in the hwTemperatureThresholdTable."
+  },
+  {
+   "name": "hwEntityTempSlotId",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.8.1.1",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "description": "This object indicates the entity slot."
+  },
+  {
+   "name": "hwEntityTempI2CId",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.8.1.2",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "description": "This object indicates the I2C of the entity temperature."
+  },
+  {
+   "name": "hwEntityTempAddr",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.8.1.3",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "description": "This object indicates the address of the entity temperature."
+  },
+  {
+   "name": "hwEntityTempChannel",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.8.1.4",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "description": "This object indicates the channel of the entity temperature."
+  },
+  {
+   "name": "hwEntityTempStatus",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.8.1.5",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Enumeration",
+   "description": "This object indicates the status of the entity temperature."
+  },
+  {
+   "name": "hwEntityTempValue",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.8.1.6",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "description": "This object indicates the current value of the entity temperature."
+  },
+  {
+   "name": "hwEntityTempMinorAlmThreshold",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.8.1.7",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "indexes": [
+    "hwCpuUsageHistoryIndex"
+   ],
+   "description": "This object indicates the minor alarm threshold of the entity temperature.",
+   "access": "read-write"
+  },
+  {
+   "name": "hwEntityTempMajorAlmThreshold",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.8.1.8",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "description": "This object indicates the major alarm threshold of the entity temperature.",
+   "access": "read-write"
+  },
+  {
+   "name": "hwEntityTempFatalAlmThreshold",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.8.1.9",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "description": "This object indicates the fatal alarm threshold of the entity temperature.",
+   "access": "read-write"
+  },
+  {
+   "name": "hwVoltageInfoTable",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.9",
+   "kind": "table",
+   "depth": 3,
+   "description": "This table describes Huawei device voltage objects."
+  },
+  {
+   "name": "hwVoltageInfoEntry",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.9.1",
+   "kind": "row",
+   "depth": 4,
+   "description": "Defines an entry in the hwVoltageInfoTable."
+  },
+  {
+   "name": "hwEntityVolSlot",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.9.1.1",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "indexes": [
+    "hwMemUsageHistoryIndex"
+   ],
+   "description": "This object indicates the slot ID of an entity."
+  },
+  {
+   "name": "hwEntityVolLowAlmFatal",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.9.1.10",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "description": "This object indicates the entity low-voltage fatal alarm threshold.",
+   "access": "read-write"
+  },
+  {
+   "name": "hwEntityVolHighAlmMajor",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.9.1.11",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "description": "This object indicates the entity high-voltage alarm threshold.",
+   "access": "read-write"
+  },
+  {
+   "name": "hwEntityVolHighAlmFatal",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.9.1.12",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "description": "This object indicates the entity high-voltage fatal alarm threshold.",
+   "access": "read-write"
+  },
+  {
+   "name": "hwEntityVolI2CId",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.9.1.2",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "description": "This object indicates the I2C of the entity voltage."
+  },
+  {
+   "name": "hwEntityVolAddr",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.9.1.3",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "description": "This object indicates the address of the entity voltage."
+  },
+  {
+   "name": "hwEntityVolChannel",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.9.1.4",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "description": "This object indicates the channel of the entity voltage."
+  },
+  {
+   "name": "hwEntityVolStatus",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.9.1.5",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Enumeration",
+   "description": "This object indicates the status of the entity voltage."
+  },
+  {
+   "name": "hwEntityVolRequired",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.9.1.6",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "indexes": [
+    "hwHardDiskIndex"
+   ],
+   "description": "This object indicates the required value of the entity voltage."
+  },
+  {
+   "name": "hwEntityVolCurValue",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.9.1.7",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "description": "This object indicates the current value of the entity voltage."
+  },
+  {
+   "name": "hwEntityVolRatio",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.9.1.8",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "description": "This object indicates the voltage split ratio of the entity voltage."
+  },
+  {
+   "name": "hwEntityVolLowAlmMajor",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.9.1.9",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "description": "This object indicates the entity low-voltage alarm threshold.",
+   "access": "read-write"
+  },
+  {
+   "name": "hwEntityPhysicalSpecTable",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.2",
+   "kind": "node",
+   "depth": 2
+  },
+  {
+   "name": "hwEntityPhysicalSpecRack",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.2.1",
+   "kind": "scalar",
+   "depth": 3,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "description": "The rack coefficient used for calculating the index of the physical entity."
+  },
+  {
+   "name": "hwEntityPhysicalSpecPowermodule",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.2.10",
+   "kind": "scalar",
+   "depth": 3,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "description": "The power module coefficient used for calculating the index of the physical entity."
+  },
+  {
+   "name": "hwEntityPhysicalSpecBattery",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.2.11",
+   "kind": "scalar",
+   "depth": 3,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "description": "The battery coefficient used for calculating the index of the physical entity."
+  },
+  {
+   "name": "hwEntityPhysicalSpecFrame",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.2.2",
+   "kind": "scalar",
+   "depth": 3,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "description": "The frame coefficient used for calculating the index of the physical entity."
+  },
+  {
+   "name": "hwEntityPhysicalSpecSlot",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.2.3",
+   "kind": "scalar",
+   "depth": 3,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "description": "The slot coefficient used for calculating the index of the physical entity."
+  },
+  {
+   "name": "hwEntityPhysicalSpecBoard",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.2.4",
+   "kind": "scalar",
+   "depth": 3,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "description": "The board coefficient used for calculating the index of the physical entity."
+  },
+  {
+   "name": "hwEntityPhysicalSpecSubSlot",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.2.5",
+   "kind": "scalar",
+   "depth": 3,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "description": "The sub slot coefficient used for calculating the index of the physical entity."
+  },
+  {
+   "name": "hwEntityPhysicalSpecSubBoard",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.2.6",
+   "kind": "scalar",
+   "depth": 3,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "description": "The sub board coefficient used for calculating the index of the physical entity."
+  },
+  {
+   "name": "hwEntityPhysicalSpecPort",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.2.7",
+   "kind": "scalar",
+   "depth": 3,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "description": "The port coefficient used for calculating the index of the physical entity."
+  },
+  {
+   "name": "hwEntityPhysicalSpecEmu",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.2.8",
+   "kind": "scalar",
+   "depth": 3,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "description": "The EMU(Environment monitoring unit) coefficient used for calculating the index of the physical entity."
+  },
+  {
+   "name": "hwEntityPhysicalSpecPowerframe",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.1.2.9",
+   "kind": "scalar",
+   "depth": 3,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "description": "The power frame coefficient used for calculating the index of the physical entity."
+  },
+  {
+   "name": "hwEntityExtTraps",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.2",
+   "kind": "node",
+   "depth": 1
+  },
+  {
+   "name": "hwEntityExtTrapsPrefix",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.2.0",
+   "kind": "node",
+   "depth": 2
+  },
+  {
+   "name": "hwEntityExtTrapObject",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.2.1",
+   "kind": "node",
+   "depth": 2
+  },
+  {
+   "name": "hwEntityExtTrapBaseSoftwareVersion",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.2.1.1",
+   "kind": "scalar",
+   "depth": 3,
+   "syntax": "OctetString",
+   "description": "System bassic software version."
+  },
+  {
+   "name": "hwEntityExtTrapErrorPacketStatistics",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.2.1.10",
+   "kind": "scalar",
+   "depth": 3,
+   "syntax": "OctetString",
+   "description": "The statistics of CRC."
+  },
+  {
+   "name": "hwEntityExtTrapErrorPacketThreshold",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.2.1.11",
+   "kind": "scalar",
+   "depth": 3,
+   "syntax": "OctetString",
+   "description": "The threshold of CRC."
+  },
+  {
+   "name": "hwEntityExtTrapHigStateChangeTimes",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.2.1.12",
+   "kind": "scalar",
+   "depth": 3,
+   "syntax": "OctetString",
+   "description": "The state change times of HIG port."
+  },
+  {
+   "name": "hwEntityExtTrapMonitorInterval",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.2.1.13",
+   "kind": "scalar",
+   "depth": 3,
+   "syntax": "OctetString",
+   "description": "The monitor interval."
+  },
+  {
+   "name": "hwEntityExtTrapBoardDropRuntPktStatistics",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.2.1.14",
+   "kind": "scalar",
+   "depth": 3,
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Counter64",
+   "description": "The statistic of dropped runt packets on the board."
+  },
+  {
+   "name": "hwEntityExtTrapBoardDropRuntPktTimeInterval",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.2.1.15",
+   "kind": "scalar",
+   "depth": 3,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "description": "The time interval."
+  },
+  {
+   "name": "hwEntityExtTrapDiscardNumber",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.2.1.16",
+   "kind": "scalar",
+   "depth": 3,
+   "syntax": "OctetString",
+   "description": "The statistics of drop."
+  },
+  {
+   "name": "hwEntityExtTrapThreshold",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.2.1.17",
+   "kind": "scalar",
+   "depth": 3,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "description": "The threshold of drop."
+  },
+  {
+   "name": "hwEntityExtTrapInterval",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.2.1.18",
+   "kind": "scalar",
+   "depth": 3,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "description": "The time interval."
+  },
+  {
+   "name": "hwEntityExtTrapBoardSoftwareVersion",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.2.1.2",
+   "kind": "scalar",
+   "depth": 3,
+   "syntax": "OctetString",
+   "description": "Board software version compare to basic software version."
+  },
+  {
+   "name": "hwPhysicalName",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.2.1.3",
+   "kind": "scalar",
+   "depth": 3,
+   "syntax": "OctetString",
+   "description": "The textual name of the physical entity. The value of this\nobject should be the name of the component as assigned by\nthe local device and should be suitable for use in commands\nentered at the device's `console'. This might be a text\nname, such as `console' or a simple component number (e.g.,\nport or module number), such as `1', depending on the\nphysical component naming syntax of the device.\nIf there is no local name, or this object is otherwise not\napplicable, then this object contains a zero-length string.\nNote that the value of entPhysicalName for two physical\nentities will be the same in the event that the console\ninterface does not distinguish between them, e.g., slot-1\nand the card in slot-1."
+  },
+  {
+   "name": "hwEntityExtTrapBoardSlotID",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.2.1.4",
+   "kind": "scalar",
+   "depth": 3,
+   "syntax": "OctetString",
+   "description": "Slot ID of board."
+  },
+  {
+   "name": "hwEntityExtTrapUnitID",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.2.1.5",
+   "kind": "scalar",
+   "depth": 3,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "description": "ID of chip."
+  },
+  {
+   "name": "hwEntityExtTrapHigPortID",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.2.1.6",
+   "kind": "scalar",
+   "depth": 3,
+   "syntax": "OctetString",
+   "description": "HIG port ID of chip."
+  },
+  {
+   "name": "hwEntityExtTrapChannelCurUsage",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.2.1.7",
+   "kind": "scalar",
+   "depth": 3,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "description": "The currently usage of channel."
+  },
+  {
+   "name": "hwEntityExtTrapChannelThreshold",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.2.1.8",
+   "kind": "scalar",
+   "depth": 3,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "description": "The usage threshold of channel."
+  },
+  {
+   "name": "hwEntityExtTrapPeerBoardSlotID",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.2.1.9",
+   "kind": "scalar",
+   "depth": 3,
+   "syntax": "OctetString",
+   "description": "Slot ID of peer board."
+  },
+  {
+   "name": "hwEntityExtTrap",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.2.2",
+   "kind": "node",
+   "depth": 2
+  },
+  {
+   "name": "hwDevicePowerInfoObjects",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.3",
+   "kind": "node",
+   "depth": 1
+  },
+  {
+   "name": "hwDevicePowerInfoTotalPower",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.3.1",
+   "kind": "scalar",
+   "depth": 2,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "description": "This object indicates the total power of the device."
+  },
+  {
+   "name": "hwDevicePowerInfoUsedPower",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.3.2",
+   "kind": "scalar",
+   "depth": 2,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "description": "This object indicates the current power of the device."
+  },
+  {
+   "name": "hwEntityExtConformance",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.4",
+   "kind": "node",
+   "depth": 1
+  },
+  {
+   "name": "hwEntityExtCompliances",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.4.1",
+   "kind": "node",
+   "depth": 2
+  },
+  {
+   "name": "hwEntityExtGroups",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.4.2",
+   "kind": "node",
+   "depth": 2
+  },
+  {
+   "name": "hwPnpObjects",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.5",
+   "kind": "node",
+   "depth": 1
+  },
+  {
+   "name": "hwPnpInfo",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.5.1",
+   "kind": "node",
+   "depth": 2
+  },
+  {
+   "name": "hwHardwareCapaSequenceNo",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.5.1.1",
+   "kind": "scalar",
+   "depth": 3,
+   "syntax_module": "SNMP-FRAMEWORK-MIB",
+   "syntax_type": "SnmpAdminString",
+   "description": "This object indicates the sequence number of the 'hardware capability file'.The value consists of the file version number and CRC code."
+  },
+  {
+   "name": "hwAlarmPnPSequenceNo",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.5.1.2",
+   "kind": "scalar",
+   "depth": 3,
+   "syntax_module": "SNMP-FRAMEWORK-MIB",
+   "syntax_type": "SnmpAdminString",
+   "description": "This object indicates the sequence number of the 'alarm capability file'.The value consists of the file version number and CRC code."
+  },
+  {
+   "name": "hwPnpTraps",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.5.2",
+   "kind": "node",
+   "depth": 2
+  },
+  {
+   "name": "hwPnpOperateTable",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.5.3",
+   "kind": "table",
+   "depth": 2,
+   "description": "This table describes the hardware functions. Using this table, you can obtain the specified 'hardware description file' or 'hardware capability file'."
+  },
+  {
+   "name": "hwPnpOperateEntry",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.5.3.1",
+   "kind": "row",
+   "depth": 3
+  },
+  {
+   "name": "hwFileGeneIndex",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.5.3.1.1",
+   "kind": "column",
+   "depth": 4,
+   "syntax": "Integer32",
+   "description": "The value of this object identifies the operation index, which can be specified by the user.\nThe value ranges from 1 to 2147483647."
+  },
+  {
+   "name": "hwFileGeneOperState",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.5.3.1.2",
+   "kind": "column",
+   "depth": 4,
+   "syntax": "Enumeration",
+   "description": "The value of this object identifies the operation status.\nopInProgress(1): The operation is ongoing.\nopSuccess(2): The operation succeeds.\nopGetFileError(3): Obtaining the file fails.\nopInvalidDestName(4): The specified storage path is invalid.\nopNoFlashSpace(5): The space in the flash memory is insufficient.\nopWriteFileError(6): Writing the file fails.\nopDestoryError(7): Deleting the file fails.",
+   "enum_from_description": {
+    "1": "opInProgress",
+    "2": "opSuccess",
+    "3": "opGetFileError",
+    "4": "opInvalidDestName",
+    "5": "opNoFlashSpace",
+    "6": "opWriteFileError",
+    "7": "opDestoryError"
+   }
+  },
+  {
+   "name": "hwFileGeneResourceType",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.5.3.1.3",
+   "kind": "column",
+   "depth": 4,
+   "syntax": "Enumeration",
+   "description": "This object indicates the type of the file to be obtained.\npnpcard(1): board description file\npnpsubcard(2): subcard description file\npnphardcapability(3): hardware capability file\npnpPreDisposeCapability(4): predispose capability file\npnpframe(5):frame description file\npnpdevtype(6):device description file\npnpalarm(7):alarm description file",
+   "enum_from_description": {
+    "1": "pnpcard",
+    "2": "pnpsubcard",
+    "3": "pnphardcapability",
+    "4": "pnpPreDisposeCapability",
+    "5": "pnpframe",
+    "6": "pnpdevtype",
+    "7": "pnpalarm"
+   },
+   "access": "read-write"
+  },
+  {
+   "name": "hwFileGeneResourceID",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.5.3.1.4",
+   "kind": "column",
+   "depth": 4,
+   "syntax": "OctetString",
+   "description": "This object indicates the ID of the 'hardware capability file' to be obtained.",
+   "access": "read-write"
+  },
+  {
+   "name": "hwFileGeneDestinationFile",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.5.3.1.5",
+   "kind": "column",
+   "depth": 4,
+   "syntax": "OctetString",
+   "description": "This object indicates the target path storing the file, which does not need to be specified.",
+   "access": "read-write"
+  },
+  {
+   "name": "hwFileGeneRowStatus",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.5.3.1.6",
+   "kind": "column",
+   "depth": 4,
+   "syntax_module": "SNMPv2-TC",
+   "syntax_type": "RowStatus",
+   "constraints": "range: 5-900",
+   "description": "This object indicates the row status.\nactive(1)\nnotInService(2)\nnotReady(3)\ncreateAndGo(4)\ncreateAndWait(5)\ndestroy(6)",
+   "access": "read-write"
+  },
+  {
+   "name": "hwSystemGlobalObjects",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.6",
+   "kind": "node",
+   "depth": 1
+  },
+  {
+   "name": "hwEntitySystemNetID",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.6.1",
+   "kind": "scalar",
+   "depth": 2,
+   "syntax": "OctetString",
+   "description": "Network element ID.",
+   "access": "read-write"
+  },
+  {
+   "name": "hwEntitySystemNEId",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.6.10",
+   "kind": "scalar",
+   "depth": 2,
+   "syntax": "Integer32",
+   "description": "This object indicates the system NE ID.",
+   "access": "read-write"
+  },
+  {
+   "name": "hwEntitySystemServiceType",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.6.11",
+   "kind": "scalar",
+   "depth": 2,
+   "syntax_module": "SNMP-FRAMEWORK-MIB",
+   "syntax_type": "SnmpAdminString",
+   "description": "This object indicates the system service type."
+  },
+  {
+   "name": "hwEntitySoftwareName",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.6.2",
+   "kind": "scalar",
+   "depth": 2,
+   "syntax_module": "SNMP-FRAMEWORK-MIB",
+   "syntax_type": "SnmpAdminString",
+   "description": "System software name."
+  },
+  {
+   "name": "hwEntitySoftwareVersion",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.6.3",
+   "kind": "scalar",
+   "depth": 2,
+   "syntax_module": "SNMP-FRAMEWORK-MIB",
+   "syntax_type": "SnmpAdminString",
+   "description": "Software version number."
+  },
+  {
+   "name": "hwEntitySoftwareVendor",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.6.4",
+   "kind": "scalar",
+   "depth": 2,
+   "syntax_module": "SNMP-FRAMEWORK-MIB",
+   "syntax_type": "SnmpAdminString",
+   "description": "Software vendor."
+  },
+  {
+   "name": "hwEntitySystemModel",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.6.5",
+   "kind": "scalar",
+   "depth": 2,
+   "syntax_module": "SNMP-FRAMEWORK-MIB",
+   "syntax_type": "SnmpAdminString",
+   "description": "Device model."
+  },
+  {
+   "name": "hwEntitySystemTime",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.6.6",
+   "kind": "scalar",
+   "depth": 2,
+   "syntax_module": "SNMP-FRAMEWORK-MIB",
+   "syntax_type": "SnmpAdminString",
+   "description": "System time displayed on the device.",
+   "access": "read-write"
+  },
+  {
+   "name": "hwEntitySystemMacAddress",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.6.7",
+   "kind": "scalar",
+   "depth": 2,
+   "syntax_module": "SNMP-FRAMEWORK-MIB",
+   "syntax_type": "SnmpAdminString",
+   "description": "MAC address of the device."
+  },
+  {
+   "name": "hwEntitySystemReset",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.6.8",
+   "kind": "scalar",
+   "depth": 2,
+   "syntax": "Enumeration",
+   "description": "System reset.",
+   "access": "read-write"
+  },
+  {
+   "name": "hwEntitySystemHealthInterval",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.6.9",
+   "kind": "scalar",
+   "depth": 2,
+   "syntax": "Integer32",
+   "description": "Statistical interval for average CPU and memory usage, in seconds (By default, the value is 300) .",
+   "access": "read-write"
+  },
+  {
+   "name": "hwHeartbeatObjects",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.7",
+   "kind": "node",
+   "depth": 1
+  },
+  {
+   "name": "hwHeartbeatConfig",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.7.1",
+   "kind": "node",
+   "depth": 2
+  },
+  {
+   "name": "hwEntityHeartbeatOnOff",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.7.1.1",
+   "kind": "scalar",
+   "depth": 3,
+   "syntax": "Enumeration",
+   "description": "Whether Heartbeat sending periodically enabled.",
+   "access": "read-write"
+  },
+  {
+   "name": "hwEntityHeartbeatPeriod",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.7.1.2",
+   "kind": "scalar",
+   "depth": 3,
+   "syntax": "Integer32",
+   "description": "Heartbeat sending period detected in the trap reporting channel, with the minimum value of 60 seconds.",
+   "access": "read-write"
+  },
+  {
+   "name": "hwHeartbeatTrapPrefix",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.7.2",
+   "kind": "node",
+   "depth": 2,
+   "constraints": "range: 0-100"
+  },
+  {
+   "name": "hwPreDisposeObjects",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.8",
+   "kind": "node",
+   "depth": 1,
+   "constraints": "range: 0-2"
+  },
+  {
+   "name": "hwPreDisposeInfo",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.8.1",
+   "kind": "node",
+   "depth": 2
+  },
+  {
+   "name": "hwPreDisposeSequenceNo",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.8.1.1",
+   "kind": "scalar",
+   "depth": 3,
+   "syntax_module": "SNMP-FRAMEWORK-MIB",
+   "syntax_type": "SnmpAdminString",
+   "description": "This object indicates the sequence number of the 'predispose capability file'.The value consists of the file version number and CRC code."
+  },
+  {
+   "name": "hwPreDisposedTraps",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.8.2",
+   "kind": "node",
+   "depth": 2,
+   "constraints": "range: 0-100"
+  },
+  {
+   "name": "hwPreDisposeConfigTable",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.8.3",
+   "kind": "table",
+   "depth": 2,
+   "constraints": "range: 0-16777215",
+   "description": "Table of predisposing boards or flexible subcards."
+  },
+  {
+   "name": "hwPreDisposeConfigEntry",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.8.3.1",
+   "kind": "row",
+   "depth": 3,
+   "description": "Entry of the table to predispose boards or flexible subcards."
+  },
+  {
+   "name": "hwDisposeSlot",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.8.3.1.1",
+   "kind": "column",
+   "depth": 4,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "description": "This object indicates the slot ID of predisposed board.",
+   "access": "read-write"
+  },
+  {
+   "name": "hwDisposeCardId",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.8.3.1.2",
+   "kind": "column",
+   "depth": 4,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "constraints": "range: 60-86400",
+   "description": "This object indicates the card ID of predisposed subcard.",
+   "access": "read-write"
+  },
+  {
+   "name": "hwDisposeSbom",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.8.3.1.3",
+   "kind": "column",
+   "depth": 4,
+   "syntax": "OctetString",
+   "description": "This object indicates the sbom information of predisposed board or subcard.",
+   "access": "read-write"
+  },
+  {
+   "name": "hwDisposeRowStatus",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.8.3.1.4",
+   "kind": "column",
+   "depth": 4,
+   "syntax_module": "SNMPv2-TC",
+   "syntax_type": "RowStatus",
+   "description": "This object indicates the row status when config predispose.\nactive(1)\nnotInService(2)\nnotReady(3)\ncreateAndGo(4)\ncreateAndWait(5)\ndestroy(6)",
+   "access": "read-write"
+  },
+  {
+   "name": "hwDisposeOperState",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.8.3.1.5",
+   "kind": "column",
+   "depth": 4,
+   "syntax": "Enumeration",
+   "description": "The value of this object identifies the operation status.\nopSuccess(1): The operation succeeds.\nopInProgress(2): The operation is ongoing.\nopDevNotSupportPredispose(3): The device does not support predispose.\nopCardNotSupportPredispose(4): The type of card or subcard is not supported to be predisposed on this device.\nopAlreadyPredispose(5): The slot or subslot has already been predisposed.\nopCardConflict(6): The slot or subslot to be predisposed conflict with others.\nopDevOperationError(7): Other error occurs on the device.",
+   "enum_from_description": {
+    "1": "opSuccess",
+    "2": "opInProgress",
+    "3": "opDevNotSupportPredispose",
+    "4": "opCardNotSupportPredispose",
+    "5": "opAlreadyPredispose",
+    "6": "opCardConflict",
+    "7": "opDevOperationError"
+   }
+  },
+  {
+   "name": "hwPreDisposeEntInfoTable",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.8.4",
+   "kind": "table",
+   "depth": 2,
+   "description": "This table is used to get the information of predisposed entitys."
+  },
+  {
+   "name": "hwPreDisposeEntInfoEntry",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.8.4.1",
+   "kind": "row",
+   "depth": 3,
+   "description": "Entry of the table to get the information of predisposed entitys."
+  },
+  {
+   "name": "hwDisposeEntPhysicalIndex",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.8.4.1.1",
+   "kind": "column",
+   "depth": 4,
+   "syntax_module": "ENTITY-MIB",
+   "syntax_type": "PhysicalIndex",
+   "description": "The index for this entry."
+  },
+  {
+   "name": "hwDisposeEntPhysicalDescr",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.8.4.1.2",
+   "kind": "column",
+   "depth": 4,
+   "syntax_module": "SNMP-FRAMEWORK-MIB",
+   "syntax_type": "SnmpAdminString",
+   "description": "A textual description of predisposed physical entity.This object\nshould contain a string which identifies the manufacturer's\nname for the physical entity."
+  },
+  {
+   "name": "hwDisposeEntPhysicalVendorType",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.8.4.1.3",
+   "kind": "column",
+   "depth": 4,
+   "syntax_module": "SNMPv2-TC",
+   "syntax_type": "AutonomousType",
+   "description": "An indication of the vendor-specific hardware type of the\npredisposed physical entity."
+  },
+  {
+   "name": "hwDisposeEntPhysicalContainedIn",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.8.4.1.4",
+   "kind": "column",
+   "depth": 4,
+   "syntax": "Integer32",
+   "description": "The value of 'entPhysicalContainedIn' for the predisposed physical entity."
+  },
+  {
+   "name": "hwDisposeEntPhysicalClass",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.8.4.1.5",
+   "kind": "column",
+   "depth": 4,
+   "syntax_module": "ENTITY-MIB",
+   "syntax_type": "PhysicalClass",
+   "description": "An indication of the general hardware type of the predisposed physical entity."
+  },
+  {
+   "name": "hwDisposeEntPhysicalParentRelPos",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.8.4.1.6",
+   "kind": "column",
+   "depth": 4,
+   "syntax": "Integer32",
+   "description": "An indication of the relative position of this 'child' component among all its 'sibling' components."
+  },
+  {
+   "name": "hwDisposeEntPhysicalName",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.8.4.1.7",
+   "kind": "column",
+   "depth": 4,
+   "syntax_module": "SNMP-FRAMEWORK-MIB",
+   "syntax_type": "SnmpAdminString",
+   "description": "The textual name of the predisposed physical entity."
+  },
+  {
+   "name": "hwOSPUnifyManageObjects",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.9",
+   "kind": "node",
+   "depth": 1,
+   "constraints": "range: 0-100"
+  },
+  {
+   "name": "hwEntityExtOSPTrapsPrefix",
+   "oid": "1.3.6.1.4.1.2011.5.25.31.9.1",
+   "kind": "node",
+   "depth": 2,
+   "constraints": "range: 0-100",
+   "status": "obsolete"
+  }
+ ]
+}

@@ -1,0 +1,33 @@
+{
+  "entity_ref": "entity.huawei.gpon.port.pon_port",
+  "vendor": "Huawei",
+  "family": "MA5608T",
+  "firmware": [
+    "R015"
+  ],
+  "relations": [
+    {
+      "id": "rel.huawei.gpon.pon_port.belongs_to.card",
+      "type": "belongs_to",
+      "target": "entity.huawei.gpon.hardware.card",
+      "cardinality": "many_to_one",
+      "required": true,
+      "description": null,
+      "prerequisite": false,
+      "creation_order": null,
+      "sources": [
+        {
+          "doc_type": "initial_configuration",
+          "pages": null,
+          "confidence": 0.2
+        }
+      ],
+      "confidence": {
+        "extraction": 0.51,
+        "correlation": 0.0,
+        "overall": 0.26
+      },
+      "status": "inferred"
+    }
+  ]
+}

@@ -1,6 +1,6 @@
 -- HUAWEI-GPON-MIB -- SINTETICO, generado por scripts/observium_to_mib.py
 -- Fuente: https://mibs.observium.org/mib/HUAWEI-GPON-MIB/ (third_party_rendering), fetched 2026-10-13T20:18:10Z
--- Generado: 2026-10-24T20:33:36
+-- Generado: 2026-10-27T15:17:59
 -- Huawei Technologies -- MA5608T -- Huawei MA56xT
 -- Nivel de evidencia B (docs/adaptacion_multivendor.md §2): NO es el MIB
 -- oficial del fabricante. Cada OBJECT-TYPE es AUTOCONTENIDO (OID numérico

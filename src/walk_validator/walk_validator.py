@@ -421,6 +421,11 @@ class WalkValidator:
 
         self._apply_command_sources(target, family)
 
+        # redacta ANTES de results.json y manifest.json: ambos leen el mismo `findings`
+        # (manifest.observed_firmware_strings también sale de by_trigger("ascii_index"))
+        # — redactar solo al escribir results.json dejaba ese otro camino sin tapar.
+        findings.items = self._redact_findings(findings.items, profile)
+
         self._write_json(target / "results.json", {
             "generated_at": dt.datetime.now().isoformat(timespec="seconds"),
             "walks": processed,
@@ -432,6 +437,32 @@ class WalkValidator:
         hook = profile.refinement_hook() if profile else None
         if hook:
             hook(target, family, self.walks_dir)
+
+    @staticmethod
+    def _redact_findings(items: list[dict], profile: VendorProfile | None) -> list[dict]:
+        """Hallazgos ascii_index cuyo OID cae bajo profile.sensitive_prefixes (comunidades
+        SNMP, cuentas, peticiones web) nunca llegan a results.json — genérico por vendor,
+        antes solo corría dentro del hook de refinamiento de ZTE (refinements.py), así que
+        Huawei/VSOL/cualquier vendor nuevo no tenía NINGUNA redacción (backlog de seguridad,
+        hallado 2026-10-27: usuarios reales en claro en el walk de Huawei, 2011.6.3.10)."""
+        prefixes = profile.sensitive_prefixes if profile else ()
+        if not prefixes:
+            return items
+        keep, dropped = [], {}
+        for x in items:
+            ref = str(x.get("tabla") or x.get("oid") or "")
+            hit = next((p for p in prefixes if ref.startswith(p)), None)
+            if hit:
+                dropped[hit] = dropped.get(hit, 0) + 1
+            else:
+                keep.append(x)
+        if dropped:
+            keep.append({"trigger": "sensitive_branch_redacted", "severity": "info",
+                        "catalog_action": "ninguna", "prefixes": dropped,
+                        "note": "hallazgos ascii_index omitidos: el índice de estas tablas "
+                                "es el nombre de comunidades SNMP, cuentas o peticiones web "
+                                "de la OLT"})
+        return keep
 
     def _apply_command_sources(self, target: Path, family: str) -> int:
         """Comandos verificados en hardware (docs/validation/commands/*.json). Si el documento declara

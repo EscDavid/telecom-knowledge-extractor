@@ -1,0 +1,394 @@
+{
+  "entity_ref": "entity.huawei.gpon.hardware.fan",
+  "vendor": "Huawei",
+  "family": "MA5608T",
+  "firmware": [
+    "R015"
+  ],
+  "oids": [
+    {
+      "id": "oid.huawei.gpon.fan.frame_fan_alarm",
+      "oid": "1.3.6.1.4.1.2011.6.3.3.1.1.21",
+      "name": "hwFrameFanAlarm",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "Bits",
+      "unit": null,
+      "scale": null,
+      "access": "unknown",
+      "enumeration": null,
+      "description": "This MIB node is used to query the alarm status of the fan in the extended frame, which is represented by bits.\nFunctions of each bit are as follows:\n1: faSupportQuery(0) - indicates whether query of the alarm status of the fan in the extended frame is supported.\nIf this bit is 0, the query is supported. If this bit is 1, the query is not supported. When the extended frame\nis normal and reports the fan alarm status to the main frame, the query is supported. In other cases, the query is not supported.\n2: faFanState(1) - indicates the communication status of the fan in the extended frame. If this bit is 0, the communication is normal.\nIf this bit is 1, the communication is abnormal. If the communication is abnormal, the value of faFanBlockState(2) and faFansBlockState(3) are invalid,\nuser do not have to pay attention to them.\n3: faFanBlockState(2) - indicates whether a single fan in the extended frame is blocked. If this bit is 0, no single fan is blocked.\nIf this bit is 1, a single fan is blocked.\n4: faFansBlockState(3) - indicates whether multiple fans in the extended frame are blocked. If this bit is 0, no multiple fans are blocked.\nIf this bit is 1, multiple fans are blocked.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.huawei.gpon.fan.entity_total_fan_num",
+      "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.1.1.38",
+      "name": "hwEntityTotalFanNum",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "unknown",
+      "enumeration": null,
+      "description": "The total numbers of the fans in the chassis .",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.huawei.gpon.fan.entity_nomal_fan_num",
+      "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.1.1.39",
+      "name": "hwEntityNomalFanNum",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "unknown",
+      "enumeration": null,
+      "description": "The Nomal numbers of the fans in the chassis .",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.huawei.gpon.fan.entity_fan_slot",
+      "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.10.1.1",
+      "name": "hwEntityFanSlot",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "unknown",
+      "enumeration": null,
+      "description": "This object indicates the slot of a fan.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.huawei.gpon.fan.entity_fan_sn",
+      "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.10.1.2",
+      "name": "hwEntityFanSn",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "unknown",
+      "enumeration": null,
+      "description": "This object indicates the number of the fan in the same slot.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.huawei.gpon.fan.entity_fan_reg",
+      "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.10.1.3",
+      "name": "hwEntityFanReg",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "Enumeration",
+      "unit": null,
+      "scale": null,
+      "access": "unknown",
+      "enumeration": null,
+      "description": "This object indicates the fan registration status.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.huawei.gpon.fan.entity_fan_spd_adj_mode",
+      "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.10.1.4",
+      "name": "hwEntityFanSpdAdjMode",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "Enumeration",
+      "unit": null,
+      "scale": null,
+      "access": "unknown",
+      "enumeration": null,
+      "description": "This object indicates the fan speed adjustment mode.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.huawei.gpon.fan.entity_fan_speed",
+      "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.10.1.5",
+      "name": "hwEntityFanSpeed",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "unknown",
+      "enumeration": null,
+      "description": "This object indicates the fan speed.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.huawei.gpon.fan.entity_fan_present",
+      "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.10.1.6",
+      "name": "hwEntityFanPresent",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "Enumeration",
+      "unit": null,
+      "scale": null,
+      "access": "unknown",
+      "enumeration": null,
+      "description": "This object indicates the fan in-position status.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.huawei.gpon.fan.entity_fan_state",
+      "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.10.1.7",
+      "name": "hwEntityFanState",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "Enumeration",
+      "unit": null,
+      "scale": null,
+      "access": "unknown",
+      "enumeration": null,
+      "description": "This object indicates the fan status.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.huawei.gpon.fan.entity_fan_desc",
+      "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.10.1.8",
+      "name": "hwEntityFanDesc",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "OCTET STRING",
+      "unit": null,
+      "scale": null,
+      "access": "unknown",
+      "enumeration": null,
+      "description": "This object indicates the description of the fan.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.huawei.gpon.fan.entity_fan_name",
+      "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.10.1.9",
+      "name": "hwEntityFanName",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "Enumeration",
+      "unit": null,
+      "scale": null,
+      "access": "unknown",
+      "enumeration": null,
+      "description": "This object indicates the fan name.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    }
+  ]
+}

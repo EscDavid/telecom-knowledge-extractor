@@ -1,0 +1,184 @@
+{
+  "entity_ref": "entity.huawei.gpon.logical.vlan",
+  "vendor": "Huawei",
+  "family": "MA5608T",
+  "firmware": [
+    "R015"
+  ],
+  "oids": [
+    {
+      "id": "oid.huawei.gpon.vlan.sys_rsved_vlan",
+      "oid": "1.3.6.1.4.1.2011.6.3.1.7",
+      "name": "hwSysRsvedVlan",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "unknown",
+      "enumeration": null,
+      "description": "Describes the start VLAN ID of the reserved VLANs currently used by the system.\nDefault: 4079\nThe system automatically uses the 15 VLANs starting from the configured start VLAN ID as reserved VLANs.",
+      "command_ref": null,
+      "status": "verified",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 1.0
+      },
+      "conflicts": [],
+      "empirical": {
+        "source": "Huawei_MA5608T.txt",
+        "sample_oid": "1.3.6.1.4.1.2011.6.3.1.7.0",
+        "sample_value": "4079",
+        "instances_sampled": 1,
+        "scale_confirmed": null
+      }
+    },
+    {
+      "id": "oid.huawei.gpon.vlan.sys_rsved_vlan_db",
+      "oid": "1.3.6.1.4.1.2011.6.3.1.8",
+      "name": "hwSysRsvedVlanDb",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-write",
+      "enumeration": null,
+      "description": "Describes the start VLAN ID of the reserved VLANs configured in the system.\nThe configuration takes effect after system restart.\nRange: 2-4079\nDefault: 4079\nThe system automatically uses the 15 VLANs starting from the configured start VLAN ID as reserved VLANs.\nVLANs 4094 and 4095 are fixedly reserved, and VLAN 1 is the native VLAN.\nTherefore, these three VLANs cannot be configured as the reserved VLANs.",
+      "command_ref": null,
+      "status": "verified",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 1.0
+      },
+      "conflicts": [],
+      "empirical": {
+        "source": "Huawei_MA5608T.txt",
+        "sample_oid": "1.3.6.1.4.1.2011.6.3.1.8.0",
+        "sample_value": "4079",
+        "instances_sampled": 1,
+        "scale_confirmed": null
+      }
+    },
+    {
+      "id": "oid.huawei.gpon.vlan.device_pkt_stat_vlan_mismatch",
+      "oid": "1.3.6.1.4.1.2011.6.3.35.1.2",
+      "name": "hwDevicePktStatVlanMismatch",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "unknown",
+      "enumeration": null,
+      "description": "Number of packets whose VLAN tag does not match the interface configuration.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.huawei.gpon.vlan.dev_vlan_id",
+      "oid": "1.3.6.1.4.1.2011.6.3.8.1.10",
+      "name": "hwDevVlanId",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "unknown",
+      "enumeration": null,
+      "description": "This node is reserved and has no actual meaning.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.huawei.gpon.vlan.app_board_mngt_vlan",
+      "oid": "1.3.6.1.4.1.2011.6.3.9.2.1.1",
+      "name": "hwAppBoardMngtVlan",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-write",
+      "enumeration": null,
+      "description": "The management VLAN of Application board.\nRange: 1-4093",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    }
+  ]
+}

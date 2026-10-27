@@ -1,0 +1,170 @@
+{
+  "entity_ref": "entity.huawei.gpon.hardware.card",
+  "vendor": "Huawei",
+  "family": "MA5608T",
+  "firmware": [
+    "R015"
+  ],
+  "oids": [
+    {
+      "id": "oid.huawei.gpon.card.entity_support_flex_card",
+      "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.1.1.26",
+      "name": "hwEntitySupportFlexCard",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "Enumeration",
+      "unit": null,
+      "scale": null,
+      "access": "unknown",
+      "enumeration": null,
+      "description": "It describes whether the whole board supports flexible cards.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.huawei.gpon.card.entity_s_d_card_usage",
+      "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.24.1.7",
+      "name": "hwEntitySDCardUsage",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "unknown",
+      "enumeration": null,
+      "description": "This object indicates the usage of the SDCard with a specified index.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.huawei.gpon.card.entity_s_d_card_usage_threshold",
+      "oid": "1.3.6.1.4.1.2011.5.25.31.1.1.24.1.8",
+      "name": "hwEntitySDCardUsageThreshold",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "unknown",
+      "enumeration": null,
+      "description": "This object indicates the usage threshold of the SDCard with a specified index.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.huawei.gpon.card.entity_ext_trap_discard_number",
+      "oid": "1.3.6.1.4.1.2011.5.25.31.2.1.16",
+      "name": "hwEntityExtTrapDiscardNumber",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "OCTET STRING",
+      "unit": null,
+      "scale": null,
+      "access": "unknown",
+      "enumeration": null,
+      "description": "The statistics of drop.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.huawei.gpon.card.dispose_card_id",
+      "oid": "1.3.6.1.4.1.2011.5.25.31.8.3.1.2",
+      "name": "hwDisposeCardId",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-write",
+      "enumeration": null,
+      "description": "This object indicates the card ID of predisposed subcard.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    }
+  ]
+}

@@ -1,0 +1,509 @@
+-- HWMUSA-DEV-MIB -- SINTETICO, generado por scripts/observium_to_mib.py
+-- Fuente: https://mibs.observium.org/mib/HWMUSA-DEV-MIB/ (third_party_rendering), fetched 2026-10-27T20:14:42Z
+-- Generado: 2026-10-27T15:17:59
+-- Huawei Technologies -- MA5608T -- Huawei MA56xT
+-- Nivel de evidencia B (docs/adaptacion_multivendor.md §2): NO es el MIB
+-- oficial del fabricante. Cada OBJECT-TYPE es AUTOCONTENIDO (OID numérico
+-- absoluto ya resuelto por Observium); no hay jerarquía real del módulo ni
+-- nodos/tablas/filas (no aportan Oids, ver docstring de este script).
+-- MAX-ACCESS 'unknown' (no estándar) = Observium no distingue ese acceso de
+-- read-only real; el pipeline lo protege de poda por Fase 2 (nunca se asume
+-- read-only sin evidencia). root_oid=1.3.6.1.4.1.2011.2.6
+-- 53 objetos (scalar+column) de 73 totales en el render.
+
+hwMusaFrameLimtBandWidth OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "Frame limit bandwidth,the maximum bandwidth of the frame.
+Unit: K. It is used in debug mode. 1G = 1000M."
+    ::= { 1 3 6 1 4 1 2011 2 6 7 1 1 1 1 1 }
+
+hwMusaFramePowerMode OBJECT-TYPE
+    SYNTAX      Enumeration
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "Frame power supply mode.
+Options:
+1.localac(1) -local 220V AC power supply
+2.localdc(2) -local DC power supply
+3.localacBackuppower(3) -AC power and backuppower supply
+4.backuppower(4) -accumulator supply
+5.remotedc(5) -remote line +/-190V high voltage power supply of DC
+6.pd(6) -powered device supply
+7.remoteac(7) -remote 60V AC power supply
+8.localdcAndRemotedc(8) -DC power and Remote power are provided at the same time
+9.localacAndlocaldc(9) -DC power and AC power are provided at the same time"
+    ::= { 1 3 6 1 4 1 2011 2 6 7 1 1 1 1 10 }
+
+hwMusaFramePower OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "The total power of the frame.
+It includes the power of service boards, active control board, standby control board,
+interface boards, and environment monitoring boards.
+Unit: watt."
+    ::= { 1 3 6 1 4 1 2011 2 6 7 1 1 1 1 11 }
+
+hwMusaFrameLastOfflineTime OBJECT-TYPE
+    SYNTAX      INTEGER
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "The last offline time of the extended frame."
+    ::= { 1 3 6 1 4 1 2011 2 6 7 1 1 1 1 12 }
+
+hwMusaFrameLastOfflineReason OBJECT-TYPE
+    SYNTAX      OctetString
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "The last offline reason of the extended frame."
+    ::= { 1 3 6 1 4 1 2011 2 6 7 1 1 1 1 13 }
+
+hwMusaFrameDistBandWidth OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "Frame distributed bandwidth.
+Unit: K. It is used in debug mode. 1G = 1000M."
+    ::= { 1 3 6 1 4 1 2011 2 6 7 1 1 1 1 2 }
+
+hwMusaFrameTestGroupID OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  read-write
+    STATUS      current
+    DESCRIPTION
+        "This node is not supported."
+    ::= { 1 3 6 1 4 1 2011 2 6 7 1 1 1 1 3 }
+
+hwMusaFrameEmuId1 OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This node is not supported."
+    ::= { 1 3 6 1 4 1 2011 2 6 7 1 1 1 1 4 }
+
+hwMusaFrameEmuId2 OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This node is not supported."
+    ::= { 1 3 6 1 4 1 2011 2 6 7 1 1 1 1 5 }
+
+hwMusaFrameEmuId3 OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This node is not supported."
+    ::= { 1 3 6 1 4 1 2011 2 6 7 1 1 1 1 6 }
+
+hwMusaFrameEmuId4 OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This node is not supported."
+    ::= { 1 3 6 1 4 1 2011 2 6 7 1 1 1 1 7 }
+
+hwMusaFrameEmuId5 OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This node is not supported."
+    ::= { 1 3 6 1 4 1 2011 2 6 7 1 1 1 1 8 }
+
+hwMusaFrameSlotConnection OBJECT-TYPE
+    SYNTAX      OctetString
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This node is not supported."
+    ::= { 1 3 6 1 4 1 2011 2 6 7 1 1 1 1 9 }
+
+hwMusaBoardLimitBandWidthUp OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This node is not supported."
+    ::= { 1 3 6 1 4 1 2011 2 6 7 1 1 2 1 1 }
+
+hwMusaBoardTemperature OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "Board temperature.The value 0X7FFFFFFF indicates invalid temperature."
+    ::= { 1 3 6 1 4 1 2011 2 6 7 1 1 2 1 10 }
+
+hwMusaBoardPower OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "The power of the board.
+Unit: watt."
+    ::= { 1 3 6 1 4 1 2011 2 6 7 1 1 2 1 11 }
+
+hwMusaBoardActivedPortNum OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "The number of activated ports on one board."
+    ::= { 1 3 6 1 4 1 2011 2 6 7 1 1 2 1 12 }
+
+hwMusaBoardLatestResetTime OBJECT-TYPE
+    SYNTAX      INTEGER
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "The latest reset time of the board."
+    ::= { 1 3 6 1 4 1 2011 2 6 7 1 1 2 1 13 }
+
+hwMusaBoardLatestResetCause OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "The latest reset cause of the board.
+0x00000000 - There is no reset record of the board.
+0x02000000 - The communication with the control board is abnormal.
+0x02000165 - COM user delivers board reset command.
+0x02000167 - NMS user delivers board reset command.
+0x02000169 - Telnet user delivers board reset command.
+0x0200016b - User add board manually.
+0x020000a1 - The board temperature is too high, which causes the shutdown of the board.
+0x0200016c - The board resets because it is prohibited.
+0x02000173 - The board resets because the working mode is changed.
+0x02000181 - The service board is automatically shut down when it is not configured with any service.
+0x02000182 - The service board is automatically shut down when the mains supply is interrupted.
+0x020001b5 - The board is loosened or is removed forcibly.
+0x0700000a - The active/standby switchover command is manually delivered.
+0x0700000e - User delivers active board reset command."
+    ::= { 1 3 6 1 4 1 2011 2 6 7 1 1 2 1 14 }
+
+hwMusaBoardMaxLoadBufferSize OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "Board max load buffer size. The value -1(0xFFFFFFF) indicates invalid buffer size.
+It only supports the xPON service board. Other board will return -1.
+The unit is Byte and the board max load buffer is 500MB."
+    ::= { 1 3 6 1 4 1 2011 2 6 7 1 1 2 1 15 }
+
+hwMusaBoardResetCounter OBJECT-TYPE
+    SYNTAX      INTEGER
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "The counter of board restart is cleared during board initialization, deletion."
+    ::= { 1 3 6 1 4 1 2011 2 6 7 1 1 2 1 16 }
+
+hwMusaBoardPowerInputStatus OBJECT-TYPE
+    SYNTAX      Enumeration
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "AC/DC Input Status.
+Options:
+1.normal(1) -board is normal, this value is returned for a power board or virtual power board.
+2.fault(2) -board is faulty, this value is returned for a power board or virtual power board.
+3.invalid(3) -invalid state, this value is returned for a non-power board."
+    ::= { 1 3 6 1 4 1 2011 2 6 7 1 1 2 1 17 }
+
+hwMusaBoardRamTotal OBJECT-TYPE
+    SYNTAX      INTEGER
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "Board RAM total volume.
+0 indicates that the device cannot get the value, e.g. the board does not support this operation, or the board state is abnormal.
+Unit: Byte"
+    ::= { 1 3 6 1 4 1 2011 2 6 7 1 1 2 1 18 }
+
+hwMusaBoardRamUsed OBJECT-TYPE
+    SYNTAX      INTEGER
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "Board RAM used volume.
+0 indicates that the device cannot get the value, e.g. the board does not support this operation, or the board state is abnormal.
+Unit: Byte"
+    ::= { 1 3 6 1 4 1 2011 2 6 7 1 1 2 1 19 }
+
+hwMusaBoardLimitBandWidthDown OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This node is not supported."
+    ::= { 1 3 6 1 4 1 2011 2 6 7 1 1 2 1 2 }
+
+hwMusaBoardRamFree OBJECT-TYPE
+    SYNTAX      INTEGER
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "Board RAM free volume.
+0 indicates that the device cannot get the value, e.g. the board does not support this operation, or the board state is abnormal.
+Unit: Byte"
+    ::= { 1 3 6 1 4 1 2011 2 6 7 1 1 2 1 20 }
+
+hwMusaBoardFlashTotal OBJECT-TYPE
+    SYNTAX      INTEGER
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "Board FLASH total volume.
+0 indicates that the device cannot get the value, e.g. the board does not support this operation, or the board state is abnormal.
+Unit: Byte"
+    ::= { 1 3 6 1 4 1 2011 2 6 7 1 1 2 1 21 }
+
+hwMusaBoardFlashUsed OBJECT-TYPE
+    SYNTAX      INTEGER
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "Board FLASH used volume.
+0 indicates that the device cannot get the value, e.g. the board does not support this operation, or the board state is abnormal.
+Unit: Byte"
+    ::= { 1 3 6 1 4 1 2011 2 6 7 1 1 2 1 22 }
+
+hwMusaBoardFlashFree OBJECT-TYPE
+    SYNTAX      INTEGER
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "Board FLASH free volume.
+0 indicates that the device cannot get the value, e.g. the board does not support this operation, or the board state is abnormal.
+Unit: Byte"
+    ::= { 1 3 6 1 4 1 2011 2 6 7 1 1 2 1 23 }
+
+hwMusaBoardHasBandWidthUp OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This node is not supported."
+    ::= { 1 3 6 1 4 1 2011 2 6 7 1 1 2 1 3 }
+
+hwMusaBoardHasBandWidthDown OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This node is not supported."
+    ::= { 1 3 6 1 4 1 2011 2 6 7 1 1 2 1 4 }
+
+hwMusaBoardCpuRate OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "Active and standby control board CPU usage.
+It does not support RSP, PV8, BAS, or other boards.
+-1 indicates that the device cannot get the value, e.g. the board does not support this operation, or the board state is abnormal."
+    ::= { 1 3 6 1 4 1 2011 2 6 7 1 1 2 1 5 }
+
+hwMusaBoardRamUseRate OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "Active and standby control board RAM usage.
+It does not support RSP, PV8, BAS, AIC, or other boards.
+-1 indicates that the device cannot get the value, e.g. the board does not support this operation, or the board state is abnormal."
+    ::= { 1 3 6 1 4 1 2011 2 6 7 1 1 2 1 6 }
+
+hwMusaBoardSlotDesc OBJECT-TYPE
+    SYNTAX      OctetString
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "Slot information description.
+It describes the name of the slot."
+    ::= { 1 3 6 1 4 1 2011 2 6 7 1 1 2 1 7 }
+
+hwMusaBoardOnlineState OBJECT-TYPE
+    SYNTAX      Enumeration
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "Board online state.
+Options:
+1.online(1) -board is online
+2.offline(2) -board is offline
+3.unmanageable(3) -board is faulty
+4.invalid(-1) -invalid state"
+    ::= { 1 3 6 1 4 1 2011 2 6 7 1 1 2 1 8 }
+
+hwMusaServiceChannelBufferRate OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "Service channel buffer usage.
+-1 indicates that the device cannot get the value, e.g. the board does not support this operation, or the board state is abnormal."
+    ::= { 1 3 6 1 4 1 2011 2 6 7 1 1 2 1 9 }
+
+hwMusaBoardStatisticTime OBJECT-TYPE
+    SYNTAX      Enumeration
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This node is not supported.
+Options:
+1. fiveSeconds(1) -five seconds
+2. oneMinute(2) -one minute
+3. tenMinutes(3) -ten minutes"
+    ::= { 1 3 6 1 4 1 2011 2 6 7 1 1 3 1 1 }
+
+hwMusaBoardCpuAverageRate OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This node is not supported."
+    ::= { 1 3 6 1 4 1 2011 2 6 7 1 1 3 1 2 }
+
+hwXPONBoardParaFrameIndex OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This node is not supported."
+    ::= { 1 3 6 1 4 1 2011 2 6 7 1 1 4 1 1 }
+
+hwXPONBoardParaSlotIndex OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This node is not supported."
+    ::= { 1 3 6 1 4 1 2011 2 6 7 1 1 4 1 2 }
+
+hwXPONBoardSN OBJECT-TYPE
+    SYNTAX      OctetString
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This node is not supported."
+    ::= { 1 3 6 1 4 1 2011 2 6 7 1 1 4 1 3 }
+
+hwXPONBoardMacAddr OBJECT-TYPE
+    SYNTAX      OctetString
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This node is not supported."
+    ::= { 1 3 6 1 4 1 2011 2 6 7 1 1 4 1 5 }
+
+hwMusaPowerSupplyInputMode OBJECT-TYPE
+    SYNTAX      Enumeration
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "Power supply input mode.
+Options:
+1. localac(1) -local 220V AC power supply
+2. localdc(2) -local DC power supply
+3. remoteac(3) -remote 60V AC power supply
+4. remotedc(4) -remote line +/-190V high voltage power supply of DC
+5. pd(5) -powered device supply"
+    ::= { 1 3 6 1 4 1 2011 2 6 7 1 1 5 1 1 }
+
+hwMusaPowerSupplyID OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "The input index of power supply."
+    ::= { 1 3 6 1 4 1 2011 2 6 7 1 1 5 1 2 }
+
+hwMusaPowerSupplyState OBJECT-TYPE
+    SYNTAX      Enumeration
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "The state of power supply.
+Options:
+1. valid(1) -this power input is working
+2. invalid(2) -this power input is not working"
+    ::= { 1 3 6 1 4 1 2011 2 6 7 1 1 5 1 3 }
+
+hwFrameIfIndex OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This node is not supported."
+    ::= { 1 3 6 1 4 1 2011 2 6 7 1 2 1 1 }
+
+hwBroadBandFrameType OBJECT-TYPE
+    SYNTAX      INTEGER
+    MAX-ACCESS  read-write
+    STATUS      current
+    DESCRIPTION
+        "This node is not supported."
+    ::= { 1 3 6 1 4 1 2011 2 6 7 1 2 1 2 }
+
+hwMainBoardSlots OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  read-write
+    STATUS      current
+    DESCRIPTION
+        "This node is not supported."
+    ::= { 1 3 6 1 4 1 2011 2 6 7 1 2 1 3 }
+
+hwMainBoardType OBJECT-TYPE
+    SYNTAX      INTEGER
+    MAX-ACCESS  read-write
+    STATUS      current
+    DESCRIPTION
+        "This node is not supported."
+    ::= { 1 3 6 1 4 1 2011 2 6 7 1 2 1 4 }
+
+hwBroadBandFrameID OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This node is not supported."
+    ::= { 1 3 6 1 4 1 2011 2 6 7 1 2 1 5 }
+
+hwBroadBandFrameRowStatus OBJECT-TYPE
+    SYNTAX      INTEGER
+    MAX-ACCESS  read-write
+    STATUS      current
+    DESCRIPTION
+        "This node is not supported."
+    ::= { 1 3 6 1 4 1 2011 2 6 7 1 2 1 6 }
+
+hwIasConfigChangeTrapID OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "Configuration change type trap ID."
+    ::= { 1 3 6 1 4 1 2011 2 6 7 5 1 1 1 }
+
+hwIasConfigChangeSerialSN OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "Configuration change type trap serial number."
+    ::= { 1 3 6 1 4 1 2011 2 6 7 5 1 1 2 }
+

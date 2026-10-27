@@ -32,6 +32,11 @@
     "status": "introduced",
     "replacement": null
   },
-  "relations": [],
+  "relations": [
+    {
+      "type": "belongs_to",
+      "target": "entity.huawei.gpon.hardware.card"
+    }
+  ],
   "conflicts": []
 }

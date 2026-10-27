@@ -34,6 +34,24 @@ from pathlib import Path
 # tipos que MibExtractor._norm_syntax ya reconoce tal cual (no hace falta mapear)
 _PASSTHROUGH_SYNTAX = {"Counter64", "Counter32", "Gauge32", "OCTET STRING", "INTEGER"}
 
+# Ramas que NUNCA se catalogan, sea cual sea el .mib de origen: gestión de cuentas/sesiones
+# del propio equipo, irrelevante para un extractor de conocimiento GPON y con PII real en
+# el walk (hallado 2026-10-27: hwCliUserMgmt/hwCliUserParaTable trae hwCliUserName +
+# hwCliUserPassword; el walk muestra usuarios reales como índice ASCII, ver
+# config/vendors.yaml → Huawei.sensitive_prefixes). Evita exponer sample_oid/sample_value
+# de estas columnas en el catálogo aunque Fase 2 las confirme contra el walk real.
+EXCLUDE_OID_PREFIXES = (
+    "1.3.6.1.4.1.2011.6.3.10",           # hwCliUserMgmt (HUAWEI-DEVICE-MIB): nombre+password de cuentas
+    "1.3.6.1.4.1.2011.6.3.2.1.6",        # hwNmsGetCommunity
+    "1.3.6.1.4.1.2011.6.3.2.1.7",        # hwNmsSetCommunity
+    "1.3.6.1.4.1.2011.6.3.3.2.1.26",     # hwSlotExtendedBiosPassword
+    "1.3.6.1.4.1.2011.6.3.34.1.6",       # hwOntRemoteHttpChnlPassword
+    "1.3.6.1.4.1.2011.2.6.7.1.1.4.1.4",  # hwXPONBoardPassWord (HWMUSA-DEV-MIB): password por tarjeta
+    # Ninguna de estas tenía valor real confirmado en el walk (status=documented,
+    # empirical=None: SNMP nunca devolvió nada ahí) — se excluyen de todos modos por
+    # precaución, para que un walk futuro nunca exponga sample_value aquí sin querer.
+)
+
 
 def _escape(text: str) -> str:
     return text.replace("\\", "\\\\").replace('"', "'")
@@ -59,8 +77,11 @@ def _emit_object(o: dict) -> str:
 
 def generate(src_json: Path, dst_mib: Path) -> dict:
     data = json.loads(src_json.read_text(encoding="utf-8"))
-    objs = [o for o in data["objects"] if o.get("kind") in ("scalar", "column")]
-    counts = {"scalar": 0, "column": 0, "unknown_access": 0, "read_write": 0}
+    objs = [o for o in data["objects"] if o.get("kind") in ("scalar", "column")
+            and not o["oid"].startswith(EXCLUDE_OID_PREFIXES)]
+    excluded = sum(1 for o in data["objects"] if o.get("kind") in ("scalar", "column")
+                  and o["oid"].startswith(EXCLUDE_OID_PREFIXES))
+    counts = {"scalar": 0, "column": 0, "unknown_access": 0, "read_write": 0, "excluded": excluded}
     body_parts = []
     for o in objs:
         counts[o["kind"]] += 1
@@ -95,6 +116,14 @@ SOURCES = {
         "docs/huawei/ma5608t/synthetic/HUAWEI-GPON-MIB.synthetic.mib",
     "docs/huawei/ma5608t/observium/HUAWEI-XPON-MIB.json":
         "docs/huawei/ma5608t/synthetic/HUAWEI-XPON-MIB.synthetic.mib",
+    # 2026-10-27: las 30 tablas "observed_only" (datos reales en el walk, sin catalogar)
+    # vivían aquí — frame/slot/board/CPU/temperatura, nunca cubierto por GPON/XPON-MIB.
+    "docs/huawei/ma5608t/observium/HUAWEI-DEVICE-MIB.json":
+        "docs/huawei/ma5608t/synthetic/HUAWEI-DEVICE-MIB.synthetic.mib",
+    "docs/huawei/ma5608t/observium/HUAWEI-ENTITY-EXTENT-MIB.json":
+        "docs/huawei/ma5608t/synthetic/HUAWEI-ENTITY-EXTENT-MIB.synthetic.mib",
+    "docs/huawei/ma5608t/observium/HWMUSA-DEV-MIB.json":
+        "docs/huawei/ma5608t/synthetic/HWMUSA-DEV-MIB.synthetic.mib",
 }
 
 
@@ -114,9 +143,10 @@ def main() -> int:
     for src, dst in pairs:
         src_p, dst_p = Path(src), Path(dst)
         counts = generate(src_p, dst_p)
+        excl = f", {counts['excluded']} excluidos (EXCLUDE_OID_PREFIXES)" if counts["excluded"] else ""
         print(f"{src_p.name} -> {dst_p}: {counts['scalar']} scalar + {counts['column']} "
               f"column ({counts['read_write']} read-write, {counts['unknown_access']} "
-              f"unknown)", file=sys.stderr)
+              f"unknown{excl})", file=sys.stderr)
     return 0
 
 

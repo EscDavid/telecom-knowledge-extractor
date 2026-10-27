@@ -1,0 +1,37 @@
+{
+  "id": "entity.huawei.gpon.logical.vlan",
+  "canonical_name": "Vlan",
+  "vendor": "Huawei",
+  "family": "MA5608T",
+  "firmware": [
+    "R015"
+  ],
+  "technology": "gpon",
+  "type": "logical",
+  "description": "VLAN — dominio de difusion logico para segmentacion de trafico.",
+  "is_critical": false,
+  "aliases": [],
+  "attributes": [],
+  "sources": [
+    {
+      "doc_type": "mib_file",
+      "pages": null,
+      "confidence": 0.3
+    }
+  ],
+  "confidence": {
+    "extraction": 0.85,
+    "correlation": 0.0,
+    "overall": 0.85
+  },
+  "status": "documented",
+  "lifecycle": {
+    "introduced_in": "R015",
+    "deprecated_in": null,
+    "removed_in": null,
+    "status": "introduced",
+    "replacement": null
+  },
+  "relations": [],
+  "conflicts": []
+}

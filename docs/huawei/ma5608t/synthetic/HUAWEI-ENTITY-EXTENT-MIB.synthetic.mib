@@ -1,0 +1,3599 @@
+-- HUAWEI-ENTITY-EXTENT-MIB -- SINTETICO, generado por scripts/observium_to_mib.py
+-- Fuente: https://mibs.observium.org/mib/HUAWEI-ENTITY-EXTENT-MIB/ (third_party_rendering), fetched 2026-10-27T20:12:39Z
+-- Generado: 2026-10-27T15:17:59
+-- Huawei Technologies -- MA5608T -- Huawei MA56xT
+-- Nivel de evidencia B (docs/adaptacion_multivendor.md §2): NO es el MIB
+-- oficial del fabricante. Cada OBJECT-TYPE es AUTOCONTENIDO (OID numérico
+-- absoluto ya resuelto por Observium); no hay jerarquía real del módulo ni
+-- nodos/tablas/filas (no aportan Oids, ver docstring de este script).
+-- MAX-ACCESS 'unknown' (no estándar) = Observium no distingue ese acceso de
+-- read-only real; el pipeline lo protege de poda por Fase 2 (nunca se asume
+-- read-only sin evidencia). root_oid=1.3.6.1.4.1.2011.5.25.31
+-- 438 objetos (scalar+column) de 543 totales en el render.
+
+hwEntityAdminStatus OBJECT-TYPE
+    SYNTAX      HwAdminState
+    MAX-ACCESS  read-write
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the entity management status."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 1 1 1 }
+
+hwEntityUpTime OBJECT-TYPE
+    SYNTAX      seconds
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the total duration when an entity is in the UP state."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 1 1 10 }
+
+hwEntityTemperature OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the entity temperature. Unit: centigrade"
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 1 1 11 }
+
+hwEntityTemperatureThreshold OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  read-write
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the upper threshold of the entity temperature. Unit: centigrade"
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 1 1 12 }
+
+hwEntityVoltage OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the entity voltage. Unit: mV"
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 1 1 13 }
+
+hwEntityVoltageLowThreshold OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  read-write
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the minimum entity voltage threshold. Unit: mV"
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 1 1 14 }
+
+hwEntityVoltageHighThreshold OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  read-write
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the maximum entity voltage threshold. Unit: mV"
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 1 1 15 }
+
+hwEntityTemperatureLowThreshold OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  read-write
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the lower entity temperature threshold. Unit: centigrade"
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 1 1 16 }
+
+hwEntityOpticalPower OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the optical module's optical power."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 1 1 17 }
+
+hwEntityCurrent OBJECT-TYPE
+    SYNTAX      mA
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the entity current."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 1 1 18 }
+
+hwEntityMemSizeMega OBJECT-TYPE
+    SYNTAX      M bytes
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the size of the entity SDRAM."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 1 1 19 }
+
+hwEntityOperStatus OBJECT-TYPE
+    SYNTAX      HwOperState
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the entity operation status."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 1 1 2 }
+
+hwEntityPortType OBJECT-TYPE
+    SYNTAX      Enumeration
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the port type."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 1 1 20 }
+
+hwEntityDuplex OBJECT-TYPE
+    SYNTAX      Enumeration
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the duplex mode of a port."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 1 1 21 }
+
+hwEntityOpticalPowerRx OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the receive power of an optical module."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 1 1 22 }
+
+hwEntityCpuUsageLowThreshold OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  read-write
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the CPU usage threshold of an entity."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 1 1 23 }
+
+hwEntityBoardPower OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the board power."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 1 1 24 }
+
+hwEntityCpuFrequency OBJECT-TYPE
+    SYNTAX      Hz
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "The frequency of the entity. Unit: Hz"
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 1 1 25 }
+
+hwEntitySupportFlexCard OBJECT-TYPE
+    SYNTAX      Enumeration
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "It describes whether the whole board supports flexible cards."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 1 1 26 }
+
+hwEntityBoardClass OBJECT-TYPE
+    SYNTAX      Enumeration
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the board type."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 1 1 27 }
+
+hwNseOpmStatus OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "OPM status. 0: pass, 1: bypass, 2: invalid"
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 1 1 28 }
+
+hwEntityCpuMaxUsage OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the maximum CPU usage."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 1 1 29 }
+
+hwEntityStandbyStatus OBJECT-TYPE
+    SYNTAX      HwStandbyStatus
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the entity backup status."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 1 1 3 }
+
+hwEntityCPUType OBJECT-TYPE
+    SYNTAX      INTEGER
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the CPU type."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 1 1 30 }
+
+hwEntityMemoryType OBJECT-TYPE
+    SYNTAX      INTEGER
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the memory type."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 1 1 31 }
+
+hwEntityFlashSize OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the flash size of an entity."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 1 1 32 }
+
+hwEntityIfUpTimes OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "Times that the interface goes Up."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 1 1 33 }
+
+hwEntityIfDownTimes OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "Times that the interface goes Down."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 1 1 34 }
+
+hwEntityCPUAvgUsage OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the average CPU usage."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 1 1 35 }
+
+hwEntityMemoryAvgUsage OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the average memory usage."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 1 1 36 }
+
+hwEntityMemUsed OBJECT-TYPE
+    SYNTAX      Unsigned32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the used memory size."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 1 1 37 }
+
+hwEntityTotalFanNum OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "The total numbers of the fans in the chassis ."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 1 1 38 }
+
+hwEntityNomalFanNum OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "The Nomal numbers of the fans in the chassis ."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 1 1 39 }
+
+hwEntityAlarmLight OBJECT-TYPE
+    SYNTAX      HwAlarmStatus
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the entity alarm status, which is consistent with the entity alarm indicator status."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 1 1 4 }
+
+hwEntityTotalPwrNum OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "The total numbers of the powers in the chassis ."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 1 1 40 }
+
+hwEntityNomalPwrNum OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "The nomal numbers of the powers in the chassis ."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 1 1 41 }
+
+hwEntityFaultLight OBJECT-TYPE
+    SYNTAX      Enumeration
+    MAX-ACCESS  read-write
+    STATUS      current
+    DESCRIPTION
+        "The repair status for this entity.
+On the underrepair condition, there is a blue light on the entity."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 1 1 42 }
+
+hwEntityBoardName OBJECT-TYPE
+    SYNTAX      OctetString
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "The board name for this entity."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 1 1 43 }
+
+hwEntityBoardDescription OBJECT-TYPE
+    SYNTAX      OctetString
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "The board description for this entity."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 1 1 44 }
+
+hwEntity5MinCpuUsage OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "Average CPU usage of the last five minutes for this entity."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 1 1 45 }
+
+hwEntityStartMode OBJECT-TYPE
+    SYNTAX      Enumeration
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the board startup mode."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 1 1 46 }
+
+hwEntitySplitAttribute OBJECT-TYPE
+    SYNTAX      OctetString
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "Number of the split port."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 1 1 47 }
+
+hwEntityFaultLightKeepTime OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  read-write
+    STATUS      current
+    DESCRIPTION
+        "Fault light twinkle keep time,the default is 45 seconds."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 1 1 48 }
+
+hwEntityPbufUsage OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "The Pbuf usage for this entity."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 1 1 49 }
+
+hwEntityCpuUsage OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the CPU usage of an entity. Generally, the overall CPU usage of the entity is calculated, without considering the number of CPUs on the entity."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 1 1 5 }
+
+hwEntityTMUsage OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "The TM usage for this entity."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 1 1 50 }
+
+hwEntityHda1Usage OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "The Hda1 usage for this entity."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 1 1 51 }
+
+hwEntityHda1UsageThreshold OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "The hda1 usage Threshold for this entity."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 1 1 52 }
+
+hwEntityHda1UsageResumeThreshold OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "The hda1 usage resume threshold for this entity."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 1 1 53 }
+
+hwEntitySlotID OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "The identification of slot."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 1 1 54 }
+
+hwEntityCpuID OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "The identification of cpu."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 1 1 55 }
+
+hwEntityPreviousValue OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "The previous value of the sudden change."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 1 1 56 }
+
+hwEntityCurrentValue OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "The current value of the sudden change."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 1 1 57 }
+
+hwEntityChangeValue OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "The change of the sudden change."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 1 1 58 }
+
+hwEntityChangeValueThreshold OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "The change threshold."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 1 1 59 }
+
+hwEntityCpuUsageThreshold OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  read-write
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the CPU usage threshold. When the CPU usage exceeds the threshold, a notification is sent."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 1 1 6 }
+
+hwEntityModelName OBJECT-TYPE
+    SYNTAX      OctetString
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "The model for this entity. If there is no model string in elable of this entity or this entity does not support elabel, the invalid value(zero-string) will be returned."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 1 1 60 }
+
+hwEntityIssueNumber OBJECT-TYPE
+    SYNTAX      OctetString
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "The IssueNumber for this entity. If there is no IssueNumber string in elable of this entity or this entity does not support elabel, the invalid value(zero-string) will be returned."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 1 1 61 }
+
+hwEntityDeviceStatus OBJECT-TYPE
+    SYNTAX      Enumeration
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the state of the device."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 1 1 62 }
+
+hwEntityPicStatus OBJECT-TYPE
+    SYNTAX      Enumeration
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the state of the pic."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 1 1 63 }
+
+hwEntityMPUType OBJECT-TYPE
+    SYNTAX      OctetString
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the MPU type."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 1 1 64 }
+
+hwEntityMemSizeExt OBJECT-TYPE
+    SYNTAX      KByte
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the memory size."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 1 1 65 }
+
+hwEntityTemperatureMinorThreshold OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  read-write
+    STATUS      current
+    DESCRIPTION
+        "The minor threshold of the temperature. If the device temperature is
+higher than the threshold, a notification is sent."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 1 1 66 }
+
+hwEntityVoltageFatalHighThreshold OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  read-write
+    STATUS      current
+    DESCRIPTION
+        "The fatal high threshold of the voltage. Generally, the voltage should
+be greater than the fatal low threshold and lower than the fatal high threshold.
+If the voltage is greater than the fatal high threshold, a notification is sent."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 1 1 67 }
+
+hwEntityVoltageFatalLowThreshold OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  read-write
+    STATUS      current
+    DESCRIPTION
+        "The fatal low threshold of the voltage. Generally, the voltage should
+be greater than the fatal low threshold and lower than the fatal high threshold.
+If the voltage is lower than the fatal low threshold, a notification is sent."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 1 1 68 }
+
+hwEntityMemCacheUsage OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the memory cache usage of an entity, that is, the percentage of the memory cache that has been used."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 1 1 69 }
+
+hwEntityMemUsage OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the memory usage of an entity, that is, the percentage of the memory that has been used."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 1 1 7 }
+
+hwCpuUsageTrapType OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the forwarding type of an entity."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 1 1 70 }
+
+hwCpuUsageTrapSlot OBJECT-TYPE
+    SYNTAX      OctetString
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the slot id of an entity."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 1 1 71 }
+
+hwCpuUsageTrapCpu OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the CPU id of an entity."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 1 1 72 }
+
+hwCpuUsageCurrentUsage OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the cpu usage of an entity, that is, the percentage of the cpu resource that has been used."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 1 1 73 }
+
+hwCpuUsageThreashold OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the cpu usage threshold of an entity."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 1 1 74 }
+
+hwEntityMemUsageThreshold OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  read-write
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the memory usage threshold. When the memory usage exceeds the threshold, a notification is sent."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 1 1 8 }
+
+hwEntityMemSize OBJECT-TYPE
+    SYNTAX      bytes
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the memory size."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 1 1 9 }
+
+hwEntityFanSlot OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the slot of a fan."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 10 1 1 }
+
+hwEntityFanSn OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the number of the fan in the same slot."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 10 1 2 }
+
+hwEntityFanReg OBJECT-TYPE
+    SYNTAX      Enumeration
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the fan registration status."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 10 1 3 }
+
+hwEntityFanSpdAdjMode OBJECT-TYPE
+    SYNTAX      Enumeration
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the fan speed adjustment mode."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 10 1 4 }
+
+hwEntityFanSpeed OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the fan speed."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 10 1 5 }
+
+hwEntityFanPresent OBJECT-TYPE
+    SYNTAX      Enumeration
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the fan in-position status."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 10 1 6 }
+
+hwEntityFanState OBJECT-TYPE
+    SYNTAX      Enumeration
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the fan status."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 10 1 7 }
+
+hwEntityFanDesc OBJECT-TYPE
+    SYNTAX      OctetString
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the description of the fan."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 10 1 8 }
+
+hwEntityFanName OBJECT-TYPE
+    SYNTAX      Enumeration
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the fan name."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 10 1 9 }
+
+hwEntityServiceType OBJECT-TYPE
+    SYNTAX      Enumeration
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "It describes the service-type of spu board ."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 11 1 }
+
+hwDeviceServiceType OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "It describes the service-type of the device. bit0 is WLAN, bit1 is SSLVPN, bit2 is ipsec,other bits temporarily without easy back extension. Each bit 0 is disable, 1 is enable."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 11 2 }
+
+hwEntityManufacturerOUI OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "It describes the Manufacturer of the device."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 11 3 }
+
+hwPhysicalPortBip8StatisticsEB OBJECT-TYPE
+    SYNTAX      INTEGER
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the bit error block."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 12 1 1 }
+
+hwPhysicalPortBip8StatisticsES OBJECT-TYPE
+    SYNTAX      INTEGER
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the errored second."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 12 1 2 }
+
+hwPhysicalPortBip8StatisticsSES OBJECT-TYPE
+    SYNTAX      INTEGER
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the severely errored second."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 12 1 3 }
+
+hwPhysicalPortBip8StatisticsUAS OBJECT-TYPE
+    SYNTAX      INTEGER
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the unavailable second."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 12 1 4 }
+
+hwPhysicalPortBip8StatisticsBBE OBJECT-TYPE
+    SYNTAX      INTEGER
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the background block error."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 12 1 5 }
+
+hwPhysicalPortSpeed OBJECT-TYPE
+    SYNTAX      Unsigned32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the port rate, in Mbit/s."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 12 1 6 }
+
+hwStorageEntIndex OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the index."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 13 1 1 }
+
+hwStorageEntType OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the storage component type."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 13 1 2 }
+
+hwStorageEntSpace OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the storage space."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 13 1 3 }
+
+hwStorageEntSpaceFree OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the available space."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 13 1 4 }
+
+hwStorageEntName OBJECT-TYPE
+    SYNTAX      INTEGER
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the component name."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 13 1 5 }
+
+hwStorageEntDescr OBJECT-TYPE
+    SYNTAX      INTEGER
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the component description."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 13 1 6 }
+
+hwSystemPowerDeviceID OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "System power information device ID."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 14 1 1 }
+
+hwSystemPowerTotalPower OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "System power information total power."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 14 1 2 }
+
+hwSystemPowerUsedPower OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "System power information used power."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 14 1 3 }
+
+hwSystemPowerRemainPower OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "System power information remain power."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 14 1 4 }
+
+hwSystemPowerReservedPower OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "System power information reserved power."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 14 1 5 }
+
+hwBatteryState OBJECT-TYPE
+    SYNTAX      Enumeration
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "Description.The state of lithium battery."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 15 1 1 }
+
+hwBatteryTemperatureLow OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "Description.The lowest temperature of lithium battery."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 15 1 2 }
+
+hwBatteryTemperatureHigh OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "Description.The highest temperature of lithium battery."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 15 1 3 }
+
+hwBatteryRemainPercent OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "Description. The remained electricity quantity percent of lithium battery,unit in minute."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 15 1 4 }
+
+hwBatteryRemainTime OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "Description. The remained time of lithium battery."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 15 1 5 }
+
+hwBatteryElecTimes OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "Description.The charge and discharge times of lithium battery."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 15 1 6 }
+
+hwBatteryLifeThreshold OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  read-write
+    STATUS      current
+    DESCRIPTION
+        "Description.The warning threshold of lithium battery's lifetime.(unit in minute,the default value is 20)"
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 15 1 7 }
+
+hwGPSLongitude OBJECT-TYPE
+    SYNTAX      OctetString
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "Description.The longitude of the device location."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 16 1 }
+
+hwGPSLatitude OBJECT-TYPE
+    SYNTAX      OctetString
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "Description.The latidude of the device location."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 16 2 }
+
+hwGPSVelocity OBJECT-TYPE
+    SYNTAX      OctetString
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "Description.The velocity of the device."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 16 3 }
+
+hwAdmPortDescription OBJECT-TYPE
+    SYNTAX      OctetString
+    MAX-ACCESS  read-write
+    STATUS      current
+    DESCRIPTION
+        "The description of ADM(Add/Drop Multiplexer) port."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 17 1 1 }
+
+hwEntityPwrSlot OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the slot ID of a power."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 18 1 1 }
+
+hwEntityPwrPower OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the rated power of the power. Unit: W"
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 18 1 10 }
+
+hwEntityPwrSn OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the serial number of the power in a certain slot."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 18 1 2 }
+
+hwEntityPwrReg OBJECT-TYPE
+    SYNTAX      Enumeration
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object indicates whether the power is registered."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 18 1 3 }
+
+hwEntityPwrMode OBJECT-TYPE
+    SYNTAX      Enumeration
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the mode of the power."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 18 1 4 }
+
+hwEntityPwrPresent OBJECT-TYPE
+    SYNTAX      Enumeration
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the present information of the power."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 18 1 5 }
+
+hwEntityPwrState OBJECT-TYPE
+    SYNTAX      Enumeration
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the state of the power."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 18 1 6 }
+
+hwEntityPwrCurrent OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the current of the power. Unit: mA"
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 18 1 7 }
+
+hwEntityPwrVoltage OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the voltage of the power. Unit: mV"
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 18 1 8 }
+
+hwEntityPwrDesc OBJECT-TYPE
+    SYNTAX      OctetString
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the description of the power."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 18 1 9 }
+
+hwCpuUsageHistoryIndex OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the index of the CPU usage."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 19 1 1 }
+
+hwCpuUsageHistoryTime OBJECT-TYPE
+    SYNTAX      INTEGER
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the time of the CPU usage"
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 19 1 2 }
+
+hwCpuUsageHistoryRate OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the the CPU usage"
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 19 1 3 }
+
+hwEntityBomId OBJECT-TYPE
+    SYNTAX      INTEGER
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the entity BOM ID, which is a unified material identifier."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 2 1 1 }
+
+hwEntityIssueNum OBJECT-TYPE
+    SYNTAX      INTEGER
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the release code."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 2 1 10 }
+
+hwEntityBoardType OBJECT-TYPE
+    SYNTAX      INTEGER
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the entity board type."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 2 1 11 }
+
+hwEntityExInfo OBJECT-TYPE
+    SYNTAX      INTEGER
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "Extra information, which satisfies the requirements of special components."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 2 1 12 }
+
+hwEntityModel OBJECT-TYPE
+    SYNTAX      INTEGER
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "External type."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 2 1 13 }
+
+hwEntityElabelVersion OBJECT-TYPE
+    SYNTAX      INTEGER
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "Electronic label version."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 2 1 14 }
+
+hwEntitySafeId OBJECT-TYPE
+    SYNTAX      INTEGER
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "Main board safecard ID."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 2 1 15 }
+
+hwEntityBomEnDesc OBJECT-TYPE
+    SYNTAX      INTEGER
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the English description of the entity BOM."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 2 1 2 }
+
+hwEntityBomLocalDesc OBJECT-TYPE
+    SYNTAX      INTEGER
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the local description of the entity BOM."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 2 1 3 }
+
+hwEntityManufacturedDate OBJECT-TYPE
+    SYNTAX      INTEGER
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the manufacturing date of an entity."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 2 1 4 }
+
+hwEntityManufactureCode OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "The code of the place where this physical entity is Manufactured."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 2 1 5 }
+
+hwEntityCLEICode OBJECT-TYPE
+    SYNTAX      INTEGER
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the CLEI code of an entity."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 2 1 6 }
+
+hwEntityUpdateLog OBJECT-TYPE
+    SYNTAX      INTEGER
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "The maintenance log of this replaceable unit."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 2 1 7 }
+
+hwEntityArchivesInfoVersion OBJECT-TYPE
+    SYNTAX      INTEGER
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the archive information version of an entity."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 2 1 8 }
+
+hwEntityOpenBomId OBJECT-TYPE
+    SYNTAX      INTEGER
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the sales BOM code."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 2 1 9 }
+
+hwMemUsageHistoryIndex OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the the index of memory usage history."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 20 1 1 }
+
+hwMemUsageHistoryTime OBJECT-TYPE
+    SYNTAX      INTEGER
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the the index of memory usage history."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 20 1 2 }
+
+hwMemUsageHistoryRate OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the the index of memory usage history."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 20 1 3 }
+
+hwProcessName OBJECT-TYPE
+    SYNTAX      OctetString
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the process name."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 21 1 }
+
+hwDiskType OBJECT-TYPE
+    SYNTAX      OctetString
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the disk type."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 22 1 }
+
+hwDiskSN OBJECT-TYPE
+    SYNTAX      OctetString
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the disk SN."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 22 2 }
+
+hwDiskUsage OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the disk usage rate."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 22 3 }
+
+hwDiskUsageThreshold OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the disk usage rate alarm threshold."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 22 4 }
+
+hwDiskSlot OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the disk slot."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 22 5 }
+
+hwLPUType OBJECT-TYPE
+    SYNTAX      OctetString
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the lpu type."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 23 1 }
+
+hwLPUSlot OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the lpu slot."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 23 2 }
+
+hwHardDiskIndex OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the index of a hard disk."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 24 1 1 }
+
+hwHardDiskSN OBJECT-TYPE
+    SYNTAX      OctetString
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the serial number of the hard disk with a specified index."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 24 1 2 }
+
+hwHardDiskType OBJECT-TYPE
+    SYNTAX      OctetString
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the type of the hard disk with a specified index."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 24 1 3 }
+
+hwHardDiskCapacity OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the capacity of the hard disk with a specified index."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 24 1 4 }
+
+hwHardDiskUsage OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the usage of the hard disk with a specified index."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 24 1 5 }
+
+hwHardDiskUsageThreshold OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the usage threshold of the hard disk with a specified index."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 24 1 6 }
+
+hwEntitySDCardUsage OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the usage of the SDCard with a specified index."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 24 1 7 }
+
+hwEntitySDCardUsageThreshold OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the usage threshold of the SDCard with a specified index."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 24 1 8 }
+
+hwLedConfigStatus OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "Whether Led Off config enabled."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 26 1 }
+
+hwLedTimeRangeName OBJECT-TYPE
+    SYNTAX      OctetString
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "Led off time range name, if Led Off Time Range config enabled."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 26 2 }
+
+hwUsbConfigStatus OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "Whether Usb Enable config enabled."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 27 1 }
+
+hwEntityForwardPerformanceUsage OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "The forward performance usage for this entity."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 28 1 1 }
+
+hwUploadDiagnosticsIndex OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the index of the upload diagnostics."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 29 1 1 }
+
+hwUploadDiagnosticsURL OBJECT-TYPE
+    SYNTAX      OctetString
+    MAX-ACCESS  read-write
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the URL of the upload diagnostics."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 29 1 2 }
+
+hwUploadDiagnosticsTransports OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  read-write
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the transports of the upload diagnostics."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 29 1 3 }
+
+hwUploadDiagnosticsDSCP OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  read-write
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the DSCP of the upload diagnostics."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 29 1 4 }
+
+hwUploadDiagnosticsTestFileSize OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  read-write
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the test file size of the upload diagnostics."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 29 1 5 }
+
+hwUploadDiagnosticsProgress OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the progress of the upload diagnostics."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 29 1 6 }
+
+hwUploadDiagnosticsSpeed OBJECT-TYPE
+    SYNTAX      OctetString
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the speed of the upload diagnostics."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 29 1 7 }
+
+hwUploadDiagnosticsStatus OBJECT-TYPE
+    SYNTAX      OctetString
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the status of the upload diagnostics."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 29 1 8 }
+
+hwUploadDiagnosticsRowStatus OBJECT-TYPE
+    SYNTAX      INTEGER
+    MAX-ACCESS  read-write
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the row status of the upload diagnostics."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 29 1 9 }
+
+hwEntityOpticalMode OBJECT-TYPE
+    SYNTAX      Enumeration
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the fiber type."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 3 1 1 }
+
+hwEntityOpticalType OBJECT-TYPE
+    SYNTAX      Enumeration
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the optical module type."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 3 1 10 }
+
+hwEntityOpticalTransBW OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the transmission bandwidth of an optical module."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 3 1 11 }
+
+hwEntityOpticalFiberType OBJECT-TYPE
+    SYNTAX      Enumeration
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the fiber type."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 3 1 12 }
+
+hwEntityOpticalRxLowThreshold OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the lower threshold of the receive power of an optical module. Unit: dBm. the value is expanded 100 times, so the real value should be reduced 100 times."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 3 1 13 }
+
+hwEntityOpticalRxHighThreshold OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the upper threshold of the receive power of an optical module. Unit: dBm. the value is expanded 100 times, so the real value should be reduced 100 times."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 3 1 14 }
+
+hwEntityOpticalTxLowThreshold OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the lower threshold of the transmit power of an optical module. Unit: dBm. the value is expanded 100 times, so the real value should be reduced 100 times."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 3 1 15 }
+
+hwEntityOpticalTxHighThreshold OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the upper threshold of the transmit power of an optical module. Unit: dBm. the value is expanded 100 times, so the real value should be reduced 100 times."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 3 1 16 }
+
+hwEntityOpticalPlug OBJECT-TYPE
+    SYNTAX      Enumeration
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object indicates whether an optical module is pluggable."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 3 1 17 }
+
+hwEntityOpticalDirectionType OBJECT-TYPE
+    SYNTAX      Enumeration
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the direction type of an optical module."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 3 1 18 }
+
+hwEntityOpticalUserEeprom OBJECT-TYPE
+    SYNTAX      OctetString
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the EEPROM of an optical module."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 3 1 19 }
+
+hwEntityOpticalWaveLength OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the wavelength of an optical module. Unit: nm"
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 3 1 2 }
+
+hwEntityOpticalRxLowWarnThreshold OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the lower warning threshold for the optical power of an optical module in the receive direction."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 3 1 20 }
+
+hwEntityOpticalRxHighWarnThreshold OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the upper warning threshold for the optical power of an optical module in the receive direction."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 3 1 21 }
+
+hwEntityOpticalTxLowWarnThreshold OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the lower warning threshold for the optical power of an optical module in the transmit direction."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 3 1 22 }
+
+hwEntityOpticalTxHighWarnThreshold OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the upper warning threshold for the optical power of an optical module in the transmit direction."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 3 1 23 }
+
+hwEntityOpticalVenderName OBJECT-TYPE
+    SYNTAX      OctetString
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the vendor name of an optical module."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 3 1 24 }
+
+hwEntityOpticalVenderPn OBJECT-TYPE
+    SYNTAX      OctetString
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the PN of an optical module."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 3 1 25 }
+
+hwEntityOpticalAuthenticationStatus OBJECT-TYPE
+    SYNTAX      Enumeration
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "The authentication status of optical module."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 3 1 26 }
+
+hwEntityOpticalTunableType OBJECT-TYPE
+    SYNTAX      Enumeration
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "The tunable type of the optical module."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 3 1 27 }
+
+hwEntityOpticalWaveLengthDecimal OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the wavelength of an optical module."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 3 1 28 }
+
+hwEntityOpticalTunableModuleChannel OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "The current channel of tunable optical module."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 3 1 29 }
+
+hwEntityOpticalTransDistance OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the transmission distance of an optical module."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 3 1 3 }
+
+hwEntityOpticalWaveBand OBJECT-TYPE
+    SYNTAX      Enumeration
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "The wave band of the optical module."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 3 1 30 }
+
+hwEntityOpticalLaneBiasCurrent OBJECT-TYPE
+    SYNTAX      OctetString
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "The bias current of the QSFP or CFP optical module. Unit: mA.(e.g.,
+37.88,39.15,39.84,37.82)"
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 3 1 31 }
+
+hwEntityOpticalLaneRxPower OBJECT-TYPE
+    SYNTAX      OctetString
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the receive power of a QSFP or CFP optical module. Unit: dBm"
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 3 1 32 }
+
+hwEntityOpticalLaneTxPower OBJECT-TYPE
+    SYNTAX      OctetString
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the transmission power of a QSFP or CFP optical module. Unit: dBm"
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 3 1 33 }
+
+hwEntityOpticalVendorOUI OBJECT-TYPE
+    SYNTAX      OctetString
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "Vendor ID of the optical module assigned by IEEE."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 3 1 34 }
+
+hwEntityOpticalVendorRev OBJECT-TYPE
+    SYNTAX      OctetString
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "The Vender Version of the optical module."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 3 1 35 }
+
+hwEntityOpticalGponSN OBJECT-TYPE
+    SYNTAX      OctetString
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "The SN of the optical module provided by the vendor."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 3 1 36 }
+
+hwEntityTransceiverType OBJECT-TYPE
+    SYNTAX      OctetString
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "The transceiver type of the optical module provided by the vendor."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 3 1 37 }
+
+hwEntityOpticalMaxRxPower OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "The maximum receive power of the optical module. Unit: dBm. the value is expanded 100 times,so the real value should be reduced 100 times."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 3 1 38 }
+
+hwEntityOpticalMinRxPower OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "The minimum receive power of the optical module. Unit: dBm. the value is expanded 100 times,so the real value should be reduced 100 times."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 3 1 39 }
+
+hwEntityOpticalVendorSn OBJECT-TYPE
+    SYNTAX      INTEGER
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the vendor information of an optical module."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 3 1 4 }
+
+hwEntityOpticalMaxTxPower OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "The maximum transmit power of the optical module. Unit: dBm. the value is expanded 100 times,so the real value should be reduced 100 times."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 3 1 40 }
+
+hwEntityOpticalMinTxPower OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "The minimum transmit power of the optical module. Unit: dBm. the value is expanded 100 times,so the real value should be reduced 100 times."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 3 1 41 }
+
+hwEntityOpticalTransType OBJECT-TYPE
+    SYNTAX      OctetString
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "The Transceiver Type of the optical module."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 3 1 42 }
+
+hwEntityOpticalConnectType OBJECT-TYPE
+    SYNTAX      OctetString
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "The Connector Type of the optical module."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 3 1 43 }
+
+hwEntityOpticalOrderingName OBJECT-TYPE
+    SYNTAX      OctetString
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "The Ordering Name of the optical module."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 3 1 44 }
+
+hwEntityOpticalTransferDistance OBJECT-TYPE
+    SYNTAX      OctetString
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "The Transfer Distance of the optical module."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 3 1 45 }
+
+hwEntityOpticalBandWidth OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "Maximum bandwidth for an optical module, in Mbps. The value is 0 if the optical module is not present."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 3 1 46 }
+
+hwEntityOpticalWaveLengthExact OBJECT-TYPE
+    SYNTAX      OctetString
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "The wave length of the optical module. Unit: nm."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 3 1 47 }
+
+hwEntityOpticalModel OBJECT-TYPE
+    SYNTAX      INTEGER
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "The model of the optical module."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 3 1 48 }
+
+hwEntityOpticalManufacturedDate OBJECT-TYPE
+    SYNTAX      INTEGER
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "The Manufactured Date of the optical module."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 3 1 49 }
+
+hwEntityOpticalTemperature OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the temperature of an optical module. 2147483647 is an invalid value. Unit: C."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 3 1 5 }
+
+hwEntityOpticalTempLowThreshold OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "The temperature low threshold of the optical module. Unit: C."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 3 1 50 }
+
+hwEntityOpticalTempHighThreshold OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "The temperature high threshold of the optical module. Unit: C."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 3 1 51 }
+
+hwEntityOpticalVoltLowThreshold OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "The voltage low threshold of the optical module. Unit: mV."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 3 1 52 }
+
+hwEntityOpticalVoltHighThreshold OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "The voltage high threshold of the optical module. Unit: mV."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 3 1 53 }
+
+hwEntityOpticalBiasLowThreshold OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "The Bias Low Threshold of the optical module. Unit: uA."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 3 1 54 }
+
+hwEntityOpticalBiasHighThreshold OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "The Bias High Threshold of the optical module. Unit: uA."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 3 1 55 }
+
+hwEntityOpticalHuaweiCertified OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "The Huawei Certification of the optical module. 0 represents yes and 1 represents no.
+After disabling non-Huawei-certified alarm. This node can not get information about non-Huawei-certified optical module."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 3 1 56 }
+
+hwEntityOpticalSupportDDM OBJECT-TYPE
+    SYNTAX      Enumeration
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "Judge Optical Support DDM or not."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 3 1 57 }
+
+hwEntityOpticalPortName OBJECT-TYPE
+    SYNTAX      INTEGER
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "The ShowName of the port."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 3 1 58 }
+
+hwEntityOpticalDifferentialGroupDelay OBJECT-TYPE
+    SYNTAX      Unsigned32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "Indicates the optical module differential group delay. Unit: ps."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 3 1 59 }
+
+hwEntityOpticalVoltage OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the voltage of an optical module. 2147483647 is an invalid value. Unit: mV."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 3 1 6 }
+
+hwEntityOpticalChromaticDispersion OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "Indicates the optical module chromatic dispersion. Unit: ps/nm."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 3 1 60 }
+
+hwEntityOpticalBiasCurrent OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the bias current of an optical module. 2147483647 is an invalid value. Unit: uA"
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 3 1 7 }
+
+hwEntityOpticalRxPower OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the receive optical power of an optical module. Unit: dBm. the value is expanded 100 times, so the real value should be reduced 100 times."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 3 1 8 }
+
+hwEntityOpticalTxPower OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the transmit optical power of an optical module. Unit: dBm. the value is expanded 100 times, so the real value should be reduced 100 times."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 3 1 9 }
+
+hwDownloadDiagnosticsIndex OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the index of the download diagnostics."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 30 1 1 }
+
+hwDownloadDiagnosticsURL OBJECT-TYPE
+    SYNTAX      OctetString
+    MAX-ACCESS  read-write
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the URL of the download diagnostics."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 30 1 2 }
+
+hwDownloadDiagnosticsTransports OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  read-write
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the transports of the download diagnostics."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 30 1 3 }
+
+hwDownloadDiagnosticsDSCP OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  read-write
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the DSCP of the download diagnostics."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 30 1 4 }
+
+hwDownloadDiagnosticsProgress OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the progress of the download diagnostics."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 30 1 5 }
+
+hwDownloadDiagnosticsSpeed OBJECT-TYPE
+    SYNTAX      OctetString
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the speed of the download diagnostics."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 30 1 6 }
+
+hwDownloadDiagnosticsStatus OBJECT-TYPE
+    SYNTAX      OctetString
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the status of the download diagnostics."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 30 1 7 }
+
+hwDownloadDiagnosticsRowStatus OBJECT-TYPE
+    SYNTAX      INTEGER
+    MAX-ACCESS  read-write
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the row status of the download diagnostics."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 30 1 8 }
+
+hwIfBandRateIndex OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the index of the interface."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 31 1 1 }
+
+hwIfBandRateName OBJECT-TYPE
+    SYNTAX      OctetString
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the name of the interface."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 31 1 2 }
+
+hwIfBandRateInput OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the input bandwidth utilization of the interface."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 31 1 3 }
+
+hwIfBandRateOutput OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the output bandwidth utilization of the interface."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 31 1 4 }
+
+hwEntityDacsIndex OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the index of a DACS."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 32 1 1 }
+
+hwEntityDacsDesc OBJECT-TYPE
+    SYNTAX      OctetString
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the description of the DACS."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 32 1 10 }
+
+hwEntityDacsPresent OBJECT-TYPE
+    SYNTAX      Enumeration
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the present information of the DACS."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 32 1 2 }
+
+hwEntityDacsStatus OBJECT-TYPE
+    SYNTAX      Enumeration
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the status of the DACS."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 32 1 3 }
+
+hwEntityDacsInSource OBJECT-TYPE
+    SYNTAX      OctetString
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the input source of the DACS."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 32 1 4 }
+
+hwEntityDacsInVolA OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the input voltage from input source A. Unit: mV"
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 32 1 5 }
+
+hwEntityDacsInVolB OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the input voltage from input source B. Unit: mV"
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 32 1 6 }
+
+hwEntityDacsOutVol OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the output voltage of the DACS. Unit: mV"
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 32 1 7 }
+
+hwEntityDacsOutCur OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the output current of the DACS. Unit: mA"
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 32 1 8 }
+
+hwEntityDacsOutStatus OBJECT-TYPE
+    SYNTAX      Enumeration
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the output status of the DACS."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 32 1 9 }
+
+hwBoardDcOutputLineIndex OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the index of device dc-output line.
+0 indicates 12V-line1 dc-output line.
+1 indicates 12V-line2 dc-output line.
+2 indicates 24V dc-output line."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 33 1 1 }
+
+hwBoardDcOutputState OBJECT-TYPE
+    SYNTAX      INTEGER
+    MAX-ACCESS  read-write
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the device dc-output line state."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 33 1 2 }
+
+hwBoardDcOutputTypeIndex OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the index of device dc-output information.
+0 indicates 12V dc-output line information.
+1 indicates 24V dc-output line information."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 34 1 1 }
+
+hwBoardDcOutputVoltage OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the device dc-output voltage. Unit: V"
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 34 1 2 }
+
+hwBoardDcOutputCurrent OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the device dc-output current. Unit: mA"
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 34 1 3 }
+
+hwBoardDcOutputPower OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the device dc-output power. Unit: mW"
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 34 1 4 }
+
+hwBoardAcOutputLineIndex OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "Description."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 35 1 1 }
+
+hwBoardAcOutputState OBJECT-TYPE
+    SYNTAX      OctetString
+    MAX-ACCESS  read-write
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the device ac-output line state.
+1 indicates ac-output 24V enable.
+2 indicates ac-output 24V disable."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 35 1 2 }
+
+hwAlarmResendInterval OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  read-write
+    STATUS      current
+    DESCRIPTION
+        "set alarm resend interval,the defult is 10 minutes."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 36 1 }
+
+hwEntityApid OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "Ap-id of the virtual-access AP."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 37 1 1 }
+
+hwEntityApIndex OBJECT-TYPE
+    SYNTAX      INTEGER
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "The index for this entry."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 37 1 2 }
+
+hwEntityApName OBJECT-TYPE
+    SYNTAX      INTEGER
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "The textual name of the physical entity."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 37 1 3 }
+
+hwEntityApMemUsage OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the memory usage of an entity, that is, the percentage of the memory that has been used."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 37 1 4 }
+
+hwEntityApCpuUsage OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the CPU usage of an entity. Generally, the overall CPU usage of the entity is calculated, without considering the number of CPUs on the entity."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 37 1 5 }
+
+hwIntegratedPowerSoftwareVersion OBJECT-TYPE
+    SYNTAX      OctetString
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the software version."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 38 1 1 }
+
+hwIntegratedPowerHardwareVersion OBJECT-TYPE
+    SYNTAX      OctetString
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the hardware version."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 38 1 2 }
+
+hwIntegratedPowerSoftwareVersionASCII OBJECT-TYPE
+    SYNTAX      OctetString
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the software version (ASCII)."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 38 1 3 }
+
+hwIntegratedPowerEnergyWorkmode OBJECT-TYPE
+    SYNTAX      Enumeration
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the power supply mode."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 39 1 1 }
+
+hwIntegratedPowerBusbarVolt OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the busbar voltage, in mV."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 39 1 10 }
+
+hwIntegratedPowerACVolt OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the AC voltage, in mV."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 39 1 11 }
+
+hwIntegratedPowerSolarInputVolt OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the input voltage of solar power, in mV."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 39 1 12 }
+
+hwIntegratedPowerSolarInputCurrent OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the input current of solar power, in mA."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 39 1 13 }
+
+hwIntegratedPower53VDCOutVolt OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the 53 V DC output voltage, in mV."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 39 1 14 }
+
+hwIntegratedPowerTotalLoadPower OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the total load power, in mW."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 39 1 15 }
+
+hwIntegratedPowerDCOverVoltThreshold OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  read-write
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the DC overvoltage alarm threshold, in mV."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 39 1 16 }
+
+hwIntegratedPowerDCUnderVoltThreshold OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  read-write
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the DC undervoltage alarm threshold, in mV."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 39 1 17 }
+
+hwIntegratedPowerLowLoadVoltPowerOffThreshold OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  read-write
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the voltage lower than which the device is powered off, in mV."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 39 1 18 }
+
+hwIntegratedPower53VDCOutVoltLowerThreshold OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  read-write
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the lower voltage threshold for the 53 V DC output, in mV."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 39 1 19 }
+
+hwIntegratedPowerTotalInputPower OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the total input power, in mW."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 39 1 2 }
+
+hwIntegratedPowerACCurrent OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the AC current, in mA."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 39 1 20 }
+
+hwIntegratedPower53VDCOutCurrent OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the lower current threshold for the 53 V DC output, in mA."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 39 1 21 }
+
+hwIntegratedPwrChip1UpgrageStatus OBJECT-TYPE
+    SYNTAX      Enumeration
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the power chip 1 upgrage status."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 39 1 22 }
+
+hwIntegratedPwrChip2UpgrageStatus OBJECT-TYPE
+    SYNTAX      Enumeration
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the power chip 2 upgrage status."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 39 1 23 }
+
+hwIntegratedPwrChip3UpgrageStatus OBJECT-TYPE
+    SYNTAX      Enumeration
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the power chip 3 upgrage status."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 39 1 24 }
+
+hwIntegratedPwrChip4UpgrageStatus OBJECT-TYPE
+    SYNTAX      Enumeration
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the power chip 4 upgrage status."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 39 1 25 }
+
+hwIntegratedPowerResetOutput OBJECT-TYPE
+    SYNTAX      Enumeration
+    MAX-ACCESS  read-write
+    STATUS      current
+    DESCRIPTION
+        "This object is used to reset power output."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 39 1 26 }
+
+hwIntegratedPower12VDCOutVoltStatus OBJECT-TYPE
+    SYNTAX      Enumeration
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the 12 V DC output voltage status."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 39 1 3 }
+
+hwIntegratedPower24VACOutVolt OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the 24 V AC output voltage, in mV."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 39 1 4 }
+
+hwIntegratedPower24VACOutCurrent OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the 24 V AC output current, in mA."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 39 1 5 }
+
+hwIntegratedPower53VDCOutVoltStatus OBJECT-TYPE
+    SYNTAX      Enumeration
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the 53 V DC output voltage status."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 39 1 6 }
+
+hwIntegratedPowerACInputVoltStatus OBJECT-TYPE
+    SYNTAX      Enumeration
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the AC input voltage status."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 39 1 7 }
+
+hwIntegratedPowerRebootPower OBJECT-TYPE
+    SYNTAX      Enumeration
+    MAX-ACCESS  read-write
+    STATUS      current
+    DESCRIPTION
+        "This object is used to reset a switch remotely."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 39 1 8 }
+
+hwIntegratedPowerCurrentMode OBJECT-TYPE
+    SYNTAX      Enumeration
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the current power supply mode."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 39 1 9 }
+
+hwMonitorInputIndex OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "Monitor port index.
+This is a number of input line,ranging from 1 to 4."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 4 1 1 }
+
+hwMonitorInputName OBJECT-TYPE
+    SYNTAX      INTEGER
+    MAX-ACCESS  read-write
+    STATUS      current
+    DESCRIPTION
+        "Monitor line name."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 4 1 2 }
+
+hwMonitorInputState OBJECT-TYPE
+    SYNTAX      HWLevelState
+    MAX-ACCESS  read-write
+    STATUS      current
+    DESCRIPTION
+        "Monitor line status.
+The value is high or low."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 4 1 3 }
+
+hwMonitorInputStateEnable OBJECT-TYPE
+    SYNTAX      INTEGER
+    MAX-ACCESS  read-write
+    STATUS      current
+    DESCRIPTION
+        "Enable monitor line."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 4 1 4 }
+
+hwMonitorInputRowStatus OBJECT-TYPE
+    SYNTAX      INTEGER
+    MAX-ACCESS  read-write
+    STATUS      current
+    DESCRIPTION
+        "Status of monitor input row."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 4 1 5 }
+
+hwBatteryGroupBatteryStatus OBJECT-TYPE
+    SYNTAX      Enumeration
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the battery status."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 40 1 1 }
+
+hwBatteryGroupFloatChargingVolt OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  read-write
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the float charging voltage, in mV."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 40 1 10 }
+
+hwBatteryGroupEqualizedChargingVolt OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  read-write
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the equalized charging voltage, in mV."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 40 1 11 }
+
+hwBatteryGroupInstallTimeYear OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  read-write
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the battery install time year."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 40 1 12 }
+
+hwBatteryGroupInstallTimeMonth OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  read-write
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the battery install time month."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 40 1 13 }
+
+hwBatteryGroupInstallTimeDay OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  read-write
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the battery install time day."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 40 1 14 }
+
+hwBatteryGroupBatteryVolt OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the battery voltage, in mV."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 40 1 2 }
+
+hwBatteryGroupBatteryCurrent OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the battery current, in mA."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 40 1 3 }
+
+hwBatteryGroupTotalBatteryCapacity OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the total battery capacity, in Ah."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 40 1 4 }
+
+hwBatteryGroupAvailableBatteryCapacity OBJECT-TYPE
+    SYNTAX      OctetString
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the available battery capacity, in percentage."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 40 1 5 }
+
+hwBatteryGroupBatteryTemperature OBJECT-TYPE
+    SYNTAX      OctetString
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the battery temperature, in degC."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 40 1 6 }
+
+hwBatteryGroupBatteryRunTime OBJECT-TYPE
+    SYNTAX      OctetString
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the battery run time, in hours."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 40 1 7 }
+
+hwBatteryGroupNumberOfConnectedESMU OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the number of connected ESMUs."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 40 1 8 }
+
+hwBatteryGroupChargeCurrentLimitCoefficient OBJECT-TYPE
+    SYNTAX      OctetString
+    MAX-ACCESS  read-write
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the charge current limit coefficient, in C10."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 40 1 9 }
+
+hwLithiumBatteryIndex OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the battery index."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 41 1 1 }
+
+hwLithiumBatteryVersion OBJECT-TYPE
+    SYNTAX      OctetString
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the battery version."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 41 1 10 }
+
+hwLithiumBatteryVolt OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the battery voltage, in mV."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 41 1 2 }
+
+hwLithiumBatteryCurrent OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the battery current, in mA."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 41 1 3 }
+
+hwLithiumBatteryDeviceAddr OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the device address."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 41 1 4 }
+
+hwLithiumBatteryStatus OBJECT-TYPE
+    SYNTAX      Enumeration
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the battery status."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 41 1 5 }
+
+hwLithiumBatterySOH OBJECT-TYPE
+    SYNTAX      OctetString
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the battery SOH, in percentage."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 41 1 6 }
+
+hwLithiumBatteryCapacity OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the battery capacity, in Ah."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 41 1 7 }
+
+hwLithiumBatteryCellPackageVolt OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the electrochemical cell package voltage, in mV."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 41 1 8 }
+
+hwLithiumBatteryMaxLimitCoefficient OBJECT-TYPE
+    SYNTAX      OctetString
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the maximum allowable current limiting coefficient, in C10."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 41 1 9 }
+
+hwBatteryChipVolt OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the battery chip voltage, in mv."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 42 1 1 }
+
+hwBatteryChipTemp OBJECT-TYPE
+    SYNTAX      OctetString
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the battery chip temperature, in degC."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 42 1 2 }
+
+hwMonitorOutputIndex OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "Monitor output view index.
+Through this index ,you can turn into the output view."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 5 1 1 }
+
+hwMonitorOutputRuleIndex OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "Monitor output rule index.
+This is used to set the rules about all of the input line."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 5 1 2 }
+
+hwMonitorOutputMask OBJECT-TYPE
+    SYNTAX      INTEGER
+    MAX-ACCESS  read-write
+    STATUS      current
+    DESCRIPTION
+        "Monitor output mask .
+This is used to matching the level of monitor input line."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 5 1 3 }
+
+hwMonitorOutputKey OBJECT-TYPE
+    SYNTAX      INTEGER
+    MAX-ACCESS  read-write
+    STATUS      current
+    DESCRIPTION
+        "Normal level value of this output line."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 5 1 4 }
+
+hwMonitorOutputRowStatus OBJECT-TYPE
+    SYNTAX      INTEGER
+    MAX-ACCESS  read-write
+    STATUS      current
+    DESCRIPTION
+        "Status of monitor input row"
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 5 1 5 }
+
+hwEntPowerUsedInfoBoardName OBJECT-TYPE
+    SYNTAX      OctetString
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "Board name."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 6 1 1 }
+
+hwEntPowerUsedInfoBoardType OBJECT-TYPE
+    SYNTAX      OctetString
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "Board type."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 6 1 2 }
+
+hwEntPowerUsedInfoBoardSlot OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "Board's slot number."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 6 1 3 }
+
+hwEntPowerUsedInfoPower OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "Used power of board."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 6 1 4 }
+
+hwVirtualCableTestIfIndex OBJECT-TYPE
+    SYNTAX      INTEGER
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "IfIndex of port that you want to test cable."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 7 1 1 }
+
+hwVirtualCableTestPairALength OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "Pair A Length.
+This indicate the length of cable."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 7 1 10 }
+
+hwVirtualCableTestPairBLength OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "Pair B Length.
+This indicate the length of cable."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 7 1 11 }
+
+hwVirtualCableTestPairCLength OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "Pair C Length.
+This indicate the length of cable."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 7 1 12 }
+
+hwVirtualCableTestPairDLength OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "Pair D Length.
+This indicate the length of cable."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 7 1 13 }
+
+hwVirtualCableTestPairStatus OBJECT-TYPE
+    SYNTAX      Enumeration
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "Pair status.
+This indicate the status of cable."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 7 1 2 }
+
+hwVirtualCableTestPairLength OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "Pair Length.
+This indicate the length of cable."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 7 1 3 }
+
+hwVirtualCableTestOperation OBJECT-TYPE
+    SYNTAX      Enumeration
+    MAX-ACCESS  read-write
+    STATUS      current
+    DESCRIPTION
+        "VirtualCableTestOperation.
+This Operation of VirtualCableTest."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 7 1 4 }
+
+hwVirtualCableTestLastTime OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "The last test time for the entity. The mean of last time is
+when the entity is tested, and the value of the object
+will add one per seconds until now."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 7 1 5 }
+
+hwVirtualCableTestPairAStatus OBJECT-TYPE
+    SYNTAX      Enumeration
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "Pair A status.
+This indicate the status of cable."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 7 1 6 }
+
+hwVirtualCableTestPairBStatus OBJECT-TYPE
+    SYNTAX      Enumeration
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "Pair B status.
+This indicate the status of cable."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 7 1 7 }
+
+hwVirtualCableTestPairCStatus OBJECT-TYPE
+    SYNTAX      Enumeration
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "Pair C status.
+This indicate the status of cable."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 7 1 8 }
+
+hwVirtualCableTestPairDStatus OBJECT-TYPE
+    SYNTAX      Enumeration
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "Pair D status.
+This indicate the status of cable."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 7 1 9 }
+
+hwEntityTempSlotId OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the entity slot."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 8 1 1 }
+
+hwEntityTempI2CId OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the I2C of the entity temperature."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 8 1 2 }
+
+hwEntityTempAddr OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the address of the entity temperature."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 8 1 3 }
+
+hwEntityTempChannel OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the channel of the entity temperature."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 8 1 4 }
+
+hwEntityTempStatus OBJECT-TYPE
+    SYNTAX      Enumeration
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the status of the entity temperature."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 8 1 5 }
+
+hwEntityTempValue OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the current value of the entity temperature."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 8 1 6 }
+
+hwEntityTempMinorAlmThreshold OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  read-write
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the minor alarm threshold of the entity temperature."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 8 1 7 }
+
+hwEntityTempMajorAlmThreshold OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  read-write
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the major alarm threshold of the entity temperature."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 8 1 8 }
+
+hwEntityTempFatalAlmThreshold OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  read-write
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the fatal alarm threshold of the entity temperature."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 8 1 9 }
+
+hwEntityVolSlot OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the slot ID of an entity."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 9 1 1 }
+
+hwEntityVolLowAlmFatal OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  read-write
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the entity low-voltage fatal alarm threshold."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 9 1 10 }
+
+hwEntityVolHighAlmMajor OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  read-write
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the entity high-voltage alarm threshold."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 9 1 11 }
+
+hwEntityVolHighAlmFatal OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  read-write
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the entity high-voltage fatal alarm threshold."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 9 1 12 }
+
+hwEntityVolI2CId OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the I2C of the entity voltage."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 9 1 2 }
+
+hwEntityVolAddr OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the address of the entity voltage."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 9 1 3 }
+
+hwEntityVolChannel OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the channel of the entity voltage."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 9 1 4 }
+
+hwEntityVolStatus OBJECT-TYPE
+    SYNTAX      Enumeration
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the status of the entity voltage."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 9 1 5 }
+
+hwEntityVolRequired OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the required value of the entity voltage."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 9 1 6 }
+
+hwEntityVolCurValue OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the current value of the entity voltage."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 9 1 7 }
+
+hwEntityVolRatio OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the voltage split ratio of the entity voltage."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 9 1 8 }
+
+hwEntityVolLowAlmMajor OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  read-write
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the entity low-voltage alarm threshold."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 1 9 1 9 }
+
+hwEntityPhysicalSpecRack OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "The rack coefficient used for calculating the index of the physical entity."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 2 1 }
+
+hwEntityPhysicalSpecPowermodule OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "The power module coefficient used for calculating the index of the physical entity."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 2 10 }
+
+hwEntityPhysicalSpecBattery OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "The battery coefficient used for calculating the index of the physical entity."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 2 11 }
+
+hwEntityPhysicalSpecFrame OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "The frame coefficient used for calculating the index of the physical entity."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 2 2 }
+
+hwEntityPhysicalSpecSlot OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "The slot coefficient used for calculating the index of the physical entity."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 2 3 }
+
+hwEntityPhysicalSpecBoard OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "The board coefficient used for calculating the index of the physical entity."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 2 4 }
+
+hwEntityPhysicalSpecSubSlot OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "The sub slot coefficient used for calculating the index of the physical entity."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 2 5 }
+
+hwEntityPhysicalSpecSubBoard OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "The sub board coefficient used for calculating the index of the physical entity."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 2 6 }
+
+hwEntityPhysicalSpecPort OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "The port coefficient used for calculating the index of the physical entity."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 2 7 }
+
+hwEntityPhysicalSpecEmu OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "The EMU(Environment monitoring unit) coefficient used for calculating the index of the physical entity."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 2 8 }
+
+hwEntityPhysicalSpecPowerframe OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "The power frame coefficient used for calculating the index of the physical entity."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 1 2 9 }
+
+hwEntityExtTrapBaseSoftwareVersion OBJECT-TYPE
+    SYNTAX      OctetString
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "System bassic software version."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 2 1 1 }
+
+hwEntityExtTrapErrorPacketStatistics OBJECT-TYPE
+    SYNTAX      OctetString
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "The statistics of CRC."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 2 1 10 }
+
+hwEntityExtTrapErrorPacketThreshold OBJECT-TYPE
+    SYNTAX      OctetString
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "The threshold of CRC."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 2 1 11 }
+
+hwEntityExtTrapHigStateChangeTimes OBJECT-TYPE
+    SYNTAX      OctetString
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "The state change times of HIG port."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 2 1 12 }
+
+hwEntityExtTrapMonitorInterval OBJECT-TYPE
+    SYNTAX      OctetString
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "The monitor interval."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 2 1 13 }
+
+hwEntityExtTrapBoardDropRuntPktStatistics OBJECT-TYPE
+    SYNTAX      INTEGER
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "The statistic of dropped runt packets on the board."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 2 1 14 }
+
+hwEntityExtTrapBoardDropRuntPktTimeInterval OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "The time interval."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 2 1 15 }
+
+hwEntityExtTrapDiscardNumber OBJECT-TYPE
+    SYNTAX      OctetString
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "The statistics of drop."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 2 1 16 }
+
+hwEntityExtTrapThreshold OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "The threshold of drop."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 2 1 17 }
+
+hwEntityExtTrapInterval OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "The time interval."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 2 1 18 }
+
+hwEntityExtTrapBoardSoftwareVersion OBJECT-TYPE
+    SYNTAX      OctetString
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "Board software version compare to basic software version."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 2 1 2 }
+
+hwPhysicalName OBJECT-TYPE
+    SYNTAX      OctetString
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "The textual name of the physical entity. The value of this
+object should be the name of the component as assigned by
+the local device and should be suitable for use in commands
+entered at the device's `console'. This might be a text
+name, such as `console' or a simple component number (e.g.,
+port or module number), such as `1', depending on the
+physical component naming syntax of the device.
+If there is no local name, or this object is otherwise not
+applicable, then this object contains a zero-length string.
+Note that the value of entPhysicalName for two physical
+entities will be the same in the event that the console
+interface does not distinguish between them, e.g., slot-1
+and the card in slot-1."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 2 1 3 }
+
+hwEntityExtTrapBoardSlotID OBJECT-TYPE
+    SYNTAX      OctetString
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "Slot ID of board."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 2 1 4 }
+
+hwEntityExtTrapUnitID OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "ID of chip."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 2 1 5 }
+
+hwEntityExtTrapHigPortID OBJECT-TYPE
+    SYNTAX      OctetString
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "HIG port ID of chip."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 2 1 6 }
+
+hwEntityExtTrapChannelCurUsage OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "The currently usage of channel."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 2 1 7 }
+
+hwEntityExtTrapChannelThreshold OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "The usage threshold of channel."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 2 1 8 }
+
+hwEntityExtTrapPeerBoardSlotID OBJECT-TYPE
+    SYNTAX      OctetString
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "Slot ID of peer board."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 2 1 9 }
+
+hwDevicePowerInfoTotalPower OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the total power of the device."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 3 1 }
+
+hwDevicePowerInfoUsedPower OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the current power of the device."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 3 2 }
+
+hwHardwareCapaSequenceNo OBJECT-TYPE
+    SYNTAX      INTEGER
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the sequence number of the 'hardware capability file'.The value consists of the file version number and CRC code."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 5 1 1 }
+
+hwAlarmPnPSequenceNo OBJECT-TYPE
+    SYNTAX      INTEGER
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the sequence number of the 'alarm capability file'.The value consists of the file version number and CRC code."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 5 1 2 }
+
+hwFileGeneIndex OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "The value of this object identifies the operation index, which can be specified by the user.
+The value ranges from 1 to 2147483647."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 5 3 1 1 }
+
+hwFileGeneOperState OBJECT-TYPE
+    SYNTAX      Enumeration
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "The value of this object identifies the operation status.
+opInProgress(1): The operation is ongoing.
+opSuccess(2): The operation succeeds.
+opGetFileError(3): Obtaining the file fails.
+opInvalidDestName(4): The specified storage path is invalid.
+opNoFlashSpace(5): The space in the flash memory is insufficient.
+opWriteFileError(6): Writing the file fails.
+opDestoryError(7): Deleting the file fails."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 5 3 1 2 }
+
+hwFileGeneResourceType OBJECT-TYPE
+    SYNTAX      Enumeration
+    MAX-ACCESS  read-write
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the type of the file to be obtained.
+pnpcard(1): board description file
+pnpsubcard(2): subcard description file
+pnphardcapability(3): hardware capability file
+pnpPreDisposeCapability(4): predispose capability file
+pnpframe(5):frame description file
+pnpdevtype(6):device description file
+pnpalarm(7):alarm description file"
+    ::= { 1 3 6 1 4 1 2011 5 25 31 5 3 1 3 }
+
+hwFileGeneResourceID OBJECT-TYPE
+    SYNTAX      OctetString
+    MAX-ACCESS  read-write
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the ID of the 'hardware capability file' to be obtained."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 5 3 1 4 }
+
+hwFileGeneDestinationFile OBJECT-TYPE
+    SYNTAX      OctetString
+    MAX-ACCESS  read-write
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the target path storing the file, which does not need to be specified."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 5 3 1 5 }
+
+hwFileGeneRowStatus OBJECT-TYPE
+    SYNTAX      INTEGER
+    MAX-ACCESS  read-write
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the row status.
+active(1)
+notInService(2)
+notReady(3)
+createAndGo(4)
+createAndWait(5)
+destroy(6)"
+    ::= { 1 3 6 1 4 1 2011 5 25 31 5 3 1 6 }
+
+hwEntitySystemNetID OBJECT-TYPE
+    SYNTAX      OctetString
+    MAX-ACCESS  read-write
+    STATUS      current
+    DESCRIPTION
+        "Network element ID."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 6 1 }
+
+hwEntitySystemNEId OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  read-write
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the system NE ID."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 6 10 }
+
+hwEntitySystemServiceType OBJECT-TYPE
+    SYNTAX      INTEGER
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the system service type."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 6 11 }
+
+hwEntitySoftwareName OBJECT-TYPE
+    SYNTAX      INTEGER
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "System software name."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 6 2 }
+
+hwEntitySoftwareVersion OBJECT-TYPE
+    SYNTAX      INTEGER
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "Software version number."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 6 3 }
+
+hwEntitySoftwareVendor OBJECT-TYPE
+    SYNTAX      INTEGER
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "Software vendor."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 6 4 }
+
+hwEntitySystemModel OBJECT-TYPE
+    SYNTAX      INTEGER
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "Device model."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 6 5 }
+
+hwEntitySystemTime OBJECT-TYPE
+    SYNTAX      INTEGER
+    MAX-ACCESS  read-write
+    STATUS      current
+    DESCRIPTION
+        "System time displayed on the device."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 6 6 }
+
+hwEntitySystemMacAddress OBJECT-TYPE
+    SYNTAX      INTEGER
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "MAC address of the device."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 6 7 }
+
+hwEntitySystemReset OBJECT-TYPE
+    SYNTAX      Enumeration
+    MAX-ACCESS  read-write
+    STATUS      current
+    DESCRIPTION
+        "System reset."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 6 8 }
+
+hwEntitySystemHealthInterval OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  read-write
+    STATUS      current
+    DESCRIPTION
+        "Statistical interval for average CPU and memory usage, in seconds (By default, the value is 300) ."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 6 9 }
+
+hwEntityHeartbeatOnOff OBJECT-TYPE
+    SYNTAX      Enumeration
+    MAX-ACCESS  read-write
+    STATUS      current
+    DESCRIPTION
+        "Whether Heartbeat sending periodically enabled."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 7 1 1 }
+
+hwEntityHeartbeatPeriod OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  read-write
+    STATUS      current
+    DESCRIPTION
+        "Heartbeat sending period detected in the trap reporting channel, with the minimum value of 60 seconds."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 7 1 2 }
+
+hwPreDisposeSequenceNo OBJECT-TYPE
+    SYNTAX      INTEGER
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the sequence number of the 'predispose capability file'.The value consists of the file version number and CRC code."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 8 1 1 }
+
+hwDisposeSlot OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  read-write
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the slot ID of predisposed board."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 8 3 1 1 }
+
+hwDisposeCardId OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  read-write
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the card ID of predisposed subcard."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 8 3 1 2 }
+
+hwDisposeSbom OBJECT-TYPE
+    SYNTAX      OctetString
+    MAX-ACCESS  read-write
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the sbom information of predisposed board or subcard."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 8 3 1 3 }
+
+hwDisposeRowStatus OBJECT-TYPE
+    SYNTAX      INTEGER
+    MAX-ACCESS  read-write
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the row status when config predispose.
+active(1)
+notInService(2)
+notReady(3)
+createAndGo(4)
+createAndWait(5)
+destroy(6)"
+    ::= { 1 3 6 1 4 1 2011 5 25 31 8 3 1 4 }
+
+hwDisposeOperState OBJECT-TYPE
+    SYNTAX      Enumeration
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "The value of this object identifies the operation status.
+opSuccess(1): The operation succeeds.
+opInProgress(2): The operation is ongoing.
+opDevNotSupportPredispose(3): The device does not support predispose.
+opCardNotSupportPredispose(4): The type of card or subcard is not supported to be predisposed on this device.
+opAlreadyPredispose(5): The slot or subslot has already been predisposed.
+opCardConflict(6): The slot or subslot to be predisposed conflict with others.
+opDevOperationError(7): Other error occurs on the device."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 8 3 1 5 }
+
+hwDisposeEntPhysicalIndex OBJECT-TYPE
+    SYNTAX      INTEGER
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "The index for this entry."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 8 4 1 1 }
+
+hwDisposeEntPhysicalDescr OBJECT-TYPE
+    SYNTAX      INTEGER
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "A textual description of predisposed physical entity.This object
+should contain a string which identifies the manufacturer's
+name for the physical entity."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 8 4 1 2 }
+
+hwDisposeEntPhysicalVendorType OBJECT-TYPE
+    SYNTAX      INTEGER
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "An indication of the vendor-specific hardware type of the
+predisposed physical entity."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 8 4 1 3 }
+
+hwDisposeEntPhysicalContainedIn OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "The value of 'entPhysicalContainedIn' for the predisposed physical entity."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 8 4 1 4 }
+
+hwDisposeEntPhysicalClass OBJECT-TYPE
+    SYNTAX      INTEGER
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "An indication of the general hardware type of the predisposed physical entity."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 8 4 1 5 }
+
+hwDisposeEntPhysicalParentRelPos OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "An indication of the relative position of this 'child' component among all its 'sibling' components."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 8 4 1 6 }
+
+hwDisposeEntPhysicalName OBJECT-TYPE
+    SYNTAX      INTEGER
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "The textual name of the predisposed physical entity."
+    ::= { 1 3 6 1 4 1 2011 5 25 31 8 4 1 7 }
+

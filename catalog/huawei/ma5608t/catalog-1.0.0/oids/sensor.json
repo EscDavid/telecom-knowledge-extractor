@@ -1,0 +1,42 @@
+{
+  "entity_ref": "entity.huawei.gpon.hardware.sensor",
+  "vendor": "Huawei",
+  "family": "MA5608T",
+  "firmware": [
+    "R015"
+  ],
+  "oids": [
+    {
+      "id": "oid.huawei.gpon.sensor.board_environment",
+      "oid": "1.3.6.1.4.1.2011.6.3.3.6.1.1.4",
+      "name": "hwBoardEnvironment",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "Enumeration",
+      "unit": null,
+      "scale": null,
+      "access": "read-write",
+      "enumeration": null,
+      "description": "The object is used to set and query the working environment of a board.\nOptions:\n1.emsan(1) -indicates that the device is on a terminal node or a convergence node\n2.smsan(2) -indicates that the device is on a terminal node or a convergence node",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    }
+  ]
+}

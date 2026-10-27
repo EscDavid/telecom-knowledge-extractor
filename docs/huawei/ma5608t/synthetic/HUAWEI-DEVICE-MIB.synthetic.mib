@@ -1,0 +1,3785 @@
+-- HUAWEI-DEVICE-MIB -- SINTETICO, generado por scripts/observium_to_mib.py
+-- Fuente: https://mibs.observium.org/mib/HUAWEI-DEVICE-MIB/ (third_party_rendering), fetched 2026-10-27T20:12:37Z
+-- Generado: 2026-10-27T15:17:59
+-- Huawei Technologies -- MA5608T -- Huawei MA56xT
+-- Nivel de evidencia B (docs/adaptacion_multivendor.md §2): NO es el MIB
+-- oficial del fabricante. Cada OBJECT-TYPE es AUTOCONTENIDO (OID numérico
+-- absoluto ya resuelto por Observium); no hay jerarquía real del módulo ni
+-- nodos/tablas/filas (no aportan Oids, ver docstring de este script).
+-- MAX-ACCESS 'unknown' (no estándar) = Observium no distingue ese acceso de
+-- read-only real; el pipeline lo protege de poda por Fase 2 (nunca se asume
+-- read-only sin evidencia). root_oid=1.3.6.1.4.1.2011.6.3
+-- 345 objetos (scalar+column) de 545 totales en el render.
+
+hwSysIpAddr OBJECT-TYPE
+    SYNTAX      INTEGER
+    MAX-ACCESS  read-write
+    STATUS      current
+    DESCRIPTION
+        "IP address of the system.
+It'd better not to modify this address when out-band NMS is used.
+It will take no effect to separately configure IP address or IP address mask."
+    ::= { 1 3 6 1 4 1 2011 6 3 1 1 }
+
+hwSysWorkScenario OBJECT-TYPE
+    SYNTAX      Enumeration
+    MAX-ACCESS  read-write
+    STATUS      current
+    DESCRIPTION
+        "System work scenario.
+Used to identify whether the control board is in the upgrade(2)
+or normal(1) scenario.
+Options:
+1. normal(1) -the normal scene of the system.
+If the device need not provide seamless upgrade, set the scenario to normal(1).
+If the scenario is changed from upgrade(2) to normal(1) and the standby control
+board is in position, reset the standby control board.
+2. upgrade(2)-the upgrade scene of the system.
+When the device needs to provide seamless upgrade,
+that is, the service is not interrupted during upgrade, set the scenario to upgrade(2).
+If it is set to upgrade(2), you can perform operations related to upgrade only,
+such as saving, loading, backup, active/standby switchover, system reset, and query."
+    ::= { 1 3 6 1 4 1 2011 6 3 1 10 }
+
+hwSysTemperatureHighThreshold OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  read-write
+    STATUS      current
+    DESCRIPTION
+        "The threshold of the system.
+When you set a high temperature threshold, you also need to set a low temperature threshold.
+Range:40~105
+The invalid value is 65535.If the threshold is not configured,the invalid value will be returned."
+    ::= { 1 3 6 1 4 1 2011 6 3 1 11 }
+
+hwSysTemperatureLowThreshold OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  read-write
+    STATUS      current
+    DESCRIPTION
+        "The threshold of the system.
+When you set a low temperature threshold, you also need to set a high temperature threshold.
+Range:-40~20
+The invalid value is 65535.If the threshold is not configured,the invalid value will be returned."
+    ::= { 1 3 6 1 4 1 2011 6 3 1 12 }
+
+hwSysExchangeMode OBJECT-TYPE
+    SYNTAX      Enumeration
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "System Exchange-Mode,
+Options:
+1. backup(1) -indicates active/standby mode. Two control boards serve as the active and standby control
+boards respectively. The switching chip of the active control board works independently
+2. loadSharing(2) -indicates load sharing mode. The switching chips of the two control boards work
+together to share the traffic
+3. null(65536) -indicates system exchange mode is not set"
+    ::= { 1 3 6 1 4 1 2011 6 3 1 13 }
+
+hwSysActivePatch OBJECT-TYPE
+    SYNTAX      OctetString
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "Display the information of the active patches in current system."
+    ::= { 1 3 6 1 4 1 2011 6 3 1 14 }
+
+hwSysDeactivePatch OBJECT-TYPE
+    SYNTAX      OctetString
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object is used for querying the information about the deactivated patch in the current system."
+    ::= { 1 3 6 1 4 1 2011 6 3 1 15 }
+
+hwSystemAutoConfigStatus OBJECT-TYPE
+    SYNTAX      Enumeration
+    MAX-ACCESS  read-write
+    STATUS      current
+    DESCRIPTION
+        "GE uplink software commissioning free configuration.
+Options:
+1.enable(1) -the default value is enable
+2.disable(2) -this object is no longer used"
+    ::= { 1 3 6 1 4 1 2011 6 3 1 16 }
+
+hwSystemEnergySavingSwitch OBJECT-TYPE
+    SYNTAX      Enumeration
+    MAX-ACCESS  read-write
+    STATUS      current
+    DESCRIPTION
+        "The energy-saving mode of system.
+Options:
+1.basic(1) -when it is set to basic(1), the system energy saving mode is basic mode.
+2.deep(2) -when it is set to deep(2), the system energy saving mode is deep mode.
+3.optimal(3) -when it is set to optimal(3), the system energy saving mode is optimal mode.
+4.standard(4) -when it is set to standard(4), the system energy saving mode is standard mode.
+The default value is basic(1)."
+    ::= { 1 3 6 1 4 1 2011 6 3 1 17 }
+
+hwSysEncoding OBJECT-TYPE
+    SYNTAX      Enumeration
+    MAX-ACCESS  read-write
+    STATUS      current
+    DESCRIPTION
+        "The encoding mode of characters in the system.
+Options:
+1. default(1) -indicates that the encoding mode is no set
+2. gbk(2) -indicates that the encoding mode of characters is gbk
+3. iso88591(3) -indicates that the encoding mode of characters is iso8859-1
+4. utf8(4) -indicates that the encoding mode of characters is utf-8
+The value can be gbk(2), iso8859-1(3), or utf-8(4).
+Default: 1"
+    ::= { 1 3 6 1 4 1 2011 6 3 1 18 }
+
+hwSysUpdateBoardVersion OBJECT-TYPE
+    SYNTAX      Enumeration
+    MAX-ACCESS  read-write
+    STATUS      current
+    DESCRIPTION
+        "Update Board Version
+Options:
+1.updateBoardVersion(1) -set operation only"
+    ::= { 1 3 6 1 4 1 2011 6 3 1 19 }
+
+hwSysIpMask OBJECT-TYPE
+    SYNTAX      INTEGER
+    MAX-ACCESS  read-write
+    STATUS      current
+    DESCRIPTION
+        "IP address mask of the system.
+This object can take effect only when hwSysIpAddr is also set."
+    ::= { 1 3 6 1 4 1 2011 6 3 1 2 }
+
+hwSysUpdateBoardMaxTimeLen OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  read-write
+    STATUS      current
+    DESCRIPTION
+        "Update Board Version Max Time Len"
+    ::= { 1 3 6 1 4 1 2011 6 3 1 20 }
+
+hwSystemAdminStateMode OBJECT-TYPE
+    SYNTAX      Enumeration
+    MAX-ACCESS  read-write
+    STATUS      current
+    DESCRIPTION
+        "System admin state mode.
+DEFVAL { private }
+Options:
+1.grStandard(1) -grStandard mode complies with GR series standard(such as GR-1093, used in North America).
+2.private(2) -private mode,Huawei devices support."
+    ::= { 1 3 6 1 4 1 2011 6 3 1 21 }
+
+hwSystemAdminStatus OBJECT-TYPE
+    SYNTAX      Enumeration
+    MAX-ACCESS  read-write
+    STATUS      current
+    DESCRIPTION
+        "The system admin status.
+Options:
+1. nooperation(-1) -default state of the system.
+2. is(1) -in service
+3. oos(2) -out of service"
+    ::= { 1 3 6 1 4 1 2011 6 3 1 22 }
+
+hwSystemPrimaryStatus OBJECT-TYPE
+    SYNTAX      Enumeration
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "The system primary status.
+Options:
+1. isNr(1) -in Service, normal
+2. isAnr(2) -in service, abnormal
+3. isRst(3) -in service, restricted
+4. isAnrst(4) -in service, abnormal & restricted
+5. oosAu(5) -out of service, autonomous
+6. oosMa(6) -out of service, management
+7. oosAuma(7) -out of service, autonomous & management
+8. oosAurst(8) -out of service, autonomous & restricted
+9. oosMaanr(9) -out of service, management & abnormal"
+    ::= { 1 3 6 1 4 1 2011 6 3 1 23 }
+
+hwDeviceArchType OBJECT-TYPE
+    SYNTAX      Enumeration
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "The hardware structure type of a device.
+Currently, the hardware structure types of the existing versions are as follows:
+Options:
+1.arch1(1) -in MxUV8R305, the hardware structure type of the MA5620E, MA5620G, MA5626E, MA5626G, and MA5651(G) is arch1(1)
+In MxUV8R306, hardware structure type of the MA5610 is arch1(1)
+In MxUV8R307, hardware structure type of the MA5612, MA5620, and MA5626 is arch1(1)
+2.arch2(2) -in MxUV8R306, the hardware structure type of the MA5616 and MA5652(G) is arch2(2)
+3.arch3(3) -in MxUV8R308, hardware structure type of the MA5612, MA5620, MA5626, and MA5616 is arch3(3)"
+    ::= { 1 3 6 1 4 1 2011 6 3 1 24 }
+
+hwUplinkSysIPAddr OBJECT-TYPE
+    SYNTAX      INTEGER
+    MAX-ACCESS  read-write
+    STATUS      current
+    DESCRIPTION
+        "The IP address of the uplink system of PVM, it is only used when PVM worked in integrated mode
+and the IPM worked as the uplink board."
+    ::= { 1 3 6 1 4 1 2011 6 3 1 25 }
+
+hwSysMainBoardTypeDesc OBJECT-TYPE
+    SYNTAX      OctetString
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "The mainboard description."
+    ::= { 1 3 6 1 4 1 2011 6 3 1 26 }
+
+hwSysEnergySaving OBJECT-TYPE
+    SYNTAX      Bits
+    MAX-ACCESS  read-write
+    STATUS      current
+    DESCRIPTION
+        "The automatic energy saving function consists of seven sub-functions, which are indicated by bits .All bits are disabled by default. If
+a bit is 0, the represented function is disabled.if a bit is 1, the represented function is enabled.This function is independent of the
+energy saving function of the optical line terminal (OLT) products by powering off boards.
+The energy saving bits flag:
+1. esEnergySavingService(0) - indicates energy-saving-service-related features, include the feature of automatically unbinding
+an extended profile.
+2. esBoardAutoPowerOnOff(1) - indicates automatic power-off features on a board for energy saving, include the automatic
+power-on and power-off feature on a board.
+3. esPlatform(2) - indicates platform-related energy saving features, include energy saving on the
+control board and upstream board.
+4. esVector(3) - indicates vectoring-related energy saving features, include vectoring disabling feature.
+5. esOpticalAccess(4) - indicates the optical access-related energy saving feature,and this object is reserved .
+6. esCopperAccess(5) - indicates copper-access-related energy saving features,include MELT energy saving feature.
+7. esInnovation(6) - indicates HuaWei's proprietary energy saving technologies,include the line driver(LD)
+energy saving feature."
+    ::= { 1 3 6 1 4 1 2011 6 3 1 27 }
+
+hwSysSceneMode OBJECT-TYPE
+    SYNTAX      Enumeration
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "The device work scene.
+Options:
+1. olt(1) -work in OLT scene
+2. msan(3) -work in MSAN scene"
+    ::= { 1 3 6 1 4 1 2011 6 3 1 28 }
+
+hwSysFtpXmlConfigure OBJECT-TYPE
+    SYNTAX      Enumeration
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "The state of XML file.
+Options:
+1. useful(1) -Xml file is useful
+2. useless(2) -Xml file is useless"
+    ::= { 1 3 6 1 4 1 2011 6 3 1 29 }
+
+hwSysVersion OBJECT-TYPE
+    SYNTAX      INTEGER
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "The system software version format is consistent with the
+specification of HUAWEI product.For example, MA5600V800R008C00."
+    ::= { 1 3 6 1 4 1 2011 6 3 1 3 }
+
+hwSysCentralizedMgmtPrimary OBJECT-TYPE
+    SYNTAX      Enumeration
+    MAX-ACCESS  read-write
+    STATUS      current
+    DESCRIPTION
+        "The primary mode for centralized management.
+Options:
+1. extendFrame(1) -Extended frame management
+2. standAlone(2) -Stand alone management"
+    ::= { 1 3 6 1 4 1 2011 6 3 1 30 }
+
+hwUpgradeVerifyVersion OBJECT-TYPE
+    SYNTAX      INTEGER
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "The system software version used in update scene for HUAWEI product.For example, MA5600V800R008C00."
+    ::= { 1 3 6 1 4 1 2011 6 3 1 31 }
+
+hwDevLongitude OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  read-write
+    STATUS      current
+    DESCRIPTION
+        "The longitude of the device.
+The value expands 100000 times and the value 2147483647 indicates invalid longitude."
+    ::= { 1 3 6 1 4 1 2011 6 3 1 32 }
+
+hwDevLatitude OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  read-write
+    STATUS      current
+    DESCRIPTION
+        "The latitude of the device.
+The value expands 100000 times and the value 2147483647 indicates invalid latitude."
+    ::= { 1 3 6 1 4 1 2011 6 3 1 33 }
+
+hwDevElevation OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  read-write
+    STATUS      current
+    DESCRIPTION
+        "The elevation of the device, in unit of meters.
+The value 32767 indicates invalid elevation."
+    ::= { 1 3 6 1 4 1 2011 6 3 1 34 }
+
+hwDevHorizontalErr OBJECT-TYPE
+    SYNTAX      Unsigned32
+    MAX-ACCESS  read-write
+    STATUS      current
+    DESCRIPTION
+        "The horizontal error of the device, in unit of meters.
+The value 4294967295 indicates invalid horizontal error."
+    ::= { 1 3 6 1 4 1 2011 6 3 1 35 }
+
+hwDevAltitudeErr OBJECT-TYPE
+    SYNTAX      Unsigned32
+    MAX-ACCESS  read-write
+    STATUS      current
+    DESCRIPTION
+        "The altitude error of the device, in unit of meters.
+The value 4294967295 indicates invalid altitude error."
+    ::= { 1 3 6 1 4 1 2011 6 3 1 36 }
+
+hwDevAreaCode OBJECT-TYPE
+    SYNTAX      OctetString
+    MAX-ACCESS  read-write
+    STATUS      current
+    DESCRIPTION
+        "The area code of the device.
+The length of area code is 12. The characters can be 0, 1, 2, 3, 4, 5, 6, 7, 8 and 9.
+The zero-length string indicates invalid area code."
+    ::= { 1 3 6 1 4 1 2011 6 3 1 37 }
+
+hwDevGisTimeStamp OBJECT-TYPE
+    SYNTAX      Unsigned32
+    MAX-ACCESS  read-write
+    STATUS      current
+    DESCRIPTION
+        "The time stamp of the measurement signature, which is the number of seconds from 00:00 on January 1, 1970 to the current time.
+The value 4294967295 indicates invalid time stamp."
+    ::= { 1 3 6 1 4 1 2011 6 3 1 38 }
+
+hwDevGisDigest OBJECT-TYPE
+    SYNTAX      OctetString
+    MAX-ACCESS  read-write
+    STATUS      current
+    DESCRIPTION
+        "The check value of the measurement signature.
+The length of check value is 16. The characters can be 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, A, B, C, D, E and F.
+The zero-length string indicates invalid check value."
+    ::= { 1 3 6 1 4 1 2011 6 3 1 39 }
+
+hwSysTime OBJECT-TYPE
+    SYNTAX      INTEGER
+    MAX-ACCESS  read-write
+    STATUS      current
+    DESCRIPTION
+        "This object is used for getting or setting current date and time of the system."
+    ::= { 1 3 6 1 4 1 2011 6 3 1 4 }
+
+hwDevGisCheckCode OBJECT-TYPE
+    SYNTAX      OctetString
+    MAX-ACCESS  read-write
+    STATUS      current
+    DESCRIPTION
+        "The check code of the device GPS information.
+The length of check code is 4. The characters can be 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, A, B, C, D, E and F.
+The zero-length string indicates invalid area check code."
+    ::= { 1 3 6 1 4 1 2011 6 3 1 40 }
+
+hwSysSsdSwitch OBJECT-TYPE
+    SYNTAX      Enumeration
+    MAX-ACCESS  read-write
+    STATUS      current
+    DESCRIPTION
+        "The secure software downloading status.
+Options:
+1. enable(1) -The secure software downloading is enable
+2. disable(2) -The secure software downloading is disable"
+    ::= { 1 3 6 1 4 1 2011 6 3 1 41 }
+
+hwSysFtpMode OBJECT-TYPE
+    SYNTAX      Enumeration
+    MAX-ACCESS  read-write
+    STATUS      current
+    DESCRIPTION
+        "FTP connection mode.
+Options:
+1. port(1) -Set the FTP connection mode to port.
+2. passive(2) -Set the FTP connection mode to passive.
+Default: port(1)"
+    ::= { 1 3 6 1 4 1 2011 6 3 1 42 }
+
+hwSysMarketScene OBJECT-TYPE
+    SYNTAX      Enumeration
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "The device options:
+1. carrier(1) -Device work in carrier scene.
+2. enterprise(2) -Device work in enterprise scene.
+Default: carrier(1)"
+    ::= { 1 3 6 1 4 1 2011 6 3 1 43 }
+
+hwDeviceCountryCode OBJECT-TYPE
+    SYNTAX      Enumeration
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "1. china(1) -Device of china.
+2. oversea(2) -Device of oversea.
+Default: oversea(2)"
+    ::= { 1 3 6 1 4 1 2011 6 3 1 44 }
+
+hwSysDeviceNameMode OBJECT-TYPE
+    SYNTAX      Enumeration
+    MAX-ACCESS  read-write
+    STATUS      current
+    DESCRIPTION
+        "1. simple(1) -Simplified device name.
+2. detail(2) -Detailed device name.
+Default: simple(1)"
+    ::= { 1 3 6 1 4 1 2011 6 3 1 45 }
+
+hwXponWorkMode OBJECT-TYPE
+    SYNTAX      Enumeration
+    MAX-ACCESS  read-write
+    STATUS      current
+    DESCRIPTION
+        "The gpon work mode.
+Options:
+1. gpon(1) -gpon workmode
+2. combopon(2) -combopon workmode
+3. invalid(3) -invalid value
+Default is combopon."
+    ::= { 1 3 6 1 4 1 2011 6 3 1 46 }
+
+hwVsManageMode OBJECT-TYPE
+    SYNTAX      Enumeration
+    MAX-ACCESS  read-write
+    STATUS      current
+    DESCRIPTION
+        "Virtual system management mode.
+Options:
+1. multiIP(1) -Set the virtual system multi-ip mode.
+2. singleIP(2) -Set the virtual system single-ip mode.
+The default value multi-ip(1)."
+    ::= { 1 3 6 1 4 1 2011 6 3 1 47 }
+
+hwSysIpv6Addr OBJECT-TYPE
+    SYNTAX      INTEGER
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "IPV6 address of the system."
+    ::= { 1 3 6 1 4 1 2011 6 3 1 48 }
+
+hwSysIpv6Mask OBJECT-TYPE
+    SYNTAX      INTEGER
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "IPV6 Mask of the system."
+    ::= { 1 3 6 1 4 1 2011 6 3 1 49 }
+
+hwSysWorkMode OBJECT-TYPE
+    SYNTAX      Enumeration
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object is used for obtaining the working mode of the UA5000.
+Options:
+1. amsanamsan(1) -indicates that the active and standby control boards are in position,
+with the active control board of AMSAN and the standby control board of AMSAN
+2. amsancmsan(2) -indicates that the active and standby control boards are in position,
+with the active control board of AMSAN and the standby control board of CMSAN
+3. cmsancmsan(3) -indicates that the active and standby control boards are in position,
+with the active control board of CMSAN and the standby control board of CMSAN
+4. cmsanamsan(4) -indicates that the active and standby control boards are in position,
+with the active control board of CMSAN and the standby control board of AMSAN
+5. amsanoffline(5) -indicates that the standby control board is not in position and the active
+control board is AMSAN
+6. cmsanoffline(6) -indicates that the standby control board is not in position and the active
+control board is CMSAN
+7. gmsangmsan(7) -indicates that the active and standby control boards are in position,
+with the active control board of GMSAN and the standby control board of GMSAN
+8: amsangmsan(8) -indicates that the active and standby control boards are in position,
+with the active control board of AMSAN and the standby control board of GMSAN
+9. gmsanamsan(9) -indicates that the active and standby control boards are in position,
+with the active control board of GMSAN and the standby control board of AMSAN
+10. cmsangmsan(10) -indicates that the active and standby control boards are in position,
+with the active control board of CMSAN and the standby control board of GMSAN
+11. gmsancmsan(11) -indicates that the active and standby control boards are in position,
+with the active control board of GMSAN and the standby control board of CMSAN
+12.gmsanoffline(12) -indicates that the standby control board is not in position and the active
+control board is GMSAN
+13.independent(13) -indicates that the working mode of the current subrack is independent
+14.stack(14) -indicates that the working mode of the current subrack is stack
+15. null(65536) -indicates that the system work mode is not set"
+    ::= { 1 3 6 1 4 1 2011 6 3 1 5 }
+
+hwSysFtpRemoteOverwrite OBJECT-TYPE
+    SYNTAX      Enumeration
+    MAX-ACCESS  read-write
+    STATUS      current
+    DESCRIPTION
+        "Ftp overwrite remote file strategy.
+Options:
+1. enable(1) -Overwrite remote file while file with the same name exists on the FTP server.
+2. disable(2) -Do not overwrite remote file while file with the same name exists on the FTP server.
+The default value disable(2)."
+    ::= { 1 3 6 1 4 1 2011 6 3 1 50 }
+
+hwSysSftpRemoteOverwrite OBJECT-TYPE
+    SYNTAX      Enumeration
+    MAX-ACCESS  read-write
+    STATUS      current
+    DESCRIPTION
+        "Sftp overwrite remote file strategy.
+Options:
+1. enable(1) -Overwrite remote file while file with the same name exists on the SFTP server.
+2. disable(2) -Do not overwrite remote file while file with the same name exists on the SFTP server.
+The default value enable(1)."
+    ::= { 1 3 6 1 4 1 2011 6 3 1 51 }
+
+hwWarrantyInfoProductCapability OBJECT-TYPE
+    SYNTAX      Enumeration
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "Whether the current product supports for warranty information.
+Options:
+1. support(1) - indicates that the product is support
+2. notsupport(2) - indicates that the product is not support"
+    ::= { 1 3 6 1 4 1 2011 6 3 1 52 }
+
+hwSysSecConfig OBJECT-TYPE
+    SYNTAX      OctetString
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "Used only for CICM to collect security configuration data."
+    ::= { 1 3 6 1 4 1 2011 6 3 1 53 }
+
+hwSystemRole OBJECT-TYPE
+    SYNTAX      INTEGER
+    MAX-ACCESS  read-write
+    STATUS      current
+    DESCRIPTION
+        "The current role in the network."
+    ::= { 1 3 6 1 4 1 2011 6 3 1 54 }
+
+hwMiniSystemSwitch OBJECT-TYPE
+    SYNTAX      Enumeration
+    MAX-ACCESS  read-write
+    STATUS      current
+    DESCRIPTION
+        "Mini system switch status.
+Options:
+1. disable(0) -indicates that the mini-system switch is disable.
+2. enable(1) -indicates that the mini-system switch is enable.
+The default value disable(0)."
+    ::= { 1 3 6 1 4 1 2011 6 3 1 55 }
+
+hwSysEosTime OBJECT-TYPE
+    SYNTAX      INTEGER
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object is used for getting eos date and time of the system."
+    ::= { 1 3 6 1 4 1 2011 6 3 1 56 }
+
+hwSingleControlBoardMode OBJECT-TYPE
+    SYNTAX      Enumeration
+    MAX-ACCESS  read-write
+    STATUS      current
+    DESCRIPTION
+        "Single control board mode switch status.
+Options:
+1. disable(0) -indicates that the single control board mode is disable.
+2. enable(1) -indicates that the single control board mode is enable.
+The default value disable(0)."
+    ::= { 1 3 6 1 4 1 2011 6 3 1 57 }
+
+hwDevExtendedFrameTypes OBJECT-TYPE
+    SYNTAX      OctetString
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "Show the types of extended frame and main board supported by the system."
+    ::= { 1 3 6 1 4 1 2011 6 3 1 58 }
+
+hwDeviceCountryCodeInfo OBJECT-TYPE
+    SYNTAX      Enumeration
+    MAX-ACCESS  read-write
+    STATUS      current
+    DESCRIPTION
+        "The country code of mainboard.
+Options:
+1. america(1) -Mainboard currently runs in America.
+2. china(86) -Mainboard currently runs in China.
+3. others(999) -Mainboard currently runs in other countrys."
+    ::= { 1 3 6 1 4 1 2011 6 3 1 59 }
+
+hwSysAverageBufferUsed OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "Query the average memory usage of the system.
+Collect the sum of the memory usage of all the boards that
+support memory query in the system, and then calculate the
+average value. The average value is the average memory usage of the system."
+    ::= { 1 3 6 1 4 1 2011 6 3 1 6 }
+
+hwSysRsvedVlan OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "Describes the start VLAN ID of the reserved VLANs currently used by the system.
+Default: 4079
+The system automatically uses the 15 VLANs starting from the configured start VLAN ID as reserved VLANs."
+    ::= { 1 3 6 1 4 1 2011 6 3 1 7 }
+
+hwSysRsvedVlanDb OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  read-write
+    STATUS      current
+    DESCRIPTION
+        "Describes the start VLAN ID of the reserved VLANs configured in the system.
+The configuration takes effect after system restart.
+Range: 2-4079
+Default: 4079
+The system automatically uses the 15 VLANs starting from the configured start VLAN ID as reserved VLANs.
+VLANs 4094 and 4095 are fixedly reserved, and VLAN 1 is the native VLAN.
+Therefore, these three VLANs cannot be configured as the reserved VLANs."
+    ::= { 1 3 6 1 4 1 2011 6 3 1 8 }
+
+hwIopacketVersion OBJECT-TYPE
+    SYNTAX      INTEGER
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "The version information in the IO package, which is consistent
+with the system version information."
+    ::= { 1 3 6 1 4 1 2011 6 3 1 9 }
+
+hwSysVersionVrcb OBJECT-TYPE
+    SYNTAX      INTEGER
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "The device MIB build version, used by NMS for MIB adaption."
+    ::= { 1 3 6 1 4 1 2011 6 3 1 999 }
+
+hwCompatibleSysOid OBJECT-TYPE
+    SYNTAX      ObjectIdentifier
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the compatible SYSOID of the new NE."
+    ::= { 1 3 6 1 4 1 2011 6 3 11 1 }
+
+hwCompatibleVersion OBJECT-TYPE
+    SYNTAX      OctetString
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the compatible version of the new NE."
+    ::= { 1 3 6 1 4 1 2011 6 3 11 2 }
+
+hwCompatibleVRCB OBJECT-TYPE
+    SYNTAX      OctetString
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "The compatible VRCB of new network element."
+    ::= { 1 3 6 1 4 1 2011 6 3 11 3 }
+
+hwCompatibleProductName OBJECT-TYPE
+    SYNTAX      OctetString
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the name of the compatible product of the new NE."
+    ::= { 1 3 6 1 4 1 2011 6 3 11 4 }
+
+hwSysHandshakeEnable OBJECT-TYPE
+    SYNTAX      Enumeration
+    MAX-ACCESS  read-write
+    STATUS      current
+    DESCRIPTION
+        "The switch of periodic handshake between the device and the NMS.
+The NMS uses the periodic handshake process to check whether
+the device is properly connected.
+Default: false
+Options:
+1.nooperation(0) -default shakes hands of the system
+2.true(1) -The device periodically shakes hands with the NMS
+3.false(2) -The device does not periodically shake hands with the NMS"
+    ::= { 1 3 6 1 4 1 2011 6 3 13 1 }
+
+hwSysHandshakeInterval OBJECT-TYPE
+    SYNTAX      Seconds
+    MAX-ACCESS  read-write
+    STATUS      current
+    DESCRIPTION
+        "The interval for sending a handshake packet, in unit of minute
+Note: If the interval for sending a handshake packet is too long,
+the NMS cannot detect the disconnection between the device and the NMS promptly.
+If the interval for sending a handshake packet is too short,
+the number of handshake packets that the NMS needs to handle increases,
+which adds burden to the NMS.
+You can set the time interval according to the actual situation.
+Default: 300
+Unit: Seconds"
+    ::= { 1 3 6 1 4 1 2011 6 3 13 2 }
+
+hwSysRegisterResponseStatus OBJECT-TYPE
+    SYNTAX      Enumeration
+    MAX-ACCESS  read-write
+    STATUS      current
+    DESCRIPTION
+        "The NMS response to the periodic handshake packet from the device.
+Options:
+1.nooperation(-1) -default state of the system
+2.registering(1) -register is in processing
+3.success(2) -The registration/handshake packet reported by the device is successfully handled
+4.failure(3) -register failed
+5.timeout(4) -register timeout"
+    ::= { 1 3 6 1 4 1 2011 6 3 13 3 }
+
+hwParaName OBJECT-TYPE
+    SYNTAX      OctetString
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "The name of the parameter.
+This object is no longer used."
+    ::= { 1 3 6 1 4 1 2011 6 3 15 1 1 1 }
+
+hwParaValue OBJECT-TYPE
+    SYNTAX      OctetString
+    MAX-ACCESS  read-write
+    STATUS      current
+    DESCRIPTION
+        "The value of the parameter.
+This object is no longer used."
+    ::= { 1 3 6 1 4 1 2011 6 3 15 1 1 2 }
+
+hwParaState OBJECT-TYPE
+    SYNTAX      Enumeration
+    MAX-ACCESS  read-write
+    STATUS      current
+    DESCRIPTION
+        "The overwritten state of the parameter.
+This object is no longer used.
+Options:
+1.readWrite(1) - read and write
+2.readOnly(2) - read only"
+    ::= { 1 3 6 1 4 1 2011 6 3 15 1 1 3 }
+
+hwParaRowStatus OBJECT-TYPE
+    SYNTAX      INTEGER
+    MAX-ACCESS  read-write
+    STATUS      current
+    DESCRIPTION
+        "RowStatus standard operation.
+This object is no longer used."
+    ::= { 1 3 6 1 4 1 2011 6 3 15 1 1 4 }
+
+hwHostIpAddr OBJECT-TYPE
+    SYNTAX      INTEGER
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "The IP address of monitoring gateway"
+    ::= { 1 3 6 1 4 1 2011 6 3 16 1 1 1 }
+
+hwPacketNumber OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  read-write
+    STATUS      current
+    DESCRIPTION
+        "The number of the PING packets sent during every check,
+Default value: 5"
+    ::= { 1 3 6 1 4 1 2011 6 3 16 1 1 2 }
+
+hwIntervalTime OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  read-write
+    STATUS      current
+    DESCRIPTION
+        "The interval of sending PING packets.
+Default: 1
+Unit: second"
+    ::= { 1 3 6 1 4 1 2011 6 3 16 1 1 3 }
+
+hwResponseTime OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  read-write
+    STATUS      current
+    DESCRIPTION
+        "Time-out time for the response of the PING packets.
+Unit: second
+Default: 2"
+    ::= { 1 3 6 1 4 1 2011 6 3 16 1 1 4 }
+
+hwLoopTime OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  read-write
+    STATUS      current
+    DESCRIPTION
+        "Interval between the cyclic checks
+Default value: 600
+Unit: second"
+    ::= { 1 3 6 1 4 1 2011 6 3 16 1 1 5 }
+
+hwFailureThreshold OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  read-write
+    STATUS      current
+    DESCRIPTION
+        "The threshold of checking failed.
+Default value: 10"
+    ::= { 1 3 6 1 4 1 2011 6 3 16 1 1 6 }
+
+hwFailedTimes OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "Times of checking failed"
+    ::= { 1 3 6 1 4 1 2011 6 3 16 1 1 7 }
+
+hwAutoResetEnableStatus OBJECT-TYPE
+    SYNTAX      Enumeration
+    MAX-ACCESS  read-write
+    STATUS      current
+    DESCRIPTION
+        "Enable status of auto-reset.
+Options:
+1. enable(1) - enable
+2. disable(2) - disable"
+    ::= { 1 3 6 1 4 1 2011 6 3 16 1 1 8 }
+
+hwAutoResetRowStatus OBJECT-TYPE
+    SYNTAX      INTEGER
+    MAX-ACCESS  read-write
+    STATUS      current
+    DESCRIPTION
+        "RowStatus standard operation"
+    ::= { 1 3 6 1 4 1 2011 6 3 16 1 1 9 }
+
+hwResType OBJECT-TYPE
+    SYNTAX      Enumeration
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "System resource type.
+Options:
+1. memory(1) -indicates the memory resource
+2. messageUnits(2)-indicates the message resource
+3. cpu(3) -indicates the CPU resource
+4. storage(8) -indicates the storage resource"
+    ::= { 1 3 6 1 4 1 2011 6 3 17 1 1 1 }
+
+hwResOverLoad OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  read-write
+    STATUS      current
+    DESCRIPTION
+        "System resource overload threshold.
+The following two system resources support querying and
+Threshold setting: memory(1), cpu(3).
+Memory(1) and cpu(3) have limited value ranges.
+MessageUnits(2) cannot be set or queried."
+    ::= { 1 3 6 1 4 1 2011 6 3 17 1 1 2 }
+
+hwResOccupancy OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "System resource occupancy."
+    ::= { 1 3 6 1 4 1 2011 6 3 17 1 1 3 }
+
+hwMemOccupancy OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "System memory occupancy."
+    ::= { 1 3 6 1 4 1 2011 6 3 17 2 }
+
+hwCpuOccupancy OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "System CPU occupancy."
+    ::= { 1 3 6 1 4 1 2011 6 3 17 3 }
+
+hwRingFrequency OBJECT-TYPE
+    SYNTAX      Enumeration
+    MAX-ACCESS  read-write
+    STATUS      current
+    DESCRIPTION
+        "Frequency of ring.
+Options:
+1. frequency16HZ(1) --The frequency of ring is 16HZ
+2. frequency25HZ(2) --The frequency of ring is 25HZ
+3. frequency50HZ(3) --The frequency of ring is 50HZ
+4. frequency20HZ(4) --The frequency of ring is 20HZ"
+    ::= { 1 3 6 1 4 1 2011 6 3 18 1 }
+
+hwRingacamplitude OBJECT-TYPE
+    SYNTAX      Enumeration
+    MAX-ACCESS  read-write
+    STATUS      current
+    DESCRIPTION
+        "AC amplitude of ring.
+Options:
+1. acamplitude74Vrms(1) --The AC amplitude of ring is 74Vrms
+2. acamplitude65Vrms(2) --The AC amplitude of ring is 65Vrms
+3. acamplitude50Vrms(3) --The AC amplitude of ring is 50Vrms
+4. acamplitude75Vrms(4) --The AC amplitude of ring is 75Vrms
+5. acamplitude70Vrms(5) --The AC amplitude of ring is 70Vrms"
+    ::= { 1 3 6 1 4 1 2011 6 3 18 2 }
+
+hwRingdcbias OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  read-write
+    STATUS      current
+    DESCRIPTION
+        "DC bias of ring.
+Options:
+1 --The DC bias voltage of ring 20V
+2 --The DC bias voltage of ring 30V."
+    ::= { 1 3 6 1 4 1 2011 6 3 18 3 }
+
+hwNmsIndex OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  read-write
+    STATUS      current
+    DESCRIPTION
+        "Index(1..32),at most supports 32 NMSs, exclusively identifies an NMS.
+This object is no longer used."
+    ::= { 1 3 6 1 4 1 2011 6 3 2 1 1 }
+
+hwNmsStatus OBJECT-TYPE
+    SYNTAX      INTEGER
+    MAX-ACCESS  read-write
+    STATUS      current
+    DESCRIPTION
+        "Operation status of NMS station. The NMS station
+can be added,deleted and modified.
+This object is no longer used."
+    ::= { 1 3 6 1 4 1 2011 6 3 2 1 11 }
+
+hwNmsName OBJECT-TYPE
+    SYNTAX      OctetString
+    MAX-ACCESS  read-write
+    STATUS      current
+    DESCRIPTION
+        "Name of the NMS, which does not have to be consistent with that of the NMS workstation.
+This object is no longer used."
+    ::= { 1 3 6 1 4 1 2011 6 3 2 1 2 }
+
+hwNmsIp OBJECT-TYPE
+    SYNTAX      INTEGER
+    MAX-ACCESS  read-write
+    STATUS      current
+    DESCRIPTION
+        "IP address of the NMS workstation that can be outband or inband address.
+This object is no longer used."
+    ::= { 1 3 6 1 4 1 2011 6 3 2 1 3 }
+
+hwIopacketfileAdminStatus OBJECT-TYPE
+    SYNTAX      Enumeration
+    MAX-ACCESS  read-write
+    STATUS      current
+    DESCRIPTION
+        "The status of the board software package.
+Options:
+1. deactivepacketfile(0)-indicates that the status of the board software package is not active.
+2. activepacketfile(1) -indicates that active the packet file.
+Perform activepacketfile(1), and the system queries all the boards.
+If the software version of a board is inconsistent with the version in the package,
+the software of the board is upgraded to the version in the package.
+Certain boards can be upgraded by a reset operation"
+    ::= { 1 3 6 1 4 1 2011 6 3 21 1 }
+
+hwUpgradeRequestID OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  read-write
+    STATUS      current
+    DESCRIPTION
+        "The request index for automatic upgrade.
+For automatic upgrade:
+The NMS loads the NE program of the latest version,
+the data or configuration file after upgrade, and the
+package of the board to the active control board of the NE system.
+The NE automatically loads the NE program,
+the data or configuration file after upgrade, and the package,
+from the active control board to the standby control board in a synchronous manner.
+At this time, the NMS needs to deliver the command of upgrading and resetting
+to the active control board.
+When resetting the control board, you must specify hwUpgradeRequestID,
+hwUpgradeAdmin, hwUpgradeResetInterval.
+The operation is saved as a record entry.
+hwUpgradeRequestID is used to identify this operation. Therefore,
+its value cannot be the same as the operation request ID of another record entry.
+The hwUpgradeRequestID value of -1 indicates there is no upgrade going."
+    ::= { 1 3 6 1 4 1 2011 6 3 22 1 }
+
+hwUpgradeAdmin OBJECT-TYPE
+    SYNTAX      Enumeration
+    MAX-ACCESS  read-write
+    STATUS      current
+    DESCRIPTION
+        "The command of software active.
+Options:
+1.nooperation(-1) - default state of the system.
+2.uninterruptedAutoUpgrade(1) - uninterrupted auto upgrade.
+3.upgradeSchedule(2) - reset system and acitve the software. If you need to active the software
+after a certain period,you also need to set hwUpgradeReserveTimeout or
+hwUpgradeReserveDateTime.
+4.undoUpgradeSchedule(3) - negate the operation to active software.
+5.interruptedAutoUpgrade(4) - interrupted auto upgrade."
+    ::= { 1 3 6 1 4 1 2011 6 3 22 2 }
+
+hwUpgradeResetInterval OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  read-write
+    STATUS      current
+    DESCRIPTION
+        "The interval to force service boards to reset after the upgrade
+of mainboard has been completed.
+Unit:minute"
+    ::= { 1 3 6 1 4 1 2011 6 3 22 3 }
+
+hwUpgradeTargetVersion OBJECT-TYPE
+    SYNTAX      OctetString
+    MAX-ACCESS  read-write
+    STATUS      current
+    DESCRIPTION
+        "The target version of automatic upgrade.
+For example: MA5600V800R003C02.
+Allow querying the target version only during automatic upgrade.
+The system configuration management platform is locked during automatic upgrade.
+When you are setting the target version of an object in an upgrade,
+you also need to set hwUpgradeRequestID, hwUpgradeAdmin, and hwUpgradeResetInterval.
+Automatic upgrade requires consistency between the program version
+saved in the standby area of the system and the set target version.
+If the target version is not specified, the system performs automatic
+upgrade according to the version saved in the standby area of the system."
+    ::= { 1 3 6 1 4 1 2011 6 3 22 4 }
+
+hwUpgradeReserveTimeout OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  read-write
+    STATUS      current
+    DESCRIPTION
+        "Used to set the delay time of software active, in unit of seconds.
+When you set hwUpgradeReserveTimeout, you also need to set hwUpgradeAdmin to upgradeSchedule(2).
+It is invalid to set both hwUpgradeReserveTimeout and hwUpgradeReserveDateTime.
+The hwUpgradeReserveTimeout value of -1 indicates the delay time of software active is not set."
+    ::= { 1 3 6 1 4 1 2011 6 3 22 5 }
+
+hwUpgradeReserveDateTime OBJECT-TYPE
+    SYNTAX      INTEGER
+    MAX-ACCESS  read-write
+    STATUS      current
+    DESCRIPTION
+        "This object is used for setting the date and time of software active.
+When you set hwUpgradeReserveDateTime, you also need to set hwUpgradeAdmin to upgradeSchedule(2).
+It is invalid to set both hwUpgradeReserveDateTime and hwUpgradeReserveTimeout.
+The configured time is the local time, and time zone configuration is not supported."
+    ::= { 1 3 6 1 4 1 2011 6 3 22 6 }
+
+hwEmergencyCallProtect OBJECT-TYPE
+    SYNTAX      Enumeration
+    MAX-ACCESS  read-write
+    STATUS      current
+    DESCRIPTION
+        "This object is used for setting the emergence call protection function.
+If this object is set to enable, the system cannot be reset if the system is processing an emergence call.
+Options:
+1.disable(1) - Indicates that the emergence call is disabled.
+2.enable(2) - Indicates that the emergence call is enabled."
+    ::= { 1 3 6 1 4 1 2011 6 3 22 7 }
+
+hwUpgradeCapability OBJECT-TYPE
+    SYNTAX      Bits
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "The capability of upgrade.
+Options:
+1.issu(0) - in servers software upgrade.
+2.ossu(1) - out of servers softer upgrade.
+From left to right, each bit indicates a capability of upgrade.
+If the bit is set to 1, it indicates support the capability.
+If the bit is set to 0, it indicates not support the capability."
+    ::= { 1 3 6 1 4 1 2011 6 3 22 8 }
+
+hwOntIndex OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "ONT ID.
+Parameters hwFrameIndex and hwSlotIndex are obligatory, hwOntIndex and hwPortIndex are optional
+(the setting -1 indicates that the parameter is optional).
+For example, to set the information of all ONTs connected to a specified port returned,
+you can set hwOntIndex to -1; to set the information about the status of all ONTs
+connected to all ports of a specified slot returned, you can set hwPortIndex and hwOntIndex to -1"
+    ::= { 1 3 6 1 4 1 2011 6 3 23 1 1 }
+
+hwOntState OBJECT-TYPE
+    SYNTAX      OctetString
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "ONT state.
+data structure:
+--------------------------------------------------------------------------------------------------
+| m | ONT state combination | ONT state combination | | ONT state combination |
+| (2B) | in Port x | in Port y | ..... | in Port n |
+--------------------------------------------------------------------------------------------------
+/ \\
+/ \\
+/ \\
+-----------------------------------
+| x | ONT m-1 | | ONT 0 |
+|(2B) |state(1b)|...... |state(1b)|
+-----------------------------------
+state enum:
+normal(0): ONT state is normal.
+fault(1): ONT state is fault."
+    ::= { 1 3 6 1 4 1 2011 6 3 23 1 2 }
+
+hwOntType OBJECT-TYPE
+    SYNTAX      OctetString
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "ONT type.
+data structure: ONT IP + ONT type
+-------------------------------------------------------------------
+| ONT NUM | ONT IP | ONT type | | ONT IP | ONT type |
+| (2B) | (4B) | (16B) | ...... | (4B) | (16B) |
+-------------------------------------------------------------------
+Because of the restrictions on the SNMP packet, the packet of up to 8 KB can be transmitted.
+When the size of the packet to be reported exceeds 8 KB, the packet must be compressed.
+The compress format of the packet is shown in the following figure.
+-----------------------------------------------------------------------
+| DATA-LENGTH | FLAG | TLV-NUM | TYPE | LEN | CRC | |
+------------------------------------------------------------ |
+| |
+| |
+| |
+-----------------------------------------------------------------------
+In the compressed packet:
+DATA-LENGTH occupies four bytes to store the whole length of the file, including the header structure.
+FLAG occupies two bytes to store the flag, which indicates the format of the file contents.
+In this compressed packet, the flag indicates that the format of the file contents is compressed.
+0xFEFE indicates compress and 0 indicates non-compress.
+TLV-NUM indicates the number of TLVs that the file carries. In this compressed packet, TLV-NUM is 1,
+indicating the CRC value of the compressed content. The following continuous bytes TYPE, LEN, and CRC
+are data in the TLV format. Each of TYPE, LEN, and CRC occupies two bytes. In this compressed packet,
+TYPE, LEN, and CRC record the CRC value of the compressed content. TYPE indicates the CRC type.
+LEN indicates the number of bytes that the CRC occupies and the actual value is 2.
+CRC stores the CRC value of the compressed content.
+The actual returned content is compressed in the .zip format and stored in the final field of compressed
+content."
+    ::= { 1 3 6 1 4 1 2011 6 3 23 1 3 }
+
+hwOntVersion OBJECT-TYPE
+    SYNTAX      OctetString
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "ONT version.
+data structure: ONT IP + ONT version
+------------------------------------------------------------------------
+| ONT NUM | ONT IP | ONT version | | ONT IP | ONT version |
+| (2B) | (4B) | (32B) | ...... | (4B) | (32B) |
+------------------------------------------------------------------------"
+    ::= { 1 3 6 1 4 1 2011 6 3 23 1 4 }
+
+hwConfigLockState OBJECT-TYPE
+    SYNTAX      Enumeration
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "Whether the system configuration is locked.
+Options:
+1. locked(1) -the system configuration is locked
+2. unlocked(2) -the system configuration is not locked
+The user who locks the system configuration can unlock it.
+Super users and the network administrator can forcibly unlock
+the system configuration. Other users cannot unlock it."
+    ::= { 1 3 6 1 4 1 2011 6 3 24 1 }
+
+hwConfigUnlockInterval OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  read-write
+    STATUS      current
+    DESCRIPTION
+        "The interval for automatic unlock of the system configuration, in unit of minute.
+The system re-counts the time in these two cases: a user successfully locks the
+system configuration and the user who locks system configuration sets hwConfigUnlockInterval.
+If a user unlocks the system configuration within the automatic unlock interval,
+automatic unlock is not necessary. If the system configuration keeps locked,
+after the interval elapses, the system automatically unlocks it.
+If a NETCONF user successfully locks the system configuration,
+the system configuration will not be unlocked automatically,the automatic unlock interval is set as 0.
+Default: 5"
+    ::= { 1 3 6 1 4 1 2011 6 3 24 2 }
+
+hwConfigLockUserType OBJECT-TYPE
+    SYNTAX      Enumeration
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "The type of user who locks system configuration.
+Options:
+1. nooperation(-1) -default type of the system
+2. nms(1) -the user who access through the NMS
+3. series(2) -the user who access through the serial interface
+4. telnet(3) -the user who access through telnet
+5. web(4) -the user who access through the web user interface
+6. xml(5) -the user who access through the XML interface
+7. ssh(6) -the user who access through SSH
+8. netconf(7) -the user who access through NETCONF"
+    ::= { 1 3 6 1 4 1 2011 6 3 24 3 }
+
+hwConfigLockUserName OBJECT-TYPE
+    SYNTAX      OctetString
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "The user name of the user who locks the configuration platform."
+    ::= { 1 3 6 1 4 1 2011 6 3 24 4 }
+
+hwConfigLockUserIPAddr OBJECT-TYPE
+    SYNTAX      INTEGER
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "The IP address of the user who locks the configuration platform.
+If a user who accesses through the serial port locks the configuration platform,
+the IP address is default value.
+DEFVAL { 255.255.255.255 }"
+    ::= { 1 3 6 1 4 1 2011 6 3 24 5 }
+
+hwConfigLockOperate OBJECT-TYPE
+    SYNTAX      Enumeration
+    MAX-ACCESS  read-write
+    STATUS      current
+    DESCRIPTION
+        "The operation to lock or unlock config.
+Options:
+1. lock(1) -before data configuration, use lock(1) to lock the configuration platform,
+preventing other users from modifying or deleting the configuration data just completed
+2. unlock(2) -when the data configuration is complete, use unlock(2) to unlock the configuration platform.
+After that, other users can configure the system data
+If a user performs lock(1) and does not perform unlock(2) after data configuration,
+the system automatically unlocks after a certain period.
+For the interval for automatic unlock, refer to hwConfigUnlockInterval."
+    ::= { 1 3 6 1 4 1 2011 6 3 24 6 }
+
+hwConfigLockUserInetAddressType OBJECT-TYPE
+    SYNTAX      Enumeration
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "The type of address in hwConfigLockUserInetAddress.
+Options:
+1. unknown(0) -If a user who accesses through the serial port locks the configuration platform,
+the IP address type is unknown(0).
+2. ipv4(1) -indicates that the IP address type is ipv4.
+3. ipv6(2) -indicates that the IP address type is ipv6."
+    ::= { 1 3 6 1 4 1 2011 6 3 24 7 }
+
+hwConfigLockUserInetAddress OBJECT-TYPE
+    SYNTAX      INTEGER
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "The IP address of the user who locks the configuration platform.
+If a user who accesses through the serial port locks the configuration platform,
+the IP address is default value.
+DEFVAL { zero-length }"
+    ::= { 1 3 6 1 4 1 2011 6 3 24 8 }
+
+hwIntelligentPhoneMode OBJECT-TYPE
+    SYNTAX      Enumeration
+    MAX-ACCESS  read-write
+    STATUS      current
+    DESCRIPTION
+        "The switch of Intelligent-phone mode: disable or enable.
+DEFVAL { disable }
+Options:
+1. disable(1) -if it is set to disable(1), the settings of hwAttenuation and hwDetectionThreshold
+are not applied
+2.enable(2) -if it is set to enable(2), the settings of hwAttenuation and hwDetectionThreshold
+take effect in the intelligent pay phone service (IPP)"
+    ::= { 1 3 6 1 4 1 2011 6 3 25 1 }
+
+hwAttenuation OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  read-write
+    STATUS      current
+    DESCRIPTION
+        "The value of Intelligent-signal attenuation: 0 dBm to 14 dBm.
+From 0 to 14 independently indicates form 0 dBm to 14 dBm.
+Default: 5 dBm.
+DEFVAL { 5 }"
+    ::= { 1 3 6 1 4 1 2011 6 3 25 2 }
+
+hwDetectionThreshold OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  read-write
+    STATUS      current
+    DESCRIPTION
+        "The threshold of intelligent-signal detection: 0 dBm to 28 dBm.
+From 0 to 28 independently indicates form 0 dBm to -28 dBm.
+Default: -15 dBm.
+DEFVAL { 15 }"
+    ::= { 1 3 6 1 4 1 2011 6 3 25 3 }
+
+hwPowerMode OBJECT-TYPE
+    SYNTAX      Enumeration
+    MAX-ACCESS  read-write
+    STATUS      current
+    DESCRIPTION
+        "Indicates the power-mode of the board.
+Options:
+1. generalMode(0) -Indicate that the board uses normal power supply
+2. highMode(1) -Indicate that the board uses high-voltage power supply"
+    ::= { 1 3 6 1 4 1 2011 6 3 26 1 1 }
+
+hwNatOnuMgmtSwitch OBJECT-TYPE
+    SYNTAX      Enumeration
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "The status of the function of managing ONU through the NAT
+proxy for OLT: disable or enable.
+Options:
+1.disable(1) - the state of the function is disabled
+2.enable(2) - the state of the function is enabled"
+    ::= { 1 3 6 1 4 1 2011 6 3 27 1 1 }
+
+hwNatOnuVlanID OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "The VLANID of the Management Channel which ONU belongs to.
+-1 (default value) indicates this value is not configured."
+    ::= { 1 3 6 1 4 1 2011 6 3 27 1 2 }
+
+hwNatOnuIpAddr OBJECT-TYPE
+    SYNTAX      INTEGER
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "The public IP Address of ONU under the Agent Management of OLT."
+    ::= { 1 3 6 1 4 1 2011 6 3 27 1 3 }
+
+hwNatOnuPriority OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "The Priority of the SNMP Message from ONU."
+    ::= { 1 3 6 1 4 1 2011 6 3 27 1 4 }
+
+hwNatOnuStartIp OBJECT-TYPE
+    SYNTAX      INTEGER
+    MAX-ACCESS  read-write
+    STATUS      current
+    DESCRIPTION
+        "The start IP Address of ONU Inner Ip Segment."
+    ::= { 1 3 6 1 4 1 2011 6 3 27 1 5 }
+
+hwNatOnuIpScope OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  read-write
+    STATUS      current
+    DESCRIPTION
+        "The number of ONU Inner Ip."
+    ::= { 1 3 6 1 4 1 2011 6 3 27 1 6 }
+
+hwNatOnuUdpBegin OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "The start UDP Port Number of ONU which is managed by OLT through NAT."
+    ::= { 1 3 6 1 4 1 2011 6 3 27 2 1 1 }
+
+hwServiceMigrationOntId OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "Ont ID.
+When hwOntId = 65535, the operating object is Port.
+When hwOntId != 65535, the operating object is ONT."
+    ::= { 1 3 6 1 4 1 2011 6 3 28 1 1 }
+
+hwServiceMigrationRowStatus OBJECT-TYPE
+    SYNTAX      INTEGER
+    MAX-ACCESS  read-write
+    STATUS      current
+    DESCRIPTION
+        "Indicates the row status, used for creating or deleting
+a migration object. createAndGo(4) and destroy(6) are supported.
+During the query operation, active(1) is always returned for this leaf.
+Options:
+1. active(1) -when this leaf is queried, the value is fixed to active(1).
+2. createAndGo(4) -create a new instance of a conceptual row.
+3. destroy(6) -delete the instances associated with an existing conceptual row."
+    ::= { 1 3 6 1 4 1 2011 6 3 28 1 2 }
+
+hwServiceCfgOntId OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "Ont ID.
+When hwOntId = 65535, the operating object is Port.
+When hwOntId != 65535, the operating object is ONT."
+    ::= { 1 3 6 1 4 1 2011 6 3 29 1 1 }
+
+hwServiceCfgOperStatus OBJECT-TYPE
+    SYNTAX      Enumeration
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "The service configuration object status.
+Options:
+1. srvCfgDeleting(1) -The operation is in deleting state.
+2. srvCfgDeletionComplete(2) -The operation success.
+3. srvCfgDeletionFailed(3) -The operation fail."
+    ::= { 1 3 6 1 4 1 2011 6 3 29 1 2 }
+
+hwServiceCfgRowStatus OBJECT-TYPE
+    SYNTAX      INTEGER
+    MAX-ACCESS  read-write
+    STATUS      current
+    DESCRIPTION
+        "Indicates the row status, used for creating or deleting
+a service configuration object. createAndGo(4) and destroy(6)
+are supported. During the query operation, active(1) is
+always returned for this leaf.
+Options:
+1. active(1) -when this leaf is queried, the value is fixed to active(1).
+2. createAndGo(4) -create a new instance of a conceptual row.
+3. destroy(6) -delete the instances associated with an existing conceptual row."
+    ::= { 1 3 6 1 4 1 2011 6 3 29 1 3 }
+
+hwFrameIndex OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "The index of a shelf in the device."
+    ::= { 1 3 6 1 4 1 2011 6 3 3 1 1 1 }
+
+hwFrameResetTimeout OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  read-write
+    STATUS      current
+    DESCRIPTION
+        "Used to set the delay time of shelf reset, in unit of seconds.
+When you set hwFrameResetTimeout, you also need to set hwFrameAdminStatus to reset(3) or resetwithoutloadeddata(9).
+If the shelf resetting fails, the device tries again in three seconds,
+until the resetting is successful or the number of resetting attempts exceeds the maximum.
+Initial value is -1."
+    ::= { 1 3 6 1 4 1 2011 6 3 3 1 1 10 }
+
+hwFrameCLEICode OBJECT-TYPE
+    SYNTAX      OctetString
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "Frame CLEI Code (COMMON LANGUAGE Location Identifier Code):
+Used to identify the location and the type of a telecommunication device.
+For the definition of the CLEI Code, refer to the GR-485."
+    ::= { 1 3 6 1 4 1 2011 6 3 3 1 1 11 }
+
+hwFrameTypeName OBJECT-TYPE
+    SYNTAX      OctetString
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "Frame information description, to describe name information of the frame."
+    ::= { 1 3 6 1 4 1 2011 6 3 3 1 1 12 }
+
+hwFrameExtendPort OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  read-write
+    STATUS      current
+    DESCRIPTION
+        "The extending port of main frame which is used to connect extended frame."
+    ::= { 1 3 6 1 4 1 2011 6 3 3 1 1 13 }
+
+hwFrameUplinkPort OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "The uplink port of extended frame."
+    ::= { 1 3 6 1 4 1 2011 6 3 3 1 1 14 }
+
+hwFrameRackID OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  read-write
+    STATUS      current
+    DESCRIPTION
+        "Indicates the ID of the rack."
+    ::= { 1 3 6 1 4 1 2011 6 3 3 1 1 15 }
+
+hwFrameExtendingSubId OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "Sub ID of extending frame.
+If extend type is ETH, sub ID is 0xffffffff, it is invalid.
+If extend type is GPON, sub ID is ont ID, it is valid."
+    ::= { 1 3 6 1 4 1 2011 6 3 3 1 1 16 }
+
+hwFrameExtendType OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "The type of extended frame connecting to the main frame, its value is the same as the ifType of the extending port."
+    ::= { 1 3 6 1 4 1 2011 6 3 3 1 1 17 }
+
+hwFrameHardwareDesc OBJECT-TYPE
+    SYNTAX      OctetString
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "Hardware description of frame."
+    ::= { 1 3 6 1 4 1 2011 6 3 3 1 1 18 }
+
+hwFrameGponDeviceSn OBJECT-TYPE
+    SYNTAX      OctetString
+    MAX-ACCESS  read-write
+    STATUS      current
+    DESCRIPTION
+        "ONT serial number. The valid length of the serial number is 8, and 0 indicates that the node is not set."
+    ::= { 1 3 6 1 4 1 2011 6 3 3 1 1 19 }
+
+hwFrameType OBJECT-TYPE
+    SYNTAX      INTEGER
+    MAX-ACCESS  read-write
+    STATUS      current
+    DESCRIPTION
+        "The type of a shelf, which can be obtained from HUAWEI-TC-MIB.mib."
+    ::= { 1 3 6 1 4 1 2011 6 3 3 1 1 2 }
+
+hwFramePhySerialNum OBJECT-TYPE
+    SYNTAX      OctetString
+    MAX-ACCESS  read-write
+    STATUS      current
+    DESCRIPTION
+        "The vendor-specific serial number string for the physical entity.
+The preferred value is the serial number string actually printed
+on the component itself."
+    ::= { 1 3 6 1 4 1 2011 6 3 3 1 1 20 }
+
+hwFrameFanAlarm OBJECT-TYPE
+    SYNTAX      Bits
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This MIB node is used to query the alarm status of the fan in the extended frame, which is represented by bits.
+Functions of each bit are as follows:
+1: faSupportQuery(0) - indicates whether query of the alarm status of the fan in the extended frame is supported.
+If this bit is 0, the query is supported. If this bit is 1, the query is not supported. When the extended frame
+is normal and reports the fan alarm status to the main frame, the query is supported. In other cases, the query is not supported.
+2: faFanState(1) - indicates the communication status of the fan in the extended frame. If this bit is 0, the communication is normal.
+If this bit is 1, the communication is abnormal. If the communication is abnormal, the value of faFanBlockState(2) and faFansBlockState(3) are invalid,
+user do not have to pay attention to them.
+3: faFanBlockState(2) - indicates whether a single fan in the extended frame is blocked. If this bit is 0, no single fan is blocked.
+If this bit is 1, a single fan is blocked.
+4: faFansBlockState(3) - indicates whether multiple fans in the extended frame are blocked. If this bit is 0, no multiple fans are blocked.
+If this bit is 1, multiple fans are blocked."
+    ::= { 1 3 6 1 4 1 2011 6 3 3 1 1 21 }
+
+hwFrameMacAddress OBJECT-TYPE
+    SYNTAX      OctetString
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "The remote frame mac address, and its format is XX-XX-XX-XX-XX-XX.
+For local frame, the value is invalid."
+    ::= { 1 3 6 1 4 1 2011 6 3 3 1 1 22 }
+
+hwLpuSlotNums OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "Number of LPUs supported by the device."
+    ::= { 1 3 6 1 4 1 2011 6 3 3 1 1 23 }
+
+hwFrameCreateTime OBJECT-TYPE
+    SYNTAX      INTEGER
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object is used for getting the time of adding or creating a frame."
+    ::= { 1 3 6 1 4 1 2011 6 3 3 1 1 25 }
+
+hwFrameDesc OBJECT-TYPE
+    SYNTAX      OctetString
+    MAX-ACCESS  read-write
+    STATUS      current
+    DESCRIPTION
+        "The description about the frame.
+It is used to describe some extra information.
+For convenient management, you can set the location of the room in
+which the shelf is located as the description."
+    ::= { 1 3 6 1 4 1 2011 6 3 3 1 1 3 }
+
+hwSlots OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "The number of physical slots in the shelf."
+    ::= { 1 3 6 1 4 1 2011 6 3 3 1 1 4 }
+
+hwFrameOperStatus OBJECT-TYPE
+    SYNTAX      Enumeration
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "The operation status of frame.
+Options:
+1. normal(1) -indicates that the shelf is running normally
+2. fault(2) -indicates that the shelf is faulty
+3. other(3) -indicates that the shelf is in a state other than the previous three states
+4. discovery(4)-indicates that the shelf is in the auto discovery state and is to be activated
+5. mismatch(5) -indicates that the shelf type is inconsistent with the configuration in the database of device
+6. offline(6) -indicates that the shelf is offline or the link of the shelf is down"
+    ::= { 1 3 6 1 4 1 2011 6 3 3 1 1 5 }
+
+hwFrameAdminStatus OBJECT-TYPE
+    SYNTAX      Enumeration
+    MAX-ACCESS  read-write
+    STATUS      current
+    DESCRIPTION
+        "The administration status of frame.
+Options:
+1. nooperation(-1) - default state of the system
+2. disable(1) - indicates that the frame administration state is disable
+3. enable(2) - indicates that the frame administration state is enable
+4. reset(3) - reset the shelf. If you need to reset the shelf immediately,
+perform the operation only. If you need to reset the shelf after a certain period,
+you also need to set hwFrameResetTimeout.
+If you need to reset the control shelf, the entire system is reset;
+otherwise, the control board in the specified shelf is reset
+5. test(4) - test the frame
+6. confirm(5) - confirm the frame
+7. delete(6) - delete the frame info
+8. batchconfirm(7) - confirm the boards in a shelf in batches
+9. bind(8) - bind ont serial number with the extended frame ID
+10. resetwithoutloadeddata(9) - reset the shelf without newly loaded database.
+If you need to reset the shelf immediately, perform the operation only.
+If you need to reset the shelf after a certain period, you also need to set hwFrameResetTimeout.
+If you need to reset the control shelf, the entire system is reset;
+otherwise, the control board in the specified shelf is reset"
+    ::= { 1 3 6 1 4 1 2011 6 3 3 1 1 6 }
+
+hwFrameQueryAssit OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "The number of assist frame of this frame."
+    ::= { 1 3 6 1 4 1 2011 6 3 3 1 1 65536 }
+
+hwFrameRowStatus OBJECT-TYPE
+    SYNTAX      INTEGER
+    MAX-ACCESS  read-write
+    STATUS      current
+    DESCRIPTION
+        "The device that supports the slave shelf allows you to add a shelf (createAndGo(4))
+and delete a shelf (destroy(6)) only.
+The device that does not support the slave shelf and does not support the setting operation."
+    ::= { 1 3 6 1 4 1 2011 6 3 3 1 1 7 }
+
+hwBackplaneVersion OBJECT-TYPE
+    SYNTAX      OctetString
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "Backplane board version information.
+Use the new-line character \\n (ACSII 0x0A)
+to space various version information.
+It mainly contains the following information:
+Hardware PCB version \\n
+MAB version \\n
+Board Type \\n"
+    ::= { 1 3 6 1 4 1 2011 6 3 3 1 1 8 }
+
+hwBackplanePhySerialNum OBJECT-TYPE
+    SYNTAX      OctetString
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "The vendor-specific serial number string for the physical entity.
+The preferred value is the serial number string actually printed
+on the component itself."
+    ::= { 1 3 6 1 4 1 2011 6 3 3 1 1 9 }
+
+hwSlotIndex OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "A slot index is used to identify the location of a board in a shelf.
+You can locate a board in a shelf according to hwFrameIndex and hwSlotIndex.
+For the hwFrameIndex object, refer to hwFrameTable."
+    ::= { 1 3 6 1 4 1 2011 6 3 3 2 1 1 }
+
+hwSlotRowStatus OBJECT-TYPE
+    SYNTAX      INTEGER
+    MAX-ACCESS  read-write
+    STATUS      current
+    DESCRIPTION
+        "Supported setting operations are createAndGo(4) and destroy(6).
+Options:
+1. CreateAndGo(4) - When adding a board in offline mode, you must set the hwSlotType object at
+the same time. The hwSlotType object must support offline adding.
+After you add a board in offline mode on the NMS, if adding a daughter board is supported,
+you can also add a daughter board. See hwSubslotAdminStatus in hwSubslotTable.
+2. Destroy(6) - Used to delete a board."
+    ::= { 1 3 6 1 4 1 2011 6 3 3 2 1 10 }
+
+hwSlotPhySerialNum OBJECT-TYPE
+    SYNTAX      OctetString
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "The vendor-specific serial number string for the board.
+The preferred value is the serial number string actually printed on the component itself."
+    ::= { 1 3 6 1 4 1 2011 6 3 3 2 1 11 }
+
+hwSlotShutdownState OBJECT-TYPE
+    SYNTAX      Enumeration
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "Shutdown state of the board.
+Options:
+1. powerOffState(1) -indicates the power-off state
+2. powerOnState(2) -indicates the power-on state
+This object is no longer used."
+    ::= { 1 3 6 1 4 1 2011 6 3 3 2 1 12 }
+
+hwSlotTemperature OBJECT-TYPE
+    SYNTAX      centigrade
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "The temperature of the board. (Unit:centigrade)
+The value 0X7FFFFFFF indicates invalid temperature."
+    ::= { 1 3 6 1 4 1 2011 6 3 3 2 1 13 }
+
+hwSlotUpdateVersion OBJECT-TYPE
+    SYNTAX      OctetString
+    MAX-ACCESS  read-write
+    STATUS      current
+    DESCRIPTION
+        "The message is reported if the current version of a board is inconsistent with the
+version saved in the flash memory.
+The contents of the message are as follows:
+Current BIOS version of the board 3 bytes
+BIOS version of the board in the flash 3 bytes
+Current software version of the board 3 bytes
+Software version of the board in the flash memory 3 bytes"
+    ::= { 1 3 6 1 4 1 2011 6 3 3 2 1 14 }
+
+hwSlotEndServiceMode OBJECT-TYPE
+    SYNTAX      Enumeration
+    MAX-ACCESS  read-write
+    STATUS      current
+    DESCRIPTION
+        "The mode in which a board quits service.
+Options:
+1. immediate(1) -quit service immediately
+2. graceful(2) -quit service later"
+    ::= { 1 3 6 1 4 1 2011 6 3 3 2 1 18 }
+
+hwSlotCLEICode OBJECT-TYPE
+    SYNTAX      OctetString
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "Card CLEI Code(COMMON LANGUAGE Location Identifier Code):
+Used to identify the location and the type of a telecommunication device.
+For the definition of the CLEI Code, refer to the GR-485."
+    ::= { 1 3 6 1 4 1 2011 6 3 3 2 1 19 }
+
+hwSlotType OBJECT-TYPE
+    SYNTAX      INTEGER
+    MAX-ACCESS  read-write
+    STATUS      current
+    DESCRIPTION
+        "Board type, which is defined in HUAWEI-TC-MIB.mib.
+The board type supported by a slot varies. For example, a slot can be inserted with a power board only,
+but certain slots can be inserted with voice service boards and broadband service boards.
+When adding a board by using the hwSlotRowStatus,
+you need to specify the board information such as board type and slot number.
+When adding a board, you need to check whether the board can be inserted in the specified slot."
+    ::= { 1 3 6 1 4 1 2011 6 3 3 2 1 2 }
+
+hwSlotNetworkRole OBJECT-TYPE
+    SYNTAX      Enumeration
+    MAX-ACCESS  read-write
+    STATUS      current
+    DESCRIPTION
+        "Indicates the network role of a board.
+Options:
+1. cascade(1) -indicates the subtending side, which is used for subtending and capturing certain protocol packets
+2. network(2) -indicates the network side, which is used for upstream transmission
+3. user(3) -indicates the user side, which is used for creating the service port
+4. extend(4) -indicates the extend side, which is used for connecting to the extended frame
+5. stack(5) -indicates the stack side, which is used for creating the stack port
+6. invalid(255)-indicates the invalid value"
+    ::= { 1 3 6 1 4 1 2011 6 3 3 2 1 20 }
+
+hwSlotTypeName OBJECT-TYPE
+    SYNTAX      OctetString
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "Slot information description, to describe board name information of the slot."
+    ::= { 1 3 6 1 4 1 2011 6 3 3 2 1 21 }
+
+hwSlotPrimaryStatus OBJECT-TYPE
+    SYNTAX      Enumeration
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "The primary status of the Board.
+Options:
+1. isNr(1) -in Service, normal
+2. isAnr(2) -in service, abnormal
+3. isRst(3) -in service, restricted
+4. isAnrst(4) -in service, abnormal & restricted
+5. oosAu(5) -out of service, autonomous
+6. oosMa(6) -out of service, management
+7. oosAuma(7) -out of service, autonomous & management
+8. oosAurst(8) -out of service, autonomous & restricted
+9. oosMaanr(9) -out of service, management & abnormal
+10. unknown(10) -unknown"
+    ::= { 1 3 6 1 4 1 2011 6 3 3 2 1 22 }
+
+hwSlotSecondaryStatus OBJECT-TYPE
+    SYNTAX      Bits
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "The secondary status of the board.
+This BITS structure can report the following status:
+1. sstAins(0) -this bit position positively reports that the status of the board is automatic in-service
+2. sstFaf(1) -facility failure
+3. sstFlt(2) -fault
+4. sstLpbk(3) -loopback
+5. sstMea(4) -mismatch of equipment and attributes
+6. sstSgeo(5) -supporting entity outage
+7. sstStbyh(6) -standby-Hot
+8. sstTs(7) -test
+9. sstUas(8) -unassigned
+10. sstUeq(9) -unequipped
+11. sstWrk(10) -working
+12. sstPwr(11) -power"
+    ::= { 1 3 6 1 4 1 2011 6 3 3 2 1 23 }
+
+hwSlotCreateTime OBJECT-TYPE
+    SYNTAX      INTEGER
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object is used for getting the time of adding or creating a board."
+    ::= { 1 3 6 1 4 1 2011 6 3 3 2 1 24 }
+
+hwSlotPortNumWorkMode OBJECT-TYPE
+    SYNTAX      Enumeration
+    MAX-ACCESS  read-write
+    STATUS      current
+    DESCRIPTION
+        "Indicates the port number working mode of a board.
+The default value is portnumworkmode48(5).
+Options:
+1. portnumworkmode8(1) - Indicates that the board is in 8-channel port number working mode.
+2. portnumworkmode16(2) - Indicates that the board is in 16-channel port number working mode.
+3. portnumworkmode24(3) - Indicates that the board is in 24-channel port number working mode.
+4. portnumworkmode32(4) - Indicates that the board is in 32-channel port number working mode.
+5. portnumworkmode48(5) - Indicates that the board is in 48-channel port number working mode.
+6. other(255) - Indicates that the board is in invalid port working mode.
+Setting port working mode of a board triggers system restarts.
+Therefore, this node cannot be set concurrently with hwSlotAdminStatus, hwSlotRowStatus, and hwSlotWorkMode nodes."
+    ::= { 1 3 6 1 4 1 2011 6 3 3 2 1 25 }
+
+hwSlotItemCode OBJECT-TYPE
+    SYNTAX      OctetString
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "The vendor-specific item code string for the board.
+The preferred value is the item code string actually printed on the component itself."
+    ::= { 1 3 6 1 4 1 2011 6 3 3 2 1 27 }
+
+hwConfigBoardName OBJECT-TYPE
+    SYNTAX      OctetString
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "describe config board name information of the slot."
+    ::= { 1 3 6 1 4 1 2011 6 3 3 2 1 28 }
+
+hwBasicBoardName OBJECT-TYPE
+    SYNTAX      OctetString
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "describe basic board name information of the slot."
+    ::= { 1 3 6 1 4 1 2011 6 3 3 2 1 29 }
+
+hwSlotDesc OBJECT-TYPE
+    SYNTAX      OctetString
+    MAX-ACCESS  read-write
+    STATUS      current
+    DESCRIPTION
+        "The description about the board, providing additional information about a board for users.
+For example, you can set the services supported by the board as the description."
+    ::= { 1 3 6 1 4 1 2011 6 3 3 2 1 3 }
+
+hwSlotVersion OBJECT-TYPE
+    SYNTAX      OctetString
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "The version information about the board.
+Refer to the technical specifications of Huawei Technologies
+Co., Ltd. Use the new-line character \\n (ACSII 0x0A) to space
+various version information. If there is no corresponding
+version, the new-line character shall also be inserted to
+remain the order.
+Detailed order information:
+Hardware PCB version \\n
+Software version \\n
+Logic version \\n
+DSP version \\n
+Standby CPU software version \\n
+Chip version \\n
+Other software version of the chip with a software \\n
+Other version information \\n
+The version information may have a slight difference according to different types of boards.
+For example, the standby CPU software version is not displayed for certain boards."
+    ::= { 1 3 6 1 4 1 2011 6 3 3 2 1 5 }
+
+hwSlotWorkMode OBJECT-TYPE
+    SYNTAX      Enumeration
+    MAX-ACCESS  read-write
+    STATUS      current
+    DESCRIPTION
+        "Board working mode that describes whether the board is
+working in main state or in standby with loadshare, nullbackup, voice, satop state.
+Options:
+1. main(1) - indicates that the active control board, supporting the get operation only
+2. standby(2) - indicates that the standby control board, supporting the get operation only
+3. loadshare(3) - indicates that the board working mode is load sharing
+4. nullbackup(4) - indicates that the board working mode is backup
+5. voice(5) - indicates to get and set the working mode of an EDT service board
+6. satop(6) - indicates to get and set the working mode of an EDT service board or TOPB service board
+7. pots(7) - indicates to get and set the working mode of an VDM service board
+8. isdn(8) - indicates to get and set the working mode of an VDM service board
+9. bonding(9) - indicates to get and set the working mode of an ADP service board
+10. retransmission(10) - indicates to get and set the working mode of an ADP service board
+11. nativetdm(11) - indicates to get and set the working mode of a TOPB service board
+12. other(255) - indicates other working mode
+An EDT service board can be running either in voice mode, that is, voice(5), or in broadband mode, that is, satop(6).
+Setting the working mode of the EDT service board causes board resetting.
+An VDM service board can be running either in pots mode, that is, pots(7), or in isdn mode, that is, isdn(8).
+Setting the working mode of the VDM service board causes board resetting.
+Setting the board working mode may cause board resetting.
+When you are setting the working mode, you cannot set hwSlotAdminStatus or hwSlotRowStatus at the same time."
+    ::= { 1 3 6 1 4 1 2011 6 3 3 2 1 6 }
+
+hwSubSlots OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "The number of sub boards supported by the board."
+    ::= { 1 3 6 1 4 1 2011 6 3 3 2 1 7 }
+
+hwSlotOperStatus OBJECT-TYPE
+    SYNTAX      Enumeration
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "The running status of a board.
+Options:
+1. null(1) -indicates that the board is null
+2. normal(2) -indicates that the board is running normally
+3. fault(3) -indicates that the board is faulty but in position
+4. forbidden(4) -indicates that the board is in position but disabled
+5. autofind(5) -indicates that the board is in the autofind state. If a board is added through
+hwSlotRowStatus and the board is not confirmed, the board is in the autofind state.
+If a board is inserted in an idle slot, after the report of automatic registration,
+the board is also in the autofind state
+6. config(6) -indicates that the board is in the configuration state.
+After a board that is in the auto discovery.
+state is confirmed, data needs to be configured on the board.
+The board is in the configuration state during data configuration.
+After a board is successfully configured, its status is changed from config(6)
+to normal(2). If the configuration fails, the board status is changed from config(6) to fault(3)
+7. offline(7) -indicates that the board is faulty and is not in position
+8. abnormal(8) -indicates that the board is abnormal
+9. versionerr(9) -indicates that the board version is error
+10. autoload(10) -indicates that the board is in the auto loading state. If detecting a software update,
+the board automatically loads the update. If a board is in the auto loading state,
+resetting or disabling the board may fail
+11. outofservice(11) -indicates that the board is out of service
+12. graceful(12) -indicates that the board running state is graceful
+13. shutdown(13) -indicates that the board is in the shutdown state.
+14. energysavingshutdown(14) -used for system energy saving. Reference to hwSysEnergySaving node for more detail.
+15. hightempshutdown(15) -when the temperature of a board exceeds the high temperature threshold,
+the board is powered off in order to protect the board
+16. manualshutdown(16) -services on certain boards can be recovered only after restart of the board.
+You can manually power off the board.
+Then, the board is in the manual shutdown state
+17. mismatch(17) -when a board inserted in a slot is inconsistent with the configuration saved in the system,
+the board is in the mismatch(17) state
+18. acoffshutdown(18) -used to protect system when there is no AC Power.
+19. highpowershutdown(19) -used to protect system when the current maximum power consumption of the
+system exceeds the maximum power supply capability
+20. isolated(20) -used to indicates that the board is in isolated state
+Certain products use the power saving features, energysavingshutdown(14), hightempshutdown(15),
+manualshutdown(16),acoffshutdown(18),highpowershutdown(19) to distinguish the shutdown causes.
+For outofservice(11), graceful(12), refer to hwSlotEndServiceMode."
+    ::= { 1 3 6 1 4 1 2011 6 3 3 2 1 8 }
+
+hwSlotAdminStatus OBJECT-TYPE
+    SYNTAX      Enumeration
+    MAX-ACCESS  read-write
+    STATUS      current
+    DESCRIPTION
+        "Board status management.
+This object cannot be set simultaneously with hwSlotRowStatus or hwSlotWorkMode.
+Options:
+1. nooperation(-1) -default state of the system
+2. disable(1) -disable the running of a board
+3. enable(2) -enable the running of a board
+4. reset(3) -reset a board
+5. test(4) -test a board
+6. confirm(5) -confirm the board in the discovery(5) state in hwSlotOperStatus
+After the operation, the board is in the config state
+7. switch(6) -main board switchover on access network UA device
+8. delete(7) -delete a board
+9. forbidden(8) -forbid a board
+10.unforbidden(9) -permit a board
+11.endservice(10) -used in the exit delay of a board
+12.startservice(11) -used in the exit delay of a board
+13.poweron(12) -used to power on a board
+14.poweroff(13) -used to power off a board
+15.is(14) -in service
+16.oos(15) -out of service
+17.hotreset(16) -hotreset a board"
+    ::= { 1 3 6 1 4 1 2011 6 3 3 2 1 9 }
+
+hwSubslotIndex OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "The index of a daughter board is determined by the physical position of the daughter board on the board.
+The hwSubslotIndex value of 65535 indicates the board itself."
+    ::= { 1 3 6 1 4 1 2011 6 3 3 3 1 1 }
+
+hwSubslotRowStatus OBJECT-TYPE
+    SYNTAX      INTEGER
+    MAX-ACCESS  read-write
+    STATUS      current
+    DESCRIPTION
+        "Only the operation of adding a daughter board, that is, setting createAndGo(4),
+is supported. When adding a daughter board, you must set the hwSubslotType object at the same time.
+After you add a board by using the hwSlotAdminStatus object in hwSlotTable,
+if the board allows you to add a daughter board and the board status (hwSlotOperStatus) is discovery(5),
+you can add a daughter board in this way."
+    ::= { 1 3 6 1 4 1 2011 6 3 3 3 1 10 }
+
+hwSubSlotPhySerialNum OBJECT-TYPE
+    SYNTAX      OctetString
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "The vendor-specific serial number string for the daughter board.
+The preferred value is the serial number string
+actually printed on the component itself."
+    ::= { 1 3 6 1 4 1 2011 6 3 3 3 1 11 }
+
+hwSubslotTypeName OBJECT-TYPE
+    SYNTAX      OctetString
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "daughter board type name in the subslot,refer to the HW-TC table."
+    ::= { 1 3 6 1 4 1 2011 6 3 3 3 1 12 }
+
+hwSubslotPrimaryStatus OBJECT-TYPE
+    SYNTAX      Enumeration
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "The primary status of the daughter board.
+Options:
+1. isNr(1) -in Service, normal
+2. isAnr(2) -in service, abnormal
+3. isRst(3) -in service, restricted
+4. isAnrst(4) -in service, abnormal & restricted
+5. oosAu(5) -out of service, autonomous
+6. oosMa(6) -out of service, management
+7. oosAuma(7) -out of service, autonomous & management
+8. oosAurst(8) -out of service, autonomous & restricted
+9. oosMaanr(9) -out of service, management & abnormal"
+    ::= { 1 3 6 1 4 1 2011 6 3 3 3 1 13 }
+
+hwSubslotSecondaryStatus OBJECT-TYPE
+    SYNTAX      Bits
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "The secondary status of the daughter board.
+This BITS structure can report the following status:
+1. sstAins(0) -this bit position positively reports that the status of the daughter board is automatic in-service
+2. sstFaf(1) -facility failure
+3. sstFlt(2) -fault
+4. sstLpbk(3) -loopback
+5. sstMea(4) -mismatch of equipment and attributes
+6. sstSgeo(5) -supporting entity outage
+7. sstStbyh(6) -standby-Hot
+8. sstTs(7) -test
+9. sstUas(8) -unassigned
+10. sstUeq(9) -unequipped
+11. sstWrk(10) -working
+12. sstPwr(11) -power"
+    ::= { 1 3 6 1 4 1 2011 6 3 3 3 1 14 }
+
+hwSubslotCLEICode OBJECT-TYPE
+    SYNTAX      OctetString
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "daughter board CLEI Code(COMMON LANGUAGE Location Identifier Code):
+Used to identify the location and the type of a telecommunication device.
+For the definition of the CLEI Code, refer to the GR-485."
+    ::= { 1 3 6 1 4 1 2011 6 3 3 3 1 15 }
+
+hwSubslotTemperature OBJECT-TYPE
+    SYNTAX      centigrade
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "The temperature of the daughter board. (Unit:centigrade)
+The value 0X7FFFFFFF indicates invalid temperature."
+    ::= { 1 3 6 1 4 1 2011 6 3 3 3 1 16 }
+
+hwSubslotCpuRate OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "The cpu occupancy of the daughter board.
+The value -1 indicates invalid cpu occupancy."
+    ::= { 1 3 6 1 4 1 2011 6 3 3 3 1 17 }
+
+hwSubslotRamUseRate OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "The memory occupancy of the daughter board.
+The value -1 indicates invalid memory occupancy."
+    ::= { 1 3 6 1 4 1 2011 6 3 3 3 1 18 }
+
+hwSubslotType OBJECT-TYPE
+    SYNTAX      INTEGER
+    MAX-ACCESS  read-write
+    STATUS      current
+    DESCRIPTION
+        "For the definition of the daughter board type, refer to the HUAWEI-TC-MIB.mib.
+When adding a daughter board on a board, you need to specify the type of the daughter board and
+check whether the daughter board can be inserted in the specified subslot on the board."
+    ::= { 1 3 6 1 4 1 2011 6 3 3 3 1 2 }
+
+hwSubslotPorts OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "The number of physical ports owned by the sub board."
+    ::= { 1 3 6 1 4 1 2011 6 3 3 3 1 3 }
+
+hwSubslotOperStatus OBJECT-TYPE
+    SYNTAX      Enumeration
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "Operation status of the daughter board.
+Options:
+1. uninstall(1) -indicates that the daughter board is not installed
+2. normal(2) -indicates that the daughter board is running normally
+3. fault(3) -indicates that the daughter board is faulty
+4. forbidden(4) -the object is not used
+5. autofind(5) -indicates that the daughter board is in the autofind state.
+6. config(6) -indicates that the daughter board is in the configuration state.
+The daughter board is in the configuration state during data configuration.
+After a daughter board is successfully configured, its status is changed from config(6)
+to normal(2). If the configuration fails, the daughter board status is changed from config(6) to fault(3)
+7. offline(7) -indicates that the daughter board is faulty and is not in position
+8. abnormal(8) -indicates that the daughter board is abnormal
+9. versionerr(9) -indicates that the daughter board version is error
+10. autoload(10) -indicates that the daughter board is in the auto loading state. If detecting a software update,
+the daughter board automatically loads the update. If a daughter board is in the auto loading state,
+resetting or disabling the daughter board may fail
+11. outofservice(11) -indicates that the daughter board is out of service
+12. graceful(12) -indicates that the daughter board running state is graceful
+13. shutdown(13) -indicates that the daughter board is in the shutdown state.
+14. energysavingshutdown(14) -used for system energy saving. Reference to hwSysEnergySaving node for more detail.
+15. hightempshutdown(15) -when the temperature of a daughter board exceeds the high temperature threshold,
+the daughter board is powered off in order to protect the daughter board
+16. manualshutdown(16) -services on certain daughter boards can be recovered only after restart of the daughter board.
+You can manually power off the daughter board.
+Then, the daughter board is in the manual shutdown state
+17. mismatch(17) -when a daughter board inserted in a slot is inconsistent with the configuration saved in the system,
+the daughter board is in the mismatch(17) state
+18. acoffshutdown(18) -used to protect system when there is no AC Power.
+Certain products use the power saving features, energysavingshutdown(14), hightempshutdown(15),
+manualshutdown(16),acoffshutdown(18) to distinguish the shutdown causes."
+    ::= { 1 3 6 1 4 1 2011 6 3 3 3 1 5 }
+
+hwSubslotAdminStatus OBJECT-TYPE
+    SYNTAX      Enumeration
+    MAX-ACCESS  read-write
+    STATUS      current
+    DESCRIPTION
+        "Administration status of the daughter board in the subslot.
+This object is not used.
+Options:
+1. nooperation(-1) -indicates the default state
+2. disable(1) -indicates the disable state
+3. enable(2) -indicates the enable state
+4. reset(3) -indicates the reset state
+5. test(4) -indicates the test state
+6. confirm(5) -indicates the confirmation state
+7. delete(6) -indicates the delete state
+8. is(7) -indicates in service
+9. oos(8) -indicates out of service
+10. poweron(9) -indicates the poweron state
+11. poweroff(10) -indicates the poweroff state"
+    ::= { 1 3 6 1 4 1 2011 6 3 3 3 1 7 }
+
+hwSubslotVersion OBJECT-TYPE
+    SYNTAX      OctetString
+    MAX-ACCESS  read-write
+    STATUS      current
+    DESCRIPTION
+        "daughter board version information, obtained from the version information about the
+board on which the daughter board is located.
+Refer to the hwSlotVersion in the hwSlotTable."
+    ::= { 1 3 6 1 4 1 2011 6 3 3 3 1 8 }
+
+hwSubSlotDesc OBJECT-TYPE
+    SYNTAX      OctetString
+    MAX-ACCESS  read-write
+    STATUS      current
+    DESCRIPTION
+        "The description about the daughter board.
+Do not support the setting operation."
+    ::= { 1 3 6 1 4 1 2011 6 3 3 3 1 9 }
+
+hwPortIndex OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "Port index, indicating the physical number of the port on a board."
+    ::= { 1 3 6 1 4 1 2011 6 3 3 4 1 1 }
+
+hwPortSecondaryStatus OBJECT-TYPE
+    SYNTAX      Bits
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "The secondary status of the port.
+This BITS structure can report the following status:
+1. sstAins(0) -this bit position positively reports that the status of the port is automatic in-service
+2. sstFaf(1) -facility failure
+3. sstFlt(2) -fault
+4. sstLpbk(3) -loopback
+5. sstMea(4) -mismatch of equipment and attributes
+6. sstSgeo(5) -supporting entity outage
+7. sstStbyh(6) -standby-Hot
+8. sstTs(7) -test
+9. sstUas(8) -unassigned
+10. sstUeq(9) -unequipped
+11. sstWrk(10) -working
+12. sstPwr(11) -power"
+    ::= { 1 3 6 1 4 1 2011 6 3 3 4 1 10 }
+
+hwPortVsIDMask OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "The virtual system mask of the port, each bit indicates the VAN to which the board
+belongs. For example, the first bit maps vs0, the second bit maps vs1, and the rest
+can be deducted by analog."
+    ::= { 1 3 6 1 4 1 2011 6 3 3 4 1 11 }
+
+hwPortType OBJECT-TYPE
+    SYNTAX      INTEGER
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "Port type, which is defined in HUAWEI-TC-MIB.mib."
+    ::= { 1 3 6 1 4 1 2011 6 3 3 4 1 2 }
+
+hwPortDesc OBJECT-TYPE
+    SYNTAX      OctetString
+    MAX-ACCESS  read-write
+    STATUS      current
+    DESCRIPTION
+        "The description about the port, used to describe extra information of the port.
+For example, you can describe the user that connects to the port.
+The standby control board does not support setting of the port description."
+    ::= { 1 3 6 1 4 1 2011 6 3 3 4 1 3 }
+
+hwPortOperStatus OBJECT-TYPE
+    SYNTAX      Enumeration
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "Port operation status.
+Options:
+1.normal(1) -indicates that the link is up or activated
+2.fault(2) -indicates that port failure
+3.localLoopback(3) -indicates that normal local loopback
+4.forbidden(4) -indicates that the port is disabled
+5.test(5) -indicates test start
+6.remoteLoopback(6) -indicates normal remote loopback
+7.activated(10) -indicates that the port is being activated
+8.deactivated(11) -indicates that the link is down or deactivated
+9.block(12) -indicates port blocking
+10.nolight(13) -indicates no signal in ATM port
+11.innerLocalLoopback(14) -indicates that inner local loopback toward inner system chipset (it's UTOPIA loopback for ADSL port)
+12.innerRemoteLoopback(15)-indicates that inner remote loopback toward inner system chipset
+13.locked(16) -indicates locked
+14.busy(17) -indicates busy
+15.maintain(18) -indicates maintenance
+16.standbynormal(19) -indicates that the port on the standby control board is activated
+17.standbyfault(20) -indicates that the port on the standby control board is faulty
+18.adslloopbackafe(21) -indicates that AFE loopback
+19.adslloopbackhybrid(22) -indicates that HYBRID loopback
+20.rtuLocalLoopback(23) -indicates that RTU local loopback
+21.rtuRemoteLoopback(24) -indicates that RTU remote loopback
+22.linkup(25) -indicates eth port online
+23.linkdown(26) -indicates eth port offline
+24.powerDenied(50) -indicates port operation state is power denied"
+    ::= { 1 3 6 1 4 1 2011 6 3 3 4 1 5 }
+
+hwPortAdminStatus OBJECT-TYPE
+    SYNTAX      Enumeration
+    MAX-ACCESS  read-write
+    STATUS      current
+    DESCRIPTION
+        "Port administration status.
+Options:
+1.active(1) -activate the port
+2.deactive(2) -deactivate the port
+3.block(3) -block the port
+4.unblock(4) -unblock the port
+5.confirm(5) -confirm the port
+6.delete(6) -delete the port
+7.reset(7) -reset the port
+8.localLoopback(8) -loop back the port
+9.remoteLoopback(9) -remotely loop back the port
+10.stopLoopback(11) -stop looping back the port
+11.innerLocalLoopback(12) -inner local loopback toward inner system chipset
+12.innerRemoteLoopback(13) -inner remote loopback toward inner system chipset
+13.rtuLocalLoopback(14) -RTU local loopback RUT: Local loopback
+14.rtuRemoteLoopback(15) -RTU remote loopback
+15.utopiaLocalLoopback(16) -UTOPIA Local Loopback
+16.afeLocalLoopback(17) -AFE Local Loopback
+17.hybirdLocalLoopback(18) -HYBIRD Local Loopback
+18.noLoopBackNoTest(50) -no loop back and no test
+19.noLoopBackTest(51) -no loop back and test
+20.localLoopBackNoTest(52) -Local loop back and no test
+21.localLoopBackTest(53) -Local loop back test
+22.remoteLoopBackNoTest(54) -Remote loopback and no test
+23.remoteLoopBackTest(55) -Remote loopback and test
+24.localLoopbackPTM(56) -PTM Local Loopback
+25.eocLoopbackNoTest(57) -EOC Loop back and no test
+26.eocLoopbackTest(58) -EOC Loop back and test
+27.prohibited(59) -Port is prohibited"
+    ::= { 1 3 6 1 4 1 2011 6 3 3 4 1 6 }
+
+hwPortNetworkRole OBJECT-TYPE
+    SYNTAX      Enumeration
+    MAX-ACCESS  read-write
+    STATUS      current
+    DESCRIPTION
+        "Indicates the network role of a board.
+Options:
+1. uplink(1) -indicates the uplink port
+2. cascade(2) -indicates the subtending port
+3. access(3) -indicates the downstream access port
+4. extend(4) -indicates connectting to extended frame
+5. stack(5) -indicates the stack port"
+    ::= { 1 3 6 1 4 1 2011 6 3 3 4 1 7 }
+
+hwPortTemperature OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "The temperature of the port.
+The object is not used."
+    ::= { 1 3 6 1 4 1 2011 6 3 3 4 1 8 }
+
+hwPortPrimaryStatus OBJECT-TYPE
+    SYNTAX      Enumeration
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "The primary status of the port.
+Options:
+1. isNr(1) -in Service, normal
+2. isAnr(2) -in service, abnormal
+3. isRst(3) -in service, restricted
+4. isAnrst(4) -in service, abnormal & restricted
+5. oosAu(5) -out of service, autonomous
+6. oosMa(6) -out of service, management
+7. oosAuma(7) -out of service, autonomous & management
+8. oosAurst(8) -out of service, autonomous & restricted
+9. oosMaanr(9) -out of service, management & abnormal"
+    ::= { 1 3 6 1 4 1 2011 6 3 3 4 1 9 }
+
+hwFrameLinkNumber OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  read-write
+    STATUS      current
+    DESCRIPTION
+        "Number of frame Links, which refers to the number of links between the main
+frame and the standby frame of the current device. If there are many frames,
+but the device cannot know the link relation of the frames, then the initial
+value of this node is 0. If a user manually adds the link between the frames later,
+then this node shall be renewed.
+Default: 0"
+    ::= { 1 3 6 1 4 1 2011 6 3 3 5 1 }
+
+hwFrameLinkIndex OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "Index of the frame link. It is sequentially numerated and exclusively identified in the device.
+There is no restriction to the coding rule."
+    ::= { 1 3 6 1 4 1 2011 6 3 3 5 2 1 1 }
+
+hwFrameLinkOperStatus OBJECT-TYPE
+    SYNTAX      Enumeration
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "The running status of the link.
+Options:
+1.normal(1) - the running status of the link is normal
+2.fault(2) - the running status of the link is fault
+3.discovery(3) - the link is discovered"
+    ::= { 1 3 6 1 4 1 2011 6 3 3 5 2 1 10 }
+
+hwFrameLinkRowStatus OBJECT-TYPE
+    SYNTAX      INTEGER
+    MAX-ACCESS  read-write
+    STATUS      current
+    DESCRIPTION
+        "The row status of the frame link, used to add or delete a link."
+    ::= { 1 3 6 1 4 1 2011 6 3 3 5 2 1 11 }
+
+hwFrameLinkLeftFrame OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  read-write
+    STATUS      current
+    DESCRIPTION
+        "The ID of the left node linked to the frame, corresponding to the hwFrameIndex in the hwFrameTable"
+    ::= { 1 3 6 1 4 1 2011 6 3 3 5 2 1 2 }
+
+hwFrameLinkLeftSlot OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  read-write
+    STATUS      current
+    DESCRIPTION
+        "The ID of the left slot linked to the frame, corresponding to the hwSlotIndex in the hwSlotTable.
+It indicates which slot of the left node is the link entry."
+    ::= { 1 3 6 1 4 1 2011 6 3 3 5 2 1 3 }
+
+hwFrameLinkLeftSubSlot OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  read-write
+    STATUS      current
+    DESCRIPTION
+        "Link the left subslot, corresponding to the hwSubSlotIndex in the hwSubTable.
+It indicates which subslot of the left node is the link entry."
+    ::= { 1 3 6 1 4 1 2011 6 3 3 5 2 1 4 }
+
+hwFrameLinkLeftPort OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  read-write
+    STATUS      current
+    DESCRIPTION
+        "The ID of the left port linked to the frame, corresponding to the hwPortIndex in the hwPortTable.
+It indicates which port of the left node is the link entry."
+    ::= { 1 3 6 1 4 1 2011 6 3 3 5 2 1 5 }
+
+hwFrameLinkRightFrame OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  read-write
+    STATUS      current
+    DESCRIPTION
+        "The ID of the right node linked to the frame, corresponding to the hwFrameIndex of the hwFrameTable."
+    ::= { 1 3 6 1 4 1 2011 6 3 3 5 2 1 6 }
+
+hwFrameLinkRightSlot OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  read-write
+    STATUS      current
+    DESCRIPTION
+        "The ID of the right slot linked the frame, corresponding to the hwSlotIndex of the hwSlotTable.
+It indicates which slot of the right node is the link entry."
+    ::= { 1 3 6 1 4 1 2011 6 3 3 5 2 1 7 }
+
+hwFrameLinkRightSubSlot OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  read-write
+    STATUS      current
+    DESCRIPTION
+        "Link the right subslot, corresponding to the hwSubSlotIndex in the hwSubSlotTable.
+It indicates which subslot of the right node is the link entry."
+    ::= { 1 3 6 1 4 1 2011 6 3 3 5 2 1 8 }
+
+hwFrameLinkRightPort OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  read-write
+    STATUS      current
+    DESCRIPTION
+        "The ID of the right port linked to the frame, corresponding to the hwPortIndex in the hwPortTable.
+It indicates which port of the right port is the link entry."
+    ::= { 1 3 6 1 4 1 2011 6 3 3 5 2 1 9 }
+
+hwFrameLinkNextIndex OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "The frame link table indicates adding the index value to be assigned by the new link.
+This leaf is used to access an index ID of the next frame link dynamically assigned by
+the host before delivering the adding link. To deliver the adding link,
+the value of the leaf shall be accessed,and be delivered together with the frame link table.
+Otherwise, the host can not execute the operation and will return the error.
+Default: 0"
+    ::= { 1 3 6 1 4 1 2011 6 3 3 5 3 }
+
+hwBoardAulaw OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  read-write
+    STATUS      current
+    DESCRIPTION
+        "Coding method of voice signal when digitalizing.
+In different country or area it should be A law or u law.
+1 -- A law
+2 -- u law"
+    ::= { 1 3 6 1 4 1 2011 6 3 3 6 1 1 1 }
+
+hwBoardCurrent OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  read-write
+    STATUS      current
+    DESCRIPTION
+        "Port current supported by the board. The value ranges from 1 to 10,
+which indicates the port current value supported under certain loopline impedance.
+1 -- 25mA steady current
+2 -- 16mA steady current
+3 -- 35mA 2*200
+4 -- 35mA 2*250
+5 -- 35mA 2*400
+6 -- 47mA 2*200
+7 -- 47mA 2*250
+8 -- 47mA 2*400
+9 -- 17mA steady current
+10 -- 20mA steady current"
+    ::= { 1 3 6 1 4 1 2011 6 3 3 6 1 1 2 }
+
+hwBoardImpedance OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  read-write
+    STATUS      current
+    DESCRIPTION
+        "Port impedance of the board. The following values indicates different impedance with
+different application circumstances.
+1 -- Bureau machine in China(200+680|| 100nf)
+2 -- User Machine in China(200+560|| 100nf)
+3 -- 600 Interface
+4 -- Interface of russian(150+510|| 47nf)
+5 -- (220+820|| 115nf )
+6 -- (220+820|| 120nf )
+7 -- 900 Interface
+8 -- Interface of Brazil(800|| 50nf)
+9 -- BT(Zin=300+1000|| 220nf ,Zload=370+620|| 310nf)
+10 -- HK_BT3(Zin=370+620|| 310nf,Zload=600)
+11 -- HK_BT5(Zin=270+264|| 357nf+1434|| 265nf,Zload=600)
+12 -- BT1(BT0 without AGC)
+13 -- BT2(Zin=87+1052||228nF+229||28.4nF, Zload=270+264||357nF+1434||265nF)
+14 -- BT3(Zin=87+1052||228nF+229||28.4nF, Zload=164+162||363nF+1227||350nF)
+15 -- KPN(Zin= 270+750|| 150nf)
+255 -- Private definition"
+    ::= { 1 3 6 1 4 1 2011 6 3 3 6 1 1 3 }
+
+hwBoardEnvironment OBJECT-TYPE
+    SYNTAX      Enumeration
+    MAX-ACCESS  read-write
+    STATUS      current
+    DESCRIPTION
+        "The object is used to set and query the working environment of a board.
+Options:
+1.emsan(1) -indicates that the device is on a terminal node or a convergence node
+2.smsan(2) -indicates that the device is on a terminal node or a convergence node"
+    ::= { 1 3 6 1 4 1 2011 6 3 3 6 1 1 4 }
+
+hwBoardWorkmode OBJECT-TYPE
+    SYNTAX      Enumeration
+    MAX-ACCESS  read-write
+    STATUS      current
+    DESCRIPTION
+        "The object is used to set the working mode of the COMBO board.
+Options:
+1.combo(1) -the broadband and voice parts of the board are powered on
+2.powerSaving(2) -the board cuts off the power supply of the broadband part
+3.auto(3) -normally the broadband and voice parts of the board are powered on
+When the mains supply is cut off, the board automatically cuts off
+the power supply of the broadband part"
+    ::= { 1 3 6 1 4 1 2011 6 3 3 6 1 1 5 }
+
+hwBoardRingVoltage OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  read-write
+    STATUS      current
+    DESCRIPTION
+        "It is supported to config ringvoltage on virtual A04 board.
+It should be 41.5v or 45v.
+1 -- 25Hz 41.5V
+2 -- 25Hz 45V"
+    ::= { 1 3 6 1 4 1 2011 6 3 3 6 1 1 6 }
+
+hwBoardWorkState OBJECT-TYPE
+    SYNTAX      Enumeration
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "The object is used to query the working status of the COMBO board.
+Options:
+1. combo(1) -if the broadband and voice parts of the board are powered on,
+the returned value is combo(1) ,DEFVAL { 1 }
+2. powerSaving(2) -if only the voice part of the board is powered on,
+the returned value is powerSaving(2)"
+    ::= { 1 3 6 1 4 1 2011 6 3 3 6 1 1 7 }
+
+hwVsPortType OBJECT-TYPE
+    SYNTAX      INTEGER
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "Port type, which is defined in HUAWEI-TC-MIB.mib."
+    ::= { 1 3 6 1 4 1 2011 6 3 3 7 1 1 }
+
+hwVsPortVsMask OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "The virtual system mask of the port, each bit indicates the VAN to which the port
+belongs. For example, the first bit maps vs0, the second bit maps vs1, and the rest
+can be deducted by analog."
+    ::= { 1 3 6 1 4 1 2011 6 3 3 7 1 2 }
+
+hwCapabilityFeatureID OBJECT-TYPE
+    SYNTAX      Enumeration
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "The id of device feature.
+Options:
+1.system(1) - feature of system"
+    ::= { 1 3 6 1 4 1 2011 6 3 30 1 1 }
+
+hwCapabilityFeatureValue OBJECT-TYPE
+    SYNTAX      OctetString
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "The vaule of device capability.
+When hwCapabilityFeatureID equals system(1), bit from left to right represents:
+0.AG capability
+1.BFD capability
+The value of the bit is 0 means the capability is not supported.
+The value of the bit is 1 means the capability is supported."
+    ::= { 1 3 6 1 4 1 2011 6 3 30 1 2 }
+
+hwCapabilityFeatureMask OBJECT-TYPE
+    SYNTAX      OctetString
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "The mask of device capability.
+When hwCapabilityFeatureID equals system(1), bit from left to right represents:
+0.AG capability
+1.BFD capability
+The value of the bit is 0 means the 'capability value' is invalid.
+The value of the bit is 1 means the 'capability value' is valid."
+    ::= { 1 3 6 1 4 1 2011 6 3 30 1 3 }
+
+hwDevLedLightByNms OBJECT-TYPE
+    SYNTAX      Enumeration
+    MAX-ACCESS  read-write
+    STATUS      current
+    DESCRIPTION
+        "This node supports the SET operation:
+If the pre-deployment on the NMS fails, the RUN indicator turns yellow by set ledOn(1). A half
+an hour later, the yellow indicator automatically turns off.
+If the pre-deployment on the NMS is successful, the RUN indicator must be set ledOff(2).
+This node supports the GET operation:
+The system returns null(3) when the GET operation is performed.
+1,ledOn(1) --Network pre-deployment fail.
+2,ledOff(2) --Network pre-deployment success.
+3,null(3) --The return value of GET operation."
+    ::= { 1 3 6 1 4 1 2011 6 3 31 1 }
+
+hwBandwidthMode OBJECT-TYPE
+    SYNTAX      Enumeration
+    MAX-ACCESS  read-write
+    STATUS      current
+    DESCRIPTION
+        "Configuring the bandwidth mode of the device.
+Options:
+1.bandwidth40G(1) - 40G
+2.bandwidth80G(2) - 80G
+3.bandwidth160G(3) - 160G
+4.bandwidth50G(4) - 50G
+5.bandwidth100G(5) - 100G
+6.bandwidth200G(6) - 200G"
+    ::= { 1 3 6 1 4 1 2011 6 3 32 1 }
+
+hwOntRemoteHttpChnlVlan OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  read-write
+    STATUS      current
+    DESCRIPTION
+        "Indicates the VLAN ID of the ONT. If this parameter is not specified,
+the system automatically obtains an unoccupied VLAN ID and uses it as the default VLAN ID."
+    ::= { 1 3 6 1 4 1 2011 6 3 34 1 1 }
+
+hwOntRemoteHttpChnlRowStatus OBJECT-TYPE
+    SYNTAX      INTEGER
+    MAX-ACCESS  read-write
+    STATUS      current
+    DESCRIPTION
+        "Indicates the row status, used for creating or deleting
+a service configuration object. createAndGo(4) and destroy(6)
+are supported. During the query operation, active(1) is
+always returned for this leaf.
+Options:
+2. createAndGo(4) -create a new instance of a conceptual row.
+3. destroy(6) -delete the instances associated with an existing conceptual row."
+    ::= { 1 3 6 1 4 1 2011 6 3 34 1 10 }
+
+hwOntRemoteHttpChnlIpAddress OBJECT-TYPE
+    SYNTAX      INTEGER
+    MAX-ACCESS  read-write
+    STATUS      current
+    DESCRIPTION
+        "Indicates the IP address of the ONT.
+If this parameter is not specified, the system selects an unoccupied IP address and uses it as the default IP address."
+    ::= { 1 3 6 1 4 1 2011 6 3 34 1 2 }
+
+hwOntRemoteHttpChnlHttpPort OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  read-write
+    STATUS      current
+    DESCRIPTION
+        "Indicates the web server port of the ONT. If this parameter is not specified, port 7017 is used by default."
+    ::= { 1 3 6 1 4 1 2011 6 3 34 1 3 }
+
+hwOntRemoteHttpChnlProtocol OBJECT-TYPE
+    SYNTAX      Enumeration
+    MAX-ACCESS  read-write
+    STATUS      current
+    DESCRIPTION
+        "Indicates the protocol type of the web server of the ONT. If this parameter is not specified, HTTPS protocol is used by default."
+    ::= { 1 3 6 1 4 1 2011 6 3 34 1 4 }
+
+hwOntRemoteHttpChnlUserName OBJECT-TYPE
+    SYNTAX      OctetString
+    MAX-ACCESS  read-write
+    STATUS      current
+    DESCRIPTION
+        "Indicates the user name used for a temporary user to log in to the web server of the ONT.
+If this parameter is not specified, the existing user name and password are used for login."
+    ::= { 1 3 6 1 4 1 2011 6 3 34 1 5 }
+
+hwOntRemoteHttpProxyPort OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "Indicates the port ID of the TCP proxy during remote access to the ONT from the OLT through the web page, which is port 8024 fixedly."
+    ::= { 1 3 6 1 4 1 2011 6 3 34 1 7 }
+
+hwOntRemoteHttpChnlDuration OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  read-write
+    STATUS      current
+    DESCRIPTION
+        "Indicates the ONT login duration of a temporary user (unit: minute).
+If this parameter is not specified, the login duration is 30 minutes by default."
+    ::= { 1 3 6 1 4 1 2011 6 3 34 1 8 }
+
+hwOntRemoteHttpProxyStatus OBJECT-TYPE
+    SYNTAX      Enumeration
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "Indicates the enabling status of the TCP proxy. The initial state is disable."
+    ::= { 1 3 6 1 4 1 2011 6 3 34 1 9 }
+
+hwDevicePktStatReset OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  read-write
+    STATUS      current
+    DESCRIPTION
+        "The object specifies the type of statistics to be cleared.
+Currently, only the following types are supported:
+1. vlanMismatch(1) - Reset the statistics of packets discarded due to VLAN tag mismatch.
+2. l3EthTypeErr(2) - Reset the statistics of packets discarded by layer 3 interfaces due to EthType error."
+    ::= { 1 3 6 1 4 1 2011 6 3 35 1 1 }
+
+hwDevicePktStatVlanMismatch OBJECT-TYPE
+    SYNTAX      INTEGER
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "Number of packets whose VLAN tag does not match the interface configuration."
+    ::= { 1 3 6 1 4 1 2011 6 3 35 1 2 }
+
+hwDevicePktStatL3EthTypeErr OBJECT-TYPE
+    SYNTAX      INTEGER
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "Number of packets discarded by layer 3 interfaces due to EthType error."
+    ::= { 1 3 6 1 4 1 2011 6 3 35 1 3 }
+
+hwCpuDevIndex OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "CPU index, hwFrameIndex, and hwSlotIndex constitute the HUAWEI-CPU-MIB index.
+For a single-CPU device, the value of this object is 0."
+    ::= { 1 3 6 1 4 1 2011 6 3 4 1 1 }
+
+hwCpuDevDuty OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "The value of this object identifies the average CPU usage of a board or an entity."
+    ::= { 1 3 6 1 4 1 2011 6 3 4 1 2 }
+
+hwAvgDuty1min OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "The value of this object identifies the average CPU usage of a board or entity 1 minute before the data is read."
+    ::= { 1 3 6 1 4 1 2011 6 3 4 1 3 }
+
+hwAvgDuty5min OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "The value of this object identifies the average CPU usage of a board or entity 5 minutes before the data is read."
+    ::= { 1 3 6 1 4 1 2011 6 3 4 1 4 }
+
+hwCpuRunTime OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "Duration of CPU running(s)."
+    ::= { 1 3 6 1 4 1 2011 6 3 4 1 5 }
+
+hwCpuOverLoadNum OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "Number of CPU overload."
+    ::= { 1 3 6 1 4 1 2011 6 3 4 1 6 }
+
+hwCpuOverLoadTime OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "Duration of CPU overload(s)."
+    ::= { 1 3 6 1 4 1 2011 6 3 4 1 7 }
+
+hwCpuCongestionNum OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "Number of CPU congestion."
+    ::= { 1 3 6 1 4 1 2011 6 3 4 1 8 }
+
+hwCpuCongestionTime OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "Duration of CPU congestion(s)."
+    ::= { 1 3 6 1 4 1 2011 6 3 4 1 9 }
+
+hwMemoryDevModuleIndex OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object is only used for extension. For a single-CPU device, the value of this object is 0."
+    ::= { 1 3 6 1 4 1 2011 6 3 5 1 1 1 }
+
+hwMemoryDevSize OBJECT-TYPE
+    SYNTAX      INTEGER
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the total memory size of a managed object, in bytes. It includes the free memory size and occupied memory size, that is, the sum of hwMemoryDevFree and hwMemoryDevRawSliceUsed.
+Each board has a memory. The memory size varies with products."
+    ::= { 1 3 6 1 4 1 2011 6 3 5 1 1 2 }
+
+hwMemoryDevFree OBJECT-TYPE
+    SYNTAX      INTEGER
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the idle memory size of the main control board, in bytes. The value of this object is always less than hwMemoryDevSize."
+    ::= { 1 3 6 1 4 1 2011 6 3 5 1 1 3 }
+
+hwMemoryDevRawSliceUsed OBJECT-TYPE
+    SYNTAX      Unsigned32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the total size of occupied raw slice memory, in bytes. The value of this object is always less than hwMemoryDevSize."
+    ::= { 1 3 6 1 4 1 2011 6 3 5 1 1 4 }
+
+hwMemoryDevLargestFree OBJECT-TYPE
+    SYNTAX      Unsigned32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the maximum number of consecutive bytes that are not occupied on a managed object. It is the maximum memory size that can be allocated by the system. The value of this object is always less than hwMemoryDevSize."
+    ::= { 1 3 6 1 4 1 2011 6 3 5 1 1 5 }
+
+hwMemoryDevFail OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the number of memory allocation failures. The default value is 0."
+    ::= { 1 3 6 1 4 1 2011 6 3 5 1 1 6 }
+
+hwMemoryDevFailNoMem OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the number of memory allocation failures due to the lack of idle memory. The default value is 0."
+    ::= { 1 3 6 1 4 1 2011 6 3 5 1 1 7 }
+
+hwMemoryDevSize64 OBJECT-TYPE
+    SYNTAX      INTEGER
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the total size of memory modules on the managed object that exceeds 4 GB, in bytes."
+    ::= { 1 3 6 1 4 1 2011 6 3 5 1 1 8 }
+
+hwMemoryDevFree64 OBJECT-TYPE
+    SYNTAX      INTEGER
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the idle memory size when the total size of memory modules on the managed object exceeds 4 GB, in bytes."
+    ::= { 1 3 6 1 4 1 2011 6 3 5 1 1 9 }
+
+hwBufferModuleIndex OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "Index of hwBufferTable."
+    ::= { 1 3 6 1 4 1 2011 6 3 5 2 1 1 }
+
+hwBufferSize OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "Contains the size of byte hwBuffers, in the unit of byte."
+    ::= { 1 3 6 1 4 1 2011 6 3 5 2 1 2 }
+
+hwBufferCurrentTotal OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "Contains the total number of hwBuffers currently."
+    ::= { 1 3 6 1 4 1 2011 6 3 5 2 1 3 }
+
+hwBufferCurrentUsed OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "Contains the number of used hwBuffers currently."
+    ::= { 1 3 6 1 4 1 2011 6 3 5 2 1 4 }
+
+hwFlashDevIndex OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "Index of hwFlashDevTable."
+    ::= { 1 3 6 1 4 1 2011 6 3 6 1 1 1 }
+
+hwFlashDevSize OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "Total size in Octets of Flash memory,"
+    ::= { 1 3 6 1 4 1 2011 6 3 6 1 1 2 }
+
+hwFlashDevFree OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "Unused Size in Octets of Flash memory."
+    ::= { 1 3 6 1 4 1 2011 6 3 6 1 1 3 }
+
+hwFlashDevEraseTime OBJECT-TYPE
+    SYNTAX      INTEGER
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "The last time when Flash was erased after powerup."
+    ::= { 1 3 6 1 4 1 2011 6 3 6 1 1 4 }
+
+hwFlashDevEraseStatus OBJECT-TYPE
+    SYNTAX      Enumeration
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "Status of current or last flash erasing.
+Options:
+1.flashErasing(1) - flash is executing erasing operation
+2.flashErasedSuccessful(2) - flash erased successfully
+3.flashErasedFail(3) - flash erased failed
+4.flashReadOnly(4) - flash state is read only
+5.flashOpenFailure(5) - open flash failed
+6.bufferAllocationFailure(6) - allocating buffer on flash failed
+7.noEraseAfterPowerOn(7) - there is no erasing operation after device was powered on"
+    ::= { 1 3 6 1 4 1 2011 6 3 6 1 1 5 }
+
+hwFlashDevStatus OBJECT-TYPE
+    SYNTAX      Enumeration
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "Status of the availability of flash.
+Options:
+1.busy(1) - flash state is busy
+2.available(2) - flash state is available"
+    ::= { 1 3 6 1 4 1 2011 6 3 6 1 1 6 }
+
+hwAlarmSerialIndex OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object is no longer used."
+    ::= { 1 3 6 1 4 1 2011 6 3 7 1 1 1 }
+
+hwObsoleteAlarmType OBJECT-TYPE
+    SYNTAX      Enumeration
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "The type of the Alarm."
+    ::= { 1 3 6 1 4 1 2011 6 3 7 1 1 2 }
+
+hwAlarmOcurTime OBJECT-TYPE
+    SYNTAX      INTEGER
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object is no longer used."
+    ::= { 1 3 6 1 4 1 2011 6 3 7 1 1 3 }
+
+trapObjectIdValue OBJECT-TYPE
+    SYNTAX      OctetString
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object is no longer used."
+    ::= { 1 3 6 1 4 1 2011 6 3 7 1 1 4 }
+
+hwFrameAdminResult OBJECT-TYPE
+    SYNTAX      Enumeration
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "Frame administration result."
+    ::= { 1 3 6 1 4 1 2011 6 3 8 1 1 }
+
+hwDevVlanId OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This node is reserved and has no actual meaning."
+    ::= { 1 3 6 1 4 1 2011 6 3 8 1 10 }
+
+hwFrameTypeConfigured OBJECT-TYPE
+    SYNTAX      INTEGER
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "Type of the frame that is configured in database of device."
+    ::= { 1 3 6 1 4 1 2011 6 3 8 1 11 }
+
+hwActualSlotTypeName OBJECT-TYPE
+    SYNTAX      OctetString
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "Type and name of the inserted board."
+    ::= { 1 3 6 1 4 1 2011 6 3 8 1 12 }
+
+hwOldDeviceIpAddr OBJECT-TYPE
+    SYNTAX      INTEGER
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "Old IP address of the device."
+    ::= { 1 3 6 1 4 1 2011 6 3 8 1 13 }
+
+hwNewDeviceIpAddr OBJECT-TYPE
+    SYNTAX      INTEGER
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "New IP address of the device."
+    ::= { 1 3 6 1 4 1 2011 6 3 8 1 14 }
+
+hwOldSubslotType0 OBJECT-TYPE
+    SYNTAX      INTEGER
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "Type of the first daughter board that is used previously."
+    ::= { 1 3 6 1 4 1 2011 6 3 8 1 15 }
+
+hwOldSubslotType1 OBJECT-TYPE
+    SYNTAX      INTEGER
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "Type of the second daughter board that is used previously."
+    ::= { 1 3 6 1 4 1 2011 6 3 8 1 16 }
+
+hwOldSubslotType2 OBJECT-TYPE
+    SYNTAX      INTEGER
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "Type of the third daughter board that is used previously."
+    ::= { 1 3 6 1 4 1 2011 6 3 8 1 17 }
+
+hwOldSubslotType3 OBJECT-TYPE
+    SYNTAX      INTEGER
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "Type of the fourth daughter board that is used previously."
+    ::= { 1 3 6 1 4 1 2011 6 3 8 1 18 }
+
+hwDevStandbyMainSlotTypeName OBJECT-TYPE
+    SYNTAX      OctetString
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "Slot information description, to describe standby main board name information of the slot."
+    ::= { 1 3 6 1 4 1 2011 6 3 8 1 19 }
+
+hwSlotAdminResult OBJECT-TYPE
+    SYNTAX      Enumeration
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "Slot administration result."
+    ::= { 1 3 6 1 4 1 2011 6 3 8 1 2 }
+
+hwDevPreSlotTypeName OBJECT-TYPE
+    SYNTAX      OctetString
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "Slot information description, to describe previous board name information of the slot.
+The indexes of the entry are hwFrameIndex and hwSlotIndex."
+    ::= { 1 3 6 1 4 1 2011 6 3 8 1 20 1 1 }
+
+hwDevPreSlotPhySerialNum OBJECT-TYPE
+    SYNTAX      OctetString
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "The vendor-specific serial number string for the previous board of the slot.
+The preferred value is the serial number string actually printed on the component itself.
+The indices of the entry are hwFrameIndex and hwSlotIndex."
+    ::= { 1 3 6 1 4 1 2011 6 3 8 1 20 1 2 }
+
+hwResTypePara OBJECT-TYPE
+    SYNTAX      Enumeration
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "System resource type.
+Options:
+1. memory(1) -indicates the memory resource
+2. messageUnits(2)-indicates the message resource
+3. cpu(3) -indicates the CPU resource"
+    ::= { 1 3 6 1 4 1 2011 6 3 8 1 21 1 1 }
+
+hwResOccupancyPara OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "System resource occupancy."
+    ::= { 1 3 6 1 4 1 2011 6 3 8 1 21 1 2 }
+
+hwTrapStorageName OBJECT-TYPE
+    SYNTAX      OctetString
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "The first para of storage fault, which describe the storage name."
+    ::= { 1 3 6 1 4 1 2011 6 3 8 1 22 }
+
+hwExtendBoardFrameIndex OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "The frame index of the port connecting the main frame to the extended frame."
+    ::= { 1 3 6 1 4 1 2011 6 3 8 1 23 }
+
+hwExtendedFrameUplinkPort OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "Another uplink port of extended frame."
+    ::= { 1 3 6 1 4 1 2011 6 3 8 1 24 }
+
+hwExtendBoardSlotIndex OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "The slot index of the port connecting the main frame to the extended frame."
+    ::= { 1 3 6 1 4 1 2011 6 3 8 1 25 }
+
+hwExtendBoardPortIndex OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "The port index of the port connecting the main frame to the extended frame."
+    ::= { 1 3 6 1 4 1 2011 6 3 8 1 26 }
+
+hwTrapHardFaultName OBJECT-TYPE
+    SYNTAX      OctetString
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "The name of board hard fault."
+    ::= { 1 3 6 1 4 1 2011 6 3 8 1 27 }
+
+hwTrapHardFaultEffect OBJECT-TYPE
+    SYNTAX      OctetString
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "The effect of board hard fault."
+    ::= { 1 3 6 1 4 1 2011 6 3 8 1 28 }
+
+hwSlotInputIdIndex OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "Input Circuit Index."
+    ::= { 1 3 6 1 4 1 2011 6 3 8 1 29 }
+
+hwSubslotAdminResult OBJECT-TYPE
+    SYNTAX      Enumeration
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "Subslot administration result."
+    ::= { 1 3 6 1 4 1 2011 6 3 8 1 3 }
+
+hwSlotInputType OBJECT-TYPE
+    SYNTAX      Enumeration
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "Voltage Input Type.
+Options:
+1. localac(1) -local ac type.
+2. localdc(2) -local dc type.
+3. remoteac(3) -remote ac type.
+4. remotedc(4) -remote dc type.
+5. pd(5) -pd type.
+6. channelvoltage(6) - channel voltage type."
+    ::= { 1 3 6 1 4 1 2011 6 3 8 1 30 }
+
+hwDevAutoDeployPhase OBJECT-TYPE
+    SYNTAX      INTEGER
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "Auto-deployment phase:
+1. Download the auto-deployment policy file
+2. Parse the auto-deployment policy file
+3. Download the upgrade software
+4. Download the configuration file
+5. Download common configuration scripts
+6. Download customized configuration scripts
+7. Issue the automatic backup configuration
+8. Download the database
+9. Save the database and configuration file"
+    ::= { 1 3 6 1 4 1 2011 6 3 8 1 31 }
+
+hwVccLocalChassisId OBJECT-TYPE
+    SYNTAX      Unsigned32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "The index of local chassis."
+    ::= { 1 3 6 1 4 1 2011 6 3 8 1 32 }
+
+hwVccNeighbourChassisId OBJECT-TYPE
+    SYNTAX      Unsigned32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "The index of neighbour chassis."
+    ::= { 1 3 6 1 4 1 2011 6 3 8 1 33 }
+
+hwVccGroupId OBJECT-TYPE
+    SYNTAX      Unsigned32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "The index of data channel."
+    ::= { 1 3 6 1 4 1 2011 6 3 8 1 34 }
+
+hwVccLinkIfPhysicIndex OBJECT-TYPE
+    SYNTAX      Unsigned32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "The index of interface for the data link."
+    ::= { 1 3 6 1 4 1 2011 6 3 8 1 35 }
+
+hwVccLinkIfPhysicName OBJECT-TYPE
+    SYNTAX      OctetString
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "The name of interface for the data link."
+    ::= { 1 3 6 1 4 1 2011 6 3 8 1 36 }
+
+hwTrapPowerPortIndex OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "The index of power port."
+    ::= { 1 3 6 1 4 1 2011 6 3 8 1 37 }
+
+hwDevTempMinorAlmThreshold OBJECT-TYPE
+    SYNTAX      OctetString
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "The level-1 high temperature alarm threshold."
+    ::= { 1 3 6 1 4 1 2011 6 3 8 1 38 }
+
+hwDevTempMajorAlmThreshold OBJECT-TYPE
+    SYNTAX      OctetString
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "The level-2 high temperature alarm threshold."
+    ::= { 1 3 6 1 4 1 2011 6 3 8 1 39 }
+
+hwPortAdminResult OBJECT-TYPE
+    SYNTAX      Enumeration
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "Port administration result."
+    ::= { 1 3 6 1 4 1 2011 6 3 8 1 4 }
+
+hwDevTempCriticalAlmThreshold OBJECT-TYPE
+    SYNTAX      OctetString
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "The level-3 high temperature alarm threshold."
+    ::= { 1 3 6 1 4 1 2011 6 3 8 1 40 }
+
+hwDeviceCurrentTemp OBJECT-TYPE
+    SYNTAX      OctetString
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "The current temperature of the device."
+    ::= { 1 3 6 1 4 1 2011 6 3 8 1 41 }
+
+hwDevSnmpHostIpAddress OBJECT-TYPE
+    SYNTAX      INTEGER
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "The IP address of SNMP probe abnormal record."
+    ::= { 1 3 6 1 4 1 2011 6 3 8 1 42 }
+
+hwDevSnmpLastReceivedTime OBJECT-TYPE
+    SYNTAX      INTEGER
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "The last probe time of SNMP probe abnormal record."
+    ::= { 1 3 6 1 4 1 2011 6 3 8 1 43 }
+
+hwDevSnmpAverageInterval OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "The average interval of SNMP probe abnormal record."
+    ::= { 1 3 6 1 4 1 2011 6 3 8 1 44 }
+
+hwDevSnmpMinimumInterval OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "The minimum interval of SNMP probe abnormal record."
+    ::= { 1 3 6 1 4 1 2011 6 3 8 1 45 }
+
+hwDevSnmpMaxmumInterval OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "The maxmum interval of SNMP probe abnormal record."
+    ::= { 1 3 6 1 4 1 2011 6 3 8 1 46 }
+
+hwDevSnmpReceivedCount OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "The connection count of SNMP probe abnormal record."
+    ::= { 1 3 6 1 4 1 2011 6 3 8 1 47 }
+
+hwSubboardID OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "The index ID of sub board."
+    ::= { 1 3 6 1 4 1 2011 6 3 8 1 48 }
+
+hwPowerSupplyChannelVoltage OBJECT-TYPE
+    SYNTAX      OctetString
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "The value of power supply channel voltage."
+    ::= { 1 3 6 1 4 1 2011 6 3 8 1 49 }
+
+hwConfigChangeIP OBJECT-TYPE
+    SYNTAX      INTEGER
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "The serial IP of configuration changes.
+If the configuration changes is trigger by the command line users, the IP address is 0.0.0.0.
+If it is triggered by the SNMP user, the IP address is the SNMP user's IP address.
+The Trap of configuration changes will not be sent to the SNMP user,
+who triggered the configuration changes."
+    ::= { 1 3 6 1 4 1 2011 6 3 8 1 5 }
+
+hwPowerSupplyDescription OBJECT-TYPE
+    SYNTAX      OctetString
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "The description of power supply."
+    ::= { 1 3 6 1 4 1 2011 6 3 8 1 50 }
+
+hwBrokenFileName OBJECT-TYPE
+    SYNTAX      OctetString
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "The name of broken file."
+    ::= { 1 3 6 1 4 1 2011 6 3 8 1 51 }
+
+hwRtuRunCapacity OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "The run capacity of system."
+    ::= { 1 3 6 1 4 1 2011 6 3 8 1 52 }
+
+hwRtuLicenseCapcity OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "The run capacity of license."
+    ::= { 1 3 6 1 4 1 2011 6 3 8 1 53 }
+
+hwDevAntiTheftStatus OBJECT-TYPE
+    SYNTAX      OctetString
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "Anti-theft status of the device."
+    ::= { 1 3 6 1 4 1 2011 6 3 8 1 54 }
+
+hwDevAntiTheftTrapReason OBJECT-TYPE
+    SYNTAX      OctetString
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the cause of the trap."
+    ::= { 1 3 6 1 4 1 2011 6 3 8 1 55 }
+
+hwVersionName OBJECT-TYPE
+    SYNTAX      OctetString
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "The software package version."
+    ::= { 1 3 6 1 4 1 2011 6 3 8 1 56 }
+
+hwPowerThreshold OBJECT-TYPE
+    SYNTAX      OctetString
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "The threshold of power."
+    ::= { 1 3 6 1 4 1 2011 6 3 8 1 57 }
+
+hwRemainingPowerSupplyCapability OBJECT-TYPE
+    SYNTAX      OctetString
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "Remaining power supply capability."
+    ::= { 1 3 6 1 4 1 2011 6 3 8 1 58 }
+
+hwRegisterFrameTypeName OBJECT-TYPE
+    SYNTAX      OctetString
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "The actual standby frame type."
+    ::= { 1 3 6 1 4 1 2011 6 3 8 1 59 }
+
+hwDevUserLabelType OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "User label type.
+1. Frame type.
+2. Slot type.
+3. Port type."
+    ::= { 1 3 6 1 4 1 2011 6 3 8 1 6 }
+
+hwCheckType OBJECT-TYPE
+    SYNTAX      OctetString
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This object indicates the type of the trap."
+    ::= { 1 3 6 1 4 1 2011 6 3 8 1 60 }
+
+hwDevIntegrityCheckFileType OBJECT-TYPE
+    SYNTAX      Enumeration
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "Type of the integrity check fileType.
+Options:
+1.configurationFile(1) -configuration file."
+    ::= { 1 3 6 1 4 1 2011 6 3 8 1 61 }
+
+hwDevUserLabel OBJECT-TYPE
+    SYNTAX      OctetString
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "User label."
+    ::= { 1 3 6 1 4 1 2011 6 3 8 1 7 }
+
+hwDevVPI OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This node is reserved and has no actual meaning."
+    ::= { 1 3 6 1 4 1 2011 6 3 8 1 8 }
+
+hwDevVCI OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "This node is reserved and has no actual meaning."
+    ::= { 1 3 6 1 4 1 2011 6 3 8 1 9 }
+
+hwAppBoardPhySlot OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  unknown
+    STATUS      current
+    DESCRIPTION
+        "The location of Application board."
+    ::= { 1 3 6 1 4 1 2011 6 3 9 1 1 }
+
+hwAppBoardMngtVlan OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  read-write
+    STATUS      current
+    DESCRIPTION
+        "The management VLAN of Application board.
+Range: 1-4093"
+    ::= { 1 3 6 1 4 1 2011 6 3 9 2 1 1 }
+
+hwAppBoardMngtIpType OBJECT-TYPE
+    SYNTAX      INTEGER
+    MAX-ACCESS  read-write
+    STATUS      current
+    DESCRIPTION
+        "The type of Ip address.
+IPV4:1
+IPV6:2"
+    ::= { 1 3 6 1 4 1 2011 6 3 9 2 1 2 }
+
+hwAppBoardMngtIp OBJECT-TYPE
+    SYNTAX      INTEGER
+    MAX-ACCESS  read-write
+    STATUS      current
+    DESCRIPTION
+        "The IP address of the Application board"
+    ::= { 1 3 6 1 4 1 2011 6 3 9 2 1 3 }
+
+hwAppBoardMngtMaskLength OBJECT-TYPE
+    SYNTAX      Integer32
+    MAX-ACCESS  read-write
+    STATUS      current
+    DESCRIPTION
+        "The mask length of the ip address.
+Range: 0-128"
+    ::= { 1 3 6 1 4 1 2011 6 3 9 2 1 4 }
+
+hwAppBoardMngtGateway OBJECT-TYPE
+    SYNTAX      INTEGER
+    MAX-ACCESS  read-write
+    STATUS      current
+    DESCRIPTION
+        "The gateway of the Application board"
+    ::= { 1 3 6 1 4 1 2011 6 3 9 2 1 5 }
+
+hwAppBoardMngtRowStatus OBJECT-TYPE
+    SYNTAX      INTEGER
+    MAX-ACCESS  read-write
+    STATUS      current
+    DESCRIPTION
+        "RowStatus standard operation."
+    ::= { 1 3 6 1 4 1 2011 6 3 9 2 1 6 }
+

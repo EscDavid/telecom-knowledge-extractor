@@ -1,0 +1,711 @@
+{
+ "module": "HWMUSA-DEV-MIB",
+ "source": "https://mibs.observium.org/mib/HWMUSA-DEV-MIB/",
+ "source_kind": "third_party_rendering",
+ "fetched": "2026-10-27T20:14:42Z",
+ "root_oid": "1.3.6.1.4.1.2011.2.6",
+ "counts": {
+  "node": 5,
+  "table": 7,
+  "row": 7,
+  "column": 54
+ },
+ "objects": [
+  {
+   "name": "musa",
+   "oid": "1.3.6.1.4.1.2011.2.6",
+   "kind": "node",
+   "depth": 0
+  },
+  {
+   "name": "ias",
+   "oid": "1.3.6.1.4.1.2011.2.6.7",
+   "kind": "node",
+   "depth": 1
+  },
+  {
+   "name": "hwIasDev",
+   "oid": "1.3.6.1.4.1.2011.2.6.7.1",
+   "kind": "node",
+   "depth": 2
+  },
+  {
+   "name": "hwMusaSlotConf",
+   "oid": "1.3.6.1.4.1.2011.2.6.7.1.1",
+   "kind": "node",
+   "depth": 3
+  },
+  {
+   "name": "hwMusaFrameExtTable",
+   "oid": "1.3.6.1.4.1.2011.2.6.7.1.1.1",
+   "kind": "table",
+   "depth": 4,
+   "description": "Frame description extended table.The table describes the bandwidth of the frame,\nand also contains the EMU and slot information of the frame.\nThe index of this table is hwFrameIndex. It is the frame ID."
+  },
+  {
+   "name": "hwMusaFrameExtEntry",
+   "oid": "1.3.6.1.4.1.2011.2.6.7.1.1.1.1",
+   "kind": "row",
+   "depth": 5,
+   "indexes": [
+    "HUAWEI-DEVICE-MIB::hwFrameIndex"
+   ],
+   "description": "Frame description extended table.The table describes the bandwidth of the frame,\nand also contains the EMU and slot information of the frame.\nThe index of this entry is hwFrameIndex. It is the frame ID."
+  },
+  {
+   "name": "hwMusaFrameLimtBandWidth",
+   "oid": "1.3.6.1.4.1.2011.2.6.7.1.1.1.1.1",
+   "kind": "column",
+   "depth": 6,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "description": "Frame limit bandwidth,the maximum bandwidth of the frame.\nUnit: K. It is used in debug mode. 1G = 1000M."
+  },
+  {
+   "name": "hwMusaFramePowerMode",
+   "oid": "1.3.6.1.4.1.2011.2.6.7.1.1.1.1.10",
+   "kind": "column",
+   "depth": 6,
+   "syntax": "Enumeration",
+   "description": "Frame power supply mode.\nOptions:\n1.localac(1) -local 220V AC power supply\n2.localdc(2) -local DC power supply\n3.localacBackuppower(3) -AC power and backuppower supply\n4.backuppower(4) -accumulator supply\n5.remotedc(5) -remote line +/-190V high voltage power supply of DC\n6.pd(6) -powered device supply\n7.remoteac(7) -remote 60V AC power supply\n8.localdcAndRemotedc(8) -DC power and Remote power are provided at the same time\n9.localacAndlocaldc(9) -DC power and AC power are provided at the same time",
+   "enum_from_description": {
+    "1": "localac",
+    "2": "localdc",
+    "3": "localacBackuppower",
+    "4": "backuppower",
+    "5": "remotedc",
+    "6": "pd",
+    "7": "remoteac",
+    "8": "localdcAndRemotedc",
+    "9": "localacAndlocaldc"
+   }
+  },
+  {
+   "name": "hwMusaFramePower",
+   "oid": "1.3.6.1.4.1.2011.2.6.7.1.1.1.1.11",
+   "kind": "column",
+   "depth": 6,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "description": "The total power of the frame.\nIt includes the power of service boards, active control board, standby control board,\ninterface boards, and environment monitoring boards.\nUnit: watt."
+  },
+  {
+   "name": "hwMusaFrameLastOfflineTime",
+   "oid": "1.3.6.1.4.1.2011.2.6.7.1.1.1.1.12",
+   "kind": "column",
+   "depth": 6,
+   "syntax_module": "SNMPv2-TC",
+   "syntax_type": "DateAndTime",
+   "description": "The last offline time of the extended frame."
+  },
+  {
+   "name": "hwMusaFrameLastOfflineReason",
+   "oid": "1.3.6.1.4.1.2011.2.6.7.1.1.1.1.13",
+   "kind": "column",
+   "depth": 6,
+   "syntax": "OctetString",
+   "constraints": "range: 0-128",
+   "description": "The last offline reason of the extended frame."
+  },
+  {
+   "name": "hwMusaFrameDistBandWidth",
+   "oid": "1.3.6.1.4.1.2011.2.6.7.1.1.1.1.2",
+   "kind": "column",
+   "depth": 6,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "description": "Frame distributed bandwidth.\nUnit: K. It is used in debug mode. 1G = 1000M."
+  },
+  {
+   "name": "hwMusaFrameTestGroupID",
+   "oid": "1.3.6.1.4.1.2011.2.6.7.1.1.1.1.3",
+   "kind": "column",
+   "depth": 6,
+   "syntax": "Integer32",
+   "constraints": "range: 0-255",
+   "description": "This node is not supported.",
+   "access": "read-write"
+  },
+  {
+   "name": "hwMusaFrameEmuId1",
+   "oid": "1.3.6.1.4.1.2011.2.6.7.1.1.1.1.4",
+   "kind": "column",
+   "depth": 6,
+   "syntax": "Integer32",
+   "constraints": "range: 0-63",
+   "description": "This node is not supported."
+  },
+  {
+   "name": "hwMusaFrameEmuId2",
+   "oid": "1.3.6.1.4.1.2011.2.6.7.1.1.1.1.5",
+   "kind": "column",
+   "depth": 6,
+   "syntax": "Integer32",
+   "constraints": "range: 0-63",
+   "description": "This node is not supported."
+  },
+  {
+   "name": "hwMusaFrameEmuId3",
+   "oid": "1.3.6.1.4.1.2011.2.6.7.1.1.1.1.6",
+   "kind": "column",
+   "depth": 6,
+   "syntax": "Integer32",
+   "constraints": "range: 0-63",
+   "description": "This node is not supported."
+  },
+  {
+   "name": "hwMusaFrameEmuId4",
+   "oid": "1.3.6.1.4.1.2011.2.6.7.1.1.1.1.7",
+   "kind": "column",
+   "depth": 6,
+   "syntax": "Integer32",
+   "constraints": "range: 0-63",
+   "description": "This node is not supported."
+  },
+  {
+   "name": "hwMusaFrameEmuId5",
+   "oid": "1.3.6.1.4.1.2011.2.6.7.1.1.1.1.8",
+   "kind": "column",
+   "depth": 6,
+   "syntax": "Integer32",
+   "constraints": "range: 0-63",
+   "description": "This node is not supported."
+  },
+  {
+   "name": "hwMusaFrameSlotConnection",
+   "oid": "1.3.6.1.4.1.2011.2.6.7.1.1.1.1.9",
+   "kind": "column",
+   "depth": 6,
+   "syntax": "OctetString",
+   "constraints": "range: 255-255",
+   "description": "This node is not supported."
+  },
+  {
+   "name": "hwMusaSlotConfExtTable",
+   "oid": "1.3.6.1.4.1.2011.2.6.7.1.1.2",
+   "kind": "table",
+   "depth": 4,
+   "description": "Board description extended table.\nThe tabel is used for describing the extended information\nabout all boards in each slot of the shelf.\nThe indexes of this table are hwFrameIndex and hwSlotIndex."
+  },
+  {
+   "name": "hwMusaSlotConfExtEntry",
+   "oid": "1.3.6.1.4.1.2011.2.6.7.1.1.2.1",
+   "kind": "row",
+   "depth": 5,
+   "indexes": [
+    "HUAWEI-DEVICE-MIB::hwFrameIndex",
+    "HUAWEI-DEVICE-MIB::hwSlotIndex"
+   ],
+   "description": "Board description extended table.\nThe tabel is used for describing the extended information\nabout all boards in each slot of the shelf.\nThe indexes of this entry are hwFrameIndex and hwSlotIndex."
+  },
+  {
+   "name": "hwMusaBoardLimitBandWidthUp",
+   "oid": "1.3.6.1.4.1.2011.2.6.7.1.1.2.1.1",
+   "kind": "column",
+   "depth": 6,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "description": "This node is not supported."
+  },
+  {
+   "name": "hwMusaBoardTemperature",
+   "oid": "1.3.6.1.4.1.2011.2.6.7.1.1.2.1.10",
+   "kind": "column",
+   "depth": 6,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "description": "Board temperature.The value 0X7FFFFFFF indicates invalid temperature."
+  },
+  {
+   "name": "hwMusaBoardPower",
+   "oid": "1.3.6.1.4.1.2011.2.6.7.1.1.2.1.11",
+   "kind": "column",
+   "depth": 6,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "description": "The power of the board.\nUnit: watt."
+  },
+  {
+   "name": "hwMusaBoardActivedPortNum",
+   "oid": "1.3.6.1.4.1.2011.2.6.7.1.1.2.1.12",
+   "kind": "column",
+   "depth": 6,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "description": "The number of activated ports on one board."
+  },
+  {
+   "name": "hwMusaBoardLatestResetTime",
+   "oid": "1.3.6.1.4.1.2011.2.6.7.1.1.2.1.13",
+   "kind": "column",
+   "depth": 6,
+   "syntax_module": "SNMPv2-TC",
+   "syntax_type": "DateAndTime",
+   "description": "The latest reset time of the board."
+  },
+  {
+   "name": "hwMusaBoardLatestResetCause",
+   "oid": "1.3.6.1.4.1.2011.2.6.7.1.1.2.1.14",
+   "kind": "column",
+   "depth": 6,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "description": "The latest reset cause of the board.\n0x00000000 - There is no reset record of the board.\n0x02000000 - The communication with the control board is abnormal.\n0x02000165 - COM user delivers board reset command.\n0x02000167 - NMS user delivers board reset command.\n0x02000169 - Telnet user delivers board reset command.\n0x0200016b - User add board manually.\n0x020000a1 - The board temperature is too high, which causes the shutdown of the board.\n0x0200016c - The board resets because it is prohibited.\n0x02000173 - The board resets because the working mode is changed.\n0x02000181 - The service board is automatically shut down when it is not configured with any service.\n0x02000182 - The service board is automatically shut down when the mains supply is interrupted.\n0x020001b5 - The board is loosened or is removed forcibly.\n0x0700000a - The active/standby switchover command is manually delivered.\n0x0700000e - User delivers active board reset command."
+  },
+  {
+   "name": "hwMusaBoardMaxLoadBufferSize",
+   "oid": "1.3.6.1.4.1.2011.2.6.7.1.1.2.1.15",
+   "kind": "column",
+   "depth": 6,
+   "syntax": "Integer32",
+   "constraints": "range: -1-524288000",
+   "description": "Board max load buffer size. The value -1(0xFFFFFFF) indicates invalid buffer size.\nIt only supports the xPON service board. Other board will return -1.\nThe unit is Byte and the board max load buffer is 500MB."
+  },
+  {
+   "name": "hwMusaBoardResetCounter",
+   "oid": "1.3.6.1.4.1.2011.2.6.7.1.1.2.1.16",
+   "kind": "column",
+   "depth": 6,
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Counter32",
+   "description": "The counter of board restart is cleared during board initialization, deletion."
+  },
+  {
+   "name": "hwMusaBoardPowerInputStatus",
+   "oid": "1.3.6.1.4.1.2011.2.6.7.1.1.2.1.17",
+   "kind": "column",
+   "depth": 6,
+   "syntax": "Enumeration",
+   "description": "AC/DC Input Status.\nOptions:\n1.normal(1) -board is normal, this value is returned for a power board or virtual power board.\n2.fault(2) -board is faulty, this value is returned for a power board or virtual power board.\n3.invalid(3) -invalid state, this value is returned for a non-power board.",
+   "enum_from_description": {
+    "1": "normal",
+    "2": "fault",
+    "3": "invalid"
+   }
+  },
+  {
+   "name": "hwMusaBoardRamTotal",
+   "oid": "1.3.6.1.4.1.2011.2.6.7.1.1.2.1.18",
+   "kind": "column",
+   "depth": 6,
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Counter64",
+   "description": "Board RAM total volume.\n0 indicates that the device cannot get the value, e.g. the board does not support this operation, or the board state is abnormal.\nUnit: Byte"
+  },
+  {
+   "name": "hwMusaBoardRamUsed",
+   "oid": "1.3.6.1.4.1.2011.2.6.7.1.1.2.1.19",
+   "kind": "column",
+   "depth": 6,
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Counter64",
+   "description": "Board RAM used volume.\n0 indicates that the device cannot get the value, e.g. the board does not support this operation, or the board state is abnormal.\nUnit: Byte"
+  },
+  {
+   "name": "hwMusaBoardLimitBandWidthDown",
+   "oid": "1.3.6.1.4.1.2011.2.6.7.1.1.2.1.2",
+   "kind": "column",
+   "depth": 6,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "description": "This node is not supported."
+  },
+  {
+   "name": "hwMusaBoardRamFree",
+   "oid": "1.3.6.1.4.1.2011.2.6.7.1.1.2.1.20",
+   "kind": "column",
+   "depth": 6,
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Counter64",
+   "description": "Board RAM free volume.\n0 indicates that the device cannot get the value, e.g. the board does not support this operation, or the board state is abnormal.\nUnit: Byte"
+  },
+  {
+   "name": "hwMusaBoardFlashTotal",
+   "oid": "1.3.6.1.4.1.2011.2.6.7.1.1.2.1.21",
+   "kind": "column",
+   "depth": 6,
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Counter64",
+   "description": "Board FLASH total volume.\n0 indicates that the device cannot get the value, e.g. the board does not support this operation, or the board state is abnormal.\nUnit: Byte"
+  },
+  {
+   "name": "hwMusaBoardFlashUsed",
+   "oid": "1.3.6.1.4.1.2011.2.6.7.1.1.2.1.22",
+   "kind": "column",
+   "depth": 6,
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Counter64",
+   "description": "Board FLASH used volume.\n0 indicates that the device cannot get the value, e.g. the board does not support this operation, or the board state is abnormal.\nUnit: Byte"
+  },
+  {
+   "name": "hwMusaBoardFlashFree",
+   "oid": "1.3.6.1.4.1.2011.2.6.7.1.1.2.1.23",
+   "kind": "column",
+   "depth": 6,
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Counter64",
+   "description": "Board FLASH free volume.\n0 indicates that the device cannot get the value, e.g. the board does not support this operation, or the board state is abnormal.\nUnit: Byte"
+  },
+  {
+   "name": "hwMusaBoardHasBandWidthUp",
+   "oid": "1.3.6.1.4.1.2011.2.6.7.1.1.2.1.3",
+   "kind": "column",
+   "depth": 6,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "description": "This node is not supported."
+  },
+  {
+   "name": "hwMusaBoardHasBandWidthDown",
+   "oid": "1.3.6.1.4.1.2011.2.6.7.1.1.2.1.4",
+   "kind": "column",
+   "depth": 6,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "description": "This node is not supported."
+  },
+  {
+   "name": "hwMusaBoardCpuRate",
+   "oid": "1.3.6.1.4.1.2011.2.6.7.1.1.2.1.5",
+   "kind": "column",
+   "depth": 6,
+   "syntax": "Integer32",
+   "constraints": "range: -1-100",
+   "description": "Active and standby control board CPU usage.\nIt does not support RSP, PV8, BAS, or other boards.\n-1 indicates that the device cannot get the value, e.g. the board does not support this operation, or the board state is abnormal."
+  },
+  {
+   "name": "hwMusaBoardRamUseRate",
+   "oid": "1.3.6.1.4.1.2011.2.6.7.1.1.2.1.6",
+   "kind": "column",
+   "depth": 6,
+   "syntax": "Integer32",
+   "constraints": "range: -1-100",
+   "description": "Active and standby control board RAM usage.\nIt does not support RSP, PV8, BAS, AIC, or other boards.\n-1 indicates that the device cannot get the value, e.g. the board does not support this operation, or the board state is abnormal."
+  },
+  {
+   "name": "hwMusaBoardSlotDesc",
+   "oid": "1.3.6.1.4.1.2011.2.6.7.1.1.2.1.7",
+   "kind": "column",
+   "depth": 6,
+   "syntax": "OctetString",
+   "constraints": "range: 0-64",
+   "description": "Slot information description.\nIt describes the name of the slot."
+  },
+  {
+   "name": "hwMusaBoardOnlineState",
+   "oid": "1.3.6.1.4.1.2011.2.6.7.1.1.2.1.8",
+   "kind": "column",
+   "depth": 6,
+   "syntax": "Enumeration",
+   "description": "Board online state.\nOptions:\n1.online(1) -board is online\n2.offline(2) -board is offline\n3.unmanageable(3) -board is faulty\n4.invalid(-1) -invalid state",
+   "enum_from_description": {
+    "-1": "invalid",
+    "1": "online",
+    "2": "offline",
+    "3": "unmanageable"
+   }
+  },
+  {
+   "name": "hwMusaServiceChannelBufferRate",
+   "oid": "1.3.6.1.4.1.2011.2.6.7.1.1.2.1.9",
+   "kind": "column",
+   "depth": 6,
+   "syntax": "Integer32",
+   "constraints": "range: -1-100",
+   "description": "Service channel buffer usage.\n-1 indicates that the device cannot get the value, e.g. the board does not support this operation, or the board state is abnormal."
+  },
+  {
+   "name": "hwMusaSlotAverageConfTable",
+   "oid": "1.3.6.1.4.1.2011.2.6.7.1.1.3",
+   "kind": "table",
+   "depth": 4,
+   "description": "The indexes of this table are hwFrameIndex and hwSlotIndex.\nThis table is not supported."
+  },
+  {
+   "name": "hwMusaSlotAverageConfEntry",
+   "oid": "1.3.6.1.4.1.2011.2.6.7.1.1.3.1",
+   "kind": "row",
+   "depth": 5,
+   "indexes": [
+    "HUAWEI-DEVICE-MIB::hwFrameIndex",
+    "HUAWEI-DEVICE-MIB::hwSlotIndex",
+    "hwMusaBoardStatisticTime"
+   ],
+   "description": "The indexes of this entry are hwFrameIndex and hwSlotIndex.\nThis table is not supported."
+  },
+  {
+   "name": "hwMusaBoardStatisticTime",
+   "oid": "1.3.6.1.4.1.2011.2.6.7.1.1.3.1.1",
+   "kind": "column",
+   "depth": 6,
+   "syntax": "Enumeration",
+   "description": "This node is not supported.\nOptions:\n1. fiveSeconds(1) -five seconds\n2. oneMinute(2) -one minute\n3. tenMinutes(3) -ten minutes",
+   "enum_from_description": {
+    "1": "fiveSeconds",
+    "2": "oneMinute",
+    "3": "tenMinutes"
+   }
+  },
+  {
+   "name": "hwMusaBoardCpuAverageRate",
+   "oid": "1.3.6.1.4.1.2011.2.6.7.1.1.3.1.2",
+   "kind": "column",
+   "depth": 6,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "description": "This node is not supported."
+  },
+  {
+   "name": "hwXPONBoardParaTable",
+   "oid": "1.3.6.1.4.1.2011.2.6.7.1.1.4",
+   "kind": "table",
+   "depth": 4,
+   "description": "The indexes of this table are hwFrameIndex and hwSlotIndex.\nThis table is not supported."
+  },
+  {
+   "name": "hwXPONBoardParaEntry",
+   "oid": "1.3.6.1.4.1.2011.2.6.7.1.1.4.1",
+   "kind": "row",
+   "depth": 5,
+   "indexes": [
+    "hwXPONBoardParaFrameIndex",
+    "hwXPONBoardParaSlotIndex"
+   ],
+   "description": "The indexes of this entry are hwFrameIndex and hwSlotIndex.\nThis table is not supported."
+  },
+  {
+   "name": "hwXPONBoardParaFrameIndex",
+   "oid": "1.3.6.1.4.1.2011.2.6.7.1.1.4.1.1",
+   "kind": "column",
+   "depth": 6,
+   "syntax": "Integer32",
+   "constraints": "range: 0-255",
+   "description": "This node is not supported."
+  },
+  {
+   "name": "hwXPONBoardParaSlotIndex",
+   "oid": "1.3.6.1.4.1.2011.2.6.7.1.1.4.1.2",
+   "kind": "column",
+   "depth": 6,
+   "syntax": "Integer32",
+   "constraints": "range: 0-255",
+   "description": "This node is not supported."
+  },
+  {
+   "name": "hwXPONBoardSN",
+   "oid": "1.3.6.1.4.1.2011.2.6.7.1.1.4.1.3",
+   "kind": "column",
+   "depth": 6,
+   "syntax": "OctetString",
+   "constraints": "range: 0-96",
+   "description": "This node is not supported."
+  },
+  {
+   "name": "hwXPONBoardPassWord",
+   "oid": "1.3.6.1.4.1.2011.2.6.7.1.1.4.1.4",
+   "kind": "column",
+   "depth": 6,
+   "syntax": "OctetString",
+   "constraints": "range: 0-96",
+   "description": "This node is not supported.",
+   "access": "read-write"
+  },
+  {
+   "name": "hwXPONBoardMacAddr",
+   "oid": "1.3.6.1.4.1.2011.2.6.7.1.1.4.1.5",
+   "kind": "column",
+   "depth": 6,
+   "syntax": "OctetString",
+   "constraints": "range: 17-17",
+   "description": "This node is not supported."
+  },
+  {
+   "name": "hwMusaFramePowerSupplyTable",
+   "oid": "1.3.6.1.4.1.2011.2.6.7.1.1.5",
+   "kind": "table",
+   "depth": 4,
+   "description": "The power supply query table.\nThe table is used to get supply state of all the power supply input.\nThe index of this table is hwFrameIndex,hwMusaPowerSupplyInputMode and hwMusaPowerSupplyID."
+  },
+  {
+   "name": "hwMusaFramePowerSupplyEntry",
+   "oid": "1.3.6.1.4.1.2011.2.6.7.1.1.5.1",
+   "kind": "row",
+   "depth": 5,
+   "indexes": [
+    "HUAWEI-DEVICE-MIB::hwFrameIndex",
+    "hwMusaPowerSupplyInputMode",
+    "hwMusaPowerSupplyID"
+   ],
+   "description": "The power supply query table.\nThe table is used to get supply state of all the power supply input.\nThe index of this entry is hwFrameIndex,hwMusaPowerSupplyInputMode and hwMusaPowerSupplyID."
+  },
+  {
+   "name": "hwMusaPowerSupplyInputMode",
+   "oid": "1.3.6.1.4.1.2011.2.6.7.1.1.5.1.1",
+   "kind": "column",
+   "depth": 6,
+   "syntax": "Enumeration",
+   "description": "Power supply input mode.\nOptions:\n1. localac(1) -local 220V AC power supply\n2. localdc(2) -local DC power supply\n3. remoteac(3) -remote 60V AC power supply\n4. remotedc(4) -remote line +/-190V high voltage power supply of DC\n5. pd(5) -powered device supply",
+   "enum_from_description": {
+    "1": "localac",
+    "2": "localdc",
+    "3": "remoteac",
+    "4": "remotedc",
+    "5": "pd"
+   }
+  },
+  {
+   "name": "hwMusaPowerSupplyID",
+   "oid": "1.3.6.1.4.1.2011.2.6.7.1.1.5.1.2",
+   "kind": "column",
+   "depth": 6,
+   "syntax": "Integer32",
+   "constraints": "range: 0-255",
+   "description": "The input index of power supply."
+  },
+  {
+   "name": "hwMusaPowerSupplyState",
+   "oid": "1.3.6.1.4.1.2011.2.6.7.1.1.5.1.3",
+   "kind": "column",
+   "depth": 6,
+   "syntax": "Enumeration",
+   "description": "The state of power supply.\nOptions:\n1. valid(1) -this power input is working\n2. invalid(2) -this power input is not working",
+   "enum_from_description": {
+    "1": "valid",
+    "2": "invalid"
+   }
+  },
+  {
+   "name": "hwBroadBandFrameOperTable",
+   "oid": "1.3.6.1.4.1.2011.2.6.7.1.2",
+   "kind": "table",
+   "depth": 3,
+   "description": "The indexes of this table are hwFrameIndex and hwSlotIndex.\nThis table is not supported."
+  },
+  {
+   "name": "hwBroadBandFrameOperEntry",
+   "oid": "1.3.6.1.4.1.2011.2.6.7.1.2.1",
+   "kind": "row",
+   "depth": 4,
+   "indexes": [
+    "hwFrameIfIndex"
+   ],
+   "description": "The indexes of this entry are hwFrameIndex and hwSlotIndex.\nThis table is not supported."
+  },
+  {
+   "name": "hwFrameIfIndex",
+   "oid": "1.3.6.1.4.1.2011.2.6.7.1.2.1.1",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "description": "This node is not supported."
+  },
+  {
+   "name": "hwBroadBandFrameType",
+   "oid": "1.3.6.1.4.1.2011.2.6.7.1.2.1.2",
+   "kind": "column",
+   "depth": 5,
+   "syntax_module": "HUAWEI-TC-MIB",
+   "syntax_type": "HWFrameType",
+   "description": "This node is not supported.",
+   "access": "read-write"
+  },
+  {
+   "name": "hwMainBoardSlots",
+   "oid": "1.3.6.1.4.1.2011.2.6.7.1.2.1.3",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "description": "This node is not supported.",
+   "access": "read-write"
+  },
+  {
+   "name": "hwMainBoardType",
+   "oid": "1.3.6.1.4.1.2011.2.6.7.1.2.1.4",
+   "kind": "column",
+   "depth": 5,
+   "syntax_module": "HUAWEI-TC-MIB",
+   "syntax_type": "HWPCBType",
+   "description": "This node is not supported.",
+   "access": "read-write"
+  },
+  {
+   "name": "hwBroadBandFrameID",
+   "oid": "1.3.6.1.4.1.2011.2.6.7.1.2.1.5",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "description": "This node is not supported."
+  },
+  {
+   "name": "hwBroadBandFrameRowStatus",
+   "oid": "1.3.6.1.4.1.2011.2.6.7.1.2.1.6",
+   "kind": "column",
+   "depth": 5,
+   "syntax_module": "SNMPv2-TC",
+   "syntax_type": "RowStatus",
+   "description": "This node is not supported.",
+   "access": "read-write"
+  },
+  {
+   "name": "hwIasConfigChange",
+   "oid": "1.3.6.1.4.1.2011.2.6.7.5",
+   "kind": "node",
+   "depth": 2
+  },
+  {
+   "name": "hwIasConfigChangeTable",
+   "oid": "1.3.6.1.4.1.2011.2.6.7.5.1",
+   "kind": "table",
+   "depth": 3,
+   "description": "Configuration change type trap table.\nThe index of this table is hwIasConfigChangeTrapID. It is the trap ID."
+  },
+  {
+   "name": "hwIasConfigChangeEntry",
+   "oid": "1.3.6.1.4.1.2011.2.6.7.5.1.1",
+   "kind": "row",
+   "depth": 4,
+   "indexes": [
+    "hwIasConfigChangeTrapID"
+   ],
+   "description": "Configuration change type trap table.\nThe index of this entry is hwIasConfigChangeTrapID. It is the trap ID."
+  },
+  {
+   "name": "hwIasConfigChangeTrapID",
+   "oid": "1.3.6.1.4.1.2011.2.6.7.5.1.1.1",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "description": "Configuration change type trap ID."
+  },
+  {
+   "name": "hwIasConfigChangeSerialSN",
+   "oid": "1.3.6.1.4.1.2011.2.6.7.5.1.1.2",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "description": "Configuration change type trap serial number."
+  }
+ ]
+}

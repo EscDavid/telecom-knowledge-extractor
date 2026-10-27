@@ -89,7 +89,16 @@ Huawei:
     label: "hwGponDeviceOntControlInfoTable RunStatus"
   software_branches: null
   metric_prefixes: [hw_gpon_device_, hw_xpon_device_, hw_gpon_, hw_xpon_, hw_]
-  sensitive_prefixes: []
+  # Hallado 2026-10-27 en el walk real (HUAWEI-DEVICE-MIB, nunca ingerido como OID — solo
+  # como índice ASCII en findings, ver triggers.trigger_ascii_index): .6.3.10 es una tabla
+  # de cuentas con el usuario en claro como índice (smaroltusr, supercable, commonuser,
+  # operator); .6.3.14 trae tokens de 12 caracteres alfanuméricos de alta entropía (claves/
+  # sesión, tabla sin identificar aún) — ambas se tratan como sensibles por precaución.
+  # NO incluye .6.128.1 (perfiles DBA/T-CONT con nombre real, ej. "MNZ-HSI-I",
+  # "SMARTOLT_DEFAULT_TCONT_1G"): son nombres de configuración legítimos, no secretos.
+  sensitive_prefixes:
+    - "1.3.6.1.4.1.2011.6.3.10"
+    - "1.3.6.1.4.1.2011.6.3.14"
   prune_mode: covered_branch           # walks parciales por subárbol: solo se poda donde se caminó
   prune_branch_depth: 2                # 2011.<rama>.<subrama>: 6.128, 5.100, 6.3, 5.25 ...
   ent_module_refine: true              # fan box / power board vienen como entPhysicalClass=module

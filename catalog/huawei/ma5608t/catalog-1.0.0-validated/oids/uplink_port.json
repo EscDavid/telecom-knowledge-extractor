@@ -1,0 +1,113 @@
+{
+  "entity_ref": "entity.huawei.gpon.port.uplink_port",
+  "vendor": "Huawei",
+  "family": "MA5608T",
+  "firmware": [
+    "R015"
+  ],
+  "oids": [
+    {
+      "id": "oid.huawei.gpon.uplink_port.uplink_sys_i_p_addr",
+      "oid": "1.3.6.1.4.1.2011.6.3.1.25",
+      "name": "hwUplinkSysIPAddr",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "read-write",
+      "enumeration": null,
+      "description": "The IP address of the uplink system of PVM, it is only used when PVM worked in integrated mode\nand the IPM worked as the uplink board.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    },
+    {
+      "id": "oid.huawei.gpon.uplink_port.frame_uplink_port",
+      "oid": "1.3.6.1.4.1.2011.6.3.3.1.1.14",
+      "name": "hwFrameUplinkPort",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "unknown",
+      "enumeration": null,
+      "description": "The uplink port of extended frame.",
+      "command_ref": null,
+      "status": "verified",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 1.0
+      },
+      "conflicts": [],
+      "empirical": {
+        "source": "Huawei_MA5608T.txt",
+        "sample_oid": "1.3.6.1.4.1.2011.6.3.3.1.1.14.0",
+        "sample_value": "-1",
+        "instances_sampled": 1,
+        "scale_confirmed": null
+      }
+    },
+    {
+      "id": "oid.huawei.gpon.uplink_port.extended_frame_uplink_port",
+      "oid": "1.3.6.1.4.1.2011.6.3.8.1.24",
+      "name": "hwExtendedFrameUplinkPort",
+      "mib_table": null,
+      "index": {
+        "type": "simple",
+        "bit_calculation": false,
+        "components": null
+      },
+      "syntax": "INTEGER",
+      "unit": null,
+      "scale": null,
+      "access": "unknown",
+      "enumeration": null,
+      "description": "Another uplink port of extended frame.",
+      "command_ref": null,
+      "status": "documented",
+      "sources": [
+        {
+          "doc_type": "mib_file",
+          "pages": null,
+          "confidence": 0.3
+        }
+      ],
+      "confidence": {
+        "extraction": 0.85,
+        "correlation": 0.0,
+        "overall": 0.85
+      },
+      "conflicts": []
+    }
+  ]
+}
