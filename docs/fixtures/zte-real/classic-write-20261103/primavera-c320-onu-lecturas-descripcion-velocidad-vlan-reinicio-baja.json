@@ -1,0 +1,385 @@
+{
+  "version": 1,
+  "generatedAt": "2026-11-03T18:15:17.466Z",
+  "mode": "aplicado",
+  "platform": "classic",
+  "olt": {
+    "name": "PRIMAVERA",
+    "model": "ZXA10 C320"
+  },
+  "onuType": "ZP_CABLE",
+  "firmware": "PhyLoc  FileType   VerType    VerTag            BuildTime           VerLength\n-------------------------------------------------------------------------------\n1/1/1   GTXK       MVR        V2.1.0            2017-07-03 00:28:55 7481408\n1/1/1   GTXK       BT         V4.0.14           2017-09-04  0:52:45 524288\n1/1/4   SMXA       MVR        V2.1.0            2017-01-17 01:04:45 24647784\n1/1/4   SMXA       BT         V4.0.19           2019-01-03 01:00:47 524288\n1/1/4   SMXA       FW         V2.1.0            2017-06-23 03:42:13 1720296",
+  "steps": [
+    {
+      "group": "lecturas",
+      "check": "show gpon onu by sn <SN>",
+      "templateId": null,
+      "syntax": [
+        "show gpon onu by sn <SN>"
+      ],
+      "outcome": "pass",
+      "detail": "",
+      "durationMs": 170,
+      "at": "2026-11-03T18:13:14.928Z"
+    },
+    {
+      "group": "lecturas",
+      "check": "show running-config interface gpon-olt_<PON>",
+      "templateId": null,
+      "syntax": [
+        "show running-config interface gpon-olt_<PON>"
+      ],
+      "outcome": "pass",
+      "detail": "",
+      "durationMs": 0,
+      "at": "2026-11-03T18:13:14.928Z"
+    },
+    {
+      "group": "lecturas",
+      "check": "show running-config interface gpon-onu_<PON>:<ONU>",
+      "templateId": null,
+      "syntax": [
+        "show running-config interface gpon-onu_<PON>:<ONU>"
+      ],
+      "outcome": "pass",
+      "detail": "",
+      "durationMs": 0,
+      "at": "2026-11-03T18:13:14.928Z"
+    },
+    {
+      "group": "lecturas",
+      "check": "show onu running config gpon-onu_<PON>:<ONU>",
+      "templateId": null,
+      "syntax": [
+        "show onu running config gpon-onu_<PON>:<ONU>"
+      ],
+      "outcome": "pass",
+      "detail": "",
+      "durationMs": 0,
+      "at": "2026-11-03T18:13:14.928Z"
+    },
+    {
+      "group": "lecturas",
+      "check": "show version-running",
+      "templateId": null,
+      "syntax": [
+        "show version-running"
+      ],
+      "outcome": "pass",
+      "detail": "",
+      "durationMs": 0,
+      "at": "2026-11-03T18:13:14.928Z"
+    },
+    {
+      "group": "lecturas",
+      "check": "show gpon onu detail-info gpon-onu_<PON>:<ONU>",
+      "templateId": null,
+      "syntax": [
+        "show gpon onu detail-info gpon-onu_<PON>:<ONU>"
+      ],
+      "outcome": "pass",
+      "detail": "",
+      "durationMs": 0,
+      "at": "2026-11-03T18:13:14.928Z"
+    },
+    {
+      "group": "lecturas",
+      "check": "show gpon onu state gpon-olt_<PON>",
+      "templateId": null,
+      "syntax": [
+        "show gpon onu state gpon-olt_<PON>"
+      ],
+      "outcome": "pass",
+      "detail": "",
+      "durationMs": 0,
+      "at": "2026-11-03T18:13:14.928Z"
+    },
+    {
+      "group": "lecturas",
+      "check": "show mac gpon onu gpon-onu_<PON>:<ONU>",
+      "templateId": null,
+      "syntax": [
+        "show mac gpon onu gpon-onu_<PON>:<ONU>"
+      ],
+      "outcome": "pass",
+      "detail": "",
+      "durationMs": 0,
+      "at": "2026-11-03T18:13:14.928Z"
+    },
+    {
+      "group": "lecturas",
+      "check": "show gpon profile tcont",
+      "templateId": null,
+      "syntax": [
+        "show gpon profile tcont"
+      ],
+      "outcome": "pass",
+      "detail": "",
+      "durationMs": 0,
+      "at": "2026-11-03T18:13:14.928Z"
+    },
+    {
+      "group": "lecturas",
+      "check": "show gpon profile traffic",
+      "templateId": null,
+      "syntax": [
+        "show gpon profile traffic"
+      ],
+      "outcome": "pass",
+      "detail": "",
+      "durationMs": 0,
+      "at": "2026-11-03T18:13:14.928Z"
+    },
+    {
+      "group": "descripcion",
+      "check": "establecer la descripción de la ONU",
+      "templateId": "zte.cls.onu.authorize.identity",
+      "syntax": [
+        "configure terminal",
+        "interface gpon-onu_<PON>:<ONU>",
+        "description <TEXTO>",
+        "end"
+      ],
+      "outcome": "pass",
+      "detail": "aceptado y verificado releyendo",
+      "durationMs": 1108,
+      "at": "2026-11-03T18:13:16.038Z"
+    },
+    {
+      "group": "descripcion",
+      "check": "quitar la descripción (no description)",
+      "templateId": "zte.cls.onu.description.clear",
+      "syntax": [
+        "configure terminal",
+        "interface gpon-onu_<PON>:<ONU>",
+        "no description",
+        "end"
+      ],
+      "outcome": "pass",
+      "detail": "aceptado y verificado releyendo",
+      "durationMs": 948,
+      "at": "2026-11-03T18:13:16.986Z"
+    },
+    {
+      "group": "descripcion",
+      "check": "restaurar la descripción original",
+      "templateId": "zte.cls.onu.authorize.identity",
+      "syntax": [
+        "configure terminal",
+        "interface gpon-onu_<PON>:<ONU>",
+        "description <TEXTO>",
+        "end"
+      ],
+      "outcome": "pass",
+      "detail": "aceptado y verificado releyendo",
+      "durationMs": 915,
+      "at": "2026-11-03T18:13:17.901Z"
+    },
+    {
+      "group": "velocidad",
+      "check": "subida: atar la ONU a otro perfil T-CONT",
+      "templateId": "zte.cls.onu.speed.tcont.set",
+      "syntax": [
+        "configure terminal",
+        "interface gpon-onu_<PON>:<ONU>",
+        "tcont 1 profile SMARTOLT-200M-UP",
+        "end"
+      ],
+      "outcome": "pass",
+      "detail": "aceptado y verificado releyendo",
+      "durationMs": 905,
+      "at": "2026-11-03T18:13:18.806Z"
+    },
+    {
+      "group": "velocidad",
+      "check": "subida: volver al perfil original",
+      "templateId": "zte.cls.onu.speed.tcont.set",
+      "syntax": [
+        "configure terminal",
+        "interface gpon-onu_<PON>:<ONU>",
+        "tcont 1 profile SMARTOLT-1G-UP",
+        "end"
+      ],
+      "outcome": "pass",
+      "detail": "aceptado y verificado releyendo",
+      "durationMs": 904,
+      "at": "2026-11-03T18:13:19.710Z"
+    },
+    {
+      "group": "velocidad",
+      "check": "bajada: atar la ONU a otro perfil de tráfico",
+      "templateId": "zte.cls.onu.speed.gemport.down.set",
+      "syntax": [
+        "configure terminal",
+        "interface gpon-onu_<PON>:<ONU>",
+        "gemport 1 traffic-limit downstream SMARTOLT-200M-DOWN",
+        "end"
+      ],
+      "outcome": "pass",
+      "detail": "aceptado y verificado releyendo",
+      "durationMs": 898,
+      "at": "2026-11-03T18:13:20.608Z"
+    },
+    {
+      "group": "velocidad",
+      "check": "bajada: volver al perfil original",
+      "templateId": "zte.cls.onu.speed.gemport.down.set",
+      "syntax": [
+        "configure terminal",
+        "interface gpon-onu_<PON>:<ONU>",
+        "gemport 1 traffic-limit downstream SMARTOLT-1G-DOWN",
+        "end"
+      ],
+      "outcome": "pass",
+      "detail": "aceptado y verificado releyendo",
+      "durationMs": 906,
+      "at": "2026-11-03T18:13:21.514Z"
+    },
+    {
+      "group": "vlan",
+      "check": "quitar el service-port y crearlo de nuevo con la misma VLAN",
+      "templateId": "zte.cls.onu.vlan.assign.set",
+      "syntax": [
+        "configure terminal",
+        "interface gpon-onu_<PON>:<ONU>",
+        "no service-port 1",
+        "service-port 1 vport 1 user-vlan 100 vlan 100",
+        "end"
+      ],
+      "outcome": "pass",
+      "detail": "aceptado y verificado releyendo",
+      "durationMs": 1040,
+      "at": "2026-11-03T18:13:22.554Z"
+    },
+    {
+      "group": "reinicio",
+      "check": "reiniciar la ONU (pon-onu-mng → reboot → yes)",
+      "templateId": "zte.cls.onu.reboot",
+      "syntax": [
+        "configure terminal",
+        "pon-onu-mng gpon-onu_<PON>:<ONU>",
+        "reboot",
+        "end"
+      ],
+      "outcome": "pass",
+      "detail": "aceptado",
+      "durationMs": 469,
+      "at": "2026-11-03T18:13:23.663Z"
+    },
+    {
+      "group": "reinicio",
+      "check": "la ONU sale de working y vuelve",
+      "templateId": "zte.cls.onu.reboot",
+      "syntax": [
+        "show gpon onu state gpon-olt_<PON>"
+      ],
+      "outcome": "pass",
+      "detail": "salió de working a los 6.9 s; volvió a working 90.6 s después de la orden",
+      "durationMs": 97476,
+      "at": "2026-11-03T18:15:00.670Z"
+    },
+    {
+      "group": "baja",
+      "check": "dar de baja la ONU (no onu N)",
+      "templateId": "zte.cls.onu.authorize.rollback",
+      "syntax": [
+        "configure terminal",
+        "interface gpon-olt_<PON>",
+        "no onu 23",
+        "end"
+      ],
+      "outcome": "pass",
+      "detail": "aceptado y verificado releyendo",
+      "durationMs": 1041,
+      "at": "2026-11-03T18:15:01.711Z"
+    },
+    {
+      "group": "baja",
+      "check": "dar de alta de nuevo (onu N type T sn S)",
+      "templateId": "zte.cls.onu.authorize.register",
+      "syntax": [
+        "configure terminal",
+        "interface gpon-olt_<PON>",
+        "onu 23 type ZP_CABLE sn <SN>",
+        "end"
+      ],
+      "outcome": "pass",
+      "detail": "aceptado",
+      "durationMs": 857,
+      "at": "2026-11-03T18:15:02.568Z"
+    },
+    {
+      "group": "baja",
+      "check": "copiar la interfaz de la ONU (name, description, tcont, gemport, service-port)",
+      "templateId": "zte.cls.onu.transfer.interface",
+      "syntax": [
+        "configure terminal",
+        "interface gpon-onu_<PON>:<ONU>",
+        "name <TEXTO>",
+        "description <TEXTO>",
+        "tcont 1 profile SMARTOLT-1G-UP",
+        "gemport 1 tcont 1",
+        "gemport 1 traffic-limit downstream SMARTOLT-1G-DOWN",
+        "service-port 1 vport 1 user-vlan 100 vlan 100",
+        "end"
+      ],
+      "outcome": "pass",
+      "detail": "aceptado",
+      "durationMs": 770,
+      "at": "2026-11-03T18:15:03.338Z"
+    },
+    {
+      "group": "baja",
+      "check": "copiar el bloque pon-onu-mng",
+      "templateId": "zte.cls.onu.transfer.mng",
+      "syntax": [
+        "configure terminal",
+        "pon-onu-mng gpon-onu_<PON>:<ONU>",
+        "flow mode 1 tag-filter vlan-filter untag-filter discard",
+        "flow 1 pri 0 vlan 100",
+        "gemport 1 flow 1",
+        "switchport-bind switch_0/1 iphost 1",
+        "switchport-bind switch_0/1 veip 1",
+        "vlan-filter-mode iphost 1 tag-filter vlan-filter untag-filter discard",
+        "vlan-filter iphost 1 pri 0 vlan 100",
+        "dhcp-ip ethuni eth_0/1 from-onu",
+        "dhcp-ip ethuni eth_0/2 from-onu",
+        "dhcp-ip ethuni eth_0/3 from-onu",
+        "dhcp-ip ethuni eth_0/4 from-onu",
+        "security-mgmt 998 state enable mode forward ingress-type lan protocol web https",
+        "security-mgmt 999 state enable ingress-type lan protocol ftp telnet ssh snmp tr069",
+        "end"
+      ],
+      "outcome": "pass",
+      "detail": "aceptado",
+      "durationMs": 1293,
+      "at": "2026-11-03T18:15:04.631Z"
+    },
+    {
+      "group": "baja",
+      "check": "la ONU queda igual que en el snapshot tras darla de baja y de alta",
+      "templateId": null,
+      "syntax": [
+        "show running-config interface gpon-olt_<PON>",
+        "show running-config interface gpon-onu_<PON>:<ONU>",
+        "show onu running config gpon-onu_<PON>:<ONU>"
+      ],
+      "outcome": "pass",
+      "detail": "interfaz y pon-onu-mng idénticos",
+      "durationMs": 507,
+      "at": "2026-11-03T18:15:05.138Z"
+    },
+    {
+      "group": "baja",
+      "check": "la ONU vuelve a working tras el alta",
+      "templateId": null,
+      "syntax": [
+        "show gpon onu state gpon-olt_<PON>"
+      ],
+      "outcome": "pass",
+      "detail": "working a los 11.8 s del alta",
+      "durationMs": 12324,
+      "at": "2026-11-03T18:15:16.955Z"
+    }
+  ]
+}

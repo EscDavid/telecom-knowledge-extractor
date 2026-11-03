@@ -1,0 +1,43 @@
+{
+  "id": "entity.zte.gpon.logical.service_port",
+  "canonical_name": "Service Port",
+  "vendor": "ZTE",
+  "family": "ZXA10 C300",
+  "firmware": [
+    "2.0",
+    "2.1"
+  ],
+  "technology": "gpon",
+  "type": "logical",
+  "description": "Service port — punto de servicio que mapea VLAN/trafico a una ONU.",
+  "is_critical": true,
+  "aliases": [],
+  "attributes": [],
+  "sources": [
+    {
+      "doc_type": "mib_file",
+      "pages": null,
+      "confidence": 0.3
+    }
+  ],
+  "confidence": {
+    "extraction": 0.85,
+    "correlation": 0.0,
+    "overall": 0.85
+  },
+  "status": "documented",
+  "lifecycle": {
+    "introduced_in": "2.0",
+    "deprecated_in": null,
+    "removed_in": null,
+    "status": "introduced",
+    "replacement": null
+  },
+  "relations": [
+    {
+      "type": "belongs_to",
+      "target": "entity.zte.gpon.device.onu"
+    }
+  ],
+  "conflicts": []
+}

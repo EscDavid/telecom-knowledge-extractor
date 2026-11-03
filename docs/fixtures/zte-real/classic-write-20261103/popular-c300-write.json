@@ -1,0 +1,26 @@
+{
+  "version": 1,
+  "generatedAt": "2026-11-03T18:22:39.758Z",
+  "mode": "aplicado",
+  "platform": "classic",
+  "olt": {
+    "name": "OLT Unete Popular",
+    "model": "ZXA10 C300"
+  },
+  "onuType": "ADC",
+  "firmware": "PhyLoc  FileType   VerType    VerTag            BuildTime           VerLength\n-------------------------------------------------------------------------------\n1/1/2   GTXK       MVR        V2.1.0            2017-07-03 00:28:55 7481408\n1/1/2   GTXK       BT         V4.0.17           2018-10-30 00:51:49 524288\n1/1/4   GTGHG      MVR        V2.1.0            2017-01-17 00:40:26 6634924\n1/1/4   GTGHG      BT         V4.0.5            2014-12-17 13:37:42 524288\n1/1/10  SCXM       MVR        V2.1.0            2017-01-17 00:57:03 13612859\n1/1/10  SCXM       BT         V1.2.3            2012-06-06 13:10:39 447632\n1/1/10  SCXM       FW         V2.1.0            2017-01-17 00:57:26 222044\n1/1/11  SCXM       MVR        V2.1.0            2017-01-17 00:57:03 13612859\n1/1/11  SCXM       BT         V1.2.3            2012-06-06 13:10:39 447632\n1/1/11  SCXM       FW         V2.1.0            2017-01-17 00:57:26 222044",
+  "steps": [
+    {
+      "group": "guardar",
+      "check": "guardar la configuración (write)",
+      "templateId": "zte.olt.config.save",
+      "syntax": [
+        "write"
+      ],
+      "outcome": "pass",
+      "detail": "aceptado",
+      "durationMs": 41409,
+      "at": "2026-11-03T18:22:39.125Z"
+    }
+  ]
+}

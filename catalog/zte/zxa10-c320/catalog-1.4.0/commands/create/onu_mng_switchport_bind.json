@@ -1,0 +1,39 @@
+{
+  "id": "command.zte.gpon.onu.create.onu_mng_switchport_bind",
+  "canonical_name": "switchport-bind",
+  "vendor": "ZTE",
+  "family": "ZXA10 C320",
+  "firmware": [
+    "2.0",
+    "2.1"
+  ],
+  "technology": "gpon",
+  "category": "create",
+  "cli_mode": "pon_config",
+  "cli_context": "pon-onu-mng gpon-onu_<idx>",
+  "entity_ref": "entity.zte.gpon.device.onu",
+  "description": "Ata el puerto virtual (iphost/veip) al switch de la ONU.",
+  "syntax": "switchport-bind switch_0/<n> {iphost|veip} <m>",
+  "parameters": [],
+  "output_fields": [],
+  "prerequisites": [],
+  "related_commands": [],
+  "rollback": null,
+  "errors": [],
+  "notes": null,
+  "evidence": "ejecutado en escritura y verificado releyendo la OLT PRIMAVERA (ZXA10 C320 V2.1.0) el 2026-11-03; estado original restaurado",
+  "sources": [
+    {
+      "doc_type": "hardware_verification",
+      "pages": null,
+      "confidence": 0.95
+    }
+  ],
+  "confidence": {
+    "extraction": 0.95,
+    "correlation": 0.0,
+    "overall": 0.95
+  },
+  "status": "verified",
+  "conflicts": []
+}

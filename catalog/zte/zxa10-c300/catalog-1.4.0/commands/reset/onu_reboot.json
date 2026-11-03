@@ -1,0 +1,39 @@
+{
+  "id": "command.zte.gpon.onu.reset.onu_reboot",
+  "canonical_name": "reboot (ONU)",
+  "vendor": "ZTE",
+  "family": "ZXA10 C300",
+  "firmware": [
+    "2.0",
+    "2.1"
+  ],
+  "technology": "gpon",
+  "category": "reset",
+  "cli_mode": "pon_config",
+  "cli_context": "pon-onu-mng gpon-onu_<idx>",
+  "entity_ref": "entity.zte.gpon.device.onu",
+  "description": "Reinicia la ONU. El equipo pregunta `Confirm to reboot? [yes/no]:` y espera `yes`.",
+  "syntax": "reboot",
+  "parameters": [],
+  "output_fields": [],
+  "prerequisites": [],
+  "related_commands": [],
+  "rollback": null,
+  "errors": [],
+  "notes": "Medido: sale de `working` a los 17 s (C300) / 7 s (C320) y vuelve a los ~102 s / ~91 s. La pregunta de confirmación debe contestarse solo para esta línea.",
+  "evidence": "ejecutado en escritura y verificado releyendo la OLT Unete Popular (ZXA10 C300 V2.1.0) el 2026-11-03; estado original restaurado",
+  "sources": [
+    {
+      "doc_type": "hardware_verification",
+      "pages": null,
+      "confidence": 0.95
+    }
+  ],
+  "confidence": {
+    "extraction": 0.95,
+    "correlation": 0.0,
+    "overall": 0.95
+  },
+  "status": "verified",
+  "conflicts": []
+}

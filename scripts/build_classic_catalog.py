@@ -15,7 +15,7 @@ sys.path.insert(0, str(ROOT))
 from src.walk_validator import WalkValidator, model_key  # noqa: E402
 
 STAGE = ROOT / "staging" / "classic_build"
-VERSION = "1.3.0"
+VERSION = "1.4.0"
 FAMILIES = {"c320": "ZXA10 C320", "c300": "ZXA10 C300"}
 
 

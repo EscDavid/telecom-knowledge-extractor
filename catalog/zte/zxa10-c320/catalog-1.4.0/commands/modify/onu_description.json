@@ -1,0 +1,39 @@
+{
+  "id": "command.zte.gpon.onu.modify.onu_description",
+  "canonical_name": "description (ONU)",
+  "vendor": "ZTE",
+  "family": "ZXA10 C320",
+  "firmware": [
+    "2.0",
+    "2.1"
+  ],
+  "technology": "gpon",
+  "category": "modify",
+  "cli_mode": "interface_config",
+  "cli_context": "interface gpon-onu_<idx>",
+  "entity_ref": "entity.zte.gpon.device.onu",
+  "description": "Descripción de la ONU (PII).",
+  "syntax": "description <texto>",
+  "parameters": [],
+  "output_fields": [],
+  "prerequisites": [],
+  "related_commands": [],
+  "rollback": "no description",
+  "errors": [],
+  "notes": null,
+  "evidence": "ejecutado en escritura y verificado releyendo la OLT PRIMAVERA (ZXA10 C320 V2.1.0) el 2026-11-03; estado original restaurado",
+  "sources": [
+    {
+      "doc_type": "hardware_verification",
+      "pages": null,
+      "confidence": 0.95
+    }
+  ],
+  "confidence": {
+    "extraction": 0.95,
+    "correlation": 0.0,
+    "overall": 0.95
+  },
+  "status": "verified",
+  "conflicts": []
+}

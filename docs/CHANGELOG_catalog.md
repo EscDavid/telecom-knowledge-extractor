@@ -6,23 +6,51 @@
 - **Mayor (x.0.0):** se quitan o renombran ids, o cambia el significado de un atributo.
 - Antes de cargar: `python scripts/catalog_contract_check.py` (lo ejecuta el loader; `--skip-contract` lo omite) y `python scripts/catalog_diff.py <anterior> <nuevo>` para ver el detalle.
 
+## 1.4.0 — 2026-11-03 (C320 y C300, clásicas)
+Sustituye a la 1.3.0 de clásicas. Mismos OID (C320 1003, C300 952), ningún id quitado ni renombrado; **+25 comandos de escritura** (81 por familia) y los
+7 que estaban `observed` pasan a `verified` con `rollback`. Procede de certificaciones **en escritura y en vivo** del 2026-11-03 en dos OLT con firmware V2.1.0:
+**OLT Unete Popular (ZXA10 C300)** y **OLT PRIMAVERA (ZXA10 C320)**. Cada comando se envió con las plantillas de la aplicación, se verificó releyendo el equipo y
+el estado se devolvió al original (comparación exacta con una captura previa). Evidencia enmascarada en `docs/fixtures/zte-real/classic-write-20261103`.
+Se genera con `scripts/build_classic_command_catalog.py` + `scripts/build_classic_catalog.py` (VERSION 1.4.0); pasa `catalog_contract_check.py` (10530 comprobaciones) y `loader_dry_run.py` (81 comandos).
+
+### Verificado (C300 y C320, salvo lo marcado)
+- **ONU:** `onu <n> type <t> sn <s>`, `no onu <n>`, `name`, `description` y `no description`, `tcont <n> profile`, `gemport <n> tcont`, `gemport <n> traffic-limit downstream`, `service-port` y `no service-port`
+  (reasignar la misma VLAN). `reboot` con confirmación `[yes/no]` (sale de `working` a los 17 s en C300 y 7 s en C320; vuelve a los ~102 s y ~91 s).
+- **pon-onu-mng:** `flow`, `gemport … flow`, `switchport-bind`, `vlan-filter-mode`/`vlan-filter`, `security-mgmt`, `dhcp-ip ethuni` (solo C320; en C300 `observed`),
+  `interface video state` (CATV), `interface eth state`/`speed`, `interface wifi state`, `wifi {enable|disable}` (C300 `verified`; C320 `observed`, ver abajo).
+- **OLT:** `write` (41 s en C300, 1,8 s en C320; responde `[OK]`), `vlan <id>`/`no vlan <id>`, `profile tcont`/`traffic` y sus `no …`, `onu-type … gpon` + `onu-type-if` y `no onu-type`,
+  `description`/`no description` y `shutdown`/`no shutdown` del puerto PON. **Alta nueva de punta a punta** con un serial falso en un puerto vacío (registro, T-CONT/GEM, service-port, velocidad) y su baja.
+
+### Hallazgos que un consumidor debe conocer
+- **Depende del modelo de ONU, no de la OLT:** `wifi {enable|disable}` lo rechazó una ONU ZP_CABLE (`%Code 63993-GPONRM : ONT return error:unknown ME`) y lo aceptó una ADC.
+  El error `63993` significa que la OLT envió el comando por OMCI y la ONU no tiene esa entidad de gestión.
+- **No catalogado:** `traffic-limit eth_0/<n> cir <kbps>` (el que usa la aplicación) fue rechazado con `unknown ME` por **4 de 4 ONU** de tres familias. El único límite verificado
+  es el de bajada por GEM (`gemport … traffic-limit downstream`). Queda por probar la forma por perfil de Ethernet que el catálogo C620 trae (`switchport ethuni … traffic-limit {in|out} <perfil>`).
+- **Sin certificar:** SSID (`ssid ctrl … name`; ninguna ONU probada lo publica y escribirlo cambiaría la red del cliente), modo bridge/router, otra VLAN distinta, transferir y el corte por SNMP
+  (necesitan una ONU de prueba sin servicio y no cortada).
+- **Una ONU cortada (`shutdown` en su interfaz) no se restaura con baja y alta:** quedaría habilitada. Las plantillas de copia no reescriben `shutdown`.
+- **`show version` no existe en clásicas** (`%Error 20204`); es `show version-running` (ya corregido en 1.3.0).
+
 ## 1.3.0 — 2026-10-26 (C320 y C300, clásicas)
 Sustituye a la 1.2.0 de clásicas. Mismos OID (C320 1003, C300 952), ningún id quitado ni renombrado; +37 comandos. Procede de la sonda de solo lectura
-del 2026-10-26 en una **ZXA10 C300 V2.1.0** (103 ONU; `show system-group`: `C300 Version V2.1.0`; la OLT que se creía C320 era un C300). Informe: secciones BJ y BK.
+del 2026-10-26 en una **ZXA10 C300 V2.1.0** (103 ONU; `show system-group`: `C300 Version V2.1.0`; la OLT que se creía C320 era un C300) y del 2026-10-27 en una **ZXA10 C320 V2.1.0** (171 ONU). Informe: secciones BJ a BL.
 
 ### Cambios que un consumidor debe revisar
 - **Versión por CLI: `show version-running`.** `show version` es ambiguo (`%Error 20204`) y `show software 1` no existe en clásicas. La 1.2.0 daba `show version` como `observed` (error mío, tomado del informe del importador sin ejecutarlo):
   el id `command.zte.gpon.global.show.version` se conserva y ahora describe `show version-running`. La versión también sale de `show system-group` (sysDescr y uptime por CLI).
 - **Sintaxis de clásicas:** `gpon-olt_<rack>/<slot>/<puerto>` y `gpon-onu_<rack>/<slot>/<puerto>:<n>`. La de C6 (`gpon_olt-…`, `gpon_onu-…`) da `Invalid input`.
   `show running-config interface <iface>` lleva espacio (`show running-config-interface` no existe).
-- **Comandos de lectura:** 37 `verified` en C300 (ejecutados) y `observed` en C320 (misma plataforma y firmware, no ejecutados): `clock`, `version-running`, `system-group`, `card`, `card-temperature`, `card-power`, `gpon onu state|baseinfo|uncfg|detail-info|distance|by sn`,
+- **Comandos de lectura:** 37 `verified` en C300 (ejecutados el 26-oct) y 37 `verified` en C320 (los mismos, ejecutados el 27-oct; misma sintaxis y mismos rechazos): `clock`, `version-running`, `system-group`, `card`, `card-temperature`, `card-power`, `gpon onu state|baseinfo|uncfg|detail-info|distance|by sn`,
   `pon onu information`, `pon power attenuation|onu-rx|onu-tx|olt-rx|olt-tx`, `interface gpon-olt`, `service-port interface`, `mac gpon onu`, `running-config interface` (puerto y ONU), `onu running config`, `gpon remote-onu equip|capability|interface eth|sys-attr`,
   `onu-type`, `vlan summary`, `gpon profile tcont|traffic`, `gpon onu profile vlan|traffic`, `logging alarm`, `alarm pool|counter`. Con `errors[]` (20200, 20202, 20203, 20204, 62310, 64040; los dos últimos son lecturas vacías, `severity: info`).
   No existen en esta versión: `show logfile brief`, `show alarm current|history`, `show mac interface`, `show qos traffic-profile`, `show pon olt-tx`, `show gpon onu tcont|gemport|vport`, `show version-saved`/`show pon version` (incompletos). Detalle en `docs/validation/commands/zte_classic_cli_behavior.json`.
 - **PII por CLI:** en clásicas la cuenta de lectura ve `Name` y `Description` de la ONU **en claro** (detail-info y running-config). En C6 salen enmascarados. No registrar esas salidas.
 - **Plantilla de aprovisionamiento observada** (7 comandos `observed`, no ejecutados por TKC): `onu <n> type <tipo> sn <serial>` en el puerto; en la ONU `name`, `description`, `tcont <n> profile <subida>`, `gemport <n> tcont <m>`,
   `gemport <n> traffic-limit downstream <bajada>` y `service-port <n> vport <v> user-vlan <v> vlan <v>`. Diferencia con C6: el perfil de bajada va en el `gemport`, no en el service-port.
-- **`show pon power attenuation`:** `up Rx` es la potencia recibida por la OLT (la de `onu_rx_power_type`, rama `1012.3.50.12.1.1.10`; correspondencia `inferred` hasta leer ese OID de la misma ONU) y puede ser menor de -30 dBm (caso con signo).
+- **Potencia: qué es cada columna (corregido).** Leyendo CLI y SNMP de la misma ONU en la C320: `onu_rx_power_type` (`1012.3.50.12.1.1.10`) es la potencia **recibida por la ONU** (`down Rx` / `show pon power onu-rx`; raw 207 → -29,586 dBm, idéntico)
+  y `onu_tx_power_type` (`…14`) es la **transmitida por la ONU** (`up Tx` / `onu-tx`; raw 16032 → 2,064 dBm, idéntico). La potencia que recibe la OLT (`up Rx`, `show pon power olt-rx`) NO está en esas columnas: solo CLI.
+  La fórmula `raw*0.002-30` es exacta. Un primer borrador de esta versión mapeaba `up Rx` a `onu_rx_power_type`; era una inferencia errónea y está corregida (los campos de salida de `onu-rx`, `onu-tx` y `attenuation` llevan `oid_status: mapped`).
+  `signed_bits: 16` sigue sin confirmarse en clásicas: ninguna de las 171 ONU de la C320 tiene un valor entre 32768 y 65534 (18 con 65535); `signed_bits_evidence` lo explica. Verdad de terreno: `docs/fixtures/zte-real/c320-20261001/ground_truth.json`.
 
 ### Quitado (sin ids de OID/comando afectados)
 - 4 entidades cascarón (`protocol.dba`, `protocol.igmp`, `profile.line_profile`, `profile.service_profile`): `inferred`, confianza 0,07, sin atributos, OID ni relaciones. Aparecieron al regenerar la semilla y bajaban el tier de 4 a 2.

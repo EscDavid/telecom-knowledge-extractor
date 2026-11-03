@@ -1,0 +1,39 @@
+{
+  "id": "command.zte.gpon.onu.modify.onu_mng_dhcp_ip",
+  "canonical_name": "dhcp-ip ethuni",
+  "vendor": "ZTE",
+  "family": "ZXA10 C300",
+  "firmware": [
+    "2.0",
+    "2.1"
+  ],
+  "technology": "gpon",
+  "category": "modify",
+  "cli_mode": "pon_config",
+  "cli_context": "pon-onu-mng gpon-onu_<idx>",
+  "entity_ref": "entity.zte.gpon.device.onu",
+  "description": "El puerto Ethernet de la ONU obtiene IP de la propia ONU.",
+  "syntax": "dhcp-ip ethuni eth_0/<n> from-onu",
+  "parameters": [],
+  "output_fields": [],
+  "prerequisites": [],
+  "related_commands": [],
+  "rollback": null,
+  "errors": [],
+  "notes": "Verificado en una ONU ZP_CABLE de la C320; la ONU ADC de la C300 usada no lo tenía en su configuración.",
+  "evidence": "ejecutado en una OLT ZXA10 C300 V2.1.0 el 2026-10-26; misma plataforma y firmware, no ejecutado en esta C320 (o sin respuesta válida)",
+  "sources": [
+    {
+      "doc_type": "hardware_verification",
+      "pages": null,
+      "confidence": 0.85
+    }
+  ],
+  "confidence": {
+    "extraction": 0.85,
+    "correlation": 0.0,
+    "overall": 0.85
+  },
+  "status": "observed",
+  "conflicts": []
+}

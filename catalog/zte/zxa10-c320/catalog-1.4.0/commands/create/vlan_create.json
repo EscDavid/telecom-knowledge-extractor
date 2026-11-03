@@ -1,0 +1,49 @@
+{
+  "id": "command.zte.gpon.vlan.create.vlan_create",
+  "canonical_name": "vlan <id>",
+  "vendor": "ZTE",
+  "family": "ZXA10 C320",
+  "firmware": [
+    "2.0",
+    "2.1"
+  ],
+  "technology": "gpon",
+  "category": "create",
+  "cli_mode": "global_config",
+  "cli_context": "configure terminal",
+  "entity_ref": "entity.zte.gpon.logical.vlan",
+  "description": "Crea una VLAN en la OLT; `show vlan <id>` la devuelve.",
+  "syntax": "vlan <1-4094>",
+  "parameters": [
+    {
+      "name": "vlan-id",
+      "type": "string",
+      "pattern": null,
+      "range": "1-4094",
+      "required": true,
+      "description": "",
+      "example": "3999"
+    }
+  ],
+  "output_fields": [],
+  "prerequisites": [],
+  "related_commands": [],
+  "rollback": "no vlan <id>",
+  "errors": [],
+  "notes": "Inexistente: `show vlan <id>` responde `%Code 60514: This vlan does not exist.`",
+  "evidence": "ejecutado en escritura y verificado releyendo la OLT PRIMAVERA (ZXA10 C320 V2.1.0) el 2026-11-03; estado original restaurado",
+  "sources": [
+    {
+      "doc_type": "hardware_verification",
+      "pages": null,
+      "confidence": 0.95
+    }
+  ],
+  "confidence": {
+    "extraction": 0.95,
+    "correlation": 0.0,
+    "overall": 0.95
+  },
+  "status": "verified",
+  "conflicts": []
+}

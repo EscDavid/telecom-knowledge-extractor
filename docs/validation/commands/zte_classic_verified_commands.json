@@ -7,7 +7,7 @@
    "ZXA10 C320"
   ],
   "replace_seed": false,
-  "source": "reports/cli_verification_c620_c600_2026-10-02.md (BJ, BK)",
+  "source": "reports/cli_verification_c620_c600_2026-10-02.md (BJ, BK); certificaciones en vivo 2026-11-03",
   "generated_by": "scripts/build_classic_command_catalog.py"
  },
  "commands": {
@@ -968,7 +968,7 @@
     "cli_mode": "privileged_exec",
     "cli_context": null,
     "entity_ref": "entity.zte.gpon.device.onu",
-    "description": "Potencias y atenuación de ambos sentidos: `up Rx` (recibida por la OLT, negativa; puede ser < -30 dBm), `Tx` de la ONU, `down Tx` de la OLT y `Rx` de la ONU.",
+    "description": "Potencias y atenuación de ambos sentidos: `up Rx` (recibida por la OLT), `up Tx` (transmitida por la ONU), `down Tx` (de la OLT) y `down Rx` (recibida por la ONU).",
     "syntax": "show pon power attenuation gpon-onu_<idx>",
     "parameters": [
      {
@@ -986,15 +986,15 @@
       "name": "up_rx_dbm",
       "type": "string",
       "unit": null,
-      "oid_ref": "oid.zte.gpon.onu.onu_rx_power_type",
-      "oid_status": "inferred"
+      "oid_ref": null,
+      "oid_status": "not_mapped"
      },
      {
       "name": "up_tx_dbm",
       "type": "string",
       "unit": null,
       "oid_ref": "oid.zte.gpon.onu.onu_tx_power_type",
-      "oid_status": "inferred"
+      "oid_status": "mapped"
      },
      {
       "name": "up_attenuation_db",
@@ -1014,8 +1014,8 @@
       "name": "down_rx_dbm",
       "type": "string",
       "unit": null,
-      "oid_ref": null,
-      "oid_status": "not_mapped"
+      "oid_ref": "oid.zte.gpon.onu.onu_rx_power_type",
+      "oid_status": "mapped"
      },
      {
       "name": "down_attenuation_db",
@@ -1036,7 +1036,7 @@
       "retry": false
      }
     ],
-    "notes": "La correspondencia up_rx_dbm↔onu_rx_power_type (1012.3.50.12.1.1.10) es una inferencia: queda por confirmar leyendo ese OID de la misma ONU.",
+    "notes": "Verificado en una C320 V2.1.0 (2026-10-27) leyendo a la vez la CLI y el SNMP de la misma ONU: onu_rx_power_type (1012.3.50.12.1.1.10) = `down Rx` / `show pon power onu-rx` (raw 207 → -29,586 dBm, idéntico) y onu_tx_power_type (…14) = `up Tx` / `onu-tx` (raw 16032 → 2,064 dBm, idéntico). La potencia recibida por la OLT (`up Rx`, `olt-rx`) NO está en esas columnas: solo CLI.",
     "evidence": "ejecutado y verificado en una OLT ZXA10 C300 V2.1.0 el 2026-10-26 (solo lectura)",
     "sources": [
      {
@@ -1067,7 +1067,7 @@
     "cli_mode": "privileged_exec",
     "cli_context": null,
     "entity_ref": "entity.zte.gpon.device.onu",
-    "description": "Potencia recibida por la ONU (sentido bajada).",
+    "description": "Potencia recibida por la ONU (sentido bajada). Es el valor de onu_rx_power_type por SNMP (idéntico, verificado en C320).",
     "syntax": "show pon power onu-rx gpon-onu_<idx>",
     "parameters": [
      {
@@ -1080,7 +1080,15 @@
       "example": "1/3/1:2"
      }
     ],
-    "output_fields": [],
+    "output_fields": [
+     {
+      "name": "rx_power_dbm",
+      "type": "string",
+      "unit": null,
+      "oid_ref": "oid.zte.gpon.onu.onu_rx_power_type",
+      "oid_status": "mapped"
+     }
+    ],
     "prerequisites": [],
     "related_commands": [],
     "rollback": null,
@@ -1123,7 +1131,7 @@
     "cli_mode": "privileged_exec",
     "cli_context": null,
     "entity_ref": "entity.zte.gpon.device.onu",
-    "description": "Potencia transmitida por la ONU.",
+    "description": "Potencia transmitida por la ONU. Es el valor de onu_tx_power_type por SNMP (idéntico, verificado en C320).",
     "syntax": "show pon power onu-tx gpon-onu_<idx>",
     "parameters": [
      {
@@ -1136,7 +1144,15 @@
       "example": "1/3/1:2"
      }
     ],
-    "output_fields": [],
+    "output_fields": [
+     {
+      "name": "tx_power_dbm",
+      "type": "string",
+      "unit": null,
+      "oid_ref": "oid.zte.gpon.onu.onu_tx_power_type",
+      "oid_status": "mapped"
+     }
+    ],
     "prerequisites": [],
     "related_commands": [],
     "rollback": null,
@@ -1179,7 +1195,7 @@
     "cli_mode": "privileged_exec",
     "cli_context": null,
     "entity_ref": "entity.zte.gpon.port.pon_port",
-    "description": "Potencia recibida por la OLT de cada ONU del puerto (negativa; por debajo de -30 dBm el SNMP crudo es un entero de 16 bits con signo).",
+    "description": "Potencia recibida POR LA OLT de cada ONU del puerto (sentido subida; `no signal` si la ONU está apagada). Solo CLI: no está en las columnas 10/14 de 1012.3.50.12.1.1.",
     "syntax": "show pon power olt-rx gpon-olt_<pon>",
     "parameters": [
      {
@@ -1192,7 +1208,15 @@
       "example": "1/3/1"
      }
     ],
-    "output_fields": [],
+    "output_fields": [
+     {
+      "name": "olt_rx_power_dbm",
+      "type": "string",
+      "unit": null,
+      "oid_ref": null,
+      "oid_status": "not_mapped"
+     }
+    ],
     "prerequisites": [],
     "related_commands": [],
     "rollback": null,
@@ -2222,23 +2246,23 @@
     "output_fields": [],
     "prerequisites": [],
     "related_commands": [],
-    "rollback": null,
+    "rollback": "no onu <n>",
     "errors": [],
     "notes": null,
-    "evidence": "visto en la configuración real de una OLT ZXA10 C300 V2.1.0 (show running-config); no ejecutado por TKC",
+    "evidence": "ejecutado en escritura y verificado releyendo la OLT Unete Popular (ZXA10 C300 V2.1.0) el 2026-11-03; estado original restaurado",
     "sources": [
      {
       "doc_type": "hardware_verification",
       "pages": null,
-      "confidence": 0.7
+      "confidence": 0.95
      }
     ],
     "confidence": {
-     "extraction": 0.7,
+     "extraction": 0.95,
      "correlation": 0.0,
-     "overall": 0.7
+     "overall": 0.95
     },
-    "status": "observed",
+    "status": "verified",
     "conflicts": []
    },
    {
@@ -2261,23 +2285,23 @@
     "output_fields": [],
     "prerequisites": [],
     "related_commands": [],
-    "rollback": null,
+    "rollback": "name <texto-anterior>",
     "errors": [],
     "notes": null,
-    "evidence": "visto en la configuración real de una OLT ZXA10 C300 V2.1.0 (show running-config); no ejecutado por TKC",
+    "evidence": "ejecutado en escritura y verificado releyendo la OLT Unete Popular (ZXA10 C300 V2.1.0) el 2026-11-03; estado original restaurado",
     "sources": [
      {
       "doc_type": "hardware_verification",
       "pages": null,
-      "confidence": 0.7
+      "confidence": 0.95
      }
     ],
     "confidence": {
-     "extraction": 0.7,
+     "extraction": 0.95,
      "correlation": 0.0,
-     "overall": 0.7
+     "overall": 0.95
     },
-    "status": "observed",
+    "status": "verified",
     "conflicts": []
    },
    {
@@ -2300,23 +2324,23 @@
     "output_fields": [],
     "prerequisites": [],
     "related_commands": [],
-    "rollback": null,
+    "rollback": "no description",
     "errors": [],
     "notes": null,
-    "evidence": "visto en la configuración real de una OLT ZXA10 C300 V2.1.0 (show running-config); no ejecutado por TKC",
+    "evidence": "ejecutado en escritura y verificado releyendo la OLT Unete Popular (ZXA10 C300 V2.1.0) el 2026-11-03; estado original restaurado",
     "sources": [
      {
       "doc_type": "hardware_verification",
       "pages": null,
-      "confidence": 0.7
+      "confidence": 0.95
      }
     ],
     "confidence": {
-     "extraction": 0.7,
+     "extraction": 0.95,
      "correlation": 0.0,
-     "overall": 0.7
+     "overall": 0.95
     },
-    "status": "observed",
+    "status": "verified",
     "conflicts": []
    },
    {
@@ -2339,23 +2363,23 @@
     "output_fields": [],
     "prerequisites": [],
     "related_commands": [],
-    "rollback": null,
+    "rollback": "tcont <n> profile <perfil-anterior>",
     "errors": [],
     "notes": null,
-    "evidence": "visto en la configuración real de una OLT ZXA10 C300 V2.1.0 (show running-config); no ejecutado por TKC",
+    "evidence": "ejecutado en escritura y verificado releyendo la OLT Unete Popular (ZXA10 C300 V2.1.0) el 2026-11-03; estado original restaurado",
     "sources": [
      {
       "doc_type": "hardware_verification",
       "pages": null,
-      "confidence": 0.7
+      "confidence": 0.95
      }
     ],
     "confidence": {
-     "extraction": 0.7,
+     "extraction": 0.95,
      "correlation": 0.0,
-     "overall": 0.7
+     "overall": 0.95
     },
-    "status": "observed",
+    "status": "verified",
     "conflicts": []
    },
    {
@@ -2378,23 +2402,23 @@
     "output_fields": [],
     "prerequisites": [],
     "related_commands": [],
-    "rollback": null,
+    "rollback": "no gemport <n>",
     "errors": [],
     "notes": null,
-    "evidence": "visto en la configuración real de una OLT ZXA10 C300 V2.1.0 (show running-config); no ejecutado por TKC",
+    "evidence": "ejecutado en escritura y verificado releyendo la OLT Unete Popular (ZXA10 C300 V2.1.0) el 2026-11-03; estado original restaurado",
     "sources": [
      {
       "doc_type": "hardware_verification",
       "pages": null,
-      "confidence": 0.7
+      "confidence": 0.95
      }
     ],
     "confidence": {
-     "extraction": 0.7,
+     "extraction": 0.95,
      "correlation": 0.0,
-     "overall": 0.7
+     "overall": 0.95
     },
-    "status": "observed",
+    "status": "verified",
     "conflicts": []
    },
    {
@@ -2417,23 +2441,23 @@
     "output_fields": [],
     "prerequisites": [],
     "related_commands": [],
-    "rollback": null,
+    "rollback": "gemport <n> traffic-limit downstream <perfil-anterior>",
     "errors": [],
     "notes": null,
-    "evidence": "visto en la configuración real de una OLT ZXA10 C300 V2.1.0 (show running-config); no ejecutado por TKC",
+    "evidence": "ejecutado en escritura y verificado releyendo la OLT Unete Popular (ZXA10 C300 V2.1.0) el 2026-11-03; estado original restaurado",
     "sources": [
      {
       "doc_type": "hardware_verification",
       "pages": null,
-      "confidence": 0.7
+      "confidence": 0.95
      }
     ],
     "confidence": {
-     "extraction": 0.7,
+     "extraction": 0.95,
      "correlation": 0.0,
-     "overall": 0.7
+     "overall": 0.95
     },
-    "status": "observed",
+    "status": "verified",
     "conflicts": []
    },
    {
@@ -2456,23 +2480,1088 @@
     "output_fields": [],
     "prerequisites": [],
     "related_commands": [],
-    "rollback": null,
+    "rollback": "no service-port <n>",
     "errors": [],
     "notes": null,
-    "evidence": "visto en la configuración real de una OLT ZXA10 C300 V2.1.0 (show running-config); no ejecutado por TKC",
+    "evidence": "ejecutado en escritura y verificado releyendo la OLT Unete Popular (ZXA10 C300 V2.1.0) el 2026-11-03; estado original restaurado",
     "sources": [
      {
       "doc_type": "hardware_verification",
       "pages": null,
-      "confidence": 0.7
+      "confidence": 0.95
      }
     ],
     "confidence": {
-     "extraction": 0.7,
+     "extraction": 0.95,
      "correlation": 0.0,
-     "overall": 0.7
+     "overall": 0.95
+    },
+    "status": "verified",
+    "conflicts": []
+   },
+   {
+    "id": "command.zte.gpon.onu.modify.onu_description_clear",
+    "canonical_name": "no description (ONU)",
+    "vendor": "ZTE",
+    "family": "ZXA10 C300",
+    "firmware": [
+     "2.0",
+     "2.1"
+    ],
+    "technology": "gpon",
+    "category": "modify",
+    "cli_mode": "interface_config",
+    "cli_context": "interface gpon-onu_<idx>",
+    "entity_ref": "entity.zte.gpon.device.onu",
+    "description": "Quita la descripción de la ONU.",
+    "syntax": "no description",
+    "parameters": [],
+    "output_fields": [],
+    "prerequisites": [],
+    "related_commands": [],
+    "rollback": "description <texto-anterior>",
+    "errors": [],
+    "notes": null,
+    "evidence": "ejecutado en escritura y verificado releyendo la OLT Unete Popular (ZXA10 C300 V2.1.0) el 2026-11-03; estado original restaurado",
+    "sources": [
+     {
+      "doc_type": "hardware_verification",
+      "pages": null,
+      "confidence": 0.95
+     }
+    ],
+    "confidence": {
+     "extraction": 0.95,
+     "correlation": 0.0,
+     "overall": 0.95
+    },
+    "status": "verified",
+    "conflicts": []
+   },
+   {
+    "id": "command.zte.gpon.sp.delete.onu_no_service_port",
+    "canonical_name": "no service-port (ONU)",
+    "vendor": "ZTE",
+    "family": "ZXA10 C300",
+    "firmware": [
+     "2.0",
+     "2.1"
+    ],
+    "technology": "gpon",
+    "category": "delete",
+    "cli_mode": "interface_config",
+    "cli_context": "interface gpon-onu_<idx>",
+    "entity_ref": "entity.zte.gpon.logical.service_port",
+    "description": "Quita el service-port; con `service-port` de nuevo se reasigna la VLAN.",
+    "syntax": "no service-port <n>",
+    "parameters": [],
+    "output_fields": [],
+    "prerequisites": [],
+    "related_commands": [],
+    "rollback": "service-port <n> vport <v> user-vlan <vlan> vlan <vlan>",
+    "errors": [],
+    "notes": null,
+    "evidence": "ejecutado en escritura y verificado releyendo la OLT Unete Popular (ZXA10 C300 V2.1.0) el 2026-11-03; estado original restaurado",
+    "sources": [
+     {
+      "doc_type": "hardware_verification",
+      "pages": null,
+      "confidence": 0.95
+     }
+    ],
+    "confidence": {
+     "extraction": 0.95,
+     "correlation": 0.0,
+     "overall": 0.95
+    },
+    "status": "verified",
+    "conflicts": []
+   },
+   {
+    "id": "command.zte.gpon.onu.delete.onu_delete",
+    "canonical_name": "no onu <n>",
+    "vendor": "ZTE",
+    "family": "ZXA10 C300",
+    "firmware": [
+     "2.0",
+     "2.1"
+    ],
+    "technology": "gpon",
+    "category": "delete",
+    "cli_mode": "interface_config",
+    "cli_context": "interface gpon-olt_<pon>",
+    "entity_ref": "entity.zte.gpon.device.onu",
+    "description": "Da de baja la ONU del puerto con toda su configuración. Dar de alta de nuevo exige reponer interfaz y pon-onu-mng (el equipo no los conserva).",
+    "syntax": "no onu <n>",
+    "parameters": [
+     {
+      "name": "pon",
+      "type": "string",
+      "pattern": null,
+      "range": null,
+      "required": true,
+      "description": "puerto PON rack/slot/puerto",
+      "example": "1/3/1"
+     }
+    ],
+    "output_fields": [],
+    "prerequisites": [],
+    "related_commands": [],
+    "rollback": "onu <n> type <tipo> sn <sn> y reponer interfaz y pon-onu-mng",
+    "errors": [],
+    "notes": "La ONU vuelve a `working` unos 6 s (C300) a 12 s (C320) tras el alta; verificado por relectura idéntica al estado previo.",
+    "evidence": "ejecutado en escritura y verificado releyendo la OLT Unete Popular (ZXA10 C300 V2.1.0) el 2026-11-03; estado original restaurado",
+    "sources": [
+     {
+      "doc_type": "hardware_verification",
+      "pages": null,
+      "confidence": 0.95
+     }
+    ],
+    "confidence": {
+     "extraction": 0.95,
+     "correlation": 0.0,
+     "overall": 0.95
+    },
+    "status": "verified",
+    "conflicts": []
+   },
+   {
+    "id": "command.zte.gpon.onu.reset.onu_reboot",
+    "canonical_name": "reboot (ONU)",
+    "vendor": "ZTE",
+    "family": "ZXA10 C300",
+    "firmware": [
+     "2.0",
+     "2.1"
+    ],
+    "technology": "gpon",
+    "category": "reset",
+    "cli_mode": "pon_config",
+    "cli_context": "pon-onu-mng gpon-onu_<idx>",
+    "entity_ref": "entity.zte.gpon.device.onu",
+    "description": "Reinicia la ONU. El equipo pregunta `Confirm to reboot? [yes/no]:` y espera `yes`.",
+    "syntax": "reboot",
+    "parameters": [],
+    "output_fields": [],
+    "prerequisites": [],
+    "related_commands": [],
+    "rollback": null,
+    "errors": [],
+    "notes": "Medido: sale de `working` a los 17 s (C300) / 7 s (C320) y vuelve a los ~102 s / ~91 s. La pregunta de confirmación debe contestarse solo para esta línea.",
+    "evidence": "ejecutado en escritura y verificado releyendo la OLT Unete Popular (ZXA10 C300 V2.1.0) el 2026-11-03; estado original restaurado",
+    "sources": [
+     {
+      "doc_type": "hardware_verification",
+      "pages": null,
+      "confidence": 0.95
+     }
+    ],
+    "confidence": {
+     "extraction": 0.95,
+     "correlation": 0.0,
+     "overall": 0.95
+    },
+    "status": "verified",
+    "conflicts": []
+   },
+   {
+    "id": "command.zte.gpon.onu.create.onu_mng_flow",
+    "canonical_name": "flow / gemport flow (pon-onu-mng)",
+    "vendor": "ZTE",
+    "family": "ZXA10 C300",
+    "firmware": [
+     "2.0",
+     "2.1"
+    ],
+    "technology": "gpon",
+    "category": "create",
+    "cli_mode": "pon_config",
+    "cli_context": "pon-onu-mng gpon-onu_<idx>",
+    "entity_ref": "entity.zte.gpon.device.onu",
+    "description": "Flujo de la ONU hacia la VLAN de servicio (plantilla clásica).",
+    "syntax": "flow mode <n> tag-filter vlan-filter untag-filter discard ; flow <n> pri <p> vlan <v> ; gemport <n> flow <m>",
+    "parameters": [],
+    "output_fields": [],
+    "prerequisites": [],
+    "related_commands": [],
+    "rollback": null,
+    "errors": [],
+    "notes": null,
+    "evidence": "ejecutado en escritura y verificado releyendo la OLT Unete Popular (ZXA10 C300 V2.1.0) el 2026-11-03; estado original restaurado",
+    "sources": [
+     {
+      "doc_type": "hardware_verification",
+      "pages": null,
+      "confidence": 0.95
+     }
+    ],
+    "confidence": {
+     "extraction": 0.95,
+     "correlation": 0.0,
+     "overall": 0.95
+    },
+    "status": "verified",
+    "conflicts": []
+   },
+   {
+    "id": "command.zte.gpon.onu.create.onu_mng_switchport_bind",
+    "canonical_name": "switchport-bind",
+    "vendor": "ZTE",
+    "family": "ZXA10 C300",
+    "firmware": [
+     "2.0",
+     "2.1"
+    ],
+    "technology": "gpon",
+    "category": "create",
+    "cli_mode": "pon_config",
+    "cli_context": "pon-onu-mng gpon-onu_<idx>",
+    "entity_ref": "entity.zte.gpon.device.onu",
+    "description": "Ata el puerto virtual (iphost/veip) al switch de la ONU.",
+    "syntax": "switchport-bind switch_0/<n> {iphost|veip} <m>",
+    "parameters": [],
+    "output_fields": [],
+    "prerequisites": [],
+    "related_commands": [],
+    "rollback": null,
+    "errors": [],
+    "notes": null,
+    "evidence": "ejecutado en escritura y verificado releyendo la OLT Unete Popular (ZXA10 C300 V2.1.0) el 2026-11-03; estado original restaurado",
+    "sources": [
+     {
+      "doc_type": "hardware_verification",
+      "pages": null,
+      "confidence": 0.95
+     }
+    ],
+    "confidence": {
+     "extraction": 0.95,
+     "correlation": 0.0,
+     "overall": 0.95
+    },
+    "status": "verified",
+    "conflicts": []
+   },
+   {
+    "id": "command.zte.gpon.onu.create.onu_mng_vlan_filter",
+    "canonical_name": "vlan-filter",
+    "vendor": "ZTE",
+    "family": "ZXA10 C300",
+    "firmware": [
+     "2.0",
+     "2.1"
+    ],
+    "technology": "gpon",
+    "category": "create",
+    "cli_mode": "pon_config",
+    "cli_context": "pon-onu-mng gpon-onu_<idx>",
+    "entity_ref": "entity.zte.gpon.device.onu",
+    "description": "Filtro de VLAN del host IP de la ONU.",
+    "syntax": "vlan-filter-mode iphost <n> tag-filter vlan-filter untag-filter discard ; vlan-filter iphost <n> pri <p> vlan <v>",
+    "parameters": [],
+    "output_fields": [],
+    "prerequisites": [],
+    "related_commands": [],
+    "rollback": null,
+    "errors": [],
+    "notes": null,
+    "evidence": "ejecutado en escritura y verificado releyendo la OLT Unete Popular (ZXA10 C300 V2.1.0) el 2026-11-03; estado original restaurado",
+    "sources": [
+     {
+      "doc_type": "hardware_verification",
+      "pages": null,
+      "confidence": 0.95
+     }
+    ],
+    "confidence": {
+     "extraction": 0.95,
+     "correlation": 0.0,
+     "overall": 0.95
+    },
+    "status": "verified",
+    "conflicts": []
+   },
+   {
+    "id": "command.zte.gpon.onu.modify.onu_mng_dhcp_ip",
+    "canonical_name": "dhcp-ip ethuni",
+    "vendor": "ZTE",
+    "family": "ZXA10 C300",
+    "firmware": [
+     "2.0",
+     "2.1"
+    ],
+    "technology": "gpon",
+    "category": "modify",
+    "cli_mode": "pon_config",
+    "cli_context": "pon-onu-mng gpon-onu_<idx>",
+    "entity_ref": "entity.zte.gpon.device.onu",
+    "description": "El puerto Ethernet de la ONU obtiene IP de la propia ONU.",
+    "syntax": "dhcp-ip ethuni eth_0/<n> from-onu",
+    "parameters": [],
+    "output_fields": [],
+    "prerequisites": [],
+    "related_commands": [],
+    "rollback": null,
+    "errors": [],
+    "notes": "Verificado en una ONU ZP_CABLE de la C320; la ONU ADC de la C300 usada no lo tenía en su configuración.",
+    "evidence": "ejecutado en una OLT ZXA10 C300 V2.1.0 el 2026-10-26; misma plataforma y firmware, no ejecutado en esta C320 (o sin respuesta válida)",
+    "sources": [
+     {
+      "doc_type": "hardware_verification",
+      "pages": null,
+      "confidence": 0.85
+     }
+    ],
+    "confidence": {
+     "extraction": 0.85,
+     "correlation": 0.0,
+     "overall": 0.85
     },
     "status": "observed",
+    "conflicts": []
+   },
+   {
+    "id": "command.zte.gpon.onu.modify.onu_mng_security_mgmt",
+    "canonical_name": "security-mgmt",
+    "vendor": "ZTE",
+    "family": "ZXA10 C300",
+    "firmware": [
+     "2.0",
+     "2.1"
+    ],
+    "technology": "gpon",
+    "category": "modify",
+    "cli_mode": "pon_config",
+    "cli_context": "pon-onu-mng gpon-onu_<idx>",
+    "entity_ref": "entity.zte.gpon.device.onu",
+    "description": "Gestión de la ONU por servicios (web, ftp, telnet, ssh, snmp, tr069) desde la LAN.",
+    "syntax": "security-mgmt <n> state enable [mode forward] ingress-type lan protocol <proto…>",
+    "parameters": [],
+    "output_fields": [],
+    "prerequisites": [],
+    "related_commands": [],
+    "rollback": null,
+    "errors": [],
+    "notes": "Las líneas largas llegan partidas por el ancho del terminal; al leer hay que unirlas (`https` y `tr069` salen en dos renglones).",
+    "evidence": "ejecutado en escritura y verificado releyendo la OLT Unete Popular (ZXA10 C300 V2.1.0) el 2026-11-03; estado original restaurado",
+    "sources": [
+     {
+      "doc_type": "hardware_verification",
+      "pages": null,
+      "confidence": 0.95
+     }
+    ],
+    "confidence": {
+     "extraction": 0.95,
+     "correlation": 0.0,
+     "overall": 0.95
+    },
+    "status": "verified",
+    "conflicts": []
+   },
+   {
+    "id": "command.zte.gpon.onu.modify.onu_catv",
+    "canonical_name": "interface video state",
+    "vendor": "ZTE",
+    "family": "ZXA10 C300",
+    "firmware": [
+     "2.0",
+     "2.1"
+    ],
+    "technology": "gpon",
+    "category": "modify",
+    "cli_mode": "pon_config",
+    "cli_context": "pon-onu-mng gpon-onu_<idx>",
+    "entity_ref": "entity.zte.gpon.device.onu",
+    "description": "Habilita o deshabilita el puerto CATV de la ONU.",
+    "syntax": "interface video video_0/<n> state {lock|unlock}",
+    "parameters": [],
+    "output_fields": [],
+    "prerequisites": [],
+    "related_commands": [],
+    "rollback": "interface video video_0/<n> state {unlock|lock} (el valor anterior)",
+    "errors": [],
+    "notes": null,
+    "evidence": "ejecutado en escritura y verificado releyendo la OLT Unete Popular (ZXA10 C300 V2.1.0) el 2026-11-03; estado original restaurado",
+    "sources": [
+     {
+      "doc_type": "hardware_verification",
+      "pages": null,
+      "confidence": 0.95
+     }
+    ],
+    "confidence": {
+     "extraction": 0.95,
+     "correlation": 0.0,
+     "overall": 0.95
+    },
+    "status": "verified",
+    "conflicts": []
+   },
+   {
+    "id": "command.zte.gpon.onu.modify.onu_eth_state",
+    "canonical_name": "interface eth state",
+    "vendor": "ZTE",
+    "family": "ZXA10 C300",
+    "firmware": [
+     "2.0",
+     "2.1"
+    ],
+    "technology": "gpon",
+    "category": "modify",
+    "cli_mode": "pon_config",
+    "cli_context": "pon-onu-mng gpon-onu_<idx>",
+    "entity_ref": "entity.zte.gpon.device.onu",
+    "description": "Habilita o deshabilita un puerto Ethernet de la ONU.",
+    "syntax": "interface eth eth_0/<n> state {lock|unlock}",
+    "parameters": [],
+    "output_fields": [],
+    "prerequisites": [],
+    "related_commands": [],
+    "rollback": "interface eth eth_0/<n> state {unlock|lock} (el valor anterior)",
+    "errors": [],
+    "notes": null,
+    "evidence": "ejecutado en escritura y verificado releyendo la OLT Unete Popular (ZXA10 C300 V2.1.0) el 2026-11-03; estado original restaurado",
+    "sources": [
+     {
+      "doc_type": "hardware_verification",
+      "pages": null,
+      "confidence": 0.95
+     }
+    ],
+    "confidence": {
+     "extraction": 0.95,
+     "correlation": 0.0,
+     "overall": 0.95
+    },
+    "status": "verified",
+    "conflicts": []
+   },
+   {
+    "id": "command.zte.gpon.onu.modify.onu_eth_speed",
+    "canonical_name": "interface eth speed",
+    "vendor": "ZTE",
+    "family": "ZXA10 C300",
+    "firmware": [
+     "2.0",
+     "2.1"
+    ],
+    "technology": "gpon",
+    "category": "modify",
+    "cli_mode": "pon_config",
+    "cli_context": "pon-onu-mng gpon-onu_<idx>",
+    "entity_ref": "entity.zte.gpon.device.onu",
+    "description": "Velocidad de negociación del puerto Ethernet de la ONU.",
+    "syntax": "interface eth eth_0/<n> speed {auto|full-10|full-100|full-1000|half-10|half-100}",
+    "parameters": [],
+    "output_fields": [],
+    "prerequisites": [],
+    "related_commands": [],
+    "rollback": "interface eth eth_0/<n> speed <valor-anterior>",
+    "errors": [],
+    "notes": null,
+    "evidence": "ejecutado en escritura y verificado releyendo la OLT Unete Popular (ZXA10 C300 V2.1.0) el 2026-11-03; estado original restaurado",
+    "sources": [
+     {
+      "doc_type": "hardware_verification",
+      "pages": null,
+      "confidence": 0.95
+     }
+    ],
+    "confidence": {
+     "extraction": 0.95,
+     "correlation": 0.0,
+     "overall": 0.95
+    },
+    "status": "verified",
+    "conflicts": []
+   },
+   {
+    "id": "command.zte.gpon.onu.modify.onu_wifi_radio",
+    "canonical_name": "interface wifi state",
+    "vendor": "ZTE",
+    "family": "ZXA10 C300",
+    "firmware": [
+     "2.0",
+     "2.1"
+    ],
+    "technology": "gpon",
+    "category": "modify",
+    "cli_mode": "pon_config",
+    "cli_context": "pon-onu-mng gpon-onu_<idx>",
+    "entity_ref": "entity.zte.gpon.device.onu",
+    "description": "Habilita o deshabilita un radio WiFi de la ONU.",
+    "syntax": "interface wifi wifi_0/<n> state {lock|unlock}",
+    "parameters": [],
+    "output_fields": [],
+    "prerequisites": [],
+    "related_commands": [],
+    "rollback": "interface wifi wifi_0/<n> state {unlock|lock} (el valor anterior)",
+    "errors": [],
+    "notes": null,
+    "evidence": "ejecutado en escritura y verificado releyendo la OLT Unete Popular (ZXA10 C300 V2.1.0) el 2026-11-03; estado original restaurado",
+    "sources": [
+     {
+      "doc_type": "hardware_verification",
+      "pages": null,
+      "confidence": 0.95
+     }
+    ],
+    "confidence": {
+     "extraction": 0.95,
+     "correlation": 0.0,
+     "overall": 0.95
+    },
+    "status": "verified",
+    "conflicts": []
+   },
+   {
+    "id": "command.zte.gpon.onu.modify.onu_wifi_global",
+    "canonical_name": "wifi {enable|disable}",
+    "vendor": "ZTE",
+    "family": "ZXA10 C300",
+    "firmware": [
+     "2.0",
+     "2.1"
+    ],
+    "technology": "gpon",
+    "category": "modify",
+    "cli_mode": "pon_config",
+    "cli_context": "pon-onu-mng gpon-onu_<idx>",
+    "entity_ref": "entity.zte.gpon.device.onu",
+    "description": "WiFi global de la ONU.",
+    "syntax": "wifi {enable|disable}",
+    "parameters": [],
+    "output_fields": [],
+    "prerequisites": [],
+    "related_commands": [],
+    "rollback": "wifi {disable|enable} (el valor anterior)",
+    "errors": [],
+    "notes": "Depende del MODELO DE ONU: en la ONU ADC de la C300 funcionó; la ONU ZP_CABLE de la C320 lo rechazó (%Code 63993-GPONRM : ONT return error:unknown ME).",
+    "evidence": "ejecutado en escritura y verificado releyendo la OLT Unete Popular (ZXA10 C300 V2.1.0) el 2026-11-03; estado original restaurado",
+    "sources": [
+     {
+      "doc_type": "hardware_verification",
+      "pages": null,
+      "confidence": 0.95
+     }
+    ],
+    "confidence": {
+     "extraction": 0.95,
+     "correlation": 0.0,
+     "overall": 0.95
+    },
+    "status": "verified",
+    "conflicts": []
+   },
+   {
+    "id": "command.zte.gpon.global.modify.olt_write",
+    "canonical_name": "write",
+    "vendor": "ZTE",
+    "family": "ZXA10 C300",
+    "firmware": [
+     "2.0",
+     "2.1"
+    ],
+    "technology": "gpon",
+    "category": "modify",
+    "cli_mode": "privileged_exec",
+    "cli_context": null,
+    "entity_ref": null,
+    "description": "Guarda la configuración en uso de la OLT. Responde `[OK]`.",
+    "syntax": "write",
+    "parameters": [],
+    "output_fields": [],
+    "prerequisites": [],
+    "related_commands": [],
+    "rollback": null,
+    "errors": [],
+    "notes": "Duración medida: 41 s en la C300 y 1,8 s en la C320 (el plazo de espera debe ser ≥ 60 s).",
+    "evidence": "ejecutado en escritura y verificado releyendo la OLT Unete Popular (ZXA10 C300 V2.1.0) el 2026-11-03; estado original restaurado",
+    "sources": [
+     {
+      "doc_type": "hardware_verification",
+      "pages": null,
+      "confidence": 0.95
+     }
+    ],
+    "confidence": {
+     "extraction": 0.95,
+     "correlation": 0.0,
+     "overall": 0.95
+    },
+    "status": "verified",
+    "conflicts": []
+   },
+   {
+    "id": "command.zte.gpon.pon.modify.pon_description",
+    "canonical_name": "description / no description (puerto PON)",
+    "vendor": "ZTE",
+    "family": "ZXA10 C300",
+    "firmware": [
+     "2.0",
+     "2.1"
+    ],
+    "technology": "gpon",
+    "category": "modify",
+    "cli_mode": "interface_config",
+    "cli_context": "interface gpon-olt_<pon>",
+    "entity_ref": "entity.zte.gpon.port.pon_port",
+    "description": "Descripción del puerto PON (aparece en el running-config del puerto).",
+    "syntax": "description <texto> | no description",
+    "parameters": [],
+    "output_fields": [],
+    "prerequisites": [],
+    "related_commands": [],
+    "rollback": "no description",
+    "errors": [],
+    "notes": null,
+    "evidence": "ejecutado en escritura y verificado releyendo la OLT Unete Popular (ZXA10 C300 V2.1.0) el 2026-11-03; estado original restaurado",
+    "sources": [
+     {
+      "doc_type": "hardware_verification",
+      "pages": null,
+      "confidence": 0.95
+     }
+    ],
+    "confidence": {
+     "extraction": 0.95,
+     "correlation": 0.0,
+     "overall": 0.95
+    },
+    "status": "verified",
+    "conflicts": []
+   },
+   {
+    "id": "command.zte.gpon.pon.modify.pon_shutdown",
+    "canonical_name": "shutdown / no shutdown (puerto PON)",
+    "vendor": "ZTE",
+    "family": "ZXA10 C300",
+    "firmware": [
+     "2.0",
+     "2.1"
+    ],
+    "technology": "gpon",
+    "category": "modify",
+    "cli_mode": "interface_config",
+    "cli_context": "interface gpon-olt_<pon>",
+    "entity_ref": "entity.zte.gpon.port.pon_port",
+    "description": "Apaga o enciende el puerto PON. Apagarlo corta a todas sus ONU; el running-config muestra `shutdown` cuando está apagado y `no shutdown` si no.",
+    "syntax": "shutdown | no shutdown",
+    "parameters": [],
+    "output_fields": [],
+    "prerequisites": [],
+    "related_commands": [],
+    "rollback": "no shutdown",
+    "errors": [],
+    "notes": null,
+    "evidence": "ejecutado en escritura y verificado releyendo la OLT Unete Popular (ZXA10 C300 V2.1.0) el 2026-11-03; estado original restaurado",
+    "sources": [
+     {
+      "doc_type": "hardware_verification",
+      "pages": null,
+      "confidence": 0.95
+     }
+    ],
+    "confidence": {
+     "extraction": 0.95,
+     "correlation": 0.0,
+     "overall": 0.95
+    },
+    "status": "verified",
+    "conflicts": []
+   },
+   {
+    "id": "command.zte.gpon.vlan.create.vlan_create",
+    "canonical_name": "vlan <id>",
+    "vendor": "ZTE",
+    "family": "ZXA10 C300",
+    "firmware": [
+     "2.0",
+     "2.1"
+    ],
+    "technology": "gpon",
+    "category": "create",
+    "cli_mode": "global_config",
+    "cli_context": "configure terminal",
+    "entity_ref": "entity.zte.gpon.logical.vlan",
+    "description": "Crea una VLAN en la OLT; `show vlan <id>` la devuelve.",
+    "syntax": "vlan <1-4094>",
+    "parameters": [
+     {
+      "name": "vlan-id",
+      "type": "string",
+      "pattern": null,
+      "range": "1-4094",
+      "required": true,
+      "description": "",
+      "example": "3999"
+     }
+    ],
+    "output_fields": [],
+    "prerequisites": [],
+    "related_commands": [],
+    "rollback": "no vlan <id>",
+    "errors": [],
+    "notes": "Inexistente: `show vlan <id>` responde `%Code 60514: This vlan does not exist.`",
+    "evidence": "ejecutado en escritura y verificado releyendo la OLT Unete Popular (ZXA10 C300 V2.1.0) el 2026-11-03; estado original restaurado",
+    "sources": [
+     {
+      "doc_type": "hardware_verification",
+      "pages": null,
+      "confidence": 0.95
+     }
+    ],
+    "confidence": {
+     "extraction": 0.95,
+     "correlation": 0.0,
+     "overall": 0.95
+    },
+    "status": "verified",
+    "conflicts": []
+   },
+   {
+    "id": "command.zte.gpon.vlan.delete.vlan_delete",
+    "canonical_name": "no vlan <id>",
+    "vendor": "ZTE",
+    "family": "ZXA10 C300",
+    "firmware": [
+     "2.0",
+     "2.1"
+    ],
+    "technology": "gpon",
+    "category": "delete",
+    "cli_mode": "global_config",
+    "cli_context": "configure terminal",
+    "entity_ref": "entity.zte.gpon.logical.vlan",
+    "description": "Borra una VLAN de la OLT.",
+    "syntax": "no vlan <1-4094>",
+    "parameters": [
+     {
+      "name": "vlan-id",
+      "type": "string",
+      "pattern": null,
+      "range": "1-4094",
+      "required": true,
+      "description": "",
+      "example": "3999"
+     }
+    ],
+    "output_fields": [],
+    "prerequisites": [],
+    "related_commands": [],
+    "rollback": "vlan <id>",
+    "errors": [],
+    "notes": null,
+    "evidence": "ejecutado en escritura y verificado releyendo la OLT Unete Popular (ZXA10 C300 V2.1.0) el 2026-11-03; estado original restaurado",
+    "sources": [
+     {
+      "doc_type": "hardware_verification",
+      "pages": null,
+      "confidence": 0.95
+     }
+    ],
+    "confidence": {
+     "extraction": 0.95,
+     "correlation": 0.0,
+     "overall": 0.95
+    },
+    "status": "verified",
+    "conflicts": []
+   },
+   {
+    "id": "command.zte.gpon.global.create.profile_tcont_create",
+    "canonical_name": "profile tcont",
+    "vendor": "ZTE",
+    "family": "ZXA10 C300",
+    "firmware": [
+     "2.0",
+     "2.1"
+    ],
+    "technology": "gpon",
+    "category": "create",
+    "cli_mode": "interface_config",
+    "cli_context": "gpon",
+    "entity_ref": null,
+    "description": "Crea un perfil T-CONT de subida (modo `gpon`).",
+    "syntax": "profile tcont <nombre> type 5 fixed <kbps> assured <kbps> maximum <kbps>",
+    "parameters": [
+     {
+      "name": "nombre",
+      "type": "string",
+      "pattern": null,
+      "range": null,
+      "required": true,
+      "description": "",
+      "example": "SMARTOLT-90M-UP"
+     }
+    ],
+    "output_fields": [],
+    "prerequisites": [],
+    "related_commands": [],
+    "rollback": "no profile tcont <nombre>",
+    "errors": [],
+    "notes": null,
+    "evidence": "ejecutado en escritura y verificado releyendo la OLT Unete Popular (ZXA10 C300 V2.1.0) el 2026-11-03; estado original restaurado",
+    "sources": [
+     {
+      "doc_type": "hardware_verification",
+      "pages": null,
+      "confidence": 0.95
+     }
+    ],
+    "confidence": {
+     "extraction": 0.95,
+     "correlation": 0.0,
+     "overall": 0.95
+    },
+    "status": "verified",
+    "conflicts": []
+   },
+   {
+    "id": "command.zte.gpon.global.delete.profile_tcont_delete",
+    "canonical_name": "no profile tcont",
+    "vendor": "ZTE",
+    "family": "ZXA10 C300",
+    "firmware": [
+     "2.0",
+     "2.1"
+    ],
+    "technology": "gpon",
+    "category": "delete",
+    "cli_mode": "interface_config",
+    "cli_context": "gpon",
+    "entity_ref": null,
+    "description": "Borra un perfil T-CONT.",
+    "syntax": "no profile tcont <nombre>",
+    "parameters": [
+     {
+      "name": "nombre",
+      "type": "string",
+      "pattern": null,
+      "range": null,
+      "required": true,
+      "description": "",
+      "example": "SMARTOLT-90M-UP"
+     }
+    ],
+    "output_fields": [],
+    "prerequisites": [],
+    "related_commands": [],
+    "rollback": null,
+    "errors": [],
+    "notes": null,
+    "evidence": "ejecutado en escritura y verificado releyendo la OLT Unete Popular (ZXA10 C300 V2.1.0) el 2026-11-03; estado original restaurado",
+    "sources": [
+     {
+      "doc_type": "hardware_verification",
+      "pages": null,
+      "confidence": 0.95
+     }
+    ],
+    "confidence": {
+     "extraction": 0.95,
+     "correlation": 0.0,
+     "overall": 0.95
+    },
+    "status": "verified",
+    "conflicts": []
+   },
+   {
+    "id": "command.zte.gpon.global.create.profile_traffic_create",
+    "canonical_name": "profile traffic",
+    "vendor": "ZTE",
+    "family": "ZXA10 C300",
+    "firmware": [
+     "2.0",
+     "2.1"
+    ],
+    "technology": "gpon",
+    "category": "create",
+    "cli_mode": "interface_config",
+    "cli_context": "gpon",
+    "entity_ref": null,
+    "description": "Crea un perfil de tráfico de bajada (modo `gpon`); CBS/PBS toman el valor por defecto.",
+    "syntax": "profile traffic <nombre> sir <kbps> pir <kbps>",
+    "parameters": [
+     {
+      "name": "nombre",
+      "type": "string",
+      "pattern": null,
+      "range": null,
+      "required": true,
+      "description": "",
+      "example": "SMARTOLT-100M-DOWN"
+     }
+    ],
+    "output_fields": [],
+    "prerequisites": [],
+    "related_commands": [],
+    "rollback": "no profile traffic <nombre>",
+    "errors": [],
+    "notes": null,
+    "evidence": "ejecutado en escritura y verificado releyendo la OLT Unete Popular (ZXA10 C300 V2.1.0) el 2026-11-03; estado original restaurado",
+    "sources": [
+     {
+      "doc_type": "hardware_verification",
+      "pages": null,
+      "confidence": 0.95
+     }
+    ],
+    "confidence": {
+     "extraction": 0.95,
+     "correlation": 0.0,
+     "overall": 0.95
+    },
+    "status": "verified",
+    "conflicts": []
+   },
+   {
+    "id": "command.zte.gpon.global.delete.profile_traffic_delete",
+    "canonical_name": "no profile traffic",
+    "vendor": "ZTE",
+    "family": "ZXA10 C300",
+    "firmware": [
+     "2.0",
+     "2.1"
+    ],
+    "technology": "gpon",
+    "category": "delete",
+    "cli_mode": "interface_config",
+    "cli_context": "gpon",
+    "entity_ref": null,
+    "description": "Borra un perfil de tráfico.",
+    "syntax": "no profile traffic <nombre>",
+    "parameters": [
+     {
+      "name": "nombre",
+      "type": "string",
+      "pattern": null,
+      "range": null,
+      "required": true,
+      "description": "",
+      "example": "SMARTOLT-100M-DOWN"
+     }
+    ],
+    "output_fields": [],
+    "prerequisites": [],
+    "related_commands": [],
+    "rollback": null,
+    "errors": [],
+    "notes": null,
+    "evidence": "ejecutado en escritura y verificado releyendo la OLT Unete Popular (ZXA10 C300 V2.1.0) el 2026-11-03; estado original restaurado",
+    "sources": [
+     {
+      "doc_type": "hardware_verification",
+      "pages": null,
+      "confidence": 0.95
+     }
+    ],
+    "confidence": {
+     "extraction": 0.95,
+     "correlation": 0.0,
+     "overall": 0.95
+    },
+    "status": "verified",
+    "conflicts": []
+   },
+   {
+    "id": "command.zte.gpon.global.create.onu_type_create",
+    "canonical_name": "onu-type … gpon / onu-type-if",
+    "vendor": "ZTE",
+    "family": "ZXA10 C300",
+    "firmware": [
+     "2.0",
+     "2.1"
+    ],
+    "technology": "gpon",
+    "category": "create",
+    "cli_mode": "pon_config",
+    "cli_context": "pon",
+    "entity_ref": null,
+    "description": "Crea un tipo de ONU GPON con sus puertos Ethernet (modo `pon`).",
+    "syntax": "onu-type <nombre> gpon description <d> max-tcont <n> max-gemport <n> max-switch-perslot <n> max-flow-perswitch <n> ; onu-type-if <nombre> eth_0/<1-n>",
+    "parameters": [
+     {
+      "name": "nombre",
+      "type": "string",
+      "pattern": null,
+      "range": null,
+      "required": true,
+      "description": "",
+      "example": "ADC"
+     }
+    ],
+    "output_fields": [],
+    "prerequisites": [],
+    "related_commands": [],
+    "rollback": "no onu-type <nombre>",
+    "errors": [],
+    "notes": "La sintaxis salía solo del manual (§2.1); ahora ejecutada y verificada con `show onu-type`.",
+    "evidence": "ejecutado en escritura y verificado releyendo la OLT Unete Popular (ZXA10 C300 V2.1.0) el 2026-11-03; estado original restaurado",
+    "sources": [
+     {
+      "doc_type": "hardware_verification",
+      "pages": null,
+      "confidence": 0.95
+     }
+    ],
+    "confidence": {
+     "extraction": 0.95,
+     "correlation": 0.0,
+     "overall": 0.95
+    },
+    "status": "verified",
+    "conflicts": []
+   },
+   {
+    "id": "command.zte.gpon.global.delete.onu_type_delete",
+    "canonical_name": "no onu-type",
+    "vendor": "ZTE",
+    "family": "ZXA10 C300",
+    "firmware": [
+     "2.0",
+     "2.1"
+    ],
+    "technology": "gpon",
+    "category": "delete",
+    "cli_mode": "pon_config",
+    "cli_context": "pon",
+    "entity_ref": null,
+    "description": "Borra un tipo de ONU.",
+    "syntax": "no onu-type <nombre>",
+    "parameters": [
+     {
+      "name": "nombre",
+      "type": "string",
+      "pattern": null,
+      "range": null,
+      "required": true,
+      "description": "",
+      "example": "ADC"
+     }
+    ],
+    "output_fields": [],
+    "prerequisites": [],
+    "related_commands": [],
+    "rollback": null,
+    "errors": [],
+    "notes": null,
+    "evidence": "ejecutado en escritura y verificado releyendo la OLT Unete Popular (ZXA10 C300 V2.1.0) el 2026-11-03; estado original restaurado",
+    "sources": [
+     {
+      "doc_type": "hardware_verification",
+      "pages": null,
+      "confidence": 0.95
+     }
+    ],
+    "confidence": {
+     "extraction": 0.95,
+     "correlation": 0.0,
+     "overall": 0.95
+    },
+    "status": "verified",
     "conflicts": []
    }
   ],
@@ -2500,20 +3589,20 @@
     "rollback": null,
     "errors": [],
     "notes": null,
-    "evidence": "ejecutado en una OLT ZXA10 C300 V2.1.0 el 2026-10-26; misma plataforma y firmware, no ejecutado en C320",
+    "evidence": "ejecutado y verificado en una OLT ZXA10 C320 V2.1.0 el 2026-10-27 (solo lectura)",
     "sources": [
      {
       "doc_type": "hardware_verification",
       "pages": null,
-      "confidence": 0.85
+      "confidence": 0.95
      }
     ],
     "confidence": {
-     "extraction": 0.85,
+     "extraction": 0.95,
      "correlation": 0.0,
-     "overall": 0.85
+     "overall": 0.95
     },
-    "status": "observed",
+    "status": "verified",
     "conflicts": []
    },
    {
@@ -2589,20 +3678,20 @@
      }
     ],
     "notes": "La versión del sistema también sale de `show system-group` (System Description: `C300 Version V2.1.0 Software…`).",
-    "evidence": "ejecutado en una OLT ZXA10 C300 V2.1.0 el 2026-10-26; misma plataforma y firmware, no ejecutado en C320",
+    "evidence": "ejecutado y verificado en una OLT ZXA10 C320 V2.1.0 el 2026-10-27 (solo lectura)",
     "sources": [
      {
       "doc_type": "hardware_verification",
       "pages": null,
-      "confidence": 0.85
+      "confidence": 0.95
      }
     ],
     "confidence": {
-     "extraction": 0.85,
+     "extraction": 0.95,
      "correlation": 0.0,
-     "overall": 0.85
+     "overall": 0.95
     },
-    "status": "observed",
+    "status": "verified",
     "conflicts": []
    },
    {
@@ -2657,20 +3746,20 @@
     "rollback": null,
     "errors": [],
     "notes": null,
-    "evidence": "ejecutado en una OLT ZXA10 C300 V2.1.0 el 2026-10-26; misma plataforma y firmware, no ejecutado en C320",
+    "evidence": "ejecutado y verificado en una OLT ZXA10 C320 V2.1.0 el 2026-10-27 (solo lectura)",
     "sources": [
      {
       "doc_type": "hardware_verification",
       "pages": null,
-      "confidence": 0.85
+      "confidence": 0.95
      }
     ],
     "confidence": {
-     "extraction": 0.85,
+     "extraction": 0.95,
      "correlation": 0.0,
-     "overall": 0.85
+     "overall": 0.95
     },
-    "status": "observed",
+    "status": "verified",
     "conflicts": []
    },
    {
@@ -2760,20 +3849,20 @@
     "rollback": null,
     "errors": [],
     "notes": null,
-    "evidence": "ejecutado en una OLT ZXA10 C300 V2.1.0 el 2026-10-26; misma plataforma y firmware, no ejecutado en C320",
+    "evidence": "ejecutado y verificado en una OLT ZXA10 C320 V2.1.0 el 2026-10-27 (solo lectura)",
     "sources": [
      {
       "doc_type": "hardware_verification",
       "pages": null,
-      "confidence": 0.85
+      "confidence": 0.95
      }
     ],
     "confidence": {
-     "extraction": 0.85,
+     "extraction": 0.95,
      "correlation": 0.0,
-     "overall": 0.85
+     "overall": 0.95
     },
-    "status": "observed",
+    "status": "verified",
     "conflicts": []
    },
    {
@@ -2799,20 +3888,20 @@
     "rollback": null,
     "errors": [],
     "notes": null,
-    "evidence": "ejecutado en una OLT ZXA10 C300 V2.1.0 el 2026-10-26; misma plataforma y firmware, no ejecutado en C320",
+    "evidence": "ejecutado y verificado en una OLT ZXA10 C320 V2.1.0 el 2026-10-27 (solo lectura)",
     "sources": [
      {
       "doc_type": "hardware_verification",
       "pages": null,
-      "confidence": 0.85
+      "confidence": 0.95
      }
     ],
     "confidence": {
-     "extraction": 0.85,
+     "extraction": 0.95,
      "correlation": 0.0,
-     "overall": 0.85
+     "overall": 0.95
     },
-    "status": "observed",
+    "status": "verified",
     "conflicts": []
    },
    {
@@ -2838,20 +3927,20 @@
     "rollback": null,
     "errors": [],
     "notes": null,
-    "evidence": "ejecutado en una OLT ZXA10 C300 V2.1.0 el 2026-10-26; misma plataforma y firmware, no ejecutado en C320",
+    "evidence": "ejecutado y verificado en una OLT ZXA10 C320 V2.1.0 el 2026-10-27 (solo lectura)",
     "sources": [
      {
       "doc_type": "hardware_verification",
       "pages": null,
-      "confidence": 0.85
+      "confidence": 0.95
      }
     ],
     "confidence": {
-     "extraction": 0.85,
+     "extraction": 0.95,
      "correlation": 0.0,
-     "overall": 0.85
+     "overall": 0.95
     },
-    "status": "observed",
+    "status": "verified",
     "conflicts": []
    },
    {
@@ -2930,20 +4019,20 @@
      }
     ],
     "notes": null,
-    "evidence": "ejecutado en una OLT ZXA10 C300 V2.1.0 el 2026-10-26; misma plataforma y firmware, no ejecutado en C320",
+    "evidence": "ejecutado y verificado en una OLT ZXA10 C320 V2.1.0 el 2026-10-27 (solo lectura)",
     "sources": [
      {
       "doc_type": "hardware_verification",
       "pages": null,
-      "confidence": 0.85
+      "confidence": 0.95
      }
     ],
     "confidence": {
-     "extraction": 0.85,
+     "extraction": 0.95,
      "correlation": 0.0,
-     "overall": 0.85
+     "overall": 0.95
     },
-    "status": "observed",
+    "status": "verified",
     "conflicts": []
    },
    {
@@ -3022,20 +4111,20 @@
      }
     ],
     "notes": null,
-    "evidence": "ejecutado en una OLT ZXA10 C300 V2.1.0 el 2026-10-26; misma plataforma y firmware, no ejecutado en C320",
+    "evidence": "ejecutado y verificado en una OLT ZXA10 C320 V2.1.0 el 2026-10-27 (solo lectura)",
     "sources": [
      {
       "doc_type": "hardware_verification",
       "pages": null,
-      "confidence": 0.85
+      "confidence": 0.95
      }
     ],
     "confidence": {
-     "extraction": 0.85,
+     "extraction": 0.95,
      "correlation": 0.0,
-     "overall": 0.85
+     "overall": 0.95
     },
-    "status": "observed",
+    "status": "verified",
     "conflicts": []
    },
    {
@@ -3078,20 +4167,20 @@
      }
     ],
     "notes": null,
-    "evidence": "ejecutado en una OLT ZXA10 C300 V2.1.0 el 2026-10-26; misma plataforma y firmware, no ejecutado en C320",
+    "evidence": "ejecutado y verificado en una OLT ZXA10 C320 V2.1.0 el 2026-10-27 (solo lectura)",
     "sources": [
      {
       "doc_type": "hardware_verification",
       "pages": null,
-      "confidence": 0.85
+      "confidence": 0.95
      }
     ],
     "confidence": {
-     "extraction": 0.85,
+     "extraction": 0.95,
      "correlation": 0.0,
-     "overall": 0.85
+     "overall": 0.95
     },
-    "status": "observed",
+    "status": "verified",
     "conflicts": []
    },
    {
@@ -3184,20 +4273,20 @@
      }
     ],
     "notes": "PII: Name/Description visibles con la cuenta de lectura; no almacenar ni registrar.",
-    "evidence": "ejecutado en una OLT ZXA10 C300 V2.1.0 el 2026-10-26; misma plataforma y firmware, no ejecutado en C320",
+    "evidence": "ejecutado y verificado en una OLT ZXA10 C320 V2.1.0 el 2026-10-27 (solo lectura)",
     "sources": [
      {
       "doc_type": "hardware_verification",
       "pages": null,
-      "confidence": 0.85
+      "confidence": 0.95
      }
     ],
     "confidence": {
-     "extraction": 0.85,
+     "extraction": 0.95,
      "correlation": 0.0,
-     "overall": 0.85
+     "overall": 0.95
     },
-    "status": "observed",
+    "status": "verified",
     "conflicts": []
    },
    {
@@ -3255,20 +4344,20 @@
      }
     ],
     "notes": null,
-    "evidence": "ejecutado en una OLT ZXA10 C300 V2.1.0 el 2026-10-26; misma plataforma y firmware, no ejecutado en C320",
+    "evidence": "ejecutado y verificado en una OLT ZXA10 C320 V2.1.0 el 2026-10-27 (solo lectura)",
     "sources": [
      {
       "doc_type": "hardware_verification",
       "pages": null,
-      "confidence": 0.85
+      "confidence": 0.95
      }
     ],
     "confidence": {
-     "extraction": 0.85,
+     "extraction": 0.95,
      "correlation": 0.0,
-     "overall": 0.85
+     "overall": 0.95
     },
-    "status": "observed",
+    "status": "verified",
     "conflicts": []
    },
    {
@@ -3304,20 +4393,20 @@
     "rollback": null,
     "errors": [],
     "notes": null,
-    "evidence": "ejecutado en una OLT ZXA10 C300 V2.1.0 el 2026-10-26; misma plataforma y firmware, no ejecutado en C320",
+    "evidence": "ejecutado y verificado en una OLT ZXA10 C320 V2.1.0 el 2026-10-27 (solo lectura)",
     "sources": [
      {
       "doc_type": "hardware_verification",
       "pages": null,
-      "confidence": 0.85
+      "confidence": 0.95
      }
     ],
     "confidence": {
-     "extraction": 0.85,
+     "extraction": 0.95,
      "correlation": 0.0,
-     "overall": 0.85
+     "overall": 0.95
     },
-    "status": "observed",
+    "status": "verified",
     "conflicts": []
    },
    {
@@ -3403,20 +4492,20 @@
      }
     ],
     "notes": null,
-    "evidence": "ejecutado en una OLT ZXA10 C300 V2.1.0 el 2026-10-26; misma plataforma y firmware, no ejecutado en C320",
+    "evidence": "ejecutado y verificado en una OLT ZXA10 C320 V2.1.0 el 2026-10-27 (solo lectura)",
     "sources": [
      {
       "doc_type": "hardware_verification",
       "pages": null,
-      "confidence": 0.85
+      "confidence": 0.95
      }
     ],
     "confidence": {
-     "extraction": 0.85,
+     "extraction": 0.95,
      "correlation": 0.0,
-     "overall": 0.85
+     "overall": 0.95
     },
-    "status": "observed",
+    "status": "verified",
     "conflicts": []
    },
    {
@@ -3433,7 +4522,7 @@
     "cli_mode": "privileged_exec",
     "cli_context": null,
     "entity_ref": "entity.zte.gpon.device.onu",
-    "description": "Potencias y atenuación de ambos sentidos: `up Rx` (recibida por la OLT, negativa; puede ser < -30 dBm), `Tx` de la ONU, `down Tx` de la OLT y `Rx` de la ONU.",
+    "description": "Potencias y atenuación de ambos sentidos: `up Rx` (recibida por la OLT), `up Tx` (transmitida por la ONU), `down Tx` (de la OLT) y `down Rx` (recibida por la ONU).",
     "syntax": "show pon power attenuation gpon-onu_<idx>",
     "parameters": [
      {
@@ -3451,15 +4540,15 @@
       "name": "up_rx_dbm",
       "type": "string",
       "unit": null,
-      "oid_ref": "oid.zte.gpon.onu.onu_rx_power_type",
-      "oid_status": "inferred"
+      "oid_ref": null,
+      "oid_status": "not_mapped"
      },
      {
       "name": "up_tx_dbm",
       "type": "string",
       "unit": null,
       "oid_ref": "oid.zte.gpon.onu.onu_tx_power_type",
-      "oid_status": "inferred"
+      "oid_status": "mapped"
      },
      {
       "name": "up_attenuation_db",
@@ -3479,8 +4568,8 @@
       "name": "down_rx_dbm",
       "type": "string",
       "unit": null,
-      "oid_ref": null,
-      "oid_status": "not_mapped"
+      "oid_ref": "oid.zte.gpon.onu.onu_rx_power_type",
+      "oid_status": "mapped"
      },
      {
       "name": "down_attenuation_db",
@@ -3501,21 +4590,21 @@
       "retry": false
      }
     ],
-    "notes": "La correspondencia up_rx_dbm↔onu_rx_power_type (1012.3.50.12.1.1.10) es una inferencia: queda por confirmar leyendo ese OID de la misma ONU.",
-    "evidence": "ejecutado en una OLT ZXA10 C300 V2.1.0 el 2026-10-26; misma plataforma y firmware, no ejecutado en C320",
+    "notes": "Verificado en una C320 V2.1.0 (2026-10-27) leyendo a la vez la CLI y el SNMP de la misma ONU: onu_rx_power_type (1012.3.50.12.1.1.10) = `down Rx` / `show pon power onu-rx` (raw 207 → -29,586 dBm, idéntico) y onu_tx_power_type (…14) = `up Tx` / `onu-tx` (raw 16032 → 2,064 dBm, idéntico). La potencia recibida por la OLT (`up Rx`, `olt-rx`) NO está en esas columnas: solo CLI.",
+    "evidence": "ejecutado y verificado en una OLT ZXA10 C320 V2.1.0 el 2026-10-27 (solo lectura)",
     "sources": [
      {
       "doc_type": "hardware_verification",
       "pages": null,
-      "confidence": 0.85
+      "confidence": 0.95
      }
     ],
     "confidence": {
-     "extraction": 0.85,
+     "extraction": 0.95,
      "correlation": 0.0,
-     "overall": 0.85
+     "overall": 0.95
     },
-    "status": "observed",
+    "status": "verified",
     "conflicts": []
    },
    {
@@ -3532,7 +4621,7 @@
     "cli_mode": "privileged_exec",
     "cli_context": null,
     "entity_ref": "entity.zte.gpon.device.onu",
-    "description": "Potencia recibida por la ONU (sentido bajada).",
+    "description": "Potencia recibida por la ONU (sentido bajada). Es el valor de onu_rx_power_type por SNMP (idéntico, verificado en C320).",
     "syntax": "show pon power onu-rx gpon-onu_<idx>",
     "parameters": [
      {
@@ -3545,7 +4634,15 @@
       "example": "1/3/1:2"
      }
     ],
-    "output_fields": [],
+    "output_fields": [
+     {
+      "name": "rx_power_dbm",
+      "type": "string",
+      "unit": null,
+      "oid_ref": "oid.zte.gpon.onu.onu_rx_power_type",
+      "oid_status": "mapped"
+     }
+    ],
     "prerequisites": [],
     "related_commands": [],
     "rollback": null,
@@ -3558,20 +4655,20 @@
      }
     ],
     "notes": null,
-    "evidence": "ejecutado en una OLT ZXA10 C300 V2.1.0 el 2026-10-26; misma plataforma y firmware, no ejecutado en C320",
+    "evidence": "ejecutado y verificado en una OLT ZXA10 C320 V2.1.0 el 2026-10-27 (solo lectura)",
     "sources": [
      {
       "doc_type": "hardware_verification",
       "pages": null,
-      "confidence": 0.85
+      "confidence": 0.95
      }
     ],
     "confidence": {
-     "extraction": 0.85,
+     "extraction": 0.95,
      "correlation": 0.0,
-     "overall": 0.85
+     "overall": 0.95
     },
-    "status": "observed",
+    "status": "verified",
     "conflicts": []
    },
    {
@@ -3588,7 +4685,7 @@
     "cli_mode": "privileged_exec",
     "cli_context": null,
     "entity_ref": "entity.zte.gpon.device.onu",
-    "description": "Potencia transmitida por la ONU.",
+    "description": "Potencia transmitida por la ONU. Es el valor de onu_tx_power_type por SNMP (idéntico, verificado en C320).",
     "syntax": "show pon power onu-tx gpon-onu_<idx>",
     "parameters": [
      {
@@ -3601,7 +4698,15 @@
       "example": "1/3/1:2"
      }
     ],
-    "output_fields": [],
+    "output_fields": [
+     {
+      "name": "tx_power_dbm",
+      "type": "string",
+      "unit": null,
+      "oid_ref": "oid.zte.gpon.onu.onu_tx_power_type",
+      "oid_status": "mapped"
+     }
+    ],
     "prerequisites": [],
     "related_commands": [],
     "rollback": null,
@@ -3614,20 +4719,20 @@
      }
     ],
     "notes": null,
-    "evidence": "ejecutado en una OLT ZXA10 C300 V2.1.0 el 2026-10-26; misma plataforma y firmware, no ejecutado en C320",
+    "evidence": "ejecutado y verificado en una OLT ZXA10 C320 V2.1.0 el 2026-10-27 (solo lectura)",
     "sources": [
      {
       "doc_type": "hardware_verification",
       "pages": null,
-      "confidence": 0.85
+      "confidence": 0.95
      }
     ],
     "confidence": {
-     "extraction": 0.85,
+     "extraction": 0.95,
      "correlation": 0.0,
-     "overall": 0.85
+     "overall": 0.95
     },
-    "status": "observed",
+    "status": "verified",
     "conflicts": []
    },
    {
@@ -3644,7 +4749,7 @@
     "cli_mode": "privileged_exec",
     "cli_context": null,
     "entity_ref": "entity.zte.gpon.port.pon_port",
-    "description": "Potencia recibida por la OLT de cada ONU del puerto (negativa; por debajo de -30 dBm el SNMP crudo es un entero de 16 bits con signo).",
+    "description": "Potencia recibida POR LA OLT de cada ONU del puerto (sentido subida; `no signal` si la ONU está apagada). Solo CLI: no está en las columnas 10/14 de 1012.3.50.12.1.1.",
     "syntax": "show pon power olt-rx gpon-olt_<pon>",
     "parameters": [
      {
@@ -3657,7 +4762,15 @@
       "example": "1/3/1"
      }
     ],
-    "output_fields": [],
+    "output_fields": [
+     {
+      "name": "olt_rx_power_dbm",
+      "type": "string",
+      "unit": null,
+      "oid_ref": null,
+      "oid_status": "not_mapped"
+     }
+    ],
     "prerequisites": [],
     "related_commands": [],
     "rollback": null,
@@ -3670,20 +4783,20 @@
      }
     ],
     "notes": null,
-    "evidence": "ejecutado en una OLT ZXA10 C300 V2.1.0 el 2026-10-26; misma plataforma y firmware, no ejecutado en C320",
+    "evidence": "ejecutado y verificado en una OLT ZXA10 C320 V2.1.0 el 2026-10-27 (solo lectura)",
     "sources": [
      {
       "doc_type": "hardware_verification",
       "pages": null,
-      "confidence": 0.85
+      "confidence": 0.95
      }
     ],
     "confidence": {
-     "extraction": 0.85,
+     "extraction": 0.95,
      "correlation": 0.0,
-     "overall": 0.85
+     "overall": 0.95
     },
-    "status": "observed",
+    "status": "verified",
     "conflicts": []
    },
    {
@@ -3726,20 +4839,20 @@
      }
     ],
     "notes": null,
-    "evidence": "ejecutado en una OLT ZXA10 C300 V2.1.0 el 2026-10-26; misma plataforma y firmware, no ejecutado en C320",
+    "evidence": "ejecutado y verificado en una OLT ZXA10 C320 V2.1.0 el 2026-10-27 (solo lectura)",
     "sources": [
      {
       "doc_type": "hardware_verification",
       "pages": null,
-      "confidence": 0.85
+      "confidence": 0.95
      }
     ],
     "confidence": {
-     "extraction": 0.85,
+     "extraction": 0.95,
      "correlation": 0.0,
-     "overall": 0.85
+     "overall": 0.95
     },
-    "status": "observed",
+    "status": "verified",
     "conflicts": []
    },
    {
@@ -3782,20 +4895,20 @@
      }
     ],
     "notes": null,
-    "evidence": "ejecutado en una OLT ZXA10 C300 V2.1.0 el 2026-10-26; misma plataforma y firmware, no ejecutado en C320",
+    "evidence": "ejecutado y verificado en una OLT ZXA10 C320 V2.1.0 el 2026-10-27 (solo lectura)",
     "sources": [
      {
       "doc_type": "hardware_verification",
       "pages": null,
-      "confidence": 0.85
+      "confidence": 0.95
      }
     ],
     "confidence": {
-     "extraction": 0.85,
+     "extraction": 0.95,
      "correlation": 0.0,
-     "overall": 0.85
+     "overall": 0.95
     },
-    "status": "observed",
+    "status": "verified",
     "conflicts": []
    },
    {
@@ -3838,20 +4951,20 @@
      }
     ],
     "notes": null,
-    "evidence": "ejecutado en una OLT ZXA10 C300 V2.1.0 el 2026-10-26; misma plataforma y firmware, no ejecutado en C320",
+    "evidence": "ejecutado y verificado en una OLT ZXA10 C320 V2.1.0 el 2026-10-27 (solo lectura)",
     "sources": [
      {
       "doc_type": "hardware_verification",
       "pages": null,
-      "confidence": 0.85
+      "confidence": 0.95
      }
     ],
     "confidence": {
-     "extraction": 0.85,
+     "extraction": 0.95,
      "correlation": 0.0,
-     "overall": 0.85
+     "overall": 0.95
     },
-    "status": "observed",
+    "status": "verified",
     "conflicts": []
    },
    {
@@ -3894,20 +5007,20 @@
      }
     ],
     "notes": null,
-    "evidence": "ejecutado en una OLT ZXA10 C300 V2.1.0 el 2026-10-26; misma plataforma y firmware, no ejecutado en C320",
+    "evidence": "ejecutado y verificado en una OLT ZXA10 C320 V2.1.0 el 2026-10-27 (solo lectura)",
     "sources": [
      {
       "doc_type": "hardware_verification",
       "pages": null,
-      "confidence": 0.85
+      "confidence": 0.95
      }
     ],
     "confidence": {
-     "extraction": 0.85,
+     "extraction": 0.95,
      "correlation": 0.0,
-     "overall": 0.85
+     "overall": 0.95
     },
-    "status": "observed",
+    "status": "verified",
     "conflicts": []
    },
    {
@@ -3950,20 +5063,20 @@
      }
     ],
     "notes": null,
-    "evidence": "ejecutado en una OLT ZXA10 C300 V2.1.0 el 2026-10-26; misma plataforma y firmware, no ejecutado en C320",
+    "evidence": "ejecutado y verificado en una OLT ZXA10 C320 V2.1.0 el 2026-10-27 (solo lectura)",
     "sources": [
      {
       "doc_type": "hardware_verification",
       "pages": null,
-      "confidence": 0.85
+      "confidence": 0.95
      }
     ],
     "confidence": {
-     "extraction": 0.85,
+     "extraction": 0.95,
      "correlation": 0.0,
-     "overall": 0.85
+     "overall": 0.95
     },
-    "status": "observed",
+    "status": "verified",
     "conflicts": []
    },
    {
@@ -4006,20 +5119,20 @@
      }
     ],
     "notes": "PII: name/description en claro.",
-    "evidence": "ejecutado en una OLT ZXA10 C300 V2.1.0 el 2026-10-26; misma plataforma y firmware, no ejecutado en C320",
+    "evidence": "ejecutado y verificado en una OLT ZXA10 C320 V2.1.0 el 2026-10-27 (solo lectura)",
     "sources": [
      {
       "doc_type": "hardware_verification",
       "pages": null,
-      "confidence": 0.85
+      "confidence": 0.95
      }
     ],
     "confidence": {
-     "extraction": 0.85,
+     "extraction": 0.95,
      "correlation": 0.0,
-     "overall": 0.85
+     "overall": 0.95
     },
-    "status": "observed",
+    "status": "verified",
     "conflicts": []
    },
    {
@@ -4062,20 +5175,20 @@
      }
     ],
     "notes": null,
-    "evidence": "ejecutado en una OLT ZXA10 C300 V2.1.0 el 2026-10-26; misma plataforma y firmware, no ejecutado en C320",
+    "evidence": "ejecutado y verificado en una OLT ZXA10 C320 V2.1.0 el 2026-10-27 (solo lectura)",
     "sources": [
      {
       "doc_type": "hardware_verification",
       "pages": null,
-      "confidence": 0.85
+      "confidence": 0.95
      }
     ],
     "confidence": {
-     "extraction": 0.85,
+     "extraction": 0.95,
      "correlation": 0.0,
-     "overall": 0.85
+     "overall": 0.95
     },
-    "status": "observed",
+    "status": "verified",
     "conflicts": []
    },
    {
@@ -4118,20 +5231,20 @@
      }
     ],
     "notes": null,
-    "evidence": "ejecutado en una OLT ZXA10 C300 V2.1.0 el 2026-10-26; misma plataforma y firmware, no ejecutado en C320",
+    "evidence": "ejecutado y verificado en una OLT ZXA10 C320 V2.1.0 el 2026-10-27 (solo lectura)",
     "sources": [
      {
       "doc_type": "hardware_verification",
       "pages": null,
-      "confidence": 0.85
+      "confidence": 0.95
      }
     ],
     "confidence": {
-     "extraction": 0.85,
+     "extraction": 0.95,
      "correlation": 0.0,
-     "overall": 0.85
+     "overall": 0.95
     },
-    "status": "observed",
+    "status": "verified",
     "conflicts": []
    },
    {
@@ -4174,20 +5287,20 @@
      }
     ],
     "notes": null,
-    "evidence": "ejecutado en una OLT ZXA10 C300 V2.1.0 el 2026-10-26; misma plataforma y firmware, no ejecutado en C320",
+    "evidence": "ejecutado y verificado en una OLT ZXA10 C320 V2.1.0 el 2026-10-27 (solo lectura)",
     "sources": [
      {
       "doc_type": "hardware_verification",
       "pages": null,
-      "confidence": 0.85
+      "confidence": 0.95
      }
     ],
     "confidence": {
-     "extraction": 0.85,
+     "extraction": 0.95,
      "correlation": 0.0,
-     "overall": 0.85
+     "overall": 0.95
     },
-    "status": "observed",
+    "status": "verified",
     "conflicts": []
    },
    {
@@ -4230,20 +5343,20 @@
      }
     ],
     "notes": null,
-    "evidence": "ejecutado en una OLT ZXA10 C300 V2.1.0 el 2026-10-26; misma plataforma y firmware, no ejecutado en C320",
+    "evidence": "ejecutado y verificado en una OLT ZXA10 C320 V2.1.0 el 2026-10-27 (solo lectura)",
     "sources": [
      {
       "doc_type": "hardware_verification",
       "pages": null,
-      "confidence": 0.85
+      "confidence": 0.95
      }
     ],
     "confidence": {
-     "extraction": 0.85,
+     "extraction": 0.95,
      "correlation": 0.0,
-     "overall": 0.85
+     "overall": 0.95
     },
-    "status": "observed",
+    "status": "verified",
     "conflicts": []
    },
    {
@@ -4286,20 +5399,20 @@
      }
     ],
     "notes": null,
-    "evidence": "ejecutado en una OLT ZXA10 C300 V2.1.0 el 2026-10-26; misma plataforma y firmware, no ejecutado en C320",
+    "evidence": "ejecutado y verificado en una OLT ZXA10 C320 V2.1.0 el 2026-10-27 (solo lectura)",
     "sources": [
      {
       "doc_type": "hardware_verification",
       "pages": null,
-      "confidence": 0.85
+      "confidence": 0.95
      }
     ],
     "confidence": {
-     "extraction": 0.85,
+     "extraction": 0.95,
      "correlation": 0.0,
-     "overall": 0.85
+     "overall": 0.95
     },
-    "status": "observed",
+    "status": "verified",
     "conflicts": []
    },
    {
@@ -4325,20 +5438,20 @@
     "rollback": null,
     "errors": [],
     "notes": null,
-    "evidence": "ejecutado en una OLT ZXA10 C300 V2.1.0 el 2026-10-26; misma plataforma y firmware, no ejecutado en C320",
+    "evidence": "ejecutado y verificado en una OLT ZXA10 C320 V2.1.0 el 2026-10-27 (solo lectura)",
     "sources": [
      {
       "doc_type": "hardware_verification",
       "pages": null,
-      "confidence": 0.85
+      "confidence": 0.95
      }
     ],
     "confidence": {
-     "extraction": 0.85,
+     "extraction": 0.95,
      "correlation": 0.0,
-     "overall": 0.85
+     "overall": 0.95
     },
-    "status": "observed",
+    "status": "verified",
     "conflicts": []
    },
    {
@@ -4364,20 +5477,20 @@
     "rollback": null,
     "errors": [],
     "notes": null,
-    "evidence": "ejecutado en una OLT ZXA10 C300 V2.1.0 el 2026-10-26; misma plataforma y firmware, no ejecutado en C320",
+    "evidence": "ejecutado y verificado en una OLT ZXA10 C320 V2.1.0 el 2026-10-27 (solo lectura)",
     "sources": [
      {
       "doc_type": "hardware_verification",
       "pages": null,
-      "confidence": 0.85
+      "confidence": 0.95
      }
     ],
     "confidence": {
-     "extraction": 0.85,
+     "extraction": 0.95,
      "correlation": 0.0,
-     "overall": 0.85
+     "overall": 0.95
     },
-    "status": "observed",
+    "status": "verified",
     "conflicts": []
    },
    {
@@ -4403,20 +5516,20 @@
     "rollback": null,
     "errors": [],
     "notes": null,
-    "evidence": "ejecutado en una OLT ZXA10 C300 V2.1.0 el 2026-10-26; misma plataforma y firmware, no ejecutado en C320",
+    "evidence": "ejecutado y verificado en una OLT ZXA10 C320 V2.1.0 el 2026-10-27 (solo lectura)",
     "sources": [
      {
       "doc_type": "hardware_verification",
       "pages": null,
-      "confidence": 0.85
+      "confidence": 0.95
      }
     ],
     "confidence": {
-     "extraction": 0.85,
+     "extraction": 0.95,
      "correlation": 0.0,
-     "overall": 0.85
+     "overall": 0.95
     },
-    "status": "observed",
+    "status": "verified",
     "conflicts": []
    },
    {
@@ -4442,20 +5555,20 @@
     "rollback": null,
     "errors": [],
     "notes": null,
-    "evidence": "ejecutado en una OLT ZXA10 C300 V2.1.0 el 2026-10-26; misma plataforma y firmware, no ejecutado en C320",
+    "evidence": "ejecutado y verificado en una OLT ZXA10 C320 V2.1.0 el 2026-10-27 (solo lectura)",
     "sources": [
      {
       "doc_type": "hardware_verification",
       "pages": null,
-      "confidence": 0.85
+      "confidence": 0.95
      }
     ],
     "confidence": {
-     "extraction": 0.85,
+     "extraction": 0.95,
      "correlation": 0.0,
-     "overall": 0.85
+     "overall": 0.95
     },
-    "status": "observed",
+    "status": "verified",
     "conflicts": []
    },
    {
@@ -4488,20 +5601,20 @@
      }
     ],
     "notes": null,
-    "evidence": "ejecutado en una OLT ZXA10 C300 V2.1.0 el 2026-10-26; misma plataforma y firmware, no ejecutado en C320",
+    "evidence": "ejecutado y verificado en una OLT ZXA10 C320 V2.1.0 el 2026-10-27 (solo lectura)",
     "sources": [
      {
       "doc_type": "hardware_verification",
       "pages": null,
-      "confidence": 0.85
+      "confidence": 0.95
      }
     ],
     "confidence": {
-     "extraction": 0.85,
+     "extraction": 0.95,
      "correlation": 0.0,
-     "overall": 0.85
+     "overall": 0.95
     },
-    "status": "observed",
+    "status": "verified",
     "conflicts": []
    },
    {
@@ -4534,20 +5647,20 @@
      }
     ],
     "notes": null,
-    "evidence": "ejecutado en una OLT ZXA10 C300 V2.1.0 el 2026-10-26; misma plataforma y firmware, no ejecutado en C320",
+    "evidence": "ejecutado y verificado en una OLT ZXA10 C320 V2.1.0 el 2026-10-27 (solo lectura)",
     "sources": [
      {
       "doc_type": "hardware_verification",
       "pages": null,
-      "confidence": 0.85
+      "confidence": 0.95
      }
     ],
     "confidence": {
-     "extraction": 0.85,
+     "extraction": 0.95,
      "correlation": 0.0,
-     "overall": 0.85
+     "overall": 0.95
     },
-    "status": "observed",
+    "status": "verified",
     "conflicts": []
    },
    {
@@ -4573,20 +5686,20 @@
     "rollback": null,
     "errors": [],
     "notes": null,
-    "evidence": "ejecutado en una OLT ZXA10 C300 V2.1.0 el 2026-10-26; misma plataforma y firmware, no ejecutado en C320",
+    "evidence": "ejecutado y verificado en una OLT ZXA10 C320 V2.1.0 el 2026-10-27 (solo lectura)",
     "sources": [
      {
       "doc_type": "hardware_verification",
       "pages": null,
-      "confidence": 0.85
+      "confidence": 0.95
      }
     ],
     "confidence": {
-     "extraction": 0.85,
+     "extraction": 0.95,
      "correlation": 0.0,
-     "overall": 0.85
+     "overall": 0.95
     },
-    "status": "observed",
+    "status": "verified",
     "conflicts": []
    },
    {
@@ -4612,20 +5725,20 @@
     "rollback": null,
     "errors": [],
     "notes": null,
-    "evidence": "ejecutado en una OLT ZXA10 C300 V2.1.0 el 2026-10-26; misma plataforma y firmware, no ejecutado en C320",
+    "evidence": "ejecutado y verificado en una OLT ZXA10 C320 V2.1.0 el 2026-10-27 (solo lectura)",
     "sources": [
      {
       "doc_type": "hardware_verification",
       "pages": null,
-      "confidence": 0.85
+      "confidence": 0.95
      }
     ],
     "confidence": {
-     "extraction": 0.85,
+     "extraction": 0.95,
      "correlation": 0.0,
-     "overall": 0.85
+     "overall": 0.95
     },
-    "status": "observed",
+    "status": "verified",
     "conflicts": []
    },
    {
@@ -4651,20 +5764,20 @@
     "rollback": null,
     "errors": [],
     "notes": null,
-    "evidence": "ejecutado en una OLT ZXA10 C300 V2.1.0 el 2026-10-26; misma plataforma y firmware, no ejecutado en C320",
+    "evidence": "ejecutado y verificado en una OLT ZXA10 C320 V2.1.0 el 2026-10-27 (solo lectura)",
     "sources": [
      {
       "doc_type": "hardware_verification",
       "pages": null,
-      "confidence": 0.85
+      "confidence": 0.95
      }
     ],
     "confidence": {
-     "extraction": 0.85,
+     "extraction": 0.95,
      "correlation": 0.0,
-     "overall": 0.85
+     "overall": 0.95
     },
-    "status": "observed",
+    "status": "verified",
     "conflicts": []
    },
    {
@@ -4687,23 +5800,23 @@
     "output_fields": [],
     "prerequisites": [],
     "related_commands": [],
-    "rollback": null,
+    "rollback": "no onu <n>",
     "errors": [],
     "notes": null,
-    "evidence": "visto en la configuración real de una OLT ZXA10 C300 V2.1.0 (show running-config); no ejecutado por TKC",
+    "evidence": "ejecutado en escritura y verificado releyendo la OLT PRIMAVERA (ZXA10 C320 V2.1.0) el 2026-11-03; estado original restaurado",
     "sources": [
      {
       "doc_type": "hardware_verification",
       "pages": null,
-      "confidence": 0.7
+      "confidence": 0.95
      }
     ],
     "confidence": {
-     "extraction": 0.7,
+     "extraction": 0.95,
      "correlation": 0.0,
-     "overall": 0.7
+     "overall": 0.95
     },
-    "status": "observed",
+    "status": "verified",
     "conflicts": []
    },
    {
@@ -4726,23 +5839,23 @@
     "output_fields": [],
     "prerequisites": [],
     "related_commands": [],
-    "rollback": null,
+    "rollback": "name <texto-anterior>",
     "errors": [],
     "notes": null,
-    "evidence": "visto en la configuración real de una OLT ZXA10 C300 V2.1.0 (show running-config); no ejecutado por TKC",
+    "evidence": "ejecutado en escritura y verificado releyendo la OLT PRIMAVERA (ZXA10 C320 V2.1.0) el 2026-11-03; estado original restaurado",
     "sources": [
      {
       "doc_type": "hardware_verification",
       "pages": null,
-      "confidence": 0.7
+      "confidence": 0.95
      }
     ],
     "confidence": {
-     "extraction": 0.7,
+     "extraction": 0.95,
      "correlation": 0.0,
-     "overall": 0.7
+     "overall": 0.95
     },
-    "status": "observed",
+    "status": "verified",
     "conflicts": []
    },
    {
@@ -4765,23 +5878,23 @@
     "output_fields": [],
     "prerequisites": [],
     "related_commands": [],
-    "rollback": null,
+    "rollback": "no description",
     "errors": [],
     "notes": null,
-    "evidence": "visto en la configuración real de una OLT ZXA10 C300 V2.1.0 (show running-config); no ejecutado por TKC",
+    "evidence": "ejecutado en escritura y verificado releyendo la OLT PRIMAVERA (ZXA10 C320 V2.1.0) el 2026-11-03; estado original restaurado",
     "sources": [
      {
       "doc_type": "hardware_verification",
       "pages": null,
-      "confidence": 0.7
+      "confidence": 0.95
      }
     ],
     "confidence": {
-     "extraction": 0.7,
+     "extraction": 0.95,
      "correlation": 0.0,
-     "overall": 0.7
+     "overall": 0.95
     },
-    "status": "observed",
+    "status": "verified",
     "conflicts": []
    },
    {
@@ -4804,23 +5917,23 @@
     "output_fields": [],
     "prerequisites": [],
     "related_commands": [],
-    "rollback": null,
+    "rollback": "tcont <n> profile <perfil-anterior>",
     "errors": [],
     "notes": null,
-    "evidence": "visto en la configuración real de una OLT ZXA10 C300 V2.1.0 (show running-config); no ejecutado por TKC",
+    "evidence": "ejecutado en escritura y verificado releyendo la OLT PRIMAVERA (ZXA10 C320 V2.1.0) el 2026-11-03; estado original restaurado",
     "sources": [
      {
       "doc_type": "hardware_verification",
       "pages": null,
-      "confidence": 0.7
+      "confidence": 0.95
      }
     ],
     "confidence": {
-     "extraction": 0.7,
+     "extraction": 0.95,
      "correlation": 0.0,
-     "overall": 0.7
+     "overall": 0.95
     },
-    "status": "observed",
+    "status": "verified",
     "conflicts": []
    },
    {
@@ -4843,23 +5956,23 @@
     "output_fields": [],
     "prerequisites": [],
     "related_commands": [],
-    "rollback": null,
+    "rollback": "no gemport <n>",
     "errors": [],
     "notes": null,
-    "evidence": "visto en la configuración real de una OLT ZXA10 C300 V2.1.0 (show running-config); no ejecutado por TKC",
+    "evidence": "ejecutado en escritura y verificado releyendo la OLT PRIMAVERA (ZXA10 C320 V2.1.0) el 2026-11-03; estado original restaurado",
     "sources": [
      {
       "doc_type": "hardware_verification",
       "pages": null,
-      "confidence": 0.7
+      "confidence": 0.95
      }
     ],
     "confidence": {
-     "extraction": 0.7,
+     "extraction": 0.95,
      "correlation": 0.0,
-     "overall": 0.7
+     "overall": 0.95
     },
-    "status": "observed",
+    "status": "verified",
     "conflicts": []
    },
    {
@@ -4882,23 +5995,23 @@
     "output_fields": [],
     "prerequisites": [],
     "related_commands": [],
-    "rollback": null,
+    "rollback": "gemport <n> traffic-limit downstream <perfil-anterior>",
     "errors": [],
     "notes": null,
-    "evidence": "visto en la configuración real de una OLT ZXA10 C300 V2.1.0 (show running-config); no ejecutado por TKC",
+    "evidence": "ejecutado en escritura y verificado releyendo la OLT PRIMAVERA (ZXA10 C320 V2.1.0) el 2026-11-03; estado original restaurado",
     "sources": [
      {
       "doc_type": "hardware_verification",
       "pages": null,
-      "confidence": 0.7
+      "confidence": 0.95
      }
     ],
     "confidence": {
-     "extraction": 0.7,
+     "extraction": 0.95,
      "correlation": 0.0,
-     "overall": 0.7
+     "overall": 0.95
     },
-    "status": "observed",
+    "status": "verified",
     "conflicts": []
    },
    {
@@ -4921,23 +6034,1088 @@
     "output_fields": [],
     "prerequisites": [],
     "related_commands": [],
-    "rollback": null,
+    "rollback": "no service-port <n>",
     "errors": [],
     "notes": null,
-    "evidence": "visto en la configuración real de una OLT ZXA10 C300 V2.1.0 (show running-config); no ejecutado por TKC",
+    "evidence": "ejecutado en escritura y verificado releyendo la OLT PRIMAVERA (ZXA10 C320 V2.1.0) el 2026-11-03; estado original restaurado",
     "sources": [
      {
       "doc_type": "hardware_verification",
       "pages": null,
-      "confidence": 0.7
+      "confidence": 0.95
      }
     ],
     "confidence": {
-     "extraction": 0.7,
+     "extraction": 0.95,
      "correlation": 0.0,
-     "overall": 0.7
+     "overall": 0.95
+    },
+    "status": "verified",
+    "conflicts": []
+   },
+   {
+    "id": "command.zte.gpon.onu.modify.onu_description_clear",
+    "canonical_name": "no description (ONU)",
+    "vendor": "ZTE",
+    "family": "ZXA10 C320",
+    "firmware": [
+     "2.0",
+     "2.1"
+    ],
+    "technology": "gpon",
+    "category": "modify",
+    "cli_mode": "interface_config",
+    "cli_context": "interface gpon-onu_<idx>",
+    "entity_ref": "entity.zte.gpon.device.onu",
+    "description": "Quita la descripción de la ONU.",
+    "syntax": "no description",
+    "parameters": [],
+    "output_fields": [],
+    "prerequisites": [],
+    "related_commands": [],
+    "rollback": "description <texto-anterior>",
+    "errors": [],
+    "notes": null,
+    "evidence": "ejecutado en escritura y verificado releyendo la OLT PRIMAVERA (ZXA10 C320 V2.1.0) el 2026-11-03; estado original restaurado",
+    "sources": [
+     {
+      "doc_type": "hardware_verification",
+      "pages": null,
+      "confidence": 0.95
+     }
+    ],
+    "confidence": {
+     "extraction": 0.95,
+     "correlation": 0.0,
+     "overall": 0.95
+    },
+    "status": "verified",
+    "conflicts": []
+   },
+   {
+    "id": "command.zte.gpon.sp.delete.onu_no_service_port",
+    "canonical_name": "no service-port (ONU)",
+    "vendor": "ZTE",
+    "family": "ZXA10 C320",
+    "firmware": [
+     "2.0",
+     "2.1"
+    ],
+    "technology": "gpon",
+    "category": "delete",
+    "cli_mode": "interface_config",
+    "cli_context": "interface gpon-onu_<idx>",
+    "entity_ref": "entity.zte.gpon.logical.service_port",
+    "description": "Quita el service-port; con `service-port` de nuevo se reasigna la VLAN.",
+    "syntax": "no service-port <n>",
+    "parameters": [],
+    "output_fields": [],
+    "prerequisites": [],
+    "related_commands": [],
+    "rollback": "service-port <n> vport <v> user-vlan <vlan> vlan <vlan>",
+    "errors": [],
+    "notes": null,
+    "evidence": "ejecutado en escritura y verificado releyendo la OLT PRIMAVERA (ZXA10 C320 V2.1.0) el 2026-11-03; estado original restaurado",
+    "sources": [
+     {
+      "doc_type": "hardware_verification",
+      "pages": null,
+      "confidence": 0.95
+     }
+    ],
+    "confidence": {
+     "extraction": 0.95,
+     "correlation": 0.0,
+     "overall": 0.95
+    },
+    "status": "verified",
+    "conflicts": []
+   },
+   {
+    "id": "command.zte.gpon.onu.delete.onu_delete",
+    "canonical_name": "no onu <n>",
+    "vendor": "ZTE",
+    "family": "ZXA10 C320",
+    "firmware": [
+     "2.0",
+     "2.1"
+    ],
+    "technology": "gpon",
+    "category": "delete",
+    "cli_mode": "interface_config",
+    "cli_context": "interface gpon-olt_<pon>",
+    "entity_ref": "entity.zte.gpon.device.onu",
+    "description": "Da de baja la ONU del puerto con toda su configuración. Dar de alta de nuevo exige reponer interfaz y pon-onu-mng (el equipo no los conserva).",
+    "syntax": "no onu <n>",
+    "parameters": [
+     {
+      "name": "pon",
+      "type": "string",
+      "pattern": null,
+      "range": null,
+      "required": true,
+      "description": "puerto PON rack/slot/puerto",
+      "example": "1/3/1"
+     }
+    ],
+    "output_fields": [],
+    "prerequisites": [],
+    "related_commands": [],
+    "rollback": "onu <n> type <tipo> sn <sn> y reponer interfaz y pon-onu-mng",
+    "errors": [],
+    "notes": "La ONU vuelve a `working` unos 6 s (C300) a 12 s (C320) tras el alta; verificado por relectura idéntica al estado previo.",
+    "evidence": "ejecutado en escritura y verificado releyendo la OLT PRIMAVERA (ZXA10 C320 V2.1.0) el 2026-11-03; estado original restaurado",
+    "sources": [
+     {
+      "doc_type": "hardware_verification",
+      "pages": null,
+      "confidence": 0.95
+     }
+    ],
+    "confidence": {
+     "extraction": 0.95,
+     "correlation": 0.0,
+     "overall": 0.95
+    },
+    "status": "verified",
+    "conflicts": []
+   },
+   {
+    "id": "command.zte.gpon.onu.reset.onu_reboot",
+    "canonical_name": "reboot (ONU)",
+    "vendor": "ZTE",
+    "family": "ZXA10 C320",
+    "firmware": [
+     "2.0",
+     "2.1"
+    ],
+    "technology": "gpon",
+    "category": "reset",
+    "cli_mode": "pon_config",
+    "cli_context": "pon-onu-mng gpon-onu_<idx>",
+    "entity_ref": "entity.zte.gpon.device.onu",
+    "description": "Reinicia la ONU. El equipo pregunta `Confirm to reboot? [yes/no]:` y espera `yes`.",
+    "syntax": "reboot",
+    "parameters": [],
+    "output_fields": [],
+    "prerequisites": [],
+    "related_commands": [],
+    "rollback": null,
+    "errors": [],
+    "notes": "Medido: sale de `working` a los 17 s (C300) / 7 s (C320) y vuelve a los ~102 s / ~91 s. La pregunta de confirmación debe contestarse solo para esta línea.",
+    "evidence": "ejecutado en escritura y verificado releyendo la OLT PRIMAVERA (ZXA10 C320 V2.1.0) el 2026-11-03; estado original restaurado",
+    "sources": [
+     {
+      "doc_type": "hardware_verification",
+      "pages": null,
+      "confidence": 0.95
+     }
+    ],
+    "confidence": {
+     "extraction": 0.95,
+     "correlation": 0.0,
+     "overall": 0.95
+    },
+    "status": "verified",
+    "conflicts": []
+   },
+   {
+    "id": "command.zte.gpon.onu.create.onu_mng_flow",
+    "canonical_name": "flow / gemport flow (pon-onu-mng)",
+    "vendor": "ZTE",
+    "family": "ZXA10 C320",
+    "firmware": [
+     "2.0",
+     "2.1"
+    ],
+    "technology": "gpon",
+    "category": "create",
+    "cli_mode": "pon_config",
+    "cli_context": "pon-onu-mng gpon-onu_<idx>",
+    "entity_ref": "entity.zte.gpon.device.onu",
+    "description": "Flujo de la ONU hacia la VLAN de servicio (plantilla clásica).",
+    "syntax": "flow mode <n> tag-filter vlan-filter untag-filter discard ; flow <n> pri <p> vlan <v> ; gemport <n> flow <m>",
+    "parameters": [],
+    "output_fields": [],
+    "prerequisites": [],
+    "related_commands": [],
+    "rollback": null,
+    "errors": [],
+    "notes": null,
+    "evidence": "ejecutado en escritura y verificado releyendo la OLT PRIMAVERA (ZXA10 C320 V2.1.0) el 2026-11-03; estado original restaurado",
+    "sources": [
+     {
+      "doc_type": "hardware_verification",
+      "pages": null,
+      "confidence": 0.95
+     }
+    ],
+    "confidence": {
+     "extraction": 0.95,
+     "correlation": 0.0,
+     "overall": 0.95
+    },
+    "status": "verified",
+    "conflicts": []
+   },
+   {
+    "id": "command.zte.gpon.onu.create.onu_mng_switchport_bind",
+    "canonical_name": "switchport-bind",
+    "vendor": "ZTE",
+    "family": "ZXA10 C320",
+    "firmware": [
+     "2.0",
+     "2.1"
+    ],
+    "technology": "gpon",
+    "category": "create",
+    "cli_mode": "pon_config",
+    "cli_context": "pon-onu-mng gpon-onu_<idx>",
+    "entity_ref": "entity.zte.gpon.device.onu",
+    "description": "Ata el puerto virtual (iphost/veip) al switch de la ONU.",
+    "syntax": "switchport-bind switch_0/<n> {iphost|veip} <m>",
+    "parameters": [],
+    "output_fields": [],
+    "prerequisites": [],
+    "related_commands": [],
+    "rollback": null,
+    "errors": [],
+    "notes": null,
+    "evidence": "ejecutado en escritura y verificado releyendo la OLT PRIMAVERA (ZXA10 C320 V2.1.0) el 2026-11-03; estado original restaurado",
+    "sources": [
+     {
+      "doc_type": "hardware_verification",
+      "pages": null,
+      "confidence": 0.95
+     }
+    ],
+    "confidence": {
+     "extraction": 0.95,
+     "correlation": 0.0,
+     "overall": 0.95
+    },
+    "status": "verified",
+    "conflicts": []
+   },
+   {
+    "id": "command.zte.gpon.onu.create.onu_mng_vlan_filter",
+    "canonical_name": "vlan-filter",
+    "vendor": "ZTE",
+    "family": "ZXA10 C320",
+    "firmware": [
+     "2.0",
+     "2.1"
+    ],
+    "technology": "gpon",
+    "category": "create",
+    "cli_mode": "pon_config",
+    "cli_context": "pon-onu-mng gpon-onu_<idx>",
+    "entity_ref": "entity.zte.gpon.device.onu",
+    "description": "Filtro de VLAN del host IP de la ONU.",
+    "syntax": "vlan-filter-mode iphost <n> tag-filter vlan-filter untag-filter discard ; vlan-filter iphost <n> pri <p> vlan <v>",
+    "parameters": [],
+    "output_fields": [],
+    "prerequisites": [],
+    "related_commands": [],
+    "rollback": null,
+    "errors": [],
+    "notes": null,
+    "evidence": "ejecutado en escritura y verificado releyendo la OLT PRIMAVERA (ZXA10 C320 V2.1.0) el 2026-11-03; estado original restaurado",
+    "sources": [
+     {
+      "doc_type": "hardware_verification",
+      "pages": null,
+      "confidence": 0.95
+     }
+    ],
+    "confidence": {
+     "extraction": 0.95,
+     "correlation": 0.0,
+     "overall": 0.95
+    },
+    "status": "verified",
+    "conflicts": []
+   },
+   {
+    "id": "command.zte.gpon.onu.modify.onu_mng_dhcp_ip",
+    "canonical_name": "dhcp-ip ethuni",
+    "vendor": "ZTE",
+    "family": "ZXA10 C320",
+    "firmware": [
+     "2.0",
+     "2.1"
+    ],
+    "technology": "gpon",
+    "category": "modify",
+    "cli_mode": "pon_config",
+    "cli_context": "pon-onu-mng gpon-onu_<idx>",
+    "entity_ref": "entity.zte.gpon.device.onu",
+    "description": "El puerto Ethernet de la ONU obtiene IP de la propia ONU.",
+    "syntax": "dhcp-ip ethuni eth_0/<n> from-onu",
+    "parameters": [],
+    "output_fields": [],
+    "prerequisites": [],
+    "related_commands": [],
+    "rollback": null,
+    "errors": [],
+    "notes": "Verificado en una ONU ZP_CABLE de la C320; la ONU ADC de la C300 usada no lo tenía en su configuración.",
+    "evidence": "ejecutado en escritura y verificado releyendo la OLT PRIMAVERA (ZXA10 C320 V2.1.0) el 2026-11-03; estado original restaurado",
+    "sources": [
+     {
+      "doc_type": "hardware_verification",
+      "pages": null,
+      "confidence": 0.95
+     }
+    ],
+    "confidence": {
+     "extraction": 0.95,
+     "correlation": 0.0,
+     "overall": 0.95
+    },
+    "status": "verified",
+    "conflicts": []
+   },
+   {
+    "id": "command.zte.gpon.onu.modify.onu_mng_security_mgmt",
+    "canonical_name": "security-mgmt",
+    "vendor": "ZTE",
+    "family": "ZXA10 C320",
+    "firmware": [
+     "2.0",
+     "2.1"
+    ],
+    "technology": "gpon",
+    "category": "modify",
+    "cli_mode": "pon_config",
+    "cli_context": "pon-onu-mng gpon-onu_<idx>",
+    "entity_ref": "entity.zte.gpon.device.onu",
+    "description": "Gestión de la ONU por servicios (web, ftp, telnet, ssh, snmp, tr069) desde la LAN.",
+    "syntax": "security-mgmt <n> state enable [mode forward] ingress-type lan protocol <proto…>",
+    "parameters": [],
+    "output_fields": [],
+    "prerequisites": [],
+    "related_commands": [],
+    "rollback": null,
+    "errors": [],
+    "notes": "Las líneas largas llegan partidas por el ancho del terminal; al leer hay que unirlas (`https` y `tr069` salen en dos renglones).",
+    "evidence": "ejecutado en escritura y verificado releyendo la OLT PRIMAVERA (ZXA10 C320 V2.1.0) el 2026-11-03; estado original restaurado",
+    "sources": [
+     {
+      "doc_type": "hardware_verification",
+      "pages": null,
+      "confidence": 0.95
+     }
+    ],
+    "confidence": {
+     "extraction": 0.95,
+     "correlation": 0.0,
+     "overall": 0.95
+    },
+    "status": "verified",
+    "conflicts": []
+   },
+   {
+    "id": "command.zte.gpon.onu.modify.onu_catv",
+    "canonical_name": "interface video state",
+    "vendor": "ZTE",
+    "family": "ZXA10 C320",
+    "firmware": [
+     "2.0",
+     "2.1"
+    ],
+    "technology": "gpon",
+    "category": "modify",
+    "cli_mode": "pon_config",
+    "cli_context": "pon-onu-mng gpon-onu_<idx>",
+    "entity_ref": "entity.zte.gpon.device.onu",
+    "description": "Habilita o deshabilita el puerto CATV de la ONU.",
+    "syntax": "interface video video_0/<n> state {lock|unlock}",
+    "parameters": [],
+    "output_fields": [],
+    "prerequisites": [],
+    "related_commands": [],
+    "rollback": "interface video video_0/<n> state {unlock|lock} (el valor anterior)",
+    "errors": [],
+    "notes": null,
+    "evidence": "ejecutado en escritura y verificado releyendo la OLT PRIMAVERA (ZXA10 C320 V2.1.0) el 2026-11-03; estado original restaurado",
+    "sources": [
+     {
+      "doc_type": "hardware_verification",
+      "pages": null,
+      "confidence": 0.95
+     }
+    ],
+    "confidence": {
+     "extraction": 0.95,
+     "correlation": 0.0,
+     "overall": 0.95
+    },
+    "status": "verified",
+    "conflicts": []
+   },
+   {
+    "id": "command.zte.gpon.onu.modify.onu_eth_state",
+    "canonical_name": "interface eth state",
+    "vendor": "ZTE",
+    "family": "ZXA10 C320",
+    "firmware": [
+     "2.0",
+     "2.1"
+    ],
+    "technology": "gpon",
+    "category": "modify",
+    "cli_mode": "pon_config",
+    "cli_context": "pon-onu-mng gpon-onu_<idx>",
+    "entity_ref": "entity.zte.gpon.device.onu",
+    "description": "Habilita o deshabilita un puerto Ethernet de la ONU.",
+    "syntax": "interface eth eth_0/<n> state {lock|unlock}",
+    "parameters": [],
+    "output_fields": [],
+    "prerequisites": [],
+    "related_commands": [],
+    "rollback": "interface eth eth_0/<n> state {unlock|lock} (el valor anterior)",
+    "errors": [],
+    "notes": null,
+    "evidence": "ejecutado en escritura y verificado releyendo la OLT PRIMAVERA (ZXA10 C320 V2.1.0) el 2026-11-03; estado original restaurado",
+    "sources": [
+     {
+      "doc_type": "hardware_verification",
+      "pages": null,
+      "confidence": 0.95
+     }
+    ],
+    "confidence": {
+     "extraction": 0.95,
+     "correlation": 0.0,
+     "overall": 0.95
+    },
+    "status": "verified",
+    "conflicts": []
+   },
+   {
+    "id": "command.zte.gpon.onu.modify.onu_eth_speed",
+    "canonical_name": "interface eth speed",
+    "vendor": "ZTE",
+    "family": "ZXA10 C320",
+    "firmware": [
+     "2.0",
+     "2.1"
+    ],
+    "technology": "gpon",
+    "category": "modify",
+    "cli_mode": "pon_config",
+    "cli_context": "pon-onu-mng gpon-onu_<idx>",
+    "entity_ref": "entity.zte.gpon.device.onu",
+    "description": "Velocidad de negociación del puerto Ethernet de la ONU.",
+    "syntax": "interface eth eth_0/<n> speed {auto|full-10|full-100|full-1000|half-10|half-100}",
+    "parameters": [],
+    "output_fields": [],
+    "prerequisites": [],
+    "related_commands": [],
+    "rollback": "interface eth eth_0/<n> speed <valor-anterior>",
+    "errors": [],
+    "notes": null,
+    "evidence": "ejecutado en escritura y verificado releyendo la OLT PRIMAVERA (ZXA10 C320 V2.1.0) el 2026-11-03; estado original restaurado",
+    "sources": [
+     {
+      "doc_type": "hardware_verification",
+      "pages": null,
+      "confidence": 0.95
+     }
+    ],
+    "confidence": {
+     "extraction": 0.95,
+     "correlation": 0.0,
+     "overall": 0.95
+    },
+    "status": "verified",
+    "conflicts": []
+   },
+   {
+    "id": "command.zte.gpon.onu.modify.onu_wifi_radio",
+    "canonical_name": "interface wifi state",
+    "vendor": "ZTE",
+    "family": "ZXA10 C320",
+    "firmware": [
+     "2.0",
+     "2.1"
+    ],
+    "technology": "gpon",
+    "category": "modify",
+    "cli_mode": "pon_config",
+    "cli_context": "pon-onu-mng gpon-onu_<idx>",
+    "entity_ref": "entity.zte.gpon.device.onu",
+    "description": "Habilita o deshabilita un radio WiFi de la ONU.",
+    "syntax": "interface wifi wifi_0/<n> state {lock|unlock}",
+    "parameters": [],
+    "output_fields": [],
+    "prerequisites": [],
+    "related_commands": [],
+    "rollback": "interface wifi wifi_0/<n> state {unlock|lock} (el valor anterior)",
+    "errors": [],
+    "notes": null,
+    "evidence": "ejecutado en escritura y verificado releyendo la OLT PRIMAVERA (ZXA10 C320 V2.1.0) el 2026-11-03; estado original restaurado",
+    "sources": [
+     {
+      "doc_type": "hardware_verification",
+      "pages": null,
+      "confidence": 0.95
+     }
+    ],
+    "confidence": {
+     "extraction": 0.95,
+     "correlation": 0.0,
+     "overall": 0.95
+    },
+    "status": "verified",
+    "conflicts": []
+   },
+   {
+    "id": "command.zte.gpon.onu.modify.onu_wifi_global",
+    "canonical_name": "wifi {enable|disable}",
+    "vendor": "ZTE",
+    "family": "ZXA10 C320",
+    "firmware": [
+     "2.0",
+     "2.1"
+    ],
+    "technology": "gpon",
+    "category": "modify",
+    "cli_mode": "pon_config",
+    "cli_context": "pon-onu-mng gpon-onu_<idx>",
+    "entity_ref": "entity.zte.gpon.device.onu",
+    "description": "WiFi global de la ONU.",
+    "syntax": "wifi {enable|disable}",
+    "parameters": [],
+    "output_fields": [],
+    "prerequisites": [],
+    "related_commands": [],
+    "rollback": "wifi {disable|enable} (el valor anterior)",
+    "errors": [],
+    "notes": "Depende del MODELO DE ONU: en la ONU ADC de la C300 funcionó; la ONU ZP_CABLE de la C320 lo rechazó (%Code 63993-GPONRM : ONT return error:unknown ME).",
+    "evidence": "ejecutado el 2026-11-03 en la OLT PRIMAVERA (ZXA10 C320 V2.1.0): la OLT lo aceptó pero la ONU de prueba (ZP_CABLE) lo rechazó por OMCI (%Code 63993 unknown ME); depende del modelo de ONU",
+    "sources": [
+     {
+      "doc_type": "hardware_verification",
+      "pages": null,
+      "confidence": 0.8
+     }
+    ],
+    "confidence": {
+     "extraction": 0.8,
+     "correlation": 0.0,
+     "overall": 0.8
     },
     "status": "observed",
+    "conflicts": []
+   },
+   {
+    "id": "command.zte.gpon.global.modify.olt_write",
+    "canonical_name": "write",
+    "vendor": "ZTE",
+    "family": "ZXA10 C320",
+    "firmware": [
+     "2.0",
+     "2.1"
+    ],
+    "technology": "gpon",
+    "category": "modify",
+    "cli_mode": "privileged_exec",
+    "cli_context": null,
+    "entity_ref": null,
+    "description": "Guarda la configuración en uso de la OLT. Responde `[OK]`.",
+    "syntax": "write",
+    "parameters": [],
+    "output_fields": [],
+    "prerequisites": [],
+    "related_commands": [],
+    "rollback": null,
+    "errors": [],
+    "notes": "Duración medida: 41 s en la C300 y 1,8 s en la C320 (el plazo de espera debe ser ≥ 60 s).",
+    "evidence": "ejecutado en escritura y verificado releyendo la OLT PRIMAVERA (ZXA10 C320 V2.1.0) el 2026-11-03; estado original restaurado",
+    "sources": [
+     {
+      "doc_type": "hardware_verification",
+      "pages": null,
+      "confidence": 0.95
+     }
+    ],
+    "confidence": {
+     "extraction": 0.95,
+     "correlation": 0.0,
+     "overall": 0.95
+    },
+    "status": "verified",
+    "conflicts": []
+   },
+   {
+    "id": "command.zte.gpon.pon.modify.pon_description",
+    "canonical_name": "description / no description (puerto PON)",
+    "vendor": "ZTE",
+    "family": "ZXA10 C320",
+    "firmware": [
+     "2.0",
+     "2.1"
+    ],
+    "technology": "gpon",
+    "category": "modify",
+    "cli_mode": "interface_config",
+    "cli_context": "interface gpon-olt_<pon>",
+    "entity_ref": "entity.zte.gpon.port.pon_port",
+    "description": "Descripción del puerto PON (aparece en el running-config del puerto).",
+    "syntax": "description <texto> | no description",
+    "parameters": [],
+    "output_fields": [],
+    "prerequisites": [],
+    "related_commands": [],
+    "rollback": "no description",
+    "errors": [],
+    "notes": null,
+    "evidence": "ejecutado en escritura y verificado releyendo la OLT PRIMAVERA (ZXA10 C320 V2.1.0) el 2026-11-03; estado original restaurado",
+    "sources": [
+     {
+      "doc_type": "hardware_verification",
+      "pages": null,
+      "confidence": 0.95
+     }
+    ],
+    "confidence": {
+     "extraction": 0.95,
+     "correlation": 0.0,
+     "overall": 0.95
+    },
+    "status": "verified",
+    "conflicts": []
+   },
+   {
+    "id": "command.zte.gpon.pon.modify.pon_shutdown",
+    "canonical_name": "shutdown / no shutdown (puerto PON)",
+    "vendor": "ZTE",
+    "family": "ZXA10 C320",
+    "firmware": [
+     "2.0",
+     "2.1"
+    ],
+    "technology": "gpon",
+    "category": "modify",
+    "cli_mode": "interface_config",
+    "cli_context": "interface gpon-olt_<pon>",
+    "entity_ref": "entity.zte.gpon.port.pon_port",
+    "description": "Apaga o enciende el puerto PON. Apagarlo corta a todas sus ONU; el running-config muestra `shutdown` cuando está apagado y `no shutdown` si no.",
+    "syntax": "shutdown | no shutdown",
+    "parameters": [],
+    "output_fields": [],
+    "prerequisites": [],
+    "related_commands": [],
+    "rollback": "no shutdown",
+    "errors": [],
+    "notes": null,
+    "evidence": "ejecutado en escritura y verificado releyendo la OLT PRIMAVERA (ZXA10 C320 V2.1.0) el 2026-11-03; estado original restaurado",
+    "sources": [
+     {
+      "doc_type": "hardware_verification",
+      "pages": null,
+      "confidence": 0.95
+     }
+    ],
+    "confidence": {
+     "extraction": 0.95,
+     "correlation": 0.0,
+     "overall": 0.95
+    },
+    "status": "verified",
+    "conflicts": []
+   },
+   {
+    "id": "command.zte.gpon.vlan.create.vlan_create",
+    "canonical_name": "vlan <id>",
+    "vendor": "ZTE",
+    "family": "ZXA10 C320",
+    "firmware": [
+     "2.0",
+     "2.1"
+    ],
+    "technology": "gpon",
+    "category": "create",
+    "cli_mode": "global_config",
+    "cli_context": "configure terminal",
+    "entity_ref": "entity.zte.gpon.logical.vlan",
+    "description": "Crea una VLAN en la OLT; `show vlan <id>` la devuelve.",
+    "syntax": "vlan <1-4094>",
+    "parameters": [
+     {
+      "name": "vlan-id",
+      "type": "string",
+      "pattern": null,
+      "range": "1-4094",
+      "required": true,
+      "description": "",
+      "example": "3999"
+     }
+    ],
+    "output_fields": [],
+    "prerequisites": [],
+    "related_commands": [],
+    "rollback": "no vlan <id>",
+    "errors": [],
+    "notes": "Inexistente: `show vlan <id>` responde `%Code 60514: This vlan does not exist.`",
+    "evidence": "ejecutado en escritura y verificado releyendo la OLT PRIMAVERA (ZXA10 C320 V2.1.0) el 2026-11-03; estado original restaurado",
+    "sources": [
+     {
+      "doc_type": "hardware_verification",
+      "pages": null,
+      "confidence": 0.95
+     }
+    ],
+    "confidence": {
+     "extraction": 0.95,
+     "correlation": 0.0,
+     "overall": 0.95
+    },
+    "status": "verified",
+    "conflicts": []
+   },
+   {
+    "id": "command.zte.gpon.vlan.delete.vlan_delete",
+    "canonical_name": "no vlan <id>",
+    "vendor": "ZTE",
+    "family": "ZXA10 C320",
+    "firmware": [
+     "2.0",
+     "2.1"
+    ],
+    "technology": "gpon",
+    "category": "delete",
+    "cli_mode": "global_config",
+    "cli_context": "configure terminal",
+    "entity_ref": "entity.zte.gpon.logical.vlan",
+    "description": "Borra una VLAN de la OLT.",
+    "syntax": "no vlan <1-4094>",
+    "parameters": [
+     {
+      "name": "vlan-id",
+      "type": "string",
+      "pattern": null,
+      "range": "1-4094",
+      "required": true,
+      "description": "",
+      "example": "3999"
+     }
+    ],
+    "output_fields": [],
+    "prerequisites": [],
+    "related_commands": [],
+    "rollback": "vlan <id>",
+    "errors": [],
+    "notes": null,
+    "evidence": "ejecutado en escritura y verificado releyendo la OLT PRIMAVERA (ZXA10 C320 V2.1.0) el 2026-11-03; estado original restaurado",
+    "sources": [
+     {
+      "doc_type": "hardware_verification",
+      "pages": null,
+      "confidence": 0.95
+     }
+    ],
+    "confidence": {
+     "extraction": 0.95,
+     "correlation": 0.0,
+     "overall": 0.95
+    },
+    "status": "verified",
+    "conflicts": []
+   },
+   {
+    "id": "command.zte.gpon.global.create.profile_tcont_create",
+    "canonical_name": "profile tcont",
+    "vendor": "ZTE",
+    "family": "ZXA10 C320",
+    "firmware": [
+     "2.0",
+     "2.1"
+    ],
+    "technology": "gpon",
+    "category": "create",
+    "cli_mode": "interface_config",
+    "cli_context": "gpon",
+    "entity_ref": null,
+    "description": "Crea un perfil T-CONT de subida (modo `gpon`).",
+    "syntax": "profile tcont <nombre> type 5 fixed <kbps> assured <kbps> maximum <kbps>",
+    "parameters": [
+     {
+      "name": "nombre",
+      "type": "string",
+      "pattern": null,
+      "range": null,
+      "required": true,
+      "description": "",
+      "example": "SMARTOLT-90M-UP"
+     }
+    ],
+    "output_fields": [],
+    "prerequisites": [],
+    "related_commands": [],
+    "rollback": "no profile tcont <nombre>",
+    "errors": [],
+    "notes": null,
+    "evidence": "ejecutado en escritura y verificado releyendo la OLT PRIMAVERA (ZXA10 C320 V2.1.0) el 2026-11-03; estado original restaurado",
+    "sources": [
+     {
+      "doc_type": "hardware_verification",
+      "pages": null,
+      "confidence": 0.95
+     }
+    ],
+    "confidence": {
+     "extraction": 0.95,
+     "correlation": 0.0,
+     "overall": 0.95
+    },
+    "status": "verified",
+    "conflicts": []
+   },
+   {
+    "id": "command.zte.gpon.global.delete.profile_tcont_delete",
+    "canonical_name": "no profile tcont",
+    "vendor": "ZTE",
+    "family": "ZXA10 C320",
+    "firmware": [
+     "2.0",
+     "2.1"
+    ],
+    "technology": "gpon",
+    "category": "delete",
+    "cli_mode": "interface_config",
+    "cli_context": "gpon",
+    "entity_ref": null,
+    "description": "Borra un perfil T-CONT.",
+    "syntax": "no profile tcont <nombre>",
+    "parameters": [
+     {
+      "name": "nombre",
+      "type": "string",
+      "pattern": null,
+      "range": null,
+      "required": true,
+      "description": "",
+      "example": "SMARTOLT-90M-UP"
+     }
+    ],
+    "output_fields": [],
+    "prerequisites": [],
+    "related_commands": [],
+    "rollback": null,
+    "errors": [],
+    "notes": null,
+    "evidence": "ejecutado en escritura y verificado releyendo la OLT PRIMAVERA (ZXA10 C320 V2.1.0) el 2026-11-03; estado original restaurado",
+    "sources": [
+     {
+      "doc_type": "hardware_verification",
+      "pages": null,
+      "confidence": 0.95
+     }
+    ],
+    "confidence": {
+     "extraction": 0.95,
+     "correlation": 0.0,
+     "overall": 0.95
+    },
+    "status": "verified",
+    "conflicts": []
+   },
+   {
+    "id": "command.zte.gpon.global.create.profile_traffic_create",
+    "canonical_name": "profile traffic",
+    "vendor": "ZTE",
+    "family": "ZXA10 C320",
+    "firmware": [
+     "2.0",
+     "2.1"
+    ],
+    "technology": "gpon",
+    "category": "create",
+    "cli_mode": "interface_config",
+    "cli_context": "gpon",
+    "entity_ref": null,
+    "description": "Crea un perfil de tráfico de bajada (modo `gpon`); CBS/PBS toman el valor por defecto.",
+    "syntax": "profile traffic <nombre> sir <kbps> pir <kbps>",
+    "parameters": [
+     {
+      "name": "nombre",
+      "type": "string",
+      "pattern": null,
+      "range": null,
+      "required": true,
+      "description": "",
+      "example": "SMARTOLT-100M-DOWN"
+     }
+    ],
+    "output_fields": [],
+    "prerequisites": [],
+    "related_commands": [],
+    "rollback": "no profile traffic <nombre>",
+    "errors": [],
+    "notes": null,
+    "evidence": "ejecutado en escritura y verificado releyendo la OLT PRIMAVERA (ZXA10 C320 V2.1.0) el 2026-11-03; estado original restaurado",
+    "sources": [
+     {
+      "doc_type": "hardware_verification",
+      "pages": null,
+      "confidence": 0.95
+     }
+    ],
+    "confidence": {
+     "extraction": 0.95,
+     "correlation": 0.0,
+     "overall": 0.95
+    },
+    "status": "verified",
+    "conflicts": []
+   },
+   {
+    "id": "command.zte.gpon.global.delete.profile_traffic_delete",
+    "canonical_name": "no profile traffic",
+    "vendor": "ZTE",
+    "family": "ZXA10 C320",
+    "firmware": [
+     "2.0",
+     "2.1"
+    ],
+    "technology": "gpon",
+    "category": "delete",
+    "cli_mode": "interface_config",
+    "cli_context": "gpon",
+    "entity_ref": null,
+    "description": "Borra un perfil de tráfico.",
+    "syntax": "no profile traffic <nombre>",
+    "parameters": [
+     {
+      "name": "nombre",
+      "type": "string",
+      "pattern": null,
+      "range": null,
+      "required": true,
+      "description": "",
+      "example": "SMARTOLT-100M-DOWN"
+     }
+    ],
+    "output_fields": [],
+    "prerequisites": [],
+    "related_commands": [],
+    "rollback": null,
+    "errors": [],
+    "notes": null,
+    "evidence": "ejecutado en escritura y verificado releyendo la OLT PRIMAVERA (ZXA10 C320 V2.1.0) el 2026-11-03; estado original restaurado",
+    "sources": [
+     {
+      "doc_type": "hardware_verification",
+      "pages": null,
+      "confidence": 0.95
+     }
+    ],
+    "confidence": {
+     "extraction": 0.95,
+     "correlation": 0.0,
+     "overall": 0.95
+    },
+    "status": "verified",
+    "conflicts": []
+   },
+   {
+    "id": "command.zte.gpon.global.create.onu_type_create",
+    "canonical_name": "onu-type … gpon / onu-type-if",
+    "vendor": "ZTE",
+    "family": "ZXA10 C320",
+    "firmware": [
+     "2.0",
+     "2.1"
+    ],
+    "technology": "gpon",
+    "category": "create",
+    "cli_mode": "pon_config",
+    "cli_context": "pon",
+    "entity_ref": null,
+    "description": "Crea un tipo de ONU GPON con sus puertos Ethernet (modo `pon`).",
+    "syntax": "onu-type <nombre> gpon description <d> max-tcont <n> max-gemport <n> max-switch-perslot <n> max-flow-perswitch <n> ; onu-type-if <nombre> eth_0/<1-n>",
+    "parameters": [
+     {
+      "name": "nombre",
+      "type": "string",
+      "pattern": null,
+      "range": null,
+      "required": true,
+      "description": "",
+      "example": "ADC"
+     }
+    ],
+    "output_fields": [],
+    "prerequisites": [],
+    "related_commands": [],
+    "rollback": "no onu-type <nombre>",
+    "errors": [],
+    "notes": "La sintaxis salía solo del manual (§2.1); ahora ejecutada y verificada con `show onu-type`.",
+    "evidence": "ejecutado en escritura y verificado releyendo la OLT PRIMAVERA (ZXA10 C320 V2.1.0) el 2026-11-03; estado original restaurado",
+    "sources": [
+     {
+      "doc_type": "hardware_verification",
+      "pages": null,
+      "confidence": 0.95
+     }
+    ],
+    "confidence": {
+     "extraction": 0.95,
+     "correlation": 0.0,
+     "overall": 0.95
+    },
+    "status": "verified",
+    "conflicts": []
+   },
+   {
+    "id": "command.zte.gpon.global.delete.onu_type_delete",
+    "canonical_name": "no onu-type",
+    "vendor": "ZTE",
+    "family": "ZXA10 C320",
+    "firmware": [
+     "2.0",
+     "2.1"
+    ],
+    "technology": "gpon",
+    "category": "delete",
+    "cli_mode": "pon_config",
+    "cli_context": "pon",
+    "entity_ref": null,
+    "description": "Borra un tipo de ONU.",
+    "syntax": "no onu-type <nombre>",
+    "parameters": [
+     {
+      "name": "nombre",
+      "type": "string",
+      "pattern": null,
+      "range": null,
+      "required": true,
+      "description": "",
+      "example": "ADC"
+     }
+    ],
+    "output_fields": [],
+    "prerequisites": [],
+    "related_commands": [],
+    "rollback": null,
+    "errors": [],
+    "notes": null,
+    "evidence": "ejecutado en escritura y verificado releyendo la OLT PRIMAVERA (ZXA10 C320 V2.1.0) el 2026-11-03; estado original restaurado",
+    "sources": [
+     {
+      "doc_type": "hardware_verification",
+      "pages": null,
+      "confidence": 0.95
+     }
+    ],
+    "confidence": {
+     "extraction": 0.95,
+     "correlation": 0.0,
+     "overall": 0.95
+    },
+    "status": "verified",
     "conflicts": []
    }
   ]

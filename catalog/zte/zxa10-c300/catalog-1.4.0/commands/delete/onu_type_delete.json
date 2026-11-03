@@ -1,0 +1,49 @@
+{
+  "id": "command.zte.gpon.global.delete.onu_type_delete",
+  "canonical_name": "no onu-type",
+  "vendor": "ZTE",
+  "family": "ZXA10 C300",
+  "firmware": [
+    "2.0",
+    "2.1"
+  ],
+  "technology": "gpon",
+  "category": "delete",
+  "cli_mode": "pon_config",
+  "cli_context": "pon",
+  "entity_ref": null,
+  "description": "Borra un tipo de ONU.",
+  "syntax": "no onu-type <nombre>",
+  "parameters": [
+    {
+      "name": "nombre",
+      "type": "string",
+      "pattern": null,
+      "range": null,
+      "required": true,
+      "description": "",
+      "example": "ADC"
+    }
+  ],
+  "output_fields": [],
+  "prerequisites": [],
+  "related_commands": [],
+  "rollback": null,
+  "errors": [],
+  "notes": null,
+  "evidence": "ejecutado en escritura y verificado releyendo la OLT Unete Popular (ZXA10 C300 V2.1.0) el 2026-11-03; estado original restaurado",
+  "sources": [
+    {
+      "doc_type": "hardware_verification",
+      "pages": null,
+      "confidence": 0.95
+    }
+  ],
+  "confidence": {
+    "extraction": 0.95,
+    "correlation": 0.0,
+    "overall": 0.95
+  },
+  "status": "verified",
+  "conflicts": []
+}

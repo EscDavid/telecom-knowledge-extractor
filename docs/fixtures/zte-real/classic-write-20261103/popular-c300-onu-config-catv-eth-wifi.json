@@ -1,0 +1,268 @@
+{
+  "version": 1,
+  "generatedAt": "2026-11-03T18:55:45.111Z",
+  "mode": "aplicado",
+  "platform": "classic",
+  "olt": {
+    "name": "OLT Unete Popular",
+    "model": "ZXA10 C300"
+  },
+  "onuType": "ADC",
+  "firmware": "PhyLoc  FileType   VerType    VerTag            BuildTime           VerLength\n-------------------------------------------------------------------------------\n1/1/2   GTXK       MVR        V2.1.0            2017-07-03 00:28:55 7481408\n1/1/2   GTXK       BT         V4.0.17           2018-10-30 00:51:49 524288\n1/1/4   GTGHG      MVR        V2.1.0            2017-01-17 00:40:26 6634924\n1/1/4   GTGHG      BT         V4.0.5            2014-12-17 13:37:42 524288\n1/1/10  SCXM       MVR        V2.1.0            2017-01-17 00:57:03 13612859\n1/1/10  SCXM       BT         V1.2.3            2012-06-06 13:10:39 447632\n1/1/10  SCXM       FW         V2.1.0            2017-01-17 00:57:26 222044\n1/1/11  SCXM       MVR        V2.1.0            2017-01-17 00:57:03 13612859\n1/1/11  SCXM       BT         V1.2.3            2012-06-06 13:10:39 447632\n1/1/11  SCXM       FW         V2.1.0            2017-01-17 00:57:26 222044",
+  "steps": [
+    {
+      "group": "config",
+      "check": "show gpon remote-onu capability gpon-onu_<PON>:<ONU>",
+      "templateId": null,
+      "syntax": [
+        "show gpon remote-onu capability gpon-onu_<PON>:<ONU>"
+      ],
+      "outcome": "pass",
+      "detail": "",
+      "durationMs": 423,
+      "at": "2026-11-03T18:55:31.142Z"
+    },
+    {
+      "group": "config",
+      "check": "show gpon remote-onu interface eth gpon-onu_<PON>:<ONU>",
+      "templateId": null,
+      "syntax": [
+        "show gpon remote-onu interface eth gpon-onu_<PON>:<ONU>"
+      ],
+      "outcome": "pass",
+      "detail": "",
+      "durationMs": 206,
+      "at": "2026-11-03T18:55:31.348Z"
+    },
+    {
+      "group": "config",
+      "check": "show gpon remote-onu interface video gpon-onu_<PON>:<ONU>",
+      "templateId": null,
+      "syntax": [
+        "show gpon remote-onu interface video gpon-onu_<PON>:<ONU>"
+      ],
+      "outcome": "pass",
+      "detail": "",
+      "durationMs": 169,
+      "at": "2026-11-03T18:55:31.518Z"
+    },
+    {
+      "group": "config",
+      "check": "show gpon remote-onu wifi info gpon-onu_<PON>:<ONU>",
+      "templateId": null,
+      "syntax": [
+        "show gpon remote-onu wifi info gpon-onu_<PON>:<ONU>"
+      ],
+      "outcome": "pass",
+      "detail": "",
+      "durationMs": 173,
+      "at": "2026-11-03T18:55:31.691Z"
+    },
+    {
+      "group": "config",
+      "check": "show gpon remote-onu interface wifi gpon-onu_<PON>:<ONU>",
+      "templateId": null,
+      "syntax": [
+        "show gpon remote-onu interface wifi gpon-onu_<PON>:<ONU>"
+      ],
+      "outcome": "pass",
+      "detail": "",
+      "durationMs": 173,
+      "at": "2026-11-03T18:55:31.864Z"
+    },
+    {
+      "group": "config",
+      "check": "show gpon remote-onu ssid info gpon-onu_<PON>:<ONU>",
+      "templateId": null,
+      "syntax": [
+        "show gpon remote-onu ssid info gpon-onu_<PON>:<ONU>"
+      ],
+      "outcome": "pass",
+      "detail": "",
+      "durationMs": 189,
+      "at": "2026-11-03T18:55:32.053Z"
+    },
+    {
+      "group": "config",
+      "check": "show gpon remote-onu traffic-limit gpon-onu_<PON>:<ONU>",
+      "templateId": null,
+      "syntax": [
+        "show gpon remote-onu traffic-limit gpon-onu_<PON>:<ONU>"
+      ],
+      "outcome": "pass",
+      "detail": "sin información (la ONU no lo tiene)",
+      "durationMs": 243,
+      "at": "2026-11-03T18:55:32.297Z"
+    },
+    {
+      "group": "config",
+      "check": "CATV (interface video … state): cambiar",
+      "templateId": "zte.cls.onu.catv.set",
+      "syntax": [
+        "configure terminal",
+        "pon-onu-mng gpon-onu_<PON>:<ONU>",
+        "interface video video_0/1 state lock",
+        "end"
+      ],
+      "outcome": "pass",
+      "detail": "aceptado y verificado releyendo",
+      "durationMs": 575,
+      "at": "2026-11-03T18:55:32.878Z"
+    },
+    {
+      "group": "config",
+      "check": "CATV (interface video … state): volver al valor original",
+      "templateId": "zte.cls.onu.catv.set",
+      "syntax": [
+        "configure terminal",
+        "pon-onu-mng gpon-onu_<PON>:<ONU>",
+        "interface video video_0/1 state unlock",
+        "end"
+      ],
+      "outcome": "pass",
+      "detail": "aceptado y verificado releyendo",
+      "durationMs": 631,
+      "at": "2026-11-03T18:55:33.509Z"
+    },
+    {
+      "group": "config",
+      "check": "Ethernet: estado del puerto (interface eth … state): cambiar",
+      "templateId": "zte.cls.onu.eth.admin.set",
+      "syntax": [
+        "configure terminal",
+        "pon-onu-mng gpon-onu_<PON>:<ONU>",
+        "interface eth eth_0/1 state lock",
+        "end"
+      ],
+      "outcome": "pass",
+      "detail": "aceptado y verificado releyendo",
+      "durationMs": 596,
+      "at": "2026-11-03T18:55:34.105Z"
+    },
+    {
+      "group": "config",
+      "check": "Ethernet: estado del puerto (interface eth … state): volver al valor original",
+      "templateId": "zte.cls.onu.eth.admin.set",
+      "syntax": [
+        "configure terminal",
+        "pon-onu-mng gpon-onu_<PON>:<ONU>",
+        "interface eth eth_0/1 state unlock",
+        "end"
+      ],
+      "outcome": "pass",
+      "detail": "aceptado y verificado releyendo",
+      "durationMs": 6732,
+      "at": "2026-11-03T18:55:40.837Z"
+    },
+    {
+      "group": "config",
+      "check": "Ethernet: velocidad de negociación (interface eth … speed): cambiar",
+      "templateId": "zte.cls.onu.eth.speed.set",
+      "syntax": [
+        "configure terminal",
+        "pon-onu-mng gpon-onu_<PON>:<ONU>",
+        "interface eth eth_0/1 speed full-100",
+        "end"
+      ],
+      "outcome": "pass",
+      "detail": "aceptado y verificado releyendo",
+      "durationMs": 578,
+      "at": "2026-11-03T18:55:41.415Z"
+    },
+    {
+      "group": "config",
+      "check": "Ethernet: velocidad de negociación (interface eth … speed): volver al valor original",
+      "templateId": "zte.cls.onu.eth.speed.set",
+      "syntax": [
+        "configure terminal",
+        "pon-onu-mng gpon-onu_<PON>:<ONU>",
+        "interface eth eth_0/1 speed auto",
+        "end"
+      ],
+      "outcome": "pass",
+      "detail": "aceptado y verificado releyendo",
+      "durationMs": 626,
+      "at": "2026-11-03T18:55:42.041Z"
+    },
+    {
+      "group": "config",
+      "check": "Ethernet: límite de tasa (traffic-limit … cir)",
+      "templateId": "zte.cls.onu.trafficlimit.set",
+      "outcome": "skipped",
+      "detail": "el puerto no tiene límite previo y no hay forma verificada de quitarlo",
+      "durationMs": 0,
+      "syntax": [],
+      "at": "2026-11-03T18:55:42.041Z"
+    },
+    {
+      "group": "config",
+      "check": "WiFi global (wifi enable|disable): cambiar",
+      "templateId": "zte.cls.onu.wifi.global.set",
+      "syntax": [
+        "configure terminal",
+        "pon-onu-mng gpon-onu_<PON>:<ONU>",
+        "wifi disable",
+        "end"
+      ],
+      "outcome": "pass",
+      "detail": "aceptado y verificado releyendo",
+      "durationMs": 564,
+      "at": "2026-11-03T18:55:42.606Z"
+    },
+    {
+      "group": "config",
+      "check": "WiFi global (wifi enable|disable): volver al valor original",
+      "templateId": "zte.cls.onu.wifi.global.set",
+      "syntax": [
+        "configure terminal",
+        "pon-onu-mng gpon-onu_<PON>:<ONU>",
+        "wifi enable",
+        "end"
+      ],
+      "outcome": "pass",
+      "detail": "aceptado y verificado releyendo",
+      "durationMs": 617,
+      "at": "2026-11-03T18:55:43.223Z"
+    },
+    {
+      "group": "config",
+      "check": "WiFi: radio (interface wifi … state): cambiar",
+      "templateId": "zte.cls.onu.wifi.admin.set",
+      "syntax": [
+        "configure terminal",
+        "pon-onu-mng gpon-onu_<PON>:<ONU>",
+        "interface wifi wifi_0/1 state lock",
+        "end"
+      ],
+      "outcome": "pass",
+      "detail": "aceptado y verificado releyendo",
+      "durationMs": 625,
+      "at": "2026-11-03T18:55:43.848Z"
+    },
+    {
+      "group": "config",
+      "check": "WiFi: radio (interface wifi … state): volver al valor original",
+      "templateId": "zte.cls.onu.wifi.admin.set",
+      "syntax": [
+        "configure terminal",
+        "pon-onu-mng gpon-onu_<PON>:<ONU>",
+        "interface wifi wifi_0/1 state unlock",
+        "end"
+      ],
+      "outcome": "pass",
+      "detail": "aceptado y verificado releyendo",
+      "durationMs": 564,
+      "at": "2026-11-03T18:55:44.412Z"
+    },
+    {
+      "group": "config",
+      "check": "WiFi: nombre de la red (ssid ctrl … name)",
+      "templateId": "zte.cls.onu.ssid.name.set",
+      "outcome": "skipped",
+      "detail": "la ONU no publica SSID",
+      "durationMs": 0,
+      "syntax": [],
+      "at": "2026-11-03T18:55:44.412Z"
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "id": "command.zte.gpon.onu.delete.onu_delete",
+  "canonical_name": "no onu <n>",
+  "vendor": "ZTE",
+  "family": "ZXA10 C300",
+  "firmware": [
+    "2.0",
+    "2.1"
+  ],
+  "technology": "gpon",
+  "category": "delete",
+  "cli_mode": "interface_config",
+  "cli_context": "interface gpon-olt_<pon>",
+  "entity_ref": "entity.zte.gpon.device.onu",
+  "description": "Da de baja la ONU del puerto con toda su configuración. Dar de alta de nuevo exige reponer interfaz y pon-onu-mng (el equipo no los conserva).",
+  "syntax": "no onu <n>",
+  "parameters": [
+    {
+      "name": "pon",
+      "type": "string",
+      "pattern": null,
+      "range": null,
+      "required": true,
+      "description": "puerto PON rack/slot/puerto",
+      "example": "1/3/1"
+    }
+  ],
+  "output_fields": [],
+  "prerequisites": [],
+  "related_commands": [],
+  "rollback": "onu <n> type <tipo> sn <sn> y reponer interfaz y pon-onu-mng",
+  "errors": [],
+  "notes": "La ONU vuelve a `working` unos 6 s (C300) a 12 s (C320) tras el alta; verificado por relectura idéntica al estado previo.",
+  "evidence": "ejecutado en escritura y verificado releyendo la OLT Unete Popular (ZXA10 C300 V2.1.0) el 2026-11-03; estado original restaurado",
+  "sources": [
+    {
+      "doc_type": "hardware_verification",
+      "pages": null,
+      "confidence": 0.95
+    }
+  ],
+  "confidence": {
+    "extraction": 0.95,
+    "correlation": 0.0,
+    "overall": 0.95
+  },
+  "status": "verified",
+  "conflicts": []
+}

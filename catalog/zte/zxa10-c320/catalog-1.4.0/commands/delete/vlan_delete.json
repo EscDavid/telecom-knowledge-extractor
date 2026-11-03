@@ -1,0 +1,49 @@
+{
+  "id": "command.zte.gpon.vlan.delete.vlan_delete",
+  "canonical_name": "no vlan <id>",
+  "vendor": "ZTE",
+  "family": "ZXA10 C320",
+  "firmware": [
+    "2.0",
+    "2.1"
+  ],
+  "technology": "gpon",
+  "category": "delete",
+  "cli_mode": "global_config",
+  "cli_context": "configure terminal",
+  "entity_ref": "entity.zte.gpon.logical.vlan",
+  "description": "Borra una VLAN de la OLT.",
+  "syntax": "no vlan <1-4094>",
+  "parameters": [
+    {
+      "name": "vlan-id",
+      "type": "string",
+      "pattern": null,
+      "range": "1-4094",
+      "required": true,
+      "description": "",
+      "example": "3999"
+    }
+  ],
+  "output_fields": [],
+  "prerequisites": [],
+  "related_commands": [],
+  "rollback": "vlan <id>",
+  "errors": [],
+  "notes": null,
+  "evidence": "ejecutado en escritura y verificado releyendo la OLT PRIMAVERA (ZXA10 C320 V2.1.0) el 2026-11-03; estado original restaurado",
+  "sources": [
+    {
+      "doc_type": "hardware_verification",
+      "pages": null,
+      "confidence": 0.95
+    }
+  ],
+  "confidence": {
+    "extraction": 0.95,
+    "correlation": 0.0,
+    "overall": 0.95
+  },
+  "status": "verified",
+  "conflicts": []
+}

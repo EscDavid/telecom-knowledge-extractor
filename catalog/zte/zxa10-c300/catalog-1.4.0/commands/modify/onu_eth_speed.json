@@ -1,0 +1,39 @@
+{
+  "id": "command.zte.gpon.onu.modify.onu_eth_speed",
+  "canonical_name": "interface eth speed",
+  "vendor": "ZTE",
+  "family": "ZXA10 C300",
+  "firmware": [
+    "2.0",
+    "2.1"
+  ],
+  "technology": "gpon",
+  "category": "modify",
+  "cli_mode": "pon_config",
+  "cli_context": "pon-onu-mng gpon-onu_<idx>",
+  "entity_ref": "entity.zte.gpon.device.onu",
+  "description": "Velocidad de negociación del puerto Ethernet de la ONU.",
+  "syntax": "interface eth eth_0/<n> speed {auto|full-10|full-100|full-1000|half-10|half-100}",
+  "parameters": [],
+  "output_fields": [],
+  "prerequisites": [],
+  "related_commands": [],
+  "rollback": "interface eth eth_0/<n> speed <valor-anterior>",
+  "errors": [],
+  "notes": null,
+  "evidence": "ejecutado en escritura y verificado releyendo la OLT Unete Popular (ZXA10 C300 V2.1.0) el 2026-11-03; estado original restaurado",
+  "sources": [
+    {
+      "doc_type": "hardware_verification",
+      "pages": null,
+      "confidence": 0.95
+    }
+  ],
+  "confidence": {
+    "extraction": 0.95,
+    "correlation": 0.0,
+    "overall": 0.95
+  },
+  "status": "verified",
+  "conflicts": []
+}

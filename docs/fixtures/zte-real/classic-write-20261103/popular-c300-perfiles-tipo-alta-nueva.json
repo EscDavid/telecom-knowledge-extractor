@@ -1,0 +1,210 @@
+{
+  "olt": {
+    "name": "OLT Unete Popular",
+    "model": "ZXA10 C300"
+  },
+  "pon": "1/2/11",
+  "vlan": 101,
+  "mode": "aplicado",
+  "steps": [
+    {
+      "group": "lecturas",
+      "check": "ONU sin autorizar (show gpon onu uncfg)",
+      "templateId": null,
+      "syntax": [
+        "show gpon onu uncfg"
+      ],
+      "outcome": "pass",
+      "detail": "1 en espera",
+      "reply": "OnuIndex                 Sn                  State"
+    },
+    {
+      "group": "lecturas",
+      "check": "tipos de ONU de la OLT (show onu-type)",
+      "templateId": null,
+      "syntax": [
+        "show onu-type"
+      ],
+      "outcome": "pass",
+      "detail": "",
+      "reply": ""
+    },
+    {
+      "group": "perfiles",
+      "check": "crear perfil T-CONT de subida (profile tcont)",
+      "templateId": "zte.cls.olt.speedprofile.tcont.create",
+      "syntax": [
+        "configure terminal",
+        "gpon",
+        "profile tcont CERT5122UP type 5 fixed 64 assured 64 maximum 10000",
+        "end"
+      ],
+      "outcome": "pass",
+      "detail": "aceptado y verificado releyendo",
+      "reply": "%Info 20272: Enter configuration commands, one per line. End with CTRL/Z."
+    },
+    {
+      "group": "perfiles",
+      "check": "crear perfil de tráfico de bajada (profile traffic)",
+      "templateId": "zte.cls.olt.speedprofile.traffic.create",
+      "syntax": [
+        "configure terminal",
+        "gpon",
+        "profile traffic CERT5122DN sir 10000 pir 10000",
+        "end"
+      ],
+      "outcome": "pass",
+      "detail": "aceptado y verificado releyendo",
+      "reply": "%Info 20272: Enter configuration commands, one per line. End with CTRL/Z."
+    },
+    {
+      "group": "tipo de ONU",
+      "check": "crear tipo de ONU (onu-type … gpon + onu-type-if)",
+      "templateId": "zte.cls.olt.onutype.create",
+      "syntax": [
+        "configure terminal",
+        "pon",
+        "onu-type CERT5122 gpon description 1ETH max-tcont 7 max-gemport 32 max-switch-perslot 1 max-flow-perswitch 8",
+        "onu-type-if CERT5122 eth_0/1",
+        "end"
+      ],
+      "outcome": "pass",
+      "detail": "aceptado y verificado releyendo",
+      "reply": "%Info 20272: Enter configuration commands, one per line. End with CTRL/Z."
+    },
+    {
+      "group": "alta nueva",
+      "check": "paso register",
+      "templateId": "zte.cls.onu.authorize.register",
+      "syntax": [
+        "configure terminal",
+        "interface gpon-olt_1/2/11",
+        "onu 1 type CERT5122 sn ZTEGCE175122",
+        "end"
+      ],
+      "outcome": "pass",
+      "detail": "aceptado y verificado releyendo",
+      "reply": "%Info 20272: Enter configuration commands, one per line. End with CTRL/Z."
+    },
+    {
+      "group": "alta nueva",
+      "check": "paso tcont_gem",
+      "templateId": "zte.cls.onu.authorize.tcont_gem",
+      "syntax": [
+        "configure terminal",
+        "interface gpon-onu_1/2/11:1",
+        "tcont 1 profile CERT5122UP",
+        "gemport 1 tcont 1",
+        "end"
+      ],
+      "outcome": "pass",
+      "detail": "aceptado y verificado releyendo",
+      "reply": "%Info 20272: Enter configuration commands, one per line. End with CTRL/Z."
+    },
+    {
+      "group": "alta nueva",
+      "check": "paso service_port",
+      "templateId": "zte.cls.onu.authorize.service_port",
+      "syntax": [
+        "configure terminal",
+        "interface gpon-onu_1/2/11:1",
+        "service-port 1 vport 1 user-vlan 101 vlan 101",
+        "end"
+      ],
+      "outcome": "pass",
+      "detail": "aceptado y verificado releyendo",
+      "reply": "%Info 20272: Enter configuration commands, one per line. End with CTRL/Z."
+    },
+    {
+      "group": "alta nueva",
+      "check": "paso speed_profile",
+      "templateId": "zte.cls.onu.authorize.speed_profile",
+      "syntax": [
+        "configure terminal",
+        "interface gpon-onu_1/2/11:1",
+        "gemport 1 traffic-limit downstream CERT5122DN",
+        "end"
+      ],
+      "outcome": "pass",
+      "detail": "aceptado y verificado releyendo",
+      "reply": "%Info 20272: Enter configuration commands, one per line. End with CTRL/Z."
+    },
+    {
+      "group": "alta nueva",
+      "check": "la ONU nueva quedó como se pidió (relectura)",
+      "templateId": null,
+      "syntax": [
+        "show running-config interface gpon-onu_1/2/11:1",
+        "show gpon onu detail-info gpon-onu_1/2/11:1"
+      ],
+      "outcome": "pass",
+      "detail": "",
+      "reply": ""
+    },
+    {
+      "group": "alta nueva",
+      "check": "dar de baja la ONU nueva (no onu N)",
+      "templateId": "zte.cls.onu.authorize.rollback",
+      "syntax": [
+        "configure terminal",
+        "interface gpon-olt_1/2/11",
+        "no onu 1",
+        "end"
+      ],
+      "outcome": "pass",
+      "detail": "aceptado y verificado releyendo",
+      "reply": "%Info 20272: Enter configuration commands, one per line. End with CTRL/Z."
+    },
+    {
+      "group": "tipo de ONU",
+      "check": "borrar el tipo de ONU (no onu-type)",
+      "templateId": "zte.cls.cert.onutype.delete",
+      "syntax": [
+        "configure terminal",
+        "pon",
+        "no onu-type CERT5122",
+        "end"
+      ],
+      "outcome": "pass",
+      "detail": "aceptado y verificado releyendo",
+      "reply": "%Info 20272: Enter configuration commands, one per line. End with CTRL/Z."
+    },
+    {
+      "group": "perfiles",
+      "check": "borrar el perfil de tráfico (no profile traffic)",
+      "templateId": "zte.cls.cert.profile.traffic.delete",
+      "syntax": [
+        "configure terminal",
+        "gpon",
+        "no profile traffic CERT5122DN",
+        "end"
+      ],
+      "outcome": "pass",
+      "detail": "aceptado y verificado releyendo",
+      "reply": "%Info 20272: Enter configuration commands, one per line. End with CTRL/Z."
+    },
+    {
+      "group": "perfiles",
+      "check": "borrar el perfil T-CONT (no profile tcont)",
+      "templateId": "zte.cls.cert.profile.tcont.delete",
+      "syntax": [
+        "configure terminal",
+        "gpon",
+        "no profile tcont CERT5122UP",
+        "end"
+      ],
+      "outcome": "pass",
+      "detail": "aceptado y verificado releyendo",
+      "reply": "%Info 20272: Enter configuration commands, one per line. End with CTRL/Z."
+    },
+    {
+      "group": "limpieza",
+      "check": "estado final: sin ONU, tipo ni perfiles de prueba",
+      "templateId": null,
+      "outcome": "pass",
+      "detail": "",
+      "syntax": [],
+      "reply": ""
+    }
+  ]
+}

@@ -1,0 +1,125 @@
+{
+  "olt": {
+    "name": "PRIMAVERA",
+    "model": "ZXA10 C320"
+  },
+  "pon": "1/1/9",
+  "vlan": 3999,
+  "mode": "aplicado",
+  "steps": [
+    {
+      "check": "show running-config interface gpon-olt_1/1/9",
+      "templateId": null,
+      "syntax": [
+        "show running-config interface gpon-olt_1/1/9"
+      ],
+      "outcome": "pass",
+      "detail": "",
+      "reply": ""
+    },
+    {
+      "check": "show vlan 3999 (la VLAN de prueba no existe)",
+      "templateId": null,
+      "syntax": [
+        "show vlan 3999"
+      ],
+      "outcome": "pass",
+      "detail": "%Code 60514: This vlan does not exist.",
+      "reply": "%Code 60514: This vlan does not exist."
+    },
+    {
+      "check": "show vlan summary",
+      "templateId": null,
+      "syntax": [
+        "show vlan summary"
+      ],
+      "outcome": "pass",
+      "detail": "",
+      "reply": ""
+    },
+    {
+      "check": "descripción del puerto: poner (description)",
+      "templateId": "zte.cls.cert.pon.description.set",
+      "syntax": [
+        "configure terminal",
+        "interface gpon-olt_1/1/9",
+        "description CERT20DB",
+        "end"
+      ],
+      "outcome": "pass",
+      "detail": "aceptado y verificado releyendo",
+      "reply": "%Info 20272: Enter configuration commands, one per line. End with CTRL/Z."
+    },
+    {
+      "check": "descripción del puerto: quitar (no description)",
+      "templateId": "zte.cls.cert.pon.description.clear",
+      "syntax": [
+        "configure terminal",
+        "interface gpon-olt_1/1/9",
+        "no description",
+        "end"
+      ],
+      "outcome": "pass",
+      "detail": "aceptado y verificado releyendo",
+      "reply": "%Info 20272: Enter configuration commands, one per line. End with CTRL/Z."
+    },
+    {
+      "check": "apagar el puerto (shutdown)",
+      "templateId": "zte.cls.cert.pon.shutdown",
+      "syntax": [
+        "configure terminal",
+        "interface gpon-olt_1/1/9",
+        "shutdown",
+        "end"
+      ],
+      "outcome": "pass",
+      "detail": "aceptado y verificado releyendo",
+      "reply": "%Info 20272: Enter configuration commands, one per line. End with CTRL/Z."
+    },
+    {
+      "check": "encender el puerto (no shutdown)",
+      "templateId": "zte.cls.cert.pon.noshutdown",
+      "syntax": [
+        "configure terminal",
+        "interface gpon-olt_1/1/9",
+        "no shutdown",
+        "end"
+      ],
+      "outcome": "pass",
+      "detail": "aceptado y verificado releyendo",
+      "reply": "%Info 20272: Enter configuration commands, one per line. End with CTRL/Z."
+    },
+    {
+      "check": "crear la VLAN 3999 (vlan N)",
+      "templateId": "zte.cls.cert.vlan.create",
+      "syntax": [
+        "configure terminal",
+        "vlan 3999",
+        "end"
+      ],
+      "outcome": "pass",
+      "detail": "aceptado y verificado releyendo",
+      "reply": "%Info 20272: Enter configuration commands, one per line. End with CTRL/Z."
+    },
+    {
+      "check": "borrar la VLAN 3999 (no vlan N)",
+      "templateId": "zte.cls.cert.vlan.delete",
+      "syntax": [
+        "configure terminal",
+        "no vlan 3999",
+        "end"
+      ],
+      "outcome": "pass",
+      "detail": "aceptado y verificado releyendo",
+      "reply": "%Info 20272: Enter configuration commands, one per line. End with CTRL/Z."
+    },
+    {
+      "check": "estado final: puerto encendido, descripción original y sin la VLAN de prueba",
+      "templateId": null,
+      "outcome": "pass",
+      "detail": "",
+      "syntax": [],
+      "reply": ""
+    }
+  ]
+}

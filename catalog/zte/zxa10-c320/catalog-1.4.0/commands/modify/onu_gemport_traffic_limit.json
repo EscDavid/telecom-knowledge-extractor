@@ -1,0 +1,39 @@
+{
+  "id": "command.zte.gpon.gem.modify.onu_gemport_traffic_limit",
+  "canonical_name": "gemport traffic-limit",
+  "vendor": "ZTE",
+  "family": "ZXA10 C320",
+  "firmware": [
+    "2.0",
+    "2.1"
+  ],
+  "technology": "gpon",
+  "category": "modify",
+  "cli_mode": "interface_config",
+  "cli_context": "interface gpon-onu_<idx>",
+  "entity_ref": "entity.zte.gpon.logical.gem_port",
+  "description": "Perfil de velocidad de bajada (en clásicas va aquí; en C6 va en el service-port).",
+  "syntax": "gemport <n> traffic-limit downstream <perfil-bajada>",
+  "parameters": [],
+  "output_fields": [],
+  "prerequisites": [],
+  "related_commands": [],
+  "rollback": "gemport <n> traffic-limit downstream <perfil-anterior>",
+  "errors": [],
+  "notes": null,
+  "evidence": "ejecutado en escritura y verificado releyendo la OLT PRIMAVERA (ZXA10 C320 V2.1.0) el 2026-11-03; estado original restaurado",
+  "sources": [
+    {
+      "doc_type": "hardware_verification",
+      "pages": null,
+      "confidence": 0.95
+    }
+  ],
+  "confidence": {
+    "extraction": 0.95,
+    "correlation": 0.0,
+    "overall": 0.95
+  },
+  "status": "verified",
+  "conflicts": []
+}

@@ -1,0 +1,49 @@
+{
+  "id": "command.zte.gpon.global.create.onu_type_create",
+  "canonical_name": "onu-type … gpon / onu-type-if",
+  "vendor": "ZTE",
+  "family": "ZXA10 C300",
+  "firmware": [
+    "2.0",
+    "2.1"
+  ],
+  "technology": "gpon",
+  "category": "create",
+  "cli_mode": "pon_config",
+  "cli_context": "pon",
+  "entity_ref": null,
+  "description": "Crea un tipo de ONU GPON con sus puertos Ethernet (modo `pon`).",
+  "syntax": "onu-type <nombre> gpon description <d> max-tcont <n> max-gemport <n> max-switch-perslot <n> max-flow-perswitch <n> ; onu-type-if <nombre> eth_0/<1-n>",
+  "parameters": [
+    {
+      "name": "nombre",
+      "type": "string",
+      "pattern": null,
+      "range": null,
+      "required": true,
+      "description": "",
+      "example": "ADC"
+    }
+  ],
+  "output_fields": [],
+  "prerequisites": [],
+  "related_commands": [],
+  "rollback": "no onu-type <nombre>",
+  "errors": [],
+  "notes": "La sintaxis salía solo del manual (§2.1); ahora ejecutada y verificada con `show onu-type`.",
+  "evidence": "ejecutado en escritura y verificado releyendo la OLT Unete Popular (ZXA10 C300 V2.1.0) el 2026-11-03; estado original restaurado",
+  "sources": [
+    {
+      "doc_type": "hardware_verification",
+      "pages": null,
+      "confidence": 0.95
+    }
+  ],
+  "confidence": {
+    "extraction": 0.95,
+    "correlation": 0.0,
+    "overall": 0.95
+  },
+  "status": "verified",
+  "conflicts": []
+}
