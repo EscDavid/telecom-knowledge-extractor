@@ -1,0 +1,38 @@
+{
+  "id": "command.huawei.gpon.optical_module.show.estado_modulo_optico_eth",
+  "canonical_name": "display port opticstate {all|<port>} [extend] [remote]",
+  "vendor": "Huawei",
+  "family": "MA5608T",
+  "firmware": [
+    "R015"
+  ],
+  "technology": "gpon",
+  "category": "show",
+  "cli_mode": "interface_config",
+  "cli_context": "huawei(config-if-opg-0/<slot>)#",
+  "entity_ref": "entity.huawei.gpon.hardware.optical_module",
+  "description": null,
+  "syntax": "display port opticstate {all|<port>} [extend] [remote]",
+  "parameters": [],
+  "output_fields": [],
+  "prerequisites": [],
+  "related_commands": [],
+  "rollback": null,
+  "errors": [],
+  "notes": null,
+  "evidence": "comando citado en un post del foro oficial Huawei Enterprise (forum.huawei.com, autor RicoFranco, 2019-03-01, 28419 vistas, 14 likes) — nunca ejecutado contra este equipo: la cuenta Telnet actual está en vista de usuario (Mnz.principal>), sin privilegio para entrar a modo configuración/ver salidas reales.",
+  "sources": [
+    {
+      "doc_type": "community",
+      "pages": null,
+      "confidence": 0.3
+    }
+  ],
+  "confidence": {
+    "extraction": 0.3,
+    "correlation": 0.0,
+    "overall": 0.3
+  },
+  "status": "documented",
+  "conflicts": []
+}

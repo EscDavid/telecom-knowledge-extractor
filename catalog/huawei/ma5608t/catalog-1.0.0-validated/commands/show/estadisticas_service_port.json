@@ -1,0 +1,46 @@
+{
+  "id": "command.huawei.gpon.global.show.estadisticas_service_port",
+  "canonical_name": "display statistics service-port [<index>]",
+  "vendor": "Huawei",
+  "family": "MA5608T",
+  "firmware": [
+    "R015"
+  ],
+  "technology": "gpon",
+  "category": "show",
+  "cli_mode": "privileged_exec",
+  "cli_context": null,
+  "entity_ref": null,
+  "description": null,
+  "syntax": "display statistics service-port [<index>]",
+  "parameters": [],
+  "output_fields": [
+    {
+      "name": "Number of upstream/downstream bytes, packets, discard packets",
+      "type": "string",
+      "unit": null,
+      "oid_ref": null,
+      "oid_status": "not_mapped"
+    }
+  ],
+  "prerequisites": [],
+  "related_commands": [],
+  "rollback": null,
+  "errors": [],
+  "notes": null,
+  "evidence": "comando citado en un post del foro oficial Huawei Enterprise (forum.huawei.com, autor RicoFranco, 2019-03-01, 28419 vistas, 14 likes) — nunca ejecutado contra este equipo: la cuenta Telnet actual está en vista de usuario (Mnz.principal>), sin privilegio para entrar a modo configuración/ver salidas reales.",
+  "sources": [
+    {
+      "doc_type": "community",
+      "pages": null,
+      "confidence": 0.3
+    }
+  ],
+  "confidence": {
+    "extraction": 0.3,
+    "correlation": 0.0,
+    "overall": 0.3
+  },
+  "status": "documented",
+  "conflicts": []
+}

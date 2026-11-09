@@ -1,0 +1,562 @@
+{
+ "meta": {
+  "doc_type": "alarms",
+  "vendor": "Huawei",
+  "families": [
+   "MA5608T"
+  ],
+  "source": "docs/huawei/ma5608t/observium/HUAWEI-XPON-TRAP-MIB.json",
+  "generated_by": "scripts/build_huawei_alarm_catalog.py",
+  "note": "tipo de alarma documentado en un objeto real de HUAWEI-XPON-MIB (render de Observium, nivel de evidencia B — ver docs/adaptacion_multivendor.md §2); no es un NOTIFICATION-TYPE/trap propio — Huawei no expone esos en ningún .mib fetched (ninguno de los 7 módulos ingeridos tiene kind=notification). oid_trap=null a propósito: no existe un OID de trap que citar, y no se fabrica uno."
+ },
+ "alarms": {
+  "MA5608T": [
+   {
+    "code": "huawei.alarm_type.optical_module.rxpower",
+    "name": "optical_rxPower",
+    "canonical_name": "Optical Rxpower",
+    "entity_ref": "entity.huawei.gpon.port.pon_port",
+    "vendor": "Huawei",
+    "family": "MA5608T",
+    "firmware": [
+     "R015"
+    ],
+    "severity": "warning",
+    "type": "optical",
+    "description": "This object indicates the alarm type,\nOptions:\n1. rxPower(1) - The alarm type is rxPower\n2. txPower(2) - The alarm type is txPower\n3. voltage(3) - The alarm type is voltage\n4. temperature(4) - The alarm type is temperature\n5. biasCurrent(5) - The alarm type is bias current\n6. txPower10g(6) - The alarm type is 10G txPower\n7. biasCurrent10g(7) - The alarm type is 10G bias current\n8. catvRxPower(8) - The alarm type is catv rxPower",
+    "probable_causes": [],
+    "remediation": [],
+    "oid_trap": null,
+    "oid_refs": [
+     "1.3.6.1.4.1.2011.6.128.1.1.11.4"
+    ],
+    "auto_clear": false,
+    "clear_condition": null,
+    "threshold": null,
+    "escalation": {
+     "warning_after_minutes": null,
+     "major_after_minutes": null,
+     "critical_after_minutes": null
+    },
+    "sources": [
+     {
+      "doc_type": "community",
+      "pages": null,
+      "confidence": 0.3
+     }
+    ],
+    "confidence": {
+     "extraction": 0.3,
+     "correlation": 0.0,
+     "overall": 0.3
+    },
+    "status": "documented",
+    "conflicts": []
+   },
+   {
+    "code": "huawei.alarm_type.optical_module.txpower",
+    "name": "optical_txPower",
+    "canonical_name": "Optical Txpower",
+    "entity_ref": "entity.huawei.gpon.port.pon_port",
+    "vendor": "Huawei",
+    "family": "MA5608T",
+    "firmware": [
+     "R015"
+    ],
+    "severity": "warning",
+    "type": "optical",
+    "description": "This object indicates the alarm type,\nOptions:\n1. rxPower(1) - The alarm type is rxPower\n2. txPower(2) - The alarm type is txPower\n3. voltage(3) - The alarm type is voltage\n4. temperature(4) - The alarm type is temperature\n5. biasCurrent(5) - The alarm type is bias current\n6. txPower10g(6) - The alarm type is 10G txPower\n7. biasCurrent10g(7) - The alarm type is 10G bias current\n8. catvRxPower(8) - The alarm type is catv rxPower",
+    "probable_causes": [],
+    "remediation": [],
+    "oid_trap": null,
+    "oid_refs": [
+     "1.3.6.1.4.1.2011.6.128.1.1.11.4"
+    ],
+    "auto_clear": false,
+    "clear_condition": null,
+    "threshold": null,
+    "escalation": {
+     "warning_after_minutes": null,
+     "major_after_minutes": null,
+     "critical_after_minutes": null
+    },
+    "sources": [
+     {
+      "doc_type": "community",
+      "pages": null,
+      "confidence": 0.3
+     }
+    ],
+    "confidence": {
+     "extraction": 0.3,
+     "correlation": 0.0,
+     "overall": 0.3
+    },
+    "status": "documented",
+    "conflicts": []
+   },
+   {
+    "code": "huawei.alarm_type.optical_module.voltage",
+    "name": "optical_voltage",
+    "canonical_name": "Optical Voltage",
+    "entity_ref": "entity.huawei.gpon.port.pon_port",
+    "vendor": "Huawei",
+    "family": "MA5608T",
+    "firmware": [
+     "R015"
+    ],
+    "severity": "warning",
+    "type": "optical",
+    "description": "This object indicates the alarm type,\nOptions:\n1. rxPower(1) - The alarm type is rxPower\n2. txPower(2) - The alarm type is txPower\n3. voltage(3) - The alarm type is voltage\n4. temperature(4) - The alarm type is temperature\n5. biasCurrent(5) - The alarm type is bias current\n6. txPower10g(6) - The alarm type is 10G txPower\n7. biasCurrent10g(7) - The alarm type is 10G bias current\n8. catvRxPower(8) - The alarm type is catv rxPower",
+    "probable_causes": [],
+    "remediation": [],
+    "oid_trap": null,
+    "oid_refs": [
+     "1.3.6.1.4.1.2011.6.128.1.1.11.4"
+    ],
+    "auto_clear": false,
+    "clear_condition": null,
+    "threshold": null,
+    "escalation": {
+     "warning_after_minutes": null,
+     "major_after_minutes": null,
+     "critical_after_minutes": null
+    },
+    "sources": [
+     {
+      "doc_type": "community",
+      "pages": null,
+      "confidence": 0.3
+     }
+    ],
+    "confidence": {
+     "extraction": 0.3,
+     "correlation": 0.0,
+     "overall": 0.3
+    },
+    "status": "documented",
+    "conflicts": []
+   },
+   {
+    "code": "huawei.alarm_type.optical_module.temperature",
+    "name": "optical_temperature",
+    "canonical_name": "Optical Temperature",
+    "entity_ref": "entity.huawei.gpon.port.pon_port",
+    "vendor": "Huawei",
+    "family": "MA5608T",
+    "firmware": [
+     "R015"
+    ],
+    "severity": "warning",
+    "type": "optical",
+    "description": "This object indicates the alarm type,\nOptions:\n1. rxPower(1) - The alarm type is rxPower\n2. txPower(2) - The alarm type is txPower\n3. voltage(3) - The alarm type is voltage\n4. temperature(4) - The alarm type is temperature\n5. biasCurrent(5) - The alarm type is bias current\n6. txPower10g(6) - The alarm type is 10G txPower\n7. biasCurrent10g(7) - The alarm type is 10G bias current\n8. catvRxPower(8) - The alarm type is catv rxPower",
+    "probable_causes": [],
+    "remediation": [],
+    "oid_trap": null,
+    "oid_refs": [
+     "1.3.6.1.4.1.2011.6.128.1.1.11.4"
+    ],
+    "auto_clear": false,
+    "clear_condition": null,
+    "threshold": null,
+    "escalation": {
+     "warning_after_minutes": null,
+     "major_after_minutes": null,
+     "critical_after_minutes": null
+    },
+    "sources": [
+     {
+      "doc_type": "community",
+      "pages": null,
+      "confidence": 0.3
+     }
+    ],
+    "confidence": {
+     "extraction": 0.3,
+     "correlation": 0.0,
+     "overall": 0.3
+    },
+    "status": "documented",
+    "conflicts": []
+   },
+   {
+    "code": "huawei.alarm_type.optical_module.biascurrent",
+    "name": "optical_biasCurrent",
+    "canonical_name": "Optical Biascurrent",
+    "entity_ref": "entity.huawei.gpon.port.pon_port",
+    "vendor": "Huawei",
+    "family": "MA5608T",
+    "firmware": [
+     "R015"
+    ],
+    "severity": "warning",
+    "type": "optical",
+    "description": "This object indicates the alarm type,\nOptions:\n1. rxPower(1) - The alarm type is rxPower\n2. txPower(2) - The alarm type is txPower\n3. voltage(3) - The alarm type is voltage\n4. temperature(4) - The alarm type is temperature\n5. biasCurrent(5) - The alarm type is bias current\n6. txPower10g(6) - The alarm type is 10G txPower\n7. biasCurrent10g(7) - The alarm type is 10G bias current\n8. catvRxPower(8) - The alarm type is catv rxPower",
+    "probable_causes": [],
+    "remediation": [],
+    "oid_trap": null,
+    "oid_refs": [
+     "1.3.6.1.4.1.2011.6.128.1.1.11.4"
+    ],
+    "auto_clear": false,
+    "clear_condition": null,
+    "threshold": null,
+    "escalation": {
+     "warning_after_minutes": null,
+     "major_after_minutes": null,
+     "critical_after_minutes": null
+    },
+    "sources": [
+     {
+      "doc_type": "community",
+      "pages": null,
+      "confidence": 0.3
+     }
+    ],
+    "confidence": {
+     "extraction": 0.3,
+     "correlation": 0.0,
+     "overall": 0.3
+    },
+    "status": "documented",
+    "conflicts": []
+   },
+   {
+    "code": "huawei.alarm_type.optical_module.txpower10g",
+    "name": "optical_txPower10g",
+    "canonical_name": "Optical Txpower10G",
+    "entity_ref": "entity.huawei.gpon.port.pon_port",
+    "vendor": "Huawei",
+    "family": "MA5608T",
+    "firmware": [
+     "R015"
+    ],
+    "severity": "warning",
+    "type": "optical",
+    "description": "This object indicates the alarm type,\nOptions:\n1. rxPower(1) - The alarm type is rxPower\n2. txPower(2) - The alarm type is txPower\n3. voltage(3) - The alarm type is voltage\n4. temperature(4) - The alarm type is temperature\n5. biasCurrent(5) - The alarm type is bias current\n6. txPower10g(6) - The alarm type is 10G txPower\n7. biasCurrent10g(7) - The alarm type is 10G bias current\n8. catvRxPower(8) - The alarm type is catv rxPower",
+    "probable_causes": [],
+    "remediation": [],
+    "oid_trap": null,
+    "oid_refs": [
+     "1.3.6.1.4.1.2011.6.128.1.1.11.4"
+    ],
+    "auto_clear": false,
+    "clear_condition": null,
+    "threshold": null,
+    "escalation": {
+     "warning_after_minutes": null,
+     "major_after_minutes": null,
+     "critical_after_minutes": null
+    },
+    "sources": [
+     {
+      "doc_type": "community",
+      "pages": null,
+      "confidence": 0.3
+     }
+    ],
+    "confidence": {
+     "extraction": 0.3,
+     "correlation": 0.0,
+     "overall": 0.3
+    },
+    "status": "documented",
+    "conflicts": []
+   },
+   {
+    "code": "huawei.alarm_type.optical_module.biascurrent10g",
+    "name": "optical_biasCurrent10g",
+    "canonical_name": "Optical Biascurrent10G",
+    "entity_ref": "entity.huawei.gpon.port.pon_port",
+    "vendor": "Huawei",
+    "family": "MA5608T",
+    "firmware": [
+     "R015"
+    ],
+    "severity": "warning",
+    "type": "optical",
+    "description": "This object indicates the alarm type,\nOptions:\n1. rxPower(1) - The alarm type is rxPower\n2. txPower(2) - The alarm type is txPower\n3. voltage(3) - The alarm type is voltage\n4. temperature(4) - The alarm type is temperature\n5. biasCurrent(5) - The alarm type is bias current\n6. txPower10g(6) - The alarm type is 10G txPower\n7. biasCurrent10g(7) - The alarm type is 10G bias current\n8. catvRxPower(8) - The alarm type is catv rxPower",
+    "probable_causes": [],
+    "remediation": [],
+    "oid_trap": null,
+    "oid_refs": [
+     "1.3.6.1.4.1.2011.6.128.1.1.11.4"
+    ],
+    "auto_clear": false,
+    "clear_condition": null,
+    "threshold": null,
+    "escalation": {
+     "warning_after_minutes": null,
+     "major_after_minutes": null,
+     "critical_after_minutes": null
+    },
+    "sources": [
+     {
+      "doc_type": "community",
+      "pages": null,
+      "confidence": 0.3
+     }
+    ],
+    "confidence": {
+     "extraction": 0.3,
+     "correlation": 0.0,
+     "overall": 0.3
+    },
+    "status": "documented",
+    "conflicts": []
+   },
+   {
+    "code": "huawei.alarm_type.optical_module.catvrxpower",
+    "name": "optical_catvRxPower",
+    "canonical_name": "Optical Catvrxpower",
+    "entity_ref": "entity.huawei.gpon.port.pon_port",
+    "vendor": "Huawei",
+    "family": "MA5608T",
+    "firmware": [
+     "R015"
+    ],
+    "severity": "warning",
+    "type": "optical",
+    "description": "This object indicates the alarm type,\nOptions:\n1. rxPower(1) - The alarm type is rxPower\n2. txPower(2) - The alarm type is txPower\n3. voltage(3) - The alarm type is voltage\n4. temperature(4) - The alarm type is temperature\n5. biasCurrent(5) - The alarm type is bias current\n6. txPower10g(6) - The alarm type is 10G txPower\n7. biasCurrent10g(7) - The alarm type is 10G bias current\n8. catvRxPower(8) - The alarm type is catv rxPower",
+    "probable_causes": [],
+    "remediation": [],
+    "oid_trap": null,
+    "oid_refs": [
+     "1.3.6.1.4.1.2011.6.128.1.1.11.4"
+    ],
+    "auto_clear": false,
+    "clear_condition": null,
+    "threshold": null,
+    "escalation": {
+     "warning_after_minutes": null,
+     "major_after_minutes": null,
+     "critical_after_minutes": null
+    },
+    "sources": [
+     {
+      "doc_type": "community",
+      "pages": null,
+      "confidence": 0.3
+     }
+    ],
+    "confidence": {
+     "extraction": 0.3,
+     "correlation": 0.0,
+     "overall": 0.3
+    },
+    "status": "documented",
+    "conflicts": []
+   },
+   {
+    "code": "huawei.alarm_type.tdm_port.tf",
+    "name": "tdm_tf",
+    "canonical_name": "Tdm Tf",
+    "entity_ref": "entity.huawei.gpon.port.pon_port",
+    "vendor": "Huawei",
+    "family": "MA5608T",
+    "firmware": [
+     "R015"
+    ],
+    "severity": "major",
+    "type": "hardware",
+    "description": "Transmit failure (TF). This object indicates the alarm type.\nOptions:\n1. Transmit failure (TF),\n2. Loss of frame (LOF),\n3. Out of frame (OOF),\n4. Remote alarm indication (RAI),\n5. 2.048 Mbit/s alarm indication signal (AIS).",
+    "probable_causes": [],
+    "remediation": [],
+    "oid_trap": null,
+    "oid_refs": [
+     "1.3.6.1.4.1.2011.6.128.1.1.11.1"
+    ],
+    "auto_clear": false,
+    "clear_condition": null,
+    "threshold": null,
+    "escalation": {
+     "warning_after_minutes": null,
+     "major_after_minutes": null,
+     "critical_after_minutes": null
+    },
+    "sources": [
+     {
+      "doc_type": "community",
+      "pages": null,
+      "confidence": 0.3
+     }
+    ],
+    "confidence": {
+     "extraction": 0.3,
+     "correlation": 0.0,
+     "overall": 0.3
+    },
+    "status": "documented",
+    "conflicts": []
+   },
+   {
+    "code": "huawei.alarm_type.tdm_port.lof",
+    "name": "tdm_lof",
+    "canonical_name": "Tdm Lof",
+    "entity_ref": "entity.huawei.gpon.port.pon_port",
+    "vendor": "Huawei",
+    "family": "MA5608T",
+    "firmware": [
+     "R015"
+    ],
+    "severity": "major",
+    "type": "hardware",
+    "description": "Loss of frame (LOF). This object indicates the alarm type.\nOptions:\n1. Transmit failure (TF),\n2. Loss of frame (LOF),\n3. Out of frame (OOF),\n4. Remote alarm indication (RAI),\n5. 2.048 Mbit/s alarm indication signal (AIS).",
+    "probable_causes": [],
+    "remediation": [],
+    "oid_trap": null,
+    "oid_refs": [
+     "1.3.6.1.4.1.2011.6.128.1.1.11.1"
+    ],
+    "auto_clear": false,
+    "clear_condition": null,
+    "threshold": null,
+    "escalation": {
+     "warning_after_minutes": null,
+     "major_after_minutes": null,
+     "critical_after_minutes": null
+    },
+    "sources": [
+     {
+      "doc_type": "community",
+      "pages": null,
+      "confidence": 0.3
+     }
+    ],
+    "confidence": {
+     "extraction": 0.3,
+     "correlation": 0.0,
+     "overall": 0.3
+    },
+    "status": "documented",
+    "conflicts": []
+   },
+   {
+    "code": "huawei.alarm_type.tdm_port.oof",
+    "name": "tdm_oof",
+    "canonical_name": "Tdm Oof",
+    "entity_ref": "entity.huawei.gpon.port.pon_port",
+    "vendor": "Huawei",
+    "family": "MA5608T",
+    "firmware": [
+     "R015"
+    ],
+    "severity": "major",
+    "type": "hardware",
+    "description": "Out of frame (OOF). This object indicates the alarm type.\nOptions:\n1. Transmit failure (TF),\n2. Loss of frame (LOF),\n3. Out of frame (OOF),\n4. Remote alarm indication (RAI),\n5. 2.048 Mbit/s alarm indication signal (AIS).",
+    "probable_causes": [],
+    "remediation": [],
+    "oid_trap": null,
+    "oid_refs": [
+     "1.3.6.1.4.1.2011.6.128.1.1.11.1"
+    ],
+    "auto_clear": false,
+    "clear_condition": null,
+    "threshold": null,
+    "escalation": {
+     "warning_after_minutes": null,
+     "major_after_minutes": null,
+     "critical_after_minutes": null
+    },
+    "sources": [
+     {
+      "doc_type": "community",
+      "pages": null,
+      "confidence": 0.3
+     }
+    ],
+    "confidence": {
+     "extraction": 0.3,
+     "correlation": 0.0,
+     "overall": 0.3
+    },
+    "status": "documented",
+    "conflicts": []
+   },
+   {
+    "code": "huawei.alarm_type.tdm_port.rai",
+    "name": "tdm_rai",
+    "canonical_name": "Tdm Rai",
+    "entity_ref": "entity.huawei.gpon.port.pon_port",
+    "vendor": "Huawei",
+    "family": "MA5608T",
+    "firmware": [
+     "R015"
+    ],
+    "severity": "major",
+    "type": "hardware",
+    "description": "Remote alarm indication (RAI). This object indicates the alarm type.\nOptions:\n1. Transmit failure (TF),\n2. Loss of frame (LOF),\n3. Out of frame (OOF),\n4. Remote alarm indication (RAI),\n5. 2.048 Mbit/s alarm indication signal (AIS).",
+    "probable_causes": [],
+    "remediation": [],
+    "oid_trap": null,
+    "oid_refs": [
+     "1.3.6.1.4.1.2011.6.128.1.1.11.1"
+    ],
+    "auto_clear": false,
+    "clear_condition": null,
+    "threshold": null,
+    "escalation": {
+     "warning_after_minutes": null,
+     "major_after_minutes": null,
+     "critical_after_minutes": null
+    },
+    "sources": [
+     {
+      "doc_type": "community",
+      "pages": null,
+      "confidence": 0.3
+     }
+    ],
+    "confidence": {
+     "extraction": 0.3,
+     "correlation": 0.0,
+     "overall": 0.3
+    },
+    "status": "documented",
+    "conflicts": []
+   },
+   {
+    "code": "huawei.alarm_type.tdm_port.ais",
+    "name": "tdm_ais",
+    "canonical_name": "Tdm Ais",
+    "entity_ref": "entity.huawei.gpon.port.pon_port",
+    "vendor": "Huawei",
+    "family": "MA5608T",
+    "firmware": [
+     "R015"
+    ],
+    "severity": "major",
+    "type": "hardware",
+    "description": "2.048 Mbit/s alarm indication signal (AIS). This object indicates the alarm type.\nOptions:\n1. Transmit failure (TF),\n2. Loss of frame (LOF),\n3. Out of frame (OOF),\n4. Remote alarm indication (RAI),\n5. 2.048 Mbit/s alarm indication signal (AIS).",
+    "probable_causes": [],
+    "remediation": [],
+    "oid_trap": null,
+    "oid_refs": [
+     "1.3.6.1.4.1.2011.6.128.1.1.11.1"
+    ],
+    "auto_clear": false,
+    "clear_condition": null,
+    "threshold": null,
+    "escalation": {
+     "warning_after_minutes": null,
+     "major_after_minutes": null,
+     "critical_after_minutes": null
+    },
+    "sources": [
+     {
+      "doc_type": "community",
+      "pages": null,
+      "confidence": 0.3
+     }
+    ],
+    "confidence": {
+     "extraction": 0.3,
+     "correlation": 0.0,
+     "overall": 0.3
+    },
+    "status": "documented",
+    "conflicts": []
+   }
+  ]
+ }
+}

@@ -1,0 +1,1588 @@
+{
+ "module": "HUAWEI-XPON-TRAP-MIB",
+ "source": "https://mibs.observium.org/mib/HUAWEI-XPON-TRAP-MIB/",
+ "source_kind": "third_party_rendering",
+ "fetched": "2026-11-09T21:18:39Z",
+ "root_oid": "1.3.6.1.4.1.2011.5.100.1.1.30",
+ "counts": {
+  "node": 27,
+  "scalar": 130
+ },
+ "objects": [
+  {
+   "name": "hwGponTrapsVbOids",
+   "oid": "1.3.6.1.4.1.2011.5.100.1.1.30",
+   "kind": "node",
+   "depth": 0
+  },
+  {
+   "name": "hwGponOntTDMPortAlarmType",
+   "oid": "1.3.6.1.4.1.2011.5.100.1.1.30.1",
+   "kind": "scalar",
+   "depth": 1,
+   "syntax": "OctetString",
+   "constraints": "range: 0-50",
+   "description": "Alarm type. The values are as follows:\nTransmit failure (TF),\nLoss of frame (LOF),\nOut of frame (OOF),\nRemote alarm indication (RAI),\n2.048 Mbit/s alarm indication signal (AIS)."
+  },
+  {
+   "name": "hwGponOntLoadResult",
+   "oid": "1.3.6.1.4.1.2011.5.100.1.1.30.10",
+   "kind": "scalar",
+   "depth": 1,
+   "syntax": "Enumeration",
+   "description": "ONT load result.\nOptions:\n1. success(0) - ONT load result is success\n2. fail(1) - ONT load result is fail\n3. load20Percent(2) - ONT load result is loading 20 Percent",
+   "enum_from_description": {
+    "0": "success",
+    "1": "fail",
+    "2": "load20Percent"
+   }
+  },
+  {
+   "name": "hwGponOntLoadCrcSupport",
+   "oid": "1.3.6.1.4.1.2011.5.100.1.1.30.11",
+   "kind": "scalar",
+   "depth": 1,
+   "syntax": "Enumeration",
+   "description": "Support state of ONT load CRC.\nOptions:\n1. noSupport(0) - Doesn't support state of ONT load CRC\n2. support(1) - Support state of ONT load CRC\n3. unconcern(255) - Unconcern state of ONT load CRC",
+   "enum_from_description": {
+    "0": "noSupport",
+    "1": "support",
+    "255": "unconcern"
+   }
+  },
+  {
+   "name": "hwGponOntLoadCrcValue",
+   "oid": "1.3.6.1.4.1.2011.5.100.1.1.30.12",
+   "kind": "scalar",
+   "depth": 1,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "description": "ONT load CRC value."
+  },
+  {
+   "name": "hwGponDeviceOntObjectCRCSupport",
+   "oid": "1.3.6.1.4.1.2011.5.100.1.1.30.13",
+   "kind": "scalar",
+   "depth": 1,
+   "syntax": "Enumeration",
+   "description": "Support state of ONT CRC.\nOptions:\n1. noSupport(0) - Doesn't support state of ONT CRC\n2. support(1) - Support state of ONT CRC",
+   "enum_from_description": {
+    "0": "noSupport",
+    "1": "support"
+   }
+  },
+  {
+   "name": "hwGponDeviceOntObjectCRCCode",
+   "oid": "1.3.6.1.4.1.2011.5.100.1.1.30.14",
+   "kind": "scalar",
+   "depth": 1,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "description": "ONT CRC vlue.\nThe value (0) indicates that the query fails or ONT does not support it."
+  },
+  {
+   "name": "hwGponDeviceOntDualUpstreamSupport",
+   "oid": "1.3.6.1.4.1.2011.5.100.1.1.30.15",
+   "kind": "scalar",
+   "depth": 1,
+   "syntax": "Enumeration",
+   "description": "Indicate if ont support typeC.\nOptions:\n1. support(1) - Support typeC\n2. notsupport(2) - Doesn't support typeC\n3. unknown(255) - Doesn't known if ont support typeC",
+   "enum_from_description": {
+    "1": "support",
+    "2": "notsupport",
+    "255": "unknown"
+   }
+  },
+  {
+   "name": "hwGponDeviceOntIsOntUpfromReset",
+   "oid": "1.3.6.1.4.1.2011.5.100.1.1.30.16",
+   "kind": "scalar",
+   "depth": 1,
+   "syntax": "Enumeration",
+   "description": "This object indicates whether the GPON ONT is online after reset.\nOptions:\n1. yes(1) - The ONT is reseted.\n2. no(2) - The ONT is not reseted.",
+   "enum_from_description": {
+    "1": "yes",
+    "2": "no"
+   }
+  },
+  {
+   "name": "hwGponOntMask",
+   "oid": "1.3.6.1.4.1.2011.5.100.1.1.30.2",
+   "kind": "scalar",
+   "depth": 1,
+   "syntax": "OctetString",
+   "constraints": "range: 1-16",
+   "description": "ONT MASK."
+  },
+  {
+   "name": "hwGponOntOpticalMoudleAlarmType",
+   "oid": "1.3.6.1.4.1.2011.5.100.1.1.30.3",
+   "kind": "scalar",
+   "depth": 1,
+   "syntax": "Enumeration",
+   "description": "Alarm type.\nOptions:\n1. rxPower(1) - Alarm type is rxPower\n2. txPower(2) - Alarm type is txPower\n3. voltage(3) - Alarm type is voltage\n4. temperature(4) - Alarm type is temperature\n5. biasCurrent(5) - Alarm type is biasCurrent\n6. catvRxPower(8) - Alarm type is catv rxPower",
+   "enum_from_description": {
+    "1": "rxPower",
+    "2": "txPower",
+    "3": "voltage",
+    "4": "temperature",
+    "5": "biasCurrent",
+    "8": "catvRxPower"
+   }
+  },
+  {
+   "name": "hwGponOntOpticalMoudleAlarmUpperValue",
+   "oid": "1.3.6.1.4.1.2011.5.100.1.1.30.4",
+   "kind": "scalar",
+   "depth": 1,
+   "syntax": "OctetString",
+   "constraints": "range: 1-20",
+   "description": "Upper threshold(Value:-1024.00~1024.00)."
+  },
+  {
+   "name": "hwGponOntOpticalMoudleAlarmLowerValue",
+   "oid": "1.3.6.1.4.1.2011.5.100.1.1.30.5",
+   "kind": "scalar",
+   "depth": 1,
+   "syntax": "OctetString",
+   "constraints": "range: 1-20",
+   "description": "Lower threshold(Value:-1024.00~1024.00)."
+  },
+  {
+   "name": "hwGponOntOpticalMoudleAlarmCurrentValue",
+   "oid": "1.3.6.1.4.1.2011.5.100.1.1.30.6",
+   "kind": "scalar",
+   "depth": 1,
+   "syntax": "OctetString",
+   "constraints": "range: 1-20",
+   "description": "Current value(Value:-1024.00~1024.00)."
+  },
+  {
+   "name": "hwGponTrapSerialNo",
+   "oid": "1.3.6.1.4.1.2011.5.100.1.1.30.7",
+   "kind": "scalar",
+   "depth": 1,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "description": "Serial number."
+  },
+  {
+   "name": "hwGponTrapOperType",
+   "oid": "1.3.6.1.4.1.2011.5.100.1.1.30.8",
+   "kind": "scalar",
+   "depth": 1,
+   "syntax": "Enumeration",
+   "description": "Operation type.\nOptions:\n1. add(1) - Operation type is adding\n2. modify(2) - Operation type is modifing\n3. delete(3) - Operation type is deleting",
+   "enum_from_description": {
+    "1": "add",
+    "2": "modify",
+    "3": "delete"
+   }
+  },
+  {
+   "name": "hwGponOntLoadOperType",
+   "oid": "1.3.6.1.4.1.2011.5.100.1.1.30.9",
+   "kind": "scalar",
+   "depth": 1,
+   "syntax": "Enumeration",
+   "description": "ONT load operation type.\nOptions:\n1. loadProgress(1) - ONT load operation type is loading Progress\n2. configureApply(2) - ONT load operation type is configuring Apply",
+   "enum_from_description": {
+    "1": "loadProgress",
+    "2": "configureApply"
+   }
+  },
+  {
+   "name": "hwGponTraps",
+   "oid": "1.3.6.1.4.1.2011.5.100.1.1.31",
+   "kind": "node",
+   "depth": 0
+  },
+  {
+   "name": "hwGponCommonTraps",
+   "oid": "1.3.6.1.4.1.2011.5.100.1.1.31.1",
+   "kind": "node",
+   "depth": 1
+  },
+  {
+   "name": "hwGponCommonTrapsPrefix",
+   "oid": "1.3.6.1.4.1.2011.5.100.1.1.31.1.0",
+   "kind": "node",
+   "depth": 2
+  },
+  {
+   "name": "hwGponAlarmTraps",
+   "oid": "1.3.6.1.4.1.2011.5.100.1.1.31.2",
+   "kind": "node",
+   "depth": 1
+  },
+  {
+   "name": "hwGponOltAlarmTraps",
+   "oid": "1.3.6.1.4.1.2011.5.100.1.1.31.2.1",
+   "kind": "node",
+   "depth": 2
+  },
+  {
+   "name": "hwGponOltAlarmTrapsPrefix",
+   "oid": "1.3.6.1.4.1.2011.5.100.1.1.31.2.1.0",
+   "kind": "node",
+   "depth": 3
+  },
+  {
+   "name": "hwGponOntAlarmTraps",
+   "oid": "1.3.6.1.4.1.2011.5.100.1.1.31.2.2",
+   "kind": "node",
+   "depth": 2
+  },
+  {
+   "name": "hwGponOntAlarmTrapsPrefix",
+   "oid": "1.3.6.1.4.1.2011.5.100.1.1.31.2.2.0",
+   "kind": "node",
+   "depth": 3
+  },
+  {
+   "name": "hwXponDeviceTrapsVbOids",
+   "oid": "1.3.6.1.4.1.2011.6.128.1.1.11",
+   "kind": "node",
+   "depth": 0
+  },
+  {
+   "name": "hwGponProfOntTDMPortAlarmType",
+   "oid": "1.3.6.1.4.1.2011.6.128.1.1.11.1",
+   "kind": "scalar",
+   "depth": 1,
+   "syntax": "OctetString",
+   "constraints": "range: 1-50",
+   "description": "This object indicates the alarm type.\nOptions:\n1. Transmit failure (TF),\n2. Loss of frame (LOF),\n3. Out of frame (OOF),\n4. Remote alarm indication (RAI),\n5. 2.048 Mbit/s alarm indication signal (AIS)."
+  },
+  {
+   "name": "hwXponOntMask",
+   "oid": "1.3.6.1.4.1.2011.6.128.1.1.11.2",
+   "kind": "scalar",
+   "depth": 1,
+   "syntax": "OctetString",
+   "constraints": "range: 1-16",
+   "description": "This object indicates the ONT MASK."
+  },
+  {
+   "name": "hwXponDeviceOltChipsetId",
+   "oid": "1.3.6.1.4.1.2011.6.128.1.1.11.250",
+   "kind": "scalar",
+   "depth": 1,
+   "syntax": "Integer32",
+   "constraints": "range: 0-255",
+   "description": "This object indicates only the MAC chipset ID on the board."
+  },
+  {
+   "name": "hwEponDeviceAutoFindOntInfoLoidValue",
+   "oid": "1.3.6.1.4.1.2011.6.128.1.1.11.251",
+   "kind": "scalar",
+   "depth": 1,
+   "syntax": "OctetString",
+   "constraints": "range: 0-24",
+   "description": "This object indicates the logic ONT ID."
+  },
+  {
+   "name": "hwEponDeviceAutoFindOntInfoCheckcodeValue",
+   "oid": "1.3.6.1.4.1.2011.6.128.1.1.11.252",
+   "kind": "scalar",
+   "depth": 1,
+   "syntax": "OctetString",
+   "constraints": "range: 0-12",
+   "description": "This object indicates the check code."
+  },
+  {
+   "name": "hwEponDeviceOntVoltageState",
+   "oid": "1.3.6.1.4.1.2011.6.128.1.1.11.253",
+   "kind": "scalar",
+   "depth": 1,
+   "syntax": "Enumeration",
+   "description": "This object indicates the voltage state.\nOptions:\n1. higher(0) - Indicates that the voltage state is higher\n2. lower(1) - Indicates that the voltage state is lower\n3. unknown(-1) - Indicates that the voltage state is unknown",
+   "enum_from_description": {
+    "-1": "unknown",
+    "0": "higher",
+    "1": "lower"
+   }
+  },
+  {
+   "name": "hwEponDeviceOntTypeDSupport",
+   "oid": "1.3.6.1.4.1.2011.6.128.1.1.11.254",
+   "kind": "scalar",
+   "depth": 1,
+   "syntax": "Enumeration",
+   "description": "This object indicates whether the ONT supports type D protection.\nOptions:\n1. support(1) - Support the ONT supports type D protection\n2. notsupport(2) - Do not support the ONT supports type D protection\n3. unknown(255) - Indicates that the query fails or no information is detected",
+   "enum_from_description": {
+    "1": "support",
+    "2": "notsupport",
+    "255": "unknown"
+   }
+  },
+  {
+   "name": "hwEponDeviceAutoFindOntInfoTdmNumber",
+   "oid": "1.3.6.1.4.1.2011.6.128.1.1.11.255",
+   "kind": "scalar",
+   "depth": 1,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "description": "This object indicates the auto find ont info TDM number."
+  },
+  {
+   "name": "hwEponDeviceAutoFindOntInfoPotsNumber",
+   "oid": "1.3.6.1.4.1.2011.6.128.1.1.11.256",
+   "kind": "scalar",
+   "depth": 1,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "description": "This object indicates the uto find ont info pots number."
+  },
+  {
+   "name": "hwEponDeviceAutoFindOntInfoFeNumber",
+   "oid": "1.3.6.1.4.1.2011.6.128.1.1.11.257",
+   "kind": "scalar",
+   "depth": 1,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "description": "This object indicates the auto find ont info FE number."
+  },
+  {
+   "name": "hwEponDeviceAutoFindOntInfoGeNumber",
+   "oid": "1.3.6.1.4.1.2011.6.128.1.1.11.258",
+   "kind": "scalar",
+   "depth": 1,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "description": "This object indicates the auto find ont info GE number."
+  },
+  {
+   "name": "hwEponDeviceOntEquipmentId",
+   "oid": "1.3.6.1.4.1.2011.6.128.1.1.11.259",
+   "kind": "scalar",
+   "depth": 1,
+   "syntax": "OctetString",
+   "constraints": "range: 1-20",
+   "description": "This object indicates the auto find ont info GE number."
+  },
+  {
+   "name": "hwGponProfOltDualparentWorkState",
+   "oid": "1.3.6.1.4.1.2011.6.128.1.1.11.3",
+   "kind": "scalar",
+   "depth": 1,
+   "syntax": "Enumeration",
+   "description": "This object indicates the work status.\nOptions:\n1. active(1) - The work status is active\n2. standby(2) - The work status is standby\n3. fault(3) - The work status is fault\n4. detect(4) - The work status is detective",
+   "enum_from_description": {
+    "1": "active",
+    "2": "standby",
+    "3": "fault",
+    "4": "detect"
+   }
+  },
+  {
+   "name": "hwXponProfOntOpticalMoudleAlarmType",
+   "oid": "1.3.6.1.4.1.2011.6.128.1.1.11.4",
+   "kind": "scalar",
+   "depth": 1,
+   "syntax": "Enumeration",
+   "description": "This object indicates the alarm type,\nOptions:\n1. rxPower(1) - The alarm type is rxPower\n2. txPower(2) - The alarm type is txPower\n3. voltage(3) - The alarm type is voltage\n4. temperature(4) - The alarm type is temperature\n5. biasCurrent(5) - The alarm type is bias current\n6. txPower10g(6) - The alarm type is 10G txPower\n7. biasCurrent10g(7) - The alarm type is 10G bias current\n8. catvRxPower(8) - The alarm type is catv rxPower",
+   "enum_from_description": {
+    "1": "rxPower",
+    "2": "txPower",
+    "3": "voltage",
+    "4": "temperature",
+    "5": "biasCurrent",
+    "6": "txPower10g",
+    "7": "biasCurrent10g",
+    "8": "catvRxPower"
+   }
+  },
+  {
+   "name": "hwXponProfOntOpticalMoudleAlarmUpperValue",
+   "oid": "1.3.6.1.4.1.2011.6.128.1.1.11.5",
+   "kind": "scalar",
+   "depth": 1,
+   "syntax": "OctetString",
+   "constraints": "range: 1-20",
+   "description": "This object indicates the upper threshold(Value:-1024.00~1024.00)."
+  },
+  {
+   "name": "hwXponTrapOperType",
+   "oid": "1.3.6.1.4.1.2011.6.128.1.1.11.502",
+   "kind": "scalar",
+   "depth": 1,
+   "syntax": "Enumeration",
+   "description": "This object indicates the operation type.\nOptions:\n1. add(1) - Add\n2. modify(2) - Modify\n3. delete(3) - Delete",
+   "enum_from_description": {
+    "1": "add",
+    "2": "modify",
+    "3": "delete"
+   }
+  },
+  {
+   "name": "hwXponDeviceOntPortRunStatus",
+   "oid": "1.3.6.1.4.1.2011.6.128.1.1.11.503",
+   "kind": "scalar",
+   "depth": 1,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "description": "This object indicates the ONT port run status.\nThe value 1 means that the ONT port is up,\nthe value 2 means that the ONT port is down."
+  },
+  {
+   "name": "hwXponOntLoadResult",
+   "oid": "1.3.6.1.4.1.2011.6.128.1.1.11.504",
+   "kind": "scalar",
+   "depth": 1,
+   "syntax": "Enumeration",
+   "description": "This object indicates the load result.\nOptions:\n1. success(0) - Indicates that the load result is success\n2. fail(1) - Indicates that the load result is fail\n3. load20Percent(2) - Indicates that the load result is loaded 20 percent\n4. resultfiletoobig(3) - Indicates that the result file is too big\n5. filecheckerror(4) - Indicates that it is fail to check the file\n6. packetfileerror(5) - Indicates that it is fail to check the packet\n7. ontreplaytimeout(6) - Indicates that the reply of the ont is time out",
+   "enum_from_description": {
+    "0": "success",
+    "1": "fail",
+    "2": "load20Percent",
+    "3": "resultfiletoobig",
+    "4": "filecheckerror",
+    "5": "packetfileerror",
+    "6": "ontreplaytimeout"
+   }
+  },
+  {
+   "name": "hwXponOntLoadCrcSupport",
+   "oid": "1.3.6.1.4.1.2011.6.128.1.1.11.505",
+   "kind": "scalar",
+   "depth": 1,
+   "syntax": "Enumeration",
+   "description": "This object indicates whether the ONT load supports the CRC.\nOptions:\n1. noSupport(0) - Do not support the ONT load supports the CRC\n2. support(1) - Support the ONT load supports the CRC\n3. unconcern(255) - Indicates that the query fails or no information is detected",
+   "enum_from_description": {
+    "0": "noSupport",
+    "1": "support",
+    "255": "unconcern"
+   }
+  },
+  {
+   "name": "hwXponOntLoadCrcValue",
+   "oid": "1.3.6.1.4.1.2011.6.128.1.1.11.506",
+   "kind": "scalar",
+   "depth": 1,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "description": "This object indicates the CRC value of the loaded ONT configuration file.\nThe value (-1) indicates that the ont does not support CRC or value is invalid."
+  },
+  {
+   "name": "hwXponDeviceOntCRCSupport",
+   "oid": "1.3.6.1.4.1.2011.6.128.1.1.11.507",
+   "kind": "scalar",
+   "depth": 1,
+   "syntax": "Enumeration",
+   "description": "This object indicates whether the ONT supports the CRC.\nOptions:\n1. noSupport(0) - If the value of this object is 0, it indicates that the CRC function is not supported\n2. support(1) - If the value of this object is 1, it indicates that the CRC function is supported",
+   "enum_from_description": {
+    "0": "noSupport",
+    "1": "support"
+   }
+  },
+  {
+   "name": "hwXponDeviceOntCRCCode",
+   "oid": "1.3.6.1.4.1.2011.6.128.1.1.11.508",
+   "kind": "scalar",
+   "depth": 1,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "description": "This object indicates the code of ONT CRC, it is valid only the ont support CRC check.\nOtherwise, the value always equals 0."
+  },
+  {
+   "name": "hwXponOntLoadOperType",
+   "oid": "1.3.6.1.4.1.2011.6.128.1.1.11.509",
+   "kind": "scalar",
+   "depth": 1,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "description": "This object indicates the operations type of the ONT load.\nThe value 1 indicates loading the configuration or application file,\nthe value 2 indicates the checked result of the configuration file."
+  },
+  {
+   "name": "hwXponDeviceOntRunStatus",
+   "oid": "1.3.6.1.4.1.2011.6.128.1.1.11.510",
+   "kind": "scalar",
+   "depth": 1,
+   "syntax": "Enumeration",
+   "description": "This object indicates the running status of ONT load.\nOptions:\n1. up(1) - Indicates that the running status of ONT load is up\n2. down(2) - Indicates that the running status of ONT load is down",
+   "enum_from_description": {
+    "1": "up",
+    "2": "down"
+   }
+  },
+  {
+   "name": "hwEponRogueOntDetectOperStatus",
+   "oid": "1.3.6.1.4.1.2011.6.128.1.1.11.511",
+   "kind": "scalar",
+   "depth": 1,
+   "syntax": "Enumeration",
+   "description": "This object indicates the operation status of the EPON rogue ONT detection.\nOptions:\n1. start(1) - Start the EPON rogue ONT detection\n2. over(2) - Stop the EPON rogue ONT detection",
+   "enum_from_description": {
+    "1": "start",
+    "2": "over"
+   }
+  },
+  {
+   "name": "hwEponDeviceOntPortManageStatus",
+   "oid": "1.3.6.1.4.1.2011.6.128.1.1.11.512",
+   "kind": "scalar",
+   "depth": 1,
+   "syntax": "Enumeration",
+   "description": "This object indicates the running status of the EPON ONT port.\nOptions:\n1. unlock(1) - Unlock the EPON ONT port\n2. lock(2) - Lock the EPON ONT port",
+   "enum_from_description": {
+    "1": "unlock",
+    "2": "lock"
+   }
+  },
+  {
+   "name": "hwXponDeviceAccessType",
+   "oid": "1.3.6.1.4.1.2011.6.128.1.1.11.513",
+   "kind": "scalar",
+   "depth": 1,
+   "syntax": "Enumeration",
+   "description": "This object indicates the XPON profile type.\nOptions:\n1. gpon(1) - GPON\n2. epon(2) - EPON",
+   "enum_from_description": {
+    "1": "gpon",
+    "2": "epon"
+   }
+  },
+  {
+   "name": "hwXponDeviceServiceProfileName",
+   "oid": "1.3.6.1.4.1.2011.6.128.1.1.11.514",
+   "kind": "scalar",
+   "depth": 1,
+   "syntax": "OctetString",
+   "constraints": "range: 0-33",
+   "description": "This object indicates the service profile name."
+  },
+  {
+   "name": "hwXponDeviceLineProfileName",
+   "oid": "1.3.6.1.4.1.2011.6.128.1.1.11.515",
+   "kind": "scalar",
+   "depth": 1,
+   "syntax": "OctetString",
+   "constraints": "range: 0-33",
+   "description": "This object indicates the line profile name."
+  },
+  {
+   "name": "hwEponDeviceAlarmProfileName",
+   "oid": "1.3.6.1.4.1.2011.6.128.1.1.11.516",
+   "kind": "scalar",
+   "depth": 1,
+   "syntax": "OctetString",
+   "constraints": "range: 0-33",
+   "description": "This object indicates the alarm profile name."
+  },
+  {
+   "name": "hwEponDeviceOntDbaStatus",
+   "oid": "1.3.6.1.4.1.2011.6.128.1.1.11.517",
+   "kind": "scalar",
+   "depth": 1,
+   "syntax": "Enumeration",
+   "description": "This object indicates the status of Ont's DBA.\nOptions:\n1. dbaGpon(1) - Indicates that the status of Ont's DBA is GPON DBA\n2. dbaEthernet(2) - Indicates that the status of Ont's DBA is ETH DBA\n3. invalid(-1) - Indicates that the query fails or no information is detected",
+   "enum_from_description": {
+    "-1": "invalid",
+    "1": "dbaGpon",
+    "2": "dbaEthernet"
+   }
+  },
+  {
+   "name": "hwGponDeviceProfOntIsOntUpfromReset",
+   "oid": "1.3.6.1.4.1.2011.6.128.1.1.11.518",
+   "kind": "scalar",
+   "depth": 1,
+   "syntax": "Enumeration",
+   "description": "This object indicates whether the GPON ONT is online after reset.\nOptions:\n1. yes(1) - The ONT is reseted.\n2. no(2) - The ONT is not reseted.",
+   "enum_from_description": {
+    "1": "yes",
+    "2": "no"
+   }
+  },
+  {
+   "name": "hwEponDeviceOntIsOntUpfromReset",
+   "oid": "1.3.6.1.4.1.2011.6.128.1.1.11.519",
+   "kind": "scalar",
+   "depth": 1,
+   "syntax": "Enumeration",
+   "description": "This object indicates whether the EPON ONT is online after reset.\nOptions:\n1. yes(1) - The ONT is reseted.\n2. no(2) - The ONT is not reseted.",
+   "enum_from_description": {
+    "1": "yes",
+    "2": "no"
+   }
+  },
+  {
+   "name": "hwXponProfOntPortLearnedHGVlan",
+   "oid": "1.3.6.1.4.1.2011.6.128.1.1.11.520",
+   "kind": "scalar",
+   "depth": 1,
+   "syntax": "Integer32",
+   "constraints": "range: 1-4094",
+   "description": "This object indicates the VLAN learned on the ONT port."
+  },
+  {
+   "name": "hwXponProfOntPortLearnedHGMacAddr",
+   "oid": "1.3.6.1.4.1.2011.6.128.1.1.11.521",
+   "kind": "scalar",
+   "depth": 1,
+   "syntax": "OctetString",
+   "constraints": "range: 0-6",
+   "description": "This object indicates the MAC address learned on the ONT port."
+  },
+  {
+   "name": "hwEponAlarmProfileStatisticsItem",
+   "oid": "1.3.6.1.4.1.2011.6.128.1.1.11.522",
+   "kind": "scalar",
+   "depth": 1,
+   "syntax": "OctetString",
+   "constraints": "range: 1-30",
+   "description": "This object indicates the Epon alarm profile statistics item."
+  },
+  {
+   "name": "hwEponAlarmProfileThresholdValue",
+   "oid": "1.3.6.1.4.1.2011.6.128.1.1.11.523",
+   "kind": "scalar",
+   "depth": 1,
+   "syntax": "OctetString",
+   "constraints": "range: 1-11",
+   "description": "This object indicates the Epon alarm profile threshold value(Value:0~4294967294)."
+  },
+  {
+   "name": "hwEponAlarmProfileCurrentValue",
+   "oid": "1.3.6.1.4.1.2011.6.128.1.1.11.524",
+   "kind": "scalar",
+   "depth": 1,
+   "syntax": "OctetString",
+   "constraints": "range: 1-21",
+   "description": "This object indicates the current value(Value:0~18446744073709551614)."
+  },
+  {
+   "name": "hwXponProfOntOpticalMoudleAlarmLowerValue",
+   "oid": "1.3.6.1.4.1.2011.6.128.1.1.11.6",
+   "kind": "scalar",
+   "depth": 1,
+   "syntax": "OctetString",
+   "constraints": "range: 1-20",
+   "description": "This object indicates the lower threshold(Value:-1024.00~1024.00)."
+  },
+  {
+   "name": "hwXponProfOntOpticalMoudleAlarmCurrentValue",
+   "oid": "1.3.6.1.4.1.2011.6.128.1.1.11.7",
+   "kind": "scalar",
+   "depth": 1,
+   "syntax": "OctetString",
+   "constraints": "range: 1-20",
+   "description": "This object indicates the current value(Value:-1024.00~1024.00)."
+  },
+  {
+   "name": "hwGponProfOntDualUpstreamSupport",
+   "oid": "1.3.6.1.4.1.2011.6.128.1.1.11.8",
+   "kind": "scalar",
+   "depth": 1,
+   "syntax": "Enumeration",
+   "description": "This object indicates whether the ONT supports type C protection.\nOptions:\n1. support(1) - Support the ONT supports type C protection\n2. notsupport(2) - Do not support the ONT supports type C protection\n3. unknown(255) - Indicates that the query fails or no information is detected",
+   "enum_from_description": {
+    "1": "support",
+    "2": "notsupport",
+    "255": "unknown"
+   }
+  },
+  {
+   "name": "hwXponDeviceTraps",
+   "oid": "1.3.6.1.4.1.2011.6.128.1.1.12",
+   "kind": "node",
+   "depth": 0
+  },
+  {
+   "name": "hwXponDeviceAlarmTraps",
+   "oid": "1.3.6.1.4.1.2011.6.128.1.1.12.2",
+   "kind": "node",
+   "depth": 1
+  },
+  {
+   "name": "hwXponDeviceOltAlarmTraps",
+   "oid": "1.3.6.1.4.1.2011.6.128.1.1.12.2.1",
+   "kind": "node",
+   "depth": 2
+  },
+  {
+   "name": "hwXponDeviceOltAlarmTrapsPrefix",
+   "oid": "1.3.6.1.4.1.2011.6.128.1.1.12.2.1.0",
+   "kind": "node",
+   "depth": 3
+  },
+  {
+   "name": "hwXponDeviceOntAlarmTraps",
+   "oid": "1.3.6.1.4.1.2011.6.128.1.1.12.2.2",
+   "kind": "node",
+   "depth": 2
+  },
+  {
+   "name": "hwXponDeviceOntAlarmTrapsPrefix",
+   "oid": "1.3.6.1.4.1.2011.6.128.1.1.12.2.2.0",
+   "kind": "node",
+   "depth": 3
+  },
+  {
+   "name": "hwXponDeviceCommonTraps",
+   "oid": "1.3.6.1.4.1.2011.6.128.1.1.12.3",
+   "kind": "node",
+   "depth": 1
+  },
+  {
+   "name": "hwXponDeviceCommonTrapsPrefix",
+   "oid": "1.3.6.1.4.1.2011.6.128.1.1.12.3.0",
+   "kind": "node",
+   "depth": 2
+  },
+  {
+   "name": "hwXponCommonTrapsVbOids",
+   "oid": "1.3.6.1.4.1.2011.6.145.2",
+   "kind": "node",
+   "depth": 0
+  },
+  {
+   "name": "hwXponOntTransmittingOperType",
+   "oid": "1.3.6.1.4.1.2011.6.145.2.1",
+   "kind": "scalar",
+   "depth": 1,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "description": "ONT transmitting operation type."
+  },
+  {
+   "name": "hwXponCommonDeviceAverageDelay",
+   "oid": "1.3.6.1.4.1.2011.6.145.2.10",
+   "kind": "scalar",
+   "depth": 1,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "description": "The average delay of the ont remote ping(milli-seconds)."
+  },
+  {
+   "name": "hwXponModeSwitchResult",
+   "oid": "1.3.6.1.4.1.2011.6.145.2.11",
+   "kind": "scalar",
+   "depth": 1,
+   "syntax": "Enumeration",
+   "description": "The XPON mode switch result.\nOptions:\n1. success(0) - The XPON mode switch successful\n2. systemBusy(1) - System busy\n3. dataSynIncomplete(2) - Data synchronization incomplete\n4. lineProfileExceedSpec(3) - The number of line profile has exceeded the maximum value after mode switch\n5. srvProfileExceedSpec(4) - The number of service profile has exceeded the maximum value after mode switch",
+   "enum_from_description": {
+    "0": "success",
+    "1": "systemBusy",
+    "2": "dataSynIncomplete",
+    "3": "lineProfileExceedSpec",
+    "4": "srvProfileExceedSpec"
+   }
+  },
+  {
+   "name": "hwXponConfigMode",
+   "oid": "1.3.6.1.4.1.2011.6.145.2.12",
+   "kind": "scalar",
+   "depth": 1,
+   "syntax": "Enumeration",
+   "description": "The XPON configuration mode.\nOptions:\n1. distributeMode(0) - Distribute mode\n2. profileMode(1) - Profile mode",
+   "enum_from_description": {
+    "0": "distributeMode",
+    "1": "profileMode"
+   }
+  },
+  {
+   "name": "hwXponOltMinBandwidth",
+   "oid": "1.3.6.1.4.1.2011.6.145.2.13",
+   "kind": "scalar",
+   "depth": 1,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "description": "Minimum bandwidth,Unit: kbps.\n0xffff --indicates has not set the minimum bandwidth"
+  },
+  {
+   "name": "hwXponOltNearestDistance",
+   "oid": "1.3.6.1.4.1.2011.6.145.2.14",
+   "kind": "scalar",
+   "depth": 1,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "description": "Nearest distance,Unit: km"
+  },
+  {
+   "name": "hwXponOltFarestDistance",
+   "oid": "1.3.6.1.4.1.2011.6.145.2.15",
+   "kind": "scalar",
+   "depth": 1,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "description": "Farthest distance,Unit: km"
+  },
+  {
+   "name": "hwXponOltAutoFindOntFlag",
+   "oid": "1.3.6.1.4.1.2011.6.145.2.16",
+   "kind": "scalar",
+   "depth": 1,
+   "syntax": "Enumeration",
+   "description": "Autofind flag.\nOptions:\n1. open(1) - Open autofind ONT\n2. close(2) - Close autofind ONT",
+   "enum_from_description": {
+    "1": "open",
+    "2": "close"
+   }
+  },
+  {
+   "name": "hwXponOltAutoUpdateOntFlag",
+   "oid": "1.3.6.1.4.1.2011.6.145.2.17",
+   "kind": "scalar",
+   "depth": 1,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "description": "Auto update flag.\n-1 --indicates currently not supported ONT auto update"
+  },
+  {
+   "name": "hwXponOltDownFecEnableFlag",
+   "oid": "1.3.6.1.4.1.2011.6.145.2.18",
+   "kind": "scalar",
+   "depth": 1,
+   "syntax": "Enumeration",
+   "description": "FEC downstream check flag.\nOptions:\n1. open(1) - Open FEC downstream check\n2. close(2) - Close FEC downstream check",
+   "enum_from_description": {
+    "1": "open",
+    "2": "close"
+   }
+  },
+  {
+   "name": "hwGponOntPortTDMCodeMode",
+   "oid": "1.3.6.1.4.1.2011.6.145.2.19",
+   "kind": "scalar",
+   "depth": 1,
+   "syntax": "Enumeration",
+   "description": "TDM port coding style\nOptions:\n1. ami(1) - Using AMI coding\n2. hdb3(2) - Using HDB3 coding\n3. invalid (-1) - Indicates that the query fails or no information is detected",
+   "enum_from_description": {
+    "1": "ami",
+    "2": "hdb3"
+   }
+  },
+  {
+   "name": "hwXponOntTransmittingCrc",
+   "oid": "1.3.6.1.4.1.2011.6.145.2.2",
+   "kind": "scalar",
+   "depth": 1,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "description": "CRC of ONT transmitting."
+  },
+  {
+   "name": "hwGponOntPortManagementStatus",
+   "oid": "1.3.6.1.4.1.2011.6.145.2.20",
+   "kind": "scalar",
+   "depth": 1,
+   "syntax": "Enumeration",
+   "description": "ONT port management state\nOptions:\n1. unlock(1) - Unlock state, all user functions of this circuit pack are normal\n2. lock(2) - All user functions of this circuit pack are blocked, and alarm for\nthis managed entity are no longer generated",
+   "enum_from_description": {
+    "1": "unlock",
+    "2": "lock"
+   }
+  },
+  {
+   "name": "hwGponOntE1PortLoopback",
+   "oid": "1.3.6.1.4.1.2011.6.145.2.22",
+   "kind": "scalar",
+   "depth": 1,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "description": "Ont's TDM port loop back.\nThe value (-1) indicates that the query fails."
+  },
+  {
+   "name": "hwGponOntPortVlanDefault",
+   "oid": "1.3.6.1.4.1.2011.6.145.2.23",
+   "kind": "scalar",
+   "depth": 1,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "description": "Default vlan ID of the ONT ETH port(s)."
+  },
+  {
+   "name": "hwGponOntPortVlanDefaultPriority",
+   "oid": "1.3.6.1.4.1.2011.6.145.2.24",
+   "kind": "scalar",
+   "depth": 1,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "description": "Default priority of the ONT ETH port(s)."
+  },
+  {
+   "name": "hwXponOntPppoeSimuResult",
+   "oid": "1.3.6.1.4.1.2011.6.145.2.25",
+   "kind": "scalar",
+   "depth": 1,
+   "syntax": "Enumeration",
+   "description": "This object indicates the result of PPPoE test.\nOptions:\n1. success(1) - Indicates the PPPoE test is successful.\n2. paramNegoFail(2) - Indicates parameter negotiation failed.\n3. userAuthenticationFail(3) - Indicates user authentication failed.\n4. timeout(4) - Indicates the PPPoE test is timeout.\n5. userStop(5) - Indicates user stopped.\n6. unknown(6) - Indicates unknown.\n7. configurationError(7) - Indicates configuration error.\n8. peerStop(8) - Indicates the dialup request is denied by the peer end.\n9. waitPadoTimeout(9) - Indicates sending PADI and waiting for PADO time out.\n10. waitPadsTimeout(10) - Indicates sending PADR and waiting for PADS time out.\n11. waitPppTimeout(11) - Indicates waiting for PPP times out, such as an LCP timeout or an NCP timeout.\n12. linkAbnormal(12) - Indicates the link of the PPPoE simulation is abnormal.",
+   "enum_from_description": {
+    "1": "success",
+    "2": "paramNegoFail",
+    "3": "userAuthenticationFail",
+    "4": "timeout",
+    "5": "userStop",
+    "6": "unknown",
+    "7": "configurationError",
+    "8": "peerStop",
+    "9": "waitPadoTimeout",
+    "10": "waitPadsTimeout",
+    "11": "waitPppTimeout",
+    "12": "linkAbnormal"
+   }
+  },
+  {
+   "name": "hwXponOntPppoeSimuResultSessionId",
+   "oid": "1.3.6.1.4.1.2011.6.145.2.26",
+   "kind": "scalar",
+   "depth": 1,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "description": "The Session ID of PPPoE test."
+  },
+  {
+   "name": "hwXponOntPppoeSimuResultUserIp",
+   "oid": "1.3.6.1.4.1.2011.6.145.2.27",
+   "kind": "scalar",
+   "depth": 1,
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "IpAddress",
+   "description": "The User IP of PPPoE test."
+  },
+  {
+   "name": "hwXponOntPppoeSimuResultGatewayIp",
+   "oid": "1.3.6.1.4.1.2011.6.145.2.28",
+   "kind": "scalar",
+   "depth": 1,
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "IpAddress",
+   "description": "The Gateway IP of PPPoE test."
+  },
+  {
+   "name": "hwXponCommonDeviceReceivedICMPErrorCode",
+   "oid": "1.3.6.1.4.1.2011.6.145.2.29",
+   "kind": "scalar",
+   "depth": 1,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "description": "This object indicates the received ICMP error code."
+  },
+  {
+   "name": "hwXponCommonDeviceOntPingResult",
+   "oid": "1.3.6.1.4.1.2011.6.145.2.3",
+   "kind": "scalar",
+   "depth": 1,
+   "syntax": "Enumeration",
+   "description": "The result of the ONT remote ping.\nOptions:\n1. success(1) - The ONT remote ping successful\n2. failure(2) - Failed in the ONT remote ping\n3. unexpectedICMPresponse(3) - Unexpected ICMP response.",
+   "enum_from_description": {
+    "1": "success",
+    "2": "failure",
+    "3": "unexpectedICMPresponse"
+   }
+  },
+  {
+   "name": "hwXponOltChangePasswordIntervalTime",
+   "oid": "1.3.6.1.4.1.2011.6.145.2.30",
+   "kind": "scalar",
+   "depth": 1,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "description": "Ont's password renew time interval,Unit: minutes."
+  },
+  {
+   "name": "hwXponRogueOntManualDetectState",
+   "oid": "1.3.6.1.4.1.2011.6.145.2.31",
+   "kind": "scalar",
+   "depth": 1,
+   "syntax": "Enumeration",
+   "description": "This object indicates the state of rogue ONT manual detect.\nOptions:\n1. finished(0) - Has finished detecting.\n2. unknown(-1) - The detecting state is unknown.",
+   "enum_from_description": {
+    "-1": "unknown",
+    "0": "finished"
+   }
+  },
+  {
+   "name": "hwXponCommonOntFECUncorrectCodeWordsThreshold",
+   "oid": "1.3.6.1.4.1.2011.6.145.2.32",
+   "kind": "scalar",
+   "depth": 1,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "description": "This object indicates the threshold of the code words that were not corrected by\nthe FEC function."
+  },
+  {
+   "name": "hwXponCommonOntFECCorrectCodeWordsThreshold",
+   "oid": "1.3.6.1.4.1.2011.6.145.2.33",
+   "kind": "scalar",
+   "depth": 1,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "description": "This object indicates the threshold of the code words that were corrected by\nthe FEC function."
+  },
+  {
+   "name": "hwXponAlarmUpperCountThreshold",
+   "oid": "1.3.6.1.4.1.2011.6.145.2.34",
+   "kind": "scalar",
+   "depth": 1,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "description": "This object indicates the Upper threshold."
+  },
+  {
+   "name": "hwXponAlarmLowerCountThreshold",
+   "oid": "1.3.6.1.4.1.2011.6.145.2.35",
+   "kind": "scalar",
+   "depth": 1,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "description": "This object indicates the Lower threshold."
+  },
+  {
+   "name": "hwXponAlarmCurrentCountValue",
+   "oid": "1.3.6.1.4.1.2011.6.145.2.36",
+   "kind": "scalar",
+   "depth": 1,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "description": "This object indicates the Current Value.\n-1 indicates the invalid value."
+  },
+  {
+   "name": "hwXponOntRegisterSn",
+   "oid": "1.3.6.1.4.1.2011.6.145.2.37",
+   "kind": "scalar",
+   "depth": 1,
+   "syntax": "OctetString",
+   "constraints": "range: 8-8",
+   "description": "This object indicates the ONT serial number."
+  },
+  {
+   "name": "hwFrameIndexOfNewConnectedOnt",
+   "oid": "1.3.6.1.4.1.2011.6.145.2.38",
+   "kind": "scalar",
+   "depth": 1,
+   "syntax": "Integer32",
+   "constraints": "range: 0-1024",
+   "description": "The index of a shelf in the device."
+  },
+  {
+   "name": "hwSlotIndexOfNewConnectedOnt",
+   "oid": "1.3.6.1.4.1.2011.6.145.2.39",
+   "kind": "scalar",
+   "depth": 1,
+   "syntax": "Integer32",
+   "constraints": "range: 0-255",
+   "description": "A slot index is used to identify the location of a board in a shelf."
+  },
+  {
+   "name": "hwXponCommonDeviceSentPackets",
+   "oid": "1.3.6.1.4.1.2011.6.145.2.4",
+   "kind": "scalar",
+   "depth": 1,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "description": "The packet of the ont send."
+  },
+  {
+   "name": "hwPortIndexOfNewConnectedOnt",
+   "oid": "1.3.6.1.4.1.2011.6.145.2.40",
+   "kind": "scalar",
+   "depth": 1,
+   "syntax": "Integer32",
+   "constraints": "range: 0-255",
+   "description": "Port index, indicating the physical number of the port on a board."
+  },
+  {
+   "name": "hwXponOntFirstOnline",
+   "oid": "1.3.6.1.4.1.2011.6.145.2.41",
+   "kind": "scalar",
+   "depth": 1,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "description": "This object indicates the state of rogue ONT manual detect.\nOptions:\n1. FirstOnline(1) - The ont is online firstly.\n2. NotFirstOnline(2) - The ont is not online firstly."
+  },
+  {
+   "name": "hwGponTypeBDParentRogueOntStatus",
+   "oid": "1.3.6.1.4.1.2011.6.145.2.42",
+   "kind": "scalar",
+   "depth": 1,
+   "syntax": "Enumeration",
+   "description": "This object indicates the status of the GPON rogue ONTs.\nOptions:\n1. rogueOntExist(1) - GPON rogue ONTs are detected\n2. rogueOntNotExist(2) - GPON rogue ONTs are not detected",
+   "enum_from_description": {
+    "1": "rogueOntExist",
+    "2": "rogueOntNotExist"
+   }
+  },
+  {
+   "name": "hwXponDeviceOltPortList",
+   "oid": "1.3.6.1.4.1.2011.6.145.2.43",
+   "kind": "scalar",
+   "depth": 1,
+   "syntax": "OctetString",
+   "constraints": "range: 0-32",
+   "description": "This object indicates the port list on the OLT device. The port list format is such as '0,1'."
+  },
+  {
+   "name": "hwXponTrapParaOltPortState",
+   "oid": "1.3.6.1.4.1.2011.6.145.2.44",
+   "kind": "scalar",
+   "depth": 1,
+   "syntax": "Enumeration",
+   "description": "This object indicates the state of xPON port.\nOptions:\n1. up(1) - Indicates that the port state is normal\n2. down(2) - Indicates that the port state is fail",
+   "enum_from_description": {
+    "1": "up",
+    "2": "down"
+   }
+  },
+  {
+   "name": "hwXponOltAdminState",
+   "oid": "1.3.6.1.4.1.2011.6.145.2.45",
+   "kind": "scalar",
+   "depth": 1,
+   "syntax": "Enumeration",
+   "description": "This object indicates the admin state of xPON port.\nOptions:\n1. on(1) - Indicates that the admin state is up\n2. off(2) - Indicates that the admin state is down",
+   "enum_from_description": {
+    "1": "on",
+    "2": "off"
+   }
+  },
+  {
+   "name": "hwXponOltEnergySavingFlag",
+   "oid": "1.3.6.1.4.1.2011.6.145.2.46",
+   "kind": "scalar",
+   "depth": 1,
+   "syntax": "Enumeration",
+   "description": "This object indicates the energy saving flag of xPON port.\nOptions:\n1. yes(1) - Indicates that the xPON port is in energy saving state\n2. no(2) - Indicates that the xPON port is not in energy saving state\n3. opticFlag(-2) - Indicates that the trap is optical flag",
+   "enum_from_description": {
+    "-2": "opticFlag",
+    "1": "yes",
+    "2": "no"
+   }
+  },
+  {
+   "name": "hwGponOntPortTDMTxClock",
+   "oid": "1.3.6.1.4.1.2011.6.145.2.47",
+   "kind": "scalar",
+   "depth": 1,
+   "syntax": "Enumeration",
+   "description": "TDM port coding style\nOptions:\n1. adapt(1) - Indicates that the tx-clock mode of the ONT TDM port is adapt\n2. system(2) - Indicates that the tx-clock mode of the ONT TDM port is system\n3. invalid(-1) - Indicates that the query fails or no information is detected",
+   "enum_from_description": {
+    "-1": "invalid",
+    "1": "adapt",
+    "2": "system"
+   }
+  },
+  {
+   "name": "hwXponOltLosAffectOntNum",
+   "oid": "1.3.6.1.4.1.2011.6.145.2.48",
+   "kind": "scalar",
+   "depth": 1,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "description": "This object indicates the number of affected ONT when the los alarm occurred.\n-1 indicates the information is invalid."
+  },
+  {
+   "name": "hwXponOltLosDgiOntNum",
+   "oid": "1.3.6.1.4.1.2011.6.145.2.49",
+   "kind": "scalar",
+   "depth": 1,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "description": "This object indicates the number of DGi ONT when the los alarm occurred.\n-1 indicates the information is invalid."
+  },
+  {
+   "name": "hwXponCommonDeviceReceivedPackets",
+   "oid": "1.3.6.1.4.1.2011.6.145.2.5",
+   "kind": "scalar",
+   "depth": 1,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "description": "The number of the ont remote ping received packets."
+  },
+  {
+   "name": "hwXponOntDosAttackProtocolType",
+   "oid": "1.3.6.1.4.1.2011.6.145.2.50",
+   "kind": "scalar",
+   "depth": 1,
+   "syntax": "OctetString",
+   "constraints": "range: 1-16",
+   "description": "This object indicates the protocol such as PLOAM,OAM,OMCI ,which ONT uses to perform DOS attack."
+  },
+  {
+   "name": "hwXponOntDosAttackPeakTrafficValue",
+   "oid": "1.3.6.1.4.1.2011.6.145.2.51",
+   "kind": "scalar",
+   "depth": 1,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "description": "This object indicates the peak number of messages per second when DOS attack occurred."
+  },
+  {
+   "name": "hwXponOltTrafficAlarmProfileAlarmDetectTimes",
+   "oid": "1.3.6.1.4.1.2011.6.145.2.52",
+   "kind": "scalar",
+   "depth": 1,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "description": "This object indicates the alarm threshold of the congestion detection."
+  },
+  {
+   "name": "hwXponOltTrafficAlarmProfileWarningDetectTimes",
+   "oid": "1.3.6.1.4.1.2011.6.145.2.53",
+   "kind": "scalar",
+   "depth": 1,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "description": "This object indicates the warning threshold of the congestion detection."
+  },
+  {
+   "name": "hwXponOltTrafficStatisticUpstreamCongestionTimes",
+   "oid": "1.3.6.1.4.1.2011.6.145.2.54",
+   "kind": "scalar",
+   "depth": 1,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "description": "This object indicates the Upstream congestion period number."
+  },
+  {
+   "name": "hwXponOltTrafficStatisticDownstreamCongestionTimes",
+   "oid": "1.3.6.1.4.1.2011.6.145.2.55",
+   "kind": "scalar",
+   "depth": 1,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "description": "This object indicates the Downstream congestion period number."
+  },
+  {
+   "name": "hwXponAlarmGponAndXgponComboPortChannelType",
+   "oid": "1.3.6.1.4.1.2011.6.145.2.56",
+   "kind": "scalar",
+   "depth": 1,
+   "syntax": "OctetString",
+   "constraints": "range: 1-10",
+   "description": "This object indicates the channel type of GPON combo port.\noptions:\n1. GPON -- GPON channel\n2. XG-PON -- XG-PON channel"
+  },
+  {
+   "name": "hwFrameIndexConflicted",
+   "oid": "1.3.6.1.4.1.2011.6.145.2.57",
+   "kind": "scalar",
+   "depth": 1,
+   "syntax": "Integer32",
+   "constraints": "range: 0-1024",
+   "description": "The index of a shelf in the device."
+  },
+  {
+   "name": "hwSlotIndexConflicted",
+   "oid": "1.3.6.1.4.1.2011.6.145.2.58",
+   "kind": "scalar",
+   "depth": 1,
+   "syntax": "Integer32",
+   "constraints": "range: 0-255",
+   "description": "A slot index is used to identify the location of a board in a shelf."
+  },
+  {
+   "name": "hwPortIndexConflicted",
+   "oid": "1.3.6.1.4.1.2011.6.145.2.59",
+   "kind": "scalar",
+   "depth": 1,
+   "syntax": "Integer32",
+   "constraints": "range: 0-255",
+   "description": "Port index, indicating the physical number of the port on a board."
+  },
+  {
+   "name": "hwXponCommonDeviceLostPackets",
+   "oid": "1.3.6.1.4.1.2011.6.145.2.6",
+   "kind": "scalar",
+   "depth": 1,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "description": "The number of the ont remote ping lost packets."
+  },
+  {
+   "name": "hwXponOltTrafficThresholdTraffic",
+   "oid": "1.3.6.1.4.1.2011.6.145.2.60",
+   "kind": "scalar",
+   "depth": 1,
+   "syntax": "mbps",
+   "description": "This object indicates the threshold traffic value of the congestion detection."
+  },
+  {
+   "name": "hwXponOltTrafficMaxObservedTraffic",
+   "oid": "1.3.6.1.4.1.2011.6.145.2.61",
+   "kind": "scalar",
+   "depth": 1,
+   "syntax": "mbps",
+   "description": "This object indicates the maximum observed traffic in test interval(Mbps) of the congestion detection."
+  },
+  {
+   "name": "hwXponOntWifiStateChageEventSsidIndex",
+   "oid": "1.3.6.1.4.1.2011.6.145.2.62",
+   "kind": "scalar",
+   "depth": 1,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "description": "This object indicates the SSID index corresponding to an ONT Wi-Fi status change event."
+  },
+  {
+   "name": "hwXponOntWifiStateAssociatedStaNumTrend",
+   "oid": "1.3.6.1.4.1.2011.6.145.2.63",
+   "kind": "scalar",
+   "depth": 1,
+   "syntax": "Enumeration",
+   "description": "This object indicates the change trend of the current number of STAs connected to the ONT through Wi-Fi.\nOptions:\n1. increased(1) - indicates that the current number of STAs connected to the ONT through Wi-Fi is greater than 16.\n2. reduced(2) - indicates that the current number of STAs connected to the ONT through Wi-Fi is less than 12.",
+   "enum_from_description": {
+    "1": "increased",
+    "2": "reduced"
+   }
+  },
+  {
+   "name": "hwXponOntWifiStateCurrentAssociatedStaNumber",
+   "oid": "1.3.6.1.4.1.2011.6.145.2.64",
+   "kind": "scalar",
+   "depth": 1,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "description": "This object indicates the current number of STAs connected to the ONT through Wi-Fi."
+  },
+  {
+   "name": "hwXponOntWifiStateChannelListChangeType",
+   "oid": "1.3.6.1.4.1.2011.6.145.2.65",
+   "kind": "scalar",
+   "depth": 1,
+   "syntax": "Enumeration",
+   "description": "This object indicates an SSID channel change type of the ONT Wi-Fi..\nOptions:\n1. normalChange(1) - indicates manual or automatic SSID channel switching..\n2. forceChange(2) - indicates forcible channel switching in the case of CE and DFS channel conflicts.",
+   "enum_from_description": {
+    "1": "normalChange",
+    "2": "forceChange"
+   }
+  },
+  {
+   "name": "hwXponOntWifiStateCurrentChannelList",
+   "oid": "1.3.6.1.4.1.2011.6.145.2.66",
+   "kind": "scalar",
+   "depth": 1,
+   "syntax": "OctetString",
+   "constraints": "range: 0-32",
+   "description": "This object indicates all the current channels after the SSID channel is switched for the ONT Wi-Fi. The number of channels is variable, and a maximum of 8 channels are displayed, which are divided by commas. For example, 1, 2,...,8"
+  },
+  {
+   "name": "hwXponOntWifiStateAssociatedStaWeakenedType",
+   "oid": "1.3.6.1.4.1.2011.6.145.2.67",
+   "kind": "scalar",
+   "depth": 1,
+   "syntax": "Enumeration",
+   "description": "This object indicates an STA weakening event of the ONT Wi-Fi.\nOptions:\n1. lowRssi(1) - indicates the lower RSSI threshold for an STA.\n2. lowAccessedRate(2) - indicates the access of a low-speed 802.11b or 802.11g device.",
+   "enum_from_description": {
+    "1": "lowRssi",
+    "2": "lowAccessedRate"
+   }
+  },
+  {
+   "name": "hwXponOntWifiStateAssociatedStaWeakenedMacAddress",
+   "oid": "1.3.6.1.4.1.2011.6.145.2.68",
+   "kind": "scalar",
+   "depth": 1,
+   "syntax_module": "SNMPv2-TC",
+   "syntax_type": "MacAddress",
+   "description": "This object indicates the MAC address of a detected STA."
+  },
+  {
+   "name": "hwXponPortAutoPingTestResultCode",
+   "oid": "1.3.6.1.4.1.2011.6.145.2.69",
+   "kind": "scalar",
+   "depth": 1,
+   "syntax": "Enumeration",
+   "description": "The object indicates the result of port auto ping test .\noptions:\n1.success(0) - Indicates the port auto ping test complete.\n2.fail(1) - Indicates the port auto ping test fail.\n3.invalid(-1) - Indicates that no information is detected.",
+   "enum_from_description": {
+    "-1": "invalid",
+    "0": "success",
+    "1": "fail"
+   },
+   "access": "read-write"
+  },
+  {
+   "name": "hwXponCommonDeviceLostRatio",
+   "oid": "1.3.6.1.4.1.2011.6.145.2.7",
+   "kind": "scalar",
+   "depth": 1,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "description": "The ratio of the ont remote ping lost packets(percent)."
+  },
+  {
+   "name": "hwXponOntAutoPingTestResultCode",
+   "oid": "1.3.6.1.4.1.2011.6.145.2.70",
+   "kind": "scalar",
+   "depth": 1,
+   "syntax": "Enumeration",
+   "description": "The object indicates the result of ont auto ping test .\noptions:\n1.success(0) - Indicates the ont auto ping test complete.\n2.fail(1) - Indicates the ont auto ping test fail.\n3.invalid(-1) - Indicates that no information is detected.",
+   "enum_from_description": {
+    "-1": "invalid",
+    "0": "success",
+    "1": "fail"
+   },
+   "access": "read-write"
+  },
+  {
+   "name": "hwPortCurrFlexMode",
+   "oid": "1.3.6.1.4.1.2011.6.145.2.71",
+   "kind": "scalar",
+   "depth": 1,
+   "syntax": "Enumeration",
+   "description": "This object indicates the flex mode of COMBO-PON port.\nOptions:\n1. unusable(1) -Indicates that the flex mode is unusable.\n2. gpon(2) -Indicates that the flex mode is Gpon.\n3. xgpon(3) -Indicates that the flex mode is XG-Pon.\n4. xgspon(4) -Indicates that the flex mode is XGS-Pon.\n5. xgComboAuto(5) -Indicates that the flex mode is XG/G Combo auto Pon.\n6. xgComboWdm(6) -Indicates that the flex mode is XG/G Combo wdm Pon.\n7. xgsComboAuto(7) -Indicates that the flex mode is XGS/G Combo auto Pon.\n8. xgsComboWdm(8) -Indicates that the flex mode is XGS/G Combo wdm Pon.\n9. invalid(-1) -Indicates that the query fails or no information is detect.",
+   "enum_from_description": {
+    "-1": "invalid",
+    "1": "unusable",
+    "2": "gpon",
+    "3": "xgpon",
+    "4": "xgspon",
+    "5": "xgComboAuto",
+    "6": "xgComboWdm",
+    "7": "xgsComboAuto",
+    "8": "xgsComboWdm"
+   }
+  },
+  {
+   "name": "hwPortNextFlexMode",
+   "oid": "1.3.6.1.4.1.2011.6.145.2.72",
+   "kind": "scalar",
+   "depth": 1,
+   "syntax": "Enumeration",
+   "description": "This object indicates the flex mode of COMBO-PON port.\nOptions:\n1. unusable(1) -Indicates that the flex mode is unusable.\n2. gpon(2) -Indicates that the flex mode is Gpon.\n3. xgpon(3) -Indicates that the flex mode is XG-Pon.\n4. xgspon(4) -Indicates that the flex mode is XGS-Pon.\n5. xgComboAuto(5) -Indicates that the flex mode is XG/G Combo auto Pon.\n6. xgComboWdm(6) -Indicates that the flex mode is XG/G Combo wdm Pon.\n7. xgsComboAuto(7) -Indicates that the flex mode is XGS/G Combo auto Pon.\n8. xgsComboWdm(8) -Indicates that the flex mode is XGS/G Combo wdm Pon.\n9. invalid(-1) -Indicates that the query fails or no information is detect.",
+   "enum_from_description": {
+    "-1": "invalid",
+    "1": "unusable",
+    "2": "gpon",
+    "3": "xgpon",
+    "4": "xgspon",
+    "5": "xgComboAuto",
+    "6": "xgComboWdm",
+    "7": "xgsComboAuto",
+    "8": "xgsComboWdm"
+   }
+  },
+  {
+   "name": "hwXponDIIndex",
+   "oid": "1.3.6.1.4.1.2011.6.145.2.73",
+   "kind": "scalar",
+   "depth": 1,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "description": "This object indicates the ONT DI port ID, range: 0~255."
+  },
+  {
+   "name": "hwXponDIState",
+   "oid": "1.3.6.1.4.1.2011.6.145.2.74",
+   "kind": "scalar",
+   "depth": 1,
+   "syntax": "Enumeration",
+   "description": "This object indicates the state of the ONT DI port.\nOptions:\n1. lower(0) - Indicates that the voltage state is lower.\n2. higher(1) - Indicates that the voltage state is higher.",
+   "enum_from_description": {
+    "0": "lower",
+    "1": "higher"
+   }
+  },
+  {
+   "name": "hwXponCommonDeviceMinDelay",
+   "oid": "1.3.6.1.4.1.2011.6.145.2.8",
+   "kind": "scalar",
+   "depth": 1,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "description": "The minimum delay of the ont remote ping(milli-seconds)."
+  },
+  {
+   "name": "hwXponCommonDeviceMaxDelay",
+   "oid": "1.3.6.1.4.1.2011.6.145.2.9",
+   "kind": "scalar",
+   "depth": 1,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "description": "The maximum delay of the ont remote ping(milli-seconds)."
+  },
+  {
+   "name": "hwXponCommonTraps",
+   "oid": "1.3.6.1.4.1.2011.6.145.3",
+   "kind": "node",
+   "depth": 0
+  },
+  {
+   "name": "hwXponCommonGeneralTraps",
+   "oid": "1.3.6.1.4.1.2011.6.145.3.1",
+   "kind": "node",
+   "depth": 1
+  },
+  {
+   "name": "hwXponCommonGeneralTrapsPrefix",
+   "oid": "1.3.6.1.4.1.2011.6.145.3.1.0",
+   "kind": "node",
+   "depth": 2
+  },
+  {
+   "name": "hwXponAlarmTraps",
+   "oid": "1.3.6.1.4.1.2011.6.145.3.2",
+   "kind": "node",
+   "depth": 1
+  },
+  {
+   "name": "hwXponOntAlarmTraps",
+   "oid": "1.3.6.1.4.1.2011.6.145.3.2.1",
+   "kind": "node",
+   "depth": 2
+  },
+  {
+   "name": "hwXponOntAlarmTrapsPrefix",
+   "oid": "1.3.6.1.4.1.2011.6.145.3.2.1.0",
+   "kind": "node",
+   "depth": 3
+  },
+  {
+   "name": "hwXponOltAlarmTraps",
+   "oid": "1.3.6.1.4.1.2011.6.145.3.2.2",
+   "kind": "node",
+   "depth": 2
+  },
+  {
+   "name": "hwXponOltAlarmTrapsPrefix",
+   "oid": "1.3.6.1.4.1.2011.6.145.3.2.2.0",
+   "kind": "node",
+   "depth": 3
+  }
+ ]
+}

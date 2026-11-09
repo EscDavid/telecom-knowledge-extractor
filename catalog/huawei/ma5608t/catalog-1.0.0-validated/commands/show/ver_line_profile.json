@@ -1,0 +1,116 @@
+{
+  "id": "command.huawei.gpon.global.show.ver_line_profile",
+  "canonical_name": "display ont-lineprofile gpon profile-id <id>",
+  "vendor": "Huawei",
+  "family": "MA5608T",
+  "firmware": [
+    "R015"
+  ],
+  "technology": "gpon",
+  "category": "show",
+  "cli_mode": "privileged_exec",
+  "cli_context": null,
+  "entity_ref": null,
+  "description": null,
+  "syntax": "display ont-lineprofile gpon profile-id <id>",
+  "parameters": [],
+  "output_fields": [
+    {
+      "name": "Profile-ID",
+      "type": "string",
+      "unit": null,
+      "oid_ref": null,
+      "oid_status": "not_mapped"
+    },
+    {
+      "name": "Profile-name",
+      "type": "string",
+      "unit": null,
+      "oid_ref": null,
+      "oid_status": "not_mapped"
+    },
+    {
+      "name": "Access-type",
+      "type": "string",
+      "unit": null,
+      "oid_ref": null,
+      "oid_status": "not_mapped"
+    },
+    {
+      "name": "FEC upstream switch",
+      "type": "string",
+      "unit": null,
+      "oid_ref": null,
+      "oid_status": "not_mapped"
+    },
+    {
+      "name": "OMCC encrypt switch",
+      "type": "string",
+      "unit": null,
+      "oid_ref": null,
+      "oid_status": "not_mapped"
+    },
+    {
+      "name": "Qos mode",
+      "type": "string",
+      "unit": null,
+      "oid_ref": null,
+      "oid_status": "not_mapped"
+    },
+    {
+      "name": "Mapping mode",
+      "type": "string",
+      "unit": null,
+      "oid_ref": null,
+      "oid_status": "not_mapped"
+    },
+    {
+      "name": "TR069 management",
+      "type": "string",
+      "unit": null,
+      "oid_ref": null,
+      "oid_status": "not_mapped"
+    },
+    {
+      "name": "TR069 IP index",
+      "type": "string",
+      "unit": null,
+      "oid_ref": null,
+      "oid_status": "not_mapped"
+    },
+    {
+      "name": "Bundle-ID/Port-list",
+      "type": "string",
+      "unit": null,
+      "oid_ref": null,
+      "oid_status": "not_mapped"
+    },
+    {
+      "name": "T-CONT <n> DBA Profile-ID",
+      "type": "string",
+      "unit": null,
+      "oid_ref": null,
+      "oid_status": "not_mapped"
+    }
+  ],
+  "prerequisites": [],
+  "related_commands": [],
+  "rollback": null,
+  "errors": [],
+  "notes": null,
+  "evidence": "comando citado en un post del foro oficial Huawei Enterprise (forum.huawei.com, autor RicoFranco, 2019-03-01, 28419 vistas, 14 likes) — nunca ejecutado contra este equipo: la cuenta Telnet actual está en vista de usuario (Mnz.principal>), sin privilegio para entrar a modo configuración/ver salidas reales.",
+  "sources": [
+    {
+      "doc_type": "community",
+      "pages": null,
+      "confidence": 0.3
+    }
+  ],
+  "confidence": {
+    "extraction": 0.3,
+    "correlation": 0.0,
+    "overall": 0.3
+  },
+  "status": "documented",
+  "conflicts": []
+}

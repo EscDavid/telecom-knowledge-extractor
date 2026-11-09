@@ -1,0 +1,906 @@
+{
+ "module": "HUAWEI-ALARM-MIB",
+ "source": "https://mibs.observium.org/mib/HUAWEI-ALARM-MIB/",
+ "source_kind": "third_party_rendering",
+ "fetched": "2026-11-09T21:19:17Z",
+ "root_oid": "1.3.6.1.4.1.2011.5.25.180",
+ "counts": {
+  "node": 14,
+  "table": 17,
+  "row": 17,
+  "column": 41,
+  "scalar": 15
+ },
+ "objects": [
+  {
+   "name": "hwAlarmMIB",
+   "oid": "1.3.6.1.4.1.2011.5.25.180",
+   "kind": "node",
+   "depth": 0
+  },
+  {
+   "name": "hwAlarmObjects",
+   "oid": "1.3.6.1.4.1.2011.5.25.180.1",
+   "kind": "node",
+   "depth": 1
+  },
+  {
+   "name": "hwSnmpTargetAddrExtTable",
+   "oid": "1.3.6.1.4.1.2011.5.25.180.1.1",
+   "kind": "table",
+   "depth": 2,
+   "description": "Define snmp target Address extend table."
+  },
+  {
+   "name": "hwSnmpTargetAddrExtEntry",
+   "oid": "1.3.6.1.4.1.2011.5.25.180.1.1.1",
+   "kind": "row",
+   "depth": 3,
+   "indexes": [
+    "hwSnmpTargetAddrExtIndex"
+   ],
+   "description": "The entry of the extended snmp target address table."
+  },
+  {
+   "name": "hwSnmpTargetAddrExtIndex",
+   "oid": "1.3.6.1.4.1.2011.5.25.180.1.1.1.1",
+   "kind": "column",
+   "depth": 4,
+   "syntax": "OctetString",
+   "constraints": "range: 1-128",
+   "description": "the extended target address table index."
+  },
+  {
+   "name": "hwSnmpTargetSlaveAddressList",
+   "oid": "1.3.6.1.4.1.2011.5.25.180.1.1.1.2",
+   "kind": "column",
+   "depth": 4,
+   "syntax": "OctetString",
+   "constraints": "range: 1-255",
+   "description": "Address of slave target host.",
+   "access": "read-write"
+  },
+  {
+   "name": "hwSnmpTargetAddrReliability",
+   "oid": "1.3.6.1.4.1.2011.5.25.180.1.1.1.3",
+   "kind": "column",
+   "depth": 4,
+   "syntax": "Enumeration",
+   "description": "If enable, then the extend VBs will be added to the alarm parameters.",
+   "access": "read-write"
+  },
+  {
+   "name": "hwSnmpTargetAddrAlarmReliability",
+   "oid": "1.3.6.1.4.1.2011.5.25.180.1.1.1.4",
+   "kind": "column",
+   "depth": 4,
+   "syntax": "Enumeration",
+   "description": "Alarm reliability function enable flag.",
+   "access": "read-write"
+  },
+  {
+   "name": "hwSnmpTargetAddrEventReliability",
+   "oid": "1.3.6.1.4.1.2011.5.25.180.1.1.1.5",
+   "kind": "column",
+   "depth": 4,
+   "syntax": "Enumeration",
+   "description": "Event reliability function enable flag.",
+   "access": "read-write"
+  },
+  {
+   "name": "hwSnmpTargetAddrExtRowStatus",
+   "oid": "1.3.6.1.4.1.2011.5.25.180.1.1.1.6",
+   "kind": "column",
+   "depth": 4,
+   "syntax_module": "SNMPv2-TC",
+   "syntax_type": "RowStatus",
+   "description": "The row status of the target extend table.",
+   "access": "read-write"
+  },
+  {
+   "name": "hwAlarmDateAndTime",
+   "oid": "1.3.6.1.4.1.2011.5.25.180.1.18",
+   "kind": "scalar",
+   "depth": 2,
+   "syntax_module": "SNMPv2-TC",
+   "syntax_type": "DateAndTime",
+   "description": "This object indicates the time when an alarm is generated or cleared."
+  },
+  {
+   "name": "hwAlarmOrEventFlag",
+   "oid": "1.3.6.1.4.1.2011.5.25.180.1.19",
+   "kind": "scalar",
+   "depth": 2,
+   "syntax": "Enumeration",
+   "description": "Indicates the type of alarm messages.\n1: Alarm\n2: Event"
+  },
+  {
+   "name": "hwMinAlarmSyncIndex",
+   "oid": "1.3.6.1.4.1.2011.5.25.180.1.2",
+   "kind": "scalar",
+   "depth": 2,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "description": "The minimal index value for alarm synchronization."
+  },
+  {
+   "name": "hwAlarmReasonInfo",
+   "oid": "1.3.6.1.4.1.2011.5.25.180.1.20",
+   "kind": "scalar",
+   "depth": 2,
+   "syntax": "OctetString",
+   "constraints": "range: 0-255",
+   "description": "The reason for the alarm."
+  },
+  {
+   "name": "hwAlarmSeverity",
+   "oid": "1.3.6.1.4.1.2011.5.25.180.1.25",
+   "kind": "scalar",
+   "depth": 2,
+   "syntax": "Enumeration",
+   "indexes": [
+    "RFC1213-MIB::ifIndex"
+   ],
+   "description": "Alarm severity."
+  },
+  {
+   "name": "hwAlarmVNFCName",
+   "oid": "1.3.6.1.4.1.2011.5.25.180.1.26",
+   "kind": "scalar",
+   "depth": 2,
+   "syntax": "OctetString",
+   "constraints": "range: 0-32",
+   "description": "Alarm VNFC name."
+  },
+  {
+   "name": "hwSnmpTargetSyncIndexTable",
+   "oid": "1.3.6.1.4.1.2011.5.25.180.1.28",
+   "kind": "table",
+   "depth": 2,
+   "description": "The synchronization index of snmp targets table."
+  },
+  {
+   "name": "hwSnmpTargetSyncIndexEntry",
+   "oid": "1.3.6.1.4.1.2011.5.25.180.1.28.1",
+   "kind": "row",
+   "depth": 3,
+   "indexes": [
+    "hwSnmpTargetAddrExtIndex"
+   ],
+   "description": "The entry of the synchronization index table."
+  },
+  {
+   "name": "hwMinAlmSyncIndex",
+   "oid": "1.3.6.1.4.1.2011.5.25.180.1.28.1.1",
+   "kind": "column",
+   "depth": 4,
+   "syntax": "Unsigned32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Unsigned32",
+   "description": "The minimal index value for alarm synchronization."
+  },
+  {
+   "name": "hwMaxAlmSyncIndex",
+   "oid": "1.3.6.1.4.1.2011.5.25.180.1.28.1.2",
+   "kind": "column",
+   "depth": 4,
+   "syntax": "Unsigned32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Unsigned32",
+   "description": "The maximal index value for alarm synchronization."
+  },
+  {
+   "name": "hwMinEvtSyncIndex",
+   "oid": "1.3.6.1.4.1.2011.5.25.180.1.28.1.3",
+   "kind": "column",
+   "depth": 4,
+   "syntax": "Unsigned32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Unsigned32",
+   "description": "The minimal index value for event synchronization."
+  },
+  {
+   "name": "hwMaxEvtSyncIndex",
+   "oid": "1.3.6.1.4.1.2011.5.25.180.1.28.1.4",
+   "kind": "column",
+   "depth": 4,
+   "syntax": "Unsigned32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Unsigned32",
+   "description": "The maximal index value for event synchronization."
+  },
+  {
+   "name": "hwMaxAlarmSyncIndex",
+   "oid": "1.3.6.1.4.1.2011.5.25.180.1.3",
+   "kind": "scalar",
+   "depth": 2,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "description": "The maximal index value for alarm synchronization."
+  },
+  {
+   "name": "hwAlarmActiveVsTable",
+   "oid": "1.3.6.1.4.1.2011.5.25.180.1.31",
+   "kind": "table",
+   "depth": 2,
+   "description": "The active alarm management table for LSVS support version."
+  },
+  {
+   "name": "hwAlarmActiveVsEntry",
+   "oid": "1.3.6.1.4.1.2011.5.25.180.1.31.1",
+   "kind": "row",
+   "depth": 3,
+   "description": "The active alarm table for VS support version."
+  },
+  {
+   "name": "hwAlarmActiveVsId",
+   "oid": "1.3.6.1.4.1.2011.5.25.180.1.31.1.9",
+   "kind": "column",
+   "depth": 4,
+   "syntax": "Unsigned32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Unsigned32",
+   "description": "The VS id of the alarm."
+  },
+  {
+   "name": "hwEventVsTable",
+   "oid": "1.3.6.1.4.1.2011.5.25.180.1.33",
+   "kind": "table",
+   "depth": 2,
+   "description": "The event table for LSVS support version."
+  },
+  {
+   "name": "hwEventVsEntry",
+   "oid": "1.3.6.1.4.1.2011.5.25.180.1.33.1",
+   "kind": "row",
+   "depth": 3,
+   "description": "The event entry."
+  },
+  {
+   "name": "hwEventVsId",
+   "oid": "1.3.6.1.4.1.2011.5.25.180.1.33.1.9",
+   "kind": "column",
+   "depth": 4,
+   "syntax": "Unsigned32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Unsigned32",
+   "description": "The VS id of the event."
+  },
+  {
+   "name": "hwAlarmSyncVsTable",
+   "oid": "1.3.6.1.4.1.2011.5.25.180.1.36",
+   "kind": "table",
+   "depth": 2,
+   "description": "Alarm synchronization table."
+  },
+  {
+   "name": "hwAlarmSyncVsEntry",
+   "oid": "1.3.6.1.4.1.2011.5.25.180.1.36.1",
+   "kind": "row",
+   "depth": 3,
+   "description": "Alarm synchronization table entry."
+  },
+  {
+   "name": "hwAlarmSyncVsId",
+   "oid": "1.3.6.1.4.1.2011.5.25.180.1.36.1.3",
+   "kind": "column",
+   "depth": 4,
+   "syntax": "Unsigned32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Unsigned32",
+   "description": "Alarm VS id."
+  },
+  {
+   "name": "hwEventSyncVsTable",
+   "oid": "1.3.6.1.4.1.2011.5.25.180.1.39",
+   "kind": "table",
+   "depth": 2,
+   "description": "The event synchronization table."
+  },
+  {
+   "name": "hwEventSyncVsEntry",
+   "oid": "1.3.6.1.4.1.2011.5.25.180.1.39.1",
+   "kind": "row",
+   "depth": 3,
+   "description": "The event synchronization table entry."
+  },
+  {
+   "name": "hwEvevtSyncVsId",
+   "oid": "1.3.6.1.4.1.2011.5.25.180.1.39.1.3",
+   "kind": "column",
+   "depth": 4,
+   "syntax": "Unsigned32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Unsigned32",
+   "description": "The VS id of the event."
+  },
+  {
+   "name": "hwAlarmSyncTable",
+   "oid": "1.3.6.1.4.1.2011.5.25.180.1.4",
+   "kind": "table",
+   "depth": 2,
+   "description": "Alarm synchronization table."
+  },
+  {
+   "name": "hwAlarmSyncEntry",
+   "oid": "1.3.6.1.4.1.2011.5.25.180.1.4.1",
+   "kind": "row",
+   "depth": 3,
+   "indexes": [
+    "hwSnmpTargetAddrExtIndex",
+    "hwAlarmSyncIndex"
+   ],
+   "description": "Alarm synchronization table entry."
+  },
+  {
+   "name": "hwAlarmSyncIndex",
+   "oid": "1.3.6.1.4.1.2011.5.25.180.1.4.1.1",
+   "kind": "column",
+   "depth": 4,
+   "syntax": "Unsigned32",
+   "constraints": "range: 1-2147483647",
+   "description": "Alarm synchronization index."
+  },
+  {
+   "name": "hwAlarmSyncId",
+   "oid": "1.3.6.1.4.1.2011.5.25.180.1.4.1.2",
+   "kind": "column",
+   "depth": 4,
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Counter64",
+   "description": "Alarm id"
+  },
+  {
+   "name": "hwAlarmSyncPara",
+   "oid": "1.3.6.1.4.1.2011.5.25.180.1.4.1.3",
+   "kind": "column",
+   "depth": 4,
+   "syntax": "OctetString",
+   "constraints": "range: 0-4096",
+   "description": "This object indicates the information contained\nin the binding variable list of the alarm message."
+  },
+  {
+   "name": "hwApName",
+   "oid": "1.3.6.1.4.1.2011.5.25.180.1.40",
+   "kind": "scalar",
+   "depth": 2,
+   "syntax": "OctetString",
+   "constraints": "range: 1-246",
+   "description": "Alarm AP name."
+  },
+  {
+   "name": "hwMinEventSyncIndex",
+   "oid": "1.3.6.1.4.1.2011.5.25.180.1.5",
+   "kind": "scalar",
+   "depth": 2,
+   "syntax": "Unsigned32",
+   "constraints": "range: 1-2147483647",
+   "description": "The minimal index value for event synchronization."
+  },
+  {
+   "name": "hwMaxEventSyncIndex",
+   "oid": "1.3.6.1.4.1.2011.5.25.180.1.6",
+   "kind": "scalar",
+   "depth": 2,
+   "syntax": "Unsigned32",
+   "constraints": "range: 1-2147483647",
+   "description": "The maximal index value for event synchronization."
+  },
+  {
+   "name": "hwEventSyncTable",
+   "oid": "1.3.6.1.4.1.2011.5.25.180.1.7",
+   "kind": "table",
+   "depth": 2,
+   "description": "The event synchronization table."
+  },
+  {
+   "name": "hwEventSyncEntry",
+   "oid": "1.3.6.1.4.1.2011.5.25.180.1.7.1",
+   "kind": "row",
+   "depth": 3,
+   "indexes": [
+    "hwSnmpTargetAddrExtIndex",
+    "hwEventSyncIndex"
+   ],
+   "description": "The event synchronization table entry."
+  },
+  {
+   "name": "hwEventSyncIndex",
+   "oid": "1.3.6.1.4.1.2011.5.25.180.1.7.1.1",
+   "kind": "column",
+   "depth": 4,
+   "syntax": "Unsigned32",
+   "constraints": "range: 1-2147483647",
+   "description": "The event synchronization index value."
+  },
+  {
+   "name": "hwEventSyncId",
+   "oid": "1.3.6.1.4.1.2011.5.25.180.1.7.1.2",
+   "kind": "column",
+   "depth": 4,
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Counter64",
+   "description": "The event id."
+  },
+  {
+   "name": "hwEventSyncPara",
+   "oid": "1.3.6.1.4.1.2011.5.25.180.1.7.1.3",
+   "kind": "column",
+   "depth": 4,
+   "syntax": "OctetString",
+   "constraints": "range: 0-4096",
+   "description": "This object indicates the information contained\nin the binding variable list of an event."
+  },
+  {
+   "name": "hwAlarmActiveTable",
+   "oid": "1.3.6.1.4.1.2011.5.25.180.1.8",
+   "kind": "table",
+   "depth": 2,
+   "description": "The active alarm table."
+  },
+  {
+   "name": "hwAlarmActiveEntry",
+   "oid": "1.3.6.1.4.1.2011.5.25.180.1.8.1",
+   "kind": "row",
+   "depth": 3,
+   "indexes": [
+    "hwSnmpTargetAddrExtIndex",
+    "hwActiveAlarmIndex"
+   ],
+   "description": "Entries appear in this table when alarms are raised. They\nare removed when the alarm is cleared."
+  },
+  {
+   "name": "hwActiveAlarmIndex",
+   "oid": "1.3.6.1.4.1.2011.5.25.180.1.8.1.1",
+   "kind": "column",
+   "depth": 4,
+   "syntax": "Unsigned32",
+   "constraints": "range: 1-2147483647",
+   "description": "A strictly monotonically increasing integer which acts as the index of all alarms and events.\nIt wraps back to 1 after it reaches its maximum value."
+  },
+  {
+   "name": "hwActiveAlarmId",
+   "oid": "1.3.6.1.4.1.2011.5.25.180.1.8.1.2",
+   "kind": "column",
+   "depth": 4,
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Counter64",
+   "description": "The id of an alarm."
+  },
+  {
+   "name": "hwActiveAlarmPara",
+   "oid": "1.3.6.1.4.1.2011.5.25.180.1.8.1.3",
+   "kind": "column",
+   "depth": 4,
+   "syntax": "OctetString",
+   "constraints": "range: 0-4096",
+   "description": "This object indicates the parameters of an active alarm."
+  },
+  {
+   "name": "hwActiveAlarmRowStatus",
+   "oid": "1.3.6.1.4.1.2011.5.25.180.1.8.1.4",
+   "kind": "column",
+   "depth": 4,
+   "syntax_module": "SNMPv2-TC",
+   "syntax_type": "RowStatus",
+   "description": "This object indicates the row status.",
+   "access": "read-write"
+  },
+  {
+   "name": "hwEventTable",
+   "oid": "1.3.6.1.4.1.2011.5.25.180.1.9",
+   "kind": "table",
+   "depth": 2,
+   "description": "The event table."
+  },
+  {
+   "name": "hwEventEntry",
+   "oid": "1.3.6.1.4.1.2011.5.25.180.1.9.1",
+   "kind": "row",
+   "depth": 3,
+   "indexes": [
+    "hwSnmpTargetAddrExtIndex",
+    "hwEventIndex"
+   ],
+   "description": "Entries appear in this table when events are raised."
+  },
+  {
+   "name": "hwEventIndex",
+   "oid": "1.3.6.1.4.1.2011.5.25.180.1.9.1.1",
+   "kind": "column",
+   "depth": 4,
+   "syntax": "Unsigned32",
+   "constraints": "range: 1-2147483647",
+   "description": "A strictly monotonically increasing integer\nwhich acts as the index of all alarms and events.\nIt wraps back to 1 after it reaches its maximum value."
+  },
+  {
+   "name": "hwEventId",
+   "oid": "1.3.6.1.4.1.2011.5.25.180.1.9.1.2",
+   "kind": "column",
+   "depth": 4,
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Counter64",
+   "description": "This object indicates the OID of an event."
+  },
+  {
+   "name": "hwEventPara",
+   "oid": "1.3.6.1.4.1.2011.5.25.180.1.9.1.3",
+   "kind": "column",
+   "depth": 4,
+   "syntax": "OctetString",
+   "constraints": "range: 0-4096",
+   "description": "This object indicates the parameter information of an event."
+  },
+  {
+   "name": "hwEventRowStatus",
+   "oid": "1.3.6.1.4.1.2011.5.25.180.1.9.1.4",
+   "kind": "column",
+   "depth": 4,
+   "syntax_module": "SNMPv2-TC",
+   "syntax_type": "RowStatus",
+   "description": "This object indicates the row status.",
+   "access": "read-write"
+  },
+  {
+   "name": "hwAlarmNotifications",
+   "oid": "1.3.6.1.4.1.2011.5.25.180.2",
+   "kind": "node",
+   "depth": 1
+  },
+  {
+   "name": "hwAlarmConformance",
+   "oid": "1.3.6.1.4.1.2011.5.25.180.3",
+   "kind": "node",
+   "depth": 1
+  },
+  {
+   "name": "hwAlarmCompliances",
+   "oid": "1.3.6.1.4.1.2011.5.25.180.3.1",
+   "kind": "node",
+   "depth": 2
+  },
+  {
+   "name": "hwAlarmGroups",
+   "oid": "1.3.6.1.4.1.2011.5.25.180.3.2",
+   "kind": "node",
+   "depth": 2
+  },
+  {
+   "name": "hwAlarmConfig",
+   "oid": "1.3.6.1.4.1.2011.5.25.180.5",
+   "kind": "node",
+   "depth": 1
+  },
+  {
+   "name": "hwAlarmAttr",
+   "oid": "1.3.6.1.4.1.2011.5.25.180.5.1",
+   "kind": "node",
+   "depth": 2
+  },
+  {
+   "name": "hwAlarmAttrTable",
+   "oid": "1.3.6.1.4.1.2011.5.25.180.5.1.1",
+   "kind": "table",
+   "depth": 3,
+   "description": "This table contains attribute of alarms."
+  },
+  {
+   "name": "hwAlarmAttrEntry",
+   "oid": "1.3.6.1.4.1.2011.5.25.180.5.1.1.1",
+   "kind": "row",
+   "depth": 4,
+   "indexes": [
+    "hwAlarmName"
+   ],
+   "description": "Entry of hwAlarmAttrTable."
+  },
+  {
+   "name": "hwAlarmName",
+   "oid": "1.3.6.1.4.1.2011.5.25.180.5.1.1.1.1",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "OctetString",
+   "constraints": "range: 1-64",
+   "description": "The name of registered alarms."
+  },
+  {
+   "name": "hwAlarmAttrSeverity",
+   "oid": "1.3.6.1.4.1.2011.5.25.180.5.1.1.1.2",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Enumeration",
+   "description": "The severity of alarms.",
+   "access": "read-write"
+  },
+  {
+   "name": "hwAlarmMask",
+   "oid": "1.3.6.1.4.1.2011.5.25.180.5.3",
+   "kind": "node",
+   "depth": 2
+  },
+  {
+   "name": "hwAlarmMaskBasedOnIfnameTable",
+   "oid": "1.3.6.1.4.1.2011.5.25.180.5.3.1",
+   "kind": "table",
+   "depth": 3,
+   "description": "Define alarm mask table, which is based on interface."
+  },
+  {
+   "name": "hwAlarmMaskBasedOnIfnameEntry",
+   "oid": "1.3.6.1.4.1.2011.5.25.180.5.3.1.1",
+   "kind": "row",
+   "depth": 4,
+   "indexes": [
+    "hwAlarmMaskIfName"
+   ],
+   "description": "Entry of hwAlarmMaskBasedOnIfnameTable."
+  },
+  {
+   "name": "hwAlarmMaskIfName",
+   "oid": "1.3.6.1.4.1.2011.5.25.180.5.3.1.1.1",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "OctetString",
+   "description": "The interface name for alarm mask."
+  },
+  {
+   "name": "hwAlarmMaskBasedOnIfnameRowStatus",
+   "oid": "1.3.6.1.4.1.2011.5.25.180.5.3.1.1.51",
+   "kind": "column",
+   "depth": 5,
+   "syntax_module": "SNMPv2-TC",
+   "syntax_type": "RowStatus",
+   "description": "The row status of the alarm mask based on interface table.",
+   "access": "read-write"
+  },
+  {
+   "name": "hwAlarmMaskBasedOnEntityTable",
+   "oid": "1.3.6.1.4.1.2011.5.25.180.5.3.2",
+   "kind": "table",
+   "depth": 3,
+   "description": "Define alarm mask table, which is based on entity index."
+  },
+  {
+   "name": "hwAlarmMaskBasedOnEntityEntry",
+   "oid": "1.3.6.1.4.1.2011.5.25.180.5.3.2.1",
+   "kind": "row",
+   "depth": 4,
+   "indexes": [
+    "hwAlarmMaskEntPhysicalIndex"
+   ],
+   "description": "Entry of hwAlarmMaskBasedOnEntityTable."
+  },
+  {
+   "name": "hwAlarmMaskEntPhysicalIndex",
+   "oid": "1.3.6.1.4.1.2011.5.25.180.5.3.2.1.1",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Integer32",
+   "syntax_module": "SNMPv2-SMI",
+   "syntax_type": "Integer32",
+   "description": "The physical index of entity for alarm mask."
+  },
+  {
+   "name": "hwAlarmMaskEntPhysicalName",
+   "oid": "1.3.6.1.4.1.2011.5.25.180.5.3.2.1.2",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "OctetString",
+   "description": "The physical name of entity for alarm mask.",
+   "access": "read-write"
+  },
+  {
+   "name": "hwAlarmMaskBasedOnEntityRowStatus",
+   "oid": "1.3.6.1.4.1.2011.5.25.180.5.3.2.1.51",
+   "kind": "column",
+   "depth": 5,
+   "syntax_module": "SNMPv2-TC",
+   "syntax_type": "RowStatus",
+   "description": "The row status of the alarm mask based on entity table.",
+   "access": "read-write"
+  },
+  {
+   "name": "hwAlarmDelay",
+   "oid": "1.3.6.1.4.1.2011.5.25.180.5.4",
+   "kind": "node",
+   "depth": 2
+  },
+  {
+   "name": "hwAlarmDelaySuppressionEnable",
+   "oid": "1.3.6.1.4.1.2011.5.25.180.5.4.1",
+   "kind": "scalar",
+   "depth": 3,
+   "syntax": "Enumeration",
+   "description": "The switch of alarm delay suppression.",
+   "access": "read-write"
+  },
+  {
+   "name": "hwAlarmDelaySuppressionTable",
+   "oid": "1.3.6.1.4.1.2011.5.25.180.5.4.2",
+   "kind": "table",
+   "depth": 3,
+   "description": "Define alarm delay suppression table."
+  },
+  {
+   "name": "hwAlarmDelaySuppressionEntry",
+   "oid": "1.3.6.1.4.1.2011.5.25.180.5.4.2.1",
+   "kind": "row",
+   "depth": 4,
+   "indexes": [
+    "hwAlarmName"
+   ],
+   "description": "The entry of the alarm delay suppression table."
+  },
+  {
+   "name": "hwAlarmDelaySuppressionCausePersistPeriod",
+   "oid": "1.3.6.1.4.1.2011.5.25.180.5.4.2.1.1",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Integer32",
+   "constraints": "range: 0-600",
+   "description": "The cause persist period of alarm delay suppression.",
+   "access": "read-write"
+  },
+  {
+   "name": "hwAlarmDelaySuppressionClearPersistPeriod",
+   "oid": "1.3.6.1.4.1.2011.5.25.180.5.4.2.1.2",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Integer32",
+   "constraints": "range: 0-600",
+   "description": "The clear persist period of alarm delay suppression.",
+   "access": "read-write"
+  },
+  {
+   "name": "hwAlarmCorrAnalyze",
+   "oid": "1.3.6.1.4.1.2011.5.25.180.5.5",
+   "kind": "node",
+   "depth": 2
+  },
+  {
+   "name": "hwAlarmCorrAnalyzeSuppressionEnable",
+   "oid": "1.3.6.1.4.1.2011.5.25.180.5.5.1",
+   "kind": "scalar",
+   "depth": 3,
+   "syntax": "Enumeration",
+   "indexes": [
+    "RFC1213-MIB::ifIndex"
+   ],
+   "description": "The switch of alarm correlation analyze suppression.",
+   "access": "read-write"
+  },
+  {
+   "name": "hwAlarmCorrAnalyzeSuppressionRootCauseIndication",
+   "oid": "1.3.6.1.4.1.2011.5.25.180.5.5.2",
+   "kind": "scalar",
+   "depth": 3,
+   "syntax": "Enumeration",
+   "description": "If alarm has passed correaltion analysis, this indication is\nrootcause or nonrootcause, default is independent."
+  },
+  {
+   "name": "hwAlarmCorrAnalyzeSuppressionParentSequence",
+   "oid": "1.3.6.1.4.1.2011.5.25.180.5.5.3",
+   "kind": "scalar",
+   "depth": 3,
+   "syntax": "OctetString",
+   "description": "The parent sequence of alarm, whose indication is nonrootcause."
+  },
+  {
+   "name": "hwAlarmCorrAnalyzeSuppressionTable",
+   "oid": "1.3.6.1.4.1.2011.5.25.180.5.5.4",
+   "kind": "table",
+   "depth": 3,
+   "description": "Define alarm correlation analyze suppression table."
+  },
+  {
+   "name": "hwAlarmCorrAnalyzeSuppressionEntry",
+   "oid": "1.3.6.1.4.1.2011.5.25.180.5.5.4.1",
+   "kind": "row",
+   "depth": 4,
+   "indexes": [
+    "hwSnmpTargetAddrExtIndex"
+   ],
+   "description": "The entry of alarm correlation analyze suppression table."
+  },
+  {
+   "name": "hwAlarmCorrAnalyzeSuppressionStatus",
+   "oid": "1.3.6.1.4.1.2011.5.25.180.5.5.4.1.1",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Enumeration",
+   "description": "The status of alarm correlation suppression for each target host.",
+   "access": "read-write"
+  },
+  {
+   "name": "hwEventConfig",
+   "oid": "1.3.6.1.4.1.2011.5.25.180.6",
+   "kind": "node",
+   "depth": 1
+  },
+  {
+   "name": "hwEventAttr",
+   "oid": "1.3.6.1.4.1.2011.5.25.180.6.1",
+   "kind": "node",
+   "depth": 2
+  },
+  {
+   "name": "hwEventAttrTable",
+   "oid": "1.3.6.1.4.1.2011.5.25.180.6.1.1",
+   "kind": "table",
+   "depth": 3,
+   "description": "This table contains attribute of events."
+  },
+  {
+   "name": "hwEventAttrEntry",
+   "oid": "1.3.6.1.4.1.2011.5.25.180.6.1.1.1",
+   "kind": "row",
+   "depth": 4,
+   "indexes": [
+    "hwEventName"
+   ],
+   "description": "Entry of hwEventAttrTable."
+  },
+  {
+   "name": "hwEventName",
+   "oid": "1.3.6.1.4.1.2011.5.25.180.6.1.1.1.1",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "OctetString",
+   "constraints": "range: 1-64",
+   "description": "The name of registered events."
+  },
+  {
+   "name": "hwEventAttrSeverity",
+   "oid": "1.3.6.1.4.1.2011.5.25.180.6.1.1.1.2",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Enumeration",
+   "description": "The severity of evens."
+  },
+  {
+   "name": "hwEventDelay",
+   "oid": "1.3.6.1.4.1.2011.5.25.180.6.4",
+   "kind": "node",
+   "depth": 2
+  },
+  {
+   "name": "hwEventDelaySuppressionEnable",
+   "oid": "1.3.6.1.4.1.2011.5.25.180.6.4.1",
+   "kind": "scalar",
+   "depth": 3,
+   "syntax": "Enumeration",
+   "description": "The switch of event delay suppression.",
+   "access": "read-write"
+  },
+  {
+   "name": "hwEventDelaySuppressionTable",
+   "oid": "1.3.6.1.4.1.2011.5.25.180.6.4.2",
+   "kind": "table",
+   "depth": 3,
+   "description": "Define event delay suppression table."
+  },
+  {
+   "name": "hwEventDelaySuppressionEntry",
+   "oid": "1.3.6.1.4.1.2011.5.25.180.6.4.2.1",
+   "kind": "row",
+   "depth": 4,
+   "indexes": [
+    "RFC1213-MIB::ifIndex",
+    "hwEventName"
+   ],
+   "description": "The entry of event delay suppression table."
+  },
+  {
+   "name": "hwEventDelaySuppressionCausePersistPeriod",
+   "oid": "1.3.6.1.4.1.2011.5.25.180.6.4.2.1.1",
+   "kind": "column",
+   "depth": 5,
+   "syntax": "Integer32",
+   "constraints": "range: 0-600",
+   "description": "The cause persist period of event delay suppression.",
+   "access": "read-write"
+  }
+ ]
+}

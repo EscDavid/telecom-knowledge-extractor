@@ -420,6 +420,7 @@ class WalkValidator:
                 self._write_json(target / f.relative_to(seed), data)
 
         self._apply_command_sources(target, family)
+        self._apply_alarm_sources(target, family, vendor, profile.technology if profile else "gpon")
 
         # redacta ANTES de results.json y manifest.json: ambos leen el mismo `findings`
         # (manifest.observed_firmware_strings también sale de by_trigger("ascii_index"))
@@ -483,6 +484,37 @@ class WalkValidator:
                 self._write_json(target / "commands" / c["category"] / f"{c['id'].split('.')[-1]}.json", c)
                 n += 1
             log.info("WalkValidator: comandos verificados %s → +%d en %s", f.name, n, family)
+        return n
+
+    def _apply_alarm_sources(self, target: Path, family: str, vendor: str,
+                             technology: str) -> int:
+        """Alarmas documentadas (docs/validation/alarms/*.json), mismo patrón que
+        _apply_command_sources. Cada alarma trae su propio entity_ref; se agrupan por
+        entidad en target/alarms/<entity_short>.json (se funden con lo heredado de la
+        semilla si ya existía ese archivo, en vez de pisarlo)."""
+        d = self.validation_dir / "alarms"
+        if not d.exists():
+            return 0
+        n = 0
+        for f in sorted(d.glob("*.json")):
+            doc = json.loads(f.read_text(encoding="utf-8"))
+            alarms = (doc.get("alarms") or {}).get(family)
+            if not alarms:
+                continue
+            by_entity: dict[str, list[dict]] = {}
+            for a in alarms:
+                by_entity.setdefault(entity_short_name(a.get("entity_ref", "")), []).append(a)
+            for short, new_alarms in by_entity.items():
+                p = target / "alarms" / f"{short}.json"
+                if p.exists():
+                    group = json.loads(p.read_text(encoding="utf-8"))
+                    group["alarms"] = group.get("alarms", []) + new_alarms
+                else:
+                    group = {"entity_ref": new_alarms[0].get("entity_ref"), "vendor": vendor,
+                            "family": family, "firmware": [], "alarms": new_alarms}
+                self._write_json(p, group)
+                n += len(new_alarms)
+            log.info("WalkValidator: alarmas documentadas %s → +%d en %s", f.name, len(alarms), family)
         return n
 
     def _manifest(self, vendor: str, family: str, enriched_oids: list[dict],

@@ -1,0 +1,38 @@
+{
+  "id": "command.huawei.gpon.vlan.show.interfaz_vlanif",
+  "canonical_name": "display interface vlanif <id>",
+  "vendor": "Huawei",
+  "family": "MA5608T",
+  "firmware": [
+    "R015"
+  ],
+  "technology": "gpon",
+  "category": "show",
+  "cli_mode": "privileged_exec",
+  "cli_context": null,
+  "entity_ref": "entity.huawei.gpon.logical.vlan",
+  "description": null,
+  "syntax": "display interface vlanif <id>",
+  "parameters": [],
+  "output_fields": [],
+  "prerequisites": [],
+  "related_commands": [],
+  "rollback": null,
+  "errors": [],
+  "notes": null,
+  "evidence": "comando citado en un post del foro oficial Huawei Enterprise (forum.huawei.com, autor RicoFranco, 2019-03-01, 28419 vistas, 14 likes) — nunca ejecutado contra este equipo: la cuenta Telnet actual está en vista de usuario (Mnz.principal>), sin privilegio para entrar a modo configuración/ver salidas reales.",
+  "sources": [
+    {
+      "doc_type": "community",
+      "pages": null,
+      "confidence": 0.3
+    }
+  ],
+  "confidence": {
+    "extraction": 0.3,
+    "correlation": 0.0,
+    "overall": 0.3
+  },
+  "status": "documented",
+  "conflicts": []
+}
