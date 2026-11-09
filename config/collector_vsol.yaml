@@ -1,8 +1,17 @@
 # Recolector de walks para VSOL V1600G2B (GPON, firmware V1.5.0R) — SNMPv2c de SOLO LECTURA.
 # Uso (tras poner TKC_VSOL_RO_COMMUNITY y el puerto UDP correcto en el .env):
 #   .venv/bin/python -m src.walk_collector --config config/collector_vsol.yaml --no-prompt --max-runtime 18
-# La rama real bajo 1.3.6.1.4.1.37950 se DESCUBRE por GETNEXT (skip-scan): no se asume
-# la del MIB V1600D (EPON).
+#
+# ADVERTENCIA DE SEGURIDAD (2026-10-23, ver memoria del proyecto "Hallazgos VSOL"):
+# `.1.3.6.1.4.1.37950.1.1.6.*` contiene PII REAL de abonado (nombres completos + lo que
+# parecen cédulas colombianas) MEZCLADA en la misma columna/tabla que datos técnicos —
+# imposible de separar por columna. Esa rama tumbó el SNMP del equipo 4 veces la única vez
+# que se caminó, y las 12.596 líneas que se alcanzaron a capturar se purgaron con `shred`.
+# NUNCA volver a poner esa rama (ni su padre `37950.1.1` entero, ni `37950` a secas con
+# discover:true) en `enterprise.roots` sin una decisión explícita + plan de redacción.
+# Los roots de abajo son EXACTAMENTE las 3 subramas ya confirmadas limpias y completas
+# (`.1.1.5`, `.2.1`, `.10.2`) — discover:true queda acotado a SU subárbol, nunca escapa
+# a un hermano (ver src/walk_collector/discovery.py, in_subtree).
 walk_collector:
   vendor: VSOL
   model: V1600G2B
@@ -54,8 +63,9 @@ walk_collector:
       discover: false
     enterprise:
       suffix: ""
-      roots: ["1.3.6.1.4.1.37950"]
-      discover: true                  # skip-scan: una tarea por rama hija
+      # NUNCA ["1.3.6.1.4.1.37950"] ni ["...37950.1.1"] — ver advertencia arriba.
+      roots: ["1.3.6.1.4.1.37950.1.1.5", "1.3.6.1.4.1.37950.2.1", "1.3.6.1.4.1.37950.10.2"]
+      discover: true                  # skip-scan DENTRO de cada root (no se sale del subárbol)
   discovery:
     base_depth: 2
     expand: []
