@@ -7,7 +7,7 @@
   "vendor_profile": {
     "vendor": "Huawei",
     "source": "config/vendors.yaml",
-    "sha256": "0a23874d75d3abe051344c9c9c4fa7060612bdc171c2a45fc3acec8ffd69213b"
+    "sha256": "5e2ef2f85590eabdcee9a6ae492b4cf8b72eb3d3afc1aef74984bd930aace64e"
   },
   "walks": {
     "Huawei_MA5608T.txt": "enterprise",
@@ -15,7 +15,7 @@
     "Huawei_MA5608T_ifnames.txt": "if_table",
     "Huawei_MA5608T_ifxfull.txt": "if_table"
   },
-  "generated_at": "2026-11-09T17:46:25",
+  "generated_at": "2026-11-09T21:42:24",
   "counts": {
     "oids_kept": 3061,
     "oids_pruned": 0,

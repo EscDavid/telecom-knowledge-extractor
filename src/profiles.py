@@ -32,7 +32,10 @@ GENERIC_IFTYPE_UPLINK = 6      # IANAifType ethernetCsmacd(6)
 LEGACY_DEFAULT_VENDOR = "ZTE"
 
 # nombre en vendors.yaml → "módulo:función" con firma refine(target: Path, family: str, walks_dir: Path|None)
-REFINEMENT_HOOKS = {"zte_c6xx": "src.walk_validator.refinements:refine_catalog"}
+REFINEMENT_HOOKS = {
+    "zte_c6xx": "src.walk_validator.refinements:refine_catalog",
+    "huawei_dedup_ids": "src.walk_validator.huawei_refinements:refine_catalog",
+}
 
 
 @dataclass(frozen=True)

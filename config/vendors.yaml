@@ -108,7 +108,11 @@ Huawei:
   # tiene. class=10 "port" (34 filas) y class=11 "stack" (65 filas "RACK-300") quedan sin
   # mapear a propósito: no son tarjetas, ENT_CLASS_TO_SHORT no las necesita.
   ent_synthesize_from_walk: true
-  refinements: null
+  # 2026-11-09: fusionar 5 módulos MIB reales produce columnas con el mismo nombre
+  # genérico en tablas distintas (ej. "Index" x3) -> mismo id derivado -> choca la
+  # PRIMARY KEY de tkc_oids al cargar (IntegrityError visto en vivo). El hook
+  # desambigua con la cola real del OID (nunca inventa nada) — ver huawei_refinements.py.
+  refinements: huawei_dedup_ids
 
 VSOL:
   technology: gpon
