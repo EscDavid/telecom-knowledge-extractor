@@ -153,3 +153,33 @@ Es el primer vendor sin ninguna fuente documental en el repo, así que el walk e
 - **Scripts que ejecutan al importarse.** Los `scripts/*_test.py` abren telnet contra la OLT
   de `.env` y escriben logs; por eso `pytest.ini` ahora limita a `tests/`. Conviene renombrarlos
   (`*_probe.py`) y añadir `if __name__ == "__main__":`.
+
+## 9. Seguridad: redacción genérica + cobertura ampliada de Huawei (2026-10-27)
+
+**Hallazgo:** la redacción de `sensitive_prefixes` (comunidades SNMP/cuentas como índice
+ASCII) solo corría dentro de `refinements.py`, el hook exclusivo de ZTE — ningún vendor
+nuevo tenía NINGUNA redacción. El walk real de Huawei lo confirmó: `HUAWEI-DEVICE-MIB`
+(`2011.6.3.10`, `hwCliUserMgmt`) trae usuarios reales en claro como índice de tabla
+(`smaroltusr`, `supercable`, `commonuser`, `operator`); `2011.6.3.14` trae tokens de 12
+caracteres de alta entropía sin MIB que los documente. Ambos llegaron a `results.json`
+(commiteado) antes de corregirse.
+
+**Fix:**
+- `WalkValidator._redact_findings()` (walk_validator.py) es ahora genérico — filtra por
+  `profile.sensitive_prefixes` de CUALQUIER vendor, no solo ZTE. Se aplica mutando
+  `findings.items` ANTES de escribir results.json Y manifest.json (este último tiene su
+  propio camino, `observed_firmware_strings`, que la redacción anterior nunca tocaba —
+  sí llegó a tener la cadena de alta entropía en el manifest commiteado).
+- `config/vendors.yaml` → Huawei.sensitive_prefixes: `2011.6.3.10` y `2011.6.3.14`.
+- `scripts/observium_to_mib.py` → `EXCLUDE_OID_PREFIXES`: columnas de password/community
+  individuales (`hwCliUserPassword`, `hwNmsGetCommunity`/`SetCommunity`,
+  `hwSlotExtendedBiosPassword`, `hwOntRemoteHttpChnlPassword`, `hwXPONBoardPassWord` de
+  HWMUSA-DEV-MIB) nunca se generan como OBJECT-TYPE — ninguna tenía valor real confirmado
+  en el walk (`status: documented`, `empirical: None`), pero así un walk futuro no puede
+  exponer `sample_value` ahí sin que nadie lo note.
+
+**Cobertura ampliada de paso:** se ingirieron `HUAWEI-DEVICE-MIB` (545 objetos, Observium),
+`HUAWEI-ENTITY-EXTENT-MIB` (543) y `HWMUSA-DEV-MIB` (73, legacy) — las 30 tablas
+`observed_only` (backlog #8) bajaron de cubrir frame/slot/CPU/temperatura a solo las de
+`HWMUSA-DEV-MIB` ya fetched (quedan unas pocas de `hwCliUserMgmt`, que siguen excluidas a
+propósito). Huawei pasó de 2225 a 3061 OIDs, de 4 a 6 entidades hardware confirmadas.

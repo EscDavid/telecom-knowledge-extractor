@@ -283,7 +283,10 @@ CREATE TABLE tkc_oids (
     unit                   VARCHAR(30)  NULL,
     scale                  DECIMAL(10,6) NULL,
     access                 ENUM('read-only','read-write','read-create','write-only',
-                                'not-accessible','accessible-for-notify') NOT NULL DEFAULT 'read-only',
+                                'not-accessible','accessible-for-notify','unknown') NOT NULL DEFAULT 'read-only',
+                                -- 'unknown': fuente nivel B sin MAX-ACCESS real (ej. render de
+                                -- Observium, que solo distingue read-write de "no lo sé"); nunca
+                                -- se asume read-only sin evidencia — ver enricher._KEEP_IF_UNCONFIRMED
     index_type             ENUM('simple','composite') NOT NULL DEFAULT 'simple',
     bit_calculation        BOOLEAN NOT NULL DEFAULT FALSE,
     index_def              JSON NULL,

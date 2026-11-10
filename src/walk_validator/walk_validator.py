@@ -409,8 +409,9 @@ class WalkValidator:
         for e in enriched_entities:
             self._write_json(target / "entities" / f"{entity_short_name(e.get('id', ''))}.json", e)
 
-        # commands/relations/alarms se copian re-etiquetando la familia
-        for sub in ("commands", "relations", "alarms"):
+        # commands/relations se copian re-etiquetando la familia (alarms lo maneja
+        # _apply_alarm_sources, que necesita limpiar antes de fusionar — ver su docstring)
+        for sub in ("commands", "relations"):
             src = seed / sub
             if not src.exists():
                 continue
@@ -420,7 +421,8 @@ class WalkValidator:
                 self._write_json(target / f.relative_to(seed), data)
 
         self._apply_command_sources(target, family)
-        self._apply_alarm_sources(target, family, vendor, profile.technology if profile else "gpon")
+        self._apply_alarm_sources(target, seed, family, vendor,
+                                  profile.technology if profile else "gpon")
 
         # redacta ANTES de results.json y manifest.json: ambos leen el mismo `findings`
         # (manifest.observed_firmware_strings también sale de by_trigger("ascii_index"))
@@ -486,35 +488,58 @@ class WalkValidator:
             log.info("WalkValidator: comandos verificados %s → +%d en %s", f.name, n, family)
         return n
 
-    def _apply_alarm_sources(self, target: Path, family: str, vendor: str,
+    def _apply_alarm_sources(self, target: Path, seed: Path, family: str, vendor: str,
                              technology: str) -> int:
-        """Alarmas documentadas (docs/validation/alarms/*.json), mismo patrón que
-        _apply_command_sources. Cada alarma trae su propio entity_ref; se agrupan por
-        entidad en target/alarms/<entity_short>.json (se funden con lo heredado de la
-        semilla si ya existía ese archivo, en vez de pisarlo)."""
-        d = self.validation_dir / "alarms"
-        if not d.exists():
-            return 0
+        """Alarmas: semilla (seed/alarms, re-etiquetada) + docs/validation/alarms/*.json
+        (mismo patrón que _apply_command_sources), agrupadas por entidad en
+        target/alarms/<entity_short>.json.
+
+        A diferencia de commands (un archivo por id, una regeneración se pisa sola) las
+        alarmas comparten archivo por entidad — por eso este método reconstruye el
+        directorio COMPLETO desde cero en memoria (semilla + fuentes) y recién entonces
+        escribe, en vez de leer+fusionar lo que ya hubiera en target/alarms de una
+        corrida anterior: eso duplicaba las alarmas en cada regeneración (visto en vivo,
+        2026-11-09 — el loader rechazó la carga por eso en otra parte de la fila)."""
+        import shutil
+        shutil.rmtree(target / "alarms", ignore_errors=True)
+        by_entity: dict[str, list[dict]] = {}
+        firmware_by_entity: dict[str, list[str]] = {}
+
+        seed_alarms_dir = seed / "alarms"
+        if seed_alarms_dir.exists():
+            for f in sorted(seed_alarms_dir.rglob("*.json")):
+                data = json.loads(f.read_text(encoding="utf-8"))
+                _relabel_family(data, family)
+                for a in data.get("alarms", []):
+                    short = entity_short_name(a.get("entity_ref", ""))
+                    by_entity.setdefault(short, []).append(a)
+                # firmware real de la semilla (ej. ZTE ['1.2.2']) — no pisarlo con []
+                if data.get("firmware"):
+                    for a in data.get("alarms", []):
+                        firmware_by_entity.setdefault(
+                            entity_short_name(a.get("entity_ref", "")), data["firmware"])
+
         n = 0
-        for f in sorted(d.glob("*.json")):
-            doc = json.loads(f.read_text(encoding="utf-8"))
-            alarms = (doc.get("alarms") or {}).get(family)
-            if not alarms:
-                continue
-            by_entity: dict[str, list[dict]] = {}
-            for a in alarms:
-                by_entity.setdefault(entity_short_name(a.get("entity_ref", "")), []).append(a)
-            for short, new_alarms in by_entity.items():
-                p = target / "alarms" / f"{short}.json"
-                if p.exists():
-                    group = json.loads(p.read_text(encoding="utf-8"))
-                    group["alarms"] = group.get("alarms", []) + new_alarms
-                else:
-                    group = {"entity_ref": new_alarms[0].get("entity_ref"), "vendor": vendor,
-                            "family": family, "firmware": [], "alarms": new_alarms}
-                self._write_json(p, group)
-                n += len(new_alarms)
-            log.info("WalkValidator: alarmas documentadas %s → +%d en %s", f.name, len(alarms), family)
+        d = self.validation_dir / "alarms"
+        if d.exists():
+            for f in sorted(d.glob("*.json")):
+                doc = json.loads(f.read_text(encoding="utf-8"))
+                alarms = (doc.get("alarms") or {}).get(family)
+                if not alarms:
+                    continue
+                for a in alarms:
+                    short = entity_short_name(a.get("entity_ref", ""))
+                    by_entity.setdefault(short, []).append(a)
+                    if short not in firmware_by_entity and a.get("firmware"):
+                        firmware_by_entity[short] = a["firmware"]
+                n += len(alarms)
+                log.info("WalkValidator: alarmas documentadas %s → +%d en %s", f.name, len(alarms), family)
+
+        for short, alarms in by_entity.items():
+            group = {"entity_ref": alarms[0].get("entity_ref"), "vendor": vendor,
+                     "family": family, "firmware": firmware_by_entity.get(short, []),
+                     "alarms": alarms}
+            self._write_json(target / "alarms" / f"{short}.json", group)
         return n
 
     def _manifest(self, vendor: str, family: str, enriched_oids: list[dict],

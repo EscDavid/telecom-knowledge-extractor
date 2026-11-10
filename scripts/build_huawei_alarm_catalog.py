@@ -48,6 +48,7 @@ EVIDENCE = ("tipo de alarma documentado en un objeto real de HUAWEI-XPON-MIB (re
 def _alarm(code_suffix: str, name: str, oid: str, atype: str, severity: str, desc: str) -> dict:
     entity_ref = f"entity.{VENDOR.lower()}.{TECH}.port.pon_port"   # ambos tipos cuelgan del ONT/PON
     return {
+        "id": f"alarm.{VENDOR.lower()}.{TECH}.pon_port.{name}",
         "code": f"huawei.alarm_type.{code_suffix}", "name": name,
         "canonical_name": name.replace("_", " ").title(),
         "entity_ref": entity_ref, "vendor": VENDOR, "family": FAMILY,

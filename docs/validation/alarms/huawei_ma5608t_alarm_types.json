@@ -12,6 +12,7 @@
  "alarms": {
   "MA5608T": [
    {
+    "id": "alarm.huawei.gpon.pon_port.optical_rxPower",
     "code": "huawei.alarm_type.optical_module.rxpower",
     "name": "optical_rxPower",
     "canonical_name": "Optical Rxpower",
@@ -54,6 +55,7 @@
     "conflicts": []
    },
    {
+    "id": "alarm.huawei.gpon.pon_port.optical_txPower",
     "code": "huawei.alarm_type.optical_module.txpower",
     "name": "optical_txPower",
     "canonical_name": "Optical Txpower",
@@ -96,6 +98,7 @@
     "conflicts": []
    },
    {
+    "id": "alarm.huawei.gpon.pon_port.optical_voltage",
     "code": "huawei.alarm_type.optical_module.voltage",
     "name": "optical_voltage",
     "canonical_name": "Optical Voltage",
@@ -138,6 +141,7 @@
     "conflicts": []
    },
    {
+    "id": "alarm.huawei.gpon.pon_port.optical_temperature",
     "code": "huawei.alarm_type.optical_module.temperature",
     "name": "optical_temperature",
     "canonical_name": "Optical Temperature",
@@ -180,6 +184,7 @@
     "conflicts": []
    },
    {
+    "id": "alarm.huawei.gpon.pon_port.optical_biasCurrent",
     "code": "huawei.alarm_type.optical_module.biascurrent",
     "name": "optical_biasCurrent",
     "canonical_name": "Optical Biascurrent",
@@ -222,6 +227,7 @@
     "conflicts": []
    },
    {
+    "id": "alarm.huawei.gpon.pon_port.optical_txPower10g",
     "code": "huawei.alarm_type.optical_module.txpower10g",
     "name": "optical_txPower10g",
     "canonical_name": "Optical Txpower10G",
@@ -264,6 +270,7 @@
     "conflicts": []
    },
    {
+    "id": "alarm.huawei.gpon.pon_port.optical_biasCurrent10g",
     "code": "huawei.alarm_type.optical_module.biascurrent10g",
     "name": "optical_biasCurrent10g",
     "canonical_name": "Optical Biascurrent10G",
@@ -306,6 +313,7 @@
     "conflicts": []
    },
    {
+    "id": "alarm.huawei.gpon.pon_port.optical_catvRxPower",
     "code": "huawei.alarm_type.optical_module.catvrxpower",
     "name": "optical_catvRxPower",
     "canonical_name": "Optical Catvrxpower",
@@ -348,6 +356,7 @@
     "conflicts": []
    },
    {
+    "id": "alarm.huawei.gpon.pon_port.tdm_tf",
     "code": "huawei.alarm_type.tdm_port.tf",
     "name": "tdm_tf",
     "canonical_name": "Tdm Tf",
@@ -390,6 +399,7 @@
     "conflicts": []
    },
    {
+    "id": "alarm.huawei.gpon.pon_port.tdm_lof",
     "code": "huawei.alarm_type.tdm_port.lof",
     "name": "tdm_lof",
     "canonical_name": "Tdm Lof",
@@ -432,6 +442,7 @@
     "conflicts": []
    },
    {
+    "id": "alarm.huawei.gpon.pon_port.tdm_oof",
     "code": "huawei.alarm_type.tdm_port.oof",
     "name": "tdm_oof",
     "canonical_name": "Tdm Oof",
@@ -474,6 +485,7 @@
     "conflicts": []
    },
    {
+    "id": "alarm.huawei.gpon.pon_port.tdm_rai",
     "code": "huawei.alarm_type.tdm_port.rai",
     "name": "tdm_rai",
     "canonical_name": "Tdm Rai",
@@ -516,6 +528,7 @@
     "conflicts": []
    },
    {
+    "id": "alarm.huawei.gpon.pon_port.tdm_ais",
     "code": "huawei.alarm_type.tdm_port.ais",
     "name": "tdm_ais",
     "canonical_name": "Tdm Ais",
